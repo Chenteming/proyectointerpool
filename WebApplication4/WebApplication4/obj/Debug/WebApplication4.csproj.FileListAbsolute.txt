@@ -1,0 +1,9 @@
+c:\users\federico\documents\visual studio 2010\Projects\WebApplication4\WebApplication4\obj\Debug\ResolveAssemblyReference.cache
+c:\users\federico\documents\visual studio 2010\Projects\WebApplication4\WebApplication4\bin\WebApplication4.dll
+c:\users\federico\documents\visual studio 2010\Projects\WebApplication4\WebApplication4\bin\WebApplication4.pdb
+c:\users\federico\documents\visual studio 2010\Projects\WebApplication4\WebApplication4\bin\Facebook.dll
+c:\users\federico\documents\visual studio 2010\Projects\WebApplication4\WebApplication4\bin\Facebook.Web.dll
+c:\users\federico\documents\visual studio 2010\Projects\WebApplication4\WebApplication4\bin\FacebookAPI.dll
+c:\users\federico\documents\visual studio 2010\Projects\WebApplication4\WebApplication4\bin\FacebookAPI.pdb
+c:\users\federico\documents\visual studio 2010\Projects\WebApplication4\WebApplication4\obj\Debug\WebApplication4.dll
+c:\users\federico\documents\visual studio 2010\Projects\WebApplication4\WebApplication4\obj\Debug\WebApplication4.pdb
