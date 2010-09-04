@@ -1,9 +1,0 @@
-c:\users\martín\documents\visual studio 2010\Projects\InterpoolPrototype\InterpoolPrototypeWebRole\bin\InterpoolPrototypeWebRole.dll
-c:\users\martín\documents\visual studio 2010\Projects\InterpoolPrototype\InterpoolPrototypeWebRole\bin\InterpoolPrototypeWebRole.pdb
-c:\users\martín\documents\visual studio 2010\Projects\InterpoolPrototype\InterpoolPrototypeWebRole\bin\Microsoft.WindowsAzure.Diagnostics.dll
-c:\users\martín\documents\visual studio 2010\Projects\InterpoolPrototype\InterpoolPrototypeWebRole\bin\Microsoft.WindowsAzure.StorageClient.dll
-c:\users\martín\documents\visual studio 2010\Projects\InterpoolPrototype\InterpoolPrototypeWebRole\bin\Microsoft.WindowsAzure.Diagnostics.xml
-c:\users\martín\documents\visual studio 2010\Projects\InterpoolPrototype\InterpoolPrototypeWebRole\bin\Microsoft.WindowsAzure.StorageClient.xml
-c:\users\martín\documents\visual studio 2010\Projects\InterpoolPrototype\InterpoolPrototypeWebRole\obj\Debug\ResolveAssemblyReference.cache
-c:\users\martín\documents\visual studio 2010\Projects\InterpoolPrototype\InterpoolPrototypeWebRole\obj\Debug\InterpoolPrototypeWebRole.dll
-c:\users\martín\documents\visual studio 2010\Projects\InterpoolPrototype\InterpoolPrototypeWebRole\obj\Debug\InterpoolPrototypeWebRole.pdb
