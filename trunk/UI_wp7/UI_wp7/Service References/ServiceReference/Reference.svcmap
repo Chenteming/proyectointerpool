@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c8908912-b949-48c2-a27f-f6a3c96b28ff" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://webserviceg2.cloudapp.net/web2.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="web2.xsd" MetadataType="Schema" ID="bba0ebb9-bf2b-4cc6-b8a8-cb0c7ec5f48b" SourceId="1" SourceUrl="http://webserviceg2.cloudapp.net/web2.svc?xsd=xsd2" />
+    <MetadataFile FileName="web2.wsdl" MetadataType="Wsdl" ID="ddea6d6a-9ae7-462c-9e41-2667f50c240b" SourceId="1" SourceUrl="http://webserviceg2.cloudapp.net/web2.svc?wsdl" />
+    <MetadataFile FileName="web2.disco" MetadataType="Disco" ID="108ed863-26ff-4c4d-b572-2f29efaedc6f" SourceId="1" SourceUrl="http://webserviceg2.cloudapp.net/web2.svc?disco" />
+    <MetadataFile FileName="web21.xsd" MetadataType="Schema" ID="9a9decf9-50af-4a55-82fc-db8e7d9eb586" SourceId="1" SourceUrl="http://webserviceg2.cloudapp.net/web2.svc?xsd=xsd0" />
+    <MetadataFile FileName="web22.xsd" MetadataType="Schema" ID="c4e81d66-29a5-4fe1-bebd-0b3215a53716" SourceId="1" SourceUrl="http://webserviceg2.cloudapp.net/web2.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
