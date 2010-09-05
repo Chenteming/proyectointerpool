@@ -18,12 +18,12 @@ namespace InterpoolPrototypeWebRole
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            context = new HelloWorldEntities();
-            List<City> cities = new List<City>(context.Cities);
-            foreach (City c in cities)
-            {
-                citiesList.Items.Add(new ListItem(String.Concat(c.Name," - ",c.CountryName), c.ID.ToString()));
-            }
+            //context = new HelloWorldEntities();
+            //List<City> cities = new List<City>(context.Cities);
+            //foreach (City c in cities)
+            //{
+            //    citiesList.Items.Add(new ListItem(String.Concat(c.Name, " - ", c.CountryName), c.ID.ToString()));
+            //}
         }
 
         protected void citiesList_SelectedIndexChanged(object sender, EventArgs e)

@@ -15,6 +15,25 @@ namespace InterpoolPrototypeWebRole
         List<string> GetCities();
 
         [OperationContract]
-        List<string> GetProbablySuspects();
+        string GetClueByFamous(string cadena);
+
+        [OperationContract]
+        void StartGame();
+
+        [OperationContract]
+        string GetCurrentCity();
+
+        [OperationContract]
+        List<string> GetPossibleCities();
+
+        [OperationContract]
+        List<string> GetCurrentFamous(string city);
+
+        [OperationContract]
+        string GetProbablySuspects();
+
+        [OperationContract]
+        void Travel(string City);
     }
+
 }
