@@ -30,9 +30,9 @@ namespace InterpoolPrototypeWebRole
         {
             //Define a LINQ query that returns information
             // about the selected person.
-            var info = (from p in context.Cities 
-                              where p.ID == Convert.ToInt32(citiesList.SelectedItem.Value)
-                              select p).FirstOrDefault();
+            var info = (from p in context.Cities
+                        where p.ID == Convert.ToInt32(citiesList.SelectedItem.Value)
+                        select p).FirstOrDefault();
 
             //Display information about the person
             infoLabel.Text = String.Concat("ID: ", info.ID.ToString(), " ",
