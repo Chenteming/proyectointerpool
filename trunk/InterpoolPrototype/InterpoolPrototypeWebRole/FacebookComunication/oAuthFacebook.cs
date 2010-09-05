@@ -15,7 +15,7 @@ namespace InterpoolPrototypeWebRole.FacebookComunication
         // TODO: change the next fixed urls with global parameters (in the WebConfig file)
         public const string AUTHORIZE = "https://graph.facebook.com/oauth/authorize";
         public const string ACCESS_TOKEN = "https://graph.facebook.com/oauth/access_token";
-        public const string CALLBACK_URL = "http://localhost:82/FacebookCallback.aspx/";
+        public const string CALLBACK_URL = "http://servicewp7.cloudapp.net:80/FacebookCallback.aspx/";
 
         private string _consumerKey = "";
         private string _consumerSecret = "";
