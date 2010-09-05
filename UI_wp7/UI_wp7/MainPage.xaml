@@ -1,0 +1,40 @@
+﻿<phone:PhoneApplicationPage
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+	x:Class="UI_wp7.MainPage"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	FontSize="{StaticResource PhoneFontSizeNormal}"
+	Foreground="{StaticResource PhoneForegroundBrush}"
+	SupportedOrientations="Landscape"  Orientation="Landscape"
+	shell:SystemTray.IsVisible="True">
+
+	<!--LayoutRoot contains the root grid where all other page content is placed-->
+	<Grid x:Name="LayoutRoot" Background="Transparent">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="0.072*"/>
+			<ColumnDefinition Width="0.928*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!--TitlePanel contains the name of the application and page title-->
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12" Grid.ColumnSpan="2"/>
+
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Grid.ColumnSpan="2" >
+			<Image Margin="0,29,30,20" Source="logoInterpool.png" Stretch="Fill" HorizontalAlignment="Right" Width="675"/>
+			<Button Content="CREDITS" Height="86" Margin="49,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="171"/>
+            <Button Content="PLAY" Height="86" Margin="247,0,355,58" VerticalAlignment="Bottom" Click="Play_Click"/>
+			<Button Content="LANGUAGE" Height="86" Margin="345,29,195,0" VerticalAlignment="Top"/>
+			<Button Content="EXIT" Height="86" Margin="161,43,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126"/>
+		</Grid>
+		<Button Content="HELP" Height="86" Margin="0,0,91,23" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="141" Grid.Row="1" Grid.Column="1"/>
+	</Grid>
+</phone:PhoneApplicationPage>
