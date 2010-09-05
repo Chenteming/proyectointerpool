@@ -86,7 +86,40 @@ namespace InterpoolPrototypeWebRole.FacebookComunication
             return friendsId;
         }
 
+        // Only for the Prototype
+        public List<string> GetFriendsNames(oAuthFacebook oAuth, string userId)
+        {
+            if (oAuth != null && oAuth.Token.Length > 0)
+            {
+                //We now have the credentials, so we can start making API calls
+                String url = String.Format("https://graph.facebook.com/{0}/friends?access_token={1}",
+                    userId, oAuth.Token);
+                string jsonFriends = oAuth.WebRequest(oAuthFacebook.Method.GET, url, String.Empty);
+                List<string> friendsId = GetFriendsNamesByJson(jsonFriends);
+                return friendsId;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
-        
+        // Only for the Prototype
+        private List<string> GetFriendsNamesByJson(string jsonFriends)
+        {
+            JObject jsonFriendObject = JObject.Parse(jsonFriends);
+            List<string> friendsNames = new List<string>();
+
+            string name = (string)jsonFriendObject.SelectToken("data[0].name");
+
+            int i = 1;
+            while (name != null)
+            {
+                friendsNames.Add(name);
+                name = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                i++;
+            }
+            return friendsNames;
+        }
     }
 }
