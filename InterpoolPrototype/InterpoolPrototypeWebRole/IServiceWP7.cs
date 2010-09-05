@@ -13,5 +13,8 @@ namespace InterpoolPrototypeWebRole
     {
         [OperationContract]
         List<string> GetCities();
+
+        [OperationContract]
+        List<string> GetProbablySuspects();
     }
 }
