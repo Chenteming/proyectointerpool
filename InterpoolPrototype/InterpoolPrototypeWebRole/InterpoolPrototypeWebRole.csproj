@@ -37,7 +37,7 @@
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime" />
     <Reference Include="Microsoft.WindowsAzure.StorageClient" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>C:\Users\Fede\Desktop\Json35r8\Bin\DotNet\Newtonsoft.Json.dll</HintPath>
+      <HintPath>bin\DotNet\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -70,6 +70,9 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="FacebookCallback.aspx" />
     <Content Include="InterpoolPrototypeModel.edmx.sql" />
+    <Content Include="Libs\Newtonsoft.Json.dll" />
+    <Content Include="Libs\Newtonsoft.Json.pdb" />
+    <Content Include="Libs\Newtonsoft.Json.xml" />
     <Content Include="ServiceWP7.svc" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
