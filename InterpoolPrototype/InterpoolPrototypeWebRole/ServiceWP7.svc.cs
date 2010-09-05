@@ -27,7 +27,7 @@ namespace InterpoolPrototypeWebRole
             return res;
         }
 
-        public List<string> GetProbablySuspects()
+        
         public string GetClueByFamous(string cadena)
         {
             string resultado = "";
@@ -130,9 +130,19 @@ namespace InterpoolPrototypeWebRole
         }
 
         //Esta es la funcion de facebook que tiene Fede A y Vicente.
-        public string GetProbablySuspects()
+        public List<string> GetProbablySuspects()
         {
-            return "GetProbablySuspects";
+            // TODO: Get from the database the lists of names of the friends
+            // of the current user
+            List<string> friendsNames = new List<string>();
+            HelloWorldEntities context = new HelloWorldEntities();
+            List<PrototypeSuspect> pSuspects = new List<PrototypeSuspect>(context.PrototypeSuspects);
+            foreach (PrototypeSuspect ps in pSuspects)
+            {
+                friendsNames.Add(ps.Name);
+            }
+            return friendsNames;
+
         }
 
        //Travel from one city to another
