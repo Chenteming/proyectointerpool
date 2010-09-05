@@ -35,6 +35,7 @@
                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
                     </Items>
                 </asp:Menu>
+            <asp:Button ID="btnLogin" runat="server" Text="Submit" OnClick="btnLogin_Click" />
             </div>
         </div>
         <div class="main">
