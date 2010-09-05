@@ -1,0 +1,6 @@
+El wpilauncher situado en esta misma carperte bajará e instalará
+lo que se necesita para un proyecto que corra en Azure.
+
+El siguiente es un link para descargar las tools de Azure para
+poder trabajar desde el Visual:
+http://download.microsoft.com/DOWNLOAD/1/F/9/1F96D60F-EBE9-44CB-BD58-88C2EC14929E/VSCLOUDSERVICE.EXE
