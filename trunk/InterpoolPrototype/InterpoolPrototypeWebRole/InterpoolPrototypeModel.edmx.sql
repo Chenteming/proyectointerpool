@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/04/2010 21:34:12
--- Generated from EDMX file: D:\lucida\Documents\facultad\Pis\pisrepo\trunk\InterpoolPrototype\InterpoolPrototypeWebRole\InterpoolPrototypeModel.edmx
+-- Date Created: 09/05/2010 11:11:57
+-- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolPrototype\InterpoolPrototypeWebRole\InterpoolPrototypeModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -42,6 +42,9 @@ IF OBJECT_ID(N'[dbo].[Suspects]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Games]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Games];
+GO
+IF OBJECT_ID(N'[dbo].[PrototypeSuspects]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PrototypeSuspects];
 GO
 
 -- --------------------------------------------------
