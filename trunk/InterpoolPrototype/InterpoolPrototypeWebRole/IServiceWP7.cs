@@ -30,10 +30,11 @@ namespace InterpoolPrototypeWebRole
         List<string> GetCurrentFamous(string city);
 
         [OperationContract]
-        string GetProbablySuspects();
+        void Travel(string City);
 
         [OperationContract]
-        void Travel(string City);
+        List<string> GetProbablySuspects();
     }
+    
 
 }
