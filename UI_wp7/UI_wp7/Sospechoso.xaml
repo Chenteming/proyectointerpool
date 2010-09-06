@@ -23,12 +23,17 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12">
             <TextBlock x:Name="ApplicationTitle" Text="INTERPOOL" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="Suspects List" Margin="-3,-8,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="PageTitle" Text="Lista de Sospechosos" Margin="-3,-8,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentGrid" Grid.Row="1"/>
+        <Image x:Name="SuspectName" Source="pantalla_5 copia.jpg" Stretch="Fill" RenderTransformOrigin="0.049,0.506" Margin="0,0,30,0"/>
         <ListBox Grid.Row="1" Height="326" HorizontalAlignment="Left" Margin="0,2,0,0" Name="listBox1" VerticalAlignment="Top" Width="736" />
+        <Button x:Name="LeftArrow" Content="Button" HorizontalAlignment="Left" Margin="0,182,0,173" Width="111" Opacity="0" Click="LeftArrow_Click"/>
+        <Button x:Name="RightArrow" Content="Button" Margin="0,168,21,173" HorizontalAlignment="Right" Width="117" Opacity="0" Click="RightArrow_Click"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="117,0,0,123" Stroke="Black" VerticalAlignment="Bottom" Width="200"/>
+        <TextBlock x:Name="Name_Suspect" HorizontalAlignment="Left" Height="38" Margin="117,0,0,123" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="200" Foreground="#FF4292A0" FontWeight="Bold" TextAlignment="Center" FontSize="22" />
     </Grid>
 
 </phone:PhoneApplicationPage>
