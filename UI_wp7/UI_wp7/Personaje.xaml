@@ -32,7 +32,7 @@
             <Button Content="Fam1" Height="72" HorizontalAlignment="Left" Margin="21,0,0,16" x:Name="Famous1" VerticalAlignment="Bottom" Width="243" Click="Famous1_Click" d:LayoutOverrides="HorizontalAlignment" Background="White" Foreground="#FFC22F2F" />
             <Button Content="Fam2" Margin="224,0,249,16" x:Name="Famous2" Height="72" VerticalAlignment="Bottom" Click="Famous2_Click" d:LayoutOverrides="VerticalAlignment" Foreground="#FFC22F2F" Background="White" />
             <Button Content="Fam3" Height="72" HorizontalAlignment="Right" Margin="0,384,27,0" x:Name="Famous3" VerticalAlignment="Top" Width="251" Click="Famous3_Click" Foreground="#FFC22F2F" Background="White" />
-            <TextBox HorizontalAlignment="Center" Margin="309,66,0,221" x:Name="Clue" Text="Clue1" Width="411" SelectionForeground="#FFBAAFAF" TextAlignment="Center" >
+            <TextBox HorizontalAlignment="Center" Margin="303,66,4,221" x:Name="Clue" Text="" Width="421" SelectionForeground="#FFBAAFAF" TextAlignment="Center" >
             	<TextBox.Background>
             		<RadialGradientBrush>
             			<GradientStop Color="#FFE71B1B" Offset="0.05"/>
