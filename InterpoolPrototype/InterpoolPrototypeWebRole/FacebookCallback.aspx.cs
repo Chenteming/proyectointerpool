@@ -31,7 +31,26 @@ namespace InterpoolPrototypeWebRole
                     string userId = facebookController.GetUserId(oAuth);
                     if (!userId.Equals(""))
                     {
-                        List<string> friendsId = facebookController.GetFriendsId(userId);
+                        // List<string> friendsIds = facebookController.GetFriendsId(userId);
+                        List<string> friendsNames = facebookController.GetFriendsNames(oAuth, userId);
+                        HelloWorldEntities context = new HelloWorldEntities();
+                        List<PrototypeSuspect> listSuspects = new List<PrototypeSuspect>(context.PrototypeSuspects);
+                        // Deletes all the existing suspects
+                        foreach (PrototypeSuspect pSuspectDelete in listSuspects)
+                        {
+                            context.DeleteObject(pSuspectDelete);
+                        }
+                        context.SaveChanges();
+
+                        PrototypeSuspect pSuspect;
+                        // Creates the suspects for the current user
+                        foreach (string name in friendsNames)
+                        {
+                            pSuspect = new PrototypeSuspect();
+                            pSuspect.Name = name;
+                            context.AddToPrototypeSuspects(pSuspect);
+                        }
+                        context.SaveChanges();
                     }
                     
                 }
