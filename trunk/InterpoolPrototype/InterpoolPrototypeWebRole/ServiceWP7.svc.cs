@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using InterpoolPrototypeWebRole.ServicioBusquedaBing;
+using InterpoolPrototypeWebRole.BingSearchService;
 
 namespace InterpoolPrototypeWebRole
 {
@@ -32,7 +32,7 @@ namespace InterpoolPrototypeWebRole
         {
             string resultado = "";
 
-            ServicioBusquedaBing.LiveSearchPortTypeClient client = new InterpoolPrototypeWebRole.ServicioBusquedaBing.LiveSearchPortTypeClient();
+            BingSearchService.LiveSearchPortTypeClient client = new InterpoolPrototypeWebRole.BingSearchService.LiveSearchPortTypeClient();
 
             SearchRequest request = new SearchRequest()
 
