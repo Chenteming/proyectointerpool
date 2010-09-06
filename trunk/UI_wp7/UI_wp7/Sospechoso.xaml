@@ -27,9 +27,8 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentGrid" Grid.Row="1">
-            <ListBox x:Name="SuspectsList" Height="247" HorizontalAlignment="Left" Margin="104,52,0,0"  VerticalAlignment="Top" Width="460" />
-        </Grid>
+        <Grid x:Name="ContentGrid" Grid.Row="1"/>
+        <ListBox Grid.Row="1" Height="326" HorizontalAlignment="Left" Margin="0,2,0,0" Name="listBox1" VerticalAlignment="Top" Width="736" />
     </Grid>
 
 </phone:PhoneApplicationPage>

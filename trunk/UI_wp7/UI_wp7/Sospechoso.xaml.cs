@@ -19,15 +19,15 @@ namespace UI_wp7
         public Sospechoso()
         {
             InitializeComponent();
-            Iweb2Client client = new Iweb2Client();
-            /*client.GetProbablySuspectsCompleted += new EventHandler<GetProbablySuspectsCompletedEventArgs>(GetProbablySuspectsCallback);
+            ServiceWP7Client client = new ServiceWP7Client();
+            client.GetProbablySuspectsCompleted += new EventHandler<GetProbablySuspectsCompletedEventArgs>(GetProbablySuspectsCallback);
             client.GetProbablySuspectsAsync();
-            client.CloseAsync();*/
+            client.CloseAsync();
         }
 
-        private void GetProbablySuspectsCallback(object sender, GetClueByFamousCompletedEventArgs e)
+        private void GetProbablySuspectsCallback(object sender, GetProbablySuspectsCompletedEventArgs e)
         {
-            SuspectsList.ItemsSource = e.Result;            
-        }    
+            listBox1.ItemsSource = e.Result;
+        }
     }
 }
