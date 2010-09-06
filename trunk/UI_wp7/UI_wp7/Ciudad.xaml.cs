@@ -102,7 +102,7 @@ namespace UI_wp7
             GameManager gm = GameManager.getInstance();
             gm.SetCurrentCities(cities);
 
-            //Set the new current famous
+            // Set the new current famous
             ServiceWP7Client client = new ServiceWP7Client();
             client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(GetCurrentFamousCallback);
             String ac = gm.GetActualCity();
