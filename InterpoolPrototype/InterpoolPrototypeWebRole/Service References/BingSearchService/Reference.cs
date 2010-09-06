@@ -8,17 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InterpoolPrototypeWebRole.ServicioBusquedaBing {
+namespace InterpoolPrototypeWebRole.BingSearchService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://schemas.microsoft.com/LiveSearch/2008/03/Search", ConfigurationName="ServicioBusquedaBing.LiveSearchPortType")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://schemas.microsoft.com/LiveSearch/2008/03/Search", ConfigurationName="BingSearchService.LiveSearchPortType")]
     public interface LiveSearchPortType {
         
         // CODEGEN: Generating message contract since the wrapper name (SearchRequest) of message SearchRequest does not match the default value (Search)
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/LiveSearch/2008/03/Search/Search", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchResponse1 Search(InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchRequest1 request);
+        InterpoolPrototypeWebRole.BingSearchService.SearchResponse1 Search(InterpoolPrototypeWebRole.BingSearchService.SearchRequest1 request);
     }
     
     /// <remarks/>
@@ -3975,12 +3975,12 @@ namespace InterpoolPrototypeWebRole.ServicioBusquedaBing {
     public partial class SearchRequest1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/LiveSearch/2008/03/Search", Order=0)]
-        public InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchRequest parameters;
+        public InterpoolPrototypeWebRole.BingSearchService.SearchRequest parameters;
         
         public SearchRequest1() {
         }
         
-        public SearchRequest1(InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchRequest parameters) {
+        public SearchRequest1(InterpoolPrototypeWebRole.BingSearchService.SearchRequest parameters) {
             this.parameters = parameters;
         }
     }
@@ -3992,23 +3992,23 @@ namespace InterpoolPrototypeWebRole.ServicioBusquedaBing {
     public partial class SearchResponse1 {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/LiveSearch/2008/03/Search", Order=0)]
-        public InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchResponse parameters;
+        public InterpoolPrototypeWebRole.BingSearchService.SearchResponse parameters;
         
         public SearchResponse1() {
         }
         
-        public SearchResponse1(InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchResponse parameters) {
+        public SearchResponse1(InterpoolPrototypeWebRole.BingSearchService.SearchResponse parameters) {
             this.parameters = parameters;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface LiveSearchPortTypeChannel : InterpoolPrototypeWebRole.ServicioBusquedaBing.LiveSearchPortType, System.ServiceModel.IClientChannel {
+    public interface LiveSearchPortTypeChannel : InterpoolPrototypeWebRole.BingSearchService.LiveSearchPortType, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class LiveSearchPortTypeClient : System.ServiceModel.ClientBase<InterpoolPrototypeWebRole.ServicioBusquedaBing.LiveSearchPortType>, InterpoolPrototypeWebRole.ServicioBusquedaBing.LiveSearchPortType {
+    public partial class LiveSearchPortTypeClient : System.ServiceModel.ClientBase<InterpoolPrototypeWebRole.BingSearchService.LiveSearchPortType>, InterpoolPrototypeWebRole.BingSearchService.LiveSearchPortType {
         
         public LiveSearchPortTypeClient() {
         }
@@ -4030,14 +4030,14 @@ namespace InterpoolPrototypeWebRole.ServicioBusquedaBing {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchResponse1 InterpoolPrototypeWebRole.ServicioBusquedaBing.LiveSearchPortType.Search(InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchRequest1 request) {
+        InterpoolPrototypeWebRole.BingSearchService.SearchResponse1 InterpoolPrototypeWebRole.BingSearchService.LiveSearchPortType.Search(InterpoolPrototypeWebRole.BingSearchService.SearchRequest1 request) {
             return base.Channel.Search(request);
         }
         
-        public InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchResponse Search(InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchRequest parameters) {
-            InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchRequest1 inValue = new InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchRequest1();
+        public InterpoolPrototypeWebRole.BingSearchService.SearchResponse Search(InterpoolPrototypeWebRole.BingSearchService.SearchRequest parameters) {
+            InterpoolPrototypeWebRole.BingSearchService.SearchRequest1 inValue = new InterpoolPrototypeWebRole.BingSearchService.SearchRequest1();
             inValue.parameters = parameters;
-            InterpoolPrototypeWebRole.ServicioBusquedaBing.SearchResponse1 retVal = ((InterpoolPrototypeWebRole.ServicioBusquedaBing.LiveSearchPortType)(this)).Search(inValue);
+            InterpoolPrototypeWebRole.BingSearchService.SearchResponse1 retVal = ((InterpoolPrototypeWebRole.BingSearchService.LiveSearchPortType)(this)).Search(inValue);
             return retVal.parameters;
         }
     }
