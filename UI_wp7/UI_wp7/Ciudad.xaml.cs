@@ -23,9 +23,10 @@ namespace UI_wp7
             GameManager gm = GameManager.getInstance();
             List<String> cities = gm.GetCities();
             //Show in the textBoxes the name of the cities
-            textBox1.Text = cities.ElementAt(0);
-            textBox2.Text = cities.ElementAt(1);
-            textBox3.Text = cities.ElementAt(2);
+            
+            Travel1.Content = cities.ElementAt(0);
+            Travel2.Content = cities.ElementAt(1);
+            Travel3.Content = cities.ElementAt(2);
         }
 		
 		private void SetAndStartButon(object sender, EventArgs e)
@@ -36,8 +37,8 @@ namespace UI_wp7
 
         private void Travel1_Click(object sender, RoutedEventArgs e)
         {
-            Iweb2Client client = new Iweb2Client();
-            client.TravelAsync(textBox1.Text);
+            ServiceWP7Client client = new ServiceWP7Client();
+            client.TravelAsync(Travel1.Content.ToString());
 
             //Show the information about the new current city
             //textBox4 = getInfoCity(textBox1.Text);
@@ -47,20 +48,16 @@ namespace UI_wp7
 
             GameManager gm = GameManager.getInstance();
             //Set the new current city
-            gm.SetActualCity(textBox1.Text);
-
-            //Set the new current famous
-            client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(GetCurrentFamousCallback);
-            client.GetCurrentFamousAsync(textBox1.Text);
+            gm.SetActualCity(Travel1.Content.ToString());
             client.CloseAsync();
             //Show the animation
-            NavigationService.Navigate(new Uri("/Viaje.xaml", UriKind.RelativeOrAbsolute));
+            //NavigationService.Navigate(new Uri("/Viaje.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void Travel2_Click(object sender, RoutedEventArgs e)
         {
-            Iweb2Client client = new Iweb2Client();
-            client.TravelAsync(textBox2.Text);
+            ServiceWP7Client client = new ServiceWP7Client();
+            client.TravelAsync(Travel2.Content.ToString());
 
             //Show the information about the new current city
             //textBox5 = getInfoCity(textBox2.Text);
@@ -70,20 +67,16 @@ namespace UI_wp7
 
             GameManager gm = GameManager.getInstance();
             //Set the new current city
-            gm.SetActualCity(textBox2.Text);
-
-            //Set the new current famous
-            client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(GetCurrentFamousCallback);
-            client.GetCurrentFamousAsync(textBox2.Text);
+            gm.SetActualCity(Travel2.Content.ToString());
             client.CloseAsync();
             //Show the animation
-            NavigationService.Navigate(new Uri("/Viaje.xaml", UriKind.RelativeOrAbsolute));
+            //NavigationService.Navigate(new Uri("/Viaje.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void Travel3_Click(object sender, RoutedEventArgs e)
         {
-            Iweb2Client client = new Iweb2Client();
-            client.TravelAsync(textBox3.Text);
+            ServiceWP7Client client = new ServiceWP7Client();
+            client.TravelAsync(Travel3.Content.ToString());
 
             //Show the information about the new current city
             //textBox6 = getInfoCity(textBox3.Text);
@@ -92,15 +85,13 @@ namespace UI_wp7
             client.GetPossibleCitiesAsync();
 
             GameManager gm = GameManager.getInstance();
+			
             //Set the new current city
-            gm.SetActualCity(textBox3.Text);
-
-            //Set the new current famous
-            client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(GetCurrentFamousCallback);
-            client.GetCurrentFamousAsync(textBox3.Text);
+            gm.SetActualCity(Travel3.Content.ToString());
+        
             client.CloseAsync();
             //Show the animation
-            NavigationService.Navigate(new Uri("/Viaje.xaml", UriKind.RelativeOrAbsolute));
+            //NavigationService.Navigate(new Uri("/Viaje.xaml", UriKind.RelativeOrAbsolute));
         }
 
         // Asynchronous callbacks for displaying results.
@@ -112,7 +103,7 @@ namespace UI_wp7
             gm.SetCurrentCities(cities);
 
             //Set the new current famous
-            Iweb2Client client = new Iweb2Client();
+            ServiceWP7Client client = new ServiceWP7Client();
             client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(GetCurrentFamousCallback);
             String ac = gm.GetActualCity();
             client.GetCurrentFamousAsync(ac);

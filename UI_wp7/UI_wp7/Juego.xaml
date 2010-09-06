@@ -87,8 +87,8 @@
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" MinHeight="36"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <!--TitlePanel contains the name of the application and page title-->
 
@@ -98,12 +98,17 @@
     	<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12"/>
 
 <!--ContentPanel - place additional content here-->
-    	<Grid x:Name="ContentGrid" Grid.Row="1">
-            <Image Source="pantalla_1.jpg" Stretch="Fill"  />
-            <Button x:Name="ComputerButton" Content="Button" HorizontalAlignment="Right" Margin="0,212,22,0" Style="{StaticResource ComputerButtonStyle}" Width="253" Opacity="0" Click="ComputerButton_Click" />
-            <Button x:Name="DoorButton" Content="Button" HorizontalAlignment="Left" Margin="0,34,0,79" Style="{StaticResource DoorButtonStyle}" Width="105.622" Opacity="0" Click="DoorButton_Click"/>
-            <Button x:Name="FilesButton" Content="Button" Margin="266,104.318,321.934,140" Style="{StaticResource FilesButtonStyle}" Opacity="0" Click="FilesButton_Click"/>
-            <Button x:Name="MapButton" Content="Button" HorizontalAlignment="Left" Margin="196,147,0,122" Style="{StaticResource MapButtonStyle}" Width="84" Opacity="0" Click="MapButton_Click"/>
+    	<Grid x:Name="ContentGrid" Height="472" VerticalAlignment="Bottom" Grid.RowSpan="2">
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition Width="0*"/>
+    			<ColumnDefinition/>
+    		</Grid.ColumnDefinitions>
+            <Image Source="pantalla_1.jpg" Stretch="Fill" Margin="0,8,0,28" Grid.Column="1" d:IsHidden="True"  />
+            <Image x:Name="ImageBackground" Source="pantalla_1 copia.jpg" Stretch="Fill" Margin="0,0,0,8" Grid.Column="1"/>
+            <Button x:Name="ComputerButton" Content="Button" HorizontalAlignment="Right" Margin="0,212,22,28" Style="{StaticResource ComputerButtonStyle}" Width="253" Opacity="0" Click="ComputerButton_Click" Grid.Column="1" />
+            <Button x:Name="DoorButton" Content="Button" Margin="0,34,0,107" Style="{StaticResource DoorButtonStyle}" Width="106" Opacity="0" Click="DoorButton_Click" Grid.Column="1" HorizontalAlignment="Left" Background="Transparent"/>
+            <Button x:Name="FilesButton" Content="Button" Margin="266,104,322,168" Style="{StaticResource FilesButtonStyle}" Opacity="0" Click="FilesButton_Click" Grid.Column="1"/>
+            <Button x:Name="MapButton" Content="Button" HorizontalAlignment="Left" Margin="196,147,0,150" Style="{StaticResource MapButtonStyle}" Width="84" Opacity="0" Click="MapButton_Click" Grid.Column="1"/>
         </Grid>
     </Grid>
 

@@ -140,24 +140,17 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
-    <None Include="Service References\ServiceReference\web2.disco" />
-    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference\configuration.svcinfo" />
-    <None Include="Service References\ServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\ServiceReference\ServiceWP7.wsdl" />
+    <None Include="Service References\ServiceReference\ServiceWP7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\ServiceWP71.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\ServiceWP72.xsd">
+      <SubType>Designer</SubType>
     </None>
     <Content Include="ServiceReferences.ClientConfig" />
-    <None Include="Service References\ServiceReference\web2.wsdl" />
-    <None Include="Service References\ServiceReference\web2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\web21.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\web22.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">
@@ -166,6 +159,19 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="pantalla_1 copia.jpg" />
+    <Resource Include="pantalla_2 copia.jpg" />
+    <Resource Include="pantalla_3 copia.jpg" />
+    <Resource Include="pantalla_4 copia.jpg" />
+    <Resource Include="pantalla_5 copia.jpg" />
+    <Resource Include="pantalla_6 copia.jpg" />
+    <None Include="Service References\ServiceReference\ServiceWP7.disco" />
+    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>

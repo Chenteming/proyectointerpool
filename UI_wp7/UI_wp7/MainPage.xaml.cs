@@ -21,6 +21,7 @@ namespace UI_wp7
         public MainPage()
         {
             InitializeComponent();
+			intro_wma.Play();
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
@@ -28,7 +29,7 @@ namespace UI_wp7
 			GameManager gm = GameManager.getInstance();
             
             //Set initial current citie
-            Iweb2Client client = new Iweb2Client();
+            ServiceWP7Client client = new ServiceWP7Client();
  
             client.StartGameAsync();
            
@@ -57,7 +58,7 @@ namespace UI_wp7
             GameManager gm = GameManager.getInstance();
             gm.SetCurrentCities(cities);
 
-            Iweb2Client client = new Iweb2Client();
+            ServiceWP7Client client = new ServiceWP7Client();
             client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(GetCurrentFamousCallback);
             String ac = gm.GetActualCity();
             client.GetCurrentFamousAsync(ac);
