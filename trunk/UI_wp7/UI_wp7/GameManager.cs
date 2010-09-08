@@ -22,6 +22,7 @@ namespace UI_wp7
 		private List<String> clues;
 		private List<String> famous;
 		private List<String> suspects;
+        private int juego;
 		
 		public static GameManager getInstance()
 		{
@@ -36,6 +37,7 @@ namespace UI_wp7
 			famous = new List<String>();
 			clues = new List<String>();
 			suspects = new List<String>();
+            juego = 0;
 		}
 		
 		public void AddCity(int position, String name)
@@ -122,5 +124,15 @@ namespace UI_wp7
 		{
 			suspects = list;
 		}
+
+        public void incJuego()
+        {
+            juego ++;
+        }
+
+        public int getJuego()
+        {
+            return juego;
+        }
 }
 }
