@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IServiceWP7" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://servicewp7.cloudapp.net/ServiceWP7.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IServiceWP7"
+                contract="ServiceReference.IServiceWP7" name="BasicHttpBinding_IServiceWP7" />
+        </client>
+    </system.serviceModel>
+</configuration>

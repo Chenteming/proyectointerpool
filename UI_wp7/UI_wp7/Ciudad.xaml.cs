@@ -17,16 +17,22 @@ namespace UI_wp7
 {
     public partial class Ciudad : PhoneApplicationPage
     {
+        private ServiceWP7Client client; 
+
         public Ciudad()
         {
             InitializeComponent();
-            GameManager gm = GameManager.getInstance();
-            List<String> cities = gm.GetCities();
-            //Show in the textBoxes the name of the cities
+            GameManager gm = GameManager.getInstance();            
+            client = new ServiceWP7Client();
+
+            client.GetPossibleCitiesCompleted+=new EventHandler<GetPossibleCitiesCompletedEventArgs>(GetPossibleCitiesCompleted);
+            client.GetPossibleCitiesAsync();
             
-            Travel1.Content = cities.ElementAt(0);
-            Travel2.Content = cities.ElementAt(1);
-            Travel3.Content = cities.ElementAt(2);
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
+            Travel1.Visibility = System.Windows.Visibility.Collapsed;
+            Travel2.Visibility = System.Windows.Visibility.Collapsed;
+            Travel3.Visibility = System.Windows.Visibility.Collapsed;
         }
 		
 		private void SetAndStartButon(object sender, EventArgs e)
@@ -38,83 +44,70 @@ namespace UI_wp7
         private void Travel1_Click(object sender, RoutedEventArgs e)
         {
             ServiceWP7Client client = new ServiceWP7Client();
-            client.TravelAsync(Travel1.Content.ToString());
-
-            //Show the information about the new current city
-            //textBox4 = getInfoCity(textBox1.Text);
-
-            client.GetPossibleCitiesCompleted += new EventHandler<GetPossibleCitiesCompletedEventArgs>(GetPossibleCitiesCallback);
-            client.GetPossibleCitiesAsync();
-
-            GameManager gm = GameManager.getInstance();
-            //Set the new current city
-            gm.SetActualCity(Travel1.Content.ToString());
+            client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
+            client.TravelAsync(Travel1.Content.ToString());            
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
-            //Show the animation
-            //NavigationService.Navigate(new Uri("/Viaje.xaml", UriKind.RelativeOrAbsolute));
+            GameManager gm = GameManager.getInstance();
+            gm.SetActualCity(Travel1.Content.ToString());
+           // gm.incJuego();
+            
+        }
+
+        void client_TravelCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            //TODO
         }
 
         private void Travel2_Click(object sender, RoutedEventArgs e)
         {
             ServiceWP7Client client = new ServiceWP7Client();
-            client.TravelAsync(Travel2.Content.ToString());
-
-            //Show the information about the new current city
-            //textBox5 = getInfoCity(textBox2.Text);
-
-            client.GetPossibleCitiesCompleted += new EventHandler<GetPossibleCitiesCompletedEventArgs>(GetPossibleCitiesCallback);
-            client.GetPossibleCitiesAsync();
-
-            GameManager gm = GameManager.getInstance();
-            //Set the new current city
-            gm.SetActualCity(Travel2.Content.ToString());
+            client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
+            client.TravelAsync(Travel2.Content.ToString());            
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
-            //Show the animation
-            //NavigationService.Navigate(new Uri("/Viaje.xaml", UriKind.RelativeOrAbsolute));
+            GameManager gm = GameManager.getInstance();
+            gm.SetActualCity(Travel2.Content.ToString());
+            
         }
 
         private void Travel3_Click(object sender, RoutedEventArgs e)
         {
             ServiceWP7Client client = new ServiceWP7Client();
-            client.TravelAsync(Travel3.Content.ToString());
-
-            //Show the information about the new current city
-            //textBox6 = getInfoCity(textBox3.Text);
-
-            client.GetPossibleCitiesCompleted += new EventHandler<GetPossibleCitiesCompletedEventArgs>(GetPossibleCitiesCallback);
-            client.GetPossibleCitiesAsync();
-
-            GameManager gm = GameManager.getInstance();
-			
-            //Set the new current city
-            gm.SetActualCity(Travel3.Content.ToString());
-        
+            client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
+            client.TravelAsync(Travel3.Content.ToString());            
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
-            //Show the animation
-            //NavigationService.Navigate(new Uri("/Viaje.xaml", UriKind.RelativeOrAbsolute));
+            GameManager gm = GameManager.getInstance();
+            gm.SetActualCity(Travel3.Content.ToString());
+            
         }
 
         // Asynchronous callbacks for displaying results.
 
-        static void GetPossibleCitiesCallback(object sender, GetPossibleCitiesCompletedEventArgs e)
+        public void GetPossibleCitiesCompleted(object sender, GetPossibleCitiesCompletedEventArgs e)
         {
             List<String> cities = e.Result.ToList();
             GameManager gm = GameManager.getInstance();
             gm.SetCurrentCities(cities);
 
-            // Set the new current famous
-            ServiceWP7Client client = new ServiceWP7Client();
-            client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(GetCurrentFamousCallback);
-            String ac = gm.GetActualCity();
-            client.GetCurrentFamousAsync(ac);
-            client.CloseAsync();
+            Travel1.Visibility = System.Windows.Visibility.Visible;
+            Travel2.Visibility = System.Windows.Visibility.Visible;
+            Travel3.Visibility = System.Windows.Visibility.Visible;
+
+            Travel1.Content = cities.ElementAt(0);
+            Travel2.Content = cities.ElementAt(1);
+            Travel3.Content = cities.ElementAt(2);
         }
 
-        static void GetCurrentFamousCallback(object sender, GetCurrentFamousCompletedEventArgs e)
+        void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            List<String> famous = e.Result.ToList();
-            GameManager gm = GameManager.getInstance();
-            gm.SetCurrentFamous(famous);
+            //TODO
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Juego.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
