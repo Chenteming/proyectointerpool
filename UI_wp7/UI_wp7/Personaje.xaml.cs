@@ -17,17 +17,41 @@ namespace UI_wp7
 {
     public partial class Personaje : PhoneApplicationPage
     {
+        private ServiceWP7Client client;
+
         public Personaje()
         {
             InitializeComponent();
-            GameManager gm = GameManager.getInstance();
-            List<String> famous = gm.GetFamous();
-            List<String> clues = gm.GetClues();
-            //Show in the textBoxes the name of the famous
-            Famous1.Content = famous.ElementAt(0);
-            Famous2.Content = famous.ElementAt(1);
-            Famous3.Content = famous.ElementAt(2);
-        }
+            GameManager gm = GameManager.getInstance();    
+        
+            client = new ServiceWP7Client();
+            client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(client_GetCurrentFamousCompleted);
+            client.GetCurrentFamousAsync(gm.GetActualCity());
+            /*switch (gm.getJuego())
+            {
+                case 0:
+                    client.GetCurrentFamousAsync("Montevideo");
+                    
+                    break;
+                case 1:
+                    client.GetCurrentFamousAsync("Rio de Janeiro");
+                    break;
+                case 2:
+                    client.GetCurrentFamousAsync("Roma");
+                    break;
+                case 3:
+                    client.GetCurrentFamousAsync("Londres");
+                    break;
+            }*/
+            //client.GetCurrentFamousAsync("Roma");
+
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
+            // Set the textboxes with the name of the famous
+            Famous1.Visibility = System.Windows.Visibility.Collapsed;
+            Famous2.Visibility = System.Windows.Visibility.Collapsed;
+            Famous3.Visibility = System.Windows.Visibility.Collapsed;            
+        }       
 		
 		public void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
 		{
@@ -35,53 +59,64 @@ namespace UI_wp7
 
         private void Famous1_Click(object sender, RoutedEventArgs e)
         {
-            //Get the clue
-            ServiceWP7Client client = new ServiceWP7Client();
-            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback_1);          
+            client = new ServiceWP7Client();
+            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);          
             client.GetClueByFamousAsync(Famous1.Content.ToString());
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
         }
 
         private void Famous2_Click(object sender, RoutedEventArgs e)
         {
-            //Get the clue
-            ServiceWP7Client client = new ServiceWP7Client();
-            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback_2);
+            client = new ServiceWP7Client();
+            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
             client.GetClueByFamousAsync(Famous2.Content.ToString());
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
         }
 
         private void Famous3_Click(object sender, RoutedEventArgs e)
-        {
-            //Get the clue
-            ServiceWP7Client client = new ServiceWP7Client();
-            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback_3);
-            client.GetClueByFamousAsync(Famous3.Content.ToString());
+        {            
+            client = new ServiceWP7Client();
+            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
+            client.GetClueByFamousAsync(Famous3.Content.ToString());            
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
         }
 
-        private void GetClueByFamousCallback_1(object sender, GetClueByFamousCompletedEventArgs e)
+        private void GetClueByFamousCallback(object sender, GetClueByFamousCompletedEventArgs e)
         {
             String clue = e.Result;
-            Clue.Text = clue;
+            Clue.Text = clue;           
+        }
+        void client_GetCurrentFamousCompleted(object sender, GetCurrentFamousCompletedEventArgs e)
+        {
             GameManager gm = GameManager.getInstance();
-            gm.AddClue(0, clue);
+            gm.SetCurrentFamous(e.Result.ToList());            
+            List<String> famous = gm.GetFamous();
+
+            Famous1.Visibility = System.Windows.Visibility.Visible;
+            Famous2.Visibility = System.Windows.Visibility.Visible;
+            Famous3.Visibility = System.Windows.Visibility.Visible;
+
+            //Show in the textBoxes the name of the famous
+            Famous1.Content = famous.ElementAt(0);
+            Famous2.Content = famous.ElementAt(1);
+            Famous3.Content = famous.ElementAt(2);
+
+            
         }
 
-        private void GetClueByFamousCallback_2(object sender, GetClueByFamousCompletedEventArgs e)
+
+
+        void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            String clue = e.Result;
-            Clue.Text = clue;
-            GameManager gm = GameManager.getInstance();
-            gm.AddClue(1, clue);
+            //TODO
         }
 
-        private void GetClueByFamousCallback_3(object sender, GetClueByFamousCompletedEventArgs e)
+        private void button1_Click(object sender, RoutedEventArgs e)
         {
-            String clue = e.Result;
-            Clue.Text = clue;
-            GameManager gm = GameManager.getInstance();
-            gm.AddClue(2, clue);
-        }        
+            NavigationService.Navigate(new Uri("/Juego.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }
