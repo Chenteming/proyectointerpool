@@ -16,32 +16,46 @@ namespace UI_wp7
 {
     public partial class MainPage : PhoneApplicationPage
     {
-
+        private ServiceWP7Client client; 
+        
 
         public MainPage()
         {
             InitializeComponent();
-			intro_wma.Play();
+			intro_wma.Play();            
+            client = new ServiceWP7Client();
+
+            client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
+            client.StartGameAsync();
+            
+            
+            client.CloseCompleted+=new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
 			GameManager gm = GameManager.getInstance();
+
+            client = new ServiceWP7Client();
             
-            //Set initial current citie
-            ServiceWP7Client client = new ServiceWP7Client();
- 
-            client.StartGameAsync();
-           
             client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
-            client.GetCurrentCityAsync();
-                               
-            client.GetPossibleCitiesCompleted += new EventHandler<GetPossibleCitiesCompletedEventArgs>(GetPossibleCitiesCallback);
-            client.GetPossibleCitiesAsync();           
+            client.GetCurrentCityAsync();           
 
-            client.CloseAsync();           
-
+            
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
             NavigationService.Navigate(new Uri("/Juego.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            //TODO
+        }
+
+        void client_StartGameCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            //TODO
         }
 
         // Asynchronous callbacks for displaying results.
@@ -51,26 +65,5 @@ namespace UI_wp7
             GameManager gm = GameManager.getInstance();
             gm.SetActualCity(initialCity); 
         }
-
-        static void GetPossibleCitiesCallback(object sender, GetPossibleCitiesCompletedEventArgs e)
-        {
-            List<String> cities = e.Result.ToList();
-            GameManager gm = GameManager.getInstance();
-            gm.SetCurrentCities(cities);
-
-            ServiceWP7Client client = new ServiceWP7Client();
-            client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(GetCurrentFamousCallback);
-            String ac = gm.GetActualCity();
-            client.GetCurrentFamousAsync(ac);
-            client.CloseAsync();
-        }
-
-        static void GetCurrentFamousCallback(object sender, GetCurrentFamousCompletedEventArgs e)
-        {
-            List<String> famous = e.Result.ToList();
-            GameManager gm = GameManager.getInstance();
-            gm.SetCurrentFamous(famous); 
-        }
-
     }
 }
