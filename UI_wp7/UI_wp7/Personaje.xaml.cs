@@ -26,24 +26,11 @@ namespace UI_wp7
         
             client = new ServiceWP7Client();
             client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(client_GetCurrentFamousCompleted);
-            client.GetCurrentFamousAsync(gm.GetActualCity());
-            /*switch (gm.getJuego())
-            {
-                case 0:
-                    client.GetCurrentFamousAsync("Montevideo");
-                    
-                    break;
-                case 1:
-                    client.GetCurrentFamousAsync("Rio de Janeiro");
-                    break;
-                case 2:
-                    client.GetCurrentFamousAsync("Roma");
-                    break;
-                case 3:
-                    client.GetCurrentFamousAsync("Londres");
-                    break;
-            }*/
-            //client.GetCurrentFamousAsync("Roma");
+            // Lo siguiente será borrado cuando se arregle el tema del TILDE en la Nube.
+            if (gm.GetActualCity().Equals("Rio de Janeiro"))
+                client.GetCurrentFamousAsync("Río de Janeiro");
+            else
+                client.GetCurrentFamousAsync(gm.GetActualCity());
 
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
