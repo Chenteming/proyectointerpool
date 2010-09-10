@@ -9,7 +9,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+        <asp:Label Text="Se persistieron los datos a la base" runat="server">
+        </asp:Label>
     </div>
     </form>
 </body>
