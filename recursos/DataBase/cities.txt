@@ -1,0 +1,33 @@
+1 - Buenos Aires, Argentina
+2 - Rio de Janeiro, Brasil
+3 - Paris, Francia
+4 - Londres, Inglaterra
+5 - Montevideo, Uruguay
+6 - Madrid, España
+7 - Roma, Italia
+8 - New York, Estados Unidos
+9 - El Cairo, Egipto
+10 - Sydney, Australia
+11 - Nueva Delhi, India
+12 - Tokio, Japón
+13 - Praga, Republica Checa
+14 - Katmandu, Nepal
+15 - La Habana, Cuba
+16 - Hong Kong, China
+17 - Berlin, Alemania
+18 - Mexico DF, Mexico
+19 - Pekin, China
+20 - Moscu, Rusia
+21 - Cusco, Perú
+22 - Cape Town, Sudáfrica
+23 - Dubai, Emiratos Árabes Unidos
+24 - Seul, Corea del Sur
+25 - Barcelona, España
+26 - Bangkok, Tailandia
+27 - Auckland, Nueva Zelanda 
+28 - Singapur, Singapur
+29 - Jerusalen, Israel
+30 - Cope, Cope
+31 - Dublin, República de Irlanda
+32 - Marrakech, Marruecos
+33 - Amsterdam, Países Bajos

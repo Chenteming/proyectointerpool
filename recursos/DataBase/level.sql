@@ -1,0 +1,1 @@
+insert into [interpooldb].[dbo].[Levels] (LevelName, GroupFacebookId) values ('Interpool Nivel 1','11111');
