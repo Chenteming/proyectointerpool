@@ -95,10 +95,12 @@ namespace InterpoolPrototypeWebRole
                     listCities.Add("Moscu");
                     listCities.Add("Moscu");
                     break;
+                default:
+                    listCities.Add("NoPuedeSeguirViajando");
+                    listCities.Add("NoPuedeSeguirViajando");
+                    listCities.Add("NoPuedeSeguirViajando");
+                    break;
             }
-            listCities.Add("NoPuedeSeguirViajando");
-            listCities.Add("NoPuedeSeguirViajando");
-            listCities.Add("NoPuedeSeguirViajando");
             return listCities;
         }
 
@@ -113,7 +115,7 @@ namespace InterpoolPrototypeWebRole
                     listFamous.Add("Natalia Oreiro");
                     listFamous.Add("Paco Casal");
                     break;
-                case "Río de Janeiro":
+                case "Rio de Janeiro":
                     listFamous.Add("Roberto Carlos");
                     listFamous.Add("Xuxa");
                     listFamous.Add("Ronaldo");
@@ -121,12 +123,19 @@ namespace InterpoolPrototypeWebRole
                 case "Roma":
                     listFamous.Add("Giorgio Armani");
                     listFamous.Add("Andrea Bocelli");
-                    listFamous.Add("Elisabetta Gregoracci");
+                    listFamous.Add("Elisabetta Gregoraci");
+                    break;
+                case "Londres":
+                    listFamous.Add("Queen Elizabeth");
+                    listFamous.Add("Bruce Dickinson");
+                    listFamous.Add("Steven Gerrard");
+                    break;
+                default:
+                    listFamous.Add("No hay famosos en esta ciudad");
+                    listFamous.Add("No hay famosos en esta ciudad");
+                    listFamous.Add("No hay famosos en esta ciudad");
                     break;
             }
-            listFamous.Add("Queen Elizabeth");
-            listFamous.Add("Bruce Dickinson");
-            listFamous.Add("Steven Gerrard");
             return listFamous;
         }
 
@@ -153,7 +162,7 @@ namespace InterpoolPrototypeWebRole
             switch (counterCities)
             {
                 case 1:
-                    currentCity = "Río de Janeiro";
+                    currentCity = "Rio de Janeiro";
                     break;
                 case 2:
                     currentCity = "Roma";
