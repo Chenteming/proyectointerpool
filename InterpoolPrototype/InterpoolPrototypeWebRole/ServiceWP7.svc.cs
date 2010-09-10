@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using InterpoolPrototypeWebRole.BingSearchService;
+using InterpoolPrototypeWebRole.Data;
 
 namespace InterpoolPrototypeWebRole
 {
@@ -18,11 +19,11 @@ namespace InterpoolPrototypeWebRole
         public List<string> GetCities()
         {
             List<string> res = new List<string>();
-            HelloWorldEntities context = new HelloWorldEntities();
+            InterpoolContainer context = new InterpoolContainer();
             List<City> cities = new List<City>(context.Cities);
             foreach (City c in cities)
             {
-                res.Add(String.Concat(c.Name, " - ", c.CountryName));
+                res.Add(String.Concat(c.CityName, " - ", c.CityCountry));
             }
             return res;
         }
@@ -135,11 +136,11 @@ namespace InterpoolPrototypeWebRole
             // TODO: Get from the database the lists of names of the friends
             // of the current user
             List<string> friendsNames = new List<string>();
-            HelloWorldEntities context = new HelloWorldEntities();
-            List<PrototypeSuspect> pSuspects = new List<PrototypeSuspect>(context.PrototypeSuspects);
-            foreach (PrototypeSuspect ps in pSuspects)
+            InterpoolContainer context = new InterpoolContainer();
+            List<Suspect> pSuspects = new List<Suspect>(context.Suspects);
+            foreach (Suspect ps in pSuspects)
             {
-                friendsNames.Add(ps.Name);
+                friendsNames.Add(ps.SuspectName);
             }
             return friendsNames;
 

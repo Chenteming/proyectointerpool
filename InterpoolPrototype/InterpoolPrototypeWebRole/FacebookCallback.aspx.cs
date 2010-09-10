@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using InterpoolPrototypeWebRole.FacebookComunication;
+using InterpoolPrototypeWebRole.Data;
 
 namespace InterpoolPrototypeWebRole
 {
@@ -33,22 +34,22 @@ namespace InterpoolPrototypeWebRole
                     {
                         // List<string> friendsIds = facebookController.GetFriendsId(userId);
                         List<string> friendsNames = facebookController.GetFriendsNames(oAuth, userId);
-                        HelloWorldEntities context = new HelloWorldEntities();
-                        List<PrototypeSuspect> listSuspects = new List<PrototypeSuspect>(context.PrototypeSuspects);
+                        InterpoolContainer context = new InterpoolContainer();
+                        List<Suspect> listSuspects = new List<Suspect>(context.Suspects);
                         // Deletes all the existing suspects
-                        foreach (PrototypeSuspect pSuspectDelete in listSuspects)
+                        foreach (Suspect pSuspectDelete in listSuspects)
                         {
                             context.DeleteObject(pSuspectDelete);
                         }
                         context.SaveChanges();
 
-                        PrototypeSuspect pSuspect;
+                        Suspect pSuspect;
                         // Creates the suspects for the current user
                         foreach (string name in friendsNames)
                         {
-                            pSuspect = new PrototypeSuspect();
-                            pSuspect.Name = name;
-                            context.AddToPrototypeSuspects(pSuspect);
+                            pSuspect = new Suspect();
+                            pSuspect.SuspectName = name;
+                            context.AddToSuspects(pSuspect);
                         }
                         context.SaveChanges();
                     }
