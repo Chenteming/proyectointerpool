@@ -140,6 +140,10 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
+    <None Include="Service References\ServiceReference\ServiceWP7.disco" />
+    <Content Include="ServiceReferences.ClientConfig">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Service References\ServiceReference\ServiceWP7.wsdl" />
     <None Include="Service References\ServiceReference\ServiceWP7.xsd">
       <SubType>Designer</SubType>
@@ -150,9 +154,6 @@
     <None Include="Service References\ServiceReference\ServiceWP72.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="ServiceReferences.ClientConfig">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">
@@ -167,7 +168,6 @@
     <Resource Include="pantalla_4 copia.jpg" />
     <Resource Include="pantalla_5 copia.jpg" />
     <Resource Include="pantalla_6 copia.jpg" />
-    <None Include="Service References\ServiceReference\ServiceWP7.disco" />
     <None Include="Service References\ServiceReference\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference\configuration.svcinfo" />
     <None Include="Service References\ServiceReference\Reference.svcmap">
