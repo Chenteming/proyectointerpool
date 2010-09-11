@@ -1,0 +1,5 @@
+Tortoise SVN Download:
+http://tortoisesvn.net/downloads
+
+AnkhSVN Download:
+http://www.ohloh.net/p/ankhsvn/download?filename=AnkhSvn-2.1.8420.8.msi
