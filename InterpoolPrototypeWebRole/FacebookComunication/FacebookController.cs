@@ -10,7 +10,6 @@ namespace InterpoolPrototypeWebRole.FacebookComunication
 {
     public class FacebookController : IFacebookController
     {
-
         public string GetUserId(oAuthFacebook oAuth)
         {
             String url = String.Format("https://graph.facebook.com/me?access_token={0}",
