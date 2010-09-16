@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="43efa0ae-6da7-49da-ad9f-f1a180a52060" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://servicewp7.cloudapp.net/ServiceWP7.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceWP7.disco" MetadataType="Disco" ID="503974e5-4ea9-4a08-a8b1-d2ceadeed343" SourceId="1" SourceUrl="http://servicewp7.cloudapp.net/ServiceWP7.svc?disco" />
+    <MetadataFile FileName="ServiceWP7.xsd" MetadataType="Schema" ID="5432931d-582d-4d4c-9739-60f9148dec73" SourceId="1" SourceUrl="http://servicewp7.cloudapp.net/ServiceWP7.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceWP7.wsdl" MetadataType="Wsdl" ID="5221690e-f317-4ab3-9c9f-3fea6f0c8a11" SourceId="1" SourceUrl="http://servicewp7.cloudapp.net/ServiceWP7.svc?wsdl" />
+    <MetadataFile FileName="ServiceWP71.xsd" MetadataType="Schema" ID="7528474c-3368-45ad-93cd-4989cebb8962" SourceId="1" SourceUrl="http://servicewp7.cloudapp.net/ServiceWP7.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceWP72.xsd" MetadataType="Schema" ID="58df8580-1dd5-4e7f-a3ae-e998caf9c54d" SourceId="1" SourceUrl="http://servicewp7.cloudapp.net/ServiceWP7.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
