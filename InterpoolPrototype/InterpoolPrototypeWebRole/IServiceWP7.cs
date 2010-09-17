@@ -34,6 +34,9 @@ namespace InterpoolPrototypeWebRole
 
         [OperationContract]
         List<string> GetProbablySuspects();
+
+        
+    
     }
     
 

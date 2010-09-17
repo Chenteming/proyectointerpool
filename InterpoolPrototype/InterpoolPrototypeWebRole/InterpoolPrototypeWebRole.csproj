@@ -86,6 +86,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Services\InterpoolWP7.svc" />
     <Content Include="ServiceWP7.svc" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -140,6 +141,8 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Data\DataManager.cs" />
+    <Compile Include="Data\IDataManager.cs" />
     <Compile Include="Data\InterpoolModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +180,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IInterpoolWP7.cs" />
+    <Compile Include="Services\InterpoolWP7.svc.cs">
+      <DependentUpon>InterpoolWP7.svc</DependentUpon>
     </Compile>
     <Compile Include="ServiceWP7.svc.cs">
       <DependentUpon>ServiceWP7.svc</DependentUpon>
