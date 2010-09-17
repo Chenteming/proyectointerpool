@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<language name="English" culture="en-US">
+  <class name="MainPage">
+    <control name="playButton" Content="Play"/>
+    <control name="settingButton" Content="Options"/>
+    <control name="exitButton" Content="Exit"/>
+  </class>
+  <class name="City">    
+    <control name="Travel1" Content="Travel1"/>
+    <control name="Travel2" Content="Travel2"/>
+    <control name="Travel3" Content="Travel3"/>
+  </class>
+  <class name="Famous">
+    <control name="Famous1" Content="Famous1"/>
+    <control name="Famous2" Content="Famous2"/>
+    <control name="Famous3" Content="Famous3"/>
+    <control name="button1" Content="INGLES"/>
+  </class>  
+</language>
