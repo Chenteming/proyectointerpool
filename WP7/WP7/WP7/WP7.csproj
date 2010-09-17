@@ -60,12 +60,14 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Windows.Interactivity, Version=3.7.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameClasses\GameManager.cs" />
+    <Compile Include="GameClasses\LanguageManager.cs" />
     <Compile Include="GamePages\City.xaml.cs">
       <DependentUpon>City.xaml</DependentUpon>
     </Compile>
@@ -127,6 +129,8 @@
     <None Include="Service References\ServiceReference\ServiceWP72.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="GameLanguages\English.xml" />
+    <Content Include="GameLanguages\Spanish.xml" />
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
