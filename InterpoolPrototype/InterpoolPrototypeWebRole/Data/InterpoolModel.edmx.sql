@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/09/2010 22:09:08
+-- Date Created: 09/16/2010 20:45:41
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolPrototype\InterpoolPrototypeWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -38,9 +38,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_FamousNew]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[News] DROP CONSTRAINT [FK_FamousNew];
 GO
-IF OBJECT_ID(N'[dbo].[FK_CityNew]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[News] DROP CONSTRAINT [FK_CityNew];
-GO
 IF OBJECT_ID(N'[dbo].[FK_NodePathClue_NodePath]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[NodePathClue] DROP CONSTRAINT [FK_NodePathClue_NodePath];
 GO
@@ -67,6 +64,9 @@ IF OBJECT_ID(N'[dbo].[FK_UserGame]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_UserLevel]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserLevel];
+GO
+IF OBJECT_ID(N'[dbo].[FK_NewCity]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[News] DROP CONSTRAINT [FK_NewCity];
 GO
 
 -- --------------------------------------------------
@@ -162,8 +162,7 @@ GO
 CREATE TABLE [dbo].[News] (
     [NewId] int IDENTITY(1,1) NOT NULL,
     [NewContent] nvarchar(max)  NOT NULL,
-    [Famous_FamousId] int  NOT NULL,
-    [City_CityId] int  NOT NULL
+    [Famous_FamousId] int  NOT NULL
 );
 GO
 
@@ -189,6 +188,15 @@ CREATE TABLE [dbo].[Levels] (
     [LevelId] int IDENTITY(1,1) NOT NULL,
     [LevelName] nvarchar(max)  NOT NULL,
     [GroupFacebookId] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'CityPropertySet'
+CREATE TABLE [dbo].[CityPropertySet] (
+    [CityPropertyId] int IDENTITY(1,1) NOT NULL,
+    [CityPropertyContent] nvarchar(max)  NOT NULL,
+    [Dynamic] bit  NOT NULL,
+    [City_CityId] int  NOT NULL
 );
 GO
 
@@ -269,6 +277,12 @@ GO
 ALTER TABLE [dbo].[Levels]
 ADD CONSTRAINT [PK_Levels]
     PRIMARY KEY CLUSTERED ([LevelId] ASC);
+GO
+
+-- Creating primary key on [CityPropertyId] in table 'CityPropertySet'
+ALTER TABLE [dbo].[CityPropertySet]
+ADD CONSTRAINT [PK_CityPropertySet]
+    PRIMARY KEY CLUSTERED ([CityPropertyId] ASC);
 GO
 
 -- Creating primary key on [Game_GameId], [PossibleSuspect_SuspectId] in table 'GamePossibleSuspect'
@@ -379,20 +393,6 @@ ADD CONSTRAINT [FK_FamousNew]
 CREATE INDEX [IX_FK_FamousNew]
 ON [dbo].[News]
     ([Famous_FamousId]);
-GO
-
--- Creating foreign key on [City_CityId] in table 'News'
-ALTER TABLE [dbo].[News]
-ADD CONSTRAINT [FK_CityNew]
-    FOREIGN KEY ([City_CityId])
-    REFERENCES [dbo].[Cities]
-        ([CityId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CityNew'
-CREATE INDEX [IX_FK_CityNew]
-ON [dbo].[News]
-    ([City_CityId]);
 GO
 
 -- Creating foreign key on [NodePath_NodePathId] in table 'NodePathClue'
@@ -514,6 +514,20 @@ ADD CONSTRAINT [FK_UserLevel]
 CREATE INDEX [IX_FK_UserLevel]
 ON [dbo].[Users]
     ([Level_LevelId]);
+GO
+
+-- Creating foreign key on [City_CityId] in table 'CityPropertySet'
+ALTER TABLE [dbo].[CityPropertySet]
+ADD CONSTRAINT [FK_CityCityProperty]
+    FOREIGN KEY ([City_CityId])
+    REFERENCES [dbo].[Cities]
+        ([CityId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CityCityProperty'
+CREATE INDEX [IX_FK_CityCityProperty]
+ON [dbo].[CityPropertySet]
+    ([City_CityId]);
 GO
 
 -- --------------------------------------------------
