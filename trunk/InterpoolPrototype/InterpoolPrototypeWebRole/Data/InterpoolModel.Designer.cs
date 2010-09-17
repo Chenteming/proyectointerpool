@@ -23,7 +23,6 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathFamous", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolPrototypeWebRole.Data.NodePath), "Famous", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolPrototypeWebRole.Data.Famous))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "CityFamous", "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.City), "Famous", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolPrototypeWebRole.Data.Famous))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "FamousNew", "Famous", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.Famous), "New", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolPrototypeWebRole.Data.New))]
-[assembly: EdmRelationshipAttribute("InterpoolModel", "CityNew", "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.City), "New", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolPrototypeWebRole.Data.New))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathClue", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolPrototypeWebRole.Data.NodePath), "Clue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolPrototypeWebRole.Data.Clue))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "ClueCity", "Clue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolPrototypeWebRole.Data.Clue), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolPrototypeWebRole.Data.City))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "ClueFamous", "Clue", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.Clue), "Famous", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.Famous))]
@@ -32,6 +31,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("InterpoolModel", "GameSuspect1", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.Game), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.Suspect))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserGame", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.User), "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.Game))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserLevel", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolPrototypeWebRole.Data.User), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.Level))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "CityCityProperty", "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolPrototypeWebRole.Data.City), "CityProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolPrototypeWebRole.Data.CityProperty))]
 
 #endregion
 
@@ -226,6 +226,22 @@ namespace InterpoolPrototypeWebRole.Data
             }
         }
         private ObjectSet<Level> _Levels;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<CityProperty> CityPropertySet
+        {
+            get
+            {
+                if ((_CityPropertySet == null))
+                {
+                    _CityPropertySet = base.CreateObjectSet<CityProperty>("CityPropertySet");
+                }
+                return _CityPropertySet;
+            }
+        }
+        private ObjectSet<CityProperty> _CityPropertySet;
 
         #endregion
         #region AddTo Methods
@@ -300,6 +316,14 @@ namespace InterpoolPrototypeWebRole.Data
         public void AddToLevels(Level level)
         {
             base.AddObject("Levels", level);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CityPropertySet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCityPropertySet(CityProperty cityProperty)
+        {
+            base.AddObject("CityPropertySet", cityProperty);
         }
 
         #endregion
@@ -445,28 +469,6 @@ namespace InterpoolPrototypeWebRole.Data
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "CityNew", "New")]
-        public EntityCollection<New> New
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<New>("InterpoolModel.CityNew", "New");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<New>("InterpoolModel.CityNew", "New", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "ClueCity", "Clue")]
         public EntityCollection<Clue> Clue
         {
@@ -539,6 +541,176 @@ namespace InterpoolPrototypeWebRole.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<NodePath>("InterpoolModel.NodePathCity", "NodePath", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "CityCityProperty", "CityProperty")]
+        public EntityCollection<CityProperty> CityProperty
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CityProperty>("InterpoolModel.CityCityProperty", "CityProperty");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CityProperty>("InterpoolModel.CityCityProperty", "CityProperty", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="InterpoolModel", Name="CityProperty")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CityProperty : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new CityProperty object.
+        /// </summary>
+        /// <param name="cityPropertyId">Initial value of the CityPropertyId property.</param>
+        /// <param name="cityPropertyContent">Initial value of the CityPropertyContent property.</param>
+        /// <param name="dynamic">Initial value of the Dynamic property.</param>
+        public static CityProperty CreateCityProperty(global::System.Int32 cityPropertyId, global::System.String cityPropertyContent, global::System.Boolean dynamic)
+        {
+            CityProperty cityProperty = new CityProperty();
+            cityProperty.CityPropertyId = cityPropertyId;
+            cityProperty.CityPropertyContent = cityPropertyContent;
+            cityProperty.Dynamic = dynamic;
+            return cityProperty;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CityPropertyId
+        {
+            get
+            {
+                return _CityPropertyId;
+            }
+            set
+            {
+                if (_CityPropertyId != value)
+                {
+                    OnCityPropertyIdChanging(value);
+                    ReportPropertyChanging("CityPropertyId");
+                    _CityPropertyId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CityPropertyId");
+                    OnCityPropertyIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _CityPropertyId;
+        partial void OnCityPropertyIdChanging(global::System.Int32 value);
+        partial void OnCityPropertyIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CityPropertyContent
+        {
+            get
+            {
+                return _CityPropertyContent;
+            }
+            set
+            {
+                OnCityPropertyContentChanging(value);
+                ReportPropertyChanging("CityPropertyContent");
+                _CityPropertyContent = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("CityPropertyContent");
+                OnCityPropertyContentChanged();
+            }
+        }
+        private global::System.String _CityPropertyContent;
+        partial void OnCityPropertyContentChanging(global::System.String value);
+        partial void OnCityPropertyContentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Dynamic
+        {
+            get
+            {
+                return _Dynamic;
+            }
+            set
+            {
+                OnDynamicChanging(value);
+                ReportPropertyChanging("Dynamic");
+                _Dynamic = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Dynamic");
+                OnDynamicChanged();
+            }
+        }
+        private global::System.Boolean _Dynamic;
+        partial void OnDynamicChanging(global::System.Boolean value);
+        partial void OnDynamicChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "CityCityProperty", "City")]
+        public City City
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<City>("InterpoolModel.CityCityProperty", "City").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<City>("InterpoolModel.CityCityProperty", "City").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<City> CityReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<City>("InterpoolModel.CityCityProperty", "City");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<City>("InterpoolModel.CityCityProperty", "City", value);
                 }
             }
         }
@@ -1395,44 +1567,6 @@ namespace InterpoolPrototypeWebRole.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Famous>("InterpoolModel.FamousNew", "Famous", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "CityNew", "City")]
-        public City City
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<City>("InterpoolModel.CityNew", "City").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<City>("InterpoolModel.CityNew", "City").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<City> CityReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<City>("InterpoolModel.CityNew", "City");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<City>("InterpoolModel.CityNew", "City", value);
                 }
             }
         }
