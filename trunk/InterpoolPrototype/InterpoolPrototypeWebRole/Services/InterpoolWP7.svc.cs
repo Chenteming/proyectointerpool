@@ -11,8 +11,7 @@ namespace InterpoolPrototypeWebRole.Services
 {
     public class InterpoolWP7 : IInterpoolWP7
     {
-        #region Interpool Game for WP7
-
+       
         public void StartGame(User user)
         {
             // this is only the structs that we should follow
@@ -62,6 +61,8 @@ namespace InterpoolPrototypeWebRole.Services
             }
         }
 
-        #endregion
+        
+
+      
     }
 }
