@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using InterpoolPrototypeWebRole.Data;
 
 namespace InterpoolPrototypeWebRole.Services
 {
@@ -11,6 +12,6 @@ namespace InterpoolPrototypeWebRole.Services
     public interface IInterpoolWP7
     {
         [OperationContract]
-        void StartGame();
+        void StartGame(User user);
     }
 }
