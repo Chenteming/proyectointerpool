@@ -37,7 +37,7 @@
             <Image x:Name="imageBackground" Source="GameImages\InterpoolScreen.jpg" Stretch="Fill" Grid.Column="1" Margin="0,-28,0,8"/>
             <Button x:Name="credtisButton" Content="CREDITOS" Height="86" Margin="0,-27,-13,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="171" Opacity="0" Grid.Column="1"/>
             <Button x:Name="playButton" Content="JUGAR" Height="86" Margin="253,0,294,27" VerticalAlignment="Bottom" Click="Play_Click" Background="Transparent" Opacity="0" Grid.Column="1"/>
-            <Button x:Name="settingButton" Content="OPCIONES" Height="86" Margin="-10,0,0,8" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="174" RenderTransformOrigin="0.633,-0.093" Opacity="0" Grid.Column="1"/>
+            <Button x:Name="settingButton" Content="OPCIONES" Height="86" Margin="-10,0,0,8" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="174" RenderTransformOrigin="0.633,-0.093" Opacity="0" Grid.Column="1" Click="Setting_Click"/>
             <Button x:Name="exitButton" Content="SALIR" Height="86" Margin="0,0,-13,8" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="145" Opacity="0" Grid.Column="1"/>
             <Button x:Name="helpButton" Content="AYUDA" Height="86" Margin="-10,-28,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="141" Opacity="0" Grid.Column="1"/>
         </Grid>       
