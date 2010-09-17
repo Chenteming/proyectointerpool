@@ -11,16 +11,21 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using WP7.ServiceReference;
+using System.Xml.Linq;
 
 namespace WP7
 {
     public partial class MainPage : PhoneApplicationPage
     {
         private ServiceWP7Client client;
+        private LanguageManager language;
 
         public MainPage()
         {
             InitializeComponent();
+            language = LanguageManager.GetInstance();
+            if (language.GetXDoc() != null)
+                language.TranslatePage(this);               
             client = new ServiceWP7Client();
             client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
             client.StartGameAsync();
@@ -55,6 +60,18 @@ namespace WP7
             String initialCity = e.Result;
             GameManager gm = GameManager.getInstance();
             gm.SetCurrentCity(initialCity);
+        }
+
+        private void Setting_Click(object sender, RoutedEventArgs e)
+        {
+            language.SetCurrentLanguage("English");
+            language.SetCurrentLanguage("Spanish");
+            String current = language.GetCurrentLanguage();
+            if (current.Equals("English"))
+                language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));
+            else
+                language.SetXDoc(XDocument.Load("GameLanguages/English.xml"));
+            language.TranslatePage(this);
         }
     }
 }
