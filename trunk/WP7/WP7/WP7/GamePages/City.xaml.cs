@@ -18,10 +18,14 @@ namespace WP7
     public partial class City : PhoneApplicationPage
     {
         private ServiceWP7Client client;
+        private LanguageManager language;
 
         public City()
         {
             InitializeComponent();
+            language = LanguageManager.GetInstance();
+            if (language.GetXDoc() != null)
+                language.TranslatePage(this);
             client = new ServiceWP7Client();
             client.GetPossibleCitiesCompleted += new EventHandler<GetPossibleCitiesCompletedEventArgs>(GetPossibleCitiesCompleted);
             client.GetPossibleCitiesAsync();
