@@ -18,10 +18,14 @@ namespace WP7
     public partial class Famous : PhoneApplicationPage
     {
         private ServiceWP7Client client;
+        private LanguageManager language;
 
         public Famous()
         {
             InitializeComponent();
+            language = LanguageManager.GetInstance();
+            if (language.GetXDoc() != null)
+                language.TranslatePage(this);
             GameManager gm = GameManager.getInstance();    
         
             client = new ServiceWP7Client();
