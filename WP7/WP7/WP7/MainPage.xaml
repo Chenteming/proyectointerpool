@@ -12,6 +12,237 @@
 	Foreground="{StaticResource PhoneForegroundBrush}"
 	SupportedOrientations="Landscape"  Orientation="Landscape"
 	shell:SystemTray.IsVisible="True">
+	<phone:PhoneApplicationPage.Resources>
+		<Style x:Key="CreditButton" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid x:Name="grid" Background="{x:Null}" RenderTransformOrigin="0.5,0.5">
+							<Grid.RenderTransform>
+								<CompositeTransform/>
+							</Grid.RenderTransform>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Disabled"/>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.112" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.112" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-10.625" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.815" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="Forma_2_copia" Source="interpool_Images/Forma 2 copia.png"/>
+							<Image x:Name="Forma_1_copia" Source="interpool_Images/Forma 1 copia.png" Margin="14,13,13,17"/>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="OptionButton" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid x:Name="grid" RenderTransformOrigin="1.004,-0.054">
+							<Grid.RenderTransform>
+								<CompositeTransform/>
+							</Grid.RenderTransform>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Disabled"/>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.119" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.119" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="22.59" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-5.144" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.815" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="Forma_2" Source="interpool_Images/Forma 2.png"/>
+							<Image x:Name="Forma_1" Source="interpool_Images/Forma 1.png" Margin="11,14,16,16"/>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="PlayButton" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid x:Name="grid" RenderTransformOrigin="0.5,0.5">
+							<Grid.RenderTransform>
+								<CompositeTransform/>
+							</Grid.RenderTransform>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Disabled"/>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.212" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.212" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-0.75" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.815" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="Forma_2_copia_2" Source="interpool_Images/Forma 2 copia 2.png"/>
+							<Image x:Name="Forma_1_copia_2" Source="interpool_Images/Forma 1 copia 2.png" Margin="13,15,14,15"/>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="HelpButton" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid x:Name="grid" RenderTransformOrigin="0.5,0.5">
+							<Grid.RenderTransform>
+								<CompositeTransform/>
+							</Grid.RenderTransform>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Disabled"/>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.212" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.212" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="2.25" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.815" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="Forma_2_copia_4" Source="interpool_Images/Forma 2 copia 4.png"/>
+							<Image x:Name="Forma_1_copia_4" Source="interpool_Images/Forma 1 copia 4.png" Margin="11,13,16,17"/>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ExitButton" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid x:Name="grid" RenderTransformOrigin="0.5,0.5">
+							<Grid.RenderTransform>
+								<CompositeTransform/>
+							</Grid.RenderTransform>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Disabled"/>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.143" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.143" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-13.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.82" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="Forma_2_copia_3" Source="interpool_Images/Forma 2 copia 3.png"/>
+							<Image x:Name="Forma_1_copia_3" Source="interpool_Images/Forma 1 copia 3.png" Margin="13,15,14,15"/>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Name="intro_animation">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="OptionButton">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-162.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="12.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="51.25"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="51.25"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="-11.25"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="HelpButton">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-162.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="12.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="CreditButton">
+				<EasingDoubleKeyFrame KeyTime="0" Value="162.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-12.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-75"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4.7" Value="-75"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.4" Value="-137.378"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="-75"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ExitButton">
+				<EasingDoubleKeyFrame KeyTime="0" Value="175"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="OptionButton">
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="358.557"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4.7" Value="345.378"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.4" Value="386.98"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="350.105"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.1" Value="371.686"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="359.242"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="PlayButton">
+				<EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-12.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="PlayButton">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-361.223"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="CreditButton">
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-360.478"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4.7" Value="-345.157"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.4" Value="-375.502"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="-350.261"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.1" Value="-371.31"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="-361.04"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="ExitButton">
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-360.674"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4.7" Value="-340.79"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.4" Value="-376.28"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="-347.48"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.1" Value="-372.473"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="-360.165"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="HelpButton">
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="359.46"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4.7" Value="348.572"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.4" Value="378.977"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="351.413"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.1" Value="368.552"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="359.086"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -29,17 +260,56 @@
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12" Grid.Column="1"/>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="2" Grid.Column="1" >
+        <Grid x:Name="ContentPanel" Grid.Row="2" Grid.Column="1" Height="444" Width="728" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="imageBackground" Source="GameImages\InterpoolScreen.jpg" Stretch="Fill" Grid.Column="1" Margin="0,-28,0,8"/>
-            <Button x:Name="credtisButton" Content="CREDITOS" Height="86" Margin="0,-27,-13,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="171" Opacity="0" Grid.Column="1"/>
-            <Button x:Name="playButton" Content="JUGAR" Height="86" Margin="253,0,294,27" VerticalAlignment="Bottom" Click="Play_Click" Background="Transparent" Opacity="0" Grid.Column="1"/>
-            <Button x:Name="settingButton" Content="OPCIONES" Height="86" Margin="-10,0,0,8" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="174" RenderTransformOrigin="0.633,-0.093" Opacity="0" Grid.Column="1" Click="Setting_Click"/>
-            <Button x:Name="exitButton" Content="SALIR" Height="86" Margin="0,0,-13,8" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="145" Opacity="0" Grid.Column="1"/>
-            <Button x:Name="helpButton" Content="AYUDA" Height="86" Margin="-10,-28,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="141" Opacity="0" Grid.Column="1"/>
-        </Grid>       
+            <Image x:Name="imageBackground" Source="GameImages\InterpoolScreen.jpg" Stretch="Fill" Grid.Column="1" Margin="0,-28,0,8" d:IsHidden="True"/>
+            <Image x:Name="Capa_3" Opacity="0.91" Source="interpool_Images/Capa 3.png" Height="464" Grid.ColumnSpan="2" Margin="-112,0,-112,-559" VerticalAlignment="Bottom" d:IsHidden="True"/>
+            <Image x:Name="Capa_1" Source="interpool_Images/Capa 1.png" Grid.ColumnSpan="2" Margin="-342,-38,-401,-71"/>
+            <Image x:Name="Capa_2" Opacity="0.459" Source="interpool_Images/Capa 2.png" Height="577" Grid.ColumnSpan="2" Margin="-112,-62,-129,-71"/>
+            <Button x:Name="credtisButton" Content="CREDITOS" Height="86" Margin="0,-27,-13,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="171" Opacity="0" Grid.Column="1" d:IsHidden="True"/>
+            <Button x:Name="playButton" Content="JUGAR" Height="86" Margin="253,0,294,27" VerticalAlignment="Bottom" Click="Play_Click" Background="Transparent" Opacity="0" Grid.Column="1" d:IsHidden="True"/>
+            <Button x:Name="settingButton" Content="OPCIONES" Height="86" Margin="-25,0,0,8" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="174" RenderTransformOrigin="0.633,-0.093" Opacity="0" Grid.Column="1" Click="Setting_Click" d:IsHidden="True"/>
+            <Button x:Name="exitButton" Content="SALIR" Height="86" Margin="0,0,-13,8" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="145" Opacity="0" Grid.Column="1" d:IsHidden="True"/>
+            <Button x:Name="helpButton" Content="AYUDA" Height="86" Margin="-10,-28,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="141" Opacity="0" Grid.Column="1" d:IsHidden="True"/>
+            <Image x:Name="oo" Source="interpool_Images/oo.png" Grid.Column="1" Margin="0,144,85,156" HorizontalAlignment="Right" Width="199"/>
+            <Image x:Name="Capa_4" Source="interpool_Images/Capa 4.png" Width="176" Grid.Column="1" HorizontalAlignment="Right" Margin="0,152,98,169"/>
+            <Image x:Name="lupa" Source="interpool_Images/Capa 5.png" Grid.Column="1" Margin="362,106,77,9"/>
+            <Button x:Name="OptionButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="78" Margin="-32,0,0,13" Style="{StaticResource OptionButton}" VerticalAlignment="Bottom" Width="189" Click="OptionButton_Click" RenderTransformOrigin="0.5,0.5">
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
+            </Button>
+            <Button x:Name="CreditButton" Content="Button" Grid.Column="1" HorizontalAlignment="Right" Height="78" Margin="0,-21,-38,0" Style="{StaticResource CreditButton}" VerticalAlignment="Top" Width="189" RenderTransformOrigin="0.5,0.5">
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
+            </Button>
+            <Button x:Name="PlayButton" Content="Button" Grid.Column="1" Height="78" Margin="252,0,287,45" Style="{StaticResource PlayButton}" VerticalAlignment="Bottom" Click="PlayButton_Click" RenderTransformOrigin="0.5,0.5">
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
+            </Button>
+            <Button x:Name="ExitButton" Content="Button" Grid.Column="1" HorizontalAlignment="Right" Height="78" Margin="0,0,-35,14" Style="{StaticResource ExitButton}" VerticalAlignment="Bottom" Width="189" RenderTransformOrigin="0.5,0.5">
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
+            </Button>
+            <Button x:Name="HelpButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="78" Margin="-36,-21,0,0" Style="{StaticResource HelpButton}" VerticalAlignment="Top" Width="189" RenderTransformOrigin="0.5,0.5">
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
+            </Button>
+        </Grid>
+        <Canvas x:Name="interpool">
+        	<Image x:Name="interp____" Height="180" Canvas.Left="54" Source="interpool_Images/interp    .png" Canvas.Top="164" Width="412"/>
+        	<Image x:Name="l" Height="145" Canvas.Left="626" Source="interpool_Images/l.png" Canvas.Top="166" Width="38"/>
+        	<Image x:Name="Capa_6" Height="163" Canvas.Left="72" Source="interpool_Images/Capa 6.png" Canvas.Top="172" Width="583"/>
+        	<Image x:Name="gorro" Height="60" Canvas.Left="217" Source="interpool_Images/Capa 7.png" Canvas.Top="183" Width="103"/>
+        </Canvas>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Margin="-109,-2,0,-71" Grid.RowSpan="3" Stroke="Black" Width="109"/>
+        <MediaElement x:Name="intro_wma" Grid.Column="1" HorizontalAlignment="Left" Height="0" Margin="109,0,0,-36" Grid.Row="2" Source="/GameSounds/intro.wma" Stretch="Fill" VerticalAlignment="Bottom" Width="0" Volume="1"/>       
     </Grid>
 </phone:PhoneApplicationPage>
