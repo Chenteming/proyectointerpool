@@ -27,7 +27,7 @@ namespace WP7
 		
 		private void DoorButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/GamePages/MainPage.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
         }
 		
 		private void FilesButton_Click(object sender, RoutedEventArgs e)
