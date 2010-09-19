@@ -23,10 +23,13 @@ namespace WP7
         public MainPage()
         {
             InitializeComponent();
-            language = LanguageManager.GetInstance();
+            intro_wma.Play();
+			//intro_animation.Begin();
+			language = LanguageManager.GetInstance();
+			language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));
             if (language.GetXDoc() != null)
-                language.TranslatePage(this);               
-            client = new ServiceWP7Client();
+                language.TranslatePage(this);     
+			client = new ServiceWP7Client();
             client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
             client.StartGameAsync();
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
@@ -35,13 +38,7 @@ namespace WP7
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            GameManager gm = GameManager.getInstance();
-            client = new ServiceWP7Client();
-            client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
-            client.GetCurrentCityAsync();
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
-            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
+          
         }
 
 		// Asynchronous callbacks for displaying results.
@@ -64,14 +61,34 @@ namespace WP7
 
         private void Setting_Click(object sender, RoutedEventArgs e)
         {
-            language.SetCurrentLanguage("English");
-            language.SetCurrentLanguage("Spanish");
-            String current = language.GetCurrentLanguage();
+           
+        }
+
+        private void OptionButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	String current = language.GetCurrentLanguage();
             if (current.Equals("English"))
+			{
                 language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));
+				language.SetCurrentLanguage("Spanish");
+			}
             else
+			{
                 language.SetXDoc(XDocument.Load("GameLanguages/English.xml"));
+				language.SetCurrentLanguage("English");	
+			}
             language.TranslatePage(this);
+        }
+
+        private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	GameManager gm = GameManager.getInstance();
+            client = new ServiceWP7Client();
+            client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
+            client.GetCurrentCityAsync();
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
+            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
