@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <language name="Spanish" culture="es-ES">
         <class name="MainPage" Title="Main Page">
-            <control name="playButton" Content="Jugar"/>
-            <control name="settingButton" Content="Opciones"/>
-            <control name="exitButton" Content="Salir"/>
+            <control name="PlayButton" Content="Jugar"/>
+            <control name="ExitButton" Content="Salir"/>
+			<control name="OptionButton" Content="Opciones"/>
+			<control name="CreditButton" Content="Creditos"/>
+			<control name="HelpButton" Content="Ayuda"/>
         </class>
         <class name="City" Title="City">
             <control name="Travel1" Content="Viajar1"/>
