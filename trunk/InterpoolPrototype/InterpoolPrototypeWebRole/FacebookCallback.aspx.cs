@@ -29,6 +29,7 @@ namespace InterpoolPrototypeWebRole
                 if (oAuth.Token.Length > 0)
                 {
                     IFacebookController facebookController = new FacebookController();
+                    IDataManager idm = new DataManager();
                     string userId = facebookController.GetUserId(oAuth);
                     if (!userId.Equals(""))
                     {
@@ -43,13 +44,33 @@ namespace InterpoolPrototypeWebRole
                         }
                         context.SaveChanges();
 
+                        User us = new User();
+
+                        context.AddToUsers(us);
+
+                        us.Level = context.Levels.Where(l => (l.LevelName == "Interpool Nivel 1")).First<Level>();
+                        
+                       
+                        Game test = new Game();
+
+                        us.Game = test;
+                        test.PossibleSuspect = new System.Data.Objects.DataClasses.EntityCollection<Suspect>();
+                        context.AddToGames(test);
                         Suspect pSuspect;
                         // Creates the suspects for the current user
                         foreach (string name in friendsNames)
                         {
                             pSuspect = new Suspect();
                             pSuspect.SuspectName = name;
+                            pSuspect.SuspectPreferenceMovies = "";
+                            pSuspect.SuspectPreferenceMusic = "";
                             context.AddToSuspects(pSuspect);
+
+                            if (test.Suspect == null)
+                                test.Suspect = pSuspect;
+
+                            test.PossibleSuspect.Add(pSuspect);
+                            context.AddToGames(test);
                         }
                         context.SaveChanges();
                     }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/16/2010 20:45:41
+-- Date Created: 09/19/2010 21:15:39
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolPrototype\InterpoolPrototypeWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -65,8 +65,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UserLevel]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserLevel];
 GO
-IF OBJECT_ID(N'[dbo].[FK_NewCity]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[News] DROP CONSTRAINT [FK_NewCity];
+IF OBJECT_ID(N'[dbo].[FK_CityCityProperty]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CityPropertySet] DROP CONSTRAINT [FK_CityCityProperty];
 GO
 
 -- --------------------------------------------------
@@ -99,6 +99,9 @@ IF OBJECT_ID(N'[dbo].[Suspects]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Levels]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Levels];
+GO
+IF OBJECT_ID(N'[dbo].[CityPropertySet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CityPropertySet];
 GO
 IF OBJECT_ID(N'[dbo].[GamePossibleSuspect]', 'U') IS NOT NULL
     DROP TABLE [dbo].[GamePossibleSuspect];
@@ -195,7 +198,7 @@ GO
 CREATE TABLE [dbo].[CityPropertySet] (
     [CityPropertyId] int IDENTITY(1,1) NOT NULL,
     [CityPropertyContent] nvarchar(max)  NOT NULL,
-    [Dynamic] bit  NOT NULL,
+    [Dyn] bit  NOT NULL,
     [City_CityId] int  NOT NULL
 );
 GO

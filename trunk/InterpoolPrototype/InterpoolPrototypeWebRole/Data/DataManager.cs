@@ -13,6 +13,12 @@ namespace InterpoolPrototypeWebRole.Data
             return context.Cities;
         }
 
+        public IQueryable<Level> getLevels()
+        {
+            InterpoolContainer context = new InterpoolContainer();
+            return context.Levels;
+        }
+
 
         public IQueryable<Famous> GetFamousByCity(City city)
         {
