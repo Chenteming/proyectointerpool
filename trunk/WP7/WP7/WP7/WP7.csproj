@@ -148,6 +148,17 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <BlendEmbeddedFont Include="Fonts\BuxtonSketch.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+      <Characters>
+      </Characters>
+      <Uppercase>True</Uppercase>
+      <Lowercase>True</Lowercase>
+      <Numbers>True</Numbers>
+      <Punctuation>True</Punctuation>
+    </BlendEmbeddedFont>
     <Resource Include="GameImages\CityScreen.jpg" />
     <Resource Include="GameImages\FamousScreen.jpg" />
     <Resource Include="GameImages\FormScreen.jpg" />
@@ -234,4 +245,5 @@
   </Target>
   -->
   <ProjectExtensions />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\WindowsPhone\v7.0\Microsoft.Expression.Blend.WindowsPhone.targets" />
 </Project>
