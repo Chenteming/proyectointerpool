@@ -24,11 +24,18 @@ namespace WP7
         {
             InitializeComponent();
             intro_wma.Play();
-			//intro_animation.Begin();
+			intro_animation.Begin();
 			language = LanguageManager.GetInstance();
-			language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));
+			
             if (language.GetXDoc() != null)
+			{
                 language.TranslatePage(this);     
+			}
+			else
+			{
+				language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));	
+				language.TranslatePage(this);
+			}
 			client = new ServiceWP7Client();
             client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
             client.StartGameAsync();
