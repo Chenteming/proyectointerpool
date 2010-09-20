@@ -211,6 +211,7 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="350.105"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:6.1" Value="371.686"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="359.242"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="360"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="PlayButton">
 				<EasingDoubleKeyFrame KeyTime="0" Value="150"/>
@@ -222,6 +223,8 @@
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="PlayButton">
 				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-361.223"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6" Value="-361.223"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="-360"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="CreditButton">
 				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
@@ -231,6 +234,7 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="-350.261"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:6.1" Value="-371.31"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="-361.04"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="-360"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="ExitButton">
 				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
@@ -240,6 +244,7 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="-347.48"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:6.1" Value="-372.473"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="-360.165"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="-360"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="HelpButton">
 				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
@@ -249,6 +254,7 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="351.413"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:6.1" Value="368.552"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="359.086"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="360"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="CreditButton">
 				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
