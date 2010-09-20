@@ -9,5 +9,6 @@ namespace InterpoolPrototypeWebRole.Data
     {
         IQueryable<City> getCities();
         IQueryable<Famous> GetFamousByCity(City city);
+        IQueryable<Level> getLevels();
     }
 }
