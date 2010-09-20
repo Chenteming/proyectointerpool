@@ -11,6 +11,7 @@
             <control name="Travel1" Content="Viajar1"/>
             <control name="Travel2" Content="Viajar2"/>
             <control name="Travel3" Content="Viajar3"/>
+			<control name="textToTravel" Text="Viajar a:"/>
         </class>
         <class name="Famous" Title="Famous">
             <control name="Famous1" Content="Famoso1"/>
