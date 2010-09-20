@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/19/2010 21:15:39
+-- Date Created: 09/20/2010 19:25:11
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolPrototype\InterpoolPrototypeWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -172,6 +172,7 @@ GO
 -- Creating table 'Clues'
 CREATE TABLE [dbo].[Clues] (
     [ClueId] int IDENTITY(1,1) NOT NULL,
+    [ClueContent] nvarchar(max)  NOT NULL,
     [City_CityId] int  NULL,
     [Famous_FamousId] int  NOT NULL
 );
@@ -200,6 +201,23 @@ CREATE TABLE [dbo].[CityPropertySet] (
     [CityPropertyContent] nvarchar(max)  NOT NULL,
     [Dyn] bit  NOT NULL,
     [City_CityId] int  NOT NULL
+);
+GO
+
+-- Creating table 'Parameters'
+CREATE TABLE [dbo].[Parameters] (
+    [ParameterId] int IDENTITY(1,1) NOT NULL,
+    [ParameterName] nvarchar(max)  NOT NULL,
+    [ParameterValue] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Logs'
+CREATE TABLE [dbo].[Logs] (
+    [LogId] int IDENTITY(1,1) NOT NULL,
+    [LogName] nvarchar(max)  NOT NULL,
+    [LogType] nvarchar(max)  NOT NULL,
+    [LogStackTrace] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -286,6 +304,18 @@ GO
 ALTER TABLE [dbo].[CityPropertySet]
 ADD CONSTRAINT [PK_CityPropertySet]
     PRIMARY KEY CLUSTERED ([CityPropertyId] ASC);
+GO
+
+-- Creating primary key on [ParameterId] in table 'Parameters'
+ALTER TABLE [dbo].[Parameters]
+ADD CONSTRAINT [PK_Parameters]
+    PRIMARY KEY CLUSTERED ([ParameterId] ASC);
+GO
+
+-- Creating primary key on [LogId] in table 'Logs'
+ALTER TABLE [dbo].[Logs]
+ADD CONSTRAINT [PK_Logs]
+    PRIMARY KEY CLUSTERED ([LogId] ASC);
 GO
 
 -- Creating primary key on [Game_GameId], [PossibleSuspect_SuspectId] in table 'GamePossibleSuspect'

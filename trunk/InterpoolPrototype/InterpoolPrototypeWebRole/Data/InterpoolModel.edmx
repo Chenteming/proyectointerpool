@@ -16,6 +16,8 @@
     <EntitySet Name="Suspects" EntityType="InterpoolModel.Store.Suspects" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Levels" EntityType="InterpoolModel.Store.Levels" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CityPropertySet" EntityType="InterpoolModel.Store.CityPropertySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Parameters" EntityType="InterpoolModel.Store.Parameters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Logs" EntityType="InterpoolModel.Store.Logs" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GamePossibleSuspect" EntityType="InterpoolModel.Store.GameSuspect" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="NodePathFamous" EntityType="InterpoolModel.Store.NodePathFamous" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="NodePathClue" EntityType="InterpoolModel.Store.NodePathClue" store:Type="Tables" Schema="dbo" />
@@ -145,6 +147,7 @@
       <PropertyRef Name="ClueId" />
     </Key>
     <Property Name="ClueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClueContent" Type="nvarchar(max)" Nullable="false" />
     <Property Name="City_CityId" Type="int" Nullable="true" />
     <Property Name="Famous_FamousId" Type="int" Nullable="false" />
   </EntityType>
@@ -173,6 +176,23 @@
     <Property Name="CityPropertyContent" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Dyn" Type="bit" Nullable="false" />
     <Property Name="City_CityId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parameters">
+    <Key>
+      <PropertyRef Name="ParameterId" />
+    </Key>
+    <Property Name="ParameterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParameterName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ParameterValue" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LogType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LogStackTrace" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="GameSuspect">
     <Key>
@@ -473,6 +493,8 @@
             <End Role="City" EntitySet="Cities" />
             <End Role="CityProperty" EntitySet="CityPropertySet" />
           </AssociationSet>
+          <EntitySet Name="Parameters" EntityType="InterpoolModel.Parameter" />
+          <EntitySet Name="Logs" EntityType="InterpoolModel.Log" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -546,6 +568,7 @@
           <NavigationProperty Name="NodePath" Relationship="InterpoolModel.NodePathClue" FromRole="Clue" ToRole="NodePath" />
           <NavigationProperty Name="City" Relationship="InterpoolModel.ClueCity" FromRole="Clue" ToRole="City" />
           <NavigationProperty Name="Famous" Relationship="InterpoolModel.ClueFamous" FromRole="Clue" ToRole="Famous" />
+          <Property Type="String" Name="ClueContent" Nullable="false" />
         </EntityType>
         <EntityType Name="Suspect">
           <Key>
@@ -633,6 +656,23 @@
           <End Type="InterpoolModel.City" Role="City" Multiplicity="1" />
           <End Type="InterpoolModel.CityProperty" Role="CityProperty" Multiplicity="*" />
         </Association>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="ParameterId" />
+          </Key>
+          <Property Type="Int32" Name="ParameterId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ParameterName" Nullable="false" />
+          <Property Type="String" Name="ParameterValue" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Type="Int32" Name="LogId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LogName" Nullable="false" />
+          <Property Type="String" Name="LogType" Nullable="false" />
+          <Property Type="String" Name="LogStackTrace" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -693,6 +733,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(InterpoolModel.Clue)">
         <MappingFragment StoreEntitySet="Clues">
           <ScalarProperty Name="ClueId" ColumnName="ClueId" />
+          <ScalarProperty Name="ClueContent" ColumnName="ClueContent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -721,6 +762,25 @@
           <ScalarProperty Name="CityPropertyId" ColumnName="CityPropertyId" />
           <ScalarProperty Name="CityPropertyContent" ColumnName="CityPropertyContent" />
           <ScalarProperty Name="Dyn" ColumnName="Dyn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parameters">
+      <EntityTypeMapping TypeName="IsTypeOf(InterpoolModel.Parameter)">
+        <MappingFragment StoreEntitySet="Parameters">
+          <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+          <ScalarProperty Name="ParameterName" ColumnName="ParameterName" />
+          <ScalarProperty Name="ParameterValue" ColumnName="ParameterValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="IsTypeOf(InterpoolModel.Log)">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="LogId" ColumnName="LogId" />
+          <ScalarProperty Name="LogName" ColumnName="LogName" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="LogStackTrace" ColumnName="LogStackTrace" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -863,7 +923,7 @@
         <EntityTypeShape EntityType="InterpoolModel.City" Width="1.5" PointX="8" PointY="5.125" Height="2.5571907552083326" />
         <EntityTypeShape EntityType="InterpoolModel.Famous" Width="1.5" PointX="8.125" PointY="8.375" Height="1.5956835937499996" />
         <EntityTypeShape EntityType="InterpoolModel.New" Width="1.5" PointX="10.75" PointY="8.375" Height="1.4033821614583326" />
-        <EntityTypeShape EntityType="InterpoolModel.Clue" Width="1.5" PointX="13.25" PointY="4.625" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="InterpoolModel.Clue" Width="1.5" PointX="13.25" PointY="4.625" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="InterpoolModel.Suspect" Width="2.125" PointX="7.75" PointY="0.5" Height="1.787985026041667" />
         <EntityTypeShape EntityType="InterpoolModel.Level" Width="2" PointX="5.625" PointY="2.875" Height="1.5956835937499996" />
         <AssociationConnector Association="InterpoolModel.GameSuspect">
@@ -889,18 +949,22 @@
           <ConnectorPoint PointX="10.75" PointY="9.172841796875" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathClue" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.7364948193787377" PointY="10.547587890625" />
-          <ConnectorPoint PointX="5.7364948193787377" PointY="10.922587890625" />
-          <ConnectorPoint PointX="14.242259162580625" PointY="10.922587890625" />
-          <ConnectorPoint PointX="14.242259162580625" PointY="6.4129850260416665" />
+          <ConnectorPoint PointX="6.375" PointY="8.3761528461538468" />
+          <ConnectorPoint PointX="6.7511528461538468" PointY="8" />
+          <ConnectorPoint PointX="8.7291666666666661" PointY="7.9999999999999991" />
+          <ConnectorPoint PointX="8.8958333333333339" PointY="8" />
+          <ConnectorPoint PointX="13.626633186989244" PointY="7.9999999999999991" />
+          <ConnectorPoint PointX="13.793299853655912" PointY="8" />
+          <ConnectorPoint PointX="14.232438040645157" PointY="8" />
+          <ConnectorPoint PointX="14.232438040645157" PointY="6.6052864583333326" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.ClueCity">
           <ConnectorPoint PointX="13.25" PointY="5.34375" />
           <ConnectorPoint PointX="9.5" PointY="5.34375" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.ClueFamous">
-          <ConnectorPoint PointX="13.67201432516125" PointY="6.4129850260416665" />
-          <ConnectorPoint PointX="13.67201432516125" PointY="10.2903857421875" />
+          <ConnectorPoint PointX="13.709966520322578" PointY="6.6052864583333326" />
+          <ConnectorPoint PointX="13.709966520322578" PointY="10.2903857421875" />
           <ConnectorPoint PointX="9.625" PointY="10.2903857421875" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.CityLevel">
@@ -931,6 +995,8 @@
           <ConnectorPoint PointX="9.5" PointY="6.5189925130208337" />
           <ConnectorPoint PointX="10.875" PointY="6.5189925130208337" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="InterpoolModel.Parameter" Width="2" PointX="11.75" PointY="0.625" Height="1.59568359375" />
+        <EntityTypeShape EntityType="InterpoolModel.Log" Width="1.5" PointX="14.375" PointY="0.625" Height="1.787985026041667" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
