@@ -17,7 +17,8 @@
         <br />
         <asp:Label ID="infoLabel" runat="server"></asp:Label>
         <br />
-    </p>
+    </p><asp:Button ID="Button1" runat="server" Text="Button" 
+    onclick="Button1_Click"></asp:Button>
     <p>
         You can also find <a href="http://go.microsoft.com/fwlink/?LinkID=152368&amp;clcid=0x409"
             title="MSDN ASP.NET Docs">documentation on ASP.NET at MSDN</a>.

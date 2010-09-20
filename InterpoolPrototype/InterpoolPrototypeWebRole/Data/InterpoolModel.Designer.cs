@@ -242,6 +242,38 @@ namespace InterpoolPrototypeWebRole.Data
             }
         }
         private ObjectSet<CityProperty> _CityPropertySet;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Parameter> Parameters
+        {
+            get
+            {
+                if ((_Parameters == null))
+                {
+                    _Parameters = base.CreateObjectSet<Parameter>("Parameters");
+                }
+                return _Parameters;
+            }
+        }
+        private ObjectSet<Parameter> _Parameters;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Log> Logs
+        {
+            get
+            {
+                if ((_Logs == null))
+                {
+                    _Logs = base.CreateObjectSet<Log>("Logs");
+                }
+                return _Logs;
+            }
+        }
+        private ObjectSet<Log> _Logs;
 
         #endregion
         #region AddTo Methods
@@ -324,6 +356,22 @@ namespace InterpoolPrototypeWebRole.Data
         public void AddToCityPropertySet(CityProperty cityProperty)
         {
             base.AddObject("CityPropertySet", cityProperty);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Parameters EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToParameters(Parameter parameter)
+        {
+            base.AddObject("Parameters", parameter);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Logs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToLogs(Log log)
+        {
+            base.AddObject("Logs", log);
         }
 
         #endregion
@@ -732,10 +780,12 @@ namespace InterpoolPrototypeWebRole.Data
         /// Create a new Clue object.
         /// </summary>
         /// <param name="clueId">Initial value of the ClueId property.</param>
-        public static Clue CreateClue(global::System.Int32 clueId)
+        /// <param name="clueContent">Initial value of the ClueContent property.</param>
+        public static Clue CreateClue(global::System.Int32 clueId, global::System.String clueContent)
         {
             Clue clue = new Clue();
             clue.ClueId = clueId;
+            clue.ClueContent = clueContent;
             return clue;
         }
 
@@ -768,6 +818,30 @@ namespace InterpoolPrototypeWebRole.Data
         private global::System.Int32 _ClueId;
         partial void OnClueIdChanging(global::System.Int32 value);
         partial void OnClueIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ClueContent
+        {
+            get
+            {
+                return _ClueContent;
+            }
+            set
+            {
+                OnClueContentChanging(value);
+                ReportPropertyChanging("ClueContent");
+                _ClueContent = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ClueContent");
+                OnClueContentChanged();
+            }
+        }
+        private global::System.String _ClueContent;
+        partial void OnClueContentChanging(global::System.String value);
+        partial void OnClueContentChanged();
 
         #endregion
     
@@ -1455,6 +1529,139 @@ namespace InterpoolPrototypeWebRole.Data
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="InterpoolModel", Name="Log")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Log : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Log object.
+        /// </summary>
+        /// <param name="logId">Initial value of the LogId property.</param>
+        /// <param name="logName">Initial value of the LogName property.</param>
+        /// <param name="logType">Initial value of the LogType property.</param>
+        /// <param name="logStackTrace">Initial value of the LogStackTrace property.</param>
+        public static Log CreateLog(global::System.Int32 logId, global::System.String logName, global::System.String logType, global::System.String logStackTrace)
+        {
+            Log log = new Log();
+            log.LogId = logId;
+            log.LogName = logName;
+            log.LogType = logType;
+            log.LogStackTrace = logStackTrace;
+            return log;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LogId
+        {
+            get
+            {
+                return _LogId;
+            }
+            set
+            {
+                if (_LogId != value)
+                {
+                    OnLogIdChanging(value);
+                    ReportPropertyChanging("LogId");
+                    _LogId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("LogId");
+                    OnLogIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _LogId;
+        partial void OnLogIdChanging(global::System.Int32 value);
+        partial void OnLogIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String LogName
+        {
+            get
+            {
+                return _LogName;
+            }
+            set
+            {
+                OnLogNameChanging(value);
+                ReportPropertyChanging("LogName");
+                _LogName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("LogName");
+                OnLogNameChanged();
+            }
+        }
+        private global::System.String _LogName;
+        partial void OnLogNameChanging(global::System.String value);
+        partial void OnLogNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String LogType
+        {
+            get
+            {
+                return _LogType;
+            }
+            set
+            {
+                OnLogTypeChanging(value);
+                ReportPropertyChanging("LogType");
+                _LogType = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("LogType");
+                OnLogTypeChanged();
+            }
+        }
+        private global::System.String _LogType;
+        partial void OnLogTypeChanging(global::System.String value);
+        partial void OnLogTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String LogStackTrace
+        {
+            get
+            {
+                return _LogStackTrace;
+            }
+            set
+            {
+                OnLogStackTraceChanging(value);
+                ReportPropertyChanging("LogStackTrace");
+                _LogStackTrace = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("LogStackTrace");
+                OnLogStackTraceChanged();
+            }
+        }
+        private global::System.String _LogStackTrace;
+        partial void OnLogStackTraceChanging(global::System.String value);
+        partial void OnLogStackTraceChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="InterpoolModel", Name="New")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1776,6 +1983,113 @@ namespace InterpoolPrototypeWebRole.Data
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="InterpoolModel", Name="Parameter")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Parameter : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Parameter object.
+        /// </summary>
+        /// <param name="parameterId">Initial value of the ParameterId property.</param>
+        /// <param name="parameterName">Initial value of the ParameterName property.</param>
+        /// <param name="parameterValue">Initial value of the ParameterValue property.</param>
+        public static Parameter CreateParameter(global::System.Int32 parameterId, global::System.String parameterName, global::System.String parameterValue)
+        {
+            Parameter parameter = new Parameter();
+            parameter.ParameterId = parameterId;
+            parameter.ParameterName = parameterName;
+            parameter.ParameterValue = parameterValue;
+            return parameter;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ParameterId
+        {
+            get
+            {
+                return _ParameterId;
+            }
+            set
+            {
+                if (_ParameterId != value)
+                {
+                    OnParameterIdChanging(value);
+                    ReportPropertyChanging("ParameterId");
+                    _ParameterId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ParameterId");
+                    OnParameterIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ParameterId;
+        partial void OnParameterIdChanging(global::System.Int32 value);
+        partial void OnParameterIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ParameterName
+        {
+            get
+            {
+                return _ParameterName;
+            }
+            set
+            {
+                OnParameterNameChanging(value);
+                ReportPropertyChanging("ParameterName");
+                _ParameterName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ParameterName");
+                OnParameterNameChanged();
+            }
+        }
+        private global::System.String _ParameterName;
+        partial void OnParameterNameChanging(global::System.String value);
+        partial void OnParameterNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ParameterValue
+        {
+            get
+            {
+                return _ParameterValue;
+            }
+            set
+            {
+                OnParameterValueChanging(value);
+                ReportPropertyChanging("ParameterValue");
+                _ParameterValue = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ParameterValue");
+                OnParameterValueChanged();
+            }
+        }
+        private global::System.String _ParameterValue;
+        partial void OnParameterValueChanging(global::System.String value);
+        partial void OnParameterValueChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

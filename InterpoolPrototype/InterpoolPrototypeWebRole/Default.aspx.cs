@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 using System.Data.Services.Client;
 using InterpoolPrototypeWebRole.Data;
+using InterpoolPrototypeWebRole.Util;
 
 
 namespace InterpoolPrototypeWebRole
@@ -39,6 +40,11 @@ namespace InterpoolPrototypeWebRole
             infoLabel.Text = String.Concat("ID: ", info.ID.ToString(), " ",
                                             "Name: ", info.Name);*/
 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Admin.loadFemousData();
         }
     }
 }

@@ -195,6 +195,8 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="Util\Admin.cs" />
+    <Compile Include="Util\Parameters.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
