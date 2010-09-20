@@ -141,6 +141,8 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controller\IProcessController.cs" />
+    <Compile Include="Controller\ProcessController.cs" />
     <Compile Include="Data\DataManager.cs" />
     <Compile Include="Data\IDataManager.cs" />
     <Compile Include="Data\InterpoolModel.Designer.cs">
@@ -221,6 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\BingSearchService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

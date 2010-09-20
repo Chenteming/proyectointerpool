@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/20/2010 19:25:11
--- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolPrototype\InterpoolPrototypeWebRole\Data\InterpoolModel.edmx
+-- Date Created: 09/20/2010 19:47:08
+-- Generated from EDMX file: C:\Users\Diego\Documents\PruebaSVN\trunk\InterpoolPrototype\InterpoolPrototypeWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [interpooldb];
+USE [Fisica];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -102,6 +102,12 @@ IF OBJECT_ID(N'[dbo].[Levels]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[CityPropertySet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CityPropertySet];
+GO
+IF OBJECT_ID(N'[dbo].[Parameters]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Parameters];
+GO
+IF OBJECT_ID(N'[dbo].[Logs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Logs];
 GO
 IF OBJECT_ID(N'[dbo].[GamePossibleSuspect]', 'U') IS NOT NULL
     DROP TABLE [dbo].[GamePossibleSuspect];

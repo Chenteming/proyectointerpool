@@ -19,12 +19,8 @@ namespace InterpoolPrototypeWebRole.Controller
             GetSuspects();
 
             // 3 Create clues
-            CreateClue();
-        }
-
-        public void CreateClue()
-        {
-            throw new NotImplementedException();
+            
+            //CreateClue();
         }
 
         public void GetSuspects()
