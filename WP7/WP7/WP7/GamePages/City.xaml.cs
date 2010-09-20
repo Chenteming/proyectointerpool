@@ -31,42 +31,24 @@ namespace WP7
             client.GetPossibleCitiesAsync();
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
-            Travel1.Visibility = System.Windows.Visibility.Collapsed;
-            Travel2.Visibility = System.Windows.Visibility.Collapsed;
-            Travel3.Visibility = System.Windows.Visibility.Collapsed;
+            button1.Visibility = System.Windows.Visibility.Collapsed;
+            button2.Visibility = System.Windows.Visibility.Collapsed;
+            button3.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void Travel1_Click(object sender, RoutedEventArgs e)
         {
-            ServiceWP7Client client = new ServiceWP7Client();
-            client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
-            client.TravelAsync(Travel1.Content.ToString());
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
-            GameManager gm = GameManager.getInstance();
-            gm.SetCurrentCity(Travel1.Content.ToString());
+            
         }
 
         private void Travel2_Click(object sender, RoutedEventArgs e)
         {
-            ServiceWP7Client client = new ServiceWP7Client();
-            client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
-            client.TravelAsync(Travel2.Content.ToString());
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
-            GameManager gm = GameManager.getInstance();
-            gm.SetCurrentCity(Travel2.Content.ToString());
+            
         }
 
         private void Travel3_Click(object sender, RoutedEventArgs e)
         {
-            ServiceWP7Client client = new ServiceWP7Client();
-            client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
-            client.TravelAsync(Travel3.Content.ToString());
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
-            GameManager gm = GameManager.getInstance();
-            gm.SetCurrentCity(Travel3.Content.ToString());
+
 
         }
 
@@ -78,13 +60,13 @@ namespace WP7
             GameManager gm = GameManager.getInstance();
             gm.SetCurrentCities(cities);
 
-            Travel1.Visibility = System.Windows.Visibility.Visible;
-            Travel2.Visibility = System.Windows.Visibility.Visible;
-            Travel3.Visibility = System.Windows.Visibility.Visible;
+            button1.Visibility = System.Windows.Visibility.Visible;
+            button2.Visibility = System.Windows.Visibility.Visible;
+            button3.Visibility = System.Windows.Visibility.Visible;
 
-            Travel1.Content = cities.ElementAt(0);
-            Travel2.Content = cities.ElementAt(1);
-            Travel3.Content = cities.ElementAt(2);
+            button1.Content = cities.ElementAt(0);
+            button2.Content = cities.ElementAt(1);
+            button3.Content = cities.ElementAt(2);
         }
 
         void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
@@ -100,6 +82,39 @@ namespace WP7
         void client_TravelCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	ServiceWP7Client client = new ServiceWP7Client();
+            client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
+            client.TravelAsync(button1.Content.ToString());
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
+            GameManager gm = GameManager.getInstance();
+            gm.SetCurrentCity(button1.Content.ToString());
+        }
+
+        private void button2_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	ServiceWP7Client client = new ServiceWP7Client();
+            client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
+            client.TravelAsync(button2.Content.ToString());
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
+            GameManager gm = GameManager.getInstance();
+            gm.SetCurrentCity(button2.Content.ToString());
+        }
+
+        private void button3_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	ServiceWP7Client client = new ServiceWP7Client();
+            client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
+            client.TravelAsync(button3.Content.ToString());
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
+            GameManager gm = GameManager.getInstance();
+            gm.SetCurrentCity(button3.Content.ToString());
         }
     }
 }
