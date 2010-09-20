@@ -136,6 +136,9 @@
     <Content Include="GameSounds\intro.wma">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="interpool_Images\pantalla_1_Images\Capa 1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +182,41 @@
     <Resource Include="interpool_Images\interp    .png" />
     <Resource Include="interpool_Images\l.png" />
     <Resource Include="interpool_Images\oo.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 2.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 3.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 4.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 5.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 6.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 7.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Capa 1.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Capa 2.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Fondo copia 2.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Fondo copia.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Fondo copia1.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Fondo.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Forma 2 copia 2.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Forma 2 copia.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Forma 2.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Forma 3.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Forma 4.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Forma 5.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Capa 1.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Capa 2.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Capa 3.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Fondo.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Forma 1 copia.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Forma 1.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 1.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 2.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 3.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 4 copia 2.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 4 copia 3.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 4 copia 4.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 4 copia.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 4.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Fondo.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Forma 2 copia.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
