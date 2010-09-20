@@ -7,8 +7,8 @@ namespace InterpoolPrototypeWebRole.Data
 {
     interface IDataManager
     {
-        IQueryable<City> getCities();
-        IQueryable<Famous> GetFamousByCity(City city);
-        IQueryable<Level> getLevels();
+        IQueryable<City> getCities(InterpoolContainer context);
+        IQueryable<Level> getLevels(InterpoolContainer context);
+        IQueryable<Famous> GetFamousByCity(City city, InterpoolContainer context);
     }
 }

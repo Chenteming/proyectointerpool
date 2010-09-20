@@ -7,22 +7,20 @@ namespace InterpoolPrototypeWebRole.Data
 {
     public class DataManager : IDataManager
     {
-        public IQueryable<City> getCities()
+        public IQueryable<City> getCities(InterpoolContainer context)
         {
-            InterpoolContainer context = new InterpoolContainer();
+             
             return context.Cities;
         }
 
-        public IQueryable<Level> getLevels()
+        public IQueryable<Level> getLevels(InterpoolContainer context)
         {
-            InterpoolContainer context = new InterpoolContainer();
             return context.Levels;
         }
 
 
-        public IQueryable<Famous> GetFamousByCity(City city)
+        public IQueryable<Famous> GetFamousByCity(City city, InterpoolContainer context)
         {
-            InterpoolContainer context = new InterpoolContainer();
             return from f in context.Famous
                       where f.City == city
                       select f;
