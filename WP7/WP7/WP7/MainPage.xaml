@@ -184,18 +184,24 @@
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="HelpButton">
 				<EasingDoubleKeyFrame KeyTime="0" Value="-162.5"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="12.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="12.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="-53.056"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="CreditButton">
 				<EasingDoubleKeyFrame KeyTime="0" Value="162.5"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-12.5"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-75"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:4.7" Value="-75"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:5.4" Value="-137.378"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="-75"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-48.564"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-102.869"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4.7" Value="-106.149"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.4" Value="-104.584"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="-107.786"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="-107.786"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="-25.821"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ExitButton">
 				<EasingDoubleKeyFrame KeyTime="0" Value="175"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="71.755"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="OptionButton">
 				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
@@ -209,6 +215,9 @@
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="PlayButton">
 				<EasingDoubleKeyFrame KeyTime="0" Value="150"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-12.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-26.452"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6" Value="50.601"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="-8.412"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="PlayButton">
 				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -240,6 +249,48 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:5.8" Value="351.413"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:6.1" Value="368.552"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="359.086"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="CreditButton">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ExitButton">
+				<EasingDoubleKeyFrame KeyTime="0:0:6.5" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="0.784"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="PlayButton">
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="1.442"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6" Value="0.727"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="PlayButton">
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="0.052"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6" Value="0.647"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:7" Value="0.647"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="gorro">
+				<EasingDoubleKeyFrame KeyTime="0" Value="16.393"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.7" Value="144.313"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:8" Value="327.86"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:8.6" Value="393.432"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:9.1" Value="393.432"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:9.6" Value="401.627"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="gorro">
+				<EasingDoubleKeyFrame KeyTime="0:0:6.7" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:8" Value="15.482"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:8.6" Value="17.034"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:9.1" Value="9.804"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:9.6" Value="1.174"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="gorro">
+				<EasingDoubleKeyFrame KeyTime="0:0:8" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:8.6" Value="6.556"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:9.1" Value="4.926"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:9.6" Value="0.009"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</phone:PhoneApplicationPage.Resources>
@@ -277,12 +328,12 @@
             <Image x:Name="oo" Source="interpool_Images/oo.png" Grid.Column="1" Margin="0,144,85,156" HorizontalAlignment="Right" Width="199"/>
             <Image x:Name="Capa_4" Source="interpool_Images/Capa 4.png" Width="176" Grid.Column="1" HorizontalAlignment="Right" Margin="0,152,98,169"/>
             <Image x:Name="lupa" Source="interpool_Images/Capa 5.png" Grid.Column="1" Margin="362,106,77,9"/>
-            <Button x:Name="OptionButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="78" Margin="-32,0,0,13" Style="{StaticResource OptionButton}" VerticalAlignment="Bottom" Width="189" Click="OptionButton_Click" RenderTransformOrigin="0.5,0.5">
+            <Button x:Name="OptionButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="78" Margin="-23.805,0,0,13" Style="{StaticResource OptionButton}" VerticalAlignment="Bottom" Width="189" Click="OptionButton_Click" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Button x:Name="CreditButton" Content="Button" Grid.Column="1" HorizontalAlignment="Right" Height="78" Margin="0,-21,-38,0" Style="{StaticResource CreditButton}" VerticalAlignment="Top" Width="189" RenderTransformOrigin="0.5,0.5">
+            <Button x:Name="CreditButton" Content="Button" Grid.Column="1" Margin="0,-21,-61.444,0" Style="{StaticResource CreditButton}" RenderTransformOrigin="0.5,0.5" Height="78" VerticalAlignment="Top" HorizontalAlignment="Right" Width="189" UseLayoutRounding="False" d:LayoutRounding="Auto">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>
@@ -292,12 +343,12 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Button x:Name="ExitButton" Content="Button" Grid.Column="1" HorizontalAlignment="Right" Height="78" Margin="0,0,-35,14" Style="{StaticResource ExitButton}" VerticalAlignment="Bottom" Width="189" RenderTransformOrigin="0.5,0.5">
+            <Button x:Name="ExitButton" Content="Button" Grid.Column="1" Margin="0,0,24.54,32.035" Style="{StaticResource ExitButton}" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" HorizontalAlignment="Right" Width="189" Height="78" VerticalAlignment="Bottom">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Button x:Name="HelpButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="78" Margin="-36,-21,0,0" Style="{StaticResource HelpButton}" VerticalAlignment="Top" Width="189" RenderTransformOrigin="0.5,0.5">
+            <Button x:Name="HelpButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="8.262,-21,0,0" Style="{StaticResource HelpButton}" Width="189" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="78" VerticalAlignment="Top">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>
@@ -307,9 +358,14 @@
         	<Image x:Name="interp____" Height="180" Canvas.Left="54" Source="interpool_Images/interp    .png" Canvas.Top="164" Width="412"/>
         	<Image x:Name="l" Height="145" Canvas.Left="626" Source="interpool_Images/l.png" Canvas.Top="166" Width="38"/>
         	<Image x:Name="Capa_6" Height="163" Canvas.Left="72" Source="interpool_Images/Capa 6.png" Canvas.Top="172" Width="583"/>
-        	<Image x:Name="gorro" Height="60" Canvas.Left="217" Source="interpool_Images/Capa 7.png" Canvas.Top="183" Width="103"/>
+        	<Image x:Name="gorro" Height="60" Canvas.Left="217" Source="interpool_Images/Capa 7.png" Canvas.Top="-218.179" Width="103" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+        		<Image.RenderTransform>
+        			<CompositeTransform/>
+        		</Image.RenderTransform>
+        	</Image>
         </Canvas>
         <Rectangle Fill="Black" HorizontalAlignment="Left" Margin="-109,-2,0,-71" Grid.RowSpan="3" Stroke="Black" Width="109"/>
+        <Rectangle Fill="Black" Margin="0,-2,-110,-71" Grid.RowSpan="3" Stroke="Black" Grid.Column="1" HorizontalAlignment="Right" Width="109"/>
         <MediaElement x:Name="intro_wma" Grid.Column="1" HorizontalAlignment="Left" Height="0" Margin="109,0,0,-36" Grid.Row="2" Source="/GameSounds/intro.wma" Stretch="Fill" VerticalAlignment="Bottom" Width="0" Volume="1"/>       
     </Grid>
 </phone:PhoneApplicationPage>
