@@ -10,5 +10,7 @@ namespace InterpoolPrototypeWebRole.Data
         IQueryable<City> getCities(InterpoolContainer context);
         IQueryable<Level> getLevels(InterpoolContainer context);
         IQueryable<Famous> GetFamousByCity(City city, InterpoolContainer context);
+        IQueryable<CityProperty> GetCityPropertyByCity(City city, InterpoolContainer context);
+        IQueryable<Suspect> GetSuspectByGame(Game g, InterpoolContainer context);
     }
 }

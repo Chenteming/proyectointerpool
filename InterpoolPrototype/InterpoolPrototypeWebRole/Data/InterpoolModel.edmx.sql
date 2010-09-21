@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/20/2010 19:47:08
+-- Date Created: 09/20/2010 22:54:57
 -- Generated from EDMX file: C:\Users\Diego\Documents\PruebaSVN\trunk\InterpoolPrototype\InterpoolPrototypeWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -144,7 +144,7 @@ GO
 -- Creating table 'NodePaths'
 CREATE TABLE [dbo].[NodePaths] (
     [NodePathId] int IDENTITY(1,1) NOT NULL,
-    [NodePathOrder] nvarchar(max)  NOT NULL,
+    [NodePathOrder] int  NOT NULL,
     [Game_GameId] int  NOT NULL,
     [City_CityId] int  NOT NULL
 );

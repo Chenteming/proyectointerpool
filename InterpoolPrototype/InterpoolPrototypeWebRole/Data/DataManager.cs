@@ -26,5 +26,20 @@ namespace InterpoolPrototypeWebRole.Data
                       select f;
                     
         }
+
+        public IQueryable<CityProperty> GetCityPropertyByCity(City city, InterpoolContainer context)
+        {
+            return from c in context.CityPropertySet
+                   where c.City == city
+                   select c;
+
+        }
+
+        public IQueryable<Suspect> GetSuspectByGame(Game g, InterpoolContainer context)
+        {
+            return from s in context.Suspects
+                   where s.Game_1 == g
+                   select s;
+        }
     }
 }

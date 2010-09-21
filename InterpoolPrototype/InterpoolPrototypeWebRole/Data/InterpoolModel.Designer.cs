@@ -1796,7 +1796,7 @@ namespace InterpoolPrototypeWebRole.Data
         /// </summary>
         /// <param name="nodePathId">Initial value of the NodePathId property.</param>
         /// <param name="nodePathOrder">Initial value of the NodePathOrder property.</param>
-        public static NodePath CreateNodePath(global::System.Int32 nodePathId, global::System.String nodePathOrder)
+        public static NodePath CreateNodePath(global::System.Int32 nodePathId, global::System.Int32 nodePathOrder)
         {
             NodePath nodePath = new NodePath();
             nodePath.NodePathId = nodePathId;
@@ -1839,7 +1839,7 @@ namespace InterpoolPrototypeWebRole.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String NodePathOrder
+        public global::System.Int32 NodePathOrder
         {
             get
             {
@@ -1849,13 +1849,13 @@ namespace InterpoolPrototypeWebRole.Data
             {
                 OnNodePathOrderChanging(value);
                 ReportPropertyChanging("NodePathOrder");
-                _NodePathOrder = StructuralObject.SetValidValue(value, false);
+                _NodePathOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("NodePathOrder");
                 OnNodePathOrderChanged();
             }
         }
-        private global::System.String _NodePathOrder;
-        partial void OnNodePathOrderChanging(global::System.String value);
+        private global::System.Int32 _NodePathOrder;
+        partial void OnNodePathOrderChanging(global::System.Int32 value);
         partial void OnNodePathOrderChanged();
 
         #endregion
