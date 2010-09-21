@@ -8,5 +8,7 @@ namespace InterpoolPrototypeWebRole.Util
     public static class Parameters
     {
         public static string LEVEL_ROOKIE = "LEVEL_ROOKIE";
+        public static string NONE = "none";
+        public static int NUMBERLASTCITY = 4;
     }
 }

@@ -12,7 +12,7 @@ namespace InterpoolPrototypeWebRole.Controller
         void StartGame(User user);
         void GetSuspects();
         void BuiltTravel(User user);
-        IQueryable<Clue> CreateClue(City city, User user, Suspect suspect);
-
+        List<Clue> CreateClue(City city, User user, Suspect suspect);
+        City NextCity(User user, City city);
     }
 }

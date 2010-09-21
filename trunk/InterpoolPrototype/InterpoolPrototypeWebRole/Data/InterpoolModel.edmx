@@ -113,7 +113,7 @@
       <PropertyRef Name="NodePathId" />
     </Key>
     <Property Name="NodePathId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NodePathOrder" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NodePathOrder" Type="int" Nullable="false" />
     <Property Name="Game_GameId" Type="int" Nullable="false" />
     <Property Name="City_CityId" Type="int" Nullable="false" />
   </EntityType>
@@ -522,7 +522,7 @@
             <PropertyRef Name="NodePathId" />
           </Key>
           <Property Type="Int32" Name="NodePathId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="NodePathOrder" Nullable="false" />
+          <Property Type="Int32" Name="NodePathOrder" Nullable="false" />
           <NavigationProperty Name="Game" Relationship="InterpoolModel.GameNodePath" FromRole="NodePath" ToRole="Game" />
           <NavigationProperty Name="Famous" Relationship="InterpoolModel.NodePathFamous" FromRole="NodePath" ToRole="Famous" />
           <NavigationProperty Name="Clue" Relationship="InterpoolModel.NodePathClue" FromRole="NodePath" ToRole="Clue" />
@@ -916,7 +916,7 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="Model1" ZoomLevel="70" >
+      <Diagram Name="Model1" ZoomLevel="80" >
         <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="4.125" PointY="5.5" Height="1.787985026041667" />
         <EntityTypeShape EntityType="InterpoolModel.Game" Width="1.5" PointX="1.375" PointY="5.25" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="InterpoolModel.NodePath" Width="1.5" PointX="4.875" PointY="8.375" Height="1.9802864583333326" />
