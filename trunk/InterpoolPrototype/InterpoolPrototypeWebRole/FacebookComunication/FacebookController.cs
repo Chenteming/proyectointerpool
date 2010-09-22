@@ -11,12 +11,12 @@ namespace InterpoolPrototypeWebRole.FacebookComunication
 {
     public class FacebookController : IFacebookController
     {
-        //stores al recovered data form user facebook friends.
+        // Stores al recovered data form user facebook friends.
         private Dictionary<String,FacebookUserData> userIdOauth = new Dictionary<string,FacebookUserData>();
         private List<FacebookUserData> faceUserData = new List<FacebookUserData>();
 
         // Download from Facebook all the information from user and user's friends
-        //and store it on the data base.
+        // and store it on the data base.
         public void DownloadUserFacebookData(oAuthFacebook oAuth)
         {
             string userId = this.GetUserId(oAuth);
