@@ -398,12 +398,14 @@ namespace InterpoolPrototypeWebRole.Data
         /// <param name="cityId">Initial value of the CityId property.</param>
         /// <param name="cityName">Initial value of the CityName property.</param>
         /// <param name="cityCountry">Initial value of the CityCountry property.</param>
-        public static City CreateCity(global::System.Int32 cityId, global::System.String cityName, global::System.String cityCountry)
+        /// <param name="cityNumber">Initial value of the CityNumber property.</param>
+        public static City CreateCity(global::System.Int32 cityId, global::System.String cityName, global::System.String cityCountry, global::System.Int32 cityNumber)
         {
             City city = new City();
             city.CityId = cityId;
             city.CityName = cityName;
             city.CityCountry = cityCountry;
+            city.CityNumber = cityNumber;
             return city;
         }
 
@@ -484,6 +486,30 @@ namespace InterpoolPrototypeWebRole.Data
         private global::System.String _CityCountry;
         partial void OnCityCountryChanging(global::System.String value);
         partial void OnCityCountryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CityNumber
+        {
+            get
+            {
+                return _CityNumber;
+            }
+            set
+            {
+                OnCityNumberChanging(value);
+                ReportPropertyChanging("CityNumber");
+                _CityNumber = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CityNumber");
+                OnCityNumberChanged();
+            }
+        }
+        private global::System.Int32 _CityNumber;
+        partial void OnCityNumberChanging(global::System.Int32 value);
+        partial void OnCityNumberChanged();
 
         #endregion
     

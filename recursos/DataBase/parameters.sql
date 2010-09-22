@@ -1,0 +1,2 @@
+insert into [interpooldb].[dbo].[Parameters] (ParameterName, ParameterValue) values ('LEVEL_ROOKIE','ROOKIE');
+insert into [interpooldb].[dbo].[Parameters] (ParameterName, ParameterValue) values ('AMOUNT_CITIES','30');

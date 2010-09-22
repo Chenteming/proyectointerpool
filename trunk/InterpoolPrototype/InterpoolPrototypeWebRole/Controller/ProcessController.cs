@@ -2,59 +2,89 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Objects.DataClasses;
+
 using InterpoolPrototypeWebRole.Data;
 using InterpoolPrototypeWebRole.Util;
 
 namespace InterpoolPrototypeWebRole.Controller
 {
-    public class ProcessController:IProcessController
+    public class ProcessController : IProcessController
     {
         public void StartGame(User user)
         {
             // this is only the structs that we should follow
+            InterpoolContainer conteiner = new InterpoolContainer();
+            try
+            {
+                // 1 the trip is built to be followed by user
+                Game newGame = BuiltTravel(user, conteiner);
 
-            // 1 the trip is built to be followed by user
-            BuiltTravel(user);
+                // 2 Get suspects
+                GetSuspects(newGame);
 
-            // 2 Get suspects
-            GetSuspects();
+                // 3 Create clues
 
-            // 3 Create clues
-            
-            //CreateClue();
+                //CreateClue();
+                conteiner.AddToGames(newGame);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
-        public void GetSuspects()
+        public void GetSuspects(Game newGame)
         {
+            // in this operation we should to find the possibles suspects , and asign the suspect
+            // newGame.Suspect =
+            // newGame.PossibleSuspect
             throw new NotImplementedException();
         }
 
-        public void BuiltTravel(User user)
+        private Game BuiltTravel(User user, InterpoolContainer conteiner)
         {
+
             Game newGame = new Game();
             user.Game = newGame;
+            
             IDataManager dm = new DataManager();
 
             List<City> selectedCities = new List<City>();
             NodePath node;
+            City next;
+            Random random = new Random();
+
+            int maxNumber = Int32.Parse(dm.GetParameter(Parameters.AMOUNT_CITIES, conteiner));
+            int nextCity = 0;
+            bool find = false;
             //TODO, maybe the amount of NodePath should be a param in the data base
             for (int i = 0; i < 4; i++)
             {
                 node = new NodePath();
-                bool find = false;
+                node.Famous = new EntityCollection<Famous>();
+                find = false;
                 do
                 {
-                    //get one city random
-                    //if not city in selectedCities
-                    //  find = true
-                    //  node.City = city
-                    //  node.Famous.Add(new List<Famous> (dm.getFamousByCity(city)))
+                    nextCity = random.Next(maxNumber);
+                    next = dm.getCities(conteiner).Where(c => c.CityNumber == nextCity).First();
+                    if (!selectedCities.Contains(next)) 
+                    {
+                        find = true;
+                        node.City = next;
+                        foreach (Famous f in dm.GetFamousByCity(next, conteiner))
+                        {
+                            node.Famous.Add(f);
+                        } 
+                    }
                 } while (!find);
                 newGame.NodePath.Add(node);
+                conteiner.AddToNodePaths(node);
             }
+            return newGame;
         }
 
-        public List<Clue> CreateClue(City city, User user, Suspect suspect)
+        private List<Clue> CreateClue(City city, User user, Suspect suspect)
         {
             DataManager dm = new DataManager();
             InterpoolContainer ic = new InterpoolContainer();
