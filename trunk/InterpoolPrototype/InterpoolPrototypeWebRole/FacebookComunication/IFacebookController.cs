@@ -18,5 +18,12 @@ namespace InterpoolPrototypeWebRole.FacebookComunication
 
         // Only for the protoype
         List<string> GetFriendsNames(oAuthFacebook oAuth, string userId);
+
+        // Add a new user to the datatype userID - oAuth (for multiplayer)
+        void AddFriend(string name, string id, oAuthFacebook oAuth);
+
+        // Save all the friends information in the db.
+        void DownloadUserFacebookData(oAuthFacebook oAuth);
+
     }
 }
