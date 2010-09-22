@@ -41,5 +41,13 @@ namespace InterpoolPrototypeWebRole.Data
                    where s.Game_1 == g
                    select s;
         }
+
+        public string GetParameter(string name, InterpoolContainer context)
+        {
+            var query = from p in context.Parameters
+                   where p.ParameterName == name
+                   select p.ParameterValue;
+            return query.First();
+        }
     }
 }

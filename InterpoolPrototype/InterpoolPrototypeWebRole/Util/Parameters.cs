@@ -9,6 +9,10 @@ namespace InterpoolPrototypeWebRole.Util
     {
         public static string LEVEL_ROOKIE = "LEVEL_ROOKIE";
         public static string NONE = "none";
+        
+        
         public static int NUMBERLASTCITY = 4;
+
+        public static string AMOUNT_CITIES = "AMOUNT_CITIES";
     }
 }
