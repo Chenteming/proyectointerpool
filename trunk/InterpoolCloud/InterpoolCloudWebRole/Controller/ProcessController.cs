@@ -90,51 +90,47 @@ namespace InterpoolCloudWebRole.Controller
             InterpoolContainer ic = new InterpoolContainer();
             List<Clue> cpRes = new List<Clue>();
 
-            City nextCity = NextCity(user,city);
+            City nextCity = NextCity(user, city);
             if (nextCity == null)
             {
                 return null;
             }
 
-            IQueryable<CityProperty> cp = dm.GetCityPropertyByCity(nextCity,ic);
-            
+            IQueryable<CityProperty> cp = dm.GetCityPropertyByCity(nextCity, ic);
+
             Level l = user.Level;
             Clue c1 = new Clue();
             Clue c2 = new Clue();
             Clue c3 = new Clue();
-            
-            IQueryable<Suspect> BigSuspect = dm.GetSuspectByGame(user.Game,ic);
+
+            IQueryable<Suspect> BigSuspect = dm.GetSuspectByGame(user.Game, ic);
 
             /*************** INICIA código totalmente hardcode para probar el funcionamiento de la función para un usario **************/
 
             if (l.LevelName.Equals(Parameters.LEVEL_ROOKIE))
             {
-               
-                
-                c1.City = city;
-                for (int i = 0; i < cp.ToArray().Length; i++)
-                {
-                    if (cp.ElementAt(i).Dyn == true)
-                    {
-                        c1.ClueContent = cp.ElementAt(i).CityPropertyContent;
-                    }
-                }
-                c2.City = city;
-                for (int i = 0; i < cp.ToArray().Length; i++)
-                {
-                    if (cp.ElementAt(i).Dyn == false)
-                    {
-                        c2.ClueContent = cp.ElementAt(i).CityPropertyContent;
-                    }
-                }
-                c3.City = city;
-                for (int i = 0; i < cp.ToArray().Length; i++)
-                {
-                    if (cp.ElementAt(i).City.CityName == Parameters.NONE)
-                    {
-                        c3.ClueContent = cp.ElementAt(i).CityPropertyContent + suspect.SuspectPreferenceMovies;
-                    }
-                }
+                c1.City = nextCity;
+                c2.City = nextCity;
+                c3.City = null;
+
+                IQueryable<CityProperty> cp1 = from ccpp1 in cp
+                                               where ccpp1.Dyn == false
+                                               select ccpp1;
+                c1.ClueContent = cp1.First().CityPropertyContent;
+
+                IQueryable<CityProperty> cp2 = from ccpp2 in cp
+                                               where ccpp2.Dyn == true
+                                               select ccpp2;
+                c2.ClueContent = cp2.First().CityPropertyContent;
+
+                IQueryable<CityProperty> cp3 = from ccpp3 in cp
+                                               where ccpp3.City.CityName == Parameters.NONE
+                                               select ccpp3;
+
+                //IQueryable<New> newsFamous = from nnff in city.Famous.
+                //                             where nnff.New in
+                c3.ClueContent = cp3.First().CityPropertyContent; //+ " " + ;
+
                 cpRes.Add(c1);
                 cpRes.Add(c2);
                 cpRes.Add(c3);
