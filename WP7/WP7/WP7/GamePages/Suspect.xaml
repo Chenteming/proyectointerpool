@@ -21,19 +21,18 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12">
-            <TextBlock x:Name="ApplicationTitle" Text="INTERPOOL" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="Lista de Sospechosos" Margin="-3,-8,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        <StackPanel x:Name="TitlePanel" Grid.Row="1" Margin="24,0,0,0" Height="0" VerticalAlignment="Top" d:LayoutOverrides="GridBox"/>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentGrid" Grid.Row="1"/>
-        <Image x:Name="SuspectName" Source="..\GameImages\SuspectScreen.jpg" Stretch="Fill" RenderTransformOrigin="0.049,0.506" Margin="0,0,30,0"/>
-        <ListBox Grid.Row="1" Height="326" HorizontalAlignment="Left" Margin="0,2,0,0" Name="listBox1" VerticalAlignment="Top" Width="736" />
-        <Button x:Name="LeftArrow" Content="Button" HorizontalAlignment="Left" Margin="0,182,0,173" Width="111" Opacity="0" Click="LeftArrow_Click"/>
-        <Button x:Name="RightArrow" Content="Button" Margin="0,168,21,173" HorizontalAlignment="Right" Width="117" Opacity="0" Click="RightArrow_Click"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="117,0,0,123" Stroke="Black" VerticalAlignment="Bottom" Width="200"/>
-        <TextBlock x:Name="Name_Suspect" HorizontalAlignment="Left" Height="38" Margin="117,0,0,123" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="200" Foreground="#FF4292A0" FontWeight="Bold" TextAlignment="Center" FontSize="22" />
+        <Grid x:Name="ContentGrid" Grid.Row="1" Margin="8,0,-8,0">
+        	<Image Margin="104,0,124,-460" Source="/WP7;component/interpool_Images/pantalla_5_Images/file1.png" Stretch="Fill" Height="456" VerticalAlignment="Bottom"/>
+        	<Image x:Name="SuspectName" Source="..\GameImages\SuspectScreen.jpg" Stretch="Fill" RenderTransformOrigin="0.049,0.506" Margin="0,0,8,0"/>
+        	<ListBox Height="444" HorizontalAlignment="Left" Margin="-8,0,0,0" x:Name="listBox1" VerticalAlignment="Top" Width="736" />
+        	<Button x:Name="LeftArrow" Content="Button" HorizontalAlignment="Left" Margin="0,192,0,183" Width="86" Opacity="0" Click="LeftArrow_Click"/>
+        	<Button x:Name="RightArrow" Content="Button" Margin="0,192,9,169" HorizontalAlignment="Right" Width="100" Opacity="0" Click="RightArrow_Click"/>
+        	<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="124,0,0,139" Stroke="Black" VerticalAlignment="Bottom" Width="200"/>
+        	<TextBlock x:Name="Name_Suspect" HorizontalAlignment="Left" Height="38" Margin="125,0,0,139" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="200" Foreground="#FF4292A0" FontWeight="Bold" TextAlignment="Center" FontSize="22" />
+        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>
