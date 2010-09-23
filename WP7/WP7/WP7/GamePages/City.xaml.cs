@@ -36,21 +36,7 @@ namespace WP7
             button3.Visibility = System.Windows.Visibility.Collapsed;
         }
 
-        private void Travel1_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
-        private void Travel2_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void Travel3_Click(object sender, RoutedEventArgs e)
-        {
-
-
-        }
 
         // Asynchronous callbacks for displaying results.
 
