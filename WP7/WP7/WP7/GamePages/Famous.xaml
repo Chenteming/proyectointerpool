@@ -12,42 +12,158 @@
     SupportedOrientations="Landscape" Orientation="Landscape"
     mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="728"
     shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
+	<phone:PhoneApplicationPage.Resources>
+		<Style x:Key="ButtonStyle3" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid x:Name="Button3" RenderTransformOrigin="0.5,0.5">
+							<Grid.RenderTransform>
+								<CompositeTransform/>
+							</Grid.RenderTransform>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Disabled">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="0.245" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.14" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image1" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.51" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image2" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="Button3" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="Button3" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.895" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.8" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image1" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.745" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="image" Margin="12,15,9,5" Source="/WP7;component/interpool_Images/pantalla_3_Images/Forma 2 copia.png" Stretch="Fill"/>
+							<Image x:Name="image1" Source="/WP7;component/interpool_Images/pantalla_3_Images/rectangle.png" Stretch="Fill"/>
+							<ContentPresenter x:Name="contentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+							<Image x:Name="image2" Margin="0,1,9,8" Source="/WP7;component/interpool_Images/pantalla_3_Images/Forma 2.png" Stretch="Fill" Opacity="0"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle2" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid x:Name="Button2" RenderTransformOrigin="0.5,0.5">
+							<Grid.RenderTransform>
+								<CompositeTransform/>
+							</Grid.RenderTransform>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Disabled">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="0.51" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image2" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.135" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image1" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.245" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="Button2" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="Button2" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.895" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.795" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image1" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.75" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="image" Margin="11,15,10,5" Source="/WP7;component/interpool_Images/pantalla_3_Images/Forma 2 copia.png" Stretch="Fill"/>
+							<Image x:Name="image1" Source="/WP7;component/interpool_Images/pantalla_3_Images/rectangle.png" Stretch="Fill"/>
+							<ContentPresenter x:Name="contentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+							<Image x:Name="image2" Margin="0,2,10,7" Source="/WP7;component/interpool_Images/pantalla_3_Images/Forma 2.png" Stretch="Fill" Opacity="0"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle1" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid x:Name="Button1" RenderTransformOrigin="0.5,0.5" Background="{x:Null}">
+							<Grid.RenderTransform>
+								<CompositeTransform/>
+							</Grid.RenderTransform>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Disabled">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image2" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.505" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.14" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image1" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.245" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="Button1" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="Button1" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.9" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.795" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image1" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.745" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="image" Margin="12,15,9,5" Source="/WP7;component/interpool_Images/pantalla_3_Images/Forma 2 copia.png" Stretch="Fill"/>
+							<Image x:Name="image1" Source="/WP7;component/interpool_Images/pantalla_3_Images/rectangle.png" Stretch="Fill"/>
+							<ContentPresenter x:Name="contentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+							<Image x:Name="image2" Margin="0,1,9,8" Source="/WP7;component/interpool_Images/pantalla_3_Images/Forma 2.png" Stretch="Fill" Opacity="0"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12" d:IsHidden="True">
-            <TextBlock x:Name="ApplicationTitle" Text="INTERPOOL" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="Famous" Margin="-3,-8,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,8.127" d:IsHidden="True"/>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentGrid" Margin="0,8,0,0" Grid.RowSpan="2">
-            <Image Margin="8,0,8,8" Source="..\GameImages\FamousScreen.jpg" Stretch="Fill" Height="456" VerticalAlignment="Bottom"/>
-            <Button Content="Fam1" Height="72" HorizontalAlignment="Left" Margin="21,0,0,16" x:Name="Famous1" VerticalAlignment="Bottom" Width="243" Click="Famous1_Click" d:LayoutOverrides="HorizontalAlignment" Background="White" Foreground="#FFC22F2F" />
-            <Button Content="Fam2" Margin="224,0,249,16" x:Name="Famous2" Height="72" VerticalAlignment="Bottom" Click="Famous2_Click" d:LayoutOverrides="VerticalAlignment" Foreground="#FFC22F2F" Background="White" />
-            <Button Content="Fam3" Height="72" HorizontalAlignment="Right" Margin="0,384,27,0" x:Name="Famous3" VerticalAlignment="Top" Width="251" Click="Famous3_Click" Foreground="#FFC22F2F" Background="White" />
-            <TextBox HorizontalAlignment="Center" Margin="270,25,4,94" x:Name="Clue" Text="" Width="454" SelectionForeground="#FFBAAFAF" TextAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Height="353">
-            	<TextBox.Background>
-            		<RadialGradientBrush>
-            			<GradientStop Color="#FFE71B1B" Offset="0.05"/>
-            			<GradientStop Color="White" Offset="1"/>
-            		</RadialGradientBrush>
-            	</TextBox.Background>
-            </TextBox>
-            <Button Content="Back" Height="88" HorizontalAlignment="Left" Margin="586,290,0,0" Name="button1" VerticalAlignment="Top" Width="115" Click="button1_Click" Background="{x:Null}" Foreground="#FFCE3737">
-                <Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                        <GradientStop Color="Black" Offset="0" />
-                        <GradientStop Color="White" Offset="1" />
-                    </LinearGradientBrush>
-                </Button.BorderBrush>
-            </Button>
+        <Grid x:Name="ContentGrid" Margin="0,8,0,0" Grid.RowSpan="4">
+            <Image Source="/WP7;component/interpool_Images/pantalla_5_Images/Fondo.png" Stretch="Fill"/>
+            <Image Source="/WP7;component/interpool_Images/pantalla_5_Images/Capa 1.png" Stretch="Fill" Opacity="0.15"/>
+            <Button Content="ack" Height="88" HorizontalAlignment="Left" Margin="605,0,0,84" x:Name="back" VerticalAlignment="Bottom" Width="115" Click="back_Click" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
+            <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Height="82" Margin="26,0,0,-86" Style="{StaticResource ButtonStyle1}" VerticalAlignment="Bottom" Width="227" Click="button1_Click" Foreground="#FF023760" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="24"/>
+            <TextBox x:Name="textToQuestion" Margin="253,0,281,-86" TextWrapping="Wrap" Foreground="#FFE91818" Height="70" VerticalAlignment="Bottom" FontSize="24" VerticalScrollBarVisibility="Disabled" Background="{x:Null}" BorderBrush="{x:Null}"/>
+            <Image Margin="230,11,24,116" Source="/WP7;component/interpool_Images/pantalla_5_Images/globoCharla copia.png" Stretch="Fill" Opacity="0.94"/>
+            <TextBlock x:Name="dialogText" Margin="339,59,72,228" TextWrapping="Wrap" Foreground="Black" FontSize="21.333" FontFamily="Portable User Interface"/>
+            <Rectangle HorizontalAlignment="Left" Margin="24,101,0,174" Width="194">
+            	<Rectangle.Fill>
+            		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            			<GradientStop Color="Black" Offset="0"/>
+            			<GradientStop Color="#FF83E993" Offset="1"/>
+            		</LinearGradientBrush>
+            	</Rectangle.Fill>
+            </Rectangle>
         </Grid>
     </Grid>
 

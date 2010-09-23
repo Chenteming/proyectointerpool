@@ -108,6 +108,8 @@
             <Button x:Name="DoorButton" Content="Button" Margin="0,34,0,107" Style="{StaticResource DoorButtonStyle}" Width="106" Opacity="0" Click="DoorButton_Click" Grid.Column="1" HorizontalAlignment="Left" Background="Transparent"/>
             <Button x:Name="FilesButton" Content="Button" Margin="266,104,322,168" Style="{StaticResource FilesButtonStyle}" Opacity="0" Click="FilesButton_Click" Grid.Column="1"/>
             <Button x:Name="MapButton" Content="Button" HorizontalAlignment="Left" Margin="196,147,0,150" Style="{StaticResource MapButtonStyle}" Width="84" Opacity="0" Click="MapButton_Click" Grid.Column="1"/>
+            <Button x:Name="NewspaperButton" Content="Button" Grid.Column="1" Height="92" Margin="290,0,305,0" VerticalAlignment="Bottom" Opacity="0" Click="NewspaperButton_Click"/>
+            <Button x:Name="phoneButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="64" Margin="154,0,0,28" VerticalAlignment="Bottom" Width="84" Opacity="0" Click="phoneButton_Click"/>
         </Grid>
     </Grid>
 

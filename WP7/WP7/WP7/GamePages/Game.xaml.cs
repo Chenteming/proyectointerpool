@@ -39,5 +39,15 @@ namespace WP7
         {
             NavigationService.Navigate(new Uri("/GamePages/City.xaml", UriKind.RelativeOrAbsolute));
         }
+
+		private void NewspaperButton_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new Uri("/GamePages/Famous2.xaml", UriKind.RelativeOrAbsolute));
+		}
+
+		private void phoneButton_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new Uri("/GamePages/Famous3.xaml", UriKind.RelativeOrAbsolute));
+		}
 	}
 }

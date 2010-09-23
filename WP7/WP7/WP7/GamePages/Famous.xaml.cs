@@ -35,9 +35,8 @@ namespace WP7
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
             // Set the textboxes with the name of the famous
-            Famous1.Visibility = System.Windows.Visibility.Collapsed;
-            Famous2.Visibility = System.Windows.Visibility.Collapsed;
-            Famous3.Visibility = System.Windows.Visibility.Collapsed;            
+            button1.Visibility = System.Windows.Visibility.Collapsed;
+                        
         }       
 		
 		public void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
@@ -46,35 +45,15 @@ namespace WP7
 
         private void Famous1_Click(object sender, RoutedEventArgs e)
         {
-            client = new ServiceWP7Client();
-            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);          
-            client.GetClueByFamousAsync(Famous1.Content.ToString());
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
+            
         }
 
-        private void Famous2_Click(object sender, RoutedEventArgs e)
-        {
-            client = new ServiceWP7Client();
-            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
-            client.GetClueByFamousAsync(Famous2.Content.ToString());
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
-        }
 
-        private void Famous3_Click(object sender, RoutedEventArgs e)
-        {            
-            client = new ServiceWP7Client();
-            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
-            client.GetClueByFamousAsync(Famous3.Content.ToString());            
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
-        }
 
         private void GetClueByFamousCallback(object sender, GetClueByFamousCompletedEventArgs e)
         {
             String clue = e.Result;
-            Clue.Text = clue;           
+            dialogText.Text = clue;           
         }
         void client_GetCurrentFamousCompleted(object sender, GetCurrentFamousCompletedEventArgs e)
         {
@@ -82,14 +61,12 @@ namespace WP7
             gm.SetCurrentFamous(e.Result.ToList());            
             List<String> famous = gm.GetFamous();
 
-            Famous1.Visibility = System.Windows.Visibility.Visible;
-            Famous2.Visibility = System.Windows.Visibility.Visible;
-            Famous3.Visibility = System.Windows.Visibility.Visible;
+            button1.Visibility = System.Windows.Visibility.Visible;
+
 
             //Show in the textBoxes the name of the famous
-            Famous1.Content = famous.ElementAt(0);
-            Famous2.Content = famous.ElementAt(1);
-            Famous3.Content = famous.ElementAt(2);
+            button1.Content = famous.ElementAt(0);
+          
 
             
         }
@@ -99,9 +76,20 @@ namespace WP7
             //TODO
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
+
+        private void button1_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	client = new ServiceWP7Client();
+            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
+            client.GetClueByFamousAsync(button1.Content.ToString());
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync(); 
+        }
+
+    
     }
 }
