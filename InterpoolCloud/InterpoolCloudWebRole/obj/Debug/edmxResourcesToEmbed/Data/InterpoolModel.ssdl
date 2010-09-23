@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InterpoolModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="InterpoolModelStoreContainer">
+    <EntitySet Name="Users" EntityType="InterpoolModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Games" EntityType="InterpoolModel.Store.Games" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NodePaths" EntityType="InterpoolModel.Store.NodePaths" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cities" EntityType="InterpoolModel.Store.Cities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Famous" EntityType="InterpoolModel.Store.Famous" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="News" EntityType="InterpoolModel.Store.News" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Clues" EntityType="InterpoolModel.Store.Clues" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Suspects" EntityType="InterpoolModel.Store.Suspects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Levels" EntityType="InterpoolModel.Store.Levels" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CityPropertySet" EntityType="InterpoolModel.Store.CityPropertySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Parameters" EntityType="InterpoolModel.Store.Parameters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Logs" EntityType="InterpoolModel.Store.Logs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GamePossibleSuspect" EntityType="InterpoolModel.Store.GameSuspect" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NodePathFamous" EntityType="InterpoolModel.Store.NodePathFamous" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NodePathClue" EntityType="InterpoolModel.Store.NodePathClue" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_GamePossibleSuspect_Game" Association="InterpoolModel.Store.FK_GameSuspect_Game">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="GameSuspect" EntitySet="GamePossibleSuspect" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GamePossibleSuspect_Suspect" Association="InterpoolModel.Store.FK_GameSuspect_Suspect">
+      <End Role="Suspect" EntitySet="Suspects" />
+      <End Role="GameSuspect" EntitySet="GamePossibleSuspect" />
+    </AssociationSet>
+    <AssociationSet Name="GameNodePath" Association="InterpoolModel.Store.GameNodePath">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="NodePath" EntitySet="NodePaths" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodePathFamous_NodePath" Association="InterpoolModel.Store.FK_NodePathFamous_NodePath">
+      <End Role="NodePath" EntitySet="NodePaths" />
+      <End Role="NodePathFamous" EntitySet="NodePathFamous" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodePathFamous_Famous" Association="InterpoolModel.Store.FK_NodePathFamous_Famous">
+      <End Role="Famous" EntitySet="Famous" />
+      <End Role="NodePathFamous" EntitySet="NodePathFamous" />
+    </AssociationSet>
+    <AssociationSet Name="CityFamous" Association="InterpoolModel.Store.CityFamous">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Famous" EntitySet="Famous" />
+    </AssociationSet>
+    <AssociationSet Name="FamousNew" Association="InterpoolModel.Store.FamousNew">
+      <End Role="Famous" EntitySet="Famous" />
+      <End Role="New" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodePathClue_NodePath" Association="InterpoolModel.Store.FK_NodePathClue_NodePath">
+      <End Role="NodePath" EntitySet="NodePaths" />
+      <End Role="NodePathClue" EntitySet="NodePathClue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodePathClue_Clue" Association="InterpoolModel.Store.FK_NodePathClue_Clue">
+      <End Role="Clue" EntitySet="Clues" />
+      <End Role="NodePathClue" EntitySet="NodePathClue" />
+    </AssociationSet>
+    <AssociationSet Name="ClueCity" Association="InterpoolModel.Store.ClueCity">
+      <End Role="Clue" EntitySet="Clues" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="ClueFamous" Association="InterpoolModel.Store.ClueFamous">
+      <End Role="Clue" EntitySet="Clues" />
+      <End Role="Famous" EntitySet="Famous" />
+    </AssociationSet>
+    <AssociationSet Name="CityLevel" Association="InterpoolModel.Store.CityLevel">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Level" EntitySet="Levels" />
+    </AssociationSet>
+    <AssociationSet Name="NodePathCity" Association="InterpoolModel.Store.NodePathCity">
+      <End Role="NodePath" EntitySet="NodePaths" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="GameSuspect1" Association="InterpoolModel.Store.GameSuspect1">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="Suspect" EntitySet="Suspects" />
+    </AssociationSet>
+    <AssociationSet Name="UserGame" Association="InterpoolModel.Store.UserGame">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Game" EntitySet="Games" />
+    </AssociationSet>
+    <AssociationSet Name="UserLevel" Association="InterpoolModel.Store.UserLevel">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Level" EntitySet="Levels" />
+    </AssociationSet>
+    <AssociationSet Name="CityCityProperty" Association="InterpoolModel.Store.CityCityProperty">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="CityProperty" EntitySet="CityPropertySet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserIdFacebook" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserTokenFacebook" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Game_GameId" Type="int" Nullable="false" />
+    <Property Name="Level_LevelId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Games">
+    <Key>
+      <PropertyRef Name="GameId" />
+    </Key>
+    <Property Name="GameId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameTime" Type="smallint" Nullable="false" />
+    <Property Name="Suspect_SuspectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NodePaths">
+    <Key>
+      <PropertyRef Name="NodePathId" />
+    </Key>
+    <Property Name="NodePathId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NodePathOrder" Type="int" Nullable="false" />
+    <Property Name="Game_GameId" Type="int" Nullable="false" />
+    <Property Name="City_CityId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CityCountry" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CityNumber" Type="int" Nullable="false" />
+    <Property Name="Level_LevelId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Famous">
+    <Key>
+      <PropertyRef Name="FamousId" />
+    </Key>
+    <Property Name="FamousId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FamousName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City_CityId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewId" />
+    </Key>
+    <Property Name="NewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Famous_FamousId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clues">
+    <Key>
+      <PropertyRef Name="ClueId" />
+    </Key>
+    <Property Name="ClueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClueContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City_CityId" Type="int" Nullable="true" />
+    <Property Name="Famous_FamousId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suspects">
+    <Key>
+      <PropertyRef Name="SuspectId" />
+    </Key>
+    <Property Name="SuspectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SuspectName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SuspectPreferenceMusic" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SuspectPreferenceMovies" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Levels">
+    <Key>
+      <PropertyRef Name="LevelId" />
+    </Key>
+    <Property Name="LevelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LevelName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GroupFacebookId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CityPropertySet">
+    <Key>
+      <PropertyRef Name="CityPropertyId" />
+    </Key>
+    <Property Name="CityPropertyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityPropertyContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Dyn" Type="bit" Nullable="false" />
+    <Property Name="City_CityId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parameters">
+    <Key>
+      <PropertyRef Name="ParameterId" />
+    </Key>
+    <Property Name="ParameterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParameterName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ParameterValue" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LogType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LogStackTrace" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameSuspect">
+    <Key>
+      <PropertyRef Name="Game_GameId" />
+      <PropertyRef Name="PossibleSuspect_SuspectId" />
+    </Key>
+    <Property Name="Game_GameId" Type="int" Nullable="false" />
+    <Property Name="PossibleSuspect_SuspectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NodePathFamous">
+    <Key>
+      <PropertyRef Name="NodePath_NodePathId" />
+      <PropertyRef Name="Famous_FamousId" />
+    </Key>
+    <Property Name="NodePath_NodePathId" Type="int" Nullable="false" />
+    <Property Name="Famous_FamousId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NodePathClue">
+    <Key>
+      <PropertyRef Name="NodePath_NodePathId" />
+      <PropertyRef Name="Clue_ClueId" />
+    </Key>
+    <Property Name="NodePath_NodePathId" Type="int" Nullable="false" />
+    <Property Name="Clue_ClueId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="GameNodePath">
+    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="1" />
+    <End Role="NodePath" Type="InterpoolModel.Store.NodePaths" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="GameId" />
+      </Principal>
+      <Dependent Role="NodePath">
+        <PropertyRef Name="Game_GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityFamous">
+    <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="1" />
+    <End Role="Famous" Type="InterpoolModel.Store.Famous" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Famous">
+        <PropertyRef Name="City_CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FamousNew">
+    <End Role="Famous" Type="InterpoolModel.Store.Famous" Multiplicity="1" />
+    <End Role="New" Type="InterpoolModel.Store.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Famous">
+        <PropertyRef Name="FamousId" />
+      </Principal>
+      <Dependent Role="New">
+        <PropertyRef Name="Famous_FamousId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClueCity">
+    <End Role="Clue" Type="InterpoolModel.Store.Clues" Multiplicity="*" />
+    <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Clue">
+        <PropertyRef Name="City_CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClueFamous">
+    <End Role="Clue" Type="InterpoolModel.Store.Clues" Multiplicity="*" />
+    <End Role="Famous" Type="InterpoolModel.Store.Famous" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Famous">
+        <PropertyRef Name="FamousId" />
+      </Principal>
+      <Dependent Role="Clue">
+        <PropertyRef Name="Famous_FamousId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityLevel">
+    <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="*" />
+    <End Role="Level" Type="InterpoolModel.Store.Levels" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Level">
+        <PropertyRef Name="LevelId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="Level_LevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NodePathCity">
+    <End Role="NodePath" Type="InterpoolModel.Store.NodePaths" Multiplicity="*" />
+    <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="NodePath">
+        <PropertyRef Name="City_CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GameSuspect1">
+    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="*" />
+    <End Role="Suspect" Type="InterpoolModel.Store.Suspects" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Suspect">
+        <PropertyRef Name="SuspectId" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="Suspect_SuspectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserGame">
+    <End Role="User" Type="InterpoolModel.Store.Users" Multiplicity="*" />
+    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="GameId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Game_GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserLevel">
+    <End Role="User" Type="InterpoolModel.Store.Users" Multiplicity="*" />
+    <End Role="Level" Type="InterpoolModel.Store.Levels" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Level">
+        <PropertyRef Name="LevelId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Level_LevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityCityProperty">
+    <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="1" />
+    <End Role="CityProperty" Type="InterpoolModel.Store.CityPropertySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="CityProperty">
+        <PropertyRef Name="City_CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameSuspect_Game">
+    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="1" />
+    <End Role="GameSuspect" Type="InterpoolModel.Store.GameSuspect" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="GameId" />
+      </Principal>
+      <Dependent Role="GameSuspect">
+        <PropertyRef Name="Game_GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameSuspect_Suspect">
+    <End Role="GameSuspect" Type="InterpoolModel.Store.GameSuspect" Multiplicity="*" />
+    <End Role="Suspect" Type="InterpoolModel.Store.Suspects" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Suspect">
+        <PropertyRef Name="SuspectId" />
+      </Principal>
+      <Dependent Role="GameSuspect">
+        <PropertyRef Name="PossibleSuspect_SuspectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodePathFamous_NodePath">
+    <End Role="NodePath" Type="InterpoolModel.Store.NodePaths" Multiplicity="1" />
+    <End Role="NodePathFamous" Type="InterpoolModel.Store.NodePathFamous" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NodePath">
+        <PropertyRef Name="NodePathId" />
+      </Principal>
+      <Dependent Role="NodePathFamous">
+        <PropertyRef Name="NodePath_NodePathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodePathFamous_Famous">
+    <End Role="NodePathFamous" Type="InterpoolModel.Store.NodePathFamous" Multiplicity="*" />
+    <End Role="Famous" Type="InterpoolModel.Store.Famous" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Famous">
+        <PropertyRef Name="FamousId" />
+      </Principal>
+      <Dependent Role="NodePathFamous">
+        <PropertyRef Name="Famous_FamousId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodePathClue_NodePath">
+    <End Role="NodePath" Type="InterpoolModel.Store.NodePaths" Multiplicity="1" />
+    <End Role="NodePathClue" Type="InterpoolModel.Store.NodePathClue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NodePath">
+        <PropertyRef Name="NodePathId" />
+      </Principal>
+      <Dependent Role="NodePathClue">
+        <PropertyRef Name="NodePath_NodePathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodePathClue_Clue">
+    <End Role="NodePathClue" Type="InterpoolModel.Store.NodePathClue" Multiplicity="*" />
+    <End Role="Clue" Type="InterpoolModel.Store.Clues" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Clue">
+        <PropertyRef Name="ClueId" />
+      </Principal>
+      <Dependent Role="NodePathClue">
+        <PropertyRef Name="Clue_ClueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
