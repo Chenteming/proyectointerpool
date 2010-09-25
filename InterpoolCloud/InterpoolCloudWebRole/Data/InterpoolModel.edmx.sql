@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/25/2010 16:21:09
+-- Date Created: 09/25/2010 18:34:11
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -67,6 +67,9 @@ IF OBJECT_ID(N'[dbo].[FK_UserLevel]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_CityCityProperty]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CityPropertySet] DROP CONSTRAINT [FK_CityCityProperty];
+GO
+IF OBJECT_ID(N'[dbo].[FK_NodePathCity1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Cities] DROP CONSTRAINT [FK_NodePathCity1];
 GO
 
 -- --------------------------------------------------
@@ -157,7 +160,8 @@ CREATE TABLE [dbo].[Cities] (
     [CityName] nvarchar(max)  NOT NULL,
     [CityCountry] nvarchar(max)  NOT NULL,
     [CityNumber] int  NOT NULL,
-    [Level_LevelId] int  NOT NULL
+    [Level_LevelId] int  NOT NULL,
+    [NodePath_1_NodePathId] int  NOT NULL
 );
 GO
 
@@ -570,6 +574,20 @@ ADD CONSTRAINT [FK_CityCityProperty]
 CREATE INDEX [IX_FK_CityCityProperty]
 ON [dbo].[CityPropertySet]
     ([City_CityId]);
+GO
+
+-- Creating foreign key on [NodePath_1_NodePathId] in table 'Cities'
+ALTER TABLE [dbo].[Cities]
+ADD CONSTRAINT [FK_NodePathCity1]
+    FOREIGN KEY ([NodePath_1_NodePathId])
+    REFERENCES [dbo].[NodePaths]
+        ([NodePathId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_NodePathCity1'
+CREATE INDEX [IX_FK_NodePathCity1]
+ON [dbo].[Cities]
+    ([NodePath_1_NodePathId]);
 GO
 
 -- --------------------------------------------------

@@ -32,6 +32,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserGame", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.User), "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Game))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserLevel", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.User), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "CityCityProperty", "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.City), "CityProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.CityProperty))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathCity1", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.NodePath), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.City))]
 
 #endregion
 
@@ -637,6 +638,44 @@ namespace InterpoolCloudWebRole.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CityProperty>("InterpoolModel.CityCityProperty", "CityProperty", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "NodePathCity1", "NodePath")]
+        public NodePath NodePath_1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NodePath>("InterpoolModel.NodePathCity1", "NodePath").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NodePath>("InterpoolModel.NodePathCity1", "NodePath").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<NodePath> NodePath_1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NodePath>("InterpoolModel.NodePathCity1", "NodePath");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<NodePath>("InterpoolModel.NodePathCity1", "NodePath", value);
                 }
             }
         }
@@ -2030,6 +2069,28 @@ namespace InterpoolCloudWebRole.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<City>("InterpoolModel.NodePathCity", "City", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "NodePathCity1", "City")]
+        public EntityCollection<City> PossibleCities
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<City>("InterpoolModel.NodePathCity1", "City");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<City>("InterpoolModel.NodePathCity1", "City", value);
                 }
             }
         }

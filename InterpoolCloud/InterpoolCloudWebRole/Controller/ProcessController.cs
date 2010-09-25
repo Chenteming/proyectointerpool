@@ -16,14 +16,10 @@ namespace InterpoolCloudWebRole.Controller
         public string GetCurrentCity(string userIdFacebook)
         {
             InterpoolContainer conteiner = new InterpoolContainer();
-            IDataManager dm = new DataManager();
-            Game game = dm.GetGameByUser(userIdFacebook, conteiner);
-            foreach (NodePath node in game.NodePath)
+            NodePath node = GetCurrentNode(userIdFacebook, conteiner);
+            if (node != null)
             {
-                if (node.NodePathCurrent)
-                {
-                    return node.City.CityName;
-                }
+                return node.City.CityName;
             }
             return null;
         }
@@ -35,6 +31,20 @@ namespace InterpoolCloudWebRole.Controller
 
         public List<string> GetCurrentFamous(string userIdFacebook)
         {
+            return null;
+        }
+
+        private NodePath GetCurrentNode(string userIdFacebook, InterpoolContainer conteiner)
+        {
+            IDataManager dm = new DataManager();
+            Game game = dm.GetGameByUser(userIdFacebook, conteiner);
+            foreach (NodePath node in game.NodePath)
+            {
+                if (node.NodePathCurrent)
+                {
+                    return node;
+                }
+            }
             return null;
         }
         
@@ -113,22 +123,32 @@ namespace InterpoolCloudWebRole.Controller
             {
                 node = new NodePath();
                 node.Famous = new EntityCollection<Famous>();
-                find = false;
-                do
+                for (int j = 0; j < 3; j++)
                 {
-                    nextCity = random.Next(maxNumber);
-                    next = dm.getCities(conteiner).Where(c => c.CityNumber == nextCity).First();
-                    if (!selectedCities.Contains(next)) 
+                    find = false;
+                    do
                     {
-                        find = true;
-                        node.City = next;
-                        List<Famous> listFamous = next.Famous.ToList<Famous>();
-                        foreach (Famous f in listFamous)
+                        nextCity = random.Next(maxNumber);
+                        next = dm.getCities(conteiner).Where(c => c.CityNumber == nextCity).First();
+                        if (!selectedCities.Contains(next))
                         {
-                            node.Famous.Add(f);
-                        } 
-                    }
-                } while (!find);
+                            find = true;
+                            if (j == 0)
+                            {
+                                node.City = next;
+                                List<Famous> listFamous = next.Famous.ToList<Famous>();
+                                foreach (Famous f in listFamous)
+                                {
+                                    node.Famous.Add(f);
+                                }
+                            }
+                            else
+                            {
+                                node.PossibleCities.Add(next);
+                            }
+                        }
+                    } while (!find);
+                }
                 // the current node in the first time is 0
                 node.NodePathCurrent = (i == 0);
                 node.NodePathOrder = i;
