@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using InterpoolCloudWebRole.Data;
 using InterpoolCloudWebRole.FacebookCommunication;
+using InterpoolCloudWebRole.Utilities;
 
 namespace InterpoolCloudWebRole
 {
@@ -36,7 +37,7 @@ namespace InterpoolCloudWebRole
                     user.UserTokenFacebook = oAuth.Token;
                     dataManager.StoreUser(user, container);
 
-                    Response.Redirect("http://127.0.0.1:81/Default.aspx/");
+                    Response.Redirect(Constants.REDIRECT_URL_AFTER_LOGIN_FACEBOOK);
 
                     /*string userId = facebookController.GetUserId(oAuth);
                     //add userId - oAuth [multiplayer feature]
