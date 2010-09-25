@@ -24,8 +24,8 @@ namespace InterpoolCloudWebRole.Controller
                 GetSuspects(newGame);
 
                 // 3 Create clues
-
-                //CreateClue();
+                CreateClue(newGame);
+                
                 conteiner.AddToGames(newGame);
             }
             catch (Exception e)
