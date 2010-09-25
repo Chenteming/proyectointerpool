@@ -25,7 +25,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             {
                 FacebookUserData fbud = new FacebookUserData();
                 fbud.userId = userId;
-                
+                fbud.oAuth = oAuth;
+
                 // TODO: this must be stored in the database
                 userIdOauth.Add(userId, fbud);
 
