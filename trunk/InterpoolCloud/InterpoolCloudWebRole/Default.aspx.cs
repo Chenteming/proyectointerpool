@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using InterpoolCloudWebRole.Controller;
 using InterpoolCloudWebRole.Utilities;
 using InterpoolCloudWebRole.Data;
+using InterpoolCloudWebRole.FacebookCommunication;
 
 namespace InterpoolCloudWebRole
 {
@@ -28,6 +29,12 @@ namespace InterpoolCloudWebRole
         protected void Button2_Click(object sender, EventArgs e)
         {
             Admin.loadFemousData();
+        }
+
+        protected void ButtonLogin_Click(object sender, EventArgs e)
+        {
+            oAuthFacebook oAuth = new oAuthFacebook();
+            Response.Redirect(oAuth.AuthorizationLinkGet());
         }
     }
 }

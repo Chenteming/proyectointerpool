@@ -14,6 +14,7 @@
             Text="StartGame" />
         <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
             Text="Newsfamois" />
+        <asp:Button ID="ButtonLogin" runat="server" OnClick="ButtonLoggin_Click" Text="Login" />
     </p>
     <p>
         You can also find <a href="http://go.microsoft.com/fwlink/?LinkID=152368&amp;clcid=0x409"
