@@ -17,5 +17,7 @@ namespace InterpoolCloudWebRole.Data
         void StoreUser(FacebookUserData fbud, InterpoolContainer context);
 
         string GetParameter(string name, InterpoolContainer context);
+
+        Game GetGameByUser(string userIdFaceook, InterpoolContainer conteiner);
     }
 }
