@@ -116,7 +116,10 @@ namespace InterpoolCloudWebRole.Controller
                         } 
                     }
                 } while (!find);
+                // the current node in the first time is 0
+                node.NodePathCurrent = (i == 0);
                 node.NodePathOrder = i;
+
                 newGame.NodePath.Add(node);
                 //conteiner.AddToNodePaths(node);
             }
