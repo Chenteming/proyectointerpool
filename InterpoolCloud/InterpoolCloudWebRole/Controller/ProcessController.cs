@@ -15,8 +15,17 @@ namespace InterpoolCloudWebRole.Controller
 
         public string GetCurrentCity(string userIdFacebook)
         {
-            
-            return "";
+            InterpoolContainer conteiner = new InterpoolContainer();
+            IDataManager dm = new DataManager();
+            Game game = dm.GetGameByUser(userIdFacebook, conteiner);
+            foreach (NodePath node in game.NodePath)
+            {
+                if (node.NodePathCurrent)
+                {
+                    return node.City.CityName;
+                }
+            }
+            return null;
         }
 
         public List<string> GetPossibleCities()

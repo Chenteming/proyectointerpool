@@ -62,5 +62,15 @@ namespace InterpoolCloudWebRole.Data
             context.AddToUsers(user);
             context.SaveChanges();
         }
+
+        public Game GetGameByUser(string userIdFaceook, InterpoolContainer conteiner)
+        {
+            var query = from user in conteiner.Users join game in conteiner.Games 
+                        on user.Game equals game 
+                        where user.UserIdFacebook == userIdFaceook
+                        select game;
+            
+            return query.First();
+        }
     }
 }
