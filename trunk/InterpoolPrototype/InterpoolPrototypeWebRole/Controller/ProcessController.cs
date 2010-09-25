@@ -165,6 +165,21 @@ namespace InterpoolPrototypeWebRole.Controller
                                                  select nodePath;
             return nextNodePath.ElementAt(0).City;
         }
+
+        public string GetCurrentCity()
+        {
+            return "";
+        }
+
+        public List<string> GetPossibleCities()
+        {
+            return null;
+        }
+
+        public List<string> GetCurrentFamous(string city)
+        {
+            return null;
+        }
     }
 
 }

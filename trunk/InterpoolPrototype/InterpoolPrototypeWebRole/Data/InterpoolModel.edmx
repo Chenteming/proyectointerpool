@@ -920,7 +920,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Model1" ZoomLevel="80" >
-        <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="4.125" PointY="5.5" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="4.125" PointY="5.375" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="InterpoolModel.Game" Width="1.5" PointX="1.375" PointY="5.25" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="InterpoolModel.NodePath" Width="1.5" PointX="4.875" PointY="8.375" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="InterpoolModel.City" Width="1.5" PointX="8" PointY="5.125" Height="2.7494921874999996" />
@@ -977,8 +977,8 @@
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathCity">
           <ConnectorPoint PointX="6.21875" PointY="8.375" />
-          <ConnectorPoint PointX="6.21875" PointY="7.7086393229166656" />
-          <ConnectorPoint PointX="8" PointY="7.7086393229166656" />
+          <ConnectorPoint PointX="6.21875" PointY="7.6461393229166656" />
+          <ConnectorPoint PointX="8" PointY="7.6461393229166656" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.GameSuspect1">
           <ConnectorPoint PointX="2.263767846320305" PointY="5.25" />
@@ -986,11 +986,11 @@
           <ConnectorPoint PointX="7.75" PointY="1.9966632812500009" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.UserGame">
-          <ConnectorPoint PointX="4.125" PointY="6.3939925130208337" />
-          <ConnectorPoint PointX="2.875" PointY="6.3939925130208337" />
+          <ConnectorPoint PointX="4.125" PointY="6.3651432291666659" />
+          <ConnectorPoint PointX="2.875" PointY="6.3651432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.UserLevel">
-          <ConnectorPoint PointX="4.8749994999999995" PointY="5.5" />
+          <ConnectorPoint PointX="4.8749994999999995" PointY="5.375" />
           <ConnectorPoint PointX="4.8749994999999995" PointY="3.8651432291666663" />
           <ConnectorPoint PointX="5.625" PointY="3.8651432291666663" />
         </AssociationConnector>
