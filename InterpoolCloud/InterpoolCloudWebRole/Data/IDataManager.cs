@@ -14,7 +14,12 @@ namespace InterpoolCloudWebRole.Data
         IQueryable<CityProperty> GetCityPropertyByCity(City city, InterpoolContainer context);
         IQueryable<Suspect> GetSuspectByGame(Game g, InterpoolContainer context);
 
-        void StoreUser(FacebookUserData fbud, InterpoolContainer context);
+        void StoreUser(User user, InterpoolContainer context);
+        void StoreSuspect(Suspect suspect, InterpoolContainer context);
+
+        void SaveChanges(InterpoolContainer context);
+
+        InterpoolContainer GetContainer();
 
         string GetParameter(string name, InterpoolContainer context);
 

@@ -925,7 +925,7 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="Model1" ZoomLevel="80" >
+      <Diagram Name="Model1" ZoomLevel="77" >
         <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="4.125" PointY="5.5" Height="1.787985026041667" />
         <EntityTypeShape EntityType="InterpoolModel.Game" Width="1.5" PointX="1.375" PointY="5.25" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="InterpoolModel.NodePath" Width="1.5" PointX="4.875" PointY="8.375" Height="2.3648893229166656" />
