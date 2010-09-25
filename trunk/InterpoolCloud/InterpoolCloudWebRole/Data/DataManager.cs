@@ -64,10 +64,10 @@ namespace InterpoolCloudWebRole.Data
 
         public void StoreUser(User user, InterpoolContainer context)
         {
-            bool userExists = context.Users.Where(u => u.UserId == user.UserId).Count() > 0;
+            bool userExists = context.Users.Where(u => u.UserIdFacebook == user.UserIdFacebook).Count() > 0;
             if (userExists)
             {
-                User userDB = context.Users.Where(u => u.UserId == user.UserId).First();
+                User userDB = context.Users.Where(u => u.UserIdFacebook == user.UserIdFacebook).First();
                 userDB.UserTokenFacebook = user.UserTokenFacebook;
             }
             else
