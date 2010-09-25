@@ -69,10 +69,12 @@ namespace InterpoolCloudWebRole.Controller
 
         public void GetSuspects(Game newGame, InterpoolContainer container)
         {
-            // In this operation we should to find the possibles suspects , and asign the suspect
+            // In this operation we should go to find the possibles suspects, and asign the suspect
 
             IFacebookController facebookController = new FacebookController();
-            facebookController.DownloadFacebookUserData(newGame, container);
+            IDataManager dm = new DataManager();
+            oAuthFacebook oAuth = dm.GetLastUserToken(dm.GetContainer());
+            facebookController.DownloadFacebookUserData(oAuth, newGame, container);
 
             IQueryable<Suspect> IQbigSuspect =  from s in container.Suspects
                                                 where s.SuspectId == 3
