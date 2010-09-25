@@ -7,10 +7,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 {
     public class FacebookUserData
     {
-       // private string userId;
-        //private oAuthFacebook oAut;
-        //private string nombre;
-
         public string userId { get; set; }
         public oAuthFacebook oAuth { get; set; }
         public string nombre { get; set; }

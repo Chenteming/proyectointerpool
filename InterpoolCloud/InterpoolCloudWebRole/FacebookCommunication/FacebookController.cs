@@ -6,6 +6,7 @@ using System.Collections;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using InterpoolCloudWebRole.Data;
+using InterpoolCloudWebRole.Utilities;
 
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
@@ -13,74 +14,58 @@ namespace InterpoolCloudWebRole.FacebookCommunication
     {
         // Stores al recovered data form user facebook friends.
         private Dictionary<String,FacebookUserData> userIdOauth = new Dictionary<string,FacebookUserData>();
-        private List<FacebookUserData> faceUserData = new List<FacebookUserData>();
+        private IDataManager dataManager = new DataManager();
 
-        /*
-        // Download from Facebook all the information from user and user's friends
-        // and store it on the data base.
-        public void DownloadUserFacebookData(oAuthFacebook oAuth)
+        // Downloads from Facebook all the information from user and user's friends
+        // and stores it on the data base.
+        public void DownloadFacebookUserData(oAuthFacebook oAuth, Game game, InterpoolContainer context)
         {
             string userId = this.GetUserId(oAuth);
-            this.AddFriend("", userId, oAuth);
             if (!userId.Equals(""))
             {
-                List<string> friendsIds = this.GetFriendsId(userId);
-                InterpoolContainer context = new InterpoolContainer();
-                List<Friends> listFriends = new List<Friends>(context.Friends);
-                // Deletes all the existing suspects
-                foreach (Friends pFriendsDelete in listFriends)
-                {
-                    context.DeleteObject(pFriendsDelete);
-                }
-                context.SaveChanges();
+                FacebookUserData fbud = new FacebookUserData();
+                fbud.userId = userId;
+                
+                // TODO: this must be stored in the database
+                userIdOauth.Add(userId, fbud);
 
-                Friends pFriends;
-                // Creates the suspects for the current user
-                int limit = 10;
+                List<string> friendsIds = this.GetFriendsId(userId);
+                Suspect suspect;
+                List<Suspect> suspects = new List<Suspect>();
+                FacebookUserData fbudOfSuspect; 
+                // Creates and stores the suspects for the current user
+                int limit = Constants.MAX_SUSPECTS;
                 int i = 0;
-               foreach (string id in friendsIds)
+                int numberSuspect = new Random().Next(0, limit);
+                foreach (string friendId in friendsIds)
                 {
-                    pFriends = new Friends();
-                    pFriends.Id_face = id;
-                    context.AddToFriends(pFriends);
+                    fbudOfSuspect = this.GetFriendInfo(userId, friendId);
+                    suspect = NewSuspectFromFacebookUserData(fbudOfSuspect);
+                    dataManager.StoreSuspect(suspect, context);
+                    if (numberSuspect == i)
+                        game.Suspect = suspect;
+                    else
+                        game.PossibleSuspect.Add(suspect);
                     i++;
-                    if (i > limit)
+                    if (i >= limit)
                     {
                         break;
                     }
                 }
-                context.SaveChanges();
-
-                //create a new list of friends ID
-                List<string> friendsIdList = new List<string>();
-                foreach (Friends pFriends2 in context.Friends)
-                {
-                    friendsIdList.Add(pFriends2.Id_face);
-                }
-
-                //getting and saving the information of all user friends
-                List<FacebookUserData> fbud = new List<FacebookUserData>();
-                foreach (string id_face in friendsIdList)
-                {
-                    fbud.Add(this.GetFriendInfo(userId, id_face));
-                }
-
-                foreach (FacebookUserData facebud in fbud)
-                {
-                    pFriends = new Friends();
-                    pFriends.Id_face = facebud.id_friend;
-                    pFriends.First_name = facebud.first_name;
-                    pFriends.Last_name = facebud.last_name;
-                    pFriends.Birthday = facebud.birthday;
-                    pFriends.Sex = facebud.gender;
-                    pFriends.Hometown = facebud.hometown;
-                    pFriends.Likes = facebud.likes;
-
-                    context.AddToFriends(pFriends);
-                }
-                context.SaveChanges();
-
+                // Stores the changes made to the game
+                dataManager.SaveChanges(context);
             }
+        }
+
+        private Suspect NewSuspectFromFacebookUserData(FacebookUserData fbudOfSuspect)
+        {
+            Suspect suspect = new Suspect();
+            // FIX: add field FacebookId to Suspect
+            // TODO: add this
+            // suspect.FacebookId = fbudOfSuspect.userId;
+            suspect.SuspectName = fbudOfSuspect.first_name + " " + fbudOfSuspect.last_name;
+            suspect.SuspectPreferenceMusic = fbudOfSuspect.hometown;
+            return suspect;
         }
 
         public oAuthFacebook GetOauth(string userId) 
@@ -120,11 +105,11 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
         public List<string> GetFriendsId(string userId)
         {
-            oAuthFacebook oAuth = GetOAuthFacebook(userId);
+            oAuthFacebook oAuth = this.GetOAuthFacebook(userId);
 
             if (oAuth != null && oAuth.Token.Length > 0)
             {
-                //We now have the credentials, so we can start making API calls
+                // We now have the credentials, so we can start making API calls
                 String url = String.Format("https://graph.facebook.com/{0}/friends?access_token={1}",
                     userId, oAuth.Token);
                 string jsonFriends = oAuth.WebRequest(oAuthFacebook.Method.GET, url, String.Empty);
@@ -211,10 +196,10 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         // TODO: see if this method will stay in this class
         private oAuthFacebook GetOAuthFacebook(string userId)
         {
-            //this is for single user game
+            // this is for single user game
             return this.GetOauth(userId);
             
- 	        //TODO: [multiUserGame]we must ask for the oAuth for de actual user
+ 	        // TODO: [multiUserGame]we must ask for the oAuth for the actual user
             throw new NotImplementedException();
         }
 
@@ -271,34 +256,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
             return friendsNames;
         }
-        */
 
-        public string GetUserId(oAuthFacebook oAuth)
-        {
-            throw new NotImplementedException();
-        }
 
-        public List<string> GetFriendsId(string userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public FacebookUserData GetFriendInfo(string userId, string userFriendId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> GetFriendsNames(oAuthFacebook oAuth, string userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddFriend(string name, string id, oAuthFacebook oAuth)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DownloadUserFacebookData(oAuthFacebook oAuth)
+        public void DownloadFacebookUserData(oAuthFacebook oAuth, InterpoolContainer context)
         {
             throw new NotImplementedException();
         }
