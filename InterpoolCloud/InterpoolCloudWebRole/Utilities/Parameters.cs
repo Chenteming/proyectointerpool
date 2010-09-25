@@ -9,9 +9,6 @@ namespace InterpoolCloudWebRole.Utilities
     {
         public static string LEVEL_ROOKIE = "LEVEL_ROOKIE";
         public static string NONE = "none";
-        
-        
-
         public static string AMOUNT_CITIES = "AMOUNT_CITIES";
     }
 }
