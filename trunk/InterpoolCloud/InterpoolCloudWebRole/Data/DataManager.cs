@@ -52,14 +52,16 @@ namespace InterpoolCloudWebRole.Data
         }
 
 
-        public void StoreUser(FacebookUserData fbud, InterpoolContainer context)
+        public void StoreUser(User user, InterpoolContainer context)
         {
-            // The user may have more information stored in order to use it
-            // for future games
-            User user = new User();
-            user.UserIdFacebook = fbud.userId;
-            user.UserTokenFacebook = fbud.oAuth.Token;
-            context.AddToUsers(user);
+            bool userExists = context.Users.Where(u => u.UserId == user.UserId).Count() > 0;
+            if (userExists)
+            {
+                User userDB = context.Users.Where(u => u.UserId == user.UserId).First();
+                userDB.UserTokenFacebook = user.UserTokenFacebook;
+            }
+            else
+                context.AddToUsers(user);
             context.SaveChanges();
         }
 
@@ -71,6 +73,23 @@ namespace InterpoolCloudWebRole.Data
                         select game;
             
             return query.First();
+        }
+
+        public void StoreSuspect(Suspect suspect, InterpoolContainer context)
+        {
+            context.AddToSuspects(suspect);
+            context.SaveChanges();
+        }
+
+        public void SaveChanges(InterpoolContainer context)
+        {
+            context.SaveChanges();
+        }
+
+        public InterpoolContainer GetContainer()
+        {
+            InterpoolContainer container = new InterpoolContainer();
+            return container;
         }
     }
 }
