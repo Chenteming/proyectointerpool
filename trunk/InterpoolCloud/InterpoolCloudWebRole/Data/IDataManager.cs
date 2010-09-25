@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using InterpoolCloudWebRole.FacebookCommunication;
 
 namespace InterpoolCloudWebRole.Data
 {
@@ -12,6 +13,8 @@ namespace InterpoolCloudWebRole.Data
         IQueryable<Famous> GetFamousByCity(City city, InterpoolContainer context);
         IQueryable<CityProperty> GetCityPropertyByCity(City city, InterpoolContainer context);
         IQueryable<Suspect> GetSuspectByGame(Game g, InterpoolContainer context);
+
+        void StoreUser(FacebookUserData fbud, InterpoolContainer context);
 
         string GetParameter(string name, InterpoolContainer context);
     }
