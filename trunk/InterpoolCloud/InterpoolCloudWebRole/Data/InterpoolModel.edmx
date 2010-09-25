@@ -89,6 +89,10 @@
       <End Role="City" EntitySet="Cities" />
       <End Role="CityProperty" EntitySet="CityPropertySet" />
     </AssociationSet>
+    <AssociationSet Name="NodePathPossibleCity" Association="InterpoolModel.Store.NodePathCity1">
+      <End Role="NodePath" EntitySet="NodePaths" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
@@ -127,6 +131,7 @@
     <Property Name="CityCountry" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CityNumber" Type="int" Nullable="false" />
     <Property Name="Level_LevelId" Type="int" Nullable="false" />
+    <Property Name="NodePath_1_NodePathId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Famous">
     <Key>
@@ -353,6 +358,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="NodePathCity1">
+    <End Role="NodePath" Type="InterpoolModel.Store.NodePaths" Multiplicity="1" />
+    <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NodePath">
+        <PropertyRef Name="NodePathId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="NodePath_1_NodePathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GameSuspect_Game">
     <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="1" />
     <End Role="GameSuspect" Type="InterpoolModel.Store.GameSuspect" Multiplicity="*" />
@@ -498,6 +515,10 @@
           </AssociationSet>
           <EntitySet Name="Parameters" EntityType="InterpoolModel.Parameter" />
           <EntitySet Name="Logs" EntityType="InterpoolModel.Log" />
+          <AssociationSet Name="NodePathPossibleCity" Association="InterpoolModel.NodePathCity1">
+            <End Role="NodePath" EntitySet="NodePaths" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -531,6 +552,7 @@
           <NavigationProperty Name="Clue" Relationship="InterpoolModel.NodePathClue" FromRole="NodePath" ToRole="Clue" />
           <NavigationProperty Name="City" Relationship="InterpoolModel.NodePathCity" FromRole="NodePath" ToRole="City" />
           <Property Type="Boolean" Name="NodePathCurrent" Nullable="false" />
+          <NavigationProperty Name="PossibleCities" Relationship="InterpoolModel.NodePathCity1" FromRole="NodePath" ToRole="City" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -545,6 +567,7 @@
           <NavigationProperty Name="NodePath" Relationship="InterpoolModel.NodePathCity" FromRole="City" ToRole="NodePath" />
           <NavigationProperty Name="CityProperty" Relationship="InterpoolModel.CityCityProperty" FromRole="City" ToRole="CityProperty" />
           <Property Type="Int32" Name="CityNumber" Nullable="false" />
+          <NavigationProperty Name="NodePath_1" Relationship="InterpoolModel.NodePathCity1" FromRole="City" ToRole="NodePath" />
         </EntityType>
         <EntityType Name="Famous">
           <Key>
@@ -679,6 +702,10 @@
           <Property Type="String" Name="LogType" Nullable="false" />
           <Property Type="String" Name="LogStackTrace" Nullable="false" />
         </EntityType>
+        <Association Name="NodePathCity1">
+          <End Type="InterpoolModel.NodePath" Role="NodePath" Multiplicity="1" />
+          <End Type="InterpoolModel.City" Role="City" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -906,6 +933,14 @@
         <ScalarProperty Name="CityPropertyId" ColumnName="CityPropertyId" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="NodePathPossibleCity" TypeName="InterpoolModel.NodePathCity1" StoreEntitySet="Cities">
+      <EndProperty Name="NodePath">
+        <ScalarProperty Name="NodePathId" ColumnName="NodePath_1_NodePathId" />
+      </EndProperty>
+      <EndProperty Name="City">
+        <ScalarProperty Name="CityId" ColumnName="CityId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -946,8 +981,10 @@
           <ConnectorPoint PointX="4.875" PointY="9.5574446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathFamous">
-          <ConnectorPoint PointX="6.375" PointY="9.8593533032226546" />
-          <ConnectorPoint PointX="8.125" PointY="9.8593533032226546" />
+          <ConnectorPoint PointX="6.375" PointY="9.4612939453125" />
+          <ConnectorPoint PointX="7.955729166666667" PointY="9.4612939453125" />
+          <ConnectorPoint PointX="8.1223958333333339" PointY="9.4612939453125" />
+          <ConnectorPoint PointX="8.125" PointY="9.4612939453125" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.CityFamous">
           <ConnectorPoint PointX="8.8125" PointY="7.8744921875" />
@@ -1002,6 +1039,11 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="InterpoolModel.Parameter" Width="2" PointX="11.75" PointY="0.625" Height="1.59568359375" />
         <EntityTypeShape EntityType="InterpoolModel.Log" Width="1.5" PointX="14.375" PointY="0.625" Height="1.787985026041667" />
+        <AssociationConnector Association="InterpoolModel.NodePathCity1">
+          <ConnectorPoint PointX="5.625" PointY="8.375" />
+          <ConnectorPoint PointX="5.625" PointY="7.8917181726469092" />
+          <ConnectorPoint PointX="8" PointY="7.8917181726469092" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
