@@ -15,7 +15,7 @@ namespace InterpoolCloudWebRole.Services
         void StartGame(User user);
 
         [OperationContract]
-        string GetCurrentCity();
+        string GetCurrentCity(String s);
 
         [OperationContract]
         List<string> GetPossibleCities();

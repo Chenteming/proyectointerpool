@@ -11,16 +11,16 @@ namespace InterpoolCloudWebRole.Services
 {
     public class InterpoolWP7 : IInterpoolWP7
     {
-        public IProcessController controller = new ProcessController();
+        private IProcessController controller = new ProcessController();
 
         public void StartGame(User user)
         {
             
         }
 
-        public string GetCurrentCity()
+        public string GetCurrentCity(String s)
         {
-            return controller.GetCurrentCity();
+            return controller.GetCurrentCity(s);
         }
 
         public List<string> GetPossibleCities()

@@ -10,14 +10,14 @@ namespace InterpoolCloudWebRole.Controller
     interface IProcessController
     {
         void StartGame(User user);
-       
-        string GetCurrentCity();
+
+        string GetCurrentCity(string userIdFacebook);
 
         List<string> GetPossibleCities();
 
         List<string> GetCurrentFamous(string city);
 
-        string GetCurrentCity(string userIdFacebook);
+        
    
     }
 }
