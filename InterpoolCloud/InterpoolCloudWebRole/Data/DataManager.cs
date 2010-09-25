@@ -43,6 +43,16 @@ namespace InterpoolCloudWebRole.Data
                    select s;
         }
 
+        // Pre: the table Users must have at least 1 user
+        public string GetLastUserId(InterpoolContainer context)
+        {
+            int userId = (from u in context.Users
+                        select u.UserId).Max();
+            return  (from u in context.Users
+                    where u.UserId == userId
+                    select u.UserIdFacebook).First();
+        }
+
         public string GetParameter(string name, InterpoolContainer context)
         {
             var query = from p in context.Parameters
@@ -91,5 +101,17 @@ namespace InterpoolCloudWebRole.Data
             InterpoolContainer container = new InterpoolContainer();
             return container;
         }
+
+
+        public oAuthFacebook GetLastUserToken(InterpoolContainer context)
+        {
+            int userId = (from u in context.Users
+                            select u.UserId).Max();
+            string token = (from u in context.Users
+                            where u.UserId == userId
+                            select u.UserTokenFacebook).First();
+            return new oAuthFacebook() { Token = token }; 
+        }
+
     }
 }
