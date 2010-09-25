@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using InterpoolCloudWebRole.Data;
 
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
@@ -23,7 +24,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         void AddFriend(string name, string id, oAuthFacebook oAuth);
 
         // Save all the friends information in the db.
-        void DownloadUserFacebookData(oAuthFacebook oAuth);
+        void DownloadFacebookUserData(oAuthFacebook oAuth, Game game, InterpoolContainer context);
 
     }
 }

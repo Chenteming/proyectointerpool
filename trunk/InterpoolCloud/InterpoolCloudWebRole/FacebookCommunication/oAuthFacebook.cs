@@ -15,7 +15,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         // TODO: change the next fixed urls with global parameters (in the WebConfig file)
         public const string AUTHORIZE = "https://graph.facebook.com/oauth/authorize";
         public const string ACCESS_TOKEN = "https://graph.facebook.com/oauth/access_token";
-        public const string CALLBACK_URL = "http://servicewp7.cloudapp.net/FacebookCallback.aspx/";
+        public const string CALLBACK_URL = "http://servicewp7.cloudapp.net/Pages/FacebookCallback.aspx/";
         // public const string CALLBACK_URL = "http://127.0.0.1:81/FacebookCallback.aspx/";
 
         private string _consumerKey = "";
@@ -61,7 +61,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         public string AuthorizationLinkGet()
         {
            // return string.Format("{0}?client_id={1}&redirect_uri={2}", AUTHORIZE, this.ConsumerKey, CALLBACK_URL);
-            return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access,publish_stream,friends_about_me,friends_birthday,friends_hometown,friends_interests,friends_likes,friends_online_presence, friends_status", AUTHORIZE, this.ConsumerKey, CALLBACK_URL);
+            return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access,publish_stream,friends_about_me,friends_birthday,friends_hometown,friends_interests,friends_likes,friends_online_presence, friends_status",
+                AUTHORIZE, this.ConsumerKey, CALLBACK_URL);
         }
 
         /// <summary>
