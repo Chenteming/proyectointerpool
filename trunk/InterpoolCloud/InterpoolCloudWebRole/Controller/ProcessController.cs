@@ -186,7 +186,7 @@ namespace InterpoolCloudWebRole.Controller
 
         }
 
-        public City NextCity(Game g, NodePath currentNodePath)
+        private City NextCity(Game g, NodePath currentNodePath)
         {
             /* get the order for the next NodePath */
             int orderNodePath = -1;
@@ -205,7 +205,7 @@ namespace InterpoolCloudWebRole.Controller
             return nextNodePath.First().City;
         }
 
-        public String GetRandomCharacteristicSuspect (Suspect s, List<Boolean> csuspect){
+        private String GetRandomCharacteristicSuspect (Suspect s, List<Boolean> csuspect){
             /* get the random index for the characteristic of the suspect */
             Random rnd = new Random();
             int indexRandom = rnd.Next(0,5);
