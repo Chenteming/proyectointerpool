@@ -28,12 +28,12 @@ namespace InterpoolCloudWebRole.Controller
             return null;
         }
 
-        public List<string> GetPossibleCities()
+        public List<string> GetPossibleCities(string userIdFacebook)
         {
             return null;
         }
 
-        public List<string> GetCurrentFamous(string city)
+        public List<string> GetCurrentFamous(string userIdFacebook)
         {
             return null;
         }

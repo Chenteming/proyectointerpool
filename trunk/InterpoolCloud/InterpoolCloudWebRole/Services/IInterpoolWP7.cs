@@ -15,12 +15,12 @@ namespace InterpoolCloudWebRole.Services
         void StartGame(User user);
 
         [OperationContract]
-        string GetCurrentCity(String s);
+        string GetCurrentCity(string userIdFacebook);
 
         [OperationContract]
-        List<string> GetPossibleCities();
+        List<string> GetPossibleCities(string userIdFacebook);
 
         [OperationContract]
-        List<string> GetCurrentFamous(string city);
+        List<string> GetCurrentFamous(string userIdFacebook);
     }
 }
