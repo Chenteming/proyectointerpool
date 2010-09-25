@@ -5,6 +5,7 @@ using System.Web;
 using System.Collections.Specialized;
 using System.Net;
 using System.IO;
+using InterpoolCloudWebRole.Utilities;
 
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
@@ -30,7 +31,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             {
                 if (_consumerKey.Length == 0)
                 {
-                    _consumerKey = "123625261023469"; //Your application ID
+                    _consumerKey = Constants.CONSUMER_KEY; //Your application ID
                 }
                 return _consumerKey;
             }
@@ -43,7 +44,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             {
                 if (_consumerSecret.Length == 0)
                 {
-                    _consumerSecret = "2ea5107535d2ee3f514a06a186139be6"; //Your application secret
+                    _consumerSecret = Constants.CONSUMER_SECRET; //Your application secret
                 }
                 return _consumerSecret;
             }
