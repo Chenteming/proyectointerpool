@@ -11,7 +11,6 @@ namespace InterpoolCloudWebRole.Utilities
         public static string NONE = "none";
         
         
-        public static int NUMBERLASTCITY = 4;
 
         public static string AMOUNT_CITIES = "AMOUNT_CITIES";
     }

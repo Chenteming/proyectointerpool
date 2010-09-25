@@ -84,82 +84,150 @@ namespace InterpoolCloudWebRole.Controller
             return newGame;
         }
 
-        private List<Clue> CreateClue(City city, User user, Suspect suspect)
+        /* to consider: 
+         * - all clues maybe have characteristic of the suspect 
+         * - first clue is final
+         * - second clue is dynamic
+         * - third clue only have news of the famous*/
+        private void CreateClue(Game g)
         {
             DataManager dm = new DataManager();
+
+            /* define the number of characteristics of the suspect by city */
+            List<Int32> amountCharacteristicsSuspects = new List<int>(3);
+            amountCharacteristicsSuspects[0]=1; amountCharacteristicsSuspects[1]=2; amountCharacteristicsSuspects[2]=3;
+
+            /* built the structure for the characteristics that I will put on each clue */
+            List<Boolean> cSuspect = new List<Boolean>(5);
+            cSuspect[0]=false;cSuspect[1]=false;cSuspect[2]=false;cSuspect[3]=false;cSuspect[4]=false;
+            
+            /* get the context for query of DataManager*/
             InterpoolContainer ic = new InterpoolContainer();
-            List<Clue> cpRes = new List<Clue>();
 
-            City nextCity = NextCity(user, city);
-            if (nextCity == null)
+            /* iterates over the NodePath of the game */
+            int i;
+            for (i = 0; i < Constants.NUMBERLASTCITY-1; i++)
             {
-                return null;
+                /* get the Current NodePath  */
+                IEnumerable<NodePath> currentNodePath = g.NodePath.Where(cp => cp.NodePathOrder == i);
+                NodePath cnp = currentNodePath.First();
+                Random r = new Random();
+
+                /* get the amount of caracteristic of the suspect by NodePath  */
+                int rnd = r.Next(0, 2);
+                while (amountCharacteristicsSuspects[rnd] != 0)
+                {
+                    rnd = r.Next(0, 2);
+                }
+                int characteristicsSuspect = amountCharacteristicsSuspects[rnd];
+                amountCharacteristicsSuspects[rnd] = 0;
+                /* get the next city by NodePath */
+                City nextCity = NextCity(g, cnp);
+                /* if nextCity is null, break the cicle */
+                if (nextCity == null)
+                {
+                    break;
+                }
+                /* build the last clue */
+                Clue c3 = new Clue();
+                /* set the city */
+                c3.City = cnp.City;
+                /* if i have to put characteristics on the clue of the suspect */
+                if (characteristicsSuspect != 0)
+                {
+                    c3.ClueContent = GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + cnp.Famous.First().New;
+                    characteristicsSuspect--;
+                }
+                
+                /* build the second clue */
+                Clue c2 = new Clue();
+
+                /* get the dynamic cityProperty for the nextCity */
+                CityProperty cpd = nextCity.CityProperty.Where(qcp => qcp.Dyn == true).First();
+
+                /* set de city */
+                c2.City = cnp.City;
+                /* if i have to put characteristics on the clue of the suspect */
+                if (characteristicsSuspect != 0)
+                {
+                    c2.ClueContent = cpd.CityPropertyContent + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + cnp.Famous.ElementAt(1).New;
+                    characteristicsSuspect--;
+                }
+                else
+                {
+                    c2.ClueContent = cpd.CityPropertyContent;
+                }
+                
+                /* build the second clue */
+                Clue c1 = new Clue();
+
+                /* get the static cityProperty for the nextCity */
+                CityProperty cps = nextCity.CityProperty.Where(qcs => qcs.Dyn == false).First();
+
+                /* set de city */
+                c1.City = cnp.City;
+                /* if i have to put characteristics on the clue of the suspect */
+                if (characteristicsSuspect != 0)
+                {
+                    c1.ClueContent = cps.CityPropertyContent + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + cnp.Famous.ElementAt(2).New;
+                    characteristicsSuspect--;
+                }
+                else
+                {
+                    c1.ClueContent = cps.CityPropertyContent;
+                }
+                
+                /* Add clue for the NodePath in order*/
+                cnp.Clue.Add(c1);
+                cnp.Clue.Add(c2);
+                cnp.Clue.Add(c3);
+
             }
 
-            IQueryable<CityProperty> cp = dm.GetCityPropertyByCity(nextCity, ic);
-
-            Level l = user.Level;
-            Clue c1 = new Clue();
-            Clue c2 = new Clue();
-            Clue c3 = new Clue();
-
-            IQueryable<Suspect> BigSuspect = dm.GetSuspectByGame(user.Game, ic);
-
-            /*************** INICIA código totalmente hardcode para probar el funcionamiento de la función para un usario **************/
-
-            if (l.LevelName.Equals(Parameters.LEVEL_ROOKIE))
-            {
-                c1.City = nextCity;
-                c2.City = nextCity;
-                c3.City = null;
-
-                IQueryable<CityProperty> cp1 = from ccpp1 in cp
-                                               where ccpp1.Dyn == false
-                                               select ccpp1;
-                c1.ClueContent = cp1.First().CityPropertyContent;
-
-                IQueryable<CityProperty> cp2 = from ccpp2 in cp
-                                               where ccpp2.Dyn == true
-                                               select ccpp2;
-                c2.ClueContent = cp2.First().CityPropertyContent;
-
-                IQueryable<CityProperty> cp3 = from ccpp3 in cp
-                                               where ccpp3.City.CityName == Parameters.NONE
-                                               select ccpp3;
-
-                //IQueryable<New> newsFamous = from nnff in city.Famous.
-                //                             where nnff.New in
-                c3.ClueContent = cp3.First().CityPropertyContent; //+ " " + ;
-
-                cpRes.Add(c1);
-                cpRes.Add(c2);
-                cpRes.Add(c3);
-                return cpRes;
-            }
-            return null;
-
-            /***************************** FIN de código hardcode *********************************/
         }
 
-        public City NextCity(User user, City city)
+        public City NextCity(Game g, NodePath currentNodePath)
         {
-            IEnumerable<NodePath> currentNodePath = from nodePath in user.Game.NodePath
-                                                    where nodePath.City == city
-                                                    select nodePath;
-
-            
+            /* get the order for the next NodePath */
             int orderNodePath = -1;
-            orderNodePath = currentNodePath.ElementAt(0).NodePathOrder + 1;
+            orderNodePath = currentNodePath.NodePathOrder + 1;
 
-            if (Parameters.NUMBERLASTCITY < orderNodePath)
+            /* if the last nodePath of the game return null */
+            if (Constants.NUMBERLASTCITY < orderNodePath)
             {
                 return null;
             }
 
-            IEnumerable<NodePath> nextNodePath = from nodePath in user.Game.NodePath
+            /* get the next NodePath */
+            IEnumerable<NodePath> nextNodePath = from nodePath in g.NodePath
                                                  where nodePath.NodePathOrder == orderNodePath
                                                  select nodePath;
-            return nextNodePath.ElementAt(0).City;
+            return nextNodePath.First().City;
+        }
+
+        public String GetRandomCharacteristicSuspect (Suspect s, List<Boolean> csuspect){
+            /* get the random index for the characteristic of the suspect */
+            Random rnd = new Random();
+            int indexRandom = rnd.Next(0,5);
+            while (!csuspect[indexRandom]){
+                indexRandom = rnd.Next(0,5);
+            }
+            /* set flase in the structure of characteristics of the suspects */
+            csuspect[indexRandom] = false;
+
+            /* according to the index, the characteristic choose */
+            switch (indexRandom)
+            {
+                /* faltan definir las características 2, 3 y 4*/
+                case 0: 
+                    return s.SuspectPreferenceMovies;
+                    
+                case 1:
+                    return s.SuspectPreferenceMovies;
+                default:
+                    return "";
+            }
+                        
         }
     }
 
