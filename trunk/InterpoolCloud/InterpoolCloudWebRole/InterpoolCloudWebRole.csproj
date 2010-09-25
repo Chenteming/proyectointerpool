@@ -83,6 +83,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Pages\FacebookCallback.aspx" />
     <Content Include="Services\InterpoolWP7.svc" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -156,6 +157,13 @@
     <Compile Include="FacebookCommunication\oAuthFacebook.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FacebookCallback.aspx.cs">
+      <DependentUpon>FacebookCallback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\FacebookCallback.aspx.designer.cs">
+      <DependentUpon>FacebookCallback.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\BingSearchService\Reference.cs">
