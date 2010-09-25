@@ -1822,11 +1822,13 @@ namespace InterpoolCloudWebRole.Data
         /// </summary>
         /// <param name="nodePathId">Initial value of the NodePathId property.</param>
         /// <param name="nodePathOrder">Initial value of the NodePathOrder property.</param>
-        public static NodePath CreateNodePath(global::System.Int32 nodePathId, global::System.Int32 nodePathOrder)
+        /// <param name="nodePathCurrent">Initial value of the NodePathCurrent property.</param>
+        public static NodePath CreateNodePath(global::System.Int32 nodePathId, global::System.Int32 nodePathOrder, global::System.Boolean nodePathCurrent)
         {
             NodePath nodePath = new NodePath();
             nodePath.NodePathId = nodePathId;
             nodePath.NodePathOrder = nodePathOrder;
+            nodePath.NodePathCurrent = nodePathCurrent;
             return nodePath;
         }
 
@@ -1883,6 +1885,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.Int32 _NodePathOrder;
         partial void OnNodePathOrderChanging(global::System.Int32 value);
         partial void OnNodePathOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean NodePathCurrent
+        {
+            get
+            {
+                return _NodePathCurrent;
+            }
+            set
+            {
+                OnNodePathCurrentChanging(value);
+                ReportPropertyChanging("NodePathCurrent");
+                _NodePathCurrent = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NodePathCurrent");
+                OnNodePathCurrentChanged();
+            }
+        }
+        private global::System.Boolean _NodePathCurrent;
+        partial void OnNodePathCurrentChanging(global::System.Boolean value);
+        partial void OnNodePathCurrentChanged();
 
         #endregion
     
@@ -2135,13 +2161,15 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="suspectName">Initial value of the SuspectName property.</param>
         /// <param name="suspectPreferenceMusic">Initial value of the SuspectPreferenceMusic property.</param>
         /// <param name="suspectPreferenceMovies">Initial value of the SuspectPreferenceMovies property.</param>
-        public static Suspect CreateSuspect(global::System.Int32 suspectId, global::System.String suspectName, global::System.String suspectPreferenceMusic, global::System.String suspectPreferenceMovies)
+        /// <param name="suspectFecebookId">Initial value of the SuspectFecebookId property.</param>
+        public static Suspect CreateSuspect(global::System.Int32 suspectId, global::System.String suspectName, global::System.String suspectPreferenceMusic, global::System.String suspectPreferenceMovies, global::System.String suspectFecebookId)
         {
             Suspect suspect = new Suspect();
             suspect.SuspectId = suspectId;
             suspect.SuspectName = suspectName;
             suspect.SuspectPreferenceMusic = suspectPreferenceMusic;
             suspect.SuspectPreferenceMovies = suspectPreferenceMovies;
+            suspect.SuspectFecebookId = suspectFecebookId;
             return suspect;
         }
 
@@ -2246,6 +2274,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _SuspectPreferenceMovies;
         partial void OnSuspectPreferenceMoviesChanging(global::System.String value);
         partial void OnSuspectPreferenceMoviesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SuspectFecebookId
+        {
+            get
+            {
+                return _SuspectFecebookId;
+            }
+            set
+            {
+                OnSuspectFecebookIdChanging(value);
+                ReportPropertyChanging("SuspectFecebookId");
+                _SuspectFecebookId = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SuspectFecebookId");
+                OnSuspectFecebookIdChanged();
+            }
+        }
+        private global::System.String _SuspectFecebookId;
+        partial void OnSuspectFecebookIdChanging(global::System.String value);
+        partial void OnSuspectFecebookIdChanged();
 
         #endregion
     

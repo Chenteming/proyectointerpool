@@ -13,8 +13,9 @@ namespace InterpoolCloudWebRole.Controller
     {
 
 
-        public string GetCurrentCity()
+        public string GetCurrentCity(string userIdFacebook)
         {
+            
             return "";
         }
 
