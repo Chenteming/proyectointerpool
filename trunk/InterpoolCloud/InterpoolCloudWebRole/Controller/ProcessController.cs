@@ -6,12 +6,12 @@ using System.Data.Objects.DataClasses;
 
 using InterpoolCloudWebRole.Data;
 using InterpoolCloudWebRole.Utilities;
+using InterpoolCloudWebRole.FacebookCommunication;
 
 namespace InterpoolCloudWebRole.Controller
 {
     public class ProcessController : IProcessController
     {
-
 
         public string GetCurrentCity(string userIdFacebook)
         {
@@ -47,7 +47,7 @@ namespace InterpoolCloudWebRole.Controller
                 user.Level = conteiner.Levels.Where(l => l.LevelId == 1).First();
                 // 1 the trip is built to be followed by user
                 Game newGame = BuiltTravel(user, conteiner);
-                
+
                 // 2 Get suspects
                 GetSuspects(newGame,conteiner);
 
@@ -69,7 +69,10 @@ namespace InterpoolCloudWebRole.Controller
 
         public void GetSuspects(Game newGame, InterpoolContainer container)
         {
-            // in this operation we should to find the possibles suspects , and asign the suspect
+            // In this operation we should to find the possibles suspects , and asign the suspect
+
+            IFacebookController facebookController = new FacebookController();
+            facebookController.DownloadFacebookUserData(newGame, container);
 
             IQueryable<Suspect> IQbigSuspect =  from s in container.Suspects
                                                 where s.SuspectId == 3
@@ -82,7 +85,6 @@ namespace InterpoolCloudWebRole.Controller
             foreach (Suspect s in IQSuspects.ToList<Suspect>())
             {
                 newGame.PossibleSuspect.Add(s);
-
             }
 
 
