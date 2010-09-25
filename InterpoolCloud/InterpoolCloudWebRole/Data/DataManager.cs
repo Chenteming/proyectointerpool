@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using InterpoolCloudWebRole.FacebookCommunication;
 
 namespace InterpoolCloudWebRole.Data
 {
@@ -48,6 +49,18 @@ namespace InterpoolCloudWebRole.Data
                    where p.ParameterName == name
                    select p.ParameterValue;
             return query.First();
+        }
+
+
+        public void StoreUser(FacebookUserData fbud, InterpoolContainer context)
+        {
+            // The user may have more information stored in order to use it
+            // for future games
+            User user = new User();
+            user.UserIdFacebook = fbud.userId;
+            user.UserTokenFacebook = fbud.oAuth.Token;
+            context.AddToUsers(user);
+            context.SaveChanges();
         }
     }
 }
