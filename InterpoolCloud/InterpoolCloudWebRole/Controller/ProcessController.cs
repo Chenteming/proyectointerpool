@@ -11,6 +11,23 @@ namespace InterpoolCloudWebRole.Controller
 {
     public class ProcessController : IProcessController
     {
+
+
+        public string GetCurrentCity()
+        {
+            return "";
+        }
+
+        public List<string> GetPossibleCities()
+        {
+            return null;
+        }
+
+        public List<string> GetCurrentFamous(string city)
+        {
+            return null;
+        }
+        
         public void StartGame(User user)
         {
             // this is only the structs that we should follow
