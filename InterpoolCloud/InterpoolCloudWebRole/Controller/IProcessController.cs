@@ -10,6 +10,6 @@ namespace InterpoolCloudWebRole.Controller
     interface IProcessController
     {
         void StartGame(User user);
-        City NextCity(User user, City city);
+        
     }
 }
