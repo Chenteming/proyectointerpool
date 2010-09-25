@@ -18,19 +18,19 @@ namespace InterpoolCloudWebRole.Services
             
         }
 
-        public string GetCurrentCity(String s)
+        public string GetCurrentCity(string userIdFacebook)
         {
-            return controller.GetCurrentCity(s);
+            return controller.GetCurrentCity(userIdFacebook);
         }
 
-        public List<string> GetPossibleCities()
+        public List<string> GetPossibleCities(string userIdFacebook)
         {
-            return controller.GetPossibleCities();
+            return controller.GetPossibleCities(userIdFacebook);
         }
 
-        public List<string> GetCurrentFamous(string city)
+        public List<string> GetCurrentFamous(string userIdFacebook)
         {
-            return controller.GetCurrentFamous(city);
+            return controller.GetCurrentFamous(userIdFacebook);
         }
 
         
