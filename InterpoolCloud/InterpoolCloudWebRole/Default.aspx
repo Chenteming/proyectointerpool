@@ -8,7 +8,12 @@
         Welcome to ASP.NET!
     </h2>
     <p>
-        To learn more about ASP.NET visit <a href="http://www.asp.net" title="ASP.NET Website">www.asp.net</a>.
+        To learn more about ASP.NET visit <a href="http://www.asp.net" title="ASP.NET Website">www.asp.net</a>.</p>
+    <p>
+        &nbsp;<asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
+            Text="StartGame" />
+        <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
+            Text="Newsfamois" />
     </p>
     <p>
         You can also find <a href="http://go.microsoft.com/fwlink/?LinkID=152368&amp;clcid=0x409"

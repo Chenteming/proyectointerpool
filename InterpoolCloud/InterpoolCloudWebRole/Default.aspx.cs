@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using InterpoolCloudWebRole.Controller;
+using InterpoolCloudWebRole.Utilities;
+using InterpoolCloudWebRole.Data;
 
 namespace InterpoolCloudWebRole
 {
@@ -12,6 +15,19 @@ namespace InterpoolCloudWebRole
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            InterpoolContainer conteiner = new InterpoolContainer();
+            User user = new User();
+            IProcessController ipc = new ProcessController();
+            ipc.StartGame(user);
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Admin.loadFemousData();
         }
     }
 }
