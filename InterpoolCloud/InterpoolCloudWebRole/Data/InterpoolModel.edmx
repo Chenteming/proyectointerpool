@@ -114,6 +114,7 @@
     </Key>
     <Property Name="NodePathId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NodePathOrder" Type="int" Nullable="false" />
+    <Property Name="NodePathCurrent" Type="bit" Nullable="false" />
     <Property Name="Game_GameId" Type="int" Nullable="false" />
     <Property Name="City_CityId" Type="int" Nullable="false" />
   </EntityType>
@@ -160,6 +161,7 @@
     <Property Name="SuspectName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SuspectPreferenceMusic" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SuspectPreferenceMovies" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SuspectFecebookId" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Levels">
     <Key>
@@ -705,6 +707,7 @@
         <MappingFragment StoreEntitySet="NodePaths">
           <ScalarProperty Name="NodePathId" ColumnName="NodePathId" />
           <ScalarProperty Name="NodePathOrder" ColumnName="NodePathOrder" />
+          <ScalarProperty Name="NodePathCurrent" ColumnName="NodePathCurrent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -749,6 +752,7 @@
           <ScalarProperty Name="SuspectName" ColumnName="SuspectName" />
           <ScalarProperty Name="SuspectPreferenceMusic" ColumnName="SuspectPreferenceMusic" />
           <ScalarProperty Name="SuspectPreferenceMovies" ColumnName="SuspectPreferenceMovies" />
+          <ScalarProperty Name="SuspectFecebookId" ColumnName="SuspectFecebookId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -943,8 +947,6 @@
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathFamous">
           <ConnectorPoint PointX="6.375" PointY="9.8593533032226546" />
-          <ConnectorPoint PointX="7.947916666666667" PointY="9.8593533032226546" />
-          <ConnectorPoint PointX="8.1145833333333339" PointY="9.8593533032226546" />
           <ConnectorPoint PointX="8.125" PointY="9.8593533032226546" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.CityFamous">
@@ -956,9 +958,10 @@
           <ConnectorPoint PointX="10.75" PointY="9.172841796875" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathClue" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.375" PointY="10.674988606770834" />
-          <ConnectorPoint PointX="14.270234891260081" PointY="10.674988606770834" />
-          <ConnectorPoint PointX="14.270234891260081" PointY="6.6052864583333326" />
+          <ConnectorPoint PointX="5.9774992559155571" PointY="10.739889322916666" />
+          <ConnectorPoint PointX="5.9774992559155571" PointY="11.114889322916667" />
+          <ConnectorPoint PointX="14.270234391260081" PointY="11.114889322916667" />
+          <ConnectorPoint PointX="14.270234391260081" PointY="6.6052864583333326" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.ClueCity">
           <ConnectorPoint PointX="13.25" PointY="5.34375" />
@@ -974,9 +977,9 @@
           <ConnectorPoint PointX="7.625" PointY="4.8552864583333326" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathCity">
-          <ConnectorPoint PointX="6.375" PointY="10.643736106770833" />
-          <ConnectorPoint PointX="8.03125" PointY="10.643736106770833" />
-          <ConnectorPoint PointX="8.03125" PointY="7.8744921875" />
+          <ConnectorPoint PointX="5.625" PointY="8.375" />
+          <ConnectorPoint PointX="5.625" PointY="7.6552655297208148" />
+          <ConnectorPoint PointX="8" PointY="7.6552655297208148" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.GameSuspect1">
           <ConnectorPoint PointX="2.3875808028950192" PointY="5.25" />
