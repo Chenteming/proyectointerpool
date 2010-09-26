@@ -15,13 +15,15 @@ namespace WP7
 {
     public class GameManager
     {
-
         private static GameManager instance;
         private String currentCity;
         private List<String> cities;
         private List<String> clues;
         private List<String> famous;
         private List<String> suspects;
+        private int[] famousIndex = {-1,-1,-1} ;
+        private int number = -1;
+        private int currentFamous = -1;
 
         public static GameManager getInstance()
         {
@@ -123,5 +125,29 @@ namespace WP7
             suspects = list;
         }
 
-    }
+        public void SetFamousIndex(int gameObjectNumber)
+        // famousIndex[0] = phoneFamous        
+        // famousIndex[1] = newspaperFamous   (1,2,3) famousNumber
+        // famousIndex[2] = computerFamous
+        {
+            if (famousIndex[gameObjectNumber] == -1)
+            {
+                number++;
+                famousIndex[gameObjectNumber] = number;
+                currentFamous = number;
+            }
+            else
+                currentFamous = famousIndex[gameObjectNumber];
+        }
+        public int GetNumber()
+        // returns the number of the actual famous
+        {
+            return number;
+        }
+
+        public int GetCurrentFamous()
+        {
+            return currentFamous;
+        }
+       }
 }
