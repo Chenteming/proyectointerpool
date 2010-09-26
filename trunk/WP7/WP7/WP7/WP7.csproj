@@ -132,7 +132,9 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="GameLanguages\English.xml" />
-    <Content Include="GameLanguages\Spanish.xml" />
+    <Content Include="GameLanguages\Spanish.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="GameSounds\intro.wma">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
