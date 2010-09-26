@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using WP7.ServiceReference;
 
 namespace WP7
 {
@@ -22,6 +23,8 @@ namespace WP7
 
         private void ComputerButton_Click(object sender, RoutedEventArgs e)
         {
+            GameManager gm = GameManager.getInstance();
+            gm.SetFamousIndex(2);
             NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
         }
 		
@@ -42,12 +45,16 @@ namespace WP7
 
 		private void NewspaperButton_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new Uri("/GamePages/Famous2.xaml", UriKind.RelativeOrAbsolute));
+            GameManager gm = GameManager.getInstance();
+            gm.SetFamousIndex(1);
+			NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
 		}
 
 		private void phoneButton_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new Uri("/GamePages/Famous3.xaml", UriKind.RelativeOrAbsolute));
+            GameManager gm = GameManager.getInstance();
+            gm.SetFamousIndex(0);
+            NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));            
 		}
 	}
 }
