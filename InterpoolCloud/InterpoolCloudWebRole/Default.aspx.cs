@@ -21,9 +21,9 @@ namespace InterpoolCloudWebRole
         protected void Button1_Click(object sender, EventArgs e)
         {
             InterpoolContainer conteiner = new InterpoolContainer();
-            User user = new User();
+            string userId = "100001529078183";
             IProcessController ipc = new ProcessController();
-            ipc.StartGame(user);
+            ipc.StartGame(userId);
         }
 
         protected void Button2_Click(object sender, EventArgs e)

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/25/2010 18:34:11
+-- Date Created: 09/25/2010 22:06:41
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -57,10 +57,10 @@ IF OBJECT_ID(N'[dbo].[FK_NodePathCity]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[NodePaths] DROP CONSTRAINT [FK_NodePathCity];
 GO
 IF OBJECT_ID(N'[dbo].[FK_GameSuspect1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Games] DROP CONSTRAINT [FK_GameSuspect1];
+    ALTER TABLE [dbo].[Suspects] DROP CONSTRAINT [FK_GameSuspect1];
 GO
 IF OBJECT_ID(N'[dbo].[FK_UserGame]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserGame];
+    ALTER TABLE [dbo].[Games] DROP CONSTRAINT [FK_UserGame];
 GO
 IF OBJECT_ID(N'[dbo].[FK_UserLevel]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserLevel];
@@ -68,8 +68,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CityCityProperty]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CityPropertySet] DROP CONSTRAINT [FK_CityCityProperty];
 GO
-IF OBJECT_ID(N'[dbo].[FK_NodePathCity1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Cities] DROP CONSTRAINT [FK_NodePathCity1];
+IF OBJECT_ID(N'[dbo].[FK_NodePathCity1_NodePath]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[NodePathPossibleCity] DROP CONSTRAINT [FK_NodePathCity1_NodePath];
+GO
+IF OBJECT_ID(N'[dbo].[FK_NodePathCity1_City]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[NodePathPossibleCity] DROP CONSTRAINT [FK_NodePathCity1_City];
 GO
 
 -- --------------------------------------------------
@@ -121,6 +124,9 @@ GO
 IF OBJECT_ID(N'[dbo].[NodePathClue]', 'U') IS NOT NULL
     DROP TABLE [dbo].[NodePathClue];
 GO
+IF OBJECT_ID(N'[dbo].[NodePathPossibleCity]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[NodePathPossibleCity];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -131,7 +137,6 @@ CREATE TABLE [dbo].[Users] (
     [UserId] int IDENTITY(1,1) NOT NULL,
     [UserIdFacebook] nvarchar(max)  NOT NULL,
     [UserTokenFacebook] nvarchar(max)  NOT NULL,
-    [Game_GameId] int  NOT NULL,
     [Level_LevelId] int  NOT NULL
 );
 GO
@@ -140,7 +145,7 @@ GO
 CREATE TABLE [dbo].[Games] (
     [GameId] int IDENTITY(1,1) NOT NULL,
     [GameTime] smallint  NOT NULL,
-    [Suspect_SuspectId] int  NOT NULL
+    [User_UserId] int  NOT NULL
 );
 GO
 
@@ -160,8 +165,7 @@ CREATE TABLE [dbo].[Cities] (
     [CityName] nvarchar(max)  NOT NULL,
     [CityCountry] nvarchar(max)  NOT NULL,
     [CityNumber] int  NOT NULL,
-    [Level_LevelId] int  NOT NULL,
-    [NodePath_1_NodePathId] int  NOT NULL
+    [Level_LevelId] int  NOT NULL
 );
 GO
 
@@ -186,7 +190,7 @@ CREATE TABLE [dbo].[Clues] (
     [ClueId] int IDENTITY(1,1) NOT NULL,
     [ClueContent] nvarchar(max)  NOT NULL,
     [City_CityId] int  NULL,
-    [Famous_FamousId] int  NOT NULL
+    [Famous_FamousId] int  NULL
 );
 GO
 
@@ -194,9 +198,10 @@ GO
 CREATE TABLE [dbo].[Suspects] (
     [SuspectId] int IDENTITY(1,1) NOT NULL,
     [SuspectName] nvarchar(max)  NOT NULL,
-    [SuspectPreferenceMusic] nvarchar(max)  NOT NULL,
-    [SuspectPreferenceMovies] nvarchar(max)  NOT NULL,
-    [SuspectFecebookId] nvarchar(max)  NOT NULL
+    [SuspectPreferenceMusic] nvarchar(max)  NULL,
+    [SuspectPreferenceMovies] nvarchar(max)  NULL,
+    [SuspectFecebookId] nvarchar(max)  NOT NULL,
+    [Game_1_GameId] int  NULL
 );
 GO
 
@@ -252,6 +257,13 @@ GO
 CREATE TABLE [dbo].[NodePathClue] (
     [NodePath_NodePathId] int  NOT NULL,
     [Clue_ClueId] int  NOT NULL
+);
+GO
+
+-- Creating table 'NodePathPossibleCity'
+CREATE TABLE [dbo].[NodePathPossibleCity] (
+    [NodePath_1_NodePathId] int  NOT NULL,
+    [PossibleCities_CityId] int  NOT NULL
 );
 GO
 
@@ -347,6 +359,12 @@ GO
 ALTER TABLE [dbo].[NodePathClue]
 ADD CONSTRAINT [PK_NodePathClue]
     PRIMARY KEY NONCLUSTERED ([NodePath_NodePathId], [Clue_ClueId] ASC);
+GO
+
+-- Creating primary key on [NodePath_1_NodePathId], [PossibleCities_CityId] in table 'NodePathPossibleCity'
+ALTER TABLE [dbo].[NodePathPossibleCity]
+ADD CONSTRAINT [PK_NodePathPossibleCity]
+    PRIMARY KEY NONCLUSTERED ([NodePath_1_NodePathId], [PossibleCities_CityId] ASC);
 GO
 
 -- --------------------------------------------------
@@ -520,32 +538,32 @@ ON [dbo].[NodePaths]
     ([City_CityId]);
 GO
 
--- Creating foreign key on [Suspect_SuspectId] in table 'Games'
-ALTER TABLE [dbo].[Games]
+-- Creating foreign key on [Game_1_GameId] in table 'Suspects'
+ALTER TABLE [dbo].[Suspects]
 ADD CONSTRAINT [FK_GameSuspect1]
-    FOREIGN KEY ([Suspect_SuspectId])
-    REFERENCES [dbo].[Suspects]
-        ([SuspectId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_GameSuspect1'
-CREATE INDEX [IX_FK_GameSuspect1]
-ON [dbo].[Games]
-    ([Suspect_SuspectId]);
-GO
-
--- Creating foreign key on [Game_GameId] in table 'Users'
-ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [FK_UserGame]
-    FOREIGN KEY ([Game_GameId])
+    FOREIGN KEY ([Game_1_GameId])
     REFERENCES [dbo].[Games]
         ([GameId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+-- Creating non-clustered index for FOREIGN KEY 'FK_GameSuspect1'
+CREATE INDEX [IX_FK_GameSuspect1]
+ON [dbo].[Suspects]
+    ([Game_1_GameId]);
+GO
+
+-- Creating foreign key on [User_UserId] in table 'Games'
+ALTER TABLE [dbo].[Games]
+ADD CONSTRAINT [FK_UserGame]
+    FOREIGN KEY ([User_UserId])
+    REFERENCES [dbo].[Users]
+        ([UserId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserGame'
 CREATE INDEX [IX_FK_UserGame]
-ON [dbo].[Users]
-    ([Game_GameId]);
+ON [dbo].[Games]
+    ([User_UserId]);
 GO
 
 -- Creating foreign key on [Level_LevelId] in table 'Users'
@@ -576,18 +594,27 @@ ON [dbo].[CityPropertySet]
     ([City_CityId]);
 GO
 
--- Creating foreign key on [NodePath_1_NodePathId] in table 'Cities'
-ALTER TABLE [dbo].[Cities]
-ADD CONSTRAINT [FK_NodePathCity1]
+-- Creating foreign key on [NodePath_1_NodePathId] in table 'NodePathPossibleCity'
+ALTER TABLE [dbo].[NodePathPossibleCity]
+ADD CONSTRAINT [FK_NodePathCity1_NodePath]
     FOREIGN KEY ([NodePath_1_NodePathId])
     REFERENCES [dbo].[NodePaths]
         ([NodePathId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_NodePathCity1'
-CREATE INDEX [IX_FK_NodePathCity1]
-ON [dbo].[Cities]
-    ([NodePath_1_NodePathId]);
+-- Creating foreign key on [PossibleCities_CityId] in table 'NodePathPossibleCity'
+ALTER TABLE [dbo].[NodePathPossibleCity]
+ADD CONSTRAINT [FK_NodePathCity1_City]
+    FOREIGN KEY ([PossibleCities_CityId])
+    REFERENCES [dbo].[Cities]
+        ([CityId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_NodePathCity1_City'
+CREATE INDEX [IX_FK_NodePathCity1_City]
+ON [dbo].[NodePathPossibleCity]
+    ([PossibleCities_CityId]);
 GO
 
 -- --------------------------------------------------

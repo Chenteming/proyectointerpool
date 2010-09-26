@@ -21,6 +21,7 @@
     <EntitySet Name="GamePossibleSuspect" EntityType="InterpoolModel.Store.GameSuspect" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="NodePathFamous" EntityType="InterpoolModel.Store.NodePathFamous" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="NodePathClue" EntityType="InterpoolModel.Store.NodePathClue" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NodePathPossibleCity" EntityType="InterpoolModel.Store.NodePathCity1" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_GamePossibleSuspect_Game" Association="InterpoolModel.Store.FK_GameSuspect_Game">
       <End Role="Game" EntitySet="Games" />
       <End Role="GameSuspect" EntitySet="GamePossibleSuspect" />
@@ -89,9 +90,13 @@
       <End Role="City" EntitySet="Cities" />
       <End Role="CityProperty" EntitySet="CityPropertySet" />
     </AssociationSet>
-    <AssociationSet Name="NodePathPossibleCity" Association="InterpoolModel.Store.NodePathCity1">
+    <AssociationSet Name="FK_NodePathPossibleCity_NodePath" Association="InterpoolModel.Store.FK_NodePathCity1_NodePath">
       <End Role="NodePath" EntitySet="NodePaths" />
+      <End Role="NodePathCity1" EntitySet="NodePathPossibleCity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodePathPossibleCity_City" Association="InterpoolModel.Store.FK_NodePathCity1_City">
       <End Role="City" EntitySet="Cities" />
+      <End Role="NodePathCity1" EntitySet="NodePathPossibleCity" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
@@ -101,7 +106,6 @@
     <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserIdFacebook" Type="nvarchar(max)" Nullable="false" />
     <Property Name="UserTokenFacebook" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Game_GameId" Type="int" Nullable="false" />
     <Property Name="Level_LevelId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Games">
@@ -110,7 +114,7 @@
     </Key>
     <Property Name="GameId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="GameTime" Type="smallint" Nullable="false" />
-    <Property Name="Suspect_SuspectId" Type="int" Nullable="false" />
+    <Property Name="User_UserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="NodePaths">
     <Key>
@@ -131,7 +135,6 @@
     <Property Name="CityCountry" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CityNumber" Type="int" Nullable="false" />
     <Property Name="Level_LevelId" Type="int" Nullable="false" />
-    <Property Name="NodePath_1_NodePathId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Famous">
     <Key>
@@ -156,7 +159,7 @@
     <Property Name="ClueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClueContent" Type="nvarchar(max)" Nullable="false" />
     <Property Name="City_CityId" Type="int" Nullable="true" />
-    <Property Name="Famous_FamousId" Type="int" Nullable="false" />
+    <Property Name="Famous_FamousId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Suspects">
     <Key>
@@ -164,9 +167,10 @@
     </Key>
     <Property Name="SuspectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SuspectName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SuspectPreferenceMusic" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SuspectPreferenceMovies" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SuspectPreferenceMusic" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SuspectPreferenceMovies" Type="nvarchar(max)" Nullable="true" />
     <Property Name="SuspectFecebookId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Game_1_GameId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Levels">
     <Key>
@@ -226,6 +230,14 @@
     <Property Name="NodePath_NodePathId" Type="int" Nullable="false" />
     <Property Name="Clue_ClueId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="NodePathCity1">
+    <Key>
+      <PropertyRef Name="NodePath_1_NodePathId" />
+      <PropertyRef Name="PossibleCities_CityId" />
+    </Key>
+    <Property Name="NodePath_1_NodePathId" Type="int" Nullable="false" />
+    <Property Name="PossibleCities_CityId" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="GameNodePath">
     <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="1" />
     <End Role="NodePath" Type="InterpoolModel.Store.NodePaths" Multiplicity="*" />
@@ -276,7 +288,7 @@
   </Association>
   <Association Name="ClueFamous">
     <End Role="Clue" Type="InterpoolModel.Store.Clues" Multiplicity="*" />
-    <End Role="Famous" Type="InterpoolModel.Store.Famous" Multiplicity="1" />
+    <End Role="Famous" Type="InterpoolModel.Store.Famous" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Famous">
         <PropertyRef Name="FamousId" />
@@ -311,26 +323,26 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="GameSuspect1">
-    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="*" />
-    <End Role="Suspect" Type="InterpoolModel.Store.Suspects" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Suspect">
-        <PropertyRef Name="SuspectId" />
-      </Principal>
-      <Dependent Role="Game">
-        <PropertyRef Name="Suspect_SuspectId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserGame">
-    <End Role="User" Type="InterpoolModel.Store.Users" Multiplicity="*" />
-    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="1" />
+    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="0..1" />
+    <End Role="Suspect" Type="InterpoolModel.Store.Suspects" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Game">
         <PropertyRef Name="GameId" />
       </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="Game_GameId" />
+      <Dependent Role="Suspect">
+        <PropertyRef Name="Game_1_GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserGame">
+    <End Role="User" Type="InterpoolModel.Store.Users" Multiplicity="1" />
+    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="User_UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -355,18 +367,6 @@
       </Principal>
       <Dependent Role="CityProperty">
         <PropertyRef Name="City_CityId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="NodePathCity1">
-    <End Role="NodePath" Type="InterpoolModel.Store.NodePaths" Multiplicity="1" />
-    <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NodePath">
-        <PropertyRef Name="NodePathId" />
-      </Principal>
-      <Dependent Role="City">
-        <PropertyRef Name="NodePath_1_NodePathId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -439,6 +439,30 @@
       </Principal>
       <Dependent Role="NodePathClue">
         <PropertyRef Name="Clue_ClueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodePathCity1_NodePath">
+    <End Role="NodePath" Type="InterpoolModel.Store.NodePaths" Multiplicity="1" />
+    <End Role="NodePathCity1" Type="InterpoolModel.Store.NodePathCity1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NodePath">
+        <PropertyRef Name="NodePathId" />
+      </Principal>
+      <Dependent Role="NodePathCity1">
+        <PropertyRef Name="NodePath_1_NodePathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodePathCity1_City">
+    <End Role="NodePathCity1" Type="InterpoolModel.Store.NodePathCity1" Multiplicity="*" />
+    <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="NodePathCity1">
+        <PropertyRef Name="PossibleCities_CityId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -604,8 +628,8 @@
           </Key>
           <Property Type="Int32" Name="SuspectId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="SuspectName" Nullable="false" />
-          <Property Type="String" Name="SuspectPreferenceMusic" Nullable="false" />
-          <Property Type="String" Name="SuspectPreferenceMovies" Nullable="false" />
+          <Property Type="String" Name="SuspectPreferenceMusic" Nullable="true" />
+          <Property Type="String" Name="SuspectPreferenceMovies" Nullable="true" />
           <NavigationProperty Name="Game" Relationship="InterpoolModel.GameSuspect" FromRole="Suspect" ToRole="Game" />
           <NavigationProperty Name="Game_1" Relationship="InterpoolModel.GameSuspect1" FromRole="Suspect" ToRole="Game" />
           <Property Type="String" Name="SuspectFecebookId" Nullable="false" />
@@ -649,8 +673,8 @@
           <End Type="InterpoolModel.City" Role="City" Multiplicity="0..1" />
         </Association>
         <Association Name="ClueFamous">
-          <End Type="InterpoolModel.Clue" Role="Clue" Multiplicity="1" />
-          <End Type="InterpoolModel.Famous" Role="Famous" Multiplicity="1" />
+          <End Type="InterpoolModel.Clue" Role="Clue" Multiplicity="*" />
+          <End Type="InterpoolModel.Famous" Role="Famous" Multiplicity="0..1" />
         </Association>
         <Association Name="CityLevel">
           <End Type="InterpoolModel.City" Role="City" Multiplicity="1" />
@@ -661,12 +685,12 @@
           <End Type="InterpoolModel.City" Role="City" Multiplicity="1" />
         </Association>
         <Association Name="GameSuspect1">
-          <End Type="InterpoolModel.Game" Role="Game" Multiplicity="1" />
-          <End Type="InterpoolModel.Suspect" Role="Suspect" Multiplicity="1" />
+          <End Type="InterpoolModel.Game" Role="Game" Multiplicity="0..1" />
+          <End Type="InterpoolModel.Suspect" Role="Suspect" Multiplicity="0..1" />
         </Association>
         <Association Name="UserGame">
           <End Type="InterpoolModel.User" Role="User" Multiplicity="1" />
-          <End Type="InterpoolModel.Game" Role="Game" Multiplicity="1" />
+          <End Type="InterpoolModel.Game" Role="Game" Multiplicity="0..1" />
         </Association>
         <Association Name="UserLevel">
           <End Type="InterpoolModel.User" Role="User" Multiplicity="*" />
@@ -703,7 +727,7 @@
           <Property Type="String" Name="LogStackTrace" Nullable="false" />
         </EntityType>
         <Association Name="NodePathCity1">
-          <End Type="InterpoolModel.NodePath" Role="NodePath" Multiplicity="1" />
+          <End Type="InterpoolModel.NodePath" Role="NodePath" Multiplicity="*" />
           <End Type="InterpoolModel.City" Role="City" Multiplicity="*" />
         </Association>
       </Schema>
@@ -884,6 +908,7 @@
       <EndProperty Name="Clue">
         <ScalarProperty Name="ClueId" ColumnName="ClueId" />
       </EndProperty>
+      <Condition ColumnName="Famous_FamousId" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="CityLevel" TypeName="InterpoolModel.CityLevel" StoreEntitySet="Cities">
       <EndProperty Name="Level">
@@ -901,20 +926,21 @@
         <ScalarProperty Name="NodePathId" ColumnName="NodePathId" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="GameSuspect1" TypeName="InterpoolModel.GameSuspect1" StoreEntitySet="Games">
+    <AssociationSetMapping Name="GameSuspect1" TypeName="InterpoolModel.GameSuspect1" StoreEntitySet="Suspects">
+      <EndProperty Name="Game">
+        <ScalarProperty Name="GameId" ColumnName="Game_1_GameId" />
+      </EndProperty>
       <EndProperty Name="Suspect">
-        <ScalarProperty Name="SuspectId" ColumnName="Suspect_SuspectId" />
+        <ScalarProperty Name="SuspectId" ColumnName="SuspectId" />
+      </EndProperty>
+      <Condition ColumnName="Game_1_GameId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserGame" TypeName="InterpoolModel.UserGame" StoreEntitySet="Games">
+      <EndProperty Name="User">
+        <ScalarProperty Name="UserId" ColumnName="User_UserId" />
       </EndProperty>
       <EndProperty Name="Game">
         <ScalarProperty Name="GameId" ColumnName="GameId" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="UserGame" TypeName="InterpoolModel.UserGame" StoreEntitySet="Users">
-      <EndProperty Name="Game">
-        <ScalarProperty Name="GameId" ColumnName="Game_GameId" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="UserId" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="UserLevel" TypeName="InterpoolModel.UserLevel" StoreEntitySet="Users">
@@ -933,12 +959,12 @@
         <ScalarProperty Name="CityPropertyId" ColumnName="CityPropertyId" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="NodePathPossibleCity" TypeName="InterpoolModel.NodePathCity1" StoreEntitySet="Cities">
+    <AssociationSetMapping Name="NodePathPossibleCity" TypeName="InterpoolModel.NodePathCity1" StoreEntitySet="NodePathPossibleCity">
       <EndProperty Name="NodePath">
         <ScalarProperty Name="NodePathId" ColumnName="NodePath_1_NodePathId" />
       </EndProperty>
       <EndProperty Name="City">
-        <ScalarProperty Name="CityId" ColumnName="CityId" />
+        <ScalarProperty Name="CityId" ColumnName="PossibleCities_CityId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
@@ -982,8 +1008,8 @@
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathFamous">
           <ConnectorPoint PointX="6.375" PointY="9.4612939453125" />
-          <ConnectorPoint PointX="7.955729166666667" PointY="9.4612939453125" />
-          <ConnectorPoint PointX="8.1223958333333339" PointY="9.4612939453125" />
+          <ConnectorPoint PointX="7.947916666666667" PointY="9.4612939453125" />
+          <ConnectorPoint PointX="8.1145833333333339" PointY="9.4612939453125" />
           <ConnectorPoint PointX="8.125" PointY="9.4612939453125" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.CityFamous">
@@ -1039,10 +1065,12 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="InterpoolModel.Parameter" Width="2" PointX="11.75" PointY="0.625" Height="1.59568359375" />
         <EntityTypeShape EntityType="InterpoolModel.Log" Width="1.5" PointX="14.375" PointY="0.625" Height="1.787985026041667" />
-        <AssociationConnector Association="InterpoolModel.NodePathCity1">
+        <AssociationConnector Association="InterpoolModel.NodePathCity1" ManuallyRouted="true">
           <ConnectorPoint PointX="5.625" PointY="8.375" />
-          <ConnectorPoint PointX="5.625" PointY="7.8917181726469092" />
-          <ConnectorPoint PointX="8" PointY="7.8917181726469092" />
+          <ConnectorPoint PointX="5.625" PointY="7.8066149457885246" />
+          <ConnectorPoint PointX="7.21625" PointY="7.8066149457885246" />
+          <ConnectorPoint PointX="7.21625" PointY="7.5022320148871842" />
+          <ConnectorPoint PointX="8" PointY="7.5022320148871842" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

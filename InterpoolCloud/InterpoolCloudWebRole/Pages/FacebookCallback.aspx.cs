@@ -33,6 +33,9 @@ namespace InterpoolCloudWebRole
                     IDataManager dataManager = new DataManager();
                     InterpoolContainer container = dataManager.GetContainer();
                     User user = new User();
+
+                    string codLevel = dataManager.GetParameter(Parameters.LEVEL_ROOKIE, container);
+                    user.Level = container.Levels.Where(l => l.LevelName == codLevel).First();
                     user.UserIdFacebook = facebookController.GetUserId(oAuth);
                     user.UserTokenFacebook = oAuth.Token;
                     dataManager.StoreUser(user, container);

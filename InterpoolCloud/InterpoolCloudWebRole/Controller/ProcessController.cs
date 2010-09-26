@@ -47,14 +47,15 @@ namespace InterpoolCloudWebRole.Controller
             }
             return null;
         }
-        
-        public void StartGame(User user)
+
+        public void StartGame(string userIdFacebook)
         {
             // this is only the structs that we should follow
             InterpoolContainer conteiner = new InterpoolContainer();
             try
             {
-                user.Level = conteiner.Levels.Where(l => l.LevelId == 1).First();
+
+                User user = conteiner.Users.Where(u => u.UserIdFacebook == userIdFacebook).First();
                 // 1 the trip is built to be followed by user
                 Game newGame = BuiltTravel(user, conteiner);
 
@@ -85,21 +86,6 @@ namespace InterpoolCloudWebRole.Controller
             IDataManager dm = new DataManager();
             oAuthFacebook oAuth = dm.GetLastUserToken(dm.GetContainer());
             facebookController.DownloadFacebookUserData(oAuth, newGame, container);
-
-            IQueryable<Suspect> IQbigSuspect =  from s in container.Suspects
-                                                where s.SuspectId == 3
-                                                select s;
-            newGame.Suspect = IQbigSuspect.First();
-            IQueryable<Suspect> IQSuspects = from s in container.Suspects
-                                               where s.SuspectId != 3
-                                               select s;
-            
-            foreach (Suspect s in IQSuspects.ToList<Suspect>())
-            {
-                newGame.PossibleSuspect.Add(s);
-            }
-
-
         }
 
         private Game BuiltTravel(User user, InterpoolContainer conteiner)
@@ -211,14 +197,16 @@ namespace InterpoolCloudWebRole.Controller
                 Clue c3 = new Clue();
                 /* set the city */
                 c3.City = cnp.City;
+                
                 /* if i have to put characteristics on the clue of the suspect */
                 Famous famous = cnp.Famous.First();
+                c3.Famous = famous;
                 if (characteristicsSuspect != 0)
                 {
 
-                    if (famous.New.Count != 0 && famous.New.First()!=null)
+                    if (famous.New.Count() != 0 && famous.New.First()!=null)
                     {
-                        c3.ClueContent = GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " +famous.New.First().NewContent;
+                        c3.ClueContent = GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " ";// +famous.New.First().NewContent;
                     }
                     else
                     {
@@ -243,6 +231,7 @@ namespace InterpoolCloudWebRole.Controller
                 c2.City = cnp.City;
                 /* if i have to put characteristics on the clue of the suspect */
                 famous = cnp.Famous.ElementAt(1);
+                c2.Famous = famous;
                 string dynProperty = cpd == null ? "" : cpd.CityPropertyContent;
                 if (characteristicsSuspect != 0)
                 {
@@ -250,7 +239,7 @@ namespace InterpoolCloudWebRole.Controller
                     
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c2.ClueContent = dynProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " + famous.New.First().NewContent;
+                        c2.ClueContent = dynProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " ";// +famous.New.First().NewContent;
                     }
                     else
                     {
@@ -262,7 +251,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c2.ClueContent = dynProperty + " " + famous.New.First().NewContent;
+                        c2.ClueContent = dynProperty + " ";// +famous.New.First().NewContent;
                     }
                     else
                     {
@@ -281,11 +270,12 @@ namespace InterpoolCloudWebRole.Controller
                 /* if i have to put characteristics on the clue of the suspect */
                 string staticProperty = cps == null ? "" : cps.CityPropertyContent;
                 famous = cnp.Famous.ElementAt(2);
+                c1.Famous = famous;
                 if (characteristicsSuspect != 0)
                 {
                     if (famous.New.Count() != 0 && famous.New.First().NewContent != null)
                     {
-                        c1.ClueContent = staticProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " + famous.New.First().NewContent;
+                        c1.ClueContent = staticProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " ";// +famous.New.First().NewContent;
                     }
                     else
                     {
@@ -298,7 +288,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c1.ClueContent = staticProperty + " " + famous.New.First().NewContent;
+                        c1.ClueContent = staticProperty + " ";// +famous.New.First().NewContent;
                     }
                     else
                     {
@@ -334,7 +324,7 @@ namespace InterpoolCloudWebRole.Controller
             return nextNodePath.First().City;
         }
 
-        private String GetRandomCharacteristicSuspect (Suspect s, bool[] csuspect){
+        private string GetRandomCharacteristicSuspect (Suspect s, bool[] csuspect){
             /* get the random index for the characteristic of the suspect */
             Random rnd = new Random();
             int indexRandom = rnd.Next(0,5);
@@ -348,11 +338,11 @@ namespace InterpoolCloudWebRole.Controller
             switch (indexRandom)
             {
                 /* faltan definir las características 2, 3 y 4*/
-                case 0: 
-                    return s.SuspectPreferenceMovies;
+                /*case 0:
+                    return s.SuspectPreferenceMovies == null ? "" : s.SuspectPreferenceMovies;
                     
                 case 1:
-                    return s.SuspectPreferenceMusic;
+                    return s.SuspectPreferenceMusic == null ? "" : s.SuspectPreferenceMusic;
 
                 case 2:
                     return "Fanta definir la característica";
@@ -361,9 +351,9 @@ namespace InterpoolCloudWebRole.Controller
                     return "Fanta definir la característica";
 
                 case 4:
-                    return "Fanta definir la característica";
+                    return "Fanta definir la característica";*/
                 default:
-                    return "";
+                    return "Parte random";
             }
                         
         }
