@@ -9,7 +9,7 @@ namespace InterpoolCloudWebRole.Controller
 {
     interface IProcessController
     {
-        void StartGame(User user);
+        void StartGame(string userIdFacebook);
 
         string GetCurrentCity(string userIdFacebook);
 

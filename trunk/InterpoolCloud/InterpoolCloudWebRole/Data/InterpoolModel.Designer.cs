@@ -25,14 +25,14 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("InterpoolModel", "FamousNew", "Famous", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Famous), "New", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.New))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathClue", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.NodePath), "Clue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.Clue))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "ClueCity", "Clue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.Clue), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.City))]
-[assembly: EdmRelationshipAttribute("InterpoolModel", "ClueFamous", "Clue", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Clue), "Famous", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Famous))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "ClueFamous", "Clue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.Clue), "Famous", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Famous))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "CityLevel", "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.City), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathCity", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.NodePath), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.City))]
-[assembly: EdmRelationshipAttribute("InterpoolModel", "GameSuspect1", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Game), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Suspect))]
-[assembly: EdmRelationshipAttribute("InterpoolModel", "UserGame", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.User), "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Game))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "GameSuspect1", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Game), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Suspect))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "UserGame", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.User), "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Game))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserLevel", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.User), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "CityCityProperty", "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.City), "CityProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.CityProperty))]
-[assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathCity1", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.NodePath), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.City))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathCity1", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.NodePath), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.City))]
 
 #endregion
 
@@ -649,33 +649,17 @@ namespace InterpoolCloudWebRole.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "NodePathCity1", "NodePath")]
-        public NodePath NodePath_1
+        public EntityCollection<NodePath> NodePath_1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NodePath>("InterpoolModel.NodePathCity1", "NodePath").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NodePath>("InterpoolModel.NodePathCity1", "NodePath").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<NodePath> NodePath_1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NodePath>("InterpoolModel.NodePathCity1", "NodePath");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<NodePath>("InterpoolModel.NodePathCity1", "NodePath");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<NodePath>("InterpoolModel.NodePathCity1", "NodePath", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<NodePath>("InterpoolModel.NodePathCity1", "NodePath", value);
                 }
             }
         }
@@ -1183,33 +1167,17 @@ namespace InterpoolCloudWebRole.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "ClueFamous", "Clue")]
-        public Clue Clue
+        public EntityCollection<Clue> Clue
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Clue>("InterpoolModel.ClueFamous", "Clue").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Clue>("InterpoolModel.ClueFamous", "Clue").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Clue> ClueReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Clue>("InterpoolModel.ClueFamous", "Clue");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Clue>("InterpoolModel.ClueFamous", "Clue");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Clue>("InterpoolModel.ClueFamous", "Clue", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Clue>("InterpoolModel.ClueFamous", "Clue", value);
                 }
             }
         }
@@ -2220,16 +2188,12 @@ namespace InterpoolCloudWebRole.Data
         /// </summary>
         /// <param name="suspectId">Initial value of the SuspectId property.</param>
         /// <param name="suspectName">Initial value of the SuspectName property.</param>
-        /// <param name="suspectPreferenceMusic">Initial value of the SuspectPreferenceMusic property.</param>
-        /// <param name="suspectPreferenceMovies">Initial value of the SuspectPreferenceMovies property.</param>
         /// <param name="suspectFecebookId">Initial value of the SuspectFecebookId property.</param>
-        public static Suspect CreateSuspect(global::System.Int32 suspectId, global::System.String suspectName, global::System.String suspectPreferenceMusic, global::System.String suspectPreferenceMovies, global::System.String suspectFecebookId)
+        public static Suspect CreateSuspect(global::System.Int32 suspectId, global::System.String suspectName, global::System.String suspectFecebookId)
         {
             Suspect suspect = new Suspect();
             suspect.SuspectId = suspectId;
             suspect.SuspectName = suspectName;
-            suspect.SuspectPreferenceMusic = suspectPreferenceMusic;
-            suspect.SuspectPreferenceMovies = suspectPreferenceMovies;
             suspect.SuspectFecebookId = suspectFecebookId;
             return suspect;
         }
@@ -2291,7 +2255,7 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SuspectPreferenceMusic
         {
@@ -2303,7 +2267,7 @@ namespace InterpoolCloudWebRole.Data
             {
                 OnSuspectPreferenceMusicChanging(value);
                 ReportPropertyChanging("SuspectPreferenceMusic");
-                _SuspectPreferenceMusic = StructuralObject.SetValidValue(value, false);
+                _SuspectPreferenceMusic = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SuspectPreferenceMusic");
                 OnSuspectPreferenceMusicChanged();
             }
@@ -2315,7 +2279,7 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SuspectPreferenceMovies
         {
@@ -2327,7 +2291,7 @@ namespace InterpoolCloudWebRole.Data
             {
                 OnSuspectPreferenceMoviesChanging(value);
                 ReportPropertyChanging("SuspectPreferenceMovies");
-                _SuspectPreferenceMovies = StructuralObject.SetValidValue(value, false);
+                _SuspectPreferenceMovies = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SuspectPreferenceMovies");
                 OnSuspectPreferenceMoviesChanged();
             }

@@ -88,12 +88,12 @@ namespace InterpoolCloudWebRole.Data
         public void StoreSuspect(Suspect suspect, InterpoolContainer context)
         {
             context.AddToSuspects(suspect);
-            context.SaveChanges();
+            // context.SaveChanges();
         }
 
         public void SaveChanges(InterpoolContainer context)
         {
-            context.SaveChanges();
+           // context.SaveChanges();
         }
 
         public InterpoolContainer GetContainer()

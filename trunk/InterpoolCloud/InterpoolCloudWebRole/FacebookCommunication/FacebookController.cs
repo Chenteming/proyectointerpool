@@ -63,9 +63,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             Suspect suspect = new Suspect();
             // FIX: add field FacebookId to Suspect
             // TODO: add this
-            // suspect.FacebookId = fbudOfSuspect.userId;
+            suspect.SuspectFecebookId = (fbudOfSuspect.userId == null) ? "" : fbudOfSuspect.userId;
             suspect.SuspectName = fbudOfSuspect.first_name + " " + fbudOfSuspect.last_name;
-            suspect.SuspectPreferenceMusic = fbudOfSuspect.hometown;
+            suspect.SuspectPreferenceMusic = (fbudOfSuspect.hometown == null) ? "" : fbudOfSuspect.hometown;
             return suspect;
         }
 
