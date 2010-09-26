@@ -2,7 +2,7 @@
 <language name="English" culture="en-US">
   <class name="MainPage">
     <control name="PlayButton" Content="Play"/>
-    <control name="ExitButton" Content="Exit"/>
+    <control name="ExitButton" Content="Quit"/>
 	<control name="OptionButton" Content="Options"/>
 	<control name="CreditButton" Content="Credits"/>
 	<control name="HelpButton" Content="Help"/>
