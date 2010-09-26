@@ -57,7 +57,6 @@ namespace WP7
 
         void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            //TODO
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -75,10 +74,10 @@ namespace WP7
         	ServiceWP7Client client = new ServiceWP7Client();
             client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
             client.TravelAsync(button1.Content.ToString());
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
             GameManager gm = GameManager.getInstance();
             gm.SetCurrentCity(button1.Content.ToString());
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
         }
 
         private void button2_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -86,10 +85,10 @@ namespace WP7
         	ServiceWP7Client client = new ServiceWP7Client();
             client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
             client.TravelAsync(button2.Content.ToString());
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
             GameManager gm = GameManager.getInstance();
             gm.SetCurrentCity(button2.Content.ToString());
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
         }
 
         private void button3_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -97,10 +96,10 @@ namespace WP7
         	ServiceWP7Client client = new ServiceWP7Client();
             client.TravelCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_TravelCompleted);
             client.TravelAsync(button3.Content.ToString());
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
             GameManager gm = GameManager.getInstance();
             gm.SetCurrentCity(button3.Content.ToString());
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
         }
     }
 }
