@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using InterpoolCloudWebRole.Data;
+using InterpoolCloudWebRole.FacebookCommunication;
 
 namespace InterpoolCloudWebRole.Services
 {
@@ -22,5 +23,8 @@ namespace InterpoolCloudWebRole.Services
 
         [OperationContract]
         List<string> GetCurrentFamous(string userIdFacebook);
+
+        [OperationContract]
+        List<FacebookUserData> FilterSuspects(string userIdFacebook, FacebookUserData fbud);
     }
 }
