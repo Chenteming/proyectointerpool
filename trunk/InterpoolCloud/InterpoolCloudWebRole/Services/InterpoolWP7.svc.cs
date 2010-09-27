@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using InterpoolCloudWebRole.Controller;
 using InterpoolCloudWebRole.Data;
+using InterpoolCloudWebRole.FacebookCommunication;
 
 namespace InterpoolCloudWebRole.Services
 {
@@ -33,8 +34,10 @@ namespace InterpoolCloudWebRole.Services
             return controller.GetCurrentFamous(userIdFacebook);
         }
 
-        
-
+        public List<FacebookUserData> FilterSuspects(string userIdFacebook, FacebookUserData fbud)
+        {
+            return null;
+        }
       
     }
 }
