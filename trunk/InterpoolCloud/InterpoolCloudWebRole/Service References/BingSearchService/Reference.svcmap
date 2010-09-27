@@ -18,10 +18,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://api.search.live.net/search.wsdl?AppID=A00C4105122186E4F9F0DFD82CDF594DD866BC1F" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://api.bing.net/search.wsdl?AppID=A00C4105122186E4F9F0DFD82CDF594DD866BC1F" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="search.wsdl" MetadataType="Wsdl" ID="38d378d2-3c58-418b-b149-19921c1ab7e6" SourceId="1" SourceUrl="http://api.search.live.net/search.wsdl?AppID=A00C4105122186E4F9F0DFD82CDF594DD866BC1F" />
+    <MetadataFile FileName="search1.wsdl" MetadataType="Wsdl" ID="d535b5d6-1ee8-434d-a285-9cbdf24563f9" SourceId="1" SourceUrl="http://api.bing.net/search.wsdl?AppID=A00C4105122186E4F9F0DFD82CDF594DD866BC1F" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

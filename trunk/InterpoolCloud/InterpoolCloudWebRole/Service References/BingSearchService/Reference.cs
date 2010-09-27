@@ -12,8 +12,8 @@ namespace InterpoolCloudWebRole.BingSearchService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://schemas.microsoft.com/LiveSearch/2008/03/Search", ConfigurationName="BingSearchService.LiveSearchPortType")]
-    public interface LiveSearchPortType {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://schemas.microsoft.com/LiveSearch/2008/03/Search", ConfigurationName="BingSearchService.BingPortType")]
+    public interface BingPortType {
         
         // CODEGEN: Generating message contract since the wrapper name (SearchRequest) of message SearchRequest does not match the default value (Search)
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/LiveSearch/2008/03/Search/Search", ReplyAction="*")]
@@ -4003,41 +4003,41 @@ namespace InterpoolCloudWebRole.BingSearchService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface LiveSearchPortTypeChannel : InterpoolCloudWebRole.BingSearchService.LiveSearchPortType, System.ServiceModel.IClientChannel {
+    public interface BingPortTypeChannel : InterpoolCloudWebRole.BingSearchService.BingPortType, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class LiveSearchPortTypeClient : System.ServiceModel.ClientBase<InterpoolCloudWebRole.BingSearchService.LiveSearchPortType>, InterpoolCloudWebRole.BingSearchService.LiveSearchPortType {
+    public partial class BingPortTypeClient : System.ServiceModel.ClientBase<InterpoolCloudWebRole.BingSearchService.BingPortType>, InterpoolCloudWebRole.BingSearchService.BingPortType {
         
-        public LiveSearchPortTypeClient() {
+        public BingPortTypeClient() {
         }
         
-        public LiveSearchPortTypeClient(string endpointConfigurationName) : 
+        public BingPortTypeClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public LiveSearchPortTypeClient(string endpointConfigurationName, string remoteAddress) : 
+        public BingPortTypeClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public LiveSearchPortTypeClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public BingPortTypeClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public LiveSearchPortTypeClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public BingPortTypeClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        InterpoolCloudWebRole.BingSearchService.SearchResponse1 InterpoolCloudWebRole.BingSearchService.LiveSearchPortType.Search(InterpoolCloudWebRole.BingSearchService.SearchRequest1 request) {
+        InterpoolCloudWebRole.BingSearchService.SearchResponse1 InterpoolCloudWebRole.BingSearchService.BingPortType.Search(InterpoolCloudWebRole.BingSearchService.SearchRequest1 request) {
             return base.Channel.Search(request);
         }
         
         public InterpoolCloudWebRole.BingSearchService.SearchResponse Search(InterpoolCloudWebRole.BingSearchService.SearchRequest parameters) {
             InterpoolCloudWebRole.BingSearchService.SearchRequest1 inValue = new InterpoolCloudWebRole.BingSearchService.SearchRequest1();
             inValue.parameters = parameters;
-            InterpoolCloudWebRole.BingSearchService.SearchResponse1 retVal = ((InterpoolCloudWebRole.BingSearchService.LiveSearchPortType)(this)).Search(inValue);
+            InterpoolCloudWebRole.BingSearchService.SearchResponse1 retVal = ((InterpoolCloudWebRole.BingSearchService.BingPortType)(this)).Search(inValue);
             return retVal.parameters;
         }
     }
