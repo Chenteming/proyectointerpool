@@ -61,8 +61,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         private Suspect NewSuspectFromFacebookUserData(FacebookUserData fbudOfSuspect)
         {
             Suspect suspect = new Suspect();
-            // FIX: add field FacebookId to Suspect
-            // TODO: add this
             suspect.SuspectFecebookId = (fbudOfSuspect.userId == null) ? "" : fbudOfSuspect.userId;
             suspect.SuspectName = fbudOfSuspect.first_name + " " + fbudOfSuspect.last_name;
             suspect.SuspectPreferenceMusic = (fbudOfSuspect.hometown == null) ? "" : fbudOfSuspect.hometown;
@@ -168,9 +166,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             {
                 fbud.hometown = (string)jsonFriendObjectAnid.SelectToken("name", error);
             }
-
-
-
             return fbud;
         }
 
