@@ -28,7 +28,7 @@ namespace InterpoolCloudWebRole
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Admin.loadFemousData();
+            Admin.loadFamousData();
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
