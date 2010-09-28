@@ -17,7 +17,7 @@ namespace InterpoolCloudWebRole.Controller
 
         List<string> GetCurrentFamous(string userIdFacebook);
 
-        
+        String Travel(string userIdFacebook);
    
     }
 }
