@@ -391,6 +391,23 @@ namespace InterpoolCloudWebRole.Data
     [DataContractAttribute(IsReference=true)]
     public partial class City : EntityObject
     {
+
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return this._CityName == ((City)obj)._CityName && this._CityCountry == ((City)obj)._CityCountry;
+        }
+
+        // override object.GetHashCode
+        public override int GetHashCode()
+        {
+
+            return this._CityName.GetHashCode() ^ this._CityCountry.GetHashCode();
+        }
         #region Factory Method
     
         /// <summary>

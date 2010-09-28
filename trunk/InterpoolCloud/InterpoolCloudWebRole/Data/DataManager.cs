@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using InterpoolCloudWebRole.FacebookCommunication;
+using System.Data.Objects.DataClasses;
 
 namespace InterpoolCloudWebRole.Data
 {
@@ -113,5 +114,10 @@ namespace InterpoolCloudWebRole.Data
             return new oAuthFacebook() { Token = token }; 
         }
 
+        public void insertEntity(EntityObject entity, InterpoolContainer container)
+        {
+            
+           
+        }
     }
 }
