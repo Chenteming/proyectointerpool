@@ -297,9 +297,10 @@ namespace InterpoolCloudWebRole.Controller
                 }
                 
                 /* Add clue for the NodePath in order*/
-                cnp.Clue.Add(c1);
-                cnp.Clue.Add(c2);
                 cnp.Clue.Add(c3);
+                cnp.Clue.Add(c2);
+                cnp.Clue.Add(c1);
+                
 
             }
 
@@ -338,7 +339,7 @@ namespace InterpoolCloudWebRole.Controller
             switch (indexRandom)
             {
                 /* faltan definir las características 2, 3 y 4*/
-                /*case 0:
+                case 0:
                     return s.SuspectPreferenceMovies == null ? "" : s.SuspectPreferenceMovies;
                     
                 case 1:
@@ -351,7 +352,7 @@ namespace InterpoolCloudWebRole.Controller
                     return "Fanta definir la característica";
 
                 case 4:
-                    return "Fanta definir la característica";*/
+                    return "Fanta definir la característica";
                 default:
                     return "Parte random";
             }
