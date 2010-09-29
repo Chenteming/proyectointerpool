@@ -18,6 +18,7 @@
     <EntitySet Name="CityPropertySet" EntityType="InterpoolModel.Store.CityPropertySet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Parameters" EntityType="InterpoolModel.Store.Parameters" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Logs" EntityType="InterpoolModel.Store.Logs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrdersOfArrest" EntityType="InterpoolModel.Store.OrdersOfArrest" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GamePossibleSuspect" EntityType="InterpoolModel.Store.GameSuspect" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="NodePathFamous" EntityType="InterpoolModel.Store.NodePathFamous" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="NodePathClue" EntityType="InterpoolModel.Store.NodePathClue" store:Type="Tables" Schema="dbo" />
@@ -98,6 +99,14 @@
       <End Role="City" EntitySet="Cities" />
       <End Role="NodePathCity1" EntitySet="NodePathPossibleCity" />
     </AssociationSet>
+    <AssociationSet Name="GameOrderOfArrest" Association="InterpoolModel.Store.GameOrderOfArrest">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="OrderOfArrest" EntitySet="OrdersOfArrest" />
+    </AssociationSet>
+    <AssociationSet Name="OrderOfArrestSuspect" Association="InterpoolModel.Store.OrderOfArrestSuspect">
+      <End Role="OrderOfArrest" EntitySet="OrdersOfArrest" />
+      <End Role="Suspect" EntitySet="Suspects" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
@@ -115,6 +124,7 @@
     <Property Name="GameId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="GameTime" Type="smallint" Nullable="false" />
     <Property Name="User_UserId" Type="int" Nullable="false" />
+    <Property Name="OrderOfArrest_OrderOfArrestId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="NodePaths">
     <Key>
@@ -205,6 +215,13 @@
     <Property Name="LogName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LogType" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LogStackTrace" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdersOfArrest">
+    <Key>
+      <PropertyRef Name="OrderOfArrestId" />
+    </Key>
+    <Property Name="OrderOfArrestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Suspect_SuspectId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="GameSuspect">
     <Key>
@@ -367,6 +384,30 @@
       </Principal>
       <Dependent Role="CityProperty">
         <PropertyRef Name="City_CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GameOrderOfArrest">
+    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="*" />
+    <End Role="OrderOfArrest" Type="InterpoolModel.Store.OrdersOfArrest" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="OrderOfArrest">
+        <PropertyRef Name="OrderOfArrestId" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="OrderOfArrest_OrderOfArrestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderOfArrestSuspect">
+    <End Role="OrderOfArrest" Type="InterpoolModel.Store.OrdersOfArrest" Multiplicity="*" />
+    <End Role="Suspect" Type="InterpoolModel.Store.Suspects" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Suspect">
+        <PropertyRef Name="SuspectId" />
+      </Principal>
+      <Dependent Role="OrderOfArrest">
+        <PropertyRef Name="Suspect_SuspectId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -543,6 +584,15 @@
             <End Role="NodePath" EntitySet="NodePaths" />
             <End Role="City" EntitySet="Cities" />
           </AssociationSet>
+          <EntitySet Name="OrdersOfArrest" EntityType="InterpoolModel.OrderOfArrest" />
+          <AssociationSet Name="GameOrderOfArrest" Association="InterpoolModel.GameOrderOfArrest">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="OrderOfArrest" EntitySet="OrdersOfArrest" />
+          </AssociationSet>
+          <AssociationSet Name="OrderOfArrestSuspect" Association="InterpoolModel.OrderOfArrestSuspect">
+            <End Role="OrderOfArrest" EntitySet="OrdersOfArrest" />
+            <End Role="Suspect" EntitySet="Suspects" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -564,6 +614,7 @@
           <NavigationProperty Name="NodePath" Relationship="InterpoolModel.GameNodePath" FromRole="Game" ToRole="NodePath" />
           <NavigationProperty Name="Suspect" Relationship="InterpoolModel.GameSuspect1" FromRole="Game" ToRole="Suspect" />
           <NavigationProperty Name="User" Relationship="InterpoolModel.UserGame" FromRole="Game" ToRole="User" />
+          <NavigationProperty Name="OrderOfArrest" Relationship="InterpoolModel.GameOrderOfArrest" FromRole="Game" ToRole="OrderOfArrest" />
         </EntityType>
         <EntityType Name="NodePath">
           <Key>
@@ -730,6 +781,21 @@
           <End Type="InterpoolModel.NodePath" Role="NodePath" Multiplicity="*" />
           <End Type="InterpoolModel.City" Role="City" Multiplicity="*" />
         </Association>
+        <EntityType Name="OrderOfArrest">
+          <Key>
+            <PropertyRef Name="OrderOfArrestId" />
+          </Key>
+          <Property Type="Int32" Name="OrderOfArrestId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Suspect" Relationship="InterpoolModel.OrderOfArrestSuspect" FromRole="OrderOfArrest" ToRole="Suspect" />
+        </EntityType>
+        <Association Name="GameOrderOfArrest">
+          <End Type="InterpoolModel.Game" Role="Game" Multiplicity="1" />
+          <End Type="InterpoolModel.OrderOfArrest" Role="OrderOfArrest" Multiplicity="1" />
+        </Association>
+        <Association Name="OrderOfArrestSuspect">
+          <End Type="InterpoolModel.OrderOfArrest" Role="OrderOfArrest" Multiplicity="1" />
+          <End Type="InterpoolModel.Suspect" Role="Suspect" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -841,6 +907,13 @@
           <ScalarProperty Name="LogName" ColumnName="LogName" />
           <ScalarProperty Name="LogType" ColumnName="LogType" />
           <ScalarProperty Name="LogStackTrace" ColumnName="LogStackTrace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersOfArrest">
+      <EntityTypeMapping TypeName="IsTypeOf(InterpoolModel.OrderOfArrest)">
+        <MappingFragment StoreEntitySet="OrdersOfArrest">
+          <ScalarProperty Name="OrderOfArrestId" ColumnName="OrderOfArrestId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -967,6 +1040,22 @@
         <ScalarProperty Name="CityId" ColumnName="PossibleCities_CityId" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="GameOrderOfArrest" TypeName="InterpoolModel.GameOrderOfArrest" StoreEntitySet="Games">
+      <EndProperty Name="OrderOfArrest">
+        <ScalarProperty Name="OrderOfArrestId" ColumnName="OrderOfArrest_OrderOfArrestId" />
+      </EndProperty>
+      <EndProperty Name="Game">
+        <ScalarProperty Name="GameId" ColumnName="GameId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderOfArrestSuspect" TypeName="InterpoolModel.OrderOfArrestSuspect" StoreEntitySet="OrdersOfArrest">
+      <EndProperty Name="Suspect">
+        <ScalarProperty Name="SuspectId" ColumnName="Suspect_SuspectId" />
+      </EndProperty>
+      <EndProperty Name="OrderOfArrest">
+        <ScalarProperty Name="OrderOfArrestId" ColumnName="OrderOfArrestId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -988,28 +1077,28 @@
     <edmx:Diagrams>
       <Diagram Name="Model1" ZoomLevel="77" >
         <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="4.125" PointY="5.5" Height="1.787985026041667" />
-        <EntityTypeShape EntityType="InterpoolModel.Game" Width="1.5" PointX="1.375" PointY="5.25" Height="1.9802864583333326" />
-        <EntityTypeShape EntityType="InterpoolModel.NodePath" Width="1.5" PointX="4.875" PointY="8.375" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="InterpoolModel.Game" Width="1.5" PointX="1.25" PointY="5.375" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="InterpoolModel.NodePath" Width="1.5" PointX="4.125" PointY="8.25" Height="2.5571907552083335" />
         <EntityTypeShape EntityType="InterpoolModel.City" Width="1.5" PointX="8" PointY="5.125" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="InterpoolModel.Famous" Width="1.5" PointX="8.125" PointY="8.375" Height="1.5956835937499996" />
         <EntityTypeShape EntityType="InterpoolModel.New" Width="1.5" PointX="10.75" PointY="8.375" Height="1.4033821614583326" />
         <EntityTypeShape EntityType="InterpoolModel.Clue" Width="1.5" PointX="13.25" PointY="4.625" Height="1.9802864583333326" />
-        <EntityTypeShape EntityType="InterpoolModel.Suspect" Width="2.125" PointX="7.75" PointY="0.5" Height="2.3648893229166661" />
+        <EntityTypeShape EntityType="InterpoolModel.Suspect" Width="2.125" PointX="7.875" PointY="0.5" Height="2.3648893229166661" />
         <EntityTypeShape EntityType="InterpoolModel.Level" Width="2" PointX="5.625" PointY="2.875" Height="1.5956835937499996" />
         <AssociationConnector Association="InterpoolModel.GameSuspect">
-          <ConnectorPoint PointX="1.8376566057900383" PointY="5.25" />
-          <ConnectorPoint PointX="1.8376566057900383" PointY="1.2458561328125004" />
-          <ConnectorPoint PointX="7.75" PointY="1.2458561328125004" />
+          <ConnectorPoint PointX="2" PointY="5.375" />
+          <ConnectorPoint PointX="2" PointY="1.6824446614583328" />
+          <ConnectorPoint PointX="3.5416666666666665" PointY="1.6824446614583322" />
+          <ConnectorPoint PointX="3.7083333333333335" PointY="1.6824446614583328" />
+          <ConnectorPoint PointX="7.875" PointY="1.6824446614583328" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.GameNodePath">
-          <ConnectorPoint PointX="2.125" PointY="7.422587890625" />
-          <ConnectorPoint PointX="2.125" PointY="9.5574446614583337" />
-          <ConnectorPoint PointX="4.875" PointY="9.5574446614583337" />
+          <ConnectorPoint PointX="2" PointY="7.7398893229166656" />
+          <ConnectorPoint PointX="2" PointY="9.2351462485137539" />
+          <ConnectorPoint PointX="4.125" PointY="9.2351462485137539" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathFamous">
-          <ConnectorPoint PointX="6.375" PointY="9.4612939453125" />
-          <ConnectorPoint PointX="7.947916666666667" PointY="9.4612939453125" />
-          <ConnectorPoint PointX="8.1145833333333339" PointY="9.4612939453125" />
+          <ConnectorPoint PointX="5.625" PointY="9.4612939453125" />
           <ConnectorPoint PointX="8.125" PointY="9.4612939453125" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.CityFamous">
@@ -1021,10 +1110,9 @@
           <ConnectorPoint PointX="10.75" PointY="9.172841796875" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathClue" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.9774992559155571" PointY="10.739889322916666" />
-          <ConnectorPoint PointX="5.9774992559155571" PointY="11.114889322916667" />
-          <ConnectorPoint PointX="14.270234391260081" PointY="11.114889322916667" />
-          <ConnectorPoint PointX="14.270234391260081" PointY="6.6052864583333326" />
+          <ConnectorPoint PointX="5.625" PointY="10.708639322916666" />
+          <ConnectorPoint PointX="14.270684972815019" PointY="10.708639322916666" />
+          <ConnectorPoint PointX="14.270684972815019" PointY="6.6052864583333326" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.ClueCity">
           <ConnectorPoint PointX="13.25" PointY="5.34375" />
@@ -1040,23 +1128,26 @@
           <ConnectorPoint PointX="7.625" PointY="4.8552864583333326" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathCity">
-          <ConnectorPoint PointX="5.625" PointY="8.375" />
-          <ConnectorPoint PointX="5.625" PointY="7.6552655297208148" />
-          <ConnectorPoint PointX="8" PointY="7.6552655297208148" />
+          <ConnectorPoint PointX="5.625" PointY="8.9614728580381566" />
+          <ConnectorPoint PointX="7.625" PointY="8.9614728580381566" />
+          <ConnectorPoint PointX="7.625" PointY="7.5362421024359563" />
+          <ConnectorPoint PointX="8" PointY="7.5362421024359563" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.GameSuspect1">
-          <ConnectorPoint PointX="2.3875808028950192" PointY="5.25" />
-          <ConnectorPoint PointX="2.3875808028950192" PointY="2.0866252278645838" />
-          <ConnectorPoint PointX="7.75" PointY="2.0866252278645838" />
+          <ConnectorPoint PointX="2.4062525" PointY="5.375" />
+          <ConnectorPoint PointX="2.4062525" PointY="2.3049194921875" />
+          <ConnectorPoint PointX="3.5416666666666665" PointY="2.3049194921874996" />
+          <ConnectorPoint PointX="3.7083333333333335" PointY="2.3049194921875" />
+          <ConnectorPoint PointX="7.875" PointY="2.3049194921875" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.UserGame">
-          <ConnectorPoint PointX="4.125" PointY="6.3939925130208337" />
-          <ConnectorPoint PointX="2.875" PointY="6.3939925130208337" />
+          <ConnectorPoint PointX="4.125" PointY="6.4901432291666659" />
+          <ConnectorPoint PointX="2.75" PointY="6.4901432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.UserLevel">
-          <ConnectorPoint PointX="4.8749994999999995" PointY="5.5" />
-          <ConnectorPoint PointX="4.8749994999999995" PointY="3.8651432291666663" />
-          <ConnectorPoint PointX="5.625" PointY="3.8651432291666663" />
+          <ConnectorPoint PointX="5.0312494999999995" PointY="5.5" />
+          <ConnectorPoint PointX="5.0312494999999995" PointY="4.6605843098958317" />
+          <ConnectorPoint PointX="5.625" PointY="4.6605843098958317" />
         </AssociationConnector>
         <EntityTypeShape EntityType="InterpoolModel.CityProperty" Width="1.5" PointX="10.875" PointY="5.625" Height="1.5956835937499996" />
         <AssociationConnector Association="InterpoolModel.CityCityProperty">
@@ -1066,11 +1157,21 @@
         <EntityTypeShape EntityType="InterpoolModel.Parameter" Width="2" PointX="11.75" PointY="0.625" Height="1.59568359375" />
         <EntityTypeShape EntityType="InterpoolModel.Log" Width="1.5" PointX="14.375" PointY="0.625" Height="1.787985026041667" />
         <AssociationConnector Association="InterpoolModel.NodePathCity1" ManuallyRouted="true">
-          <ConnectorPoint PointX="5.625" PointY="8.375" />
-          <ConnectorPoint PointX="5.625" PointY="7.8066149457885246" />
-          <ConnectorPoint PointX="7.21625" PointY="7.8066149457885246" />
-          <ConnectorPoint PointX="7.21625" PointY="7.5022320148871842" />
-          <ConnectorPoint PointX="8" PointY="7.5022320148871842" />
+          <ConnectorPoint PointX="5.625" PointY="8.5686550209602714" />
+          <ConnectorPoint PointX="6.6066015422689315" PointY="8.5686550209602714" />
+          <ConnectorPoint PointX="6.6066015422689315" PointY="6.6228204223274991" />
+          <ConnectorPoint PointX="8" PointY="6.6228204223274991" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="InterpoolModel.OrderOfArrest" Width="1.5" PointX="2.875" PointY="3" Height="1.4033821614583317" />
+        <AssociationConnector Association="InterpoolModel.GameOrderOfArrest">
+          <ConnectorPoint PointX="2.75" PointY="5.7980538647815134" />
+          <ConnectorPoint PointX="3.4999995" PointY="5.7980538647815134" />
+          <ConnectorPoint PointX="3.4999995" PointY="4.4033821614583317" />
+        </AssociationConnector>
+        <AssociationConnector Association="InterpoolModel.OrderOfArrestSuspect">
+          <ConnectorPoint PointX="3.625" PointY="3" />
+          <ConnectorPoint PointX="3.625" PointY="1.0599698307291656" />
+          <ConnectorPoint PointX="7.875" PointY="1.0599698307291656" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
