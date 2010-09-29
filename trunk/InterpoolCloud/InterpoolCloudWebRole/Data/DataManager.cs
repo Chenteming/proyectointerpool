@@ -119,5 +119,43 @@ namespace InterpoolCloudWebRole.Data
             
            
         }
+
+        public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud, InterpoolContainer container)
+        {
+            var game = this.GetGameByUser(userIdFacebook, container);
+
+            var suspects = game.PossibleSuspect.AsEnumerable();
+
+            // If the hometown is not empty, gets all the suspects with the selected hometown
+            if (!string.IsNullOrEmpty(fbud.hometown))
+            {
+                suspects =  from hometownSuspects in suspects
+                            // FIX: the following must be hometown instead of SuspectName
+                            where (hometownSuspects.SuspectHometown == fbud.hometown)
+                            select hometownSuspects;
+            }
+
+            // If the music is not empty, gets all the suspects with the selected music
+            if (!string.IsNullOrEmpty(fbud.music))
+            {
+                suspects = from musicSuspects in suspects
+                           // FIX: the following must be hometown instead of SuspectName
+                           where (musicSuspects.SuspectMusic == fbud.music)
+                           select musicSuspects;
+            }
+
+            // TODO: filter with all the remaining fields
+
+            DataFacebookUser fbudSuspect;
+            List<DataFacebookUser> listFbudSuspect = new List<DataFacebookUser>();
+            foreach (Suspect suspect in suspects)
+            {
+                fbudSuspect = new DataFacebookUser();
+                fbudSuspect.hometown = suspect.SuspectHometown;
+                listFbudSuspect.Add(fbudSuspect);
+            }
+
+            return listFbudSuspect;
+        }
     }
 }
