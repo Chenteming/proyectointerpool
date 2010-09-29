@@ -2347,14 +2347,22 @@ namespace InterpoolCloudWebRole.Data
         /// Create a new Suspect object.
         /// </summary>
         /// <param name="suspectId">Initial value of the SuspectId property.</param>
-        /// <param name="suspectName">Initial value of the SuspectName property.</param>
-        /// <param name="suspectFecebookId">Initial value of the SuspectFecebookId property.</param>
-        public static Suspect CreateSuspect(global::System.Int32 suspectId, global::System.String suspectName, global::System.String suspectFecebookId)
+        /// <param name="suspectFirstName">Initial value of the SuspectFirstName property.</param>
+        /// <param name="suspectFacebookId">Initial value of the SuspectFacebookId property.</param>
+        /// <param name="suspectTelevision">Initial value of the SuspectTelevision property.</param>
+        /// <param name="suspectHometown">Initial value of the SuspectHometown property.</param>
+        /// <param name="suspectBirthday">Initial value of the SuspectBirthday property.</param>
+        /// <param name="suspectLastName">Initial value of the SuspectLastName property.</param>
+        public static Suspect CreateSuspect(global::System.Int32 suspectId, global::System.String suspectFirstName, global::System.String suspectFacebookId, global::System.String suspectTelevision, global::System.String suspectHometown, global::System.String suspectBirthday, global::System.String suspectLastName)
         {
             Suspect suspect = new Suspect();
             suspect.SuspectId = suspectId;
-            suspect.SuspectName = suspectName;
-            suspect.SuspectFecebookId = suspectFecebookId;
+            suspect.SuspectFirstName = suspectFirstName;
+            suspect.SuspectFacebookId = suspectFacebookId;
+            suspect.SuspectTelevision = suspectTelevision;
+            suspect.SuspectHometown = suspectHometown;
+            suspect.SuspectBirthday = suspectBirthday;
+            suspect.SuspectLastName = suspectLastName;
             return suspect;
         }
 
@@ -2393,96 +2401,192 @@ namespace InterpoolCloudWebRole.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SuspectName
+        public global::System.String SuspectFirstName
         {
             get
             {
-                return _SuspectName;
+                return _SuspectFirstName;
             }
             set
             {
-                OnSuspectNameChanging(value);
-                ReportPropertyChanging("SuspectName");
-                _SuspectName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("SuspectName");
-                OnSuspectNameChanged();
+                OnSuspectFirstNameChanging(value);
+                ReportPropertyChanging("SuspectFirstName");
+                _SuspectFirstName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SuspectFirstName");
+                OnSuspectFirstNameChanged();
             }
         }
-        private global::System.String _SuspectName;
-        partial void OnSuspectNameChanging(global::System.String value);
-        partial void OnSuspectNameChanged();
+        private global::System.String _SuspectFirstName;
+        partial void OnSuspectFirstNameChanging(global::System.String value);
+        partial void OnSuspectFirstNameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String SuspectPreferenceMusic
+        public global::System.String SuspectMusic
         {
             get
             {
-                return _SuspectPreferenceMusic;
+                return _SuspectMusic;
             }
             set
             {
-                OnSuspectPreferenceMusicChanging(value);
-                ReportPropertyChanging("SuspectPreferenceMusic");
-                _SuspectPreferenceMusic = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("SuspectPreferenceMusic");
-                OnSuspectPreferenceMusicChanged();
+                OnSuspectMusicChanging(value);
+                ReportPropertyChanging("SuspectMusic");
+                _SuspectMusic = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SuspectMusic");
+                OnSuspectMusicChanged();
             }
         }
-        private global::System.String _SuspectPreferenceMusic;
-        partial void OnSuspectPreferenceMusicChanging(global::System.String value);
-        partial void OnSuspectPreferenceMusicChanged();
+        private global::System.String _SuspectMusic;
+        partial void OnSuspectMusicChanging(global::System.String value);
+        partial void OnSuspectMusicChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String SuspectPreferenceMovies
+        public global::System.String SuspectCinema
         {
             get
             {
-                return _SuspectPreferenceMovies;
+                return _SuspectCinema;
             }
             set
             {
-                OnSuspectPreferenceMoviesChanging(value);
-                ReportPropertyChanging("SuspectPreferenceMovies");
-                _SuspectPreferenceMovies = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("SuspectPreferenceMovies");
-                OnSuspectPreferenceMoviesChanged();
+                OnSuspectCinemaChanging(value);
+                ReportPropertyChanging("SuspectCinema");
+                _SuspectCinema = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SuspectCinema");
+                OnSuspectCinemaChanged();
             }
         }
-        private global::System.String _SuspectPreferenceMovies;
-        partial void OnSuspectPreferenceMoviesChanging(global::System.String value);
-        partial void OnSuspectPreferenceMoviesChanged();
+        private global::System.String _SuspectCinema;
+        partial void OnSuspectCinemaChanging(global::System.String value);
+        partial void OnSuspectCinemaChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SuspectFecebookId
+        public global::System.String SuspectFacebookId
         {
             get
             {
-                return _SuspectFecebookId;
+                return _SuspectFacebookId;
             }
             set
             {
-                OnSuspectFecebookIdChanging(value);
-                ReportPropertyChanging("SuspectFecebookId");
-                _SuspectFecebookId = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("SuspectFecebookId");
-                OnSuspectFecebookIdChanged();
+                OnSuspectFacebookIdChanging(value);
+                ReportPropertyChanging("SuspectFacebookId");
+                _SuspectFacebookId = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SuspectFacebookId");
+                OnSuspectFacebookIdChanged();
             }
         }
-        private global::System.String _SuspectFecebookId;
-        partial void OnSuspectFecebookIdChanging(global::System.String value);
-        partial void OnSuspectFecebookIdChanged();
+        private global::System.String _SuspectFacebookId;
+        partial void OnSuspectFacebookIdChanging(global::System.String value);
+        partial void OnSuspectFacebookIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SuspectTelevision
+        {
+            get
+            {
+                return _SuspectTelevision;
+            }
+            set
+            {
+                OnSuspectTelevisionChanging(value);
+                ReportPropertyChanging("SuspectTelevision");
+                _SuspectTelevision = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SuspectTelevision");
+                OnSuspectTelevisionChanged();
+            }
+        }
+        private global::System.String _SuspectTelevision;
+        partial void OnSuspectTelevisionChanging(global::System.String value);
+        partial void OnSuspectTelevisionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SuspectHometown
+        {
+            get
+            {
+                return _SuspectHometown;
+            }
+            set
+            {
+                OnSuspectHometownChanging(value);
+                ReportPropertyChanging("SuspectHometown");
+                _SuspectHometown = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SuspectHometown");
+                OnSuspectHometownChanged();
+            }
+        }
+        private global::System.String _SuspectHometown;
+        partial void OnSuspectHometownChanging(global::System.String value);
+        partial void OnSuspectHometownChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SuspectBirthday
+        {
+            get
+            {
+                return _SuspectBirthday;
+            }
+            set
+            {
+                OnSuspectBirthdayChanging(value);
+                ReportPropertyChanging("SuspectBirthday");
+                _SuspectBirthday = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SuspectBirthday");
+                OnSuspectBirthdayChanged();
+            }
+        }
+        private global::System.String _SuspectBirthday;
+        partial void OnSuspectBirthdayChanging(global::System.String value);
+        partial void OnSuspectBirthdayChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SuspectLastName
+        {
+            get
+            {
+                return _SuspectLastName;
+            }
+            set
+            {
+                OnSuspectLastNameChanging(value);
+                ReportPropertyChanging("SuspectLastName");
+                _SuspectLastName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SuspectLastName");
+                OnSuspectLastNameChanged();
+            }
+        }
+        private global::System.String _SuspectLastName;
+        partial void OnSuspectLastNameChanging(global::System.String value);
+        partial void OnSuspectLastNameChanged();
 
         #endregion
     
