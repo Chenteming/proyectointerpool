@@ -394,10 +394,10 @@ namespace InterpoolCloudWebRole.Controller
             {
                 /* faltan definir las características 2, 3 y 4*/
                 case 0:
-                    return s.SuspectPreferenceMovies == null ? "" : s.SuspectPreferenceMovies;
+                    return s.SuspectCinema == null ? "" : s.SuspectCinema;
                     
                 case 1:
-                    return s.SuspectPreferenceMusic == null ? "" : s.SuspectPreferenceMusic;
+                    return s.SuspectMusic == null ? "" : s.SuspectMusic;
 
                 case 2:
                     return "Fanta definir la característica";
@@ -411,6 +411,11 @@ namespace InterpoolCloudWebRole.Controller
                     return "Parte random";
             }
                         
+        }
+
+        public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
+        {
+            return null;
         }
 
         public String Travel(string userIdFacebook)

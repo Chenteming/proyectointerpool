@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InterpoolCloudWebRole.Data;
+using InterpoolCloudWebRole.FacebookCommunication;
 
 
 namespace InterpoolCloudWebRole.Controller
@@ -17,8 +18,9 @@ namespace InterpoolCloudWebRole.Controller
 
         List<string> GetCurrentFamous(string userIdFacebook);
 
-        String Travel(string userIdFacebook);
+        List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
 
+        String Travel(string userIdFacebook);
 
         void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect);
     }
