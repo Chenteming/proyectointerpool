@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/29/2010 20:06:34
--- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
+-- Date Created: 09/29/2010 20:47:30
+-- Generated from EDMX file: C:\Users\Vicente\Documents\Facultad\4to\Proyecto Ingeniería de Software\Repositorio\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -74,6 +74,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_NodePathCity1_City]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[NodePathPossibleCity] DROP CONSTRAINT [FK_NodePathCity1_City];
 GO
+IF OBJECT_ID(N'[dbo].[FK_GameOrderOfArrest]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Games] DROP CONSTRAINT [FK_GameOrderOfArrest];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrderOfArrestSuspect]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrdersOfArrest] DROP CONSTRAINT [FK_OrderOfArrestSuspect];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -114,6 +120,9 @@ IF OBJECT_ID(N'[dbo].[Parameters]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Logs]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Logs];
+GO
+IF OBJECT_ID(N'[dbo].[OrdersOfArrest]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[OrdersOfArrest];
 GO
 IF OBJECT_ID(N'[dbo].[GamePossibleSuspect]', 'U') IS NOT NULL
     DROP TABLE [dbo].[GamePossibleSuspect];
@@ -198,10 +207,14 @@ GO
 -- Creating table 'Suspects'
 CREATE TABLE [dbo].[Suspects] (
     [SuspectId] int IDENTITY(1,1) NOT NULL,
-    [SuspectName] nvarchar(max)  NOT NULL,
-    [SuspectPreferenceMusic] nvarchar(max)  NULL,
-    [SuspectPreferenceMovies] nvarchar(max)  NULL,
-    [SuspectFecebookId] nvarchar(max)  NOT NULL,
+    [SuspectFirstName] nvarchar(max)  NOT NULL,
+    [SuspectMusic] nvarchar(max)  NULL,
+    [SuspectCinema] nvarchar(max)  NULL,
+    [SuspectFacebookId] nvarchar(max)  NOT NULL,
+    [SuspectTelevision] nvarchar(max)  NOT NULL,
+    [SuspectHometown] nvarchar(max)  NOT NULL,
+    [SuspectBirthday] nvarchar(max)  NOT NULL,
+    [SuspectLastName] nvarchar(max)  NOT NULL,
     [Game_1_GameId] int  NULL
 );
 GO
