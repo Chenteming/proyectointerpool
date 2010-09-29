@@ -423,6 +423,12 @@ namespace InterpoolCloudWebRole.Controller
             container.SaveChanges();
             return nextNode.City.CityName;
         }
+
+        public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
+        {
+
+        }
+
     }
 
 }

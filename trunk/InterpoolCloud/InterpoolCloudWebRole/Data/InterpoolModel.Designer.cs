@@ -33,6 +33,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserLevel", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.User), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "CityCityProperty", "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.City), "CityProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.CityProperty))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathCity1", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.NodePath), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.City))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "GameOrderOfArrest", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Game), "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.OrderOfArrest))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "OrderOfArrestSuspect", "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.OrderOfArrest), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Suspect))]
 
 #endregion
 
@@ -275,6 +277,22 @@ namespace InterpoolCloudWebRole.Data
             }
         }
         private ObjectSet<Log> _Logs;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<OrderOfArrest> OrdersOfArrest
+        {
+            get
+            {
+                if ((_OrdersOfArrest == null))
+                {
+                    _OrdersOfArrest = base.CreateObjectSet<OrderOfArrest>("OrdersOfArrest");
+                }
+                return _OrdersOfArrest;
+            }
+        }
+        private ObjectSet<OrderOfArrest> _OrdersOfArrest;
 
         #endregion
         #region AddTo Methods
@@ -374,6 +392,14 @@ namespace InterpoolCloudWebRole.Data
         {
             base.AddObject("Logs", log);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the OrdersOfArrest EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToOrdersOfArrest(OrderOfArrest orderOfArrest)
+        {
+            base.AddObject("OrdersOfArrest", orderOfArrest);
+        }
 
         #endregion
     }
@@ -391,23 +417,6 @@ namespace InterpoolCloudWebRole.Data
     [DataContractAttribute(IsReference=true)]
     public partial class City : EntityObject
     {
-
-        // override object.Equals
-        public override bool Equals(object obj)
-        {
-            if (obj == null || GetType() != obj.GetType())
-            {
-                return false;
-            }
-            return this._CityName == ((City)obj)._CityName && this._CityCountry == ((City)obj)._CityCountry;
-        }
-
-        // override object.GetHashCode
-        public override int GetHashCode()
-        {
-
-            return this._CityName.GetHashCode() ^ this._CityCountry.GetHashCode();
-        }
         #region Factory Method
     
         /// <summary>
@@ -1402,6 +1411,44 @@ namespace InterpoolCloudWebRole.Data
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "GameOrderOfArrest", "OrderOfArrest")]
+        public OrderOfArrest OrderOfArrest
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<OrderOfArrest>("InterpoolModel.GameOrderOfArrest", "OrderOfArrest").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<OrderOfArrest>("InterpoolModel.GameOrderOfArrest", "OrderOfArrest").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<OrderOfArrest> OrderOfArrestReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<OrderOfArrest>("InterpoolModel.GameOrderOfArrest", "OrderOfArrest");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<OrderOfArrest>("InterpoolModel.GameOrderOfArrest", "OrderOfArrest", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -2076,6 +2123,102 @@ namespace InterpoolCloudWebRole.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<City>("InterpoolModel.NodePathCity1", "City", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="InterpoolModel", Name="OrderOfArrest")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class OrderOfArrest : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new OrderOfArrest object.
+        /// </summary>
+        /// <param name="orderOfArrestId">Initial value of the OrderOfArrestId property.</param>
+        public static OrderOfArrest CreateOrderOfArrest(global::System.Int32 orderOfArrestId)
+        {
+            OrderOfArrest orderOfArrest = new OrderOfArrest();
+            orderOfArrest.OrderOfArrestId = orderOfArrestId;
+            return orderOfArrest;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 OrderOfArrestId
+        {
+            get
+            {
+                return _OrderOfArrestId;
+            }
+            set
+            {
+                if (_OrderOfArrestId != value)
+                {
+                    OnOrderOfArrestIdChanging(value);
+                    ReportPropertyChanging("OrderOfArrestId");
+                    _OrderOfArrestId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("OrderOfArrestId");
+                    OnOrderOfArrestIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _OrderOfArrestId;
+        partial void OnOrderOfArrestIdChanging(global::System.Int32 value);
+        partial void OnOrderOfArrestIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "OrderOfArrestSuspect", "Suspect")]
+        public Suspect Suspect
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Suspect>("InterpoolModel.OrderOfArrestSuspect", "Suspect").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Suspect>("InterpoolModel.OrderOfArrestSuspect", "Suspect").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Suspect> SuspectReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Suspect>("InterpoolModel.OrderOfArrestSuspect", "Suspect");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Suspect>("InterpoolModel.OrderOfArrestSuspect", "Suspect", value);
                 }
             }
         }

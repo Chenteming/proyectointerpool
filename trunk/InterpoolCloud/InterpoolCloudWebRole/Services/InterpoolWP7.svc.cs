@@ -38,6 +38,11 @@ namespace InterpoolCloudWebRole.Services
         {
             return null;
         }
+
+        public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
+        {
+            controller.EmitOrderOfArrest(userIdFacebook, userIdFacebookSuspect);
+        }
       
     }
 }

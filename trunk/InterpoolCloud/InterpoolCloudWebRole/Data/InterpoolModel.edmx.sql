@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/25/2010 22:06:41
+-- Date Created: 09/29/2010 20:06:34
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -145,7 +145,8 @@ GO
 CREATE TABLE [dbo].[Games] (
     [GameId] int IDENTITY(1,1) NOT NULL,
     [GameTime] smallint  NOT NULL,
-    [User_UserId] int  NOT NULL
+    [User_UserId] int  NOT NULL,
+    [OrderOfArrest_OrderOfArrestId] int  NOT NULL
 );
 GO
 
@@ -236,6 +237,13 @@ CREATE TABLE [dbo].[Logs] (
     [LogName] nvarchar(max)  NOT NULL,
     [LogType] nvarchar(max)  NOT NULL,
     [LogStackTrace] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'OrdersOfArrest'
+CREATE TABLE [dbo].[OrdersOfArrest] (
+    [OrderOfArrestId] int IDENTITY(1,1) NOT NULL,
+    [Suspect_SuspectId] int  NOT NULL
 );
 GO
 
@@ -341,6 +349,12 @@ GO
 ALTER TABLE [dbo].[Logs]
 ADD CONSTRAINT [PK_Logs]
     PRIMARY KEY CLUSTERED ([LogId] ASC);
+GO
+
+-- Creating primary key on [OrderOfArrestId] in table 'OrdersOfArrest'
+ALTER TABLE [dbo].[OrdersOfArrest]
+ADD CONSTRAINT [PK_OrdersOfArrest]
+    PRIMARY KEY CLUSTERED ([OrderOfArrestId] ASC);
 GO
 
 -- Creating primary key on [Game_GameId], [PossibleSuspect_SuspectId] in table 'GamePossibleSuspect'
@@ -615,6 +629,34 @@ ADD CONSTRAINT [FK_NodePathCity1_City]
 CREATE INDEX [IX_FK_NodePathCity1_City]
 ON [dbo].[NodePathPossibleCity]
     ([PossibleCities_CityId]);
+GO
+
+-- Creating foreign key on [OrderOfArrest_OrderOfArrestId] in table 'Games'
+ALTER TABLE [dbo].[Games]
+ADD CONSTRAINT [FK_GameOrderOfArrest]
+    FOREIGN KEY ([OrderOfArrest_OrderOfArrestId])
+    REFERENCES [dbo].[OrdersOfArrest]
+        ([OrderOfArrestId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_GameOrderOfArrest'
+CREATE INDEX [IX_FK_GameOrderOfArrest]
+ON [dbo].[Games]
+    ([OrderOfArrest_OrderOfArrestId]);
+GO
+
+-- Creating foreign key on [Suspect_SuspectId] in table 'OrdersOfArrest'
+ALTER TABLE [dbo].[OrdersOfArrest]
+ADD CONSTRAINT [FK_OrderOfArrestSuspect]
+    FOREIGN KEY ([Suspect_SuspectId])
+    REFERENCES [dbo].[Suspects]
+        ([SuspectId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_OrderOfArrestSuspect'
+CREATE INDEX [IX_FK_OrderOfArrestSuspect]
+ON [dbo].[OrdersOfArrest]
+    ([Suspect_SuspectId]);
 GO
 
 -- --------------------------------------------------
