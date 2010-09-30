@@ -84,6 +84,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Pages\FacebookCallback.aspx" />
+    <Content Include="Pruebas\SuspectsFilters.aspx" />
     <Content Include="Services\InterpoolWP7.svc" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -153,7 +154,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="FacebookCommunication\FacebookController.cs" />
-    <Compile Include="FacebookCommunication\FacebookUserData.cs" />
+    <Compile Include="Datatypes\DataFacebookUser.cs" />
     <Compile Include="FacebookCommunication\IFacebookController.cs" />
     <Compile Include="FacebookCommunication\oAuthFacebook.cs" />
     <Compile Include="Global.asax.cs">
@@ -167,6 +168,13 @@
       <DependentUpon>FacebookCallback.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pruebas\SuspectsFilters.aspx.cs">
+      <DependentUpon>SuspectsFilters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pruebas\SuspectsFilters.aspx.designer.cs">
+      <DependentUpon>SuspectsFilters.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Service References\BingSearchService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

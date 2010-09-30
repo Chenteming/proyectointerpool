@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using InterpoolCloudWebRole.Data;
 using InterpoolCloudWebRole.FacebookCommunication;
+using InterpoolCloudWebRole.Datatypes;
 
 namespace InterpoolCloudWebRole.Services
 {

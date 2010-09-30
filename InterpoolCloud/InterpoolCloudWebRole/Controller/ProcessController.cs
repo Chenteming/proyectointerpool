@@ -7,6 +7,7 @@ using System.Data.Objects.DataClasses;
 using InterpoolCloudWebRole.Data;
 using InterpoolCloudWebRole.Utilities;
 using InterpoolCloudWebRole.FacebookCommunication;
+using InterpoolCloudWebRole.Datatypes;
 
 namespace InterpoolCloudWebRole.Controller
 {
