@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/29/2010 20:47:30
+-- Date Created: 09/29/2010 21:27:28
 -- Generated from EDMX file: C:\Users\Vicente\Documents\Facultad\4to\Proyecto Ingeniería de Software\Repositorio\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -75,7 +75,7 @@ IF OBJECT_ID(N'[dbo].[FK_NodePathCity1_City]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[NodePathPossibleCity] DROP CONSTRAINT [FK_NodePathCity1_City];
 GO
 IF OBJECT_ID(N'[dbo].[FK_GameOrderOfArrest]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Games] DROP CONSTRAINT [FK_GameOrderOfArrest];
+    ALTER TABLE [dbo].[OrdersOfArrest] DROP CONSTRAINT [FK_GameOrderOfArrest];
 GO
 IF OBJECT_ID(N'[dbo].[FK_OrderOfArrestSuspect]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[OrdersOfArrest] DROP CONSTRAINT [FK_OrderOfArrestSuspect];
@@ -154,8 +154,7 @@ GO
 CREATE TABLE [dbo].[Games] (
     [GameId] int IDENTITY(1,1) NOT NULL,
     [GameTime] smallint  NOT NULL,
-    [User_UserId] int  NOT NULL,
-    [OrderOfArrest_OrderOfArrestId] int  NOT NULL
+    [User_UserId] int  NOT NULL
 );
 GO
 
@@ -211,10 +210,10 @@ CREATE TABLE [dbo].[Suspects] (
     [SuspectMusic] nvarchar(max)  NULL,
     [SuspectCinema] nvarchar(max)  NULL,
     [SuspectFacebookId] nvarchar(max)  NOT NULL,
-    [SuspectTelevision] nvarchar(max)  NOT NULL,
-    [SuspectHometown] nvarchar(max)  NOT NULL,
-    [SuspectBirthday] nvarchar(max)  NOT NULL,
-    [SuspectLastName] nvarchar(max)  NOT NULL,
+    [SuspectTelevision] nvarchar(max)  NULL,
+    [SuspectHometown] nvarchar(max)  NULL,
+    [SuspectBirthday] datetime  NULL,
+    [SuspectLastName] nvarchar(max)  NULL,
     [Game_1_GameId] int  NULL
 );
 GO
@@ -256,6 +255,7 @@ GO
 -- Creating table 'OrdersOfArrest'
 CREATE TABLE [dbo].[OrdersOfArrest] (
     [OrderOfArrestId] int IDENTITY(1,1) NOT NULL,
+    [GameOrderOfArrest_OrderOfArrest_GameId] int  NOT NULL,
     [Suspect_SuspectId] int  NOT NULL
 );
 GO
@@ -644,18 +644,18 @@ ON [dbo].[NodePathPossibleCity]
     ([PossibleCities_CityId]);
 GO
 
--- Creating foreign key on [OrderOfArrest_OrderOfArrestId] in table 'Games'
-ALTER TABLE [dbo].[Games]
+-- Creating foreign key on [GameOrderOfArrest_OrderOfArrest_GameId] in table 'OrdersOfArrest'
+ALTER TABLE [dbo].[OrdersOfArrest]
 ADD CONSTRAINT [FK_GameOrderOfArrest]
-    FOREIGN KEY ([OrderOfArrest_OrderOfArrestId])
-    REFERENCES [dbo].[OrdersOfArrest]
-        ([OrderOfArrestId])
+    FOREIGN KEY ([GameOrderOfArrest_OrderOfArrest_GameId])
+    REFERENCES [dbo].[Games]
+        ([GameId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_GameOrderOfArrest'
 CREATE INDEX [IX_FK_GameOrderOfArrest]
-ON [dbo].[Games]
-    ([OrderOfArrest_OrderOfArrestId]);
+ON [dbo].[OrdersOfArrest]
+    ([GameOrderOfArrest_OrderOfArrest_GameId]);
 GO
 
 -- Creating foreign key on [Suspect_SuspectId] in table 'OrdersOfArrest'
