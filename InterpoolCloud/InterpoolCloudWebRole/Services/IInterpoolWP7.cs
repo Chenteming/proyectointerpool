@@ -25,6 +25,6 @@ namespace InterpoolCloudWebRole.Services
         List<string> GetCurrentFamous(string userIdFacebook);
 
         [OperationContract]
-        List<FacebookUserData> FilterSuspects(string userIdFacebook, FacebookUserData fbud);
+        List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
     }
 }
