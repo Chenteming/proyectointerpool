@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using InterpoolCloudWebRole.FacebookCommunication;
 using System.Data.Objects.DataClasses;
+using InterpoolCloudWebRole.Datatypes;
 
 namespace InterpoolCloudWebRole.Data
 {
