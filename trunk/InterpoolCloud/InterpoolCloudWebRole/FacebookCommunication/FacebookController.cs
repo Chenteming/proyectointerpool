@@ -7,13 +7,14 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using InterpoolCloudWebRole.Data;
 using InterpoolCloudWebRole.Utilities;
+using InterpoolCloudWebRole.Datatypes;
 
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
     public class FacebookController : IFacebookController
     {
         // Stores al recovered data form user facebook friends.
-        private Dictionary<String,FacebookUserData> userIdOauth = new Dictionary<string,FacebookUserData>();
+        private Dictionary<String,DataFacebookUser> userIdOauth = new Dictionary<string,DataFacebookUser>();
         private IDataManager dataManager = new DataManager();
 
         // Downloads from Facebook all the information from user and user's friends
@@ -23,7 +24,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             string userId = this.GetUserId(oAuth);
             if (!userId.Equals(""))
             {
-                FacebookUserData fbud = new FacebookUserData();
+                DataFacebookUser fbud = new DataFacebookUser();
                 fbud.userId = userId;
                 fbud.oAuth = oAuth;
 
@@ -33,7 +34,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 List<string> friendsIds = this.GetFriendsId(userId);
                 Suspect suspect;
                 List<Suspect> suspects = new List<Suspect>();
-                FacebookUserData fbudOfSuspect; 
+                DataFacebookUser fbudOfSuspect; 
                 // Creates and stores the suspects for the current user
                 int limit = Constants.MAX_SUSPECTS;
                 int i = 0;
@@ -58,18 +59,19 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
-        private Suspect NewSuspectFromFacebookUserData(FacebookUserData fbudOfSuspect)
+        private Suspect NewSuspectFromFacebookUserData(DataFacebookUser fbudOfSuspect)
         {
             Suspect suspect = new Suspect();
-            suspect.SuspectFecebookId = (fbudOfSuspect.userId == null) ? "" : fbudOfSuspect.userId;
-            suspect.SuspectName = fbudOfSuspect.first_name + " " + fbudOfSuspect.last_name;
-            suspect.SuspectPreferenceMusic = (fbudOfSuspect.hometown == null) ? "" : fbudOfSuspect.hometown;
+            suspect.SuspectFacebookId = (fbudOfSuspect.userId == null) ? "" : fbudOfSuspect.userId;
+            suspect.SuspectFirstName = fbudOfSuspect.first_name;
+            suspect.SuspectLastName = fbudOfSuspect.last_name;
+            suspect.SuspectMusic = (fbudOfSuspect.music == null) ? "" : fbudOfSuspect.hometown;
             return suspect;
         }
 
         public oAuthFacebook GetOauth(string userId) 
         {
-            FacebookUserData fbud;
+            DataFacebookUser fbud;
             if (userIdOauth.TryGetValue(userId, out fbud) == true) 
             {
                 return fbud.oAuth;
@@ -94,8 +96,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
         public void AddFriend(string name, string id, oAuthFacebook oAuth)
         {
-            FacebookUserData fbud = new FacebookUserData();
-            fbud.nombre = name;
+            DataFacebookUser fbud = new DataFacebookUser();
             fbud.oAuth = oAuth;
             fbud.userId = id;
 
@@ -124,10 +125,10 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
         }
 
-        public FacebookUserData GetFriendInfo(string userId, string userFriendId)
+        public DataFacebookUser GetFriendInfo(string userId, string userFriendId)
         {
             oAuthFacebook oAuth = GetOAuthFacebook(userId);
-            FacebookUserData friendData = new FacebookUserData();
+            DataFacebookUser friendData = new DataFacebookUser();
             
             String url = String.Format("https://graph.facebook.com/{0}?access_token={1}",
                 userFriendId, oAuth.Token);
@@ -138,17 +139,18 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 userFriendId, oAuth.Token);
             jsonFriendInfo = oAuth.WebRequest(oAuthFacebook.Method.GET, url, String.Empty);
 
-            friendData.likes = GetFriendLikesInfoByJson(jsonFriendInfo);
+            // The likes will be discriminates as Television, Cinema and Music
+            // friendData.likes = GetFriendLikesInfoByJson(jsonFriendInfo);
             
             return friendData;
         }
 
         // TODO: see if this method will stay in this class
-        private FacebookUserData GetFriendStandardInfoByJson(string jsonFriendInfo)
+        private DataFacebookUser GetFriendStandardInfoByJson(string jsonFriendInfo)
         {
             JObject jsonFriendObject = JObject.Parse(jsonFriendInfo);
             List<string> friendsId = new List<string>();
-            FacebookUserData fbud = new FacebookUserData();
+            DataFacebookUser fbud = new DataFacebookUser();
 
             //string id = (string)jsonFriendObject.SelectToken("name");
 
