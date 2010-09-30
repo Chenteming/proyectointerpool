@@ -34,9 +34,9 @@ namespace InterpoolCloudWebRole.Services
             return controller.GetCurrentFamous(userIdFacebook);
         }
 
-        public List<FacebookUserData> FilterSuspects(string userIdFacebook, FacebookUserData fbud)
+        public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
         {
-            return null;
+            return controller.FilterSuspects(userIdFacebook, fbud);
         }
 
         public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
