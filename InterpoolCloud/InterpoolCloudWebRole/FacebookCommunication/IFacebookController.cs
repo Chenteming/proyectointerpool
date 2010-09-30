@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InterpoolCloudWebRole.Data;
+using InterpoolCloudWebRole.Datatypes;
 
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
@@ -15,7 +16,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
         // Returns the data of the friend with id userFriendId, who is a friend
         // of the user with id userId
-        FacebookUserData GetFriendInfo(String userId, String userFriendId);
+        DataFacebookUser GetFriendInfo(String userId, String userFriendId);
 
         // Only for the protoype
         List<string> GetFriendsNames(oAuthFacebook oAuth, string userId);
