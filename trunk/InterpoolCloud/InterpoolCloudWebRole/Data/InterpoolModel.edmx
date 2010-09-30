@@ -124,7 +124,6 @@
     <Property Name="GameId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="GameTime" Type="smallint" Nullable="false" />
     <Property Name="User_UserId" Type="int" Nullable="false" />
-    <Property Name="OrderOfArrest_OrderOfArrestId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="NodePaths">
     <Key>
@@ -180,10 +179,10 @@
     <Property Name="SuspectMusic" Type="nvarchar(max)" Nullable="true" />
     <Property Name="SuspectCinema" Type="nvarchar(max)" Nullable="true" />
     <Property Name="SuspectFacebookId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SuspectTelevision" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SuspectHometown" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SuspectBirthday" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SuspectLastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SuspectTelevision" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SuspectHometown" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SuspectBirthday" Type="datetime" Nullable="true" />
+    <Property Name="SuspectLastName" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Game_1_GameId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Levels">
@@ -225,6 +224,7 @@
       <PropertyRef Name="OrderOfArrestId" />
     </Key>
     <Property Name="OrderOfArrestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameOrderOfArrest_OrderOfArrest_GameId" Type="int" Nullable="false" />
     <Property Name="Suspect_SuspectId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="GameSuspect">
@@ -392,14 +392,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="GameOrderOfArrest">
-    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="*" />
-    <End Role="OrderOfArrest" Type="InterpoolModel.Store.OrdersOfArrest" Multiplicity="1" />
+    <End Role="Game" Type="InterpoolModel.Store.Games" Multiplicity="1" />
+    <End Role="OrderOfArrest" Type="InterpoolModel.Store.OrdersOfArrest" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="OrderOfArrest">
-        <PropertyRef Name="OrderOfArrestId" />
+      <Principal Role="Game">
+        <PropertyRef Name="GameId" />
       </Principal>
-      <Dependent Role="Game">
-        <PropertyRef Name="OrderOfArrest_OrderOfArrestId" />
+      <Dependent Role="OrderOfArrest">
+        <PropertyRef Name="GameOrderOfArrest_OrderOfArrest_GameId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -688,10 +688,10 @@
           <NavigationProperty Name="Game" Relationship="InterpoolModel.GameSuspect" FromRole="Suspect" ToRole="Game" />
           <NavigationProperty Name="Game_1" Relationship="InterpoolModel.GameSuspect1" FromRole="Suspect" ToRole="Game" />
           <Property Type="String" Name="SuspectFacebookId" Nullable="false" />
-          <Property Type="String" Name="SuspectTelevision" Nullable="false" />
-          <Property Type="String" Name="SuspectHometown" Nullable="false" />
-          <Property Type="String" Name="SuspectBirthday" Nullable="false" />
-          <Property Type="String" Name="SuspectLastName" Nullable="false" />
+          <Property Type="String" Name="SuspectTelevision" Nullable="true" />
+          <Property Type="String" Name="SuspectHometown" Nullable="true" />
+          <Property Type="DateTime" Name="SuspectBirthday" Nullable="true" />
+          <Property Type="String" Name="SuspectLastName" Nullable="true" />
         </EntityType>
         <EntityType Name="Level">
           <Key>
@@ -798,10 +798,10 @@
         </EntityType>
         <Association Name="GameOrderOfArrest">
           <End Type="InterpoolModel.Game" Role="Game" Multiplicity="1" />
-          <End Type="InterpoolModel.OrderOfArrest" Role="OrderOfArrest" Multiplicity="1" />
+          <End Type="InterpoolModel.OrderOfArrest" Role="OrderOfArrest" Multiplicity="0..1" />
         </Association>
         <Association Name="OrderOfArrestSuspect">
-          <End Type="InterpoolModel.OrderOfArrest" Role="OrderOfArrest" Multiplicity="1" />
+          <End Type="InterpoolModel.OrderOfArrest" Role="OrderOfArrest" Multiplicity="0..1" />
           <End Type="InterpoolModel.Suspect" Role="Suspect" Multiplicity="1" />
         </Association>
       </Schema>
@@ -1052,12 +1052,12 @@
         <ScalarProperty Name="CityId" ColumnName="PossibleCities_CityId" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="GameOrderOfArrest" TypeName="InterpoolModel.GameOrderOfArrest" StoreEntitySet="Games">
-      <EndProperty Name="OrderOfArrest">
-        <ScalarProperty Name="OrderOfArrestId" ColumnName="OrderOfArrest_OrderOfArrestId" />
-      </EndProperty>
+    <AssociationSetMapping Name="GameOrderOfArrest" TypeName="InterpoolModel.GameOrderOfArrest" StoreEntitySet="OrdersOfArrest">
       <EndProperty Name="Game">
-        <ScalarProperty Name="GameId" ColumnName="GameId" />
+        <ScalarProperty Name="GameId" ColumnName="GameOrderOfArrest_OrderOfArrest_GameId" />
+      </EndProperty>
+      <EndProperty Name="OrderOfArrest">
+        <ScalarProperty Name="OrderOfArrestId" ColumnName="OrderOfArrestId" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="OrderOfArrestSuspect" TypeName="InterpoolModel.OrderOfArrestSuspect" StoreEntitySet="OrdersOfArrest">

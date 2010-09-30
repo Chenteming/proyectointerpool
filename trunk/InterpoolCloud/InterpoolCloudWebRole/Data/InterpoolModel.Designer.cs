@@ -33,8 +33,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserLevel", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.User), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "CityCityProperty", "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.City), "CityProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.CityProperty))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathCity1", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.NodePath), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.City))]
-[assembly: EdmRelationshipAttribute("InterpoolModel", "GameOrderOfArrest", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Game), "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.OrderOfArrest))]
-[assembly: EdmRelationshipAttribute("InterpoolModel", "OrderOfArrestSuspect", "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.OrderOfArrest), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Suspect))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "GameOrderOfArrest", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Game), "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.OrderOfArrest))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "OrderOfArrestSuspect", "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.OrderOfArrest), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Suspect))]
 
 #endregion
 
@@ -2349,20 +2349,12 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="suspectId">Initial value of the SuspectId property.</param>
         /// <param name="suspectFirstName">Initial value of the SuspectFirstName property.</param>
         /// <param name="suspectFacebookId">Initial value of the SuspectFacebookId property.</param>
-        /// <param name="suspectTelevision">Initial value of the SuspectTelevision property.</param>
-        /// <param name="suspectHometown">Initial value of the SuspectHometown property.</param>
-        /// <param name="suspectBirthday">Initial value of the SuspectBirthday property.</param>
-        /// <param name="suspectLastName">Initial value of the SuspectLastName property.</param>
-        public static Suspect CreateSuspect(global::System.Int32 suspectId, global::System.String suspectFirstName, global::System.String suspectFacebookId, global::System.String suspectTelevision, global::System.String suspectHometown, global::System.String suspectBirthday, global::System.String suspectLastName)
+        public static Suspect CreateSuspect(global::System.Int32 suspectId, global::System.String suspectFirstName, global::System.String suspectFacebookId)
         {
             Suspect suspect = new Suspect();
             suspect.SuspectId = suspectId;
             suspect.SuspectFirstName = suspectFirstName;
             suspect.SuspectFacebookId = suspectFacebookId;
-            suspect.SuspectTelevision = suspectTelevision;
-            suspect.SuspectHometown = suspectHometown;
-            suspect.SuspectBirthday = suspectBirthday;
-            suspect.SuspectLastName = suspectLastName;
             return suspect;
         }
 
@@ -2495,7 +2487,7 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SuspectTelevision
         {
@@ -2507,7 +2499,7 @@ namespace InterpoolCloudWebRole.Data
             {
                 OnSuspectTelevisionChanging(value);
                 ReportPropertyChanging("SuspectTelevision");
-                _SuspectTelevision = StructuralObject.SetValidValue(value, false);
+                _SuspectTelevision = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SuspectTelevision");
                 OnSuspectTelevisionChanged();
             }
@@ -2519,7 +2511,7 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SuspectHometown
         {
@@ -2531,7 +2523,7 @@ namespace InterpoolCloudWebRole.Data
             {
                 OnSuspectHometownChanging(value);
                 ReportPropertyChanging("SuspectHometown");
-                _SuspectHometown = StructuralObject.SetValidValue(value, false);
+                _SuspectHometown = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SuspectHometown");
                 OnSuspectHometownChanged();
             }
@@ -2543,9 +2535,9 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String SuspectBirthday
+        public Nullable<global::System.DateTime> SuspectBirthday
         {
             get
             {
@@ -2555,19 +2547,19 @@ namespace InterpoolCloudWebRole.Data
             {
                 OnSuspectBirthdayChanging(value);
                 ReportPropertyChanging("SuspectBirthday");
-                _SuspectBirthday = StructuralObject.SetValidValue(value, false);
+                _SuspectBirthday = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SuspectBirthday");
                 OnSuspectBirthdayChanged();
             }
         }
-        private global::System.String _SuspectBirthday;
-        partial void OnSuspectBirthdayChanging(global::System.String value);
+        private Nullable<global::System.DateTime> _SuspectBirthday;
+        partial void OnSuspectBirthdayChanging(Nullable<global::System.DateTime> value);
         partial void OnSuspectBirthdayChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SuspectLastName
         {
@@ -2579,7 +2571,7 @@ namespace InterpoolCloudWebRole.Data
             {
                 OnSuspectLastNameChanging(value);
                 ReportPropertyChanging("SuspectLastName");
-                _SuspectLastName = StructuralObject.SetValidValue(value, false);
+                _SuspectLastName = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SuspectLastName");
                 OnSuspectLastNameChanged();
             }
