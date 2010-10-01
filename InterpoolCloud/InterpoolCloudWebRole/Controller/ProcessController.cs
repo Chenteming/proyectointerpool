@@ -443,7 +443,7 @@ namespace InterpoolCloudWebRole.Controller
             }
 
             //TODO, check if exist the suspect with that idFacebook
-            Suspect suspect = game.PossibleSuspect.Where(s => s.SuspectFecebookId == userIdFacebookSuspect).First();
+            Suspect suspect = game.PossibleSuspect.Where(s => s.SuspectFacebookId == userIdFacebookSuspect).First();
 
             OrderOfArrest order = new OrderOfArrest();
             order.Suspect = suspect;
@@ -463,7 +463,7 @@ namespace InterpoolCloudWebRole.Controller
             // the user make the order of arrest
             if (game.OrderOfArrest != null)
             {
-                if (game.Suspect.SuspectFecebookId == game.OrderOfArrest.Suspect.SuspectFecebookId)
+                if (game.Suspect.SuspectFacebookId == game.OrderOfArrest.Suspect.SuspectFacebookId)
                 {
                     // the order is for the guillty, the user win
                     // TODO level and score

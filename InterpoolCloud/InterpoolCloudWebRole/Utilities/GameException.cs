@@ -9,12 +9,7 @@ namespace InterpoolCloudWebRole.Utilities
     {
         private string msg;
         
-        GameException(string msg) 
-        {
-            //TODO internationalize the msg to show 
-            // msg =
-        }
-
+       
         public GameException(string msg)
             : base(msg)
         {
