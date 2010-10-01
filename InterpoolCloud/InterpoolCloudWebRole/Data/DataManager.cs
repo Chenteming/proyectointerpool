@@ -131,7 +131,6 @@ namespace InterpoolCloudWebRole.Data
             if (!string.IsNullOrEmpty(fbud.hometown))
             {
                 suspects =  from hometownSuspects in suspects
-                            // FIX: the following must be hometown instead of SuspectName
                             where (hometownSuspects.SuspectHometown == fbud.hometown)
                             select hometownSuspects;
             }
@@ -140,7 +139,6 @@ namespace InterpoolCloudWebRole.Data
             if (!string.IsNullOrEmpty(fbud.music))
             {
                 suspects = from musicSuspects in suspects
-                           // FIX: the following must be hometown instead of SuspectName
                            where (musicSuspects.SuspectMusic == fbud.music)
                            select musicSuspects;
             }
