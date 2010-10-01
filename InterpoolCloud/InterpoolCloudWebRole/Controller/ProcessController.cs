@@ -416,7 +416,9 @@ namespace InterpoolCloudWebRole.Controller
 
         public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
         {
-            return null;
+            IDataManager dm = new DataManager();
+            InterpoolContainer container = dm.GetContainer();
+            return dm.FilterSuspects(userIdFacebook, fbud, container);
         }
 
         public String Travel(string userIdFacebook)

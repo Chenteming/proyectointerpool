@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InterpoolCloudWebRole.FacebookCommunication;
+using InterpoolCloudWebRole.Datatypes;
 
 namespace InterpoolCloudWebRole.Data
 {
@@ -26,5 +27,7 @@ namespace InterpoolCloudWebRole.Data
         string GetParameter(string name, InterpoolContainer context);
 
         Game GetGameByUser(string userIdFaceook, InterpoolContainer conteiner);
+
+        List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud, InterpoolContainer container);
     }
 }
