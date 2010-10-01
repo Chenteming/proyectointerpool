@@ -434,7 +434,46 @@ namespace InterpoolCloudWebRole.Controller
 
         public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
         {
+            IDataManager dm = new DataManager();
+            InterpoolContainer container = new InterpoolContainer();
+            Game game = dm.GetGameByUser(userIdFacebook, container);
+            if (game.OrderOfArrest != null)
+            {
+                throw new GameException("error_existOneOrderOfArrest");
+            }
 
+            //TODO, check if exist the suspect with that idFacebook
+            Suspect suspect = game.PossibleSuspect.Where(s => s.SuspectFecebookId == userIdFacebookSuspect).First();
+
+            OrderOfArrest order = new OrderOfArrest();
+            order.Suspect = suspect;
+            container.AddToOrdersOfArrest(order);
+            game.OrderOfArrest = order;
+
+            container.SaveChanges();
+            
+        }
+
+        /**
+         * summary This function is invoque by the controller when the user reache the last city
+         * 
+         * */
+        private bool Arrest(Game game)
+        {
+            // the user make the order of arrest
+            if (game.OrderOfArrest != null)
+            {
+                if (game.Suspect.SuspectFecebookId == game.OrderOfArrest.Suspect.SuspectFecebookId)
+                {
+                    // the order is for the guillty, the user win
+                    // TODO level and score
+                    return true;
+                }
+            }
+
+            // user lose
+            // TODO level and score
+            return false;
         }
 
     }
