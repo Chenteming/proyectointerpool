@@ -193,6 +193,7 @@
     </Compile>
     <Compile Include="Utilities\Admin.cs" />
     <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\GameException.cs" />
     <Compile Include="Utilities\Parameters.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
