@@ -45,9 +45,14 @@ namespace InterpoolCloudWebRole.Services
             controller.EmitOrderOfArrest(userIdFacebook, userIdFacebookSuspect);
         }
 
-        public List<DataCity> getCities(string userIdFacebook)
+        public List<DataCity> GetCities(string userIdFacebook)
         {
-            return controller.getCities(userIdFacebook);
+            return controller.GetCities(userIdFacebook);
+        }
+
+        public void Traveler(string userIdFacebook)
+        {
+            controller.Traveler(userIdFacebook);
         }
       
     }

@@ -8,6 +8,7 @@ using InterpoolCloudWebRole.Controller;
 using InterpoolCloudWebRole.Utilities;
 using InterpoolCloudWebRole.Data;
 using InterpoolCloudWebRole.FacebookCommunication;
+using InterpoolCloudWebRole.Datatypes;
 
 namespace InterpoolCloudWebRole
 {
@@ -35,6 +36,18 @@ namespace InterpoolCloudWebRole
         {
             oAuthFacebook oAuth = new oAuthFacebook();
             Response.Redirect(oAuth.AuthorizationLinkGet());
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            IProcessController ipc = new ProcessController();
+            string userId = "1358576832";
+            List<DataCity> col = ipc.GetCities(userId);
+
+            foreach (DataCity d in col)
+            {
+                pruebaGetCities.Text = pruebaGetCities.Text+d.latitud + " " + d.longitud + " " + d.name_city + " " + d.name_file_city + "\n";
+            }
         }
     }
 }
