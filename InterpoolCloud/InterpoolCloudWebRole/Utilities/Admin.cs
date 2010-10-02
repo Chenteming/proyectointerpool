@@ -6,116 +6,162 @@ using InterpoolCloudWebRole.BingSearchService;
 using InterpoolCloudWebRole.Data;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Net;
+using System.Diagnostics;
 
 namespace InterpoolCloudWebRole.Utilities
 {
     public static class Admin
     {
-
-        #region Buscar (String cadena)
-        static string Buscar(String cadena)
+        //FindCity()  "Este País" -- "Esta Ciudad"
+        #region FindCity (string ciudad, string country)
+        public static string FindCity(string ciudad, string country)
         {
-            var cadenaSplit = cadena.Split(' ');
-            System.Text.StringBuilder builderAux = new System.Text.StringBuilder();
-            System.Text.StringBuilder builderQuery = new System.Text.StringBuilder();
-            if (cadenaSplit != null)
-            {
-                builderAux = builderAux.Append("\"").Append(cadenaSplit[0]);
-                builderQuery = builderQuery.Append(cadenaSplit[0]);
-                for (int index = 1; index < cadenaSplit.Length; index++)
-                {
-                    builderAux.Append(" ").Append(cadenaSplit[index]);
-                    builderQuery = builderQuery.Append(" ").Append(cadenaSplit[index]);
-                }
-                builderAux.Append("\"");
-            }
+            //agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
+            string QueryOut = EscapearQuery(ciudad);
 
-            System.Text.StringBuilder builder = new System.Text.StringBuilder();
-            BingSearchService.BingPortTypeClient client = new BingSearchService.BingPortTypeClient();
-            SearchRequest request = new SearchRequest()
-            {
-                AppId = "A00C4105122186E4F9F0DFD82CDF594DD866BC1F",
-                Sources = new SourceType[] { SourceType.Web, SourceType.News },
-                Adult = AdultOption.Moderate,
-                AdultSpecified = true,
-                Query = builderAux.ToString(),
-                Market = "es-Mx",
-            };
-            request.Version = "2.0";
+            //realiza la busqueda en BING
+            SearchResponse response = BingRequest(QueryOut);
 
-            request.News = new NewsRequest();
-            request.News.Offset = 0;
-            request.News.OffsetSpecified = true;
-            request.News.Count = 10;
-            request.News.SortBy = NewsSortOption.Relevance;
-            request.News.SortBySpecified = true;
-
-            SearchResponse response = client.Search(request);
-            String resultado = null;
+            string resultado = null;
 
             if (response.Errors == null)
             {
                 int indice = 0;
                 int maxNews = 0;
                 if (response.News != null && response.News.Results != null)
-                     maxNews = response.News.Results.Length;
-                
+                    maxNews = response.News.Results.Length;
+
                 while (resultado == null && indice < maxNews)
                 {
                     NewsResult result = response.News.Results[indice];
-                    builder.Length = 0;
-                    resultado = leerPaginaWeb(result.Url, builderQuery.ToString());
+                    resultado = ParsearNoticia(result.Snippet, ciudad);
                     indice++;
                 }
             }
-            return resultado;
-        }
-        #endregion Buscar
 
-        #region leerPaginaWeb
-        // Acceder a una página Web usando WebRequest y WebResponse
-        static String leerPaginaWeb(string laUrl, string Query)
-        {
-            // Cear la solicitud de la URL.
-            System.Net.WebRequest request2 = System.Net.WebRequest.Create(laUrl);
-            
-            // Arreglar si el request es un 404
-            System.Net.WebResponse response = request2.GetResponse();
-
-            // Abrir el stream de la respuesta recibida.
-            StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.Default);
-            // Leer el contenido.
-            String res = System.Web.HttpUtility.HtmlDecode(reader.ReadToEnd());
-
-            // Cerrar los streams abiertos.
-            reader.Close();
-            response.Close();
-
-            return ParsearTexto(res, Query);
-        }
-        #endregion leerPaginaWeb
-
-        #region ParsearTexto
-        static String ParsearTexto(string entrada, string Query)
-        {
-            String resultado = null;
-            Regex expRegNoticia;
-            String patron1 = @"(<p>(([^<]*</?([a-oq-zA-OQ-Z])+\s?/?>)*([\w-\.ñÑáéíóúÁÉÍÓÚ\s\n\r\t,])*)(";
-            patron1 += Query;
-            String patron2 = @")([^<]+<((/p>)|(([/a-oq-zA-OQ-Z\t\r\n])+)[^>]+>[\t\r\n\s]*)))";
-            patron1 += patron2;
-
-            expRegNoticia = new Regex(patron1, RegexOptions.Multiline);
-            Match matchNoticia = expRegNoticia.Match(entrada);
-            if (matchNoticia.Length > 0)
+            if (country != null)
             {
-                string pattern = @"(([\t])|(</?([^>])*\s?/?>))*";
-                Regex expRegQuitar = new Regex(pattern);
-                return expRegQuitar.Replace(matchNoticia.Result("$1"), "");
+                resultado = ReemplazarTexto(resultado, "Este País", country);
+                return ReemplazarTexto(resultado, "Esta Ciudad", ciudad);
             }
             return resultado;
         }
-        #endregion 
+        #endregion FindCity
+
+        //"Yo"
+        #region  FindFamous(string famoso)
+        public static string FindFamous(string famoso)
+        {
+            //agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
+            string QueryOut = EscapearQuery(famoso);
+
+            //realiza la busqueda en BING
+            SearchResponse response = BingRequest(QueryOut);
+
+            string resultado = null;
+
+            if (response.Errors == null)
+            {
+                int indice = 0;
+                int maxNews = 0;
+                if (response.News != null && response.News.Results != null)
+                    maxNews = response.News.Results.Length;
+
+                while (resultado == null && indice < maxNews)
+                {
+                    NewsResult result = response.News.Results[indice];
+                    resultado = ParsearNoticia(result.Snippet, famoso);
+                    indice++;
+                }
+            }
+
+
+            return ReemplazarTexto(resultado, "Yo", famoso);
+
+        }
+        #endregion  FindFamous
+
+        //devuelve el string del query con comillas dobles escapedas
+        #region EscapearQuery
+        static String EscapearQuery(string QueryIn)
+        {
+            var cadenaSplit = QueryIn.Split(' ');
+            System.Text.StringBuilder result = new System.Text.StringBuilder();
+
+            if (cadenaSplit != null)
+            {
+                result = result.Append("\"").Append(cadenaSplit[0]);
+
+                for (int index = 1; index < cadenaSplit.Length; index++)
+                {
+                    result.Append(" ").Append(cadenaSplit[index]);
+                }
+                result.Append("\"");
+            }
+            return result.ToString();
+        }
+        #endregion EscapearQuery
+
+        //se trae la noticia
+        #region BingRequest
+        static SearchResponse BingRequest(string Query)
+        {
+            BingSearchService.BingPortTypeClient client = new BingSearchService.BingPortTypeClient();
+            SearchRequest request = new SearchRequest()
+
+            {
+                AppId = Constants.APPID,
+                Sources = new SourceType[] { SourceType.Web, SourceType.News },
+                Adult = AdultOption.Moderate,
+                AdultSpecified = true,
+                Query = Query,
+                Market = Constants.MARKET,
+
+            };
+            request.Version = Constants.REQUEST_VERSION;
+
+            request.News = new NewsRequest();
+            request.News.Offset = Constants.NEWS_OFFSET;
+            request.News.OffsetSpecified = true;
+            request.News.Count = Constants.NEWS_COUNT;
+            request.News.SortBy = NewsSortOption.Relevance;
+            request.News.SortBySpecified = true;
+
+            return client.Search(request);
+        }
+        #endregion BingRequest
+        //Devuelve caracteres hasta la primer ocurrencia de un punto (.) despues mas de 95 caracteres
+        #region ParsearNoticia
+        static String ParsearNoticia(string entrada, string Query)
+        {
+            String resultado = null;
+            Regex expRegNoticia;
+
+            String patron1 = @"(.){95}[^\.]{0,105}";
+            expRegNoticia = new Regex(patron1, RegexOptions.Multiline);
+
+            Match matchNoticia = expRegNoticia.Match(entrada);
+            if (matchNoticia.Length > 0)
+            {
+                return matchNoticia.ToString();
+            }
+            return resultado;
+        }
+        #endregion ParsearNoticia
+
+        #region ReemplazarTexto
+        static String ReemplazarTexto(string noticia, string nuevoTxt, string viejoTxt)
+        {
+            if (noticia != null)
+            {
+                Regex expRegQuitarPais = new Regex(viejoTxt, RegexOptions.IgnoreCase);
+                string entradaSinPais = expRegQuitarPais.Replace(noticia, nuevoTxt);
+                return entradaSinPais;
+            }
+            return "";
+        }
+        #endregion ReemplazarTexto
 
         public static void loadFamousData()
         {
@@ -126,20 +172,37 @@ namespace InterpoolCloudWebRole.Utilities
 
             foreach (Famous f in container.Famous)
             {
-                
+
                 //Se trae la noticia
-                news = Buscar(f.FamousName);
+                news = FindFamous(f.FamousName);
+
                 if (news != null)
                 {
                     newsF = new New();
                     newsF.NewContent = news;
                     newsF.Famous = f;
-
                     container.AddToNews(newsF);
                 }
             }
             container.SaveChanges();
-            
+
+
+            CityProperty newsCity;
+            foreach (City c in container.Cities)
+            {
+
+                //Se trae la noticia
+                news = FindCity(c.CityName, c.CityCountry);
+
+                if (news != null)
+                {
+                    newsCity = new CityProperty();
+                    newsCity.CityPropertyContent = news;
+                    newsCity.City = c;
+                    container.AddToCityPropertySet(newsCity);
+                }
+            }
+            container.SaveChanges();
         }
     }
 }
