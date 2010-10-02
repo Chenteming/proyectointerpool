@@ -30,9 +30,9 @@ namespace InterpoolCloudWebRole.Services
             return controller.GetPossibleCities(userIdFacebook);
         }
 
-        public List<string> GetCurrentFamous(string userIdFacebook)
+        public List<DataFamous> GetCurrentFamous(string userIdFacebook, int numClue)
         {
-            return controller.GetCurrentFamous(userIdFacebook);
+            return controller.GetCurrentFamous(userIdFacebook, numClue);
         }
 
         public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
