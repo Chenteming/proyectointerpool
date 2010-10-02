@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/02/2010 12:06:18
+-- Date Created: 10/02/2010 14:01:40
 -- Generated from EDMX file: C:\Users\Diego\Documents\Repo\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -186,6 +186,7 @@ GO
 CREATE TABLE [dbo].[Famous] (
     [FamousId] int IDENTITY(1,1) NOT NULL,
     [FamousName] nvarchar(max)  NOT NULL,
+    [NameFileFamous] nvarchar(max)  NOT NULL,
     [City_CityId] int  NOT NULL
 );
 GO

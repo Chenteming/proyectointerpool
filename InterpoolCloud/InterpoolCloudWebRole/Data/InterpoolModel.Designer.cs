@@ -1114,11 +1114,13 @@ namespace InterpoolCloudWebRole.Data
         /// </summary>
         /// <param name="famousId">Initial value of the FamousId property.</param>
         /// <param name="famousName">Initial value of the FamousName property.</param>
-        public static Famous CreateFamous(global::System.Int32 famousId, global::System.String famousName)
+        /// <param name="nameFileFamous">Initial value of the NameFileFamous property.</param>
+        public static Famous CreateFamous(global::System.Int32 famousId, global::System.String famousName, global::System.String nameFileFamous)
         {
             Famous famous = new Famous();
             famous.FamousId = famousId;
             famous.FamousName = famousName;
+            famous.NameFileFamous = nameFileFamous;
             return famous;
         }
 
@@ -1175,6 +1177,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _FamousName;
         partial void OnFamousNameChanging(global::System.String value);
         partial void OnFamousNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NameFileFamous
+        {
+            get
+            {
+                return _NameFileFamous;
+            }
+            set
+            {
+                OnNameFileFamousChanging(value);
+                ReportPropertyChanging("NameFileFamous");
+                _NameFileFamous = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("NameFileFamous");
+                OnNameFileFamousChanged();
+            }
+        }
+        private global::System.String _NameFileFamous;
+        partial void OnNameFileFamousChanging(global::System.String value);
+        partial void OnNameFileFamousChanged();
 
         #endregion
     
