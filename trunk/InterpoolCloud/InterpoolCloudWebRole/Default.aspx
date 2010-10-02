@@ -15,6 +15,11 @@
         <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
             Text="Newsfamois" />
         <asp:Button ID="ButtonLogin" runat="server" OnClick="ButtonLogin_Click" Text="Login" />
+        <asp:Button ID="Button3" runat="server" onclick="Button3_Click" 
+            Text="Prueba GetCities" />
+    </p>
+    <p>
+        <asp:Label ID="pruebaGetCities" runat="server"></asp:Label>
     </p>
     <p>
         You can also find <a href="http://go.microsoft.com/fwlink/?LinkID=152368&amp;clcid=0x409"
