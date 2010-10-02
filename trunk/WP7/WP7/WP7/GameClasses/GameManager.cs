@@ -10,20 +10,22 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Collections.Generic;
 using Microsoft.Phone.Controls;
+using WP7.Utilities;
 
 namespace WP7
 {
     public class GameManager
     {
         private static GameManager instance;
-        private String currentCity;
-        private List<String> cities;
-        private List<String> clues;
-        private List<String> famous;
-        private List<String> suspects;
+        private string currentCity;
+        private List<string> cities;
+        private List<string> clues;
+        private string[] famous;
+        private List<string> suspects;
         private int[] famousIndex = {-1,-1,-1} ;
-        private int number = -1;
+        private int number = 0;
         private int currentFamous = -1;
+        public string userId { get; set; }
 
         public static GameManager getInstance()
         {
@@ -34,93 +36,65 @@ namespace WP7
 
         private GameManager()
         {
-            cities = new List<String>();
-            famous = new List<String>();
-            clues = new List<String>();
-            suspects = new List<String>();
+            cities = new List<string>(Constants.MAX_CITIES);
+            famous = new string[Constants.MAX_FAMOUS];
+            clues = new List<string>();
+            suspects = new List<string>();
         }
 
-        public void AddCity(int position, String name)
+        public void AddCity(int position, string name)
         // Add the new city in the list
         {
             cities.Insert(position, name);
         }
 
-        public void AddClue(int position, String name)
+        public void AddClue(int position, string name)
         // Add the new clue in the list
         {
             clues.Insert(position, name);
         }
 
-        public void AddFamous(int position, String name)
+        public void AddFamous(int position, string name)
         // Add the new famous the list
         {
-            famous.Insert(position, name);
+           
+            famous[position] = name;
         }
 
-        public void SetCurrentCity(String city)
+        public void SetCurrentCity(string city)
         {
             currentCity = city;
         }
 
-        public void SetCurrentCities(List<String> list)
+        public void SetCurrentCities(List<string> list)
         {
             cities = list;
         }
 
-        public void SetCurrentFamous(List<String> list)
-        {
-            famous = list;
-        }
-
-        public void RemoveCities()
-        // Remove all the elements of the list
-        {
-            cities.RemoveRange(0, 2);
-        }
-
-        public void RemoveClues()
-        // Remove all the elements of the list
-        {
-            clues.RemoveRange(0, 2);
-        }
-
-        public void RemoveFamous()
-        // Remove all the elements of the list
-        {
-            famous.RemoveRange(0, 2);
-        }
-
-        public List<String> GetCities()
+        public List<string> GetCities()
         // Return all the cities	
         {
             return cities;
         }
 
-        public List<String> GetClues()
+        public List<string> GetClues()
         // Return all the clues	
         {
             return clues;
         }
 
-        public List<String> GetFamous()
-        // Return all the famous	
-        {
-            return famous;
-        }
-
-        public String GetCurrentCity()
+        public string GetCurrentCity()
         // Return the current city
         {
             return currentCity;
         }
 
-        public List<String> GetSuspects()
+        public List<string> GetSuspects()
         {
             return suspects;
         }
 
-        public void SetSuspectsList(List<String> list)
+        public void SetSuspectsList(List<string> list)
         {
             suspects = list;
         }
