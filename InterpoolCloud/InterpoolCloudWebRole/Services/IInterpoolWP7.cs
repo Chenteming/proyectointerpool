@@ -20,13 +20,13 @@ namespace InterpoolCloudWebRole.Services
         string GetUserIdFacebook(string idLogin);
 
         [OperationContract]
-        string GetCurrentCity(string userIdFacebook);
+        DataCity GetCurrentCity(string userIdFacebook);
 
         [OperationContract]
         List<string> GetPossibleCities(string userIdFacebook);
 
         [OperationContract]
-        List<DataFamous> GetCurrentFamous(string userIdFacebook, int numClue);
+        DataFamous GetCurrentFamous(string userIdFacebook, int numClue);
 
         [OperationContract]
         List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud);

@@ -20,7 +20,7 @@ namespace InterpoolCloudWebRole.Services
             controller.StartGame(userIdFacebook); 
         }
 
-        public string GetCurrentCity(string userIdFacebook)
+        public DataCity GetCurrentCity(string userIdFacebook)
         {
             return controller.GetCurrentCity(userIdFacebook);
         }
@@ -30,7 +30,7 @@ namespace InterpoolCloudWebRole.Services
             return controller.GetPossibleCities(userIdFacebook);
         }
 
-        public List<DataFamous> GetCurrentFamous(string userIdFacebook, int numClue)
+        public DataFamous GetCurrentFamous(string userIdFacebook, int numClue)
         {
             return controller.GetCurrentFamous(userIdFacebook, numClue);
         }
