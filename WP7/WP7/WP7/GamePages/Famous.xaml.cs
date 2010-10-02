@@ -17,22 +17,21 @@ namespace WP7
 {
     public partial class Famous : PhoneApplicationPage
     {
-        private ServiceWP7Client client;
-        private LanguageManager language;
+        private InterpoolWP7Client client;
+        private LanguageManager language = LanguageManager.GetInstance();
+        private GameManager gm = GameManager.getInstance();
 
         public Famous()
         {
             InitializeComponent();
             
-            // Change the language of the page
-            language = LanguageManager.GetInstance();
+            // Change the language of the page            
             if (language.GetXDoc() != null)
                 language.TranslatePage(this);
 			//famousImage.Source = "/WP7;component/FamousImages/Lety.jpg";
-            GameManager gm = GameManager.getInstance();
-            client = new ServiceWP7Client();
+            client = new InterpoolWP7Client();
             client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(client_GetCurrentFamousCompleted);
-            client.GetCurrentFamousAsync(gm.GetCurrentCity());
+            client.GetCurrentFamousAsync(gm.userId, gm.GetCurrentFamous() - 1);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
             // Set the textboxes with the name of the famous
@@ -55,19 +54,19 @@ namespace WP7
 
         void client_GetCurrentFamousCompleted(object sender, GetCurrentFamousCompletedEventArgs e)
         {
-            GameManager gm = GameManager.getInstance();
-            gm.SetCurrentFamous(e.Result.ToList());
-            List<String> famous = gm.GetFamous();
+            DataFamous dataF = e.Result;
+            int num = gm.GetCurrentFamous();
+            gm.AddFamous(num-1, dataF.nameFamous);
             famousNameButton.Visibility = System.Windows.Visibility.Visible;
             //Show in the content of the button the name of the famous is going to be interrogated
-            famousNameButton.Content = famous.ElementAt(gm.GetCurrentFamous());
+            famousNameButton.Content = dataF.nameFamous;
         }
 
         private void famousNameClick(object sender, RoutedEventArgs e)
         {            
-            client = new ServiceWP7Client();
+            client = new InterpoolWP7Client();
             client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
-            client.GetClueByFamousAsync(famousNameButton.Content.ToString());
+            client.GetClueByFamousAsync(gm.userId, gm.GetCurrentFamous() - 1);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync(); 
         }
