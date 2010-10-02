@@ -35,6 +35,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 Suspect suspect;
                 List<Suspect> suspects = new List<Suspect>();
                 DataFacebookUser fbudOfSuspect; 
+
                 // Creates and stores the suspects for the current user
                 int limit = Constants.MAX_SUSPECTS;
                 int i = 0;
@@ -140,7 +141,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             jsonFriendInfo = oAuth.WebRequest(oAuthFacebook.Method.GET, url, String.Empty);
 
             // The likes will be discriminates as Television, Cinema and Music
-            // friendData.likes = GetFriendLikesInfoByJson(jsonFriendInfo);
+            friendData = GetFriendLikesInfoByJson(jsonFriendInfo, friendData);
             
             return friendData;
         }
@@ -151,6 +152,15 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             JObject jsonFriendObject = JObject.Parse(jsonFriendInfo);
             List<string> friendsId = new List<string>();
             DataFacebookUser fbud = new DataFacebookUser();
+            fbud.birthday = "";
+            fbud.cinema = "";
+            fbud.first_name = "";
+            fbud.hometown = "";
+            fbud.last_name = "";
+            fbud.music = "";
+            fbud.television = "";
+            fbud.userId = "";
+            fbud.id_friend = "";
 
             //string id = (string)jsonFriendObject.SelectToken("name");
 
@@ -158,7 +168,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             // Error = if true rise exception when does not match token.
             bool error = false;
             fbud.id_friend = (string)jsonFriendObject.SelectToken("id", error);
-            fbud.first_name = (string)jsonFriendObject.SelectToken("first_name", error);
             fbud.first_name = (string)jsonFriendObject.SelectToken("first_name", error);
             fbud.last_name = (string)jsonFriendObject.SelectToken("last_name", error);
             fbud.birthday = (string)jsonFriendObject.SelectToken("birthday", error);
@@ -172,23 +181,46 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         }
 
         // TODO: see if this method will stay in this class
-        private string GetFriendLikesInfoByJson(string jsonFriendInfo)
+        private DataFacebookUser GetFriendLikesInfoByJson(string jsonFriendInfo, DataFacebookUser friendData)
         {
             JObject jsonFriendObject = JObject.Parse(jsonFriendInfo);
-            string likes = "";
-            
+                        
             //================GETTING LIKES FRIENDS DATA=====================//
-            string like_name = (string)jsonFriendObject.SelectToken("data[0].name");
+            string like_category = (string)jsonFriendObject.SelectToken("data[0].category");
 
-            int i = 1;
-            while (like_name != null)
+
+            int i= 0;
+            bool exit = false;
+            friendData.music = "";
+            friendData.television = "";
+            friendData.cinema = "";
+            
+            while (like_category != null && !exit)
             {
-                likes = likes + " " + like_name;
-                like_name = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                switch(like_category){
+                    case "Music":
+                    case "Musicians":
+                        friendData.music = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        break;
+                    case "Television":
+                        friendData.television = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        break;
+                    case "Movie":
+                    case "Film":
+                        friendData.cinema = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        break;
+                }
                 i++;
+                like_category = (string)jsonFriendObject.SelectToken("data[" + i + "].category");
+                if (friendData.music != "" && friendData.television != "" && friendData.cinema != "")
+                {
+                    exit = true;
+                }
+                
             }
-            //fbud = new FacebookUserData();
-            return likes;
+
+            return friendData;
+                        
         }
             
         // TODO: see if this method will stay in this class
