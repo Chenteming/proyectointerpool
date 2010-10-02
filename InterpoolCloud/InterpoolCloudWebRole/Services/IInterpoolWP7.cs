@@ -17,6 +17,9 @@ namespace InterpoolCloudWebRole.Services
         void StartGame(string userIdFacebook);
 
         [OperationContract]
+        string GetUserIdFacebook(string idLogin);
+
+        [OperationContract]
         string GetCurrentCity(string userIdFacebook);
 
         [OperationContract]
