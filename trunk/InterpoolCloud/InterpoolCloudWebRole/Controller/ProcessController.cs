@@ -489,11 +489,10 @@ namespace InterpoolCloudWebRole.Controller
          * summary This function is invoque by the controller when the user reaches the last city
          * 
          * */
-        public bool Arrest(/*Game game, InterpoolContainer container*/)
+        public bool Arrest(Game game, InterpoolContainer container)
         // TODO, change to private
         {
-            InterpoolContainer container = new InterpoolContainer();
-            Game game = container.Games.First();
+            
             // the user make the order of arrest
             if (game.OrderOfArrest != null)
             {
