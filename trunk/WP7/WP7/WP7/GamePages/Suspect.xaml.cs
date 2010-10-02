@@ -19,7 +19,8 @@ namespace WP7
         private List<String> suspectsList;
         private static int index;
 		private LanguageManager language;
-				
+		private GameManager gm = GameManager.getInstance();
+
         public Suspect()
         {
             InitializeComponent();
@@ -27,16 +28,29 @@ namespace WP7
             language = LanguageManager.GetInstance();
             if (language.GetXDoc() != null)
                 language.TranslatePage(this);
-            ServiceWP7Client client = new ServiceWP7Client();
-            client.GetProbablySuspectsCompleted += new EventHandler<GetProbablySuspectsCompletedEventArgs>(GetProbablySuspectsCallback);
-            client.GetProbablySuspectsAsync();
+			InterpoolWP7Client client = new InterpoolWP7Client();
+            DataFacebookUser dfu = new DataFacebookUser();
+            client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(client_FilterSuspectsCompleted);
+            client.FilterSuspectsAsync(gm.userId, dfu);
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+
             client.CloseAsync();
             suspectsList = new List<String>();
         }
 
+        void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void client_FilterSuspectsCompleted(object sender, FilterSuspectsCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+    /*
         public void GetProbablySuspectsCallback(object sender, GetProbablySuspectsCompletedEventArgs e)
         {
-            GameManager gm = GameManager.getInstance();
+            
             List<String> list = e.Result.ToList();
             gm.SetSuspectsList(list);
             index = 0;
@@ -45,7 +59,7 @@ namespace WP7
             else
                 Name_Suspect.Text = list.ElementAt(0);
         }
-
+        */
         private void LeftArrow1_Click(object sender, System.Windows.RoutedEventArgs e)
         {
         	GameManager gm = GameManager.getInstance();
