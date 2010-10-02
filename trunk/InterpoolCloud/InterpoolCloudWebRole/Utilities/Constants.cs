@@ -21,9 +21,13 @@ namespace InterpoolCloudWebRole.Utilities
         // for local test only
         public static string CONSUMER_KEY = "146049795426501";
         public static string CONSUMER_SECRET = "ea1aab4d4b19644875b4b22a54e17163";
-
-
-
+        //constants used in the search with BING
+        public static string APPID = "A00C4105122186E4F9F0DFD82CDF594DD866BC1F";
+        public static string MARKET = "es-Mx";
+        public static string REQUEST_VERSION = "2.0";
+        public static uint NEWS_OFFSET = 0;
+        public static uint NEWS_COUNT = 10;
+  
 
 
     }
