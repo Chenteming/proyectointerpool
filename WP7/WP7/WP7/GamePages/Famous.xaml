@@ -162,6 +162,7 @@
             		</LinearGradientBrush>
             	</Rectangle.Fill>
             </Rectangle>
+			<Image x:Name="famousImage" Stretch="Fill"></Image>
             <Button Height="70" HorizontalAlignment="Left" Margin="24,377,0,0" Name="famousNameButton" VerticalAlignment="Top" Width="314" Click="famousNameClick" Foreground="#FF001900" BorderBrush="#FF2CA32C" Opacity="1">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
