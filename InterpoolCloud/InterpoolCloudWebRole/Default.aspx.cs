@@ -79,9 +79,23 @@ namespace InterpoolCloudWebRole
             ipc.EmitOrderOfArrest(userId, userId);
         }
 
+
+        protected void Button6_Click1(object sender, EventArgs e)
+        {
+            string user = "1358576832";
+            string culpable = "1212";
+            IProcessController ipc = new ProcessController();
+            ipc.EmitOrderOfArrest(user, culpable);
+        }
+
         protected void Button7_Click(object sender, EventArgs e)
         {
-
+           /* string user = "1358576832";
+            InterpoolContainer c = new InterpoolContainer();
+            Int32 id = 1;
+            Game g = c.Games.Where(ga => ga.GameId==id).First(); */
+            ProcessController ipc = new ProcessController();
+            ipc.Arrest();
         }
 
     }

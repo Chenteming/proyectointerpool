@@ -25,11 +25,11 @@
         <asp:Button ID="Button5" runat="server" onclick="Button5_Click" 
             Text="Prueba Travel" />
 
-        <asp:Button ID="Button6" runat="server" onclick="Button6_Click" 
-            Text="Prueba EOA" />
+        <asp:Button ID="Button6" runat="server" 
+            Text="Prueba EOA" onclick="Button6_Click1" />
 
-        <asp:Button ID="Button7" runat="server" onclick="Button7_Click" 
-            Text="Prueba Arrestar" />
+        <asp:Button ID="Button7" runat="server" 
+            Text="Prueba Arrestar" onclick="Button7_Click" />
 
     </p>
     <p>
