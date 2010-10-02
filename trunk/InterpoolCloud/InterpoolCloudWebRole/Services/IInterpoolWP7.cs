@@ -32,6 +32,6 @@ namespace InterpoolCloudWebRole.Services
         List<DataCity> GetCities(string userIdFacebook);
 
         [OperationContract]
-        void Traveler(string userIdFacebook);
+        void Travel(string userIdFacebook);
     }
 }
