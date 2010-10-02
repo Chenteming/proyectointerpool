@@ -8,6 +8,8 @@ namespace InterpoolCloudWebRole.Utilities
     public static class Constants
     {
         public static int NUMBERLASTCITY = 4;
+        public static int NUMBER_SUB_LEVELS = 3;
+        public static int MAX_LEVELS = 10;
         public static int MAX_SUSPECTS = 10;
         public static string REDIRECT_URL_AFTER_LOGIN_FACEBOOK = "http://127.0.0.1:81/Default.aspx/";
         // public static string REDIRECT_URL_AFTER_LOGIN_FACEBOOK = "http://servicewp7.cloudapp.net/Default.aspx";
@@ -19,6 +21,8 @@ namespace InterpoolCloudWebRole.Utilities
         // for local test only
         public static string CONSUMER_KEY = "146049795426501";
         public static string CONSUMER_SECRET = "ea1aab4d4b19644875b4b22a54e17163";
+
+
 
 
 
