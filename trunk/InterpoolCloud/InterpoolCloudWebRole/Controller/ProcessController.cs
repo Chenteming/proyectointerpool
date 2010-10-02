@@ -611,7 +611,7 @@ namespace InterpoolCloudWebRole.Controller
             NodePath node = GetCurrentNode(userIdFacebook, conteiner);
             if (node != null)
             {
-                return node.Clue.ElementAt(numFamous - 1).ClueContent;
+                return node.Clue.ElementAt(numFamous).ClueContent;
             }
             return "";
         }
