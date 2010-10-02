@@ -27,5 +27,8 @@ namespace InterpoolCloudWebRole.Services
 
         [OperationContract]
         List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
+
+        [OperationContract]
+        List<DataCity> getCities(string userIdFacebook);
     }
 }

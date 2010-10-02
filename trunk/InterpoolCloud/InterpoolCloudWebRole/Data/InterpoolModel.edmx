@@ -115,6 +115,7 @@
     <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserIdFacebook" Type="nvarchar(max)" Nullable="false" />
     <Property Name="UserTokenFacebook" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SubNivel" Type="int" Nullable="true" />
     <Property Name="Level_LevelId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Games">
@@ -143,6 +144,9 @@
     <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CityCountry" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CityNumber" Type="int" Nullable="false" />
+    <Property Name="Longitud" Type="int" Nullable="false" />
+    <Property Name="Latitud" Type="int" Nullable="false" />
+    <Property Name="NameFile" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Level_LevelId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Famous">
@@ -607,6 +611,7 @@
           <Property Type="String" Name="UserTokenFacebook" Nullable="false" />
           <NavigationProperty Name="Game" Relationship="InterpoolModel.UserGame" FromRole="User" ToRole="Game" />
           <NavigationProperty Name="Level" Relationship="InterpoolModel.UserLevel" FromRole="User" ToRole="Level" />
+          <Property Type="Int32" Name="SubNivel" Nullable="true" />
         </EntityType>
         <EntityType Name="Game">
           <Key>
@@ -647,6 +652,9 @@
           <NavigationProperty Name="CityProperty" Relationship="InterpoolModel.CityCityProperty" FromRole="City" ToRole="CityProperty" />
           <Property Type="Int32" Name="CityNumber" Nullable="false" />
           <NavigationProperty Name="NodePath_1" Relationship="InterpoolModel.NodePathCity1" FromRole="City" ToRole="NodePath" />
+          <Property Type="Int32" Name="Longitud" Nullable="false" />
+          <Property Type="Int32" Name="Latitud" Nullable="false" />
+          <Property Type="String" Name="NameFile" Nullable="true" />
         </EntityType>
         <EntityType Name="Famous">
           <Key>
@@ -816,6 +824,7 @@
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="UserIdFacebook" ColumnName="UserIdFacebook" />
           <ScalarProperty Name="UserTokenFacebook" ColumnName="UserTokenFacebook" />
+          <ScalarProperty Name="SubNivel" ColumnName="SubNivel" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -843,6 +852,9 @@
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="CityCountry" ColumnName="CityCountry" />
           <ScalarProperty Name="CityNumber" ColumnName="CityNumber" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+          <ScalarProperty Name="NameFile" ColumnName="NameFile" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1088,15 +1100,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Model1" ZoomLevel="73" >
-        <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="4.125" PointY="5.5" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="4.125" PointY="5.5" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="InterpoolModel.Game" Width="1.5" PointX="1.25" PointY="5.375" Height="2.3648893229166656" />
         <EntityTypeShape EntityType="InterpoolModel.NodePath" Width="1.5" PointX="4.125" PointY="8.25" Height="2.5571907552083335" />
-        <EntityTypeShape EntityType="InterpoolModel.City" Width="1.5" PointX="8" PointY="5.125" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="InterpoolModel.City" Width="1.5" PointX="8.375" PointY="4.25" Height="3.5186979166666656" />
         <EntityTypeShape EntityType="InterpoolModel.Famous" Width="1.5" PointX="8.125" PointY="8.375" Height="1.5956835937499996" />
         <EntityTypeShape EntityType="InterpoolModel.New" Width="1.5" PointX="10.75" PointY="8.375" Height="1.4033821614583326" />
         <EntityTypeShape EntityType="InterpoolModel.Clue" Width="1.5" PointX="13.25" PointY="4.625" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="InterpoolModel.Suspect" Width="2.125" PointX="7.875" PointY="0.5" Height="3.1340950520833335" />
-        <EntityTypeShape EntityType="InterpoolModel.Level" Width="2" PointX="5.625" PointY="2.875" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="InterpoolModel.Level" Width="2" PointX="5.125" PointY="2.625" Height="1.9802864583333326" />
         <AssociationConnector Association="InterpoolModel.GameSuspect">
           <ConnectorPoint PointX="2" PointY="5.375" />
           <ConnectorPoint PointX="2" PointY="1.6595243326822913" />
@@ -1110,12 +1122,12 @@
           <ConnectorPoint PointX="4.125" PointY="9.2351462485137539" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathFamous">
-          <ConnectorPoint PointX="5.625" PointY="9.4612939453125" />
-          <ConnectorPoint PointX="8.125" PointY="9.4612939453125" />
+          <ConnectorPoint PointX="5.625" PointY="9.8170303743315781" />
+          <ConnectorPoint PointX="8.125" PointY="9.8170303743315781" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.CityFamous">
-          <ConnectorPoint PointX="8.8125" PointY="7.8744921875" />
-          <ConnectorPoint PointX="8.8125" PointY="8.375" />
+          <ConnectorPoint PointX="9.088598868866951" PointY="7.7686979166666656" />
+          <ConnectorPoint PointX="9.088598868866951" PointY="8.375" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.FamousNew">
           <ConnectorPoint PointX="9.625" PointY="9.172841796875" />
@@ -1127,52 +1139,52 @@
           <ConnectorPoint PointX="14.270684972815019" PointY="6.6052864583333326" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.ClueCity">
-          <ConnectorPoint PointX="13.25" PointY="5.34375" />
-          <ConnectorPoint PointX="9.5" PointY="5.34375" />
+          <ConnectorPoint PointX="13.25" PointY="5.09375" />
+          <ConnectorPoint PointX="9.875" PointY="5.09375" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.ClueFamous">
-          <ConnectorPoint PointX="13.727964782520161" PointY="6.6052864583333326" />
-          <ConnectorPoint PointX="13.727964782520161" PointY="10.2903857421875" />
+          <ConnectorPoint PointX="13.72886494563004" PointY="6.6052864583333326" />
+          <ConnectorPoint PointX="13.72886494563004" PointY="10.2903857421875" />
           <ConnectorPoint PointX="9.625" PointY="10.2903857421875" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.CityLevel">
-          <ConnectorPoint PointX="8" PointY="5.125" />
-          <ConnectorPoint PointX="7.625" PointY="4.8552864583333326" />
+          <ConnectorPoint PointX="8.375" PointY="4.4276432291666659" />
+          <ConnectorPoint PointX="7.125" PointY="4.4276432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathCity">
-          <ConnectorPoint PointX="5.625" PointY="8.9614728580381566" />
-          <ConnectorPoint PointX="7.625" PointY="8.9614728580381566" />
-          <ConnectorPoint PointX="7.625" PointY="7.5362421024359563" />
-          <ConnectorPoint PointX="8" PointY="7.5362421024359563" />
+          <ConnectorPoint PointX="5.489139852290867" PointY="8.25" />
+          <ConnectorPoint PointX="5.489139852290867" PointY="7.922587890625" />
+          <ConnectorPoint PointX="6.25" PointY="7.922587890625" />
+          <ConnectorPoint PointX="6.25" PointY="6.1869926874999992" />
+          <ConnectorPoint PointX="8.375" PointY="6.1869926874999992" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.GameSuspect1">
           <ConnectorPoint PointX="2.4062525" PointY="5.375" />
-          <ConnectorPoint PointX="2.4062525" PointY="2.2672646663411395" />
-          <ConnectorPoint PointX="3.5416666666666665" PointY="2.2672646663411391" />
-          <ConnectorPoint PointX="3.7083333333333335" PointY="2.2672646663411395" />
-          <ConnectorPoint PointX="7.875" PointY="2.2672646663411395" />
+          <ConnectorPoint PointX="2.4062525" PointY="2.1422646663411467" />
+          <ConnectorPoint PointX="3.5416666666666665" PointY="2.1422646663411462" />
+          <ConnectorPoint PointX="3.7083333333333335" PointY="2.1422646663411467" />
+          <ConnectorPoint PointX="7.875" PointY="2.1422646663411467" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.UserGame">
-          <ConnectorPoint PointX="4.125" PointY="6.4901432291666659" />
-          <ConnectorPoint PointX="2.75" PointY="6.4901432291666659" />
+          <ConnectorPoint PointX="4.125" PointY="6.5862939453125" />
+          <ConnectorPoint PointX="2.75" PointY="6.5862939453125" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.UserLevel">
-          <ConnectorPoint PointX="5.0312494999999995" PointY="5.5" />
-          <ConnectorPoint PointX="5.0312494999999995" PointY="4.6605843098958317" />
-          <ConnectorPoint PointX="5.625" PointY="4.6605843098958317" />
+          <ConnectorPoint PointX="5.5625" PointY="5.5" />
+          <ConnectorPoint PointX="5.5625" PointY="4.6052864583333326" />
         </AssociationConnector>
         <EntityTypeShape EntityType="InterpoolModel.CityProperty" Width="1.5" PointX="10.875" PointY="5.625" Height="1.5956835937499996" />
         <AssociationConnector Association="InterpoolModel.CityCityProperty">
-          <ConnectorPoint PointX="9.5" PointY="6.5189925130208337" />
+          <ConnectorPoint PointX="9.875" PointY="6.5189925130208337" />
           <ConnectorPoint PointX="10.875" PointY="6.5189925130208337" />
         </AssociationConnector>
         <EntityTypeShape EntityType="InterpoolModel.Parameter" Width="2" PointX="11.75" PointY="0.625" Height="1.59568359375" />
         <EntityTypeShape EntityType="InterpoolModel.Log" Width="1.5" PointX="14.375" PointY="0.625" Height="1.787985026041667" />
-        <AssociationConnector Association="InterpoolModel.NodePathCity1" ManuallyRouted="true">
-          <ConnectorPoint PointX="5.625" PointY="8.5686550209602714" />
-          <ConnectorPoint PointX="6.6066015422689315" PointY="8.5686550209602714" />
-          <ConnectorPoint PointX="6.6066015422689315" PointY="6.6228204223274991" />
-          <ConnectorPoint PointX="8" PointY="6.6228204223274991" />
+        <AssociationConnector Association="InterpoolModel.NodePathCity1" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.625" PointY="8.5857653051686835" />
+          <ConnectorPoint PointX="6.5" PointY="8.5857653051686835" />
+          <ConnectorPoint PointX="6.5" PointY="6.946992154395824" />
+          <ConnectorPoint PointX="8.375" PointY="6.946992154395824" />
         </AssociationConnector>
         <EntityTypeShape EntityType="InterpoolModel.OrderOfArrest" Width="1.5" PointX="2.875" PointY="3" Height="1.4033821614583317" />
         <AssociationConnector Association="InterpoolModel.GameOrderOfArrest">

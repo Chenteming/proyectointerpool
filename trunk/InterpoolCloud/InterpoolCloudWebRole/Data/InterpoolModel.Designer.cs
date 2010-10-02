@@ -426,13 +426,17 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="cityName">Initial value of the CityName property.</param>
         /// <param name="cityCountry">Initial value of the CityCountry property.</param>
         /// <param name="cityNumber">Initial value of the CityNumber property.</param>
-        public static City CreateCity(global::System.Int32 cityId, global::System.String cityName, global::System.String cityCountry, global::System.Int32 cityNumber)
+        /// <param name="longitud">Initial value of the Longitud property.</param>
+        /// <param name="latitud">Initial value of the Latitud property.</param>
+        public static City CreateCity(global::System.Int32 cityId, global::System.String cityName, global::System.String cityCountry, global::System.Int32 cityNumber, global::System.Int32 longitud, global::System.Int32 latitud)
         {
             City city = new City();
             city.CityId = cityId;
             city.CityName = cityName;
             city.CityCountry = cityCountry;
             city.CityNumber = cityNumber;
+            city.Longitud = longitud;
+            city.Latitud = latitud;
             return city;
         }
 
@@ -537,6 +541,78 @@ namespace InterpoolCloudWebRole.Data
         private global::System.Int32 _CityNumber;
         partial void OnCityNumberChanging(global::System.Int32 value);
         partial void OnCityNumberChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Longitud
+        {
+            get
+            {
+                return _Longitud;
+            }
+            set
+            {
+                OnLongitudChanging(value);
+                ReportPropertyChanging("Longitud");
+                _Longitud = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Longitud");
+                OnLongitudChanged();
+            }
+        }
+        private global::System.Int32 _Longitud;
+        partial void OnLongitudChanging(global::System.Int32 value);
+        partial void OnLongitudChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Latitud
+        {
+            get
+            {
+                return _Latitud;
+            }
+            set
+            {
+                OnLatitudChanging(value);
+                ReportPropertyChanging("Latitud");
+                _Latitud = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Latitud");
+                OnLatitudChanged();
+            }
+        }
+        private global::System.Int32 _Latitud;
+        partial void OnLatitudChanging(global::System.Int32 value);
+        partial void OnLatitudChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NameFile
+        {
+            get
+            {
+                return _NameFile;
+            }
+            set
+            {
+                OnNameFileChanging(value);
+                ReportPropertyChanging("NameFile");
+                _NameFile = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NameFile");
+                OnNameFileChanged();
+            }
+        }
+        private global::System.String _NameFile;
+        partial void OnNameFileChanging(global::System.String value);
+        partial void OnNameFileChanged();
 
         #endregion
     
@@ -2749,6 +2825,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _UserTokenFacebook;
         partial void OnUserTokenFacebookChanging(global::System.String value);
         partial void OnUserTokenFacebookChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SubNivel
+        {
+            get
+            {
+                return _SubNivel;
+            }
+            set
+            {
+                OnSubNivelChanging(value);
+                ReportPropertyChanging("SubNivel");
+                _SubNivel = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SubNivel");
+                OnSubNivelChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SubNivel;
+        partial void OnSubNivelChanging(Nullable<global::System.Int32> value);
+        partial void OnSubNivelChanged();
 
         #endregion
     

@@ -421,7 +421,7 @@ namespace InterpoolCloudWebRole.Controller
             return dm.FilterSuspects(userIdFacebook, fbud, container);
         }
 
-        public String Travel(string userIdFacebook)
+        public String Traveler(string userIdFacebook)
         {
             InterpoolContainer container = new InterpoolContainer();
             NodePath node = GetCurrentNode(userIdFacebook, container);
@@ -475,6 +475,33 @@ namespace InterpoolCloudWebRole.Controller
             // TODO level and score
             return false;
         }
+
+        public List<DataCity> getCities (String userId)
+        {
+            IDataManager dm = new DataManager();
+            InterpoolContainer container = new InterpoolContainer();
+            NodePath node = GetCurrentNode(userId,container);
+            List<DataCity> cities = new List<DataCity>();
+            DataCity datacity;
+            foreach (City c in node.CityReference)
+            {
+                datacity = new DataCity();
+                datacity.longitud = c.Longitud;
+                datacity.latitud = c.Latitud;
+                datacity.name_city = c.CityName;
+                datacity.name_file_city = c.NameFile;
+                cities.Add(datacity);
+            }
+            datacity = new DataCity();
+            datacity.longitud = node.City.Longitud;
+            datacity.latitud = node.City.Latitud;
+            datacity.name_city = node.City.CityName;
+            datacity.name_file_city = node.City.NameFile;
+            cities.Add(datacity);
+            return cities;
+
+        }
+
 
     }
 
