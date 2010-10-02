@@ -12,21 +12,22 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using WP7.ServiceReference;
 using System.Xml.Linq;
+using Microsoft.Phone.Tasks;
 
 namespace WP7
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        private ServiceWP7Client client;
-        private LanguageManager language;
+        private InterpoolWP7Client client = new InterpoolWP7Client();
+        private LanguageManager language = LanguageManager.GetInstance();
+        private GameManager gm = GameManager.getInstance();
 
         public MainPage()
         {
             InitializeComponent();
+            client.Endpoint.Binding.OpenTimeout = TimeSpan.FromSeconds(300);
             intro_wma.Play();
-			intro_animation.Begin();
-			language = LanguageManager.GetInstance();
-			
+			intro_animation.Begin();			
             if (language.GetXDoc() != null)
 			{
                 language.TranslatePage(this);     
@@ -35,13 +36,21 @@ namespace WP7
 			{
 				language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));	
 				language.TranslatePage(this);
-			}
-			client = new ServiceWP7Client();
-            client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
-            client.StartGameAsync();
+			}                       
+			
+            
+            
+        }
+
+        void client_GetUserIdFacebookCompleted(object sender, GetUserIdFacebookCompletedEventArgs e)
+        {
+            gm.userId = e.Result;
+            //client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
+            //client.StartGameAsync(gm.userId);
+            client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
+            client.GetCurrentCityAsync(gm.userId);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
-            GameManager gm = GameManager.getInstance();
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
@@ -57,24 +66,26 @@ namespace WP7
 
         void client_StartGameCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-
+            //client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
+            //client.GetCurrentCityAsync(gm.userId);
+            //client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            //client.CloseAsync();
         }
         
-        static void GetCurrentCityCallback(object sender, GetCurrentCityCompletedEventArgs e)
+        void GetCurrentCityCallback(object sender, GetCurrentCityCompletedEventArgs e)
         {
-            String initialCity = e.Result;
-            GameManager gm = GameManager.getInstance();
-            gm.SetCurrentCity(initialCity);
+            DataCity dc = (DataCity)e.Result;
+            gm.SetCurrentCity(dc.name_city);
+            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void Setting_Click(object sender, RoutedEventArgs e)
         {
-           
         }
 
         private void OptionButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-        	String current = language.GetCurrentLanguage();
+        	string current = language.GetCurrentLanguage();
             if (current.Equals("English"))
 			{
                 language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));
@@ -90,15 +101,20 @@ namespace WP7
 
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {		
-            client = new ServiceWP7Client();
-            client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
-            client.GetCurrentCityAsync();
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
-            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
+            client.GetUserIdFacebookAsync("");
+            client.GetUserIdFacebookCompleted += new EventHandler<GetUserIdFacebookCompletedEventArgs>(client_GetUserIdFacebookCompleted);
+           
+            // NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void ExitButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask task = new WebBrowserTask();
+            //task.URL = "http://servicewp7.cloudapp.net";
+            task.URL = "http://127.0.0.1:81/";
+            task.Show();
+        }
+   	 	private void ExitButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
         	NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
         }
