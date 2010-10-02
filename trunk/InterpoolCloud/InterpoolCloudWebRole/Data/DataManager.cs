@@ -46,7 +46,7 @@ namespace InterpoolCloudWebRole.Data
         }
 
         // Pre: the table Users must have at least 1 user
-        public string GetLastUserId(InterpoolContainer context)
+        public string GetLastUserIdFacebook(InterpoolContainer context)
         {
             int userId = (from u in context.Users
                         select u.UserId).Max();
