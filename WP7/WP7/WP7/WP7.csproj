@@ -79,9 +79,6 @@
     <Compile Include="GamePages\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GamePages\PagePruv1.xaml.cs">
-      <DependentUpon>PagePruv1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GamePages\PhonePage1.xaml.cs">
       <DependentUpon>PhonePage1.xaml</DependentUpon>
     </Compile>
@@ -100,6 +97,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -116,10 +114,6 @@
     </Page>
     <Page Include="GamePages\Game.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="GamePages\PagePruv1.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="GamePages\PhonePage1.xaml">
@@ -142,15 +136,27 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
-    <None Include="Service References\ServiceReference\ServiceWP7.wsdl" />
-    <None Include="Service References\ServiceReference\ServiceWP7.xsd">
+    <None Include="Service References\ServiceReference\InterpoolWP7.wsdl" />
+    <None Include="Service References\ServiceReference\InterpoolWP7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\ServiceWP71.xsd">
+    <None Include="Service References\ServiceReference\InterpoolWP71.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\ServiceWP72.xsd">
+    <None Include="Service References\ServiceReference\InterpoolWP72.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP74.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataCity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFacebookUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFamous.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <Resource Include="GameImages\FilterScreen2.png" />
     <Resource Include="FamousImages\amsterdam_arjen_robben.jpg" />
@@ -263,6 +269,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="mtbaker3.jpg" />
+    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7.disco" />
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
@@ -290,13 +303,6 @@
     <Resource Include="GameImages\InterpoolScreen.jpg" />
     <Resource Include="GameImages\OfficeScreen.jpg" />
     <Resource Include="GameImages\SuspectScreen.jpg" />
-    <None Include="Service References\ServiceReference\ServiceWP7.disco" />
-    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference\configuration.svcinfo" />
-    <None Include="Service References\ServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="SplashScreenImage.jpg" />
     <Resource Include="interpool_Images\Capa 1.png" />
     <Resource Include="interpool_Images\Capa 2.png" />
@@ -364,7 +370,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
