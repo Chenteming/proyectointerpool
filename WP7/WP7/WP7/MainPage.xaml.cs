@@ -97,5 +97,10 @@ namespace WP7
             client.CloseAsync();
             NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
+
+        private void ExitButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }
