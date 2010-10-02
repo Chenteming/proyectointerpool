@@ -54,6 +54,10 @@ namespace InterpoolCloudWebRole.Services
         {
             controller.Travel(userIdFacebook);
         }
-      
+
+        public string GetUserIdFacebook(string idLogin)
+        {
+            return controller.GetLastUserIdFacebook(idLogin);
+        }
     }
 }
