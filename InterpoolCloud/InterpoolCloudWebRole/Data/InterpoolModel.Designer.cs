@@ -2665,7 +2665,7 @@ namespace InterpoolCloudWebRole.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> SuspectBirthday
+        public global::System.String SuspectBirthday
         {
             get
             {
@@ -2675,13 +2675,13 @@ namespace InterpoolCloudWebRole.Data
             {
                 OnSuspectBirthdayChanging(value);
                 ReportPropertyChanging("SuspectBirthday");
-                _SuspectBirthday = StructuralObject.SetValidValue(value);
+                _SuspectBirthday = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SuspectBirthday");
                 OnSuspectBirthdayChanged();
             }
         }
-        private Nullable<global::System.DateTime> _SuspectBirthday;
-        partial void OnSuspectBirthdayChanging(Nullable<global::System.DateTime> value);
+        private global::System.String _SuspectBirthday;
+        partial void OnSuspectBirthdayChanging(global::System.String value);
         partial void OnSuspectBirthdayChanged();
     
         /// <summary>
@@ -2707,6 +2707,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _SuspectLastName;
         partial void OnSuspectLastNameChanging(global::System.String value);
         partial void OnSuspectLastNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SuspectGender
+        {
+            get
+            {
+                return _SuspectGender;
+            }
+            set
+            {
+                OnSuspectGenderChanging(value);
+                ReportPropertyChanging("SuspectGender");
+                _SuspectGender = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SuspectGender");
+                OnSuspectGenderChanged();
+            }
+        }
+        private global::System.String _SuspectGender;
+        partial void OnSuspectGenderChanging(global::System.String value);
+        partial void OnSuspectGenderChanged();
 
         #endregion
     

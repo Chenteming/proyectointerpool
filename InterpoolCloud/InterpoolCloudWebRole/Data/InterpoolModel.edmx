@@ -186,8 +186,9 @@
     <Property Name="SuspectFacebookId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SuspectTelevision" Type="nvarchar(max)" Nullable="true" />
     <Property Name="SuspectHometown" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="SuspectBirthday" Type="datetime" Nullable="true" />
+    <Property Name="SuspectBirthday" Type="nvarchar(max)" Nullable="true" />
     <Property Name="SuspectLastName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SuspectGender" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Game_1_GameId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Levels">
@@ -701,8 +702,9 @@
           <Property Type="String" Name="SuspectFacebookId" Nullable="false" />
           <Property Type="String" Name="SuspectTelevision" Nullable="true" />
           <Property Type="String" Name="SuspectHometown" Nullable="true" />
-          <Property Type="DateTime" Name="SuspectBirthday" Nullable="true" />
+          <Property Type="String" Name="SuspectBirthday" Nullable="true" />
           <Property Type="String" Name="SuspectLastName" Nullable="true" />
+          <Property Type="String" Name="SuspectGender" Nullable="true" />
         </EntityType>
         <EntityType Name="Level">
           <Key>
@@ -899,6 +901,7 @@
           <ScalarProperty Name="SuspectHometown" ColumnName="SuspectHometown" />
           <ScalarProperty Name="SuspectBirthday" ColumnName="SuspectBirthday" />
           <ScalarProperty Name="SuspectLastName" ColumnName="SuspectLastName" />
+          <ScalarProperty Name="SuspectGender" ColumnName="SuspectGender" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1113,14 +1116,14 @@
         <EntityTypeShape EntityType="InterpoolModel.Famous" Width="1.5" PointX="8.125" PointY="8.375" Height="2.3648893229166656" />
         <EntityTypeShape EntityType="InterpoolModel.New" Width="1.5" PointX="10.75" PointY="8.375" Height="1.4033821614583326" />
         <EntityTypeShape EntityType="InterpoolModel.Clue" Width="1.5" PointX="13.25" PointY="4.625" Height="1.9802864583333326" />
-        <EntityTypeShape EntityType="InterpoolModel.Suspect" Width="2.125" PointX="7.875" PointY="0.5" Height="3.1340950520833335" />
+        <EntityTypeShape EntityType="InterpoolModel.Suspect" Width="2.125" PointX="7.875" PointY="0.5" Height="3.3263964843749996" />
         <EntityTypeShape EntityType="InterpoolModel.Level" Width="2" PointX="5.125" PointY="2.625" Height="2.1725878906249996" />
         <AssociationConnector Association="InterpoolModel.GameSuspect">
           <ConnectorPoint PointX="2" PointY="5.375" />
-          <ConnectorPoint PointX="2" PointY="1.6595243326822913" />
-          <ConnectorPoint PointX="3.5416666666666665" PointY="1.6595243326822906" />
-          <ConnectorPoint PointX="3.7083333333333335" PointY="1.6595243326822913" />
-          <ConnectorPoint PointX="7.875" PointY="1.6595243326822913" />
+          <ConnectorPoint PointX="2" PointY="1.5953871663411494" />
+          <ConnectorPoint PointX="3.5416666666666665" PointY="1.5953871663411487" />
+          <ConnectorPoint PointX="3.7083333333333335" PointY="1.5953871663411494" />
+          <ConnectorPoint PointX="7.875" PointY="1.5953871663411494" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.GameNodePath">
           <ConnectorPoint PointX="2" PointY="7.7398893229166656" />
@@ -1172,10 +1175,10 @@
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.GameSuspect1">
           <ConnectorPoint PointX="2.4062525" PointY="5.375" />
-          <ConnectorPoint PointX="2.4062525" PointY="2.1422646663411467" />
-          <ConnectorPoint PointX="3.5416666666666665" PointY="2.1422646663411462" />
-          <ConnectorPoint PointX="3.7083333333333335" PointY="2.1422646663411467" />
-          <ConnectorPoint PointX="7.875" PointY="2.1422646663411467" />
+          <ConnectorPoint PointX="2.4062525" PointY="2.1101960831705755" />
+          <ConnectorPoint PointX="3.5416666666666665" PointY="2.1101960831705751" />
+          <ConnectorPoint PointX="3.7083333333333335" PointY="2.1101960831705755" />
+          <ConnectorPoint PointX="7.875" PointY="2.1101960831705755" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.UserGame">
           <ConnectorPoint PointX="4.125" PointY="6.5862939453125" />
@@ -1210,8 +1213,8 @@
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.OrderOfArrestSuspect">
           <ConnectorPoint PointX="3.625" PointY="3" />
-          <ConnectorPoint PointX="3.625" PointY="1.048509666341152" />
-          <ConnectorPoint PointX="7.875" PointY="1.048509666341152" />
+          <ConnectorPoint PointX="3.625" PointY="1.0164410831705739" />
+          <ConnectorPoint PointX="7.875" PointY="1.0164410831705739" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
