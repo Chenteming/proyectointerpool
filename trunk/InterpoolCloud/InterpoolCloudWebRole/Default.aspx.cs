@@ -68,7 +68,7 @@ namespace InterpoolCloudWebRole
         {
             IProcessController ipc = new ProcessController();
             string userId = "1358576832";
-            ipc.Travel(userId);
+            DataCity dc = ipc.Travel(userId, "a");
 
         }
 
@@ -76,7 +76,12 @@ namespace InterpoolCloudWebRole
         {
             IProcessController ipc = new ProcessController();
             string userId = "1358576832";
-            ipc.Travel(userId);
+            ipc.EmitOrderOfArrest(userId, userId);
+        }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

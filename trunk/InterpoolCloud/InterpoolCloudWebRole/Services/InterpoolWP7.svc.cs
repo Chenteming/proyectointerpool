@@ -50,9 +50,9 @@ namespace InterpoolCloudWebRole.Services
             return controller.GetCities(userIdFacebook);
         }
 
-        public void Travel(string userIdFacebook)
+        public DataCity Travel(string userIdFacebook, string nameNextCity)
         {
-            controller.Travel(userIdFacebook);
+            return controller.Travel(userIdFacebook, nameNextCity);
         }
 
 		public string GetClueByFamous(string userIdFacebook, int numFamous)
