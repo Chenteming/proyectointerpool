@@ -66,7 +66,14 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             suspect.SuspectFacebookId = (fbudOfSuspect.userId == null) ? "" : fbudOfSuspect.userId;
             suspect.SuspectFirstName = fbudOfSuspect.first_name;
             suspect.SuspectLastName = fbudOfSuspect.last_name;
-            suspect.SuspectMusic = (fbudOfSuspect.music == null) ? "" : fbudOfSuspect.hometown;
+            suspect.SuspectBirthday = (fbudOfSuspect.birthday == null) ? "" : fbudOfSuspect.birthday;
+            suspect.SuspectHometown = (fbudOfSuspect.hometown == null) ? "" : fbudOfSuspect.hometown;
+            suspect.SuspectMusic = (fbudOfSuspect.music == null) ? "" : fbudOfSuspect.music;
+            suspect.SuspectTelevision = (fbudOfSuspect.television == null) ? "" : fbudOfSuspect.television;
+            suspect.SuspectCinema = (fbudOfSuspect.cinema == null) ? "" : fbudOfSuspect.cinema;
+            suspect.SuspectGender = (fbudOfSuspect.gender == null) ? "" : fbudOfSuspect.gender;
+
+
             return suspect;
         }
 
@@ -161,6 +168,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             fbud.television = "";
             fbud.userId = "";
             fbud.id_friend = "";
+            fbud.gender = "";
 
             //string id = (string)jsonFriendObject.SelectToken("name");
 
@@ -171,6 +179,49 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             fbud.first_name = (string)jsonFriendObject.SelectToken("first_name", error);
             fbud.last_name = (string)jsonFriendObject.SelectToken("last_name", error);
             fbud.birthday = (string)jsonFriendObject.SelectToken("birthday", error);
+            if (fbud.birthday != null)
+            {
+                string[] fecha = fbud.birthday.Split('/');
+                switch(fecha[1])
+                {
+                    case "1":
+                        fbud.birthday = "Enero";
+                        break;
+                    case "2":
+                        fbud.birthday = "Febrero";
+                        break;
+                    case "3":
+                        fbud.birthday = "Marzo";
+                        break;
+                    case "4":
+                        fbud.birthday = "Abril";
+                        break;
+                    case "5":
+                        fbud.birthday = "Mayo";
+                        break;
+                    case "6":
+                        fbud.birthday = "Junio";
+                        break;
+                    case "7":
+                        fbud.birthday = "Julio";
+                        break;
+                    case "8":
+                        fbud.birthday = "Agosto";
+                        break;
+                    case "9":
+                        fbud.birthday = "Setiembre";
+                        break;
+                    case "10":
+                        fbud.birthday = "Octubre";
+                        break;
+                    case "11":
+                        fbud.birthday = "Noviembre";
+                        break;
+                    case "12":
+                        fbud.birthday = "Diciembre";
+                        break;
+                }
+            }
             fbud.gender = (string)jsonFriendObject.SelectToken("gender", error);
             JObject jsonFriendObjectAnid= (JObject)jsonFriendObject.SelectToken("hometown", error);
             if (jsonFriendObjectAnid != null)
