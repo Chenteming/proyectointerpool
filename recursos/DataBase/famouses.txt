@@ -1,99 +1,99 @@
-Amsterdam$Arjen Robben
-Amsterdam$Dj Tiesto
-Amsterdam$Frank Rijkaard
-Auckland$Keith Urban
-Auckland$Peter Jackson
-Auckland$Russell Crowe
-Bangkok$Chuan Leekpai
-Bangkok$Paradorn Srichaphan
-Bangkok$Thaksin Shinawatra
-Barcelona$Joan Manuel Serrat
-Barcelona$Juan Carlos
-Barcelona$Penelope Cruz
-Berlin$Franz Beckenbauer
-Berlin$Heidi Klum
-Berlin$Michael Schumacher
-Buenos Aires$Leo Messi
-Buenos Aires$Maradona
-Buenos Aires$Valeria Mazza
-Cape Town$Charlize Theron
-Cape Town$Nelson Mandela
-Cape Town$Thabo Mbeki
-Cope$Caroline Wozniacki
-Cope$Helena Christensen
-Cope$Lars Von Trier
-Cusco$Alberto Fujimori
-Cusco$Juan Manuel Vargas
-Cusco$Mario Vargas Llosa
-Dubai$Mansour Bin Zayed
-Dubai$Rashid Bin
-Dubai$Sulaiman Al Fahim
-Dublin$Bono
-Dublin$Enya
-Dublin$Eoin Colfer
-El Cairo$Ahmed Nazif
-El Cairo$Claude Francois
-El Cairo$Omar Sharif
-Hong Kong$Jackie Chan
-Hong Kong$Jet Li
-Hong Kong$Yao Ming
-Jerusalen$Bar Refaeli
-Jerusalen$Benny Hinn
-Jerusalen$Ralph Bakshi
-Katmandu$Arjun  Kumar
-Katmandu$Dichen Lachman
-Katmandu$Mohammad Sharif
-La Habana$Fidel Castro
-La Habana$Gloria Estefan
-La Habana$Vida Guerra
-Londres$David Beckham
-Londres$Eric Clapton
-Londres$Noami Campbell
-Madrid$Enrique Iglesias
-Madrid$Rafael Nadal
-Madrid$Rodriguez Zapatero
-Marrakech$Gad Elmaleh
-Marrakech$Hicham Arazi
-Marrakech$Mohammed Vi
-Mexico DF$Carlos Santana
-Mexico DF$Paulina Rubio
-Mexico DF$Thalia
-Montevideo$Diego Forlan
-Montevideo$Eduardo Galeano
-Montevideo$Natalia Oreiro
-Moscu$Anna Kournikova
-Moscu$Maria Sharapova
-Moscu$Vladimir Putin
-New York$Barack Obama
-New York$Eminem
-New York$Lady Gaga
-Nueva Delhi$Aishwarya Rai
-Nueva Delhi$Salman Khan
-Nueva Delhi$Sania Mirza
-Paris$Nicolas Sarkozy
-Paris$Roman Polanski
-Paris$Zinedine Zidane
-Pekin$Bai Ling
-Pekin$Hu Jintao
-Pekin$Yuen Biao
-Praga$Martina Navratilova
-Praga$Milos Forman
-Praga$Veronica Zemanova
-Rio De Janeiro$Gisele Bundchen
-Rio De Janeiro$Pele
-Rio De Janeiro$Ronaldo
-Roma$Carla Bruni
-Roma$Fabio Cannavaro
-Roma$Silvio Berlusconi
-Seul$Chan-Wook Park
-Seul$James Kyson Lee
-Seul$Yunjin Kim
-Singapur$Fann Wong
-Singapur$Jackson Rathbone
-Singapur$Lee Kuan Yew
-Sydney$Kylie Minogue
-Sydney$Mark Webber
-Sydney$Nicole Kidman
-Tokio$Junichiro Koizumi
-Tokio$Koda Kumi
-Tokio$Miyavi
+Amsterdam$Arjen Robben$amsterdam_arjen_robben.jpg
+Amsterdam$Dj Tiesto$amsterdam_dj_tiesto.jpg
+Amsterdam$Frank Rijkaard$amsterdam_frank_rijkaard.jpg
+Auckland$Keith Urban$auckland_keith_urban.jpg
+Auckland$Peter Jackson$auckland_peter_jackson.jpg
+Auckland$Russell Crowe$auckland_russell_crowe.jpg
+Bangkok$Chuan Leekpai$bangkok_chuan_leekpai.jpg
+Bangkok$Paradorn Srichaphan$bangkok_paradorn_srichaphan.jpg
+Bangkok$Thaksin Shinawatra$bangkok_thaksin_shinawatra.jpg
+Barcelona$Joan Manuel Serrat$barcelona_joan_manuel_serrat.jpg
+Barcelona$Juan Carlos$barcelona_juan_carlos.jpg
+Barcelona$Penelope Cruz$barcelona_penelope_cruz.jpg
+Berlin$Franz Beckenbauer$berlin_franz_beckenbauer.jpg
+Berlin$Heidi Klum$berlin_heidi_klum.jpg
+Berlin$Michael Schumacher$berlin_michael_schumacher.jpg
+Buenos Aires$Leo Messi$buenos_aires_leo_messi.jpg
+Buenos Aires$Maradona$buenos_aires_maradona.jpg
+Buenos Aires$Valeria Mazza$buenos_aires_valeria_mazza.jpg
+Cape Town$Charlize Theron$cape_town_charlize_theron.jpg
+Cape Town$Nelson Mandela$cape_town_nelson_mandela.jpg
+Cape Town$Thabo Mbeki$cape_town_thabo_mbeki.jpg
+Cope$Caroline Wozniacki$copenhague_caroline_wozniacki.jpg
+Cope$Helena Christensen$copenhague_helena_christensen.jpg
+Cope$Lars Von Trier$copenhague_lars_von_trier.jpg
+Cusco$Alberto Fujimori$cuzco_alberto_fujimori.jpg
+Cusco$Juan Manuel Vargas$cuzco_juan_manuel_vargas.jpg
+Cusco$Mario Vargas Llosa$cuzco_mario_vargas_llosa.jpg
+Dubai$Mansour Bin Zayed$dubai_mansour_bin_zayed.jpg
+Dubai$Rashid Bin$dubai_rashid_bin.jpg
+Dubai$Sulaiman Al Fahim$dubai_sulaiman_al_fahim.jpg
+Dublin$Bono$dublin_bono.jpg
+Dublin$Enya$dublin_enya.jpg
+Dublin$Eoin Colfer$dublin_eoin_colfer.jpg
+El Cairo$Ahmed Nazif$el_cairo_ahmed_nazif.jpg
+El Cairo$Claude Francois$el_cairo_claude_francois.jpg
+El Cairo$Omar Sharif$el_cairo_omar_sharif.jpg
+Hong Kong$Jackie Chan$hong_kong_jackie_chan.jpg
+Hong Kong$Jet Li$hong_kong_jet_li.jpg
+Hong Kong$Yao Ming$hong_kong_yao_ming.jpg
+Jerusalen$Bar Refaeli$jerusalem_bar_refaeli.jpg
+Jerusalen$Benny Hinn$jerusalem_benny_hinn.jpg
+Jerusalen$Ralph Bakshi$jerusalem_ralph_bakshi.jpg
+Katmandu$Arjun  Kumar$katmandu_arjun_ kumar.jpg
+Katmandu$Dichen Lachman$katmandu_dichen_lachman.jpg
+Katmandu$Mohammad Sharif$katmandu_mohammad_sharif.jpg
+La Habana$Fidel Castro$la_habana_fidel_castro.jpg
+La Habana$Gloria Estefan$la_habana_gloria_estefan.jpg
+La Habana$Vida Guerra$la_habana_vida_guerra.jpg
+Londres$David Beckham$londres_david_beckham.jpg
+Londres$Eric Clapton$londres_eric_clapton.jpg
+Londres$Noami Campbell$londres_noami_campbell.jpg
+Madrid$Enrique Iglesias$madrid_enrique_iglesias.jpg
+Madrid$Rafael Nadal$madrid_rafael_nadal.jpg
+Madrid$Rodriguez Zapatero$madrid_rodriguez_zapatero.jpg
+Marrakech$Gad Elmaleh$marrakech_gad_elmaleh.jpg
+Marrakech$Hicham Arazi$marrakech_hicham_arazi.jpg
+Marrakech$Mohammed Vi$marrakech_mohammed_vi.jpg
+Mexico DF$Carlos Santana$mexico_carlos_santana.jpg
+Mexico DF$Paulina Rubio$mexico_paulina_rubio.jpg
+Mexico DF$Thalia$mexico_thalia.jpg
+Montevideo$Diego Forlan$montevideo_diego_forlan.jpg
+Montevideo$Eduardo Galeano$montevideo_eduardo_galeano.jpg
+Montevideo$Natalia Oreiro$montevideo_natalia_oreiro.jpg
+Moscu$Anna Kournikova$moscu_anna_kournikova.jpg
+Moscu$Maria Sharapova$moscu_maria_sharapova.jpg
+Moscu$Vladimir Putin$moscu_vladimir_putin.jpg
+New York$Barack Obama$new_york_barack_obama.jpg
+New York$Eminem$new_york_eminem.jpg
+New York$Lady Gaga$new_york_lady_gaga.jpg
+Nueva Delhi$Aishwarya Rai$nueva_delhi_aishwarya_rai.jpg
+Nueva Delhi$Salman Khan$nueva_delhi_salman_khan.jpg
+Nueva Delhi$Sania Mirza$nueva_delhi_sania_mirza.jpg
+Paris$Nicolas Sarkozy$paris_nicolas_sarkozy.jpg
+Paris$Roman Polanski$paris_roman_polanski.jpg
+Paris$Zinedine Zidane$paris_zinedine_zidane.jpg
+Pekin$Bai Ling$pekin_bai_ling.jpg
+Pekin$Hu Jintao$pekin_hu_jintao.jpg
+Pekin$Yuen Biao$pekin_yuen_biao.jpg
+Praga$Martina Navratilova$praga_martina_navratilova.jpg
+Praga$Milos Forman$praga_milos_forman.jpg
+Praga$Veronica Zemanova$praga_veronica_zemanova.jpg
+Rio De Janeiro$Gisele Bundchen$rio_de_janeiro_gisele_bundchen.jpg
+Rio De Janeiro$Pele$rio_de_janeiro_pele.jpg
+Rio De Janeiro$Ronaldo$rio_de_janeiro_ronaldo.jpg
+Roma$Carla Bruni$roma_carla_bruni.jpg
+Roma$Fabio Cannavaro$roma_fabio_cannavaro.jpg
+Roma$Silvio Berlusconi$roma_silvio_berlusconi.jpg
+Seul$Chan-Wook Park$seul_chan-wook_park.jpg
+Seul$James Kyson Lee$seul_james_kyson_lee.jpg
+Seul$Yunjin Kim$seul_yunjin_kim.jpg
+Singapur$Fann Wong$singapur_fann_wong.jpg
+Singapur$Jackson Rathbone$singapur_jackson_rathbone.jpg
+Singapur$Lee Kuan Yew$singapur_lee_kuan_yew.jpg
+Sydney$Kylie Minogue$sydney_kylie_minogue.jpg
+Sydney$Mark Webber$sydney_mark_webber.jpg
+Sydney$Nicole Kidman$sydney_nicole_kidman.jpg
+Tokio$Junichiro Koizumi$tokio_junichiro_koizumi.jpg
+Tokio$Koda Kumi$tokio_koda_kumi.jpg
+Tokio$Miyavi$tokio_miyavi.jpg
