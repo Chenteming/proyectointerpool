@@ -14,13 +14,16 @@ namespace InterpoolCloudWebRole.Controller
     public class ProcessController : IProcessController
     {
 
-        public string GetCurrentCity(string userIdFacebook)
+        public DataCity GetCurrentCity(string userIdFacebook)
         {
             InterpoolContainer conteiner = new InterpoolContainer();
             NodePath node = GetCurrentNode(userIdFacebook, conteiner);
             if (node != null)
             {
-                return node.City.CityName;
+                DataCity dataCity = new DataCity();
+                dataCity.name_city = node.City.CityName;
+                dataCity.name_file_city = node.City.NameFile;
+                return dataCity;
             }
             return null;
         }
@@ -30,13 +33,16 @@ namespace InterpoolCloudWebRole.Controller
             return null;
         }
 
-        public List<DataFamous> GetCurrentFamous(string userIdFacebook, int numClue)
+        public DataFamous GetCurrentFamous(string userIdFacebook, int numClue)
         {
             InterpoolContainer conteiner = new InterpoolContainer();
             NodePath node = GetCurrentNode(userIdFacebook, conteiner);
             if (node != null)
             {
-                List<Famous> f = node.Famous.ToList();
+                DataFamous dataFamous = new DataFamous();
+                dataFamous.nameFamous = node.Clue.ElementAt(numClue).Famous.FamousName;
+                dataFamous.fileFamous = node.Clue.ElementAt(numClue).Famous.NameFileFamous;
+                return dataFamous;
             }
             return null;
         }

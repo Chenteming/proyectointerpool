@@ -12,11 +12,11 @@ namespace InterpoolCloudWebRole.Controller
     {
         void StartGame(string userIdFacebook);
 
-        string GetCurrentCity(string userIdFacebook);
+        DataCity GetCurrentCity(string userIdFacebook);
 
         List<string> GetPossibleCities(string userIdFacebook);
 
-        List<DataFamous> GetCurrentFamous(string userIdFacebook, int numClue);
+        DataFamous GetCurrentFamous(string userIdFacebook, int numClue);
 
         List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
 
