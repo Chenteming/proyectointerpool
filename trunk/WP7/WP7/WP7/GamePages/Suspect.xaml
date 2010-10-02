@@ -25,7 +25,6 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentGrid" Grid.Row="1" Margin="8,0,-8,0">
-        	<Image Margin="104,0,124,-460" Source="/WP7;component/interpool_Images/pantalla_5_Images/file1.png" Stretch="Fill" Height="456" VerticalAlignment="Bottom"/>
         	<Image x:Name="SuspectName" Source="..\GameImages\SuspectScreen.jpg" Stretch="Fill" RenderTransformOrigin="0.049,0.506" Margin="0,0,8,0"/>
         	<ListBox Height="444" HorizontalAlignment="Left" Margin="-8,0,0,0" x:Name="listBox1" VerticalAlignment="Top" Width="736" />
         	<Button x:Name="LeftArrow" Content="Button" HorizontalAlignment="Left" Margin="0,192,0,183" Width="86" Opacity="0" Click="LeftArrow_Click"/>
