@@ -2,16 +2,16 @@
     <system.serviceModel>
         <bindings>
             <basicHttpBinding>
-                <binding name="BasicHttpBinding_IServiceWP7" maxBufferSize="2147483647"
+                <binding name="BasicHttpBinding_IInterpoolWP7" maxBufferSize="2147483647"
                     maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
             </basicHttpBinding>
         </bindings>
         <client>
-            <endpoint address="http://servicewp7.cloudapp.net/ServiceWP7.svc"
-                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IServiceWP7"
-                contract="ServiceReference.IServiceWP7" name="BasicHttpBinding_IServiceWP7" />
+            <endpoint address="http://127.0.0.1:81/Services/InterpoolWP7.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IInterpoolWP7"
+                contract="ServiceReference.IInterpoolWP7" name="BasicHttpBinding_IInterpoolWP7" />
         </client>
     </system.serviceModel>
 </configuration>
