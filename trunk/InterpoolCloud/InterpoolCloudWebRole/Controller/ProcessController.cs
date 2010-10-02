@@ -455,10 +455,10 @@ namespace InterpoolCloudWebRole.Controller
         }
 
         /**
-         * summary This function is invoque by the controller when the user reache the last city
+         * summary This function is invoque by the controller when the user reaches the last city
          * 
          * */
-        private bool Arrest(Game game)
+        private bool Arrest(Game game, InterpoolContainer container)
         {
             // the user make the order of arrest
             if (game.OrderOfArrest != null)
@@ -467,8 +467,31 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     // the order is for the guillty, the user win
                     // TODO level and score
-                    Level level = game.User.Level;
-                    //if (level.LevelNumber)
+                    User user = game.User;
+                    Level level = user.Level;
+                    if (user.SubLevel == Constants.NUMBER_SUB_LEVELS)
+                    {
+                        if (level.LevelNumber == Constants.MAX_LEVELS)
+                        {
+                            // the user win, and the game is finish
+
+                        }
+                        else
+                        {
+                            // i have to advance level
+                            // TODO check if exists the next level
+                            Level newLevel = container.Levels.Where(l => l.LevelNumber == (level.LevelNumber + 1)).First();
+                            user.SubLevel = 0;
+                            user.Level = newLevel;
+                        }    
+                    }
+                    else
+                    {
+                        // advance the subLevel
+                        user.SubLevel++;
+
+                    }
+                    deleteGame(user, container);
                     return true;
                 }
             }
@@ -476,6 +499,41 @@ namespace InterpoolCloudWebRole.Controller
             // user lose
             // TODO level and score
             return false;
+        }
+
+        //TODO private
+        public void deleteGame(User user, InterpoolContainer container)
+        {
+            Game game = user.Game;
+            user.Game = null;
+            foreach(NodePath node in game.NodePath)
+            {
+                node.City = null;
+                node.PossibleCities = null;
+                node.Famous = null;
+                foreach(Clue clue in node.Clue)
+                {
+                    clue.City = null;
+                    clue.Famous = null;
+                    container.DeleteObject(clue);
+                }
+                node.Clue = null;
+                container.DeleteObject(node);
+            }
+            game.NodePath = null;
+            OrderOfArrest order = game.OrderOfArrest;
+            game.OrderOfArrest = null;
+            container.DeleteObject(order.Suspect);
+            container.DeleteObject(order);
+            container.DeleteObject(game.Suspect);
+            game.Suspect = null;
+            foreach (Suspect suspect in game.PossibleSuspect)
+            {
+                container.DeleteObject(suspect);
+            }
+            game.PossibleSuspect = null;
+            container.DeleteObject(game);
+            container.SaveChanges();
         }
 
         public List<DataCity> getCities (String userId)

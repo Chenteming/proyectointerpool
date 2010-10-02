@@ -1545,12 +1545,14 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="levelId">Initial value of the LevelId property.</param>
         /// <param name="levelName">Initial value of the LevelName property.</param>
         /// <param name="groupFacebookId">Initial value of the GroupFacebookId property.</param>
-        public static Level CreateLevel(global::System.Int32 levelId, global::System.String levelName, global::System.String groupFacebookId)
+        /// <param name="levelNumber">Initial value of the LevelNumber property.</param>
+        public static Level CreateLevel(global::System.Int32 levelId, global::System.String levelName, global::System.String groupFacebookId, global::System.Int32 levelNumber)
         {
             Level level = new Level();
             level.LevelId = levelId;
             level.LevelName = levelName;
             level.GroupFacebookId = groupFacebookId;
+            level.LevelNumber = levelNumber;
             return level;
         }
 
@@ -1631,6 +1633,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _GroupFacebookId;
         partial void OnGroupFacebookIdChanging(global::System.String value);
         partial void OnGroupFacebookIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LevelNumber
+        {
+            get
+            {
+                return _LevelNumber;
+            }
+            set
+            {
+                OnLevelNumberChanging(value);
+                ReportPropertyChanging("LevelNumber");
+                _LevelNumber = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LevelNumber");
+                OnLevelNumberChanged();
+            }
+        }
+        private global::System.Int32 _LevelNumber;
+        partial void OnLevelNumberChanging(global::System.Int32 value);
+        partial void OnLevelNumberChanged();
 
         #endregion
     
