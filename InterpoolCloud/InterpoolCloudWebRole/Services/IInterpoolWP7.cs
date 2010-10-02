@@ -35,7 +35,7 @@ namespace InterpoolCloudWebRole.Services
         List<DataCity> GetCities(string userIdFacebook);
 
         [OperationContract]
-        void Travel(string userIdFacebook);
+        DataCity Travel(string userIdFacebook, string nameNextCity);
 
 		[OperationContract]
         string GetClueByFamous(string userIdFacebook, int numFamous);

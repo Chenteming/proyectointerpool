@@ -28,7 +28,7 @@
         <asp:Button ID="Button6" runat="server" onclick="Button6_Click" 
             Text="Prueba EOA" />
 
-        <asp:Button ID="Button7" runat="server" onclick="Button6_Click" 
+        <asp:Button ID="Button7" runat="server" onclick="Button7_Click" 
             Text="Prueba Arrestar" />
 
     </p>

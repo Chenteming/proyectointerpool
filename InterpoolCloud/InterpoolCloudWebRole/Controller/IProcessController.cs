@@ -20,7 +20,7 @@ namespace InterpoolCloudWebRole.Controller
 
         List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
 
-        String Travel(string userIdFacebook);
+        DataCity Travel(string userIdFacebook, string nameNextCity);
 
         void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect);
 

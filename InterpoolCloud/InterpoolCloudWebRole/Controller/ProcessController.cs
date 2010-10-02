@@ -434,15 +434,23 @@ namespace InterpoolCloudWebRole.Controller
             return dm.FilterSuspects(userIdFacebook, fbud, container);
         }
 
-        public String Travel(string userIdFacebook)
+        public DataCity Travel(string userIdFacebook, string nameNextCity)
         {
             InterpoolContainer container = new InterpoolContainer();
+            DataCity datacity = new DataCity();
             NodePath node = GetCurrentNode(userIdFacebook, container);
             NodePath nextNode = GetNextNode(userIdFacebook, container);
+            if (nextNode.City.CityName.Equals(nameNextCity))
+            {
+                //TODO: the user lose time
+                throw new GameException("la ciudad no es la correcta");
+            }
             node.NodePathCurrent = false;
             nextNode.NodePathCurrent = true;
             container.SaveChanges();
-            return nextNode.City.CityName;
+            datacity.name_city = nextNode.City.CityName;
+            datacity.name_file_city = nextNode.City.NameFile;
+            return datacity;
         }
 
         public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
