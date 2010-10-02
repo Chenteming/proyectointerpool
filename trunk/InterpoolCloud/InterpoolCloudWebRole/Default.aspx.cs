@@ -22,7 +22,8 @@ namespace InterpoolCloudWebRole
         protected void Button1_Click(object sender, EventArgs e)
         {
             InterpoolContainer conteiner = new InterpoolContainer();
-            string userId = "1358576832";
+            //Poner el id de facebook que se trae en el loguin cada vez que se conecta.
+            string userId = "1368031061";
             IProcessController ipc = new ProcessController();
             ipc.StartGame(userId);
         }
