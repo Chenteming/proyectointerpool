@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/01/2010 21:49:26
--- Generated from EDMX file: C:\Users\Diego\Documents\Repo\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
+-- Date Created: 10/02/2010 10:24:20
+-- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -146,7 +146,7 @@ CREATE TABLE [dbo].[Users] (
     [UserId] int IDENTITY(1,1) NOT NULL,
     [UserIdFacebook] nvarchar(max)  NOT NULL,
     [UserTokenFacebook] nvarchar(max)  NOT NULL,
-    [SubNivel] int  NULL,
+    [SubLevel] int  NULL,
     [Level_LevelId] int  NOT NULL
 );
 GO

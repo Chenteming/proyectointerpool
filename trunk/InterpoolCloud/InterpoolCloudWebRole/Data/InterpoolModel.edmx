@@ -115,7 +115,7 @@
     <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserIdFacebook" Type="nvarchar(max)" Nullable="false" />
     <Property Name="UserTokenFacebook" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SubNivel" Type="int" Nullable="true" />
+    <Property Name="SubLevel" Type="int" Nullable="true" />
     <Property Name="Level_LevelId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Games">
@@ -611,7 +611,7 @@
           <Property Type="String" Name="UserTokenFacebook" Nullable="false" />
           <NavigationProperty Name="Game" Relationship="InterpoolModel.UserGame" FromRole="User" ToRole="Game" />
           <NavigationProperty Name="Level" Relationship="InterpoolModel.UserLevel" FromRole="User" ToRole="Level" />
-          <Property Type="Int32" Name="SubNivel" Nullable="true" />
+          <Property Type="Int32" Name="SubLevel" Nullable="true" />
         </EntityType>
         <EntityType Name="Game">
           <Key>
@@ -824,7 +824,7 @@
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="UserIdFacebook" ColumnName="UserIdFacebook" />
           <ScalarProperty Name="UserTokenFacebook" ColumnName="UserTokenFacebook" />
-          <ScalarProperty Name="SubNivel" ColumnName="SubNivel" />
+          <ScalarProperty Name="SubLevel" ColumnName="SubLevel" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
