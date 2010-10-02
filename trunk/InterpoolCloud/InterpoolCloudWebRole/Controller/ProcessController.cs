@@ -323,9 +323,9 @@ namespace InterpoolCloudWebRole.Controller
                 }
 
                 /* Add clue for the NodePath in order*/
-                cnp.Clue.Add(c3);
-                cnp.Clue.Add(c2);
                 cnp.Clue.Add(c1);
+                cnp.Clue.Add(c2);
+                cnp.Clue.Add(c3);
             }
             currentNodePath = g.NodePath.Where(cp => cp.NodePathOrder == Constants.NUMBERLASTCITY-1);
             cnp = currentNodePath.First();
@@ -356,9 +356,10 @@ namespace InterpoolCloudWebRole.Controller
             lastClue3.ClueContent = dm.GetParameter(Parameters.LAST_CLUE3_ESP, conteiner);
 
             /* add clues to nodepath */
-            cnp.Clue.Add(lastClue3);
-            cnp.Clue.Add(lastClue2);
             cnp.Clue.Add(lastClue1);
+            cnp.Clue.Add(lastClue2);
+            cnp.Clue.Add(lastClue3);
+            
         }
 
         private City NextCity(Game g, NodePath currentNodePath)
@@ -395,21 +396,21 @@ namespace InterpoolCloudWebRole.Controller
             {
                 /* faltan definir las características 2, 3 y 4*/
                 case 0:
-                    return s.SuspectCinema == null ? "" : s.SuspectCinema;
+                    return s.SuspectCinema == null ? "" : "Al sospechoso le gusta "+ s.SuspectCinema + ".";
                     
                 case 1:
-                    return s.SuspectMusic == null ? "" : s.SuspectMusic;
+                    return s.SuspectMusic == null ? "" : "Al ladrón le gusta escuchar " + s.SuspectMusic + ".";
 
                 case 2:
-                    return "Fanta definir la característica";
+                    return s.SuspectBirthday == null ? "" : "Su cumpleaños es el " + s.SuspectBirthday.ToString() + ".";
 
                 case 3:
-                    return "Fanta definir la característica";
+                    return s.SuspectHometown == null ? "" : "El ladrón nació en " + s.SuspectHometown + ".";
 
                 case 4:
-                    return "Fanta definir la característica";
+                    return s.SuspectTelevision == null ? "" : "Al sospechoso le gusta mirar " + s.SuspectTelevision + ".";
                 default:
-                    return "Parte random";
+                    return "";
             }
                         
         }
@@ -536,7 +537,8 @@ namespace InterpoolCloudWebRole.Controller
             container.SaveChanges();
         }
 
-        public List<DataCity> getCities (String userId)
+        public List<DataCity> GetCities (String userId)
+
         {
             IDataManager dm = new DataManager();
             InterpoolContainer container = new InterpoolContainer();
