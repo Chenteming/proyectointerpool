@@ -199,6 +199,7 @@ namespace InterpoolCloudWebRole.Utilities
                     newsCity = new CityProperty();
                     newsCity.CityPropertyContent = news;
                     newsCity.City = c;
+                    newsCity.Dyn = true;
                     container.AddToCityPropertySet(newsCity);
                 }
             }

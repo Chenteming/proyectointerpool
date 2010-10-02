@@ -244,7 +244,7 @@ namespace InterpoolCloudWebRole.Controller
 
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c3.ClueContent = GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " ";// +famous.New.First().NewContent;
+                        c3.ClueContent = GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " + famous.New.First().NewContent;
                     }
                     else
                     {
@@ -277,7 +277,7 @@ namespace InterpoolCloudWebRole.Controller
 
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c2.ClueContent = dynProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " ";// +famous.New.First().NewContent;
+                        c2.ClueContent = dynProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " +famous.New.First().NewContent;
                     }
                     else
                     {
@@ -289,7 +289,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c2.ClueContent = dynProperty + " ";// +famous.New.First().NewContent;
+                        c2.ClueContent = dynProperty + " " +famous.New.First().NewContent;
                     }
                     else
                     {
@@ -313,7 +313,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First().NewContent != null)
                     {
-                        c1.ClueContent = staticProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " ";// +famous.New.First().NewContent;
+                        c1.ClueContent = staticProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " +famous.New.First().NewContent;
                     }
                     else
                     {
@@ -326,7 +326,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c1.ClueContent = staticProperty + " ";// +famous.New.First().NewContent;
+                        c1.ClueContent = staticProperty + " "+famous.New.First().NewContent;
                     }
                     else
                     {
@@ -408,19 +408,19 @@ namespace InterpoolCloudWebRole.Controller
             {
                 /* faltan definir las características 2, 3 y 4*/
                 case 0:
-                    return s.SuspectCinema == null ? "" : "Al sospechoso le gusta "+ s.SuspectCinema + ".";
+                    return s.SuspectCinema == "" ? "Al sospechoso le gusta ...mmmm, no me acuerdo." : "Al sospechoso le gusta "+s.SuspectCinema + ".";
                     
                 case 1:
-                    return s.SuspectMusic == null ? "" : "Al ladrón le gusta escuchar " + s.SuspectMusic + ".";
+                    return s.SuspectMusic == "" ? "Al ladrón le gusta escuchar ...mmmm, no me acuerdo en este momento." : "Al ladrón le gusta escuchar "+s.SuspectMusic + ".";
 
                 case 2:
-                    return s.SuspectBirthday == null ? "" : "Su cumpleaños es el " + s.SuspectBirthday.ToString() + ".";
+                    return s.SuspectBirthday == "" ? "Su cumpleaños es el ...mmmm, en alguna fecha, que me supongo sabrá su mamá." : "Su cumpleaños es el "+s.SuspectBirthday.ToString() + ".";
 
                 case 3:
-                    return s.SuspectHometown == null ? "" : "El ladrón nació en " + s.SuspectHometown + ".";
+                    return s.SuspectHometown == "" ? "El ladrón nació en ...mmmm, una ciudad cuyo nombre no recuerdo." : "El ladrón nació en "+ s.SuspectHometown + ".";
 
                 case 4:
-                    return s.SuspectTelevision == null ? "" : "Al sospechoso le gusta mirar " + s.SuspectTelevision + ".";
+                    return s.SuspectTelevision == "" ? "Al sospechoso le gusta mirar ...mmmm, no recuerdo que programa mira en este momento." : "Al sospechoso le gusta mirar "+s.SuspectTelevision + ".";
                 default:
                     return "";
             }
