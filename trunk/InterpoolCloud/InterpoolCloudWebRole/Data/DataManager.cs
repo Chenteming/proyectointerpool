@@ -143,6 +143,40 @@ namespace InterpoolCloudWebRole.Data
                            select musicSuspects;
             }
 
+            // If the gender is not empty, gets all the suspects with the selected gender
+            if (!string.IsNullOrEmpty(fbud.gender))
+            {
+                suspects = from genderSuspects in suspects
+                           where (genderSuspects.SuspectGender == fbud.gender)
+                           select genderSuspects;
+            }
+
+            // If the cinema is not empty, gets all the suspects with the selected cinema
+            if (!string.IsNullOrEmpty(fbud.cinema))
+            {
+                suspects = from cinemaSuspects in suspects
+                           where (cinemaSuspects.SuspectCinema == fbud.cinema)
+                           select cinemaSuspects;
+            }
+
+            // If the television is not empty, gets all the suspects with the selected television
+            if (!string.IsNullOrEmpty(fbud.television))
+            {
+                suspects = from televisionSuspects in suspects
+                           where (televisionSuspects.SuspectTelevision == fbud.cinema)
+                           select televisionSuspects;
+            }
+
+            // If the birthday is not empty, gets all the suspects with the selected birthday
+            if (!string.IsNullOrEmpty(fbud.birthday))
+            {
+                suspects = from birthdaySuspects in suspects
+                           where (birthdaySuspects.SuspectBirthday == fbud.birthday)
+                           select birthdaySuspects;
+            }
+
+
+
             // TODO: filter with all the remaining fields
 
             DataFacebookUser fbudSuspect;
