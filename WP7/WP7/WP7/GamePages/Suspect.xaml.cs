@@ -18,9 +18,15 @@ namespace WP7
     {
         private List<String> suspectsList;
         private static int index;
+		private LanguageManager language;
+				
         public Suspect()
         {
             InitializeComponent();
+			// Change the language of the page
+            language = LanguageManager.GetInstance();
+            if (language.GetXDoc() != null)
+                language.TranslatePage(this);
             ServiceWP7Client client = new ServiceWP7Client();
             client.GetProbablySuspectsCompleted += new EventHandler<GetProbablySuspectsCompletedEventArgs>(GetProbablySuspectsCallback);
             client.GetProbablySuspectsAsync();
