@@ -62,7 +62,7 @@ namespace WP7
         public void TranslatePage(PhoneApplicationPage page)
         {           
             var controls = from us in XDoc.Elements("language").Elements("class").Elements("control")
-                           where (string)us.Parent.Attribute("name") == page.GetType().Name            
+                           where (String)us.Parent.Attribute("name") == page.GetType().Name            
                     select us;
             foreach (var control in controls)
             {   
