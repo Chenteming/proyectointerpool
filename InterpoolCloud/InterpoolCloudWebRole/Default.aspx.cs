@@ -46,6 +46,8 @@ namespace InterpoolCloudWebRole
             InterpoolContainer container = new InterpoolContainer();
             User user = container.Users.Where(u => u.UserIdFacebook == id).First();
             ProcessController pc = new ProcessController();
+
+            //pc.deleteGame(user, container);
            // pc.deleteGame(user, container);
         }
 
