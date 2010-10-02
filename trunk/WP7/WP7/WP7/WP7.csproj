@@ -79,11 +79,17 @@
     <Compile Include="GamePages\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GamePages\PhonePage1.xaml.cs">
+      <DependentUpon>PhonePage1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GamePages\Suspect.xaml.cs">
       <DependentUpon>Suspect.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\Filter.xaml.cs">
+      <DependentUpon>Filter.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ServiceReference\Reference.cs">
@@ -109,11 +115,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GamePages\PhonePage1.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GamePages\Suspect.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\Filter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -131,6 +145,106 @@
     <None Include="Service References\ServiceReference\ServiceWP72.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Resource Include="GameImages\FilterScreen2.png" />
+    <Resource Include="FamousImages\amsterdam_arjen_robben.jpg" />
+    <Resource Include="FamousImages\amsterdam_dj_tiesto.jpg" />
+    <Resource Include="FamousImages\amsterdam_frank_rijkaard.jpg" />
+    <Resource Include="FamousImages\auckland_keith_urban.jpg" />
+    <Resource Include="FamousImages\auckland_peter_jackson.jpg" />
+    <Resource Include="FamousImages\auckland_russell_crowe.jpg" />
+    <Resource Include="FamousImages\bangkok_chuan_leekpai.jpg" />
+    <Resource Include="FamousImages\bangkok_paradorn_srichaphan.jpg" />
+    <Resource Include="FamousImages\bangkok_thaksin_shinawatra.jpg" />
+    <Resource Include="FamousImages\barcelona_joan_manuel_serrat.jpg" />
+    <Resource Include="FamousImages\barcelona_juan_carlos.jpg" />
+    <Resource Include="FamousImages\barcelona_penelope_cruz.jpg" />
+    <Resource Include="FamousImages\berlin_franz_beckenbauer.jpg" />
+    <Resource Include="FamousImages\berlin_heidi_klum.jpg" />
+    <Resource Include="FamousImages\berlin_michael_schumacher.jpg" />
+    <Resource Include="FamousImages\buenos_aires_leo_messi.jpg" />
+    <Resource Include="FamousImages\buenos_aires_maradona.jpg" />
+    <Resource Include="FamousImages\buenos_aires_valeria_mazza.jpg" />
+    <Resource Include="FamousImages\cape_town_charlize_theron.jpg" />
+    <Resource Include="FamousImages\cape_town_nelson_mandela.jpg" />
+    <Resource Include="FamousImages\cape_town_thabo_mbeki.jpg" />
+    <Resource Include="FamousImages\copenhague_caroline_wozniacki.jpg" />
+    <Resource Include="FamousImages\copenhague_helena_christensen.jpg" />
+    <Resource Include="FamousImages\copenhague_lars_von_trier.jpg" />
+    <Resource Include="FamousImages\cuzco_alberto_fujimori.jpg" />
+    <Resource Include="FamousImages\cuzco_juan_manuel_vargas.jpg" />
+    <Resource Include="FamousImages\cuzco_mario_vargas_llosa.jpg" />
+    <Resource Include="FamousImages\dubai_mansour_bin_zayed.jpg" />
+    <Resource Include="FamousImages\dubai_rashid_bin.jpg" />
+    <Resource Include="FamousImages\dubai_sulaiman_al_fahim.jpg" />
+    <Resource Include="FamousImages\dublin_bono.jpg" />
+    <Resource Include="FamousImages\dublin_enya.jpg" />
+    <Resource Include="FamousImages\dublin_eoin_colfer.jpg" />
+    <Resource Include="FamousImages\el_cairo_ahmed_nazif.jpg" />
+    <Resource Include="FamousImages\el_cairo_claude_francois.jpg" />
+    <Resource Include="FamousImages\el_cairo_omar_sharif.jpg" />
+    <Resource Include="FamousImages\hong_kong_jackie_chan.jpg" />
+    <Resource Include="FamousImages\hong_kong_jet_li.jpg" />
+    <Resource Include="FamousImages\hong_kong_yao_ming.jpg" />
+    <Resource Include="FamousImages\jerusalem_bar_refaeli.jpg" />
+    <Resource Include="FamousImages\jerusalem_benny_hinn.jpg" />
+    <Resource Include="FamousImages\jerusalem_ralph_bakshi.jpg" />
+    <Resource Include="FamousImages\katmandu_arjun_ kumar.jpg" />
+    <Resource Include="FamousImages\katmandu_dichen_lachman.jpg" />
+    <Resource Include="FamousImages\katmandu_mohammad_sharif.jpg" />
+    <Resource Include="FamousImages\la_habana_fidel_castro.jpg" />
+    <Resource Include="FamousImages\la_habana_gloria_estefan.jpg" />
+    <Resource Include="FamousImages\la_habana_vida_guerra.jpg" />
+    <Resource Include="FamousImages\londres_david_beckham.jpg" />
+    <Resource Include="FamousImages\londres_eric_clapton.jpg" />
+    <Resource Include="FamousImages\londres_noami_campbell.jpg" />
+    <Resource Include="FamousImages\madrid_enrique_iglesias.jpg" />
+    <Resource Include="FamousImages\madrid_rafael_nadal.jpg" />
+    <Resource Include="FamousImages\madrid_rodriguez_zapatero.jpg" />
+    <Resource Include="FamousImages\marrakech_gad_elmaleh.jpg" />
+    <Resource Include="FamousImages\marrakech_hicham_arazi.jpg" />
+    <Resource Include="FamousImages\marrakech_mohammed_vi.jpg" />
+    <Resource Include="FamousImages\mexico_carlos_santana.jpg" />
+    <Resource Include="FamousImages\mexico_paulina_rubio.jpg" />
+    <Resource Include="FamousImages\mexico_thalia.jpg" />
+    <Resource Include="FamousImages\montevideo_diego_forlan.jpg" />
+    <Resource Include="FamousImages\montevideo_eduardo_galeano.jpg" />
+    <Resource Include="FamousImages\montevideo_natalia_oreiro.jpg" />
+    <Resource Include="FamousImages\moscu_anna_kournikova.jpg" />
+    <Resource Include="FamousImages\moscu_maria_sharapova.jpg" />
+    <Resource Include="FamousImages\moscu_vladimir_putin.jpg" />
+    <Resource Include="FamousImages\new_york_barack_obama.jpg" />
+    <Resource Include="FamousImages\new_york_eminem.jpg" />
+    <Resource Include="FamousImages\new_york_lady_gaga.jpg" />
+    <Resource Include="FamousImages\nueva_delhi_aishwarya_rai.jpg" />
+    <Resource Include="FamousImages\nueva_delhi_salman_khan.jpg" />
+    <Resource Include="FamousImages\nueva_delhi_sania_mirza.jpg" />
+    <Resource Include="FamousImages\paris_nicolas_sarkozy.jpg" />
+    <Resource Include="FamousImages\paris_roman_polanski.jpg" />
+    <Resource Include="FamousImages\paris_zinedine_zidane.jpg" />
+    <Resource Include="FamousImages\pekin_bai_ling.jpg" />
+    <Resource Include="FamousImages\pekin_hu_jintao.jpg" />
+    <Resource Include="FamousImages\pekin_yuen_biao.jpg" />
+    <Resource Include="FamousImages\praga_martina_navratilova.jpg" />
+    <Resource Include="FamousImages\praga_milos_forman.jpg" />
+    <Resource Include="FamousImages\praga_veronica_zemanova.jpg" />
+    <Resource Include="FamousImages\rio_de_janeiro_gisele_bundchen.jpg" />
+    <Resource Include="FamousImages\rio_de_janeiro_pele.jpg" />
+    <Resource Include="FamousImages\rio_de_janeiro_ronaldo.jpg" />
+    <Resource Include="FamousImages\roma_carla_bruni.jpg" />
+    <Resource Include="FamousImages\roma_fabio_cannavaro.jpg" />
+    <Resource Include="FamousImages\roma_silvio_berlusconi.jpg" />
+    <Resource Include="FamousImages\seul_chan-wook_park.jpg" />
+    <Resource Include="FamousImages\seul_james_kyson_lee.jpg" />
+    <Resource Include="FamousImages\seul_yunjin_kim.jpg" />
+    <Resource Include="FamousImages\singapur_fann_wong.jpg" />
+    <Resource Include="FamousImages\singapur_jackson_rathbone.jpg" />
+    <Resource Include="FamousImages\singapur_lee_kuan_yew.jpg" />
+    <Resource Include="FamousImages\sydney_kylie_minogue.jpg" />
+    <Resource Include="FamousImages\sydney_mark_webber.jpg" />
+    <Resource Include="FamousImages\sydney_nicole_kidman.jpg" />
+    <Resource Include="FamousImages\tokio_junichiro_koizumi.jpg" />
+    <Resource Include="FamousImages\tokio_koda_kumi.jpg" />
+    <Resource Include="FamousImages\tokio_miyavi.jpg" />
     <Content Include="GameLanguages\English.xml" />
     <Content Include="GameLanguages\Spanish.xml">
       <SubType>Designer</SubType>
@@ -141,6 +255,7 @@
     <Content Include="interpool_Images\pantalla_1_Images\Capa 1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="mtbaker3.jpg" />
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +278,7 @@
     </BlendEmbeddedFont>
     <Resource Include="GameImages\CityScreen.jpg" />
     <Resource Include="GameImages\FamousScreen.jpg" />
+    <Resource Include="GameImages\FilterScreen.png" />
     <Resource Include="GameImages\FormScreen.jpg" />
     <Resource Include="GameImages\InterpoolScreen.jpg" />
     <Resource Include="GameImages\OfficeScreen.jpg" />
@@ -241,6 +357,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
