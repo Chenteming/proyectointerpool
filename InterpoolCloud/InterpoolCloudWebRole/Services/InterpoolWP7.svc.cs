@@ -15,9 +15,9 @@ namespace InterpoolCloudWebRole.Services
     {
         private IProcessController controller = new ProcessController();
 
-        public void StartGame(User user)
+        public void StartGame(string userIdFacebook)
         {
-            
+            controller.StartGame(userIdFacebook);
         }
 
         public string GetCurrentCity(string userIdFacebook)
@@ -52,7 +52,7 @@ namespace InterpoolCloudWebRole.Services
 
         public void Traveler(string userIdFacebook)
         {
-            controller.Traveler(userIdFacebook);
+            controller.Travel(userIdFacebook);
         }
       
     }

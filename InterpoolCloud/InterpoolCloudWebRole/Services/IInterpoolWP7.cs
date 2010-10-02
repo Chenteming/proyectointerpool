@@ -14,7 +14,7 @@ namespace InterpoolCloudWebRole.Services
     public interface IInterpoolWP7
     {
         [OperationContract]
-        void StartGame(User user);
+        void StartGame(string userIdFacebook);
 
         [OperationContract]
         string GetCurrentCity(string userIdFacebook);
