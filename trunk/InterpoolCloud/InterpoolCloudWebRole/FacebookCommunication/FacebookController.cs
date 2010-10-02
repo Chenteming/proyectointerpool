@@ -63,7 +63,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         private Suspect NewSuspectFromFacebookUserData(DataFacebookUser fbudOfSuspect)
         {
             Suspect suspect = new Suspect();
-            suspect.SuspectFacebookId = (fbudOfSuspect.userId == null) ? "" : fbudOfSuspect.userId;
+            suspect.SuspectFacebookId = (fbudOfSuspect.id_friend == null) ? "" : fbudOfSuspect.id_friend;
             suspect.SuspectFirstName = fbudOfSuspect.first_name;
             suspect.SuspectLastName = fbudOfSuspect.last_name;
             suspect.SuspectBirthday = (fbudOfSuspect.birthday == null) ? "" : fbudOfSuspect.birthday;
@@ -179,6 +179,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             fbud.first_name = (string)jsonFriendObject.SelectToken("first_name", error);
             fbud.last_name = (string)jsonFriendObject.SelectToken("last_name", error);
             fbud.birthday = (string)jsonFriendObject.SelectToken("birthday", error);
+            //TODO: check the output format
             if (fbud.birthday != null)
             {
                 string[] fecha = fbud.birthday.Split('/');
