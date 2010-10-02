@@ -509,36 +509,43 @@ namespace InterpoolCloudWebRole.Controller
         }
 
         //TODO private
-        public void deleteGame(User user, InterpoolContainer container)
+        private void deleteGame(User user, InterpoolContainer container)
         {
             Game game = user.Game;
-            user.Game = null;
-            foreach(NodePath node in game.NodePath)
+
+            //user.Game = null;
+            IEnumerator<NodePath> itNodes = game.NodePath.GetEnumerator();
+            while (itNodes.MoveNext())
             {
+                NodePath node = itNodes.Current;
+                node.Game = null;
+               // container.DeleteObject(node.Clue);
+               // node.Clue = null;
+              /*  container.DeleteObject(node);
                 node.City = null;
                 node.PossibleCities = null;
-                node.Famous = null;
-                foreach(Clue clue in node.Clue)
-                {
-                    clue.City = null;
-                    clue.Famous = null;
-                    container.DeleteObject(clue);
-                }
-                node.Clue = null;
-                container.DeleteObject(node);
+                node.Famous = null;*/
             }
-            game.NodePath = null;
+           
+            //game.NodePath = null;
+            container.DeleteObject(game.NodePath);
             OrderOfArrest order = game.OrderOfArrest;
             game.OrderOfArrest = null;
-            container.DeleteObject(order.Suspect);
-            container.DeleteObject(order);
-            container.DeleteObject(game.Suspect);
+            if (order != null)
+            {
+                container.DeleteObject(order.Suspect);
+                container.DeleteObject(order);
+            }
+            //container.DeleteObject(game.Suspect);
             game.Suspect = null;
-            foreach (Suspect suspect in game.PossibleSuspect)
+           /* foreach (Suspect suspect in game.PossibleSuspect)
             {
                 container.DeleteObject(suspect);
-            }
+            }*/
             game.PossibleSuspect = null;
+            game.User = null;
+            game.NodePath = null;
+            //container.SaveChanges();
             container.DeleteObject(game);
             container.SaveChanges();
         }
