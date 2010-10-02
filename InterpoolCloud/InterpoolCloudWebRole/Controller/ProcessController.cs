@@ -28,9 +28,19 @@ namespace InterpoolCloudWebRole.Controller
             return null;
         }
 
-        public List<string> GetPossibleCities(string userIdFacebook)
+        public List<DataCity> GetPossibleCities(string userIdFacebook)
         {
-            return null;
+            InterpoolContainer conteiner = new InterpoolContainer();
+            NodePath node = GetCurrentNode(userIdFacebook, conteiner);
+            List<DataCity> result = new List<DataCity>();
+            foreach ( City c in node.PossibleCities)
+            {
+                DataCity dataCity = new DataCity();
+                dataCity.name_city = node.City.CityName;
+                dataCity.name_file_city = node.City.NameFile;
+                result.Add(dataCity);
+            }
+            return result;
         }
 
         public DataFamous GetCurrentFamous(string userIdFacebook, int numClue)

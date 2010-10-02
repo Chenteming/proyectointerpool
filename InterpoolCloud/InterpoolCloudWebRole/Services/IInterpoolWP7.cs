@@ -23,7 +23,7 @@ namespace InterpoolCloudWebRole.Services
         DataCity GetCurrentCity(string userIdFacebook);
 
         [OperationContract]
-        List<string> GetPossibleCities(string userIdFacebook);
+        List<DataCity> GetPossibleCities(string userIdFacebook);
 
         [OperationContract]
         DataFamous GetCurrentFamous(string userIdFacebook, int numClue);
