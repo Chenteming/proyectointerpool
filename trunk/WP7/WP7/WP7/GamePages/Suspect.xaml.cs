@@ -40,9 +40,9 @@ namespace WP7
                 Name_Suspect.Text = list.ElementAt(0);
         }
 
-        private void LeftArrow_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void LeftArrow1_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            GameManager gm = GameManager.getInstance();
+        	GameManager gm = GameManager.getInstance();
             List<String> suspectsList = gm.GetSuspects();
             if (suspectsList.Count == 0)
                 Name_Suspect.Text = "There are no suspects";
@@ -56,9 +56,9 @@ namespace WP7
                 }
         }
 
-        private void RightArrow_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void RightArrow1_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            GameManager gm = GameManager.getInstance();
+        	GameManager gm = GameManager.getInstance();
             List<String> suspectsList = gm.GetSuspects();
             if (suspectsList.Count == 0)
                 Name_Suspect.Text = "There are no suspects";
@@ -69,7 +69,9 @@ namespace WP7
                 {
                     index++;
                     Name_Suspect.Text = suspectsList.ElementAt(index);
-                }
+                }	
         }
+
+      
     }
 }
