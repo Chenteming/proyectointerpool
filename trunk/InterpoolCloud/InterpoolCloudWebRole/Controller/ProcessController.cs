@@ -468,7 +468,7 @@ namespace InterpoolCloudWebRole.Controller
                     // the order is for the guillty, the user win
                     // TODO level and score
                     Level level = game.User.Level;
-                    if (level.LevelNumber)
+                    //if (level.LevelNumber)
                     return true;
                 }
             }
