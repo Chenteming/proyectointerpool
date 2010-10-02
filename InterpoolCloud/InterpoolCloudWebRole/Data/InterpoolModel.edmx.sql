@@ -2,17 +2,9 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
-<<<<<<< .mine
--- Date Created: 09/28/2010 19:52:33
--- Generated from EDMX file: C:\Users\Leticia\Desktop\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
--- --------------------------------------------------
-=======
-<<<<<<< .mine-- Date Created: 10/02/2010 13:36:15
+-- Date Created: 10/02/2010 17:17:58
 -- Generated from EDMX file: D:\lucida\Documents\facultad\Pis\pisrepo\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
-=======-- Date Created: 10/02/2010 14:01:40
--- Generated from EDMX file: C:\Users\Diego\Documents\Repo\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
->>>>>>> .theirs-- --------------------------------------------------
->>>>>>> .r314
+-- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
