@@ -41,6 +41,7 @@ namespace WP7
             client.StartGameAsync();
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
+            GameManager gm = GameManager.getInstance();
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
@@ -88,8 +89,7 @@ namespace WP7
         }
 
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	GameManager gm = GameManager.getInstance();
+        {		
             client = new ServiceWP7Client();
             client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
             client.GetCurrentCityAsync();
