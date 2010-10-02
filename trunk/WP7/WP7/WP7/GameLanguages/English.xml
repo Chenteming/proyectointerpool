@@ -20,4 +20,12 @@
     <control name="button1" Content="INGLES"/>
 	<control name="textToQuestion" Text="Question to:"/>
   </class>  
+  		<class name="Suspect" Title="Suspect">
+            <control name="text1" Text="Sex:"/>
+			<control name="text2" Text="Birthday:"/>
+			<control name="text3" Text="Place:"/>
+			<control name="text4" Text="Music:"/>
+			<control name="text5" Text="Film:"/>
+			<control name="text6" Text="TV:"/>
+        </class>
 </language>
