@@ -94,8 +94,8 @@ namespace InterpoolCloudWebRole
             InterpoolContainer c = new InterpoolContainer();
             Int32 id = 1;
             Game g = c.Games.Where(ga => ga.GameId==id).First(); */
-            ProcessController ipc = new ProcessController();
-            ipc.Arrest();
+           /* ProcessController ipc = new ProcessController();
+            ipc.Arrest();*/
         }
 
     }
