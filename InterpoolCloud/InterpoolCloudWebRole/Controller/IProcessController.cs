@@ -25,5 +25,7 @@ namespace InterpoolCloudWebRole.Controller
         void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect);
 
         List<DataCity> GetCities(String userId);
+
+        string GetLastUserIdFacebook(string idLogin);
     }
 }
