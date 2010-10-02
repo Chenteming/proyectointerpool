@@ -422,7 +422,7 @@ namespace InterpoolCloudWebRole.Controller
             return dm.FilterSuspects(userIdFacebook, fbud, container);
         }
 
-        public String Traveler(string userIdFacebook)
+        public String Travel(string userIdFacebook)
         {
             InterpoolContainer container = new InterpoolContainer();
             NodePath node = GetCurrentNode(userIdFacebook, container);
