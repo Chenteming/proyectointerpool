@@ -139,6 +139,7 @@
     <Compile Include="Controller\IProcessController.cs" />
     <Compile Include="Controller\ProcessController.cs" />
     <Compile Include="Datatypes\DataCity.cs" />
+    <Compile Include="Datatypes\DataFamous.cs" />
     <Compile Include="Data\DataManager.cs" />
     <Compile Include="Data\IDataManager.cs" />
     <Compile Include="Data\InterpoolModel.Designer.cs">

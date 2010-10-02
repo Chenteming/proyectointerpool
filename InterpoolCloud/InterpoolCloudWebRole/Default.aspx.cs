@@ -62,5 +62,20 @@ namespace InterpoolCloudWebRole
             }
         }
 
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            IProcessController ipc = new ProcessController();
+            string userId = "1358576832";
+            ipc.Travel(userId);
+
+        }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            IProcessController ipc = new ProcessController();
+            string userId = "1358576832";
+            ipc.Travel(userId);
+        }
+
     }
 }
