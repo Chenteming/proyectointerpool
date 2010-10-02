@@ -32,6 +32,12 @@ namespace InterpoolCloudWebRole.Controller
 
         public List<string> GetCurrentFamous(string userIdFacebook)
         {
+            InterpoolContainer conteiner = new InterpoolContainer();
+            NodePath node = GetCurrentNode(userIdFacebook, conteiner);
+            if (node != null)
+            {
+                List<Famous> f = node.Famous.ToList();
+            }
             return null;
         }
 
@@ -537,8 +543,7 @@ namespace InterpoolCloudWebRole.Controller
             container.SaveChanges();
         }
 
-        public List<DataCity> GetCities (String userId)
-
+        public List<DataCity> GetCities(string userId)
         {
             IDataManager dm = new DataManager();
             InterpoolContainer container = new InterpoolContainer();
@@ -562,6 +567,17 @@ namespace InterpoolCloudWebRole.Controller
             cities.Add(datacity);
             return cities;
 
+        }
+
+		public string GetClueByFamous(string userIdFacebook, int numFamous)
+        {
+            InterpoolContainer conteiner = new InterpoolContainer();
+            NodePath node = GetCurrentNode(userIdFacebook, conteiner);
+            if (node != null)
+            {
+                return node.Clue.ElementAt(numFamous - 1).ClueContent;
+            }
+            return "";
         }
 
         public string GetLastUserIdFacebook(string idLogin)

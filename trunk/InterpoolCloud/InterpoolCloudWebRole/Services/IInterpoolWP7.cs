@@ -36,5 +36,8 @@ namespace InterpoolCloudWebRole.Services
 
         [OperationContract]
         void Travel(string userIdFacebook);
+
+		[OperationContract]
+        string GetClueByFamous(string userIdFacebook, int numFamous);
     }
 }

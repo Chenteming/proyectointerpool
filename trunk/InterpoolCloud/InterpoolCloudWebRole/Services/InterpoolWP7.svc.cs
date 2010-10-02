@@ -17,7 +17,7 @@ namespace InterpoolCloudWebRole.Services
 
         public void StartGame(string userIdFacebook)
         {
-            controller.StartGame(userIdFacebook);
+            controller.StartGame(userIdFacebook); 
         }
 
         public string GetCurrentCity(string userIdFacebook)
@@ -55,9 +55,15 @@ namespace InterpoolCloudWebRole.Services
             controller.Travel(userIdFacebook);
         }
 
+		public string GetClueByFamous(string userIdFacebook, int numFamous)
+        {
+            return controller.GetClueByFamous(userIdFacebook, numFamous);
+        }
+
         public string GetUserIdFacebook(string idLogin)
         {
             return controller.GetLastUserIdFacebook(idLogin);
         }
+
     }
 }
