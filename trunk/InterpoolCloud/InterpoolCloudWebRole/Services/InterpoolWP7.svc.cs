@@ -25,7 +25,7 @@ namespace InterpoolCloudWebRole.Services
             return controller.GetCurrentCity(userIdFacebook);
         }
 
-        public List<string> GetPossibleCities(string userIdFacebook)
+        public List<DataCity> GetPossibleCities(string userIdFacebook)
         {
             return controller.GetPossibleCities(userIdFacebook);
         }

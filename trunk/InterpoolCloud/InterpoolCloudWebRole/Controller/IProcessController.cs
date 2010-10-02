@@ -14,7 +14,7 @@ namespace InterpoolCloudWebRole.Controller
 
         DataCity GetCurrentCity(string userIdFacebook);
 
-        List<string> GetPossibleCities(string userIdFacebook);
+        List<DataCity> GetPossibleCities(string userIdFacebook);
 
         DataFamous GetCurrentFamous(string userIdFacebook, int numClue);
 
