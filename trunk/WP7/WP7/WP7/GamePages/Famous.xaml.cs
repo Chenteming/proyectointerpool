@@ -28,7 +28,7 @@ namespace WP7
             language = LanguageManager.GetInstance();
             if (language.GetXDoc() != null)
                 language.TranslatePage(this);
-
+			//famousImage.Source = "/WP7;component/FamousImages/Lety.jpg";
             GameManager gm = GameManager.getInstance();
             client = new ServiceWP7Client();
             client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(client_GetCurrentFamousCompleted);
