@@ -464,9 +464,17 @@ namespace InterpoolCloudWebRole.Controller
             {
                 throw new GameException("error_existOneOrderOfArrest");
             }
+            Suspect suspect = null;
 
-            //TODO, check if exist the suspect with that idFacebook
-            Suspect suspect = game.PossibleSuspect.Where(s => s.SuspectFacebookId == userIdFacebookSuspect).First();
+            if (game.Suspect.SuspectFacebookId == userIdFacebookSuspect)
+            {
+                suspect = game.Suspect;
+            }
+            else
+            {
+                //TODO, check if exist the suspect with that idFacebook
+                suspect = game.PossibleSuspect.Where(s => s.SuspectFacebookId == userIdFacebookSuspect).First();
+            }
 
             OrderOfArrest order = new OrderOfArrest();
             order.Suspect = suspect;
@@ -481,8 +489,11 @@ namespace InterpoolCloudWebRole.Controller
          * summary This function is invoque by the controller when the user reaches the last city
          * 
          * */
-        private bool Arrest(Game game, InterpoolContainer container)
+        public bool Arrest(/*Game game, InterpoolContainer container*/)
+        // TODO, change to private
         {
+            InterpoolContainer container = new InterpoolContainer();
+            Game game = container.Games.First();
             // the user make the order of arrest
             if (game.OrderOfArrest != null)
             {
@@ -490,11 +501,11 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     // the order is for the guillty, the user win
                     // TODO level and score
-                    User user = game.User;
-                    Level level = user.Level;
-                    if (user.SubLevel == Constants.NUMBER_SUB_LEVELS)
+                    //User user = game.User;
+                    //Level level = user.LevelReference.Value;
+                    if (game.User.SubLevel == Constants.NUMBER_SUB_LEVELS)
                     {
-                        if (level.LevelNumber == Constants.MAX_LEVELS)
+                        if (game.User.Level.LevelNumber == Constants.MAX_LEVELS)
                         {
                             // the user win, and the game is finish
 
@@ -503,18 +514,20 @@ namespace InterpoolCloudWebRole.Controller
                         {
                             // i have to advance level
                             // TODO check if exists the next level
-                            Level newLevel = container.Levels.Where(l => l.LevelNumber == (level.LevelNumber + 1)).First();
+                            /*Level newLevel = container.Levels.Where(l => l.LevelNumber == (level.LevelNumber + 1)).First();
                             user.SubLevel = 0;
-                            user.Level = newLevel;
+                            user.Level = newLevel; */
                         }    
                     }
                     else
                     {
                         // advance the subLevel
-                        user.SubLevel++;
+                        game.User.SubLevel++;
 
                     }
-                    deleteGame(user, container);
+                    // TODO delete
+                    // deleteGame(user, container);
+                    container.SaveChanges();
                     return true;
                 }
             }

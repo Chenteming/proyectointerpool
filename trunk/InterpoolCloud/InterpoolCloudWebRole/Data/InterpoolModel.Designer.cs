@@ -30,11 +30,11 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathCity", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.NodePath), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.City))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "GameSuspect1", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Game), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Suspect))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserGame", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.User), "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Game))]
-[assembly: EdmRelationshipAttribute("InterpoolModel", "UserLevel", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.User), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "CityCityProperty", "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.City), "CityProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.CityProperty))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathCity1", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.NodePath), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.City))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "GameOrderOfArrest", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Game), "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.OrderOfArrest))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "OrderOfArrestSuspect", "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.OrderOfArrest), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Suspect))]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "UserLevel", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.User), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level), true)]
 
 #endregion
 
@@ -1725,28 +1725,6 @@ namespace InterpoolCloudWebRole.Data
                 }
             }
         }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "UserLevel", "User")]
-        public EntityCollection<User> User
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<User>("InterpoolModel.UserLevel", "User");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<User>("InterpoolModel.UserLevel", "User", value);
-                }
-            }
-        }
 
         #endregion
     }
@@ -2815,12 +2793,14 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="userId">Initial value of the UserId property.</param>
         /// <param name="userIdFacebook">Initial value of the UserIdFacebook property.</param>
         /// <param name="userTokenFacebook">Initial value of the UserTokenFacebook property.</param>
-        public static User CreateUser(global::System.Int32 userId, global::System.String userIdFacebook, global::System.String userTokenFacebook)
+        /// <param name="levelLevelId">Initial value of the LevelLevelId property.</param>
+        public static User CreateUser(global::System.Int32 userId, global::System.String userIdFacebook, global::System.String userTokenFacebook, global::System.Int32 levelLevelId)
         {
             User user = new User();
             user.UserId = userId;
             user.UserIdFacebook = userIdFacebook;
             user.UserTokenFacebook = userTokenFacebook;
+            user.LevelLevelId = levelLevelId;
             return user;
         }
 
@@ -2925,6 +2905,30 @@ namespace InterpoolCloudWebRole.Data
         private Nullable<global::System.Int32> _SubLevel;
         partial void OnSubLevelChanging(Nullable<global::System.Int32> value);
         partial void OnSubLevelChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LevelLevelId
+        {
+            get
+            {
+                return _LevelLevelId;
+            }
+            set
+            {
+                OnLevelLevelIdChanging(value);
+                ReportPropertyChanging("LevelLevelId");
+                _LevelLevelId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LevelLevelId");
+                OnLevelLevelIdChanged();
+            }
+        }
+        private global::System.Int32 _LevelLevelId;
+        partial void OnLevelLevelIdChanging(global::System.Int32 value);
+        partial void OnLevelLevelIdChanged();
 
         #endregion
     
