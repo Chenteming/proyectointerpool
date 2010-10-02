@@ -349,7 +349,7 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Button x:Name="ExitButton" Content="Button" Grid.Column="1" Margin="0,0,24.54,32.035" Style="{StaticResource ExitButton}" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" HorizontalAlignment="Right" Width="189" Height="78" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333">
+            <Button x:Name="ExitButton" Content="Button" Grid.Column="1" Margin="0,0,24.54,32.035" Style="{StaticResource ExitButton}" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" HorizontalAlignment="Right" Width="189" Height="78" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333" Click="ExitButton_Click">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>
