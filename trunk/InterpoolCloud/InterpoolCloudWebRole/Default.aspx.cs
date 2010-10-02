@@ -38,7 +38,18 @@ namespace InterpoolCloudWebRole
             Response.Redirect(oAuth.AuthorizationLinkGet());
         }
 
+
         protected void Button3_Click(object sender, EventArgs e)
+        {
+            string id = "1358576832";
+            InterpoolContainer container = new InterpoolContainer();
+            User user = container.Users.Where(u => u.UserIdFacebook == id).First();
+            ProcessController pc = new ProcessController();
+            pc.deleteGame(user, container);
+        }
+
+
+        protected void Button4_Click(object sender, EventArgs e)
         {
             IProcessController ipc = new ProcessController();
             string userId = "1358576832";
@@ -49,5 +60,6 @@ namespace InterpoolCloudWebRole
                 pruebaGetCities.Text = pruebaGetCities.Text+d.latitud + " " + d.longitud + " " + d.name_city + " " + d.name_file_city + "\n";
             }
         }
+
     }
 }

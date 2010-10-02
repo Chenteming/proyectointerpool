@@ -15,8 +15,13 @@
         <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
             Text="Newsfamois" />
         <asp:Button ID="ButtonLogin" runat="server" OnClick="ButtonLogin_Click" Text="Login" />
-        <asp:Button ID="Button3" runat="server" onclick="Button3_Click" 
+
+        <asp:Button ID="Button3" runat="server" Text="DeleteGame" 
+            onclick="Button3_Click" />
+
+        <asp:Button ID="Button4" runat="server" onclick="Button4_Click" 
             Text="Prueba GetCities" />
+
     </p>
     <p>
         <asp:Label ID="pruebaGetCities" runat="server"></asp:Label>
