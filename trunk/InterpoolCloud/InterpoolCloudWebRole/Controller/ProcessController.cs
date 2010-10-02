@@ -443,7 +443,9 @@ namespace InterpoolCloudWebRole.Controller
             if (nextNode.City.CityName.Equals(nameNextCity))
             {
                 //TODO: the user lose time
-                throw new GameException("la ciudad no es la correcta");
+                datacity.name_city = node.City.CityName;
+                datacity.name_file_city = node.City.NameFile;
+                return datacity;
             }
             node.NodePathCurrent = false;
             nextNode.NodePathCurrent = true;
