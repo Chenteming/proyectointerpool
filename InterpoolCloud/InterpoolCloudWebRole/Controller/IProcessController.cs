@@ -16,7 +16,7 @@ namespace InterpoolCloudWebRole.Controller
 
         List<string> GetPossibleCities(string userIdFacebook);
 
-        List<string> GetCurrentFamous(string userIdFacebook);
+        List<DataFamous> GetCurrentFamous(string userIdFacebook, int numClue);
 
         List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
 

@@ -30,7 +30,7 @@ namespace InterpoolCloudWebRole.Controller
             return null;
         }
 
-        public List<string> GetCurrentFamous(string userIdFacebook)
+        public List<DataFamous> GetCurrentFamous(string userIdFacebook, int numClue)
         {
             InterpoolContainer conteiner = new InterpoolContainer();
             NodePath node = GetCurrentNode(userIdFacebook, conteiner);
@@ -545,12 +545,13 @@ namespace InterpoolCloudWebRole.Controller
 
         public List<DataCity> GetCities(string userId)
         {
+            //TODO: order random
             IDataManager dm = new DataManager();
             InterpoolContainer container = new InterpoolContainer();
             NodePath node = GetCurrentNode(userId,container);
             List<DataCity> cities = new List<DataCity>();
             DataCity datacity;
-            foreach (City c in node.CityReference)
+            foreach (City c in node.PossibleCities)
             {
                 datacity = new DataCity();
                 datacity.longitud = c.Longitud;
