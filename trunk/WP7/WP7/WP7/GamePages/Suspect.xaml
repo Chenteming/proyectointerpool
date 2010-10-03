@@ -73,7 +73,8 @@
         	<TextBlock x:Name="TextBlock6" HorizontalAlignment="Right" Margin="0,0,102,62" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom"/>
         	<Button Content="" HorizontalAlignment="Right" Margin="0,203,8,204" Style="{StaticResource rightArrow1}" Width="60" Click="RightArrow1_Click"/>
         	<Button Content="" HorizontalAlignment="Left" Margin="8,203,0,203" Style="{StaticResource leftArrow1}" Width="60" Click="LeftArrow1_Click"/>
-        </Grid>
+            <Image x:Name="imageSuspect"  Height="142" HorizontalAlignment="Left" Margin="132,153,0,0" VerticalAlignment="Top" Width="200"></Image>
+        </Grid>        
     </Grid>
 
 </phone:PhoneApplicationPage>
