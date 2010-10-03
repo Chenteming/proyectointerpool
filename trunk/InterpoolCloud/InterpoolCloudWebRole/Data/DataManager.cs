@@ -194,6 +194,7 @@ namespace InterpoolCloudWebRole.Data
                 fbudSuspect.television = suspect.SuspectTelevision;
                 fbudSuspect.cinema = suspect.SuspectCinema;
                 fbudSuspect.birthday = suspect.SuspectBirthday;
+                fbudSuspect.pictureLink = suspect.SuspectPicLInk;
                 
                 listFbudSuspect.Add(fbudSuspect);
             }
