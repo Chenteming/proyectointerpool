@@ -45,4 +45,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfDataFacebookUser" nillable="true" type="tns:ArrayOfDataFacebookUser" />
+  <xs:complexType name="DataClue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="state" type="tns:DataClue.State" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataClue" nillable="true" type="tns:DataClue" />
+  <xs:simpleType name="DataClue.State">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PL" />
+      <xs:enumeration value="LOSE_NEOA" />
+      <xs:enumeration value="LOSE_EOAW" />
+      <xs:enumeration value="LOSE_TO" />
+      <xs:enumeration value="WIN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataClue.State" nillable="true" type="tns:DataClue.State" />
 </xs:schema>
