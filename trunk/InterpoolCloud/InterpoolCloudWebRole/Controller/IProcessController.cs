@@ -26,7 +26,7 @@ namespace InterpoolCloudWebRole.Controller
 
         List<DataCity> GetCities(string userId);
 
-		string GetClueByFamous(string userIdFacebook, int numFamous);
+        DataClue GetClueByFamous(string userIdFacebook, int numFamous);
 
 
         string GetLastUserIdFacebook(string idLogin);
