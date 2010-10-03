@@ -25,24 +25,31 @@ namespace InterpoolPrototypeWebRole.FacebookComunication
             {
                 List<string> friendsIds = this.GetFriendsId(userId);
                 InterpoolContainer context = new InterpoolContainer();
-                List<Friends> listFriends = new List<Friends>(context.Friends);
+                //List<Friends> listFriends = new List<Friends>(context.Friends);
+                List<Suspect> listFriends = new List<Suspect>(context.Suspects);
                 // Deletes all the existing suspects
-                foreach (Friends pFriendsDelete in listFriends)
+                foreach (Suspect pFriendsDelete in listFriends)
                 {
                     context.DeleteObject(pFriendsDelete);
                 }
                 context.SaveChanges();
 
-                Friends pFriends;
+                Suspect pFriends;
                 // Creates the suspects for the current user
                 int limit = 10;
                 int i = 0;
                foreach (string id in friendsIds)
                 {
-                    pFriends = new Friends();
-                    pFriends.Id_face = id;
-                    context.AddToFriends(pFriends);
-                    i++;
+                    pFriends = new Suspect();
+                    //pFriends.Id_face = id;
+                    //context.AddToFriends(pFriends);
+
+                    // FIXME se cambio solo para que compile!!!
+                    pFriends.SuspectId = 1234;
+                    context.AddToSuspects(pFriends);
+
+
+                   i++;
                     if (i > limit)
                     {
                         break;
@@ -52,9 +59,9 @@ namespace InterpoolPrototypeWebRole.FacebookComunication
 
                 //create a new list of friends ID
                 List<string> friendsIdList = new List<string>();
-                foreach (Friends pFriends2 in context.Friends)
+                foreach (Suspect pFriends2 in context.Suspects)
                 {
-                    friendsIdList.Add(pFriends2.Id_face);
+                    //friendsIdList.Add(pFriends2.Id_face);
                 }
 
                 //getting and saving the information of all user friends
@@ -66,16 +73,16 @@ namespace InterpoolPrototypeWebRole.FacebookComunication
 
                 foreach (FacebookUserData facebud in fbud)
                 {
-                    pFriends = new Friends();
-                    pFriends.Id_face = facebud.id_friend;
-                    pFriends.First_name = facebud.first_name;
-                    pFriends.Last_name = facebud.last_name;
-                    pFriends.Birthday = facebud.birthday;
-                    pFriends.Sex = facebud.gender;
-                    pFriends.Hometown = facebud.hometown;
-                    pFriends.Likes = facebud.likes;
+                    pFriends = new Suspect();
+                    //pFriends.Id_face = facebud.id_friend;
+                    //pFriends.First_name = facebud.first_name;
+                    //pFriends.Last_name = facebud.last_name;
+                    //pFriends.Birthday = facebud.birthday;
+                    //pFriends.Sex = facebud.gender;
+                    //pFriends.Hometown = facebud.hometown;
+                    //pFriends.Likes = facebud.likes;
 
-                    context.AddToFriends(pFriends);
+                    context.AddToSuspects(pFriends);
                 }
                 context.SaveChanges();
 
