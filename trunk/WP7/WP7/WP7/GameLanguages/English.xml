@@ -21,11 +21,10 @@
 	<control name="textToQuestion" Text="Question to:"/>
   </class>  
   		<class name="Suspect" Title="Suspect">
-            <control name="text1" Text="Sex:"/>
-			<control name="text2" Text="Birthday:"/>
-			<control name="text3" Text="Place:"/>
-			<control name="text4" Text="Music:"/>
-			<control name="text5" Text="Film:"/>
-			<control name="text6" Text="TV:"/>
+			<control name="birthday" Text="Birthday:"/>
+      <control name="hometown" Text="Hometown:"/>
+			<control name="gender" Text="Gender:"/>
+			<control name="music" Text="Music:"/>
+			<control name="cinema" Text="Cinema:"/>
         </class>
 </language>
