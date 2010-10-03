@@ -59,17 +59,17 @@
         	<ListBox Height="444" HorizontalAlignment="Left" Margin="-8,0,0,0" x:Name="listBox1" VerticalAlignment="Top" Width="736" />
         	<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="124,0,0,139" Stroke="Black" VerticalAlignment="Bottom" Width="200"/>
         	<TextBlock x:Name="Name_Suspect" HorizontalAlignment="Left" Height="38" Margin="125,0,0,139" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="200" Foreground="#FF4292A0" FontWeight="Bold" TextAlignment="Center" FontSize="22" />
-        	<TextBox x:Name="text1" Height="71" Margin="325,52,259,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Foreground="Red" Background="{x:Null}" SelectionForeground="{x:Null}" BorderBrush="{x:Null}"/>
-        	<TextBox x:Name="text2" Margin="325,113,259,0" TextWrapping="Wrap" Text="TextBox" Foreground="Red" Height="72" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}"/>
-        	<TextBox x:Name="text3" Margin="328,173,259,235" TextWrapping="Wrap" Text="TextBox" Foreground="Red" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        	<TextBox x:Name="text4" Margin="325,233,259,175" TextWrapping="Wrap" Text="TextBox" Foreground="Red" BorderBrush="{x:Null}" Background="{x:Null}"/>
-        	<TextBox x:Name="text5" Height="73" Margin="328,0,259,113" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" Foreground="Red" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        	<TextBox x:Name="text6" Margin="328,0,259,53" TextWrapping="Wrap" Text="TextBox" Foreground="Red" Height="72" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}"/>
-        	<TextBlock x:Name="TextBlock1" HorizontalAlignment="Right" Margin="0,65,102,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="50" Width="149"/>
-        	<TextBlock x:Name="TextBlock2" HorizontalAlignment="Right" Margin="0,126,102,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="50" Width="149"/>
-        	<TextBlock x:Name="TextBlock3" HorizontalAlignment="Right" Margin="0,186,102,0" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Top"/>
-        	<TextBlock x:Name="TextBlock4" HorizontalAlignment="Right" Margin="0,0,102,184" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom"/>
-        	<TextBlock x:Name="TextBlock5" HorizontalAlignment="Right" Margin="0,0,102,123" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom"/>
+        	<TextBox x:Name="birthday" Height="71" Margin="325,52,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Foreground="Red" Background="{x:Null}" SelectionForeground="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="144" FontSize="20" />
+        	<TextBox Margin="325,113,259,0" TextWrapping="Wrap" Text="TextBox" Foreground="Red" Height="72" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" Name="hometown" FontSize="20" />
+        	<TextBox x:Name="gender" Margin="328,173,259,0" TextWrapping="Wrap" Text="TextBox" Foreground="Red" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" Height="72" VerticalAlignment="Top" />
+        	<TextBox x:Name="music" Margin="325,233,259,175" TextWrapping="Wrap" Text="TextBox" Foreground="Red" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="20" />
+        	<TextBox x:Name="cinema" Height="73" Margin="328,0,259,113" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" Foreground="Red" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" />
+        	<TextBox x:Name="text6" Margin="328,0,259,53" TextWrapping="Wrap" Text="TextBox" Foreground="Red" Height="72" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="20" />
+        	<TextBlock x:Name="birthdayTB" HorizontalAlignment="Right" Margin="0,65,102,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="50" Width="149"/>
+        	<TextBlock x:Name="hometownTB" HorizontalAlignment="Right" Margin="0,126,102,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="50" Width="149"/>
+        	<TextBlock x:Name="genderTB" HorizontalAlignment="Right" Margin="0,186,102,0" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Top"/>
+        	<TextBlock x:Name="musicTB" HorizontalAlignment="Right" Margin="0,0,102,184" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom"/>
+        	<TextBlock x:Name="cinemaTB" HorizontalAlignment="Right" Margin="0,0,102,123" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom"/>
         	<TextBlock x:Name="TextBlock6" HorizontalAlignment="Right" Margin="0,0,102,62" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom"/>
         	<Button Content="" HorizontalAlignment="Right" Margin="0,203,8,204" Style="{StaticResource rightArrow1}" Width="60" Click="RightArrow1_Click"/>
         	<Button Content="" HorizontalAlignment="Left" Margin="8,203,0,203" Style="{StaticResource leftArrow1}" Width="60" Click="LeftArrow1_Click"/>
