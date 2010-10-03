@@ -70,10 +70,10 @@ namespace WP7
 
         void client_StartGameCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            //client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
-            //client.GetCurrentCityAsync(gm.userId);
-            //client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            //client.CloseAsync();
+            client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
+            client.GetCurrentCityAsync(gm.userId);
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
         }
         
         void GetCurrentCityCallback(object sender, GetCurrentCityCompletedEventArgs e)
