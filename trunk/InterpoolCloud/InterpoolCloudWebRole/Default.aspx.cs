@@ -23,7 +23,8 @@ namespace InterpoolCloudWebRole
         {
             InterpoolContainer conteiner = new InterpoolContainer();
             //Poner el id de facebook que se trae en el loguin cada vez que se conecta.
-            string userId = "1358576832";
+            IDataManager dm = new DataManager();
+            string userId = dm.GetLastUserIdFacebook(dm.GetContainer());
             IProcessController ipc = new ProcessController();
             ipc.StartGame(userId);
         }
