@@ -19,5 +19,6 @@ namespace InterpoolCloudWebRole.Datatypes
         public string music { get; set; }
         public string cinema { get; set; }
         public string television { get; set; }
+        public string pictureLink { get; set; }
     }
 }
