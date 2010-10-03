@@ -98,7 +98,7 @@ namespace InterpoolCloudWebRole.Controller
             {
                 bool existGame = conteiner.Games.Where(game => game.User.UserIdFacebook == userIdFacebook).Count() != 0;
 
-                Console.WriteLine("a ver!!");
+                
                 if (existGame)
                     return;
 
@@ -150,7 +150,7 @@ namespace InterpoolCloudWebRole.Controller
             
             IDataManager dm = new DataManager();
 
-            List<City> selectedCities = new List<City>();
+            List<Int32> selectedCities = new List<Int32>();
             NodePath node;
             City next;
             Random random = new Random();
@@ -170,7 +170,7 @@ namespace InterpoolCloudWebRole.Controller
                     {
                         nextCity = random.Next(maxNumber);
                         next = dm.getCities(conteiner).Where(c => c.CityNumber == nextCity).First();
-                        if (!selectedCities.Contains(next))
+                        if (!selectedCities.Contains(next.CityNumber))
                         {
                             find = true;
                             if (j == 0)
@@ -186,6 +186,7 @@ namespace InterpoolCloudWebRole.Controller
                             {
                                 node.PossibleCities.Add(next);
                             }
+                            selectedCities.Add(next.CityNumber);
                         }
                     } while (!find);
                 }
