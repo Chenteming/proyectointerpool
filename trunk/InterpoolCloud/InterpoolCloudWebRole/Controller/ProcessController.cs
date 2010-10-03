@@ -13,7 +13,7 @@ namespace InterpoolCloudWebRole.Controller
 {
     public class ProcessController : IProcessController
     {
-
+        private String output = "Inicio";
         public DataCity GetCurrentCity(string userIdFacebook)
         {
             InterpoolContainer conteiner = new InterpoolContainer();
@@ -108,28 +108,26 @@ namespace InterpoolCloudWebRole.Controller
                 // 1 the trip is built to be followed by user
                 Game newGame = BuiltTravel(user, conteiner);
 
-                TimeSpan n = ((DateTime.Now.TimeOfDay - current));
-
                 // 2 Get suspects
                 GetSuspects(newGame,conteiner);
-
-                TimeSpan n2 = (DateTime.Now.TimeOfDay - current);
-               
 
                 // 3 Create clues
                 CreateClue(newGame,conteiner);
 
-                TimeSpan n3 = (DateTime.Now.TimeOfDay - current);
-                
                 conteiner.AddToGames(newGame);
+                output = "add to games";
                 conteiner.SaveChanges();
+                output = "savechanges";
             }
             catch (Exception e)
             {
                 Log log = new Log();
-                log.LogName = "StartGame";
+                log.LogName = output;
                 log.LogStackTrace = e.StackTrace;
+                
+                
                 //conteiner.AddToLogs(log);
+                
                 throw e;
             }
         }
