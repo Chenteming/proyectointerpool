@@ -63,10 +63,7 @@ namespace WP7
             if (dfu.Count == 0)
                 Name_Suspect.Text = "There are no suspects";
             else
-                {
-                    //WebClient webClientImgDownloader = new WebClient();
-                    //webClientImgDownloader.OpenReadCompleted += new OpenReadCompletedEventHandler(webClientImgDownloader_OpenReadCompleted);
-                    //webClientImgDownloader.OpenReadAsync(new Uri("http://", UriKind.Absolute));
+                {                    
                     dfu = e.Result.ToList();
                     Name_Suspect.Text = dfu.ElementAt(0).first_name + dfu.ElementAt(0).last_name;
                     hometown.Text = dfu.ElementAt(0).hometown;
@@ -83,27 +80,20 @@ namespace WP7
             if (dfu.Count == 0)
                 Name_Suspect.Text = "There are no suspects";
             else
+            {
                 if (index == 0)
-                {
-                    Name_Suspect.Text = dfu.ElementAt(0).first_name + dfu.ElementAt(0).last_name;
-                    hometown.Text = dfu.ElementAt(0).hometown;
-                    birthdayTB.Text = dfu.ElementAt(0).birthday;
-                    hometownTB.Text = dfu.ElementAt(0).hometown;
-                    genderTB.Text = dfu.ElementAt(0).gender;
-                    musicTB.Text = dfu.ElementAt(0).music;
-                    cinemaTB.Text = dfu.ElementAt(0).cinema;
-                }
+                    index = dfu.Count - 1;
                 else
-                {
                     index--;
-                    Name_Suspect.Text = dfu.ElementAt(0).first_name + dfu.ElementAt(0).last_name;
-                    hometown.Text = dfu.ElementAt(index).hometown;
-                    birthdayTB.Text = dfu.ElementAt(index).birthday;
-                    hometownTB.Text = dfu.ElementAt(index).hometown;
-                    genderTB.Text = dfu.ElementAt(index).gender;
-                    musicTB.Text = dfu.ElementAt(index).music;
-                    cinemaTB.Text = dfu.ElementAt(index).cinema;
-                }
+
+                Name_Suspect.Text = dfu.ElementAt(index).first_name + dfu.ElementAt(index).last_name;
+                birthdayTB.Text = dfu.ElementAt(index).birthday;
+                hometownTB.Text = dfu.ElementAt(index).hometown;
+                genderTB.Text = dfu.ElementAt(index).gender;
+                musicTB.Text = dfu.ElementAt(index).music;
+                cinemaTB.Text = dfu.ElementAt(index).cinema;
+
+            }
         }
 
         private void RightArrow1_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -111,29 +101,19 @@ namespace WP7
             if (dfu.Count == 0)
                 Name_Suspect.Text = "There are no suspects";
             else
-                if (index == suspectsList.Count - 1)
-                {
-                    Name_Suspect.Text = dfu.ElementAt(index).first_name + dfu.ElementAt(index).last_name;
-                    hometown.Text = dfu.ElementAt(0).hometown;
-                    birthdayTB.Text = dfu.ElementAt(0).birthday;
-                    hometownTB.Text = dfu.ElementAt(0).hometown;
-                    genderTB.Text = dfu.ElementAt(0).gender;
-                    musicTB.Text = dfu.ElementAt(0).music;
-                    cinemaTB.Text = dfu.ElementAt(0).cinema;
-                }
+            {
+                if (index == dfu.Count - 1)
+                    index = 0;
                 else
-                {
                     index++;
-                    Name_Suspect.Text = dfu.ElementAt(index).first_name + dfu.ElementAt(index).last_name;                 
-                    birthdayTB.Text = dfu.ElementAt(index).birthday;
-                    hometownTB.Text = dfu.ElementAt(index).hometown;
-                    genderTB.Text = dfu.ElementAt(index).gender;
-                    musicTB.Text = dfu.ElementAt(index).music;
-                    cinemaTB.Text = dfu.ElementAt(index).cinema;
 
-                }	
+                Name_Suspect.Text = dfu.ElementAt(index).first_name + dfu.ElementAt(index).last_name;
+                birthdayTB.Text = dfu.ElementAt(index).birthday;
+                hometownTB.Text = dfu.ElementAt(index).hometown;
+                genderTB.Text = dfu.ElementAt(index).gender;
+                musicTB.Text = dfu.ElementAt(index).music;
+                cinemaTB.Text = dfu.ElementAt(index).cinema;
+            }
         }
-
-      
     }
 }
