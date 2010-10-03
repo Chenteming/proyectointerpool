@@ -152,6 +152,9 @@
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataCity.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataClue.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFacebookUser.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -44,8 +44,8 @@ namespace WP7
 
         private void GetClueByFamousCallback(object sender, GetClueByFamousCompletedEventArgs e)
         {
-            String clue = e.Result;
-            dialogText.Text = clue;           
+            DataClue dc = e.Result;
+            dialogText.Text = dc.clue;           
         }
 
         void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)

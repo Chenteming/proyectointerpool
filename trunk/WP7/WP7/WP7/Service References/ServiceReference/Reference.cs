@@ -376,6 +376,71 @@ namespace WP7.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DataClue", Namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes")]
+    public partial class DataClue : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string clueField;
+        
+        private WP7.ServiceReference.DataClue.State stateField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string clue {
+            get {
+                return this.clueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.clueField, value) != true)) {
+                    this.clueField = value;
+                    this.RaisePropertyChanged("clue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WP7.ServiceReference.DataClue.State state {
+            get {
+                return this.stateField;
+            }
+            set {
+                if ((this.stateField.Equals(value) != true)) {
+                    this.stateField = value;
+                    this.RaisePropertyChanged("state");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="DataClue.State", Namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes")]
+        public enum State : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            PL = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            LOSE_NEOA = 1,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            LOSE_EOAW = 2,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            LOSE_TO = 3,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            WIN = 4,
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IInterpoolWP7")]
     public interface IInterpoolWP7 {
@@ -423,7 +488,7 @@ namespace WP7.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IInterpoolWP7/GetClueByFamous", ReplyAction="http://tempuri.org/IInterpoolWP7/GetClueByFamousResponse")]
         System.IAsyncResult BeginGetClueByFamous(string userIdFacebook, int numFamous, System.AsyncCallback callback, object asyncState);
         
-        string EndGetClueByFamous(System.IAsyncResult result);
+        WP7.ServiceReference.DataClue EndGetClueByFamous(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -574,10 +639,10 @@ namespace WP7.ServiceReference {
             this.results = results;
         }
         
-        public string Result {
+        public WP7.ServiceReference.DataClue Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((WP7.ServiceReference.DataClue)(this.results[0]));
             }
         }
     }
@@ -1094,7 +1159,7 @@ namespace WP7.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        string WP7.ServiceReference.IInterpoolWP7.EndGetClueByFamous(System.IAsyncResult result) {
+        WP7.ServiceReference.DataClue WP7.ServiceReference.IInterpoolWP7.EndGetClueByFamous(System.IAsyncResult result) {
             return base.Channel.EndGetClueByFamous(result);
         }
         
@@ -1105,7 +1170,7 @@ namespace WP7.ServiceReference {
         }
         
         private object[] OnEndGetClueByFamous(System.IAsyncResult result) {
-            string retVal = ((WP7.ServiceReference.IInterpoolWP7)(this)).EndGetClueByFamous(result);
+            WP7.ServiceReference.DataClue retVal = ((WP7.ServiceReference.IInterpoolWP7)(this)).EndGetClueByFamous(result);
             return new object[] {
                     retVal};
         }
@@ -1326,9 +1391,9 @@ namespace WP7.ServiceReference {
                 return _result;
             }
             
-            public string EndGetClueByFamous(System.IAsyncResult result) {
+            public WP7.ServiceReference.DataClue EndGetClueByFamous(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                string _result = ((string)(base.EndInvoke("GetClueByFamous", _args, result)));
+                WP7.ServiceReference.DataClue _result = ((WP7.ServiceReference.DataClue)(base.EndInvoke("GetClueByFamous", _args, result)));
                 return _result;
             }
         }
