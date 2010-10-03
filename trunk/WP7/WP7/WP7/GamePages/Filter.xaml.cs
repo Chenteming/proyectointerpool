@@ -90,12 +90,20 @@ namespace WP7.GamePages
               6 = cinema*/
             if (comboHomeTown.SelectedItem != null)
                  filterField[3] = comboHomeTown.SelectedItem.ToString();
+            else
+                filterField[3] = "";
             if (comboGender.SelectedItem != null)
                 filterField[4] = comboGender.SelectedItem.ToString();
+            else
+                filterField[4] = "";
             if (comboMusic.SelectedItem != null)
                 filterField[5] = comboMusic.SelectedItem.ToString();
+            else
+                filterField[5] = "";
             if (comboFilm.SelectedItem != null)
                 filterField[6] = comboFilm.SelectedItem.ToString();
+            else
+                filterField[6] = "";
             NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
         }
     }
