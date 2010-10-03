@@ -30,32 +30,17 @@ namespace WP7.GamePages
 			comboFilm.Visibility = System.Windows.Visibility.Collapsed;
 			comboMusic.Visibility = System.Windows.Visibility.Collapsed;
 			comboGender.Visibility = System.Windows.Visibility.Collapsed;
-            FilterButton.Visibility = System.Windows.Visibility.Collapsed;
-
+            FilterButton.Visibility = System.Windows.Visibility.Visible;
             client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(client_FilterSuspectsCompleted);
             DataFacebookUser dfu = new DataFacebookUser();
             client.FilterSuspectsAsync(gm.userId, dfu);
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
+        }
 
-			// Setting comboGender
-		   /* gender = new List<String>();
-		    gender.Add("Masculino");			
-		    gender.Add("Femenino");
-		    comboGender.ItemsSource = gender;
-			
-		    homeTown = new List<String>();
-		    homeTown.Add("Masculino");			
-		    homeTown.Add("Femenino");
-		    comboHomeTown.ItemsSource = homeTown;
-			
-		    film = new List<String>();
-		    film.Add("MATRIX");			
-		    film.Add("EXTERMINIO");
-		    comboFilm.ItemsSource = film;
-			
-		    music = new List<String>();
-		    music.Add("ROCK");			
-		    music.Add("POP");
-		    comboMusic.ItemsSource = music;	*/
+        void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+           
         }
 
         void client_FilterSuspectsCompleted(object sender, FilterSuspectsCompletedEventArgs e)
@@ -65,13 +50,16 @@ namespace WP7.GamePages
             film = new List<String>();
             homeTown = new List<String>();
             music = new List<String>();
-            // TODO chequear repetidos no se agregen
             foreach(DataFacebookUser df in dfu) 
             {
-                film.Add(df.cinema);
-                gender.Add(df.gender);
-                homeTown.Add(df.hometown);
-                music.Add(df.music);
+                if (!film.Contains(df.cinema))
+                    film.Add(df.cinema);
+                if (!gender.Contains(df.gender))
+                    gender.Add(df.gender);
+                if (!homeTown.Contains(df.hometown))
+                    homeTown.Add(df.hometown);
+                if (!music.Contains(df.music))
+                    music.Add(df.music);
             }                     
             comboGender.ItemsSource = gender;
             comboHomeTown.ItemsSource = homeTown;
@@ -81,7 +69,7 @@ namespace WP7.GamePages
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-        	FilterStoryboard.Begin();
+        	//FilterSuspectsStoryboard.Begin();
 			comboHomeTown.Visibility = System.Windows.Visibility.Visible;
 			comboFilm.Visibility = System.Windows.Visibility.Visible;
 			comboMusic.Visibility = System.Windows.Visibility.Visible;
@@ -92,6 +80,22 @@ namespace WP7.GamePages
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
+            string[] filterField = gm.GetFilterField();
+            /*0 = first_name
+              1 = last_name 
+              2 =  birthday
+              3 = hometown
+              4 = gender
+              5 = music
+              6 = cinema*/
+            if (comboHomeTown.SelectedItem != null)
+                 filterField[3] = comboHomeTown.SelectedItem.ToString();
+            if (comboGender.SelectedItem != null)
+                filterField[4] = comboGender.SelectedItem.ToString();
+            if (comboMusic.SelectedItem != null)
+                filterField[5] = comboMusic.SelectedItem.ToString();
+            if (comboFilm.SelectedItem != null)
+                filterField[6] = comboFilm.SelectedItem.ToString();
             NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
         }
     }

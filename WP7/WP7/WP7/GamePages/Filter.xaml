@@ -137,24 +137,9 @@
 			<Setter Property="Background" Value="#DF41AB69"/>
 			<Setter Property="Foreground" Value="#FFCE7F7F"/>
 		</Style>
-		<Storyboard x:Name="FilterStoryboard">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image">
-				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.949"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="47.5"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image">
-				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.584"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-28.7"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
+		<Storyboard x:Name="FilterStoryboard"/>
+		<Storyboard x:Name="FilterSuspectStoryboard"/>
+		<Storyboard x:Name="FilterSuspectsStoryboard"/>
 
 	</phone:PhoneApplicationPage.Resources>
 
@@ -166,17 +151,12 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12"></StackPanel>
-
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12">
+            <Button Content="Filter" Height="72" x:Name="FilterButton" Width="160" Click="FilterButton_Click" />
+            <Button Content="OpenFile" Height="68" Width="163" Click="Button_Click" x:Name="OpenButton" d:LayoutOverrides="VerticalAlignment" BorderBrush="#FF874C4C" />
+        </StackPanel>
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentGrid" Grid.Row="1">
-            
-                <Image Margin="8" Source="GameImages/FilterScreen2.png" Stretch="Fill"/>
-            	<Image x:Name="image" Margin="162,46,106,161" Source="GameImages/FilterScreen.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
-            		<Image.RenderTransform>
-            			<CompositeTransform/>
-            		</Image.RenderTransform>
-            	</Image>
             	<ComboBox Height="40" HorizontalAlignment="Left" Margin="36,168,0,0" x:Name="comboHomeTown" VerticalAlignment="Top" Width="250" d:LayoutOverrides="HorizontalAlignment" Foreground="#FFFB0000" Background="Blue" >
                 	<ComboBox.BorderBrush>
                 		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -185,7 +165,7 @@
                 		</LinearGradientBrush>
                 	</ComboBox.BorderBrush>            		
                 </ComboBox>
-                <ComboBox Height="40" HorizontalAlignment="Left" Margin="421,99,0,0" x:Name="comboGender" VerticalAlignment="Top" Width="250" Foreground="#FFFB0000" >
+                <ComboBox Height="40" HorizontalAlignment="Left" Margin="410,53,0,0" x:Name="comboGender" VerticalAlignment="Top" Width="250" Foreground="#FFFB0000" >
                 	<ComboBox.BorderBrush>
                 		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 			<GradientStop Color="Black" Offset="0"/>
@@ -194,8 +174,7 @@
                 	</ComboBox.BorderBrush>
                 	
                 </ComboBox>
-                <Button Content="OpenFile" HorizontalAlignment="Right" Height="68" Margin="0,0,119,19" VerticalAlignment="Bottom" Width="163" Click="Button_Click" Name="OpenButton" />
-                <ComboBox Height="40" HorizontalAlignment="Left" Margin="27,0,0,117" x:Name="comboFilm" VerticalAlignment="Bottom" Width="250" Foreground="#FFFB0000" Background="Blue" d:LayoutOverrides="HorizontalAlignment" >
+                <ComboBox Height="40" HorizontalAlignment="Left" Margin="36,0,0,211" x:Name="comboFilm" VerticalAlignment="Bottom" Width="250" Foreground="#FFFB0000" Background="Blue" d:LayoutOverrides="HorizontalAlignment" >
                 	<ComboBox.BorderBrush>
                 		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 			<GradientStop Color="Black" Offset="0"/>
@@ -203,7 +182,7 @@
                 		</LinearGradientBrush>
                 	</ComboBox.BorderBrush>
                 </ComboBox>
-                <ComboBox Height="40" HorizontalAlignment="Left" Margin="372,0,0,117" x:Name="comboMusic" VerticalAlignment="Bottom" Width="250" Foreground="#FFFB0000" Background="Blue" >
+                <ComboBox Height="40" HorizontalAlignment="Left" Margin="410,0,0,96" x:Name="comboMusic" VerticalAlignment="Bottom" Width="250" Foreground="#FFFB0000" Background="Blue" >
                 	<ComboBox.BorderBrush>
                 		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 			<GradientStop Color="Black" Offset="0"/>
@@ -211,7 +190,7 @@
                 		</LinearGradientBrush>
                 	</ComboBox.BorderBrush>
                 </ComboBox>
-            <Button Content="Filter" Height="72" HorizontalAlignment="Left" Margin="155,353,0,0" Name="FilterButton" VerticalAlignment="Top" Width="160" Click="FilterButton_Click" />
         </Grid>
+       <!-- <Image Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill"/>-->
     </Grid>
 </phone:PhoneApplicationPage>
