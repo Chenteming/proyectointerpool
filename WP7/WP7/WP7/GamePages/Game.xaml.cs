@@ -35,7 +35,7 @@ namespace WP7
 		
 		private void FilesButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Filter.xaml", UriKind.RelativeOrAbsolute));    
+            NavigationService.Navigate(new Uri("/GamePages/Filter.xaml", UriKind.RelativeOrAbsolute));    
         }
 		
 		private void MapButton_Click(object sender, RoutedEventArgs e)
