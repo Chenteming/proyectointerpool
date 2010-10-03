@@ -63,6 +63,7 @@ namespace WP7
             index = 0;
             dfbuList = e.Result.ToList();
             if (dfbuList.Count == 0)
+
                 Name_Suspect.Text = "There are no suspects";
             else
             {                    
