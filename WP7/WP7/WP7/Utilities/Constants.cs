@@ -15,5 +15,6 @@ namespace WP7.Utilities
     {
         public static int MAX_FAMOUS = 3;
         public static int MAX_CITIES = 3;
+        public static int MAX_FILTERFIELD = 7;
     }
 }
