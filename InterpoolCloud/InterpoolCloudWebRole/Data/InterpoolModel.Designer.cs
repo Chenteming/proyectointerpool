@@ -2709,6 +2709,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _SuspectGender;
         partial void OnSuspectGenderChanging(global::System.String value);
         partial void OnSuspectGenderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SuspectPicLInk
+        {
+            get
+            {
+                return _SuspectPicLInk;
+            }
+            set
+            {
+                OnSuspectPicLInkChanging(value);
+                ReportPropertyChanging("SuspectPicLInk");
+                _SuspectPicLInk = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SuspectPicLInk");
+                OnSuspectPicLInkChanged();
+            }
+        }
+        private global::System.String _SuspectPicLInk;
+        partial void OnSuspectPicLInkChanging(global::System.String value);
+        partial void OnSuspectPicLInkChanged();
 
         #endregion
     
