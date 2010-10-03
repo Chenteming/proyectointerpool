@@ -96,7 +96,10 @@ namespace InterpoolCloudWebRole.Controller
             InterpoolContainer conteiner = new InterpoolContainer();
             try
             {
-
+                bool existGame = conteiner.Games.Where(game => game.User.UserIdFacebook == userIdFacebook).Count() != 0;
+                if (existGame)
+                    return;
+            
                 User user = conteiner.Users.Where(u => u.UserIdFacebook == userIdFacebook).First();
                 // 1 the trip is built to be followed by user
                 Game newGame = BuiltTravel(user, conteiner);

@@ -2,17 +2,9 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
-<<<<<<< .mine
--- Date Created: 09/28/2010 19:52:33
--- Generated from EDMX file: C:\Users\Leticia\Desktop\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
+-- Date Created: 10/02/2010 21:02:29
+-- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
-=======
-<<<<<<< .mine-- Date Created: 10/02/2010 13:36:15
--- Generated from EDMX file: D:\lucida\Documents\facultad\Pis\pisrepo\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
-=======-- Date Created: 10/02/2010 14:01:40
--- Generated from EDMX file: C:\Users\Diego\Documents\Repo\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
->>>>>>> .theirs-- --------------------------------------------------
->>>>>>> .r314
 
 SET QUOTED_IDENTIFIER OFF;
 GO
@@ -70,9 +62,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UserGame]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Games] DROP CONSTRAINT [FK_UserGame];
 GO
-IF OBJECT_ID(N'[dbo].[FK_UserLevel]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserLevel];
-GO
 IF OBJECT_ID(N'[dbo].[FK_CityCityProperty]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CityPropertySet] DROP CONSTRAINT [FK_CityCityProperty];
 GO
@@ -87,6 +76,9 @@ IF OBJECT_ID(N'[dbo].[FK_GameOrderOfArrest]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_OrderOfArrestSuspect]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[OrdersOfArrest] DROP CONSTRAINT [FK_OrderOfArrestSuspect];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserLevel]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserLevel];
 GO
 
 -- --------------------------------------------------
@@ -155,7 +147,7 @@ CREATE TABLE [dbo].[Users] (
     [UserIdFacebook] nvarchar(max)  NOT NULL,
     [UserTokenFacebook] nvarchar(max)  NOT NULL,
     [SubLevel] int  NULL,
-    [Level_LevelId] int  NOT NULL
+    [LevelLevelId] int  NOT NULL
 );
 GO
 
@@ -608,20 +600,6 @@ ON [dbo].[Games]
     ([User_UserId]);
 GO
 
--- Creating foreign key on [Level_LevelId] in table 'Users'
-ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [FK_UserLevel]
-    FOREIGN KEY ([Level_LevelId])
-    REFERENCES [dbo].[Levels]
-        ([LevelId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserLevel'
-CREATE INDEX [IX_FK_UserLevel]
-ON [dbo].[Users]
-    ([Level_LevelId]);
-GO
-
 -- Creating foreign key on [City_CityId] in table 'CityPropertySet'
 ALTER TABLE [dbo].[CityPropertySet]
 ADD CONSTRAINT [FK_CityCityProperty]
@@ -685,6 +663,20 @@ ADD CONSTRAINT [FK_OrderOfArrestSuspect]
 CREATE INDEX [IX_FK_OrderOfArrestSuspect]
 ON [dbo].[OrdersOfArrest]
     ([Suspect_SuspectId]);
+GO
+
+-- Creating foreign key on [LevelLevelId] in table 'Users'
+ALTER TABLE [dbo].[Users]
+ADD CONSTRAINT [FK_UserLevel]
+    FOREIGN KEY ([LevelLevelId])
+    REFERENCES [dbo].[Levels]
+        ([LevelId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserLevel'
+CREATE INDEX [IX_FK_UserLevel]
+ON [dbo].[Users]
+    ([LevelLevelId]);
 GO
 
 -- --------------------------------------------------
