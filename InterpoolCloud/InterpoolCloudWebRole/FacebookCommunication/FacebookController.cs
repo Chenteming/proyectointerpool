@@ -72,7 +72,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             suspect.SuspectTelevision = (fbudOfSuspect.television == null) ? "" : fbudOfSuspect.television;
             suspect.SuspectCinema = (fbudOfSuspect.cinema == null) ? "" : fbudOfSuspect.cinema;
             suspect.SuspectGender = (fbudOfSuspect.gender == null) ? "" : fbudOfSuspect.gender;
-
+            suspect.SuspectPicLInk = (fbudOfSuspect.pictureLink == null) ? "" : fbudOfSuspect.pictureLink;
+            
 
             return suspect;
         }
@@ -149,6 +150,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
             // The likes will be discriminates as Television, Cinema and Music
             friendData = GetFriendLikesInfoByJson(jsonFriendInfo, friendData);
+
+            friendData.pictureLink = String.Format("https://graph.facebook.com/{0}/picture",
+                friendData.id_friend, "");
             
             return friendData;
         }
@@ -169,6 +173,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             fbud.userId = "";
             fbud.id_friend = "";
             fbud.gender = "";
+            fbud.pictureLink = "";
 
             //string id = (string)jsonFriendObject.SelectToken("name");
 
@@ -230,6 +235,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 fbud.hometown = (string)jsonFriendObjectAnid.SelectToken("name", error);
             }
             return fbud;
+                                    
         }
 
         // TODO: see if this method will stay in this class
