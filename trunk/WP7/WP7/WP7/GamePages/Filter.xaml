@@ -151,6 +151,9 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
+        <Image Margin="8" Source="/WP7;component/GameImages/FilterScreen.png" Stretch="Fill" Grid.RowSpan="2"/>
+
+        <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12">
             <Button Content="Filter" Height="72" x:Name="FilterButton" Width="160" Click="FilterButton_Click" />
             <Button Content="OpenFile" Height="68" Width="163" Click="Button_Click" x:Name="OpenButton" d:LayoutOverrides="VerticalAlignment" BorderBrush="#FF874C4C" />
@@ -191,6 +194,7 @@
                 	</ComboBox.BorderBrush>
                 </ComboBox>
         </Grid>
+        <Image Height="384" Margin="0,0,123,-435" Grid.Row="1" Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill" VerticalAlignment="Bottom"/>
        <!-- <Image Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill"/>-->
     </Grid>
 </phone:PhoneApplicationPage>
