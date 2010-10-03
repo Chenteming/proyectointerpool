@@ -22,10 +22,11 @@ namespace WP7
         private List<string> clues;
         private string[] famous;
         private List<string> suspects;
-        private int[] famousIndex = {-1,-1,-1} ;
+        private int[] famousIndex = { -1, -1, -1 };
         private int number = 0;
         private int currentFamous = -1;
         public string userId { get; set; }
+        private string[] filterField;
 
         public static GameManager getInstance()
         {
@@ -38,6 +39,7 @@ namespace WP7
         {
             cities = new List<string>(Constants.MAX_CITIES);
             famous = new string[Constants.MAX_FAMOUS];
+            filterField = new string[Constants.MAX_FILTERFIELD];
             clues = new List<string>();
             suspects = new List<string>();
         }
@@ -57,7 +59,7 @@ namespace WP7
         public void AddFamous(int position, string name)
         // Add the new famous the list
         {
-           
+
             famous[position] = name;
         }
 
@@ -123,5 +125,22 @@ namespace WP7
         {
             return currentFamous;
         }
-       }
+
+        public void AddFilterField(string field, int position)
+        {
+            filterField[position] = field;
+        }
+
+        public string[] GetFilterField()
+        {
+            return filterField;
+        /*0 = first_name
+          1 = last_name 
+          2 =  birthday
+          3 = hometown
+          4 = gender
+          5 = music
+          6 = cinema*/
+        }
+    }
 }
