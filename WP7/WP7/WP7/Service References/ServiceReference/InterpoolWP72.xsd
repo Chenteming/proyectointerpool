@@ -85,6 +85,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="EmitOrderOfArrest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userIdFacebook" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userIdFacebookSuspect" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EmitOrderOfArrestResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetCities">
     <xs:complexType>
       <xs:sequence>

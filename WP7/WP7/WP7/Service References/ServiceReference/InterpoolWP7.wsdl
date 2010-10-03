@@ -44,6 +44,12 @@
   <wsdl:message name="IInterpoolWP7_FilterSuspects_OutputMessage">
     <wsdl:part name="parameters" element="tns:FilterSuspectsResponse" />
   </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_EmitOrderOfArrest_InputMessage">
+    <wsdl:part name="parameters" element="tns:EmitOrderOfArrest" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_EmitOrderOfArrest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EmitOrderOfArrestResponse" />
+  </wsdl:message>
   <wsdl:message name="IInterpoolWP7_GetCities_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCities" />
   </wsdl:message>
@@ -86,6 +92,10 @@
     <wsdl:operation name="FilterSuspects">
       <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/FilterSuspects" message="tns:IInterpoolWP7_FilterSuspects_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/FilterSuspectsResponse" message="tns:IInterpoolWP7_FilterSuspects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EmitOrderOfArrest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/EmitOrderOfArrest" message="tns:IInterpoolWP7_EmitOrderOfArrest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/EmitOrderOfArrestResponse" message="tns:IInterpoolWP7_EmitOrderOfArrest_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCities">
       <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/GetCities" message="tns:IInterpoolWP7_GetCities_InputMessage" />
@@ -149,6 +159,15 @@
     </wsdl:operation>
     <wsdl:operation name="FilterSuspects">
       <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/FilterSuspects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EmitOrderOfArrest">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/EmitOrderOfArrest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
