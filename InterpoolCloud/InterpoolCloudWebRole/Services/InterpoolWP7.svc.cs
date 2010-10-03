@@ -55,7 +55,7 @@ namespace InterpoolCloudWebRole.Services
             return controller.Travel(userIdFacebook, nameNextCity);
         }
 
-		public string GetClueByFamous(string userIdFacebook, int numFamous)
+        public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
         {
             return controller.GetClueByFamous(userIdFacebook, numFamous);
         }

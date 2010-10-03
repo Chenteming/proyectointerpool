@@ -97,18 +97,29 @@ namespace InterpoolCloudWebRole.Controller
             try
             {
                 bool existGame = conteiner.Games.Where(game => game.User.UserIdFacebook == userIdFacebook).Count() != 0;
+
+                Console.WriteLine("a ver!!");
                 if (existGame)
                     return;
+
+                TimeSpan current = DateTime.Now.TimeOfDay;
             
                 User user = conteiner.Users.Where(u => u.UserIdFacebook == userIdFacebook).First();
                 // 1 the trip is built to be followed by user
                 Game newGame = BuiltTravel(user, conteiner);
 
+                TimeSpan n = ((DateTime.Now.TimeOfDay - current));
+
                 // 2 Get suspects
                 GetSuspects(newGame,conteiner);
 
+                TimeSpan n2 = (DateTime.Now.TimeOfDay - current);
+               
+
                 // 3 Create clues
                 CreateClue(newGame,conteiner);
+
+                TimeSpan n3 = (DateTime.Now.TimeOfDay - current);
                 
                 conteiner.AddToGames(newGame);
                 conteiner.SaveChanges();
@@ -453,7 +464,7 @@ namespace InterpoolCloudWebRole.Controller
             DataCity datacity = new DataCity();
             NodePath node = GetCurrentNode(userIdFacebook, container);
             NodePath nextNode = GetNextNode(userIdFacebook, container);
-            if (nextNode.City.CityName.Equals(nameNextCity))
+            if (!nextNode.City.CityName.Equals(nameNextCity))
             {
                 //TODO: the user lose time
                 datacity.name_city = node.City.CityName;
@@ -502,7 +513,7 @@ namespace InterpoolCloudWebRole.Controller
          * summary This function is invoque by the controller when the user reaches the last city
          * 
          * */
-        public bool Arrest(Game game, InterpoolContainer container)
+        private bool Arrest(Game game, InterpoolContainer container, DataClue clue)
         // TODO, change to private
         {
             
@@ -529,7 +540,7 @@ namespace InterpoolCloudWebRole.Controller
                             /*Level newLevel = container.Levels.Where(l => l.LevelNumber == (level.LevelNumber + 1)).First();
                             user.SubLevel = 0;
                             user.Level = newLevel; */
-                        }    
+                        }
                     }
                     else
                     {
@@ -539,9 +550,20 @@ namespace InterpoolCloudWebRole.Controller
                     }
                     // TODO delete
                     // deleteGame(user, container);
+                    clue.state = DataClue.State.WIN;
                     container.SaveChanges();
                     return true;
                 }
+                else
+                {
+                    // wrong order of arrest
+                    clue.state = DataClue.State.LOSE_EOAW;
+                }
+            }
+            else
+            {
+                // no emit order of arrest
+                clue.state = DataClue.State.LOSE_NEOA;
             }
 
             // user lose
@@ -596,7 +618,7 @@ namespace InterpoolCloudWebRole.Controller
             //TODO: order random
             IDataManager dm = new DataManager();
             InterpoolContainer container = new InterpoolContainer();
-            NodePath node = GetCurrentNode(userId,container);
+            NodePath node = GetNextNode(userId,container);
             List<DataCity> cities = new List<DataCity>();
             DataCity datacity;
             foreach (City c in node.PossibleCities)
@@ -618,15 +640,38 @@ namespace InterpoolCloudWebRole.Controller
 
         }
 
-		public string GetClueByFamous(string userIdFacebook, int numFamous)
+        public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
         {
+            IDataManager dm = new DataManager();
             InterpoolContainer conteiner = new InterpoolContainer();
             NodePath node = GetCurrentNode(userIdFacebook, conteiner);
+            DataClue clue;
             if (node != null)
             {
-                return node.Clue.ElementAt(numFamous).ClueContent;
+                clue = new DataClue();
+                clue.clue = node.Clue.ElementAt(numFamous).ClueContent;
+                if (node.NodePathOrder == (Constants.NUMBERLASTCITY - 1))
+                {
+                    //last city
+                    //TODO make a Constant
+                    if (numFamous == 2)
+                    {
+                        Game game = dm.GetGameByUser(userIdFacebook, conteiner);
+                        bool arrest = Arrest(game, conteiner, clue);
+                     }
+                }
+                else
+                {
+                    clue.state = DataClue.State.PL;
+                }
+                
+                
+                return clue;
             }
-            return "";
+            clue = new DataClue();
+            clue.state = DataClue.State.PL;
+            clue.clue = "";
+            return clue;
         }
 
         public string GetLastUserIdFacebook(string idLogin)

@@ -38,6 +38,6 @@ namespace InterpoolCloudWebRole.Services
         DataCity Travel(string userIdFacebook, string nameNextCity);
 
 		[OperationContract]
-        string GetClueByFamous(string userIdFacebook, int numFamous);
+        DataClue GetClueByFamous(string userIdFacebook, int numFamous);
     }
 }
