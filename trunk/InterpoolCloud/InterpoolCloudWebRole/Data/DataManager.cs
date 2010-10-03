@@ -80,7 +80,7 @@ namespace InterpoolCloudWebRole.Data
         public Game GetGameByUser(string userIdFaceook, InterpoolContainer conteiner)
         {
             var query = from user in conteiner.Users join game in conteiner.Games 
-                        on user.Game equals game 
+                        on user.Game.GameId equals game.GameId 
                         where user.UserIdFacebook == userIdFaceook
                         select game;
             
@@ -184,7 +184,17 @@ namespace InterpoolCloudWebRole.Data
             foreach (Suspect suspect in suspects)
             {
                 fbudSuspect = new DataFacebookUser();
+
+                fbudSuspect.id_friend = suspect.SuspectFacebookId;
+                fbudSuspect.first_name = suspect.SuspectFirstName;
+                fbudSuspect.last_name = suspect.SuspectLastName;
+                fbudSuspect.gender = suspect.SuspectGender;
                 fbudSuspect.hometown = suspect.SuspectHometown;
+                fbudSuspect.music = suspect.SuspectMusic;
+                fbudSuspect.television = suspect.SuspectTelevision;
+                fbudSuspect.cinema = suspect.SuspectCinema;
+                fbudSuspect.birthday = suspect.SuspectBirthday;
+                
                 listFbudSuspect.Add(fbudSuspect);
             }
 
