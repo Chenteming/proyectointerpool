@@ -32,6 +32,9 @@ namespace InterpoolCloudWebRole.Services
         List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
 
         [OperationContract]
+        void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect);
+
+        [OperationContract]
         List<DataCity> GetCities(string userIdFacebook);
 
         [OperationContract]
