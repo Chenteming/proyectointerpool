@@ -158,6 +158,8 @@ namespace WP7.ServiceReference {
         
         private WP7.ServiceReference.oAuthFacebook oAuthField;
         
+        private string pictureLinkField;
+        
         private string televisionField;
         
         private string userIdField;
@@ -275,6 +277,19 @@ namespace WP7.ServiceReference {
                 if ((object.ReferenceEquals(this.oAuthField, value) != true)) {
                     this.oAuthField = value;
                     this.RaisePropertyChanged("oAuth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string pictureLink {
+            get {
+                return this.pictureLinkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.pictureLinkField, value) != true)) {
+                    this.pictureLinkField = value;
+                    this.RaisePropertyChanged("pictureLink");
                 }
             }
         }
@@ -474,6 +489,11 @@ namespace WP7.ServiceReference {
         System.IAsyncResult BeginFilterSuspects(string userIdFacebook, WP7.ServiceReference.DataFacebookUser fbud, System.AsyncCallback callback, object asyncState);
         
         System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.DataFacebookUser> EndFilterSuspects(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IInterpoolWP7/EmitOrderOfArrest", ReplyAction="http://tempuri.org/IInterpoolWP7/EmitOrderOfArrestResponse")]
+        System.IAsyncResult BeginEmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect, System.AsyncCallback callback, object asyncState);
+        
+        void EndEmitOrderOfArrest(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IInterpoolWP7/GetCities", ReplyAction="http://tempuri.org/IInterpoolWP7/GetCitiesResponse")]
         System.IAsyncResult BeginGetCities(string userIdFacebook, System.AsyncCallback callback, object asyncState);
@@ -687,6 +707,12 @@ namespace WP7.ServiceReference {
         
         private System.Threading.SendOrPostCallback onFilterSuspectsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginEmitOrderOfArrestDelegate;
+        
+        private EndOperationDelegate onEndEmitOrderOfArrestDelegate;
+        
+        private System.Threading.SendOrPostCallback onEmitOrderOfArrestCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetCitiesDelegate;
         
         private EndOperationDelegate onEndGetCitiesDelegate;
@@ -769,6 +795,8 @@ namespace WP7.ServiceReference {
         public event System.EventHandler<GetCurrentFamousCompletedEventArgs> GetCurrentFamousCompleted;
         
         public event System.EventHandler<FilterSuspectsCompletedEventArgs> FilterSuspectsCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> EmitOrderOfArrestCompleted;
         
         public event System.EventHandler<GetCitiesCompletedEventArgs> GetCitiesCompleted;
         
@@ -1057,6 +1085,53 @@ namespace WP7.ServiceReference {
             base.InvokeAsync(this.onBeginFilterSuspectsDelegate, new object[] {
                         userIdFacebook,
                         fbud}, this.onEndFilterSuspectsDelegate, this.onFilterSuspectsCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult WP7.ServiceReference.IInterpoolWP7.BeginEmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginEmitOrderOfArrest(userIdFacebook, userIdFacebookSuspect, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void WP7.ServiceReference.IInterpoolWP7.EndEmitOrderOfArrest(System.IAsyncResult result) {
+            base.Channel.EndEmitOrderOfArrest(result);
+        }
+        
+        private System.IAsyncResult OnBeginEmitOrderOfArrest(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string userIdFacebook = ((string)(inValues[0]));
+            string userIdFacebookSuspect = ((string)(inValues[1]));
+            return ((WP7.ServiceReference.IInterpoolWP7)(this)).BeginEmitOrderOfArrest(userIdFacebook, userIdFacebookSuspect, callback, asyncState);
+        }
+        
+        private object[] OnEndEmitOrderOfArrest(System.IAsyncResult result) {
+            ((WP7.ServiceReference.IInterpoolWP7)(this)).EndEmitOrderOfArrest(result);
+            return null;
+        }
+        
+        private void OnEmitOrderOfArrestCompleted(object state) {
+            if ((this.EmitOrderOfArrestCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.EmitOrderOfArrestCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void EmitOrderOfArrestAsync(string userIdFacebook, string userIdFacebookSuspect) {
+            this.EmitOrderOfArrestAsync(userIdFacebook, userIdFacebookSuspect, null);
+        }
+        
+        public void EmitOrderOfArrestAsync(string userIdFacebook, string userIdFacebookSuspect, object userState) {
+            if ((this.onBeginEmitOrderOfArrestDelegate == null)) {
+                this.onBeginEmitOrderOfArrestDelegate = new BeginOperationDelegate(this.OnBeginEmitOrderOfArrest);
+            }
+            if ((this.onEndEmitOrderOfArrestDelegate == null)) {
+                this.onEndEmitOrderOfArrestDelegate = new EndOperationDelegate(this.OnEndEmitOrderOfArrest);
+            }
+            if ((this.onEmitOrderOfArrestCompletedDelegate == null)) {
+                this.onEmitOrderOfArrestCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnEmitOrderOfArrestCompleted);
+            }
+            base.InvokeAsync(this.onBeginEmitOrderOfArrestDelegate, new object[] {
+                        userIdFacebook,
+                        userIdFacebookSuspect}, this.onEndEmitOrderOfArrestDelegate, this.onEmitOrderOfArrestCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1354,6 +1429,19 @@ namespace WP7.ServiceReference {
                 object[] _args = new object[0];
                 System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.DataFacebookUser> _result = ((System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.DataFacebookUser>)(base.EndInvoke("FilterSuspects", _args, result)));
                 return _result;
+            }
+            
+            public System.IAsyncResult BeginEmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = userIdFacebook;
+                _args[1] = userIdFacebookSuspect;
+                System.IAsyncResult _result = base.BeginInvoke("EmitOrderOfArrest", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndEmitOrderOfArrest(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("EmitOrderOfArrest", _args, result);
             }
             
             public System.IAsyncResult BeginGetCities(string userIdFacebook, System.AsyncCallback callback, object asyncState) {
