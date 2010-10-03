@@ -647,7 +647,9 @@ namespace InterpoolCloudWebRole.Controller
             if (node != null)
             {
                 clue = new DataClue();
-                clue.clue = node.Clue.ElementAt(numFamous).ClueContent;
+
+                //TODO make a Constant
+                clue.clue = node.Clue.ElementAt(2-numFamous).ClueContent;
                 if (node.NodePathOrder == (Constants.NUMBERLASTCITY - 1))
                 {
                     //last city
