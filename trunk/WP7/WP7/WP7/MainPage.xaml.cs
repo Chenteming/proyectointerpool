@@ -25,7 +25,9 @@ namespace WP7
         public MainPage()
         {
             InitializeComponent();
-            client.Endpoint.Binding.OpenTimeout = TimeSpan.FromSeconds(300);
+            
+            client.Endpoint.Binding.SendTimeout = TimeSpan.FromSeconds(3000);
+            //client.Endpoint.Binding.OpenTimeout = TimeSpan.FromSeconds(300);
             intro_wma.Play();
 			intro_animation.Begin();			
             if (language.GetXDoc() != null)
@@ -45,12 +47,14 @@ namespace WP7
         void client_GetUserIdFacebookCompleted(object sender, GetUserIdFacebookCompletedEventArgs e)
         {
             gm.userId = e.Result;
+
             client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
             client.StartGameAsync(gm.userId);
             //client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
             //client.GetCurrentCityAsync(gm.userId);
             //client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             //client.CloseAsync();
+
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
