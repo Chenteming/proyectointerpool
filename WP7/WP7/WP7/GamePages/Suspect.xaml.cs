@@ -137,5 +137,18 @@ namespace WP7
             bitmap.SetSource(e.Result);
             imageSuspect.Source = bitmap;
         }
+
+        private void Emit_Click(object sender, RoutedEventArgs e)
+        {
+            InterpoolWP7Client client = new InterpoolWP7Client();
+            client.EmitOrderOfArrestCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_EmitOrderOfArrestCompleted);
+            client.EmitOrderOfArrestAsync(gm.userId, dfbuList.ElementAt(index).id_friend);
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
+        }
+
+        void client_EmitOrderOfArrestCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+        }
     }
 }
