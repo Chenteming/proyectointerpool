@@ -45,12 +45,12 @@ namespace WP7
         void client_GetUserIdFacebookCompleted(object sender, GetUserIdFacebookCompletedEventArgs e)
         {
             gm.userId = e.Result;
-            //client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
-            //client.StartGameAsync(gm.userId);
-            client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
-            client.GetCurrentCityAsync(gm.userId);
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
+            client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
+            client.StartGameAsync(gm.userId);
+            //client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
+            //client.GetCurrentCityAsync(gm.userId);
+            //client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            //client.CloseAsync();
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
@@ -66,10 +66,10 @@ namespace WP7
 
         void client_StartGameCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            //client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
-            //client.GetCurrentCityAsync(gm.userId);
-            //client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            //client.CloseAsync();
+            client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
+            client.GetCurrentCityAsync(gm.userId);
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
         }
         
         void GetCurrentCityCallback(object sender, GetCurrentCityCompletedEventArgs e)
