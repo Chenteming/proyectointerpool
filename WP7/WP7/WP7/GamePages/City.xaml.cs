@@ -83,7 +83,8 @@ namespace WP7
 
         void client_TravelCompleted(object sender, TravelCompletedEventArgs e)
         {
-            
+            MessageBox.Show("Ha viajado a " + gm.GetCurrentCity());
+            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void button2_Click(object sender, System.Windows.RoutedEventArgs e)
