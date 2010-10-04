@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<language name="English" culture="en-US">
+  <class name="MainPage">
+    <control name="PlayButton" Content="Play"/>
+    <control name="ExitButton" Content="Quit"/>
+	<control name="OptionButton" Content="Options"/>
+	<control name="CreditButton" Content="Credits"/>
+	<control name="HelpButton" Content="Help"/>
+  </class>
+  <class name="City">    
+    <control name="Travel1" Content="Travel1"/>
+    <control name="Travel2" Content="Travel2"/>
+    <control name="Travel3" Content="Travel3"/>
+	<control name="textToTravel" Text="Travel to:"/>
+  </class>
+  <class name="Famous">
+    <control name="Famous1" Content="Famous1"/>
+    <control name="Famous2" Content="Famous2"/>
+    <control name="Famous3" Content="Famous3"/>
+    <control name="button1" Content="INGLES"/>
+	<control name="textToQuestion" Text="Question to:"/>
+  </class>  
+  		<class name="Suspect" Title="Suspect">
+			<control name="birthday" Text="Birthday:"/>
+      <control name="hometown" Text="Hometown:"/>
+			<control name="gender" Text="Gender:"/>
+			<control name="music" Text="Music:"/>
+			<control name="cinema" Text="Cinema:"/>
+        </class>
+</language>

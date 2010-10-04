@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.FacebookCommunication" />
+  <xs:complexType name="DataCity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="latitud" type="xs:double" />
+      <xs:element minOccurs="0" name="longitud" type="xs:double" />
+      <xs:element minOccurs="0" name="name_city" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name_file_city" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataCity" nillable="true" type="tns:DataCity" />
+  <xs:complexType name="ArrayOfDataCity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataCity" nillable="true" type="tns:DataCity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataCity" nillable="true" type="tns:ArrayOfDataCity" />
+  <xs:complexType name="DataFamous">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fileFamous" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nameFamous" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataFamous" nillable="true" type="tns:DataFamous" />
+  <xs:complexType name="DataFacebookUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="birthday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cinema" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="first_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="hometown" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id_friend" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="last_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="music" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.FacebookCommunication" minOccurs="0" name="oAuth" nillable="true" type="q1:oAuthFacebook" />
+      <xs:element minOccurs="0" name="pictureLink" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="television" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataFacebookUser" nillable="true" type="tns:DataFacebookUser" />
+  <xs:complexType name="ArrayOfDataFacebookUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataFacebookUser" nillable="true" type="tns:DataFacebookUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataFacebookUser" nillable="true" type="tns:ArrayOfDataFacebookUser" />
+  <xs:complexType name="DataClue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="state" type="tns:DataClue.State" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataClue" nillable="true" type="tns:DataClue" />
+  <xs:simpleType name="DataClue.State">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PL" />
+      <xs:enumeration value="LOSE_NEOA" />
+      <xs:enumeration value="LOSE_EOAW" />
+      <xs:enumeration value="LOSE_TO" />
+      <xs:enumeration value="WIN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataClue.State" nillable="true" type="tns:DataClue.State" />
+</xs:schema>

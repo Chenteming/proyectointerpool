@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<language name="Spanish" culture="es-ES">
+        <class name="MainPage" Title="Main Page">
+            <control name="PlayButton" Content="Jugar"/>
+            <control name="ExitButton" Content="Salir"/>
+			<control name="OptionButton" Content="Opciones"/>
+			<control name="CreditButton" Content="Creditos"/>
+			<control name="HelpButton" Content="Ayuda"/>
+        </class>
+        <class name="City" Title="City">
+            <control name="Travel1" Content="Viajar1"/>
+            <control name="Travel2" Content="Viajar2"/>
+            <control name="Travel3" Content="Viajar3"/>
+			<control name="textToTravel" Text="Viajar a:"/>
+        </class>
+        <class name="Famous" Title="Famous">
+            <control name="Famous1" Content="Famoso1"/>
+            <control name="Famous2" Content="Famoso2"/>
+            <control name="Famous3" Content="Famoso3"/>
+            <control name="button1" Content="ESPANOL"/>
+			<control name="textToQuestion" Text="Preguntar a:"/>
+        </class>
+  <class name="Suspect" Title="Suspect">
+    <control name="birthday" Text="Cumpleaños:"/>
+    <control name="gender" Text="Sexo:"/>
+    <control name="hometown" Text="Ciudad Natal:"/>
+    <control name="music" Text="Música:"/>
+    <control name="cinema" Text="Cine:"/>
+  </class>
+</language>
