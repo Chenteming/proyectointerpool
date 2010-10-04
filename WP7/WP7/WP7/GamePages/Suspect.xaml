@@ -74,7 +74,7 @@
         	<Button Content="" HorizontalAlignment="Right" Margin="0,203,8,204" Style="{StaticResource rightArrow1}" Width="60" Click="RightArrow1_Click"/>
         	<Button Content="" HorizontalAlignment="Left" Margin="8,203,0,203" Style="{StaticResource leftArrow1}" Width="60" Click="LeftArrow1_Click"/>
             <Image x:Name="imageSuspect"  Height="142" HorizontalAlignment="Left" Margin="132,153,0,0" VerticalAlignment="Top" Width="200"></Image>
-            <Button Content="Button" Height="73" HorizontalAlignment="Left" Margin="150,368,0,0" Name="Emit" VerticalAlignment="Top" Width="151" BorderBrush="Black" Click="Emit_Click" />
+            <Button Content="Culpar" Height="73" HorizontalAlignment="Left" Margin="150,368,0,0" Name="Emit" VerticalAlignment="Top" Width="151" BorderBrush="Black" Click="Emit_Click" />
         </Grid>        
     </Grid>
 

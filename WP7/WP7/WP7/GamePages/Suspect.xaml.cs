@@ -145,6 +145,7 @@ namespace WP7
             client.EmitOrderOfArrestAsync(gm.userId, dfbuList.ElementAt(index).id_friend);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
+            Emit.IsEnabled = false;
         }
 
         void client_EmitOrderOfArrestCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
