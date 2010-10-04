@@ -45,7 +45,25 @@ namespace WP7
         private void GetClueByFamousCallback(object sender, GetClueByFamousCompletedEventArgs e)
         {
             DataClue dc = e.Result;
-            dialogText.Text = dc.clue;           
+            dialogText.Text = dc.clue;
+            switch (dc.state)
+            {
+                case DataClue.State.LOSE_EOAW:
+                    MessageBox.Show("Haz emitido la orden de arresto de forma incorrecta.");
+                    NavigationService.Navigate(new Uri("MainPage.xaml", UriKind.RelativeOrAbsolute));
+                    break;
+                case DataClue.State.LOSE_NEOA:
+                    MessageBox.Show("No haz emitido una orden de arresto.");
+                    NavigationService.Navigate(new Uri("MainPage.xaml", UriKind.RelativeOrAbsolute));
+                    break;
+                case DataClue.State.WIN:
+                    MessageBox.Show("Ganaste!!!!!!!");
+                    NavigationService.Navigate(new Uri("MainPage.xaml", UriKind.RelativeOrAbsolute));
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
