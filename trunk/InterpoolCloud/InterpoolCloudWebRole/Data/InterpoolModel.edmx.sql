@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/03/2010 21:53:46
--- Generated from EDMX file: C:\Users\Vicente\Documents\Facultad\4to\Proyecto Ingeniería de Software\Repositorio\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
+-- Date Created: 10/03/2010 17:26:34
+-- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -220,7 +220,6 @@ CREATE TABLE [dbo].[Suspects] (
     [SuspectBirthday] nvarchar(max)  NULL,
     [SuspectLastName] nvarchar(max)  NULL,
     [SuspectGender] nvarchar(max)  NULL,
-    [SuspectPicLInk] nvarchar(max)  NULL,
     [Game_1_GameId] int  NULL
 );
 GO
