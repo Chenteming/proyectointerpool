@@ -28,7 +28,6 @@ namespace InterpoolCloudWebRole.Controller
 
         DataClue GetClueByFamous(string userIdFacebook, int numFamous);
 
-
         string GetLastUserIdFacebook(string idLogin);
     }
 }

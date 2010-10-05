@@ -124,9 +124,11 @@ namespace InterpoolCloudWebRole.Data
         public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud, InterpoolContainer container)
         {
             var game = this.GetGameByUser(userIdFacebook, container);
-
-            var suspects = game.PossibleSuspect.AsEnumerable();
-
+            List<Suspect> list = game.PossibleSuspect.ToList();
+            list.Add(game.Suspect);
+            var suspects = list.AsEnumerable();
+           // var suspects = game.PossibleSuspect.AsEnumerable();
+            
             // If the hometown is not empty, gets all the suspects with the selected hometown
             if (!string.IsNullOrEmpty(fbud.hometown))
             {

@@ -655,7 +655,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     //last city
                     //TODO make a Constant
-                    if (numFamous == 2)
+                    if (numFamous == 1)
                     {
                         Game game = dm.GetGameByUser(userIdFacebook, conteiner);
                         bool arrest = Arrest(game, conteiner, clue);
