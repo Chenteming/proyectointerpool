@@ -1,0 +1,9 @@
+Este es el link para descargar el instalador web del último toolkit del Windows Phone:
+
+http://go.microsoft.com/fwlink/?LinkId=185584
+
+El instalador web pesa sólo 3.2 MB, pero luego de que se bajan esto deben ejecutarlo
+para descargar el toolkit en sí, que pesa alrededor de 350 MB.
+
+Si tienen una versión anterior del toolkit la deben desinstalar previamente; el
+instalador web les adveritirá de esta situación.
