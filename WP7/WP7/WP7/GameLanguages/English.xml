@@ -14,11 +14,7 @@
 		<control name="textToTravel" Text="Travel to:"/>
 	  </class>
 	  <class name="Famous">
-	    <control name="Famous1" Content="Famous1"/>
-	    <control name="Famous2" Content="Famous2"/>
-	    <control name="Famous3" Content="Famous3"/>
-	    <control name="button1" Content="INGLES"/>
-		<control name="textToQuestion" Text="Question to:"/>
+		<control name="interrogateButton" Content="Interrogate"/>
 	  </class>  
 	  <class name="Suspect" Title="Suspect">
 		<control name="birthday" Text="Birthday:"/>
