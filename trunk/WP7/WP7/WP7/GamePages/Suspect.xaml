@@ -56,7 +56,6 @@
         	<Image Source="/WP7;component/interpool_Images/pantalla_5_Images/Capa 1.png" Stretch="Fill" Opacity="0.15"/>
         	<Image Margin="98,52,102,38" Source="/WP7;component/interpool_Images/pantalla_5_Images/Capa 2.png" Stretch="Fill" Opacity="0.595"/>
         	<Image Margin="132,153,0,185" Source="/WP7;component/interpool_Images/pantalla_5_Images/Capa 3.png" Stretch="Fill" HorizontalAlignment="Left" Width="200"/>
-        	<ListBox Height="444" HorizontalAlignment="Left" Margin="-8,0,0,0" x:Name="listBox1" VerticalAlignment="Top" Width="736" />
         	<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="124,0,0,139" Stroke="Black" VerticalAlignment="Bottom" Width="200"/>
         	<TextBlock x:Name="Name_Suspect" HorizontalAlignment="Left" Height="38" Margin="125,0,0,139" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="200" Foreground="#FF4292A0" FontWeight="Bold" TextAlignment="Center" FontSize="22" />
         	<TextBox x:Name="birthday" Height="71" Margin="325,52,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Foreground="Red" Background="{x:Null}" SelectionForeground="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="144" FontSize="20" />
