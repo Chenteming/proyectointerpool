@@ -20,6 +20,7 @@ namespace WP7.GamePages
 		private List<String> homeTown;
 		private List<String> film;
 		private List<String> music;
+        private List<String> tv;
 		
         private InterpoolWP7Client client = new InterpoolWP7Client();
         private GameManager gm = GameManager.getInstance();
