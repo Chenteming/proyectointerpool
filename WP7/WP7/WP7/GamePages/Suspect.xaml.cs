@@ -121,7 +121,7 @@ namespace WP7
                 genderTB.Text = dfbuList.ElementAt(index).gender;
                 musicTB.Text = dfbuList.ElementAt(index).music;
                 cinemaTB.Text = dfbuList.ElementAt(index).cinema;
-
+				televisionTB.Text = dfbuList.ElementAt(index).television;
                 LoadPicture(dfbuList.ElementAt(index).pictureLink);
             }
         }
