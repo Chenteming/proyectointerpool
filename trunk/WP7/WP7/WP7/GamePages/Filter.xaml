@@ -157,8 +157,7 @@
         <!--ContentPanel - place additional content here-->
         <Image x:Name="ImageBackground" Margin="8" Source="/WP7;component/GameImages/FilterScreen.png" Stretch="Fill" Grid.RowSpan="2"/>
         <Grid x:Name="ContentGrid" Grid.Row="1">
-        	<Button Height="72" x:Name="FilterButton" Width="160" Click="FilterButton_Click" Margin="0,0,83,8" VerticalAlignment="Bottom" Foreground="#FFC64040" HorizontalAlignment="Right" d:LayoutOverrides="Width" FontFamily="Segoe WP SemiLight" BorderBrush="#FFC64040" />
-        	<Button Content="" Width="75" Click="Button_Click" x:Name="OpenButton" BorderBrush="#FF874C4C" Margin="0,364,8,11" HorizontalAlignment="Right" />
+        	<Button Width="75" Content="hola" Click="Button_Click" x:Name="OpenButton" BorderBrush="#FF874C4C" Margin="0,364,8,11" HorizontalAlignment="Right" />
         	<ComboBox Height="40" HorizontalAlignment="Left" Margin="410,0,0,100" x:Name="comboFilm" VerticalAlignment="Bottom" Width="250" Foreground="#FFFB0000" Background="Blue" d:LayoutOverrides="VerticalAlignment" >
         		<ComboBox.BorderBrush>
         			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -200,6 +199,7 @@
         		</ComboBox.BorderBrush>
                 	
         	</ComboBox>
+        	<Button x:Name="FilterButton" Height="69" Margin="0,0,109,11" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="156" Click="FilterButton_Click" BorderBrush="#FF225ED6"/>
         </Grid>
         <Image Height="384" Margin="0,0,123,-435" Grid.Row="1" Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill" VerticalAlignment="Bottom" d:IsHidden="True"/>
         <Image x:Name="imageFace" HorizontalAlignment="Right" Margin="0,1,84,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png" Stretch="Fill" Width="234" Height="148" VerticalAlignment="Top"/>
