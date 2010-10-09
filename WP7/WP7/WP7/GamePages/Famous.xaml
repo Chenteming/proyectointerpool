@@ -161,7 +161,6 @@
             		</LinearGradientBrush>
             	</Rectangle.Fill>
             </Rectangle>
-			<Image x:Name="famousImage" Stretch="Fill"></Image>
             <Button Height="70" Margin="312,375,220,0" x:Name="interrogateButton" VerticalAlignment="Top" Click="interrogateButtonClick" Foreground="#FF001900" BorderBrush="#FF2CA32C" Opacity="1" RenderTransformOrigin="1.543,0.529">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -170,8 +169,9 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <TextBox x:Name="famousName" HorizontalAlignment="Left" Height="69" Margin="38,0,0,88" TextWrapping="Wrap" Text="&#xd;&#xa;" VerticalAlignment="Bottom" Width="170"/>
+            <TextBox x:Name="famousName" HorizontalAlignment="Left" Height="69" Margin="24,0,0,90" TextWrapping="Wrap" Text="&#xd;&#xa;" VerticalAlignment="Bottom" Width="194" FontSize="21.333"/>
         </Grid>
+        <Image x:Name="famousImage" Stretch="Fill" Width="194" Height="197" Margin="24,109,0,174" HorizontalAlignment="Left" d:LayoutOverrides="Width" Grid.Row="3"/>
     </Grid>
 
 </phone:PhoneApplicationPage>
