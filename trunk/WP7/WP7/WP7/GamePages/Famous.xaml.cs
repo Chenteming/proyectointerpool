@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using WP7.ServiceReference;
+using System.Windows.Media.Imaging;
 
 
 namespace WP7
@@ -24,7 +25,7 @@ namespace WP7
         public Famous()
         {
             InitializeComponent();
-            
+
             // Change the language of the page            
             if (language.GetXDoc() != null)
                 language.TranslatePage(this);
@@ -80,7 +81,9 @@ namespace WP7
 			interrogateButton.Visibility = System.Windows.Visibility.Visible;
             //Show in the content of the button the name of the famous is going to be interrogated
             famousName.Text = dataF.nameFamous;
-        }
+            string famousURI = "../FamousImages/" + dataF.fileFamous;
+            famousImage.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
+		}
 		
         private void interrogateButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
