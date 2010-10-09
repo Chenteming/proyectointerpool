@@ -42,6 +42,7 @@ namespace WP7.GamePages
 			comboGender.SelectedItem = filterField[4];
 			comboMusic.SelectedItem = filterField[5];
 			comboFilm.SelectedItem = filterField[6];
+			comboTV.SelectedItem = filterField[7];
 			
 			
             //FilterButton.Visibility = System.Windows.Visibility.Visible;
@@ -64,6 +65,7 @@ namespace WP7.GamePages
             film = new List<String>();
             homeTown = new List<String>();
             music = new List<String>();
+			tv = new List<String>();
             foreach(DataFacebookUser df in dfu) 
             {
                 if (!film.Contains(df.cinema))
@@ -74,11 +76,14 @@ namespace WP7.GamePages
                     homeTown.Add(df.hometown);
                 if (!music.Contains(df.music))
                     music.Add(df.music);
+				if (!tv.Contains(df.television))
+                    tv.Add(df.television);
             }                     
             comboGender.ItemsSource = gender;
             comboHomeTown.ItemsSource = homeTown;
             comboFilm.ItemsSource = film;
             comboMusic.ItemsSource = music;	
+			comboTV.ItemsSource = tv;
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -119,6 +124,10 @@ namespace WP7.GamePages
                 filterField[6] = comboFilm.SelectedItem.ToString();
             else
                 filterField[6] = "";
+			 if (comboTV.SelectedItem != null)
+                filterField[7] = comboTV.SelectedItem.ToString();
+            else
+                filterField[7] = "";
             NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
         }
     }
