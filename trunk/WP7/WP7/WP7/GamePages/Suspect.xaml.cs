@@ -71,7 +71,7 @@ namespace WP7
             {                    
                 dfbuList = e.Result.ToList();
                 Name_Suspect.Text = dfbuList.ElementAt(0).first_name + " " + dfbuList.ElementAt(0).last_name;
-                hometown.Text = dfbuList.ElementAt(0).hometown;
+                hometownTB.Text = dfbuList.ElementAt(0).hometown;
                 birthdayTB.Text = dfbuList.ElementAt(0).birthday;
                 hometownTB.Text = dfbuList.ElementAt(0).hometown;
                 genderTB.Text = dfbuList.ElementAt(0).gender;
