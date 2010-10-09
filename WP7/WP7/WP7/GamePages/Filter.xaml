@@ -157,7 +157,7 @@
         <!--ContentPanel - place additional content here-->
         <Image x:Name="ImageBackground" Margin="8" Source="/WP7;component/GameImages/FilterScreen.png" Stretch="Fill" Grid.RowSpan="2"/>
         <Grid x:Name="ContentGrid" Grid.Row="1">
-        	<Button Width="75" Content="hola" Click="Button_Click" x:Name="OpenButton" BorderBrush="#FF874C4C" Margin="0,364,8,11" HorizontalAlignment="Right" />
+        	<Button Width="75" Click="Button_Click" x:Name="OpenButton" BorderBrush="#FF874C4C" Margin="0,364,8,11" HorizontalAlignment="Right" />
         	<ComboBox Height="40" HorizontalAlignment="Left" Margin="410,0,0,100" x:Name="comboFilm" VerticalAlignment="Bottom" Width="250" Foreground="#FFFB0000" Background="Blue" d:LayoutOverrides="VerticalAlignment" >
         		<ComboBox.BorderBrush>
         			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
