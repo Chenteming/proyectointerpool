@@ -38,7 +38,8 @@ namespace WP7
               3 = hometown
               4 = gender
               5 = music
-              6 = cinema*/
+              6 = cinema
+			  7 = television*/
             string[] filterField = gm.GetFilterField();
             dfbu.first_name = filterField[0];
             dfbu.last_name = filterField[1];
@@ -47,6 +48,7 @@ namespace WP7
             dfbu.gender = filterField[4];
             dfbu.music = filterField[5];
             dfbu.cinema = filterField[6];
+			dfbu.television = filterField[7];
             client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(client_FilterSuspectsCompleted);
             client.FilterSuspectsAsync(gm.userId, dfbu);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
@@ -68,14 +70,14 @@ namespace WP7
             else
             {                    
                 dfbuList = e.Result.ToList();
-                Name_Suspect.Text = dfbuList.ElementAt(0).first_name + dfbuList.ElementAt(0).last_name;
+                Name_Suspect.Text = dfbuList.ElementAt(0).first_name + " " + dfbuList.ElementAt(0).last_name;
                 hometown.Text = dfbuList.ElementAt(0).hometown;
                 birthdayTB.Text = dfbuList.ElementAt(0).birthday;
                 hometownTB.Text = dfbuList.ElementAt(0).hometown;
                 genderTB.Text = dfbuList.ElementAt(0).gender;
                 musicTB.Text = dfbuList.ElementAt(0).music;
                 cinemaTB.Text = dfbuList.ElementAt(0).cinema;
-
+				televisionTB.Text = dfbuList.ElementAt(0).television;
                 LoadPicture(dfbuList.ElementAt(0).pictureLink);
             }
         }
@@ -91,13 +93,13 @@ namespace WP7
                 else
                     index--;
 
-                Name_Suspect.Text = dfbuList.ElementAt(index).first_name + dfbuList.ElementAt(index).last_name;
+                Name_Suspect.Text = dfbuList.ElementAt(index).first_name + " " + dfbuList.ElementAt(index).last_name;
                 birthdayTB.Text = dfbuList.ElementAt(index).birthday;
                 hometownTB.Text = dfbuList.ElementAt(index).hometown;
                 genderTB.Text = dfbuList.ElementAt(index).gender;
                 musicTB.Text = dfbuList.ElementAt(index).music;
                 cinemaTB.Text = dfbuList.ElementAt(index).cinema;
-
+				televisionTB.Text = dfbuList.ElementAt(index).television;
                 LoadPicture(dfbuList.ElementAt(index).pictureLink);
             }
         }
@@ -113,7 +115,7 @@ namespace WP7
                 else
                     index++;
 
-                Name_Suspect.Text = dfbuList.ElementAt(index).first_name + dfbuList.ElementAt(index).last_name;
+                Name_Suspect.Text = dfbuList.ElementAt(index).first_name + " " + dfbuList.ElementAt(index).last_name;
                 birthdayTB.Text = dfbuList.ElementAt(index).birthday;
                 hometownTB.Text = dfbuList.ElementAt(index).hometown;
                 genderTB.Text = dfbuList.ElementAt(index).gender;

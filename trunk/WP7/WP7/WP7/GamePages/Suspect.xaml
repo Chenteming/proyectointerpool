@@ -64,17 +64,17 @@
         	<TextBox x:Name="gender" Margin="328,173,259,0" TextWrapping="Wrap" Text="TextBox" Foreground="Red" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" Height="72" VerticalAlignment="Top" />
         	<TextBox x:Name="music" Margin="325,233,259,175" TextWrapping="Wrap" Text="TextBox" Foreground="Red" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="20" />
         	<TextBox x:Name="cinema" Height="73" Margin="328,0,259,113" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" Foreground="Red" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" />
-        	<TextBox x:Name="text6" Margin="328,0,259,53" TextWrapping="Wrap" Text="TextBox" Foreground="Red" Height="72" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="20" />
+        	<TextBox x:Name="television" Margin="328,0,259,53" TextWrapping="Wrap" Text="TextBox" Foreground="Red" Height="72" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="20" />
         	<TextBlock x:Name="birthdayTB" HorizontalAlignment="Right" Margin="0,65,102,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="50" Width="149"/>
         	<TextBlock x:Name="hometownTB" HorizontalAlignment="Right" Margin="0,126,102,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="50" Width="149"/>
         	<TextBlock x:Name="genderTB" HorizontalAlignment="Right" Margin="0,186,102,0" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Top"/>
         	<TextBlock x:Name="musicTB" HorizontalAlignment="Right" Margin="0,0,102,184" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom"/>
         	<TextBlock x:Name="cinemaTB" HorizontalAlignment="Right" Margin="0,0,102,123" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom"/>
-        	<TextBlock x:Name="TextBlock6" HorizontalAlignment="Right" Margin="0,0,102,62" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom"/>
+        	<TextBlock x:Name="televisionTB" HorizontalAlignment="Right" Margin="0,0,102,62" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom"/>
         	<Button Content="" HorizontalAlignment="Right" Margin="0,203,8,204" Style="{StaticResource rightArrow1}" Width="60" Click="RightArrow1_Click"/>
         	<Button Content="" HorizontalAlignment="Left" Margin="8,203,0,203" Style="{StaticResource leftArrow1}" Width="60" Click="LeftArrow1_Click"/>
             <Image x:Name="imageSuspect"  Height="142" HorizontalAlignment="Left" Margin="132,153,0,0" VerticalAlignment="Top" Width="200"></Image>
-            <Button Content="Culpar" Height="73" HorizontalAlignment="Left" Margin="150,368,0,0" Name="Emit" VerticalAlignment="Top" Width="151" BorderBrush="Black" Click="Emit_Click" />
+            <Button Content="" Height="73" HorizontalAlignment="Left" Margin="150,368,0,0" Name="Emit" VerticalAlignment="Top" Width="151" BorderBrush="Black" Click="Emit_Click" />
         </Grid>        
     </Grid>
 
