@@ -20,11 +20,17 @@
             <control name="button1" Content="ESPANOL"/>
 			<control name="textToQuestion" Text="Preguntar a:"/>
         </class>
-  <class name="Suspect" Title="Suspect">
-    <control name="birthday" Text="Cumpleaños:"/>
-    <control name="gender" Text="Sexo:"/>
-    <control name="hometown" Text="Ciudad Natal:"/>
-    <control name="music" Text="Música:"/>
-    <control name="cinema" Text="Cine:"/>
-  </class>
+  		<class name="Suspect" Title="Suspect">
+	    	<control name="birthday" Text="Cumpleaños:"/>
+	    	<control name="gender" Text="Sexo:"/>
+	    	<control name="hometown" Text="Ciudad Natal:"/>
+	    	<control name="music" Text="Música:"/>
+	    	<control name="cinema" Text="Cine:"/>
+			<control name="television" Text="TV:"/>
+			<control name="Emit" Content="Culpar"/>
+  		</class>
+		<class name="Filter" Title="Filter">
+	    	<control name="FilterButton" Text="Filtrar"/>
+	    	<control name="OpenButton" Text="Abrir"/>
+  		</class>
 </language>
