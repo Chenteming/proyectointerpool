@@ -23,10 +23,14 @@ namespace WP7.GamePages
 		
         private InterpoolWP7Client client = new InterpoolWP7Client();
         private GameManager gm = GameManager.getInstance();
-
+		private LanguageManager language = LanguageManager.GetInstance();
+		
         public Filter()
         {			
             InitializeComponent();
+			// Change the language of the page            
+            if (language.GetXDoc() != null)
+                language.TranslatePage(this);
 			comboHomeTown.Visibility = System.Windows.Visibility.Collapsed;
 			comboFilm.Visibility = System.Windows.Visibility.Collapsed;
 			comboMusic.Visibility = System.Windows.Visibility.Collapsed;
