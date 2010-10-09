@@ -35,7 +35,8 @@ namespace WP7
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
             // Set the textboxes with the name of the famous
-            famousNameButton.Visibility = System.Windows.Visibility.Collapsed;                     
+			interrogateButton.Visibility = System.Windows.Visibility.Collapsed;
+            famousName.Visibility = System.Windows.Visibility.Collapsed;                     
         }       
 		
 		public void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
@@ -75,14 +76,15 @@ namespace WP7
             DataFamous dataF = e.Result;
             int num = gm.GetCurrentFamous();
             gm.AddFamous(num-1, dataF.nameFamous);
-            famousNameButton.Visibility = System.Windows.Visibility.Visible;
+            famousName.Visibility = System.Windows.Visibility.Visible;
+			interrogateButton.Visibility = System.Windows.Visibility.Visible;
             //Show in the content of the button the name of the famous is going to be interrogated
-            famousNameButton.Content = dataF.nameFamous;
+            famousName.Text = dataF.nameFamous;
         }
-
-        private void famousNameClick(object sender, RoutedEventArgs e)
-        {            
-            client = new InterpoolWP7Client();
+		
+        private void interrogateButtonClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	client = new InterpoolWP7Client();
             client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
             client.GetClueByFamousAsync(gm.userId, gm.GetCurrentFamous() - 1);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);

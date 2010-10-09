@@ -151,7 +151,6 @@
         <Grid x:Name="ContentGrid" Margin="0,8,0,0" Grid.RowSpan="4">
             <Image Source="/WP7;component/interpool_Images/pantalla_5_Images/Fondo.png" Stretch="Fill"/>
             <Image Source="/WP7;component/interpool_Images/pantalla_5_Images/Capa 1.png" Stretch="Fill" Opacity="0.15"/>
-            <TextBox x:Name="textToQuestion" Margin="253,0,281,-86" TextWrapping="Wrap" Foreground="#FFE91818" Height="70" VerticalAlignment="Bottom" FontSize="24" VerticalScrollBarVisibility="Disabled" Background="{x:Null}" BorderBrush="{x:Null}"/>
             <Image Margin="230,11,24,116" Source="/WP7;component/interpool_Images/pantalla_5_Images/globoCharla copia.png" Stretch="Fill" Opacity="0.94"/>
             <TextBlock x:Name="dialogText" Margin="339,59,72,228" TextWrapping="Wrap" Foreground="Black" FontSize="21.333" FontFamily="Portable User Interface"/>
             <Rectangle HorizontalAlignment="Left" Margin="24,101,0,174" Width="194">
@@ -163,7 +162,7 @@
             	</Rectangle.Fill>
             </Rectangle>
 			<Image x:Name="famousImage" Stretch="Fill"></Image>
-            <Button Height="70" HorizontalAlignment="Left" Margin="24,377,0,0" Name="famousNameButton" VerticalAlignment="Top" Width="314" Click="famousNameClick" Foreground="#FF001900" BorderBrush="#FF2CA32C" Opacity="1">
+            <Button Height="70" Margin="312,375,220,0" x:Name="interrogateButton" VerticalAlignment="Top" Click="interrogateButtonClick" Foreground="#FF001900" BorderBrush="#FF2CA32C" Opacity="1" RenderTransformOrigin="1.543,0.529">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                         <GradientStop Color="Black" Offset="0" />
@@ -171,6 +170,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
+            <TextBox x:Name="famousName" HorizontalAlignment="Left" Height="69" Margin="38,0,0,88" TextWrapping="Wrap" Text="&#xd;&#xa;" VerticalAlignment="Bottom" Width="170"/>
         </Grid>
     </Grid>
 
