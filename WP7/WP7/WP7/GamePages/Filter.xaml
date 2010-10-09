@@ -155,8 +155,8 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12">
-            <Button Content="Filter" Height="72" x:Name="FilterButton" Width="160" Click="FilterButton_Click" />
-            <Button Content="OpenFile" Height="68" Width="163" Click="Button_Click" x:Name="OpenButton" d:LayoutOverrides="VerticalAlignment" BorderBrush="#FF874C4C" />
+            <Button Content="" Height="72" x:Name="FilterButton" Width="160" Click="FilterButton_Click" />
+            <Button Content="" Height="68" Width="163" Click="Button_Click" x:Name="OpenButton" d:LayoutOverrides="VerticalAlignment" BorderBrush="#FF874C4C" />
         </StackPanel>
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentGrid" Grid.Row="1">

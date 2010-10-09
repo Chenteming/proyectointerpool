@@ -30,6 +30,14 @@ namespace WP7.GamePages
 			comboFilm.Visibility = System.Windows.Visibility.Collapsed;
 			comboMusic.Visibility = System.Windows.Visibility.Collapsed;
 			comboGender.Visibility = System.Windows.Visibility.Collapsed;
+			string[] filterField = gm.GetFilterField();
+			
+			comboHomeTown.SelectedItem = filterField[3];
+			comboGender.SelectedItem = filterField[4];
+			comboMusic.SelectedItem = filterField[5];
+			comboFilm.SelectedItem = filterField[6];
+			
+			
             FilterButton.Visibility = System.Windows.Visibility.Visible;
             client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(client_FilterSuspectsCompleted);
             DataFacebookUser dfu = new DataFacebookUser();
@@ -87,7 +95,8 @@ namespace WP7.GamePages
               3 = hometown
               4 = gender
               5 = music
-              6 = cinema*/
+              6 = cinema
+			  7 = television*/
             if (comboHomeTown.SelectedItem != null)
                  filterField[3] = comboHomeTown.SelectedItem.ToString();
             else
