@@ -13,13 +13,9 @@
             <control name="Travel3" Content="Viajar3"/>
 			<control name="textToTravel" Text="Viajar a:"/>
         </class>
-        <class name="Famous" Title="Famous">
-            <control name="Famous1" Content="Famoso1"/>
-            <control name="Famous2" Content="Famoso2"/>
-            <control name="Famous3" Content="Famoso3"/>
-            <control name="button1" Content="ESPANOL"/>
-			<control name="textToQuestion" Text="Preguntar a:"/>
-        </class>
+        <class name="Famous">
+		<control name="interrogateButton" Content="Interrogar"/>
+	  </class>
   		<class name="Suspect" Title="Suspect">
 	    	<control name="birthday" Text="Cumpleaños:"/>
 	    	<control name="gender" Text="Sexo:"/>
