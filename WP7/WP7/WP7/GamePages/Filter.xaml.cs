@@ -20,6 +20,7 @@ namespace WP7.GamePages
 		private List<String> homeTown;
 		private List<String> film;
 		private List<String> music;
+		
         private InterpoolWP7Client client = new InterpoolWP7Client();
         private GameManager gm = GameManager.getInstance();
 
@@ -30,6 +31,7 @@ namespace WP7.GamePages
 			comboFilm.Visibility = System.Windows.Visibility.Collapsed;
 			comboMusic.Visibility = System.Windows.Visibility.Collapsed;
 			comboGender.Visibility = System.Windows.Visibility.Collapsed;
+			comboTV.Visibility = System.Windows.Visibility.Collapsed;
 			string[] filterField = gm.GetFilterField();
 			
 			comboHomeTown.SelectedItem = filterField[3];
@@ -38,7 +40,7 @@ namespace WP7.GamePages
 			comboFilm.SelectedItem = filterField[6];
 			
 			
-            FilterButton.Visibility = System.Windows.Visibility.Visible;
+            //FilterButton.Visibility = System.Windows.Visibility.Visible;
             client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(client_FilterSuspectsCompleted);
             DataFacebookUser dfu = new DataFacebookUser();
             client.FilterSuspectsAsync(gm.userId, dfu);
@@ -82,8 +84,8 @@ namespace WP7.GamePages
 			comboFilm.Visibility = System.Windows.Visibility.Visible;
 			comboMusic.Visibility = System.Windows.Visibility.Visible;
 			comboGender.Visibility = System.Windows.Visibility.Visible;
+			comboTV.Visibility = System.Windows.Visibility.Visible;
             OpenButton.Visibility = System.Windows.Visibility.Collapsed;
-            OpenButton.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
