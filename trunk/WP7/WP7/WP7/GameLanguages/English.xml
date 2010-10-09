@@ -25,7 +25,7 @@
 		<control name="Emit" Content="To blame"/>
 	  </class>
 	  <class name="Filter" Title="Filter">
-	    	<control name="FilterButton" Text="Filter"/>
-	    	<control name="OpenButton" Text="Open"/>
+	    	<control name="FilterButton" Content="Filter"/>
+	    	<control name="OpenButton" Content="Open"/>
 	  </class>
 </language>

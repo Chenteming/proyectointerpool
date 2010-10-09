@@ -13,9 +13,9 @@
             <control name="Travel3" Content="Viajar3"/>
 			<control name="textToTravel" Text="Viajar a:"/>
         </class>
-        <class name="Famous">
-		<control name="interrogateButton" Content="Interrogar"/>
-	  </class>
+        <class name="Famous" Title="Famous">
+			<control name="interrogateButton" Content="Interrogar"/>
+	  	</class>
   		<class name="Suspect" Title="Suspect">
 	    	<control name="birthday" Text="Cumpleaños:"/>
 	    	<control name="gender" Text="Sexo:"/>
@@ -25,8 +25,8 @@
 			<control name="television" Text="TV:"/>
 			<control name="Emit" Content="Culpar"/>
   		</class>
-		<class name="Filter" Title="Filter">
-	    	<control name="FilterButton" Text="Filtrar"/>
-	    	<control name="OpenButton" Text="Abrir"/>
-  		</class>
+        <class name="Filter" Title="Filter">
+			<control name="FilterButton" Content="Filtrar"/>
+			<control name="OpenButton" Content="Abrir"/>
+	  	</class>
 </language>
