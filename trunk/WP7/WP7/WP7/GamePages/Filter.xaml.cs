@@ -37,16 +37,10 @@ namespace WP7.GamePages
 			comboMusic.Visibility = System.Windows.Visibility.Collapsed;
 			comboGender.Visibility = System.Windows.Visibility.Collapsed;
 			comboTV.Visibility = System.Windows.Visibility.Collapsed;
-			string[] filterField = gm.GetFilterField();
-			
-			comboHomeTown.SelectedItem = filterField[3];
-			comboGender.SelectedItem = filterField[4];
-			comboMusic.SelectedItem = filterField[5];
-			comboFilm.SelectedItem = filterField[6];
-			comboTV.SelectedItem = filterField[7];
 			
 			
-            //FilterButton.Visibility = System.Windows.Visibility.Visible;
+			
+            FilterButton.Visibility = System.Windows.Visibility.Collapsed;
             client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(client_FilterSuspectsCompleted);
             DataFacebookUser dfu = new DataFacebookUser();
             client.FilterSuspectsAsync(gm.userId, dfu);
@@ -96,6 +90,14 @@ namespace WP7.GamePages
 			comboGender.Visibility = System.Windows.Visibility.Visible;
 			comboTV.Visibility = System.Windows.Visibility.Visible;
             OpenButton.Visibility = System.Windows.Visibility.Collapsed;
+			string[] filterField = gm.GetFilterField();
+			
+			comboHomeTown.SelectedItem = filterField[3];
+			comboGender.SelectedItem = filterField[4];
+			comboMusic.SelectedItem = filterField[5];
+			comboFilm.SelectedItem = filterField[6];
+			comboTV.SelectedItem = filterField[7];
+			FilterButton.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)

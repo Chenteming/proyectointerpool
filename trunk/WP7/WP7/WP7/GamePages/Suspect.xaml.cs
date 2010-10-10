@@ -153,5 +153,10 @@ namespace WP7
         void client_EmitOrderOfArrestCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
         }
+
+        private void Return_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }
