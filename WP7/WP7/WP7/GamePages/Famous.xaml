@@ -162,7 +162,7 @@
             	</Rectangle.Fill>
             </Rectangle>
             <Button Height="70" Margin="312,375,220,0" x:Name="interrogateButton" VerticalAlignment="Top" Click="interrogateButtonClick" Foreground="#FF001900" BorderBrush="#FF2CA32C" Opacity="1" RenderTransformOrigin="1.543,0.529"/>
-            <TextBox x:Name="famousName" HorizontalAlignment="Left" Height="69" Margin="24,0,0,90" TextWrapping="Wrap" Text="&#xd;&#xa;" VerticalAlignment="Bottom" Width="194" FontSize="21.333"/>
+            <TextBlock x:Name="famousName" HorizontalAlignment="Left" Height="63" Margin="24,0,0,97" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="194" Foreground="Black"/>
         </Grid>
         <Image x:Name="famousImage" Stretch="Fill" Width="194" Height="197" Margin="24,109,0,174" HorizontalAlignment="Left" d:LayoutOverrides="Width" Grid.Row="3"/>
     </Grid>
