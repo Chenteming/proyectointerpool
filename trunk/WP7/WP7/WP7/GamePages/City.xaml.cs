@@ -83,8 +83,61 @@ namespace WP7
 
         void client_TravelCompleted(object sender, TravelCompletedEventArgs e)
         {
-            MessageBox.Show("Ha viajado a " + gm.GetCurrentCity());
-            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
+            //Coords. cities
+			double coordX_cityI=165;
+			double coordY_cityI=300;
+			double coordX_cityE=570;
+			double coordY_cityE=120;
+			//pregunto si coordX_I < coordY_I, si es true, esta bien asi
+			//sino cambiar el scale del X a -1(para q el plane quede mirando para el lado que va)
+			
+			//Start Frame 1, Position (init_X,init_Y)
+			DoubleKeyFrame keyframeX= translateX.KeyFrames[0];
+			double init_frame=0.0, init_X=coordX_cityI;
+			keyframeX.SetValue(EasingDoubleKeyFrame.ValueProperty,init_frame);
+			trX1.SetValue(EasingDoubleKeyFrame.ValueProperty,init_X);
+			DoubleKeyFrame keyframeY= translateY.KeyFrames[0];
+			double init_Y=coordY_cityI;
+			keyframeY.SetValue(EasingDoubleKeyFrame.ValueProperty,init_frame);
+			trY1.SetValue(EasingDoubleKeyFrame.ValueProperty,init_Y);
+			
+			//Start Frame 2, Position (init_X2,init_Y2)
+			DoubleKeyFrame keyframeX2= translateX.KeyFrames[1];
+			double init_frame2=3.0, init_X2=coordX_cityI + 40;
+			keyframeX2.SetValue(EasingDoubleKeyFrame.ValueProperty,init_frame2);
+			trX2.SetValue(EasingDoubleKeyFrame.ValueProperty,init_X2);
+			DoubleKeyFrame keyframeY2= translateY.KeyFrames[1];
+			double init_Y2=coordY_cityI - 45;
+			keyframeY2.SetValue(EasingDoubleKeyFrame.ValueProperty,init_frame2);
+			trY2.SetValue(EasingDoubleKeyFrame.ValueProperty,init_Y2);
+			
+			//Start Frame 3, Position (init_X3,init_Y3)
+			DoubleKeyFrame keyframeX3= translateX.KeyFrames[2];
+			double init_frame3=6.0, init_X3=coordX_cityI + 240;
+			keyframeX3.SetValue(EasingDoubleKeyFrame.ValueProperty,init_frame3);
+			trX3.SetValue(EasingDoubleKeyFrame.ValueProperty,init_X3);
+			DoubleKeyFrame keyframeY3= translateY.KeyFrames[2];
+			double init_Y3=init_Y2;
+			keyframeY3.SetValue(EasingDoubleKeyFrame.ValueProperty,init_frame3);
+			trY3.SetValue(EasingDoubleKeyFrame.ValueProperty,init_Y3);
+			
+			//Start Frame 4, Position (init_X4,init_Y4)
+			DoubleKeyFrame keyframeX4= translateX.KeyFrames[3];
+			double init_frame4=9.0, init_X4=coordX_cityE;//coordX_cityI + 380;
+			keyframeX4.SetValue(EasingDoubleKeyFrame.ValueProperty,init_frame4);
+			trX4.SetValue(EasingDoubleKeyFrame.ValueProperty,init_X4);
+			DoubleKeyFrame keyframeY4= translateY.KeyFrames[3];
+			double init_Y4=coordY_cityE;
+			keyframeY4.SetValue(EasingDoubleKeyFrame.ValueProperty,init_frame4);
+			trY4.SetValue(EasingDoubleKeyFrame.ValueProperty,init_Y4);
+			
+			//plane_sound.Play();
+			//Start plane animation 			
+			animacion2.Begin();
+			
+			
+			//MessageBox.Show("Ha viajado a " + gm.GetCurrentCity());
+            //NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void button2_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -103,8 +156,9 @@ namespace WP7
             client.TravelCompleted +=new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
             client.TravelAsync(gm.userId, button3.Content.ToString());
             gm.SetCurrentCity(button3.Content.ToString());
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+			client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
+			
         }
     }
 }
