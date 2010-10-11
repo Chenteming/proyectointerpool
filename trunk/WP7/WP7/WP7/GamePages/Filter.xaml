@@ -250,6 +250,11 @@
                 	
         	</ComboBox>
         	<Button x:Name="FilterButton" Height="69" Margin="0,0,20,11" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="156" Click="FilterButton_Click" BorderBrush="#FF1D7281" Foreground="#FF1D7281"/>
+        	<TextBlock x:Name="textblock1" HorizontalAlignment="Left" Height="33" Margin="24,151,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="138" Foreground="#FF1D7281"/>
+        	<TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="24,0,0,174" TextWrapping="Wrap" Text="TextBlock" Width="138" Height="32" VerticalAlignment="Bottom" Foreground="#FF1D7281"/>
+        	<TextBlock x:Name="textblock3" HorizontalAlignment="Left" Height="30" Margin="24,0,0,84" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" Width="138" Foreground="#FF1D7281"/>
+        	<TextBlock x:Name="textblock4" HorizontalAlignment="Right" Height="39" Margin="0,176,189,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="139" Foreground="#FF1D7281"/>
+        	<TextBlock x:Name="textblock5" HorizontalAlignment="Right" Height="36" Margin="0,0,189,140" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" Width="139" Foreground="#FF1D7281"/>
         </Grid>
         <Image Height="384" Margin="0,0,123,-435" Grid.Row="1" Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill" VerticalAlignment="Bottom" d:IsHidden="True"/>
         <Image x:Name="imageFace" HorizontalAlignment="Right" Margin="0,1,84,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png" Stretch="Fill" Width="234" Height="148" VerticalAlignment="Top"/>

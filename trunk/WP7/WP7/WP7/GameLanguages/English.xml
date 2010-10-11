@@ -27,5 +27,10 @@
 	  <class name="Filter" Title="Filter">
 	    	<control name="FilterButton" Content="Filter"/>
 	    	<control name="OpenButton" Content="Open"/>
+			<control name="textblock1" Text="Gender:"/>
+			<control name="textblock2" Text="Hometown:"/>
+			<control name="textblock3" Text="Music:"/>
+			<control name="textblock4" Text="TV:"/>
+			<control name="textblock5" Text="Cinema:"/>
 	  </class>
 </language>
