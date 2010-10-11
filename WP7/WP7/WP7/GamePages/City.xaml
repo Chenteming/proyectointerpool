@@ -193,12 +193,12 @@
             <Image x:Name="Background1" Source="/WP7;component/interpool_Images/pantalla_3_Images/Capa 1.png" Stretch="Fill" Opacity="0.15" Margin="0,0,0,-8"/>
             <Button Content="Back" Height="72" HorizontalAlignment="Left" Margin="554,352,0,0" x:Name="Back" VerticalAlignment="Top" Width="160" Click="Back_Click" d:IsHidden="True" />
             <TextBox x:Name="textToTravel" HorizontalAlignment="Left" Margin="-8,0,0,51" TextWrapping="Wrap" Width="146" Foreground="#FFE91818" Height="70" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}"/>
-            <Image Height="73" Margin="256,0,287,-88" Source="/WP7;component/interpool_Images/pantalla_3_Images/Forma 2.png" Stretch="Fill" VerticalAlignment="Bottom"/>
+            <Image Height="73" Margin="256,0,287,-88" Source="/WP7;component/interpool_Images/pantalla_3_Images/Forma 2.png" Stretch="Fill" VerticalAlignment="Bottom" Visibility="Collapsed"/>
             <Button x:Name="button3" Content="Button" HorizontalAlignment="Right" Height="82" Margin="0,0,26,-6" Style="{StaticResource ButtonStyle3}" VerticalAlignment="Bottom" Width="200" Click="button3_Click" Foreground="#FF023760" FontSize="24" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch"/>
             <Button x:Name="button2" Content="Button" Height="82" Margin="270,0,263,-6" Style="{StaticResource ButtonStyle2}" VerticalAlignment="Bottom" Click="button2_Click" Foreground="#FF023760" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="24" Width="200"/>
             <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Height="82" Margin="24,0,0,-6" Style="{StaticResource ButtonStyle1}" VerticalAlignment="Bottom" Width="200" Click="button1_Click" Foreground="#FF023760" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="24"/>
             <Image Margin="36,8,35,115" Source="/WP7;component/interpool_Images/pantalla_3_Images/mapamundi.png" Stretch="Fill"/>
-            <Image x:Name="plane" HorizontalAlignment="Left" Height="40" Margin="108,0,0,-47" Source="/WP7;component/interpool_Images/pantalla_3_Images/Fondo copia.png" Stretch="Fill" VerticalAlignment="Bottom" Width="52" RenderTransformOrigin="0.5,0.5">
+            <Image x:Name="plane" HorizontalAlignment="Left" Height="40" Margin="108,0,0,-47" Source="/WP7;component/interpool_Images/pantalla_3_Images/Fondo copia.png" Stretch="Fill" VerticalAlignment="Bottom" Width="52" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
             	<Image.RenderTransform>
             		<CompositeTransform Rotation="26.52"/>
             	</Image.RenderTransform>
@@ -211,10 +211,10 @@
 				</Image>
 			</Canvas>
         </Grid>
-        <Image x:Name="InitPoint" HorizontalAlignment="Left" Height="21" Margin="0,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades white.png" Stretch="Fill" VerticalAlignment="Bottom" Width="25" Grid.Row="1"/>
-        <Image x:Name="YellowPoint" Margin="29,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades yellow.png" Stretch="Fill" RenderTransformOrigin="-0.912,-0.207" HorizontalAlignment="Left" Width="24" Grid.Row="1" Height="20" VerticalAlignment="Bottom"/>
-        <Image x:Name="BluePoint" Margin="53,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades blue.png" Stretch="Fill" HorizontalAlignment="Left" Width="24" Height="20" VerticalAlignment="Bottom" Grid.Row="1"/>
-        <Image x:Name="GreenPoint" Margin="77,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades green.png" Stretch="Fill" HorizontalAlignment="Left" Width="24" Grid.Row="1" Height="20" VerticalAlignment="Bottom"/>
+        <Image x:Name="InitPoint" HorizontalAlignment="Left" Height="21" Margin="0,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades white.png" Stretch="Fill" VerticalAlignment="Bottom" Width="25" Grid.Row="1" Visibility="Collapsed"/>
+        <Image x:Name="YellowPoint" Margin="29,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades yellow.png" Stretch="Fill" RenderTransformOrigin="-0.912,-0.207" HorizontalAlignment="Left" Width="24" Grid.Row="1" Height="20" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+        <Image x:Name="BluePoint" Margin="53,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades blue.png" Stretch="Fill" HorizontalAlignment="Left" Width="24" Height="20" VerticalAlignment="Bottom" Grid.Row="1" Visibility="Collapsed"/>
+        <Image x:Name="GreenPoint" Margin="77,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades green.png" Stretch="Fill" HorizontalAlignment="Left" Width="24" Grid.Row="1" Height="20" VerticalAlignment="Bottom" Visibility="Collapsed"/>
         <MediaElement x:Name="plane_sound" HorizontalAlignment="Left" Height="0" Margin="120,-60,0,0" Source="/GameSounds/plane_sound.wma" Stretch="Fill" VerticalAlignment="Top" Width="0"/>
         
     </Grid>
