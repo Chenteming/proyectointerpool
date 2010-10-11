@@ -23,8 +23,9 @@ namespace WP7
 
         public City()
         {
-			// AnimationPage.Begin();
+			
             InitializeComponent();
+			AnimationPage.Begin();
             language = LanguageManager.GetInstance();
             if (language.GetXDoc() != null)
                 language.TranslatePage(this);
