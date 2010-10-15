@@ -159,12 +159,12 @@
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="LayoutRoot">
 				<EasingDoubleKeyFrame KeyTime="0" Value="90">
 					<EasingDoubleKeyFrame.EasingFunction>
-						<BounceEase EasingMode="EaseOut" Bounces="6" Bounciness="5"/>
+						<BounceEase EasingMode="EaseOut" Bounces="6" Bounciness="3"/>
 					</EasingDoubleKeyFrame.EasingFunction>
 				</EasingDoubleKeyFrame>
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0">
 					<EasingDoubleKeyFrame.EasingFunction>
-						<BounceEase EasingMode="EaseOut" Bounces="6" Bounciness="4"/>
+						<BounceEase EasingMode="EaseOut" Bounces="6" Bounciness="3"/>
 					</EasingDoubleKeyFrame.EasingFunction>
 				</EasingDoubleKeyFrame>
 			</DoubleAnimationUsingKeyFrames>
@@ -215,7 +215,7 @@
         <Image x:Name="YellowPoint" Margin="29,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades yellow.png" Stretch="Fill" RenderTransformOrigin="-0.912,-0.207" HorizontalAlignment="Left" Width="24" Grid.Row="1" Height="20" VerticalAlignment="Bottom" Visibility="Collapsed"/>
         <Image x:Name="BluePoint" Margin="53,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades blue.png" Stretch="Fill" HorizontalAlignment="Left" Width="24" Height="20" VerticalAlignment="Bottom" Grid.Row="1" Visibility="Collapsed"/>
         <Image x:Name="GreenPoint" Margin="77,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades green.png" Stretch="Fill" HorizontalAlignment="Left" Width="24" Grid.Row="1" Height="20" VerticalAlignment="Bottom" Visibility="Collapsed"/>
-        <MediaElement x:Name="plane_sound" HorizontalAlignment="Left" Height="0" Margin="120,-60,0,0" Source="/GameSounds/plane_sound.wma" Stretch="Fill" VerticalAlignment="Top" Width="0"/>
+        <MediaElement x:Name="plane_sound" HorizontalAlignment="Left" Height="0" Margin="120,-60,0,0" Source="/GameSounds/plane_sound.wma" Stretch="Fill" VerticalAlignment="Top" Width="0" AutoPlay="False"/>
         
     </Grid>
 
