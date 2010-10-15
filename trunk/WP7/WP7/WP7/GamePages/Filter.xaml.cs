@@ -29,6 +29,7 @@ namespace WP7.GamePages
         public Filter()
         {			
             InitializeComponent();
+			AnimationPage.Begin();
 			// Change the language of the page            
             if (language.GetXDoc() != null)
                 language.TranslatePage(this);

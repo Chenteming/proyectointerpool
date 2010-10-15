@@ -26,6 +26,7 @@ namespace WP7
         public Suspect()
         {
             InitializeComponent();
+			AnimationPage.Begin();
 			// Change the language of the page
             language = LanguageManager.GetInstance();
             if (language.GetXDoc() != null)

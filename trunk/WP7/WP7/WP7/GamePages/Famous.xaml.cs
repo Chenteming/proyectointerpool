@@ -25,18 +25,22 @@ namespace WP7
         public Famous()
         {
             InitializeComponent();
-
+			AnimationPage.Begin();
             // Change the language of the page            
             if (language.GetXDoc() != null)
                 language.TranslatePage(this);
 			//famousImage.Source = "/WP7;component/FamousImages/Lety.jpg";
+			client = new InterpoolWP7Client();
+            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
+            client.GetClueByFamousAsync(gm.userId, gm.GetCurrentFamous() - 1);
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync(); 
             client = new InterpoolWP7Client();
             client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(client_GetCurrentFamousCompleted);
             client.GetCurrentFamousAsync(gm.userId, gm.GetCurrentFamous() - 1);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
             // Set the textboxes with the name of the famous
-			interrogateButton.Visibility = System.Windows.Visibility.Collapsed;
             famousName.Visibility = System.Windows.Visibility.Collapsed;                     
         }       
 		
@@ -78,20 +82,12 @@ namespace WP7
             int num = gm.GetCurrentFamous();
             gm.AddFamous(num-1, dataF.nameFamous);
             famousName.Visibility = System.Windows.Visibility.Visible;
-			interrogateButton.Visibility = System.Windows.Visibility.Visible;
             //Show in the content of the button the name of the famous is going to be interrogated
             famousName.Text = dataF.nameFamous;
             string famousURI = "../FamousImages/" + dataF.fileFamous;
             famousImage.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
 		}
 		
-        private void interrogateButtonClick(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	client = new InterpoolWP7Client();
-            client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
-            client.GetClueByFamousAsync(gm.userId, gm.GetCurrentFamous() - 1);
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync(); 
-        }
+
     }
 }
