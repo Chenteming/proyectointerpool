@@ -336,11 +336,26 @@ namespace WP7.ServiceReference {
         "on")]
     public partial class oAuthFacebook : object, System.ComponentModel.INotifyPropertyChanged {
         
+        private string CALLBACK_URLField;
+        
         private string ConsumerKeyField;
         
         private string ConsumerSecretField;
         
         private string TokenField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CALLBACK_URL {
+            get {
+                return this.CALLBACK_URLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CALLBACK_URLField, value) != true)) {
+                    this.CALLBACK_URLField = value;
+                    this.RaisePropertyChanged("CALLBACK_URL");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string ConsumerKey {
