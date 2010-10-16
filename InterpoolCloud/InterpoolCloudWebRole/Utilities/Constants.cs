@@ -12,10 +12,11 @@ namespace InterpoolCloudWebRole.Utilities
         public static int NUMBER_SUB_LEVELS = 3;
         public static int MAX_LEVELS = 10;
         public static int MAX_SUSPECTS = 10;
+        public static int DATA_REQUIRED = 3;
         public static string REDIRECT_URL_AFTER_LOGIN_FACEBOOK = "http://127.0.0.1:81/Default.aspx/";
         //public static string REDIRECT_URL_AFTER_LOGIN_FACEBOOK = "http://pis2010.cloudapp.net/Default.aspx";
 
-        // for cloud aplication
+        //for cloud aplication
         //public static string CONSUMER_KEY = "123625261023469";
         //public static string CONSUMER_SECRET = "2ea5107535d2ee3f514a06a186139be6";
 
@@ -28,7 +29,7 @@ namespace InterpoolCloudWebRole.Utilities
         public static string REQUEST_VERSION = "2.0";
         public static uint NEWS_OFFSET = 0;
         public static uint NEWS_COUNT = 10;
-        public static string FACEBOK_CALLBACK_URL = "http://pis2010.cloudapp.net/Pages/FacebookCallback.aspx/";
-        //public static string FACEBOK_CALLBACK_URL = "http://127.0.0.1:81/Pages/FacebookCallback.aspx";
+        //public static string FACEBOK_CALLBACK_URL = "http://pis2010.cloudapp.net/Pages/FacebookCallback.aspx/";
+        public static string FACEBOK_CALLBACK_URL = "http://127.0.0.1:81/Pages/FacebookCallback.aspx/";
     }
 }
