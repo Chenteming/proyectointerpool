@@ -49,8 +49,8 @@ namespace InterpoolCloudWebRole.Data
         public string GetLastUserIdFacebook(InterpoolContainer context)
         {
             int userId = (from u in context.Users
-                        select u.UserId).Max();
-            return  (from u in context.Users
+                          select u.UserId).Max();
+            return (from u in context.Users
                     where u.UserId == userId
                     select u.UserIdFacebook).First();
         }
@@ -202,6 +202,14 @@ namespace InterpoolCloudWebRole.Data
             }
 
             return listFbudSuspect;
+        }
+
+
+        public string GetUserIdFacebookByLoginId(string userLoginId, InterpoolContainer context)
+        {
+            /*return from user in context.Users
+                       where user.;*/
+            return "";
         }
     }
 }

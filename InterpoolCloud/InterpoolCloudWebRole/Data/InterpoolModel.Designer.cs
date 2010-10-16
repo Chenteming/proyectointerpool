@@ -2818,13 +2818,15 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="userIdFacebook">Initial value of the UserIdFacebook property.</param>
         /// <param name="userTokenFacebook">Initial value of the UserTokenFacebook property.</param>
         /// <param name="levelLevelId">Initial value of the LevelLevelId property.</param>
-        public static User CreateUser(global::System.Int32 userId, global::System.String userIdFacebook, global::System.String userTokenFacebook, global::System.Int32 levelLevelId)
+        /// <param name="userLoginId">Initial value of the UserLoginId property.</param>
+        public static User CreateUser(global::System.Int32 userId, global::System.String userIdFacebook, global::System.String userTokenFacebook, global::System.Int32 levelLevelId, global::System.String userLoginId)
         {
             User user = new User();
             user.UserId = userId;
             user.UserIdFacebook = userIdFacebook;
             user.UserTokenFacebook = userTokenFacebook;
             user.LevelLevelId = levelLevelId;
+            user.UserLoginId = userLoginId;
             return user;
         }
 
@@ -2953,6 +2955,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.Int32 _LevelLevelId;
         partial void OnLevelLevelIdChanging(global::System.Int32 value);
         partial void OnLevelLevelIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String UserLoginId
+        {
+            get
+            {
+                return _UserLoginId;
+            }
+            set
+            {
+                OnUserLoginIdChanging(value);
+                ReportPropertyChanging("UserLoginId");
+                _UserLoginId = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("UserLoginId");
+                OnUserLoginIdChanged();
+            }
+        }
+        private global::System.String _UserLoginId;
+        partial void OnUserLoginIdChanging(global::System.String value);
+        partial void OnUserLoginIdChanged();
 
         #endregion
     

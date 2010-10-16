@@ -15,6 +15,7 @@ namespace InterpoolCloudWebRole.Data
         IQueryable<CityProperty> GetCityPropertyByCity(City city, InterpoolContainer context);
         IQueryable<Suspect> GetSuspectByGame(Game g, InterpoolContainer context);
         string GetLastUserIdFacebook(InterpoolContainer context);
+        string GetUserIdFacebookByLoginId(string userLoginId, InterpoolContainer context);
         oAuthFacebook GetLastUserToken(InterpoolContainer context);
 
         void StoreUser(User user, InterpoolContainer context);
