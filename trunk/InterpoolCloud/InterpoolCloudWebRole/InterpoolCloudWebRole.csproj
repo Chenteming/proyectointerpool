@@ -192,8 +192,6 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Tests\ArmarIteraccionTest.cs" />
-    <Compile Include="Tests\Test.cs" />
     <Compile Include="Utilities\Admin.cs" />
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\GameException.cs" />
