@@ -307,18 +307,21 @@
         <Image Height="384" Margin="0,0,123,-435" Grid.Row="1" Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill" VerticalAlignment="Bottom" d:IsHidden="True"/>
         <Image x:Name="imageFace" HorizontalAlignment="Right" Margin="0,1,74,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png" Stretch="Fill" Width="234" Height="148" VerticalAlignment="Top"/>
         <Image x:Name="imageQuestionSymbol" HorizontalAlignment="Right" Margin="0,8,145,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 2.png" Stretch="Fill" Width="94" Height="117" VerticalAlignment="Top"/>
-        <Image Margin="305,176,23,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Height="35" VerticalAlignment="Top" Width="400"/>
-        <Image Height="35" Margin="305,0,23,180" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" VerticalAlignment="Bottom" Width="400"/>
-        <Image Height="35" Margin="305,0,23,83" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" VerticalAlignment="Bottom"/>
-        <Image Height="35" Margin="305,0,23,132" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" VerticalAlignment="Bottom" Width="400"/>
-        <Image Height="35" Margin="305,0,23,32" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" VerticalAlignment="Bottom"/>
-        <Image Margin="34,63,0,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/movies.png" Stretch="Fill" HorizontalAlignment="Left" Width="70" Height="56" VerticalAlignment="Top"/>
-        <Image Height="58" Margin="34,136,0,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/building.png" Stretch="Fill" VerticalAlignment="Top" HorizontalAlignment="Left" Width="95"/>
-        <Image Margin="51,212,0,168" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/calendario.png" Stretch="Fill" HorizontalAlignment="Left" Width="65"/>
-        <Image Height="70" Margin="51,0,0,94" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/gender.png" Stretch="Fill" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="67"/>
+        <Image Margin="305,161,23,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Height="35" VerticalAlignment="Top" Width="400"/>
+        <Image Margin="305,206,23,203" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400"/>
+        <Image Margin="305,296,23,113" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill"/>
+        <Image Margin="305,251,23,158" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400"/>
+        <Image Margin="305,341,23,68" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill"/>
+        <Image Margin="51,63,0,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/movies.png" Stretch="Fill" HorizontalAlignment="Left" Width="70" Height="56" VerticalAlignment="Top"/>
+        <Image Height="58" Margin="45,136,0,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/building.png" Stretch="Fill" VerticalAlignment="Top" HorizontalAlignment="Left" Width="95"/>
+        <Image Margin="61,207,0,173" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/calendario.png" Stretch="Fill" HorizontalAlignment="Left" Width="65"/>
+        <Image Height="70" Margin="62,0,0,94" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/gender.png" Stretch="Fill" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="67"/>
+        <Image Height="86" Margin="42,0,0,8" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/music.png" Stretch="Fill" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="105"/>
+        <Image Margin="305,386,23,23" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400"/>
+        <TextBlock HorizontalAlignment="Left" Margin="199,380,0,31" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281"/>
        <!-- <Image Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill"/>-->
-        <Grid x:Name="ContentGrid2" Grid.Row="1" Visibility="Collapsed">
-            <ListBox x:Name="ComboList" FontSize="48" Margin="0,0,12,20" MouseLeftButtonDown="ComboList_MouseLeftButtonDown" Background="Blue"/>
-        </Grid>
+	   <Grid x:Name="ContentGrid2" Grid.Row="1" Visibility="Collapsed">
+           <ListBox x:Name="ComboList" FontSize="48" Margin="0,0,12,20" MouseLeftButtonDown="ComboList_MouseLeftButtonDown" Background="Blue"/>
+       </Grid>
     </Grid>
 </phone:PhoneApplicationPage>
