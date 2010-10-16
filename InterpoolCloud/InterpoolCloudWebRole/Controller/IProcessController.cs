@@ -12,6 +12,8 @@ namespace InterpoolCloudWebRole.Controller
     {
         void StartGame(string userIdFacebook);
 
+        InterpoolContainer GetContainer();
+
         DataCity GetCurrentCity(string userIdFacebook);
 
         List<DataCity> GetPossibleCities(string userIdFacebook);
