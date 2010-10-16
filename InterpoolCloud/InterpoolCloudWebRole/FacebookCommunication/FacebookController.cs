@@ -45,12 +45,15 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 {
                     fbudOfSuspect = this.GetFriendInfo(userId, friendId);
                     suspect = NewSuspectFromFacebookUserData(fbudOfSuspect);
-                    dataManager.StoreSuspect(suspect, context);
-                    if (numberSuspect == i)
-                        game.Suspect = suspect;
-                    else
-                        game.PossibleSuspect.Add(suspect);
-                    i++;
+                    if (haveEnouthFields(suspect, Constants.DATA_REQUIRED))
+                    {
+                        dataManager.StoreSuspect(suspect, context);
+                        if (numberSuspect == i)
+                            game.Suspect = suspect;
+                        else
+                            game.PossibleSuspect.Add(suspect);
+                        i++;
+                    }
                     if (i >= limit)
                     {
                         break;
@@ -61,6 +64,44 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
+        private Boolean haveEnouthFields(Suspect fbudOfSuspect, int cantDataRequired)
+        {
+            int cant = 0;
+            if (fbudOfSuspect.SuspectBirthday != "")
+            {
+                cant++;
+            }
+            if (fbudOfSuspect.SuspectCinema != "")
+            {
+                cant++;
+            }
+            if (fbudOfSuspect.SuspectGender != "")
+            {
+                cant++;
+            }
+            if (fbudOfSuspect.SuspectHometown != "")
+            {
+                cant++;
+            }
+            if (fbudOfSuspect.SuspectMusic != "")
+            {
+                cant++;
+            }
+            if (fbudOfSuspect.SuspectTelevision != "")
+            {
+                cant++;
+            }
+
+            if (cant < cantDataRequired)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            } 
+            
+        }
         private Suspect NewSuspectFromFacebookUserData(DataFacebookUser fbudOfSuspect)
         {
             Suspect suspect = new Suspect();
