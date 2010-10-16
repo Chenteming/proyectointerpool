@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Newtonsoft.Json;
-using InterpoolCloudWebRole.Data;
-using InterpoolCloudWebRole.FacebookCommunication;
-using InterpoolCloudWebRole.Utilities;
-
+﻿
 namespace InterpoolCloudWebRole
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+    using Newtonsoft.Json;
+    using InterpoolCloudWebRole.Data;
+    using InterpoolCloudWebRole.FacebookCommunication;
+    using InterpoolCloudWebRole.Utilities;
+
     public partial class Face : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)

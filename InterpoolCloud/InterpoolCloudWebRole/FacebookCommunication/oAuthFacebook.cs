@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Collections.Specialized;
-using System.Net;
-using System.IO;
-using InterpoolCloudWebRole.Utilities;
-
+﻿
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Collections.Specialized;
+    using System.Net;
+    using System.IO;
+    using InterpoolCloudWebRole.Utilities;
 
     public class oAuthFacebook
     {

@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using InterpoolCloudWebRole.Data;
-using InterpoolCloudWebRole.FacebookCommunication;
-using InterpoolCloudWebRole.Datatypes;
-
+﻿
 namespace InterpoolCloudWebRole.Controller
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using InterpoolCloudWebRole.Data;
+    using InterpoolCloudWebRole.FacebookCommunication;
+    using InterpoolCloudWebRole.Datatypes;
+
     interface IProcessController
     {
         void StartGame(string userIdFacebook);
