@@ -9,7 +9,7 @@
             </basicHttpBinding>
         </bindings>
         <client>
-            <endpoint address="http://127.0.0.1:81/Services/InterpoolWP7.svc"
+            <endpoint address="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc"
                 binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IInterpoolWP7"
                 contract="ServiceReference.IInterpoolWP7" name="BasicHttpBinding_IInterpoolWP7" />
         </client>
