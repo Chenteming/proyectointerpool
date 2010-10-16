@@ -50,6 +50,7 @@
     <Compile Include="BuiltTravelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTest1.cs" />
+    <Compile Include="TravelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InterpoolCloudWebRole\InterpoolCloudWebRole.csproj">

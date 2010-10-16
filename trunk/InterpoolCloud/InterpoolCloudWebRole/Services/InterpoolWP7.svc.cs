@@ -13,7 +13,8 @@ namespace InterpoolCloudWebRole.Services
 {
     public class InterpoolWP7 : IInterpoolWP7
     {
-        private IProcessController controller = new ProcessController();
+        
+        private IProcessController controller = new ProcessController(new InterpoolContainer());
 
         public void StartGame(string userIdFacebook)
         {

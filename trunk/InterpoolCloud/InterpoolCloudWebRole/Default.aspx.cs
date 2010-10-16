@@ -25,7 +25,7 @@ namespace InterpoolCloudWebRole
             //Poner el id de facebook que se trae en el loguin cada vez que se conecta.
             IDataManager dm = new DataManager();
             string userId = dm.GetLastUserIdFacebook(dm.GetContainer());
-            IProcessController ipc = new ProcessController();
+            IProcessController ipc = new ProcessController(dm.GetContainer());
             ipc.StartGame(userId);
         }
 
@@ -46,7 +46,7 @@ namespace InterpoolCloudWebRole
             string id = "1358576832";
             InterpoolContainer container = new InterpoolContainer();
             User user = container.Users.Where(u => u.UserIdFacebook == id).First();
-            ProcessController pc = new ProcessController();
+            ProcessController pc = new ProcessController(container);
 
             //pc.deleteGame(user, container);
            // pc.deleteGame(user, container);
@@ -55,7 +55,8 @@ namespace InterpoolCloudWebRole
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            IProcessController ipc = new ProcessController();
+            InterpoolContainer container = new InterpoolContainer();
+            IProcessController ipc = new ProcessController(container);
             string userId = "1358576832";
             List<DataCity> col = ipc.GetCities(userId);
 
@@ -67,15 +68,17 @@ namespace InterpoolCloudWebRole
 
         protected void Button5_Click(object sender, EventArgs e)
         {
-            IProcessController ipc = new ProcessController();
+            InterpoolContainer container = new InterpoolContainer();
+            IProcessController ipc = new ProcessController(container);
             string userId = "1358576832";
-            DataCity dc = ipc.Travel(userId, "a");
+            DataCity dc = ipc.Travel(userId, "Auckland");
 
         }
 
         protected void Button6_Click(object sender, EventArgs e)
         {
-            IProcessController ipc = new ProcessController();
+            InterpoolContainer container = new InterpoolContainer();
+            IProcessController ipc = new ProcessController(container);
             string userId = "1358576832";
             ipc.EmitOrderOfArrest(userId, userId);
         }
@@ -83,9 +86,10 @@ namespace InterpoolCloudWebRole
 
         protected void Button6_Click1(object sender, EventArgs e)
         {
+            InterpoolContainer container = new InterpoolContainer();
             string user = "1358576832";
             string culpable = "1212";
-            IProcessController ipc = new ProcessController();
+            IProcessController ipc = new ProcessController(container);
             ipc.EmitOrderOfArrest(user, culpable);
         }
 
