@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Objects.DataClasses;
-
-using InterpoolCloudWebRole.Data;
-using InterpoolCloudWebRole.Utilities;
-using InterpoolCloudWebRole.FacebookCommunication;
-using InterpoolCloudWebRole.Datatypes;
-
+﻿
 namespace InterpoolCloudWebRole.Controller
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Data.Objects.DataClasses;
+    using InterpoolCloudWebRole.Data;
+    using InterpoolCloudWebRole.Utilities;
+    using InterpoolCloudWebRole.FacebookCommunication;
+    using InterpoolCloudWebRole.Datatypes;
+
     public class ProcessController : IProcessController
     {
         private String output = "Inicio";
