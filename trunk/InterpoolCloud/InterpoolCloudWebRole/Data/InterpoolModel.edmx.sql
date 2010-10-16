@@ -2,13 +2,18 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
+<<<<<<< .mine
+-- Date Created: 10/16/2010 19:02:05
+-- Generated from EDMX file: C:\Users\Vicente\Documents\Facultad\4to\Proyecto Ingeniería de Software\Repositorio\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
+=======
 -- Date Created: 10/16/2010 17:13:03
 -- Generated from EDMX file: C:\Users\Diego\Documents\Repo\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
+>>>>>>> .r506
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [InterpoolDB];
+USE [interpooldb];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -147,7 +152,8 @@ CREATE TABLE [dbo].[Users] (
     [UserIdFacebook] nvarchar(max)  NOT NULL,
     [UserTokenFacebook] nvarchar(max)  NOT NULL,
     [SubLevel] int  NULL,
-    [LevelLevelId] int  NOT NULL
+    [LevelLevelId] int  NOT NULL,
+    [UserLoginId] nvarchar(max)  NOT NULL
 );
 GO
 
