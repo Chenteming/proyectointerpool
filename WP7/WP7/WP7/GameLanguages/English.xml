@@ -32,5 +32,6 @@
 			<control name="textblock3" Text="Music:"/>
 			<control name="textblock4" Text="TV:"/>
 			<control name="textblock5" Text="Cinema:"/>
+			<control name="textblock6" Text="Birthday:"/>
 	  </class>
 </language>
