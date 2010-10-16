@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using WP7.ServiceReference;
+using WP7.Utilities;
 
 namespace WP7.GamePages
 {
@@ -21,10 +22,11 @@ namespace WP7.GamePages
 		private List<String> film;
 		private List<String> music;
         private List<String> tv;
-		
+        private string[] filters;
         private InterpoolWP7Client client = new InterpoolWP7Client();
         private GameManager gm = GameManager.getInstance();
 		private LanguageManager language = LanguageManager.GetInstance();
+        int btnPosition = 0;
 		
         public Filter()
         {			
@@ -39,6 +41,7 @@ namespace WP7.GamePages
             client.FilterSuspectsAsync(gm.userId, dfu);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
+            filters = new string[Constants.MAX_FILTERFIELD];
         }
 
         void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
@@ -91,26 +94,10 @@ namespace WP7.GamePages
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
             string[] filterField = gm.GetFilterField();
-            if (comboHomeTown.SelectedItem != null)
-                 filterField[3] = comboHomeTown.SelectedItem.ToString();
-            else
-                filterField[3] = "";
-            if (comboGender.SelectedItem != null)
-                filterField[4] = comboGender.SelectedItem.ToString();
-            else
-                filterField[4] = "";
-            if (comboMusic.SelectedItem != null)
-                filterField[5] = comboMusic.SelectedItem.ToString();
-            else
-                filterField[5] = "";
-            if (comboFilm.SelectedItem != null)
-                filterField[6] = comboFilm.SelectedItem.ToString();
-            else
-                filterField[6] = "";
-			 if (comboTV.SelectedItem != null)
-                filterField[7] = comboTV.SelectedItem.ToString();
-            else
-                filterField[7] = "";
+            for (int i = 0; i < 8; i++) 
+            {
+                filterField[i] = filters[i];
+            }                
             NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
         }       
 
@@ -118,7 +105,7 @@ namespace WP7.GamePages
         {
             if (ComboList.SelectedIndex != -1)
             {
-                string s = ComboList.SelectedItem.ToString();
+                filters[btnPosition] = ComboList.SelectedItem.ToString();
                 ComboList.Visibility = Visibility.Collapsed;
                 ContentGrid2.Visibility = Visibility.Collapsed;
                 ContentGrid.Visibility = Visibility.Visible;
@@ -127,6 +114,7 @@ namespace WP7.GamePages
 
         private void HometownBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            btnPosition = 3;
             string[] filterField = gm.GetFilterField();
             ComboList.ItemsSource = filterField[3];
             ContentGrid.Visibility = Visibility.Collapsed;
@@ -136,6 +124,7 @@ namespace WP7.GamePages
 
         private void GenderBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            btnPosition = 4;
             string[] filterField = gm.GetFilterField();
             ComboList.ItemsSource = filterField[4];
             ContentGrid.Visibility = Visibility.Collapsed;
@@ -145,6 +134,7 @@ namespace WP7.GamePages
 
         private void MusicBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            btnPosition = 5;
             string[] filterField = gm.GetFilterField();
             ComboList.ItemsSource = filterField[5];
             ContentGrid.Visibility = Visibility.Collapsed;
@@ -154,6 +144,7 @@ namespace WP7.GamePages
 
         private void CinemaBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            btnPosition = 6;
             string[] filterField = gm.GetFilterField();
             ComboList.ItemsSource = filterField[6];
             ContentGrid.Visibility = Visibility.Collapsed;
@@ -163,6 +154,7 @@ namespace WP7.GamePages
 
         private void TVBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            btnPosition = 7;
             string[] filterField = gm.GetFilterField();
             ComboList.ItemsSource = filterField[7];
             ContentGrid.Visibility = Visibility.Collapsed;
