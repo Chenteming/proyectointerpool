@@ -32,15 +32,7 @@ namespace WP7.GamePages
 			AnimationPage.Begin();
 			// Change the language of the page            
             if (language.GetXDoc() != null)
-                language.TranslatePage(this);
-			comboHomeTown.Visibility = System.Windows.Visibility.Collapsed;
-			comboFilm.Visibility = System.Windows.Visibility.Collapsed;
-			comboMusic.Visibility = System.Windows.Visibility.Collapsed;
-			comboGender.Visibility = System.Windows.Visibility.Collapsed;
-			comboTV.Visibility = System.Windows.Visibility.Collapsed;
-			
-			
-			
+                language.TranslatePage(this);	
             FilterButton.Visibility = System.Windows.Visibility.Collapsed;
             client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(client_FilterSuspectsCompleted);
             DataFacebookUser dfu = new DataFacebookUser();
@@ -74,15 +66,10 @@ namespace WP7.GamePages
                     music.Add(df.music);
 				if (!tv.Contains(df.television))
                     tv.Add(df.television);
-            }                     
-            comboGender.ItemsSource = gender;
-            comboHomeTown.ItemsSource = homeTown;
-            comboFilm.ItemsSource = film;
-            comboMusic.ItemsSource = music;	
-			comboTV.ItemsSource = tv;
+            }
         }
 
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        /*private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
         	//FilterSuspectsStoryboard.Begin();
 			comboHomeTown.Visibility = System.Windows.Visibility.Visible;
@@ -91,27 +78,19 @@ namespace WP7.GamePages
 			comboGender.Visibility = System.Windows.Visibility.Visible;
 			comboTV.Visibility = System.Windows.Visibility.Visible;
             OpenButton.Visibility = System.Windows.Visibility.Collapsed;
-			string[] filterField = gm.GetFilterField();
-			
+
+            string[] filterField = gm.GetFilterField();			
 			comboHomeTown.SelectedItem = filterField[3];
 			comboGender.SelectedItem = filterField[4];
 			comboMusic.SelectedItem = filterField[5];
 			comboFilm.SelectedItem = filterField[6];
 			comboTV.SelectedItem = filterField[7];
 			FilterButton.Visibility = System.Windows.Visibility.Visible;
-        }
+        }*/
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
             string[] filterField = gm.GetFilterField();
-            /*0 = first_name
-              1 = last_name 
-              2 =  birthday
-              3 = hometown
-              4 = gender
-              5 = music
-              6 = cinema
-			  7 = television*/
             if (comboHomeTown.SelectedItem != null)
                  filterField[3] = comboHomeTown.SelectedItem.ToString();
             else
@@ -133,6 +112,62 @@ namespace WP7.GamePages
             else
                 filterField[7] = "";
             NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
+        }       
+
+        private void ComboList_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (ComboList.SelectedIndex != -1)
+            {
+                string s = ComboList.SelectedItem.ToString();
+                ComboList.Visibility = Visibility.Collapsed;
+                ContentGrid2.Visibility = Visibility.Collapsed;
+                ContentGrid.Visibility = Visibility.Visible;
+            }
+        }        
+
+        private void HometownBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            string[] filterField = gm.GetFilterField();
+            ComboList.ItemsSource = filterField[3];
+            ContentGrid.Visibility = Visibility.Collapsed;
+            ContentGrid2.Visibility = Visibility.Visible;
+            ComboList.Visibility = Visibility.Visible;
         }
+
+        private void GenderBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            string[] filterField = gm.GetFilterField();
+            ComboList.ItemsSource = filterField[4];
+            ContentGrid.Visibility = Visibility.Collapsed;
+            ContentGrid2.Visibility = Visibility.Visible;
+            ComboList.Visibility = Visibility.Visible;
+        }
+
+        private void MusicBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            string[] filterField = gm.GetFilterField();
+            ComboList.ItemsSource = filterField[5];
+            ContentGrid.Visibility = Visibility.Collapsed;
+            ContentGrid2.Visibility = Visibility.Visible;
+            ComboList.Visibility = Visibility.Visible;
+        }
+
+        private void CinemaBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            string[] filterField = gm.GetFilterField();
+            ComboList.ItemsSource = filterField[6];
+            ContentGrid.Visibility = Visibility.Collapsed;
+            ContentGrid2.Visibility = Visibility.Visible;
+            ComboList.Visibility = Visibility.Visible;
+        }
+
+        private void TVBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            string[] filterField = gm.GetFilterField();
+            ComboList.ItemsSource = filterField[7];
+            ContentGrid.Visibility = Visibility.Collapsed;
+            ContentGrid2.Visibility = Visibility.Visible;
+            ComboList.Visibility = Visibility.Visible;
+        }       
     }
 }
