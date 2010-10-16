@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using InterpoolCloudWebRole.FacebookCommunication;
-
+﻿
 namespace InterpoolCloudWebRole.Datatypes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using InterpoolCloudWebRole.FacebookCommunication;
+
     public class DataFacebookUser
     {
         public string userId { get; set; }

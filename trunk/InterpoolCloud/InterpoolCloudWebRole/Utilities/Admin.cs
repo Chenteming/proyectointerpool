@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using InterpoolCloudWebRole.BingSearchService;
-using InterpoolCloudWebRole.Data;
-using System.Text.RegularExpressions;
-using System.IO;
-using System.Net;
-using System.Diagnostics;
-
+﻿
 namespace InterpoolCloudWebRole.Utilities
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using InterpoolCloudWebRole.BingSearchService;
+    using InterpoolCloudWebRole.Data;
+    using System.Text.RegularExpressions;
+    using System.IO;
+    using System.Net;
+    using System.Diagnostics;
+
     public static class Admin
     {
         //FindCity()  "Este País" -- "Esta Ciudad"

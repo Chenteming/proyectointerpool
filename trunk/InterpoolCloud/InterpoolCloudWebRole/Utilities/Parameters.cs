@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
+﻿
 namespace InterpoolCloudWebRole.Utilities
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+
     public static class Parameters
     {
         public static string LEVEL_ROOKIE = "LEVEL_ROOKIE";

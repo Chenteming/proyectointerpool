@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using InterpoolCloudWebRole.Data;
-using InterpoolCloudWebRole.Datatypes;
-
+﻿
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using InterpoolCloudWebRole.Data;
+    using InterpoolCloudWebRole.Datatypes;
+
     interface IFacebookController
     {
         string GetUserId(oAuthFacebook oAuth);
