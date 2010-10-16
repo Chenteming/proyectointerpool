@@ -68,11 +68,13 @@ namespace InterpoolCloudTest
         public void TestMethod()
         {
             ProcessController controler = new ProcessController();
-            
-            string userIdFacebook = "";
+
+            string userIdFacebook = "1358576832";
             User user = container.Users.Where(u => u.UserIdFacebook == userIdFacebook).First();
 
             Game game = controler.BuiltTravel(user, container);
+
+            Console.WriteLine("Test: {0} ", "BuiltTravelTest");
         }
     }
 }
