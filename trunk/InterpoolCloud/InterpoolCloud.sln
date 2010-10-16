@@ -5,6 +5,8 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "InterpoolCloud", "Interpool
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterpoolCloudWebRole", "InterpoolCloudWebRole\InterpoolCloudWebRole.csproj", "{8316B726-7705-434D-BB23-7677E1AAB905}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B2B11C1-F8A0-4CBD-9D9D-79C82F9ABA8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

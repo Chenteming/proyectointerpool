@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/03/2010 17:26:34
+-- Date Created: 10/16/2010 12:12:40
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -220,6 +220,7 @@ CREATE TABLE [dbo].[Suspects] (
     [SuspectBirthday] nvarchar(max)  NULL,
     [SuspectLastName] nvarchar(max)  NULL,
     [SuspectGender] nvarchar(max)  NULL,
+    [SuspectPicLInk] nvarchar(max)  NULL,
     [Game_1_GameId] int  NULL
 );
 GO
