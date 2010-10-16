@@ -17,7 +17,6 @@ namespace WP7
 {
     public partial class Suspect : PhoneApplicationPage
     {
-        private List<String> suspectsList;
         private static int index;
 		private LanguageManager language;
 		private GameManager gm = GameManager.getInstance();
