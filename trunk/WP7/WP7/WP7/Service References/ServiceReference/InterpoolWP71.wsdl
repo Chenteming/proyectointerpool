@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="InterpoolWP7" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes" />
+      <xsd:import schemaLocation="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.FacebookCommunication" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IInterpoolWP7_StartGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_StartGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetUserIdFacebook_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdFacebook" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetUserIdFacebook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdFacebookResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetCurrentCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentCity" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetCurrentCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetPossibleCities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPossibleCities" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetPossibleCities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPossibleCitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetCurrentFamous_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentFamous" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetCurrentFamous_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentFamousResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_FilterSuspects_InputMessage">
+    <wsdl:part name="parameters" element="tns:FilterSuspects" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_FilterSuspects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FilterSuspectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_EmitOrderOfArrest_InputMessage">
+    <wsdl:part name="parameters" element="tns:EmitOrderOfArrest" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_EmitOrderOfArrest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EmitOrderOfArrestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetCities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCities" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetCities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_Travel_InputMessage">
+    <wsdl:part name="parameters" element="tns:Travel" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_Travel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TravelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetClueByFamous_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClueByFamous" />
+  </wsdl:message>
+  <wsdl:message name="IInterpoolWP7_GetClueByFamous_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClueByFamousResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IInterpoolWP7">
+    <wsdl:operation name="StartGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/StartGame" message="tns:IInterpoolWP7_StartGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/StartGameResponse" message="tns:IInterpoolWP7_StartGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserIdFacebook">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/GetUserIdFacebook" message="tns:IInterpoolWP7_GetUserIdFacebook_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/GetUserIdFacebookResponse" message="tns:IInterpoolWP7_GetUserIdFacebook_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/GetCurrentCity" message="tns:IInterpoolWP7_GetCurrentCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/GetCurrentCityResponse" message="tns:IInterpoolWP7_GetCurrentCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPossibleCities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/GetPossibleCities" message="tns:IInterpoolWP7_GetPossibleCities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/GetPossibleCitiesResponse" message="tns:IInterpoolWP7_GetPossibleCities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentFamous">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/GetCurrentFamous" message="tns:IInterpoolWP7_GetCurrentFamous_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/GetCurrentFamousResponse" message="tns:IInterpoolWP7_GetCurrentFamous_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FilterSuspects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/FilterSuspects" message="tns:IInterpoolWP7_FilterSuspects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/FilterSuspectsResponse" message="tns:IInterpoolWP7_FilterSuspects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EmitOrderOfArrest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/EmitOrderOfArrest" message="tns:IInterpoolWP7_EmitOrderOfArrest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/EmitOrderOfArrestResponse" message="tns:IInterpoolWP7_EmitOrderOfArrest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/GetCities" message="tns:IInterpoolWP7_GetCities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/GetCitiesResponse" message="tns:IInterpoolWP7_GetCities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Travel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/Travel" message="tns:IInterpoolWP7_Travel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/TravelResponse" message="tns:IInterpoolWP7_Travel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClueByFamous">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterpoolWP7/GetClueByFamous" message="tns:IInterpoolWP7_GetClueByFamous_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterpoolWP7/GetClueByFamousResponse" message="tns:IInterpoolWP7_GetClueByFamous_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IInterpoolWP7" type="tns:IInterpoolWP7">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StartGame">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/StartGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserIdFacebook">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/GetUserIdFacebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentCity">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/GetCurrentCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPossibleCities">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/GetPossibleCities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentFamous">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/GetCurrentFamous" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterSuspects">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/FilterSuspects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EmitOrderOfArrest">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/EmitOrderOfArrest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCities">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/GetCities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Travel">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/Travel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClueByFamous">
+      <soap:operation soapAction="http://tempuri.org/IInterpoolWP7/GetClueByFamous" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterpoolWP7">
+    <wsdl:port name="BasicHttpBinding_IInterpoolWP7" binding="tns:BasicHttpBinding_IInterpoolWP7">
+      <soap:address location="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
