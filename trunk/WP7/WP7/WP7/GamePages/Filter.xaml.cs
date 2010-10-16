@@ -116,7 +116,7 @@ namespace WP7.GamePages
         {
             btnPosition = 3;
             string[] filterField = gm.GetFilterField();
-            ComboList.ItemsSource = filterField[3];
+            ComboList.ItemsSource = homeTown;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
             ComboList.Visibility = Visibility.Visible;
@@ -126,7 +126,7 @@ namespace WP7.GamePages
         {
             btnPosition = 4;
             string[] filterField = gm.GetFilterField();
-            ComboList.ItemsSource = filterField[4];
+            ComboList.ItemsSource = gender;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
             ComboList.Visibility = Visibility.Visible;
@@ -136,7 +136,7 @@ namespace WP7.GamePages
         {
             btnPosition = 5;
             string[] filterField = gm.GetFilterField();
-            ComboList.ItemsSource = filterField[5];
+            ComboList.ItemsSource = music;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
             ComboList.Visibility = Visibility.Visible;
@@ -146,7 +146,7 @@ namespace WP7.GamePages
         {
             btnPosition = 6;
             string[] filterField = gm.GetFilterField();
-            ComboList.ItemsSource = filterField[6];
+            ComboList.ItemsSource = film;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
             ComboList.Visibility = Visibility.Visible;
@@ -156,7 +156,7 @@ namespace WP7.GamePages
         {
             btnPosition = 7;
             string[] filterField = gm.GetFilterField();
-            ComboList.ItemsSource = filterField[7];
+            ComboList.ItemsSource = tv;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
             ComboList.Visibility = Visibility.Visible;

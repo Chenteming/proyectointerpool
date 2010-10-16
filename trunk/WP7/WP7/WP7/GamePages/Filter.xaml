@@ -250,75 +250,34 @@
         		<RowDefinition Height="0*"/>
         		<RowDefinition/>
         	</Grid.RowDefinitions>
-        	<ComboBox Height="40" HorizontalAlignment="Left" Margin="-432,0,0,114" x:Name="comboFilm" VerticalAlignment="Bottom" Width="250" Foreground="#FFFB0000" Background="Blue" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" Grid.Row="1" >
-        		<ComboBox.BorderBrush>
-        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        				<GradientStop Color="Black" Offset="0"/>
-        				<GradientStop Color="#ADA13636" Offset="1"/>
-        			</LinearGradientBrush>
-        		</ComboBox.BorderBrush>
-        	</ComboBox>
-        	<ComboBox HorizontalAlignment="Left" Margin="-396,208,0,172" x:Name="comboTV" Width="250" Foreground="#FFFB0000" Background="Blue" Grid.Row="1" d:LayoutOverrides="HorizontalAlignment" >
-        		<ComboBox.BorderBrush>
-        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        				<GradientStop Color="Black" Offset="0"/>
-        				<GradientStop Color="#ADA13636" Offset="1"/>
-        			</LinearGradientBrush> 
-        		</ComboBox.BorderBrush>
-        	</ComboBox>
-        	<ComboBox Height="40" HorizontalAlignment="Left" Margin="-376,163,0,0" x:Name="comboMusic" VerticalAlignment="Top" Width="250" Foreground="#FFFB0000" Background="Blue" d:LayoutOverrides="HorizontalAlignment" Grid.Row="1" >
-        		<ComboBox.BorderBrush>
-        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        				<GradientStop Color="Black" Offset="0"/>
-        				<GradientStop Color="#ADA13636" Offset="1"/>
-        			</LinearGradientBrush>
-        		</ComboBox.BorderBrush>
-        	</ComboBox>
-        	<ComboBox HorizontalAlignment="Left" Margin="-336,102,0,0" x:Name="comboHomeTown" Width="250" d:LayoutOverrides="HorizontalAlignment" Foreground="#FFFB0000" Background="Blue" Height="40" VerticalAlignment="Top" Grid.Row="1" >
-        		<ComboBox.BorderBrush>
-        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        				<GradientStop Color="Black" Offset="0"/>
-        				<GradientStop Color="#ADA13636" Offset="1"/>
-        			</LinearGradientBrush>
-        		</ComboBox.BorderBrush>            		
-        	</ComboBox>
-        	<ComboBox HorizontalAlignment="Left" Margin="24,58,0,0" x:Name="comboGender" Width="250" Foreground="#FFFB0000" d:LayoutOverrides="HorizontalAlignment" Background="Blue" Grid.Row="1" Height="40" VerticalAlignment="Top" Grid.ColumnSpan="2">
-        		<ComboBox.BorderBrush>
-        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        				<GradientStop Color="Black" Offset="0"/>
-        				<GradientStop Color="#ADA13636" Offset="1"/>
-        			</LinearGradientBrush>
-        		</ComboBox.BorderBrush>
-                	
-        	</ComboBox>
+        	<TextBlock x:Name="textblock1" HorizontalAlignment="Left" Margin="113,159,0,0" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top" Grid.Column="1" />
+        	<TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="113,204,0,207" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock3" HorizontalAlignment="Left" Margin="113,249,0,162" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock4" HorizontalAlignment="Left" Margin="113,294,0,117" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock5" HorizontalAlignment="Left" Margin="113,339,0,72" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock6" HorizontalAlignment="Left" Margin="116,384,0,27" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Column="1"/>
         	<Button x:Name="FilterButton" Height="69" Margin="8,0,0,8" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="156" Click="FilterButton_Click" BorderBrush="#FF1D7281" Foreground="#FF1D7281" Grid.Row="1" Grid.ColumnSpan="2" />
-        	<TextBlock x:Name="textblock1" HorizontalAlignment="Left" Margin="113,170,0,0" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top" Grid.Column="1" />
-        	<TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="113,220,0,192" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
-        	<TextBlock x:Name="textblock3" HorizontalAlignment="Left" Margin="113,270,0,141" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
-        	<TextBlock x:Name="textblock4" HorizontalAlignment="Left" Margin="113,320,0,91" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
-        	<TextBlock x:Name="textblock5" HorizontalAlignment="Left" Margin="113,370,0,41" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
-        	<Image HorizontalAlignment="Left" Margin="46,-22,0,0" Source="/WP7;component/interpool_Images/pantalla_6_Images/tv.png" Stretch="Fill" Width="59" Height="65" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="2" />
-        	<Button x:Name="TVBtn" Content="TVBtn" HorizontalAlignment="Left" Height="68" Margin="24,105,0,0" VerticalAlignment="Top" Width="181" Click="TVBtn_Click" Grid.ColumnSpan="2" Grid.Row="1" />
-        	<Button x:Name="CinemaBtn" Content="CinemaBtn" HorizontalAlignment="Left" Height="68" Margin="24,8,0,0" VerticalAlignment="Top" Width="181" Click="CinemaBtn_Click" Grid.ColumnSpan="2" Grid.Row="1" />
-        	<Button x:Name="GenderBtn" Content="GenderBtn" Height="68" Margin="142,8,327,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Click="GenderBtn_Click" Grid.Column="1" Grid.Row="1" />
-        	<Button x:Name="MusicBtn" Content="MusicBtn" Height="68" Margin="142,108,327,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Click="MusicBtn_Click" Grid.Column="1" Grid.Row="1" />
-        	<Button x:Name="HometownBtn" Content="Hometown" HorizontalAlignment="Right" Margin="0,157,35,219" Width="180" Click="HometownBtn_Click" Grid.Column="1" Grid.Row="1" />
+        	<Button x:Name="TVBtn" Content="TVBtn" Height="68" Margin="-83,-13,0,0" VerticalAlignment="Top" Click="TVBtn_Click" Grid.Row="1" HorizontalAlignment="Left" Width="181" Grid.Column="1" />
+        	<Button x:Name="CinemaBtn" Content="CinemaBtn" Height="68" Margin="-83,53,0,0" VerticalAlignment="Top" Click="CinemaBtn_Click" Grid.Row="1" HorizontalAlignment="Left" Width="181" Grid.Column="1" />
+        	<Button x:Name="GenderBtn" Content="GenderBtn" Height="68" Margin="-83,0,552,94" VerticalAlignment="Bottom" Click="GenderBtn_Click" Grid.Row="1" Grid.Column="1" />
+        	<Button x:Name="MusicBtn" Content="MusicBtn" Height="68" Margin="-78,0,547,26" VerticalAlignment="Bottom" Click="MusicBtn_Click" Grid.Row="1" Grid.Column="1" />
+        	<Button x:Name="HometownBtn" Content="Hometown" Margin="-84,124,0,0" Click="HometownBtn_Click" Grid.Row="1" Height="68" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="180" />
+        	<Image x:Name="imageFace" HorizontalAlignment="Right" Margin="0,-3,74,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png" Stretch="Fill" Width="234" Height="148" VerticalAlignment="Top" Grid.Column="1"/>
+        	<Image x:Name="imageQuestionSymbol" HorizontalAlignment="Right" Margin="0,4,145,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 2.png" Stretch="Fill" Width="94" Height="117" VerticalAlignment="Top" Grid.Column="1"/>
+        	<Image Margin="222,167,23,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400" Grid.Column="1" Height="35" VerticalAlignment="Top"/>
+        	<Image Margin="222,212,23,197" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400" Grid.Column="1"/>
+        	<Image Margin="222,302,23,107" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Grid.Column="1"/>
+        	<Image Margin="222,257,23,152" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400" Grid.Column="1"/>
+        	<Image Margin="222,347,23,62" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Grid.Column="1"/>
+        	<Image Margin="222,392,23,17" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400" Grid.Column="1"/>
+        	<Image HorizontalAlignment="Left" Margin="-27,-22,0,0" Source="/WP7;component/interpool_Images/pantalla_6_Images/tv.png" Stretch="Fill" Width="59" Height="65" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" d:LayoutOverrides="HorizontalAlignment" />
+        	<Image Margin="-32,59,0,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/movies.png" Stretch="Fill" HorizontalAlignment="Left" Width="70" Height="56" VerticalAlignment="Top" Grid.Column="1"/>
+        	<Image Margin="-38,132,0,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/building.png" Stretch="Fill" HorizontalAlignment="Left" Width="95" Grid.Column="1" Height="58" VerticalAlignment="Top"/>
+        	<Image Margin="-22,203,0,177" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/calendario.png" Stretch="Fill" HorizontalAlignment="Left" Width="65" Grid.Column="1"/>
+        	<Image Height="70" Margin="-21,0,0,98" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/gender.png" Stretch="Fill" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="67" Grid.Column="1"/>
+        	<Image Height="86" Margin="-41,0,0,12" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/music.png" Stretch="Fill" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="105" Grid.Column="1"/>
         </Grid>
         <Image Height="384" Margin="0,0,123,-435" Grid.Row="1" Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill" VerticalAlignment="Bottom" d:IsHidden="True"/>
-        <Image x:Name="imageFace" HorizontalAlignment="Right" Margin="0,1,74,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png" Stretch="Fill" Width="234" Height="148" VerticalAlignment="Top"/>
-        <Image x:Name="imageQuestionSymbol" HorizontalAlignment="Right" Margin="0,8,145,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 2.png" Stretch="Fill" Width="94" Height="117" VerticalAlignment="Top"/>
-        <Image Margin="305,161,23,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Height="35" VerticalAlignment="Top" Width="400"/>
-        <Image Margin="305,206,23,203" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400"/>
-        <Image Margin="305,296,23,113" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill"/>
-        <Image Margin="305,251,23,158" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400"/>
-        <Image Margin="305,341,23,68" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill"/>
-        <Image Margin="51,63,0,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/movies.png" Stretch="Fill" HorizontalAlignment="Left" Width="70" Height="56" VerticalAlignment="Top"/>
-        <Image Height="58" Margin="45,136,0,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/building.png" Stretch="Fill" VerticalAlignment="Top" HorizontalAlignment="Left" Width="95"/>
-        <Image Margin="61,207,0,173" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/calendario.png" Stretch="Fill" HorizontalAlignment="Left" Width="65"/>
-        <Image Height="70" Margin="62,0,0,94" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/gender.png" Stretch="Fill" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="67"/>
-        <Image Height="86" Margin="42,0,0,8" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/music.png" Stretch="Fill" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="105"/>
-        <Image Margin="305,386,23,23" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400"/>
-        <TextBlock HorizontalAlignment="Left" Margin="199,380,0,31" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281"/>
        <!-- <Image Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill"/>-->
 	   <Grid x:Name="ContentGrid2" Grid.Row="1" Visibility="Collapsed">
            <ListBox x:Name="ComboList" FontSize="48" Margin="0,0,12,20" MouseLeftButtonDown="ComboList_MouseLeftButtonDown" Background="Blue"/>
