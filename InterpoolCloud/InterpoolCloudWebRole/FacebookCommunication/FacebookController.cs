@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Collections;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using InterpoolCloudWebRole.Data;
-using InterpoolCloudWebRole.Utilities;
-using InterpoolCloudWebRole.Datatypes;
-
+﻿
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Collections;
+    using Newtonsoft.Json.Linq;
+    using Newtonsoft.Json;
+    using InterpoolCloudWebRole.Data;
+    using InterpoolCloudWebRole.Utilities;
+    using InterpoolCloudWebRole.Datatypes;
+
     public class FacebookController : IFacebookController
     {
         // Stores al recovered data form user facebook friends.
@@ -247,7 +248,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             string like_category = (string)jsonFriendObject.SelectToken("data[0].category");
 
 
-            int i= 0;
+            int i = 0;
             bool exit = false;
             friendData.music = "";
             friendData.television = "";
@@ -255,7 +256,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             
             while (like_category != null && !exit)
             {
-                switch(like_category){
+                switch(like_category)
+                {
                     case "Music":
                     case "Musicians":
                         friendData.music = (string)jsonFriendObject.SelectToken("data[" + i + "].name");

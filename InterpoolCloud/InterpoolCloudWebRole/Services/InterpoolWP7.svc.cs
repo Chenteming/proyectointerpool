@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
-using InterpoolCloudWebRole.Controller;
-using InterpoolCloudWebRole.Data;
-using InterpoolCloudWebRole.FacebookCommunication;
-using InterpoolCloudWebRole.Datatypes;
-
+﻿
 namespace InterpoolCloudWebRole.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Runtime.Serialization;
+    using System.ServiceModel;
+    using System.Text;
+    using InterpoolCloudWebRole.Controller;
+    using InterpoolCloudWebRole.Data;
+    using InterpoolCloudWebRole.FacebookCommunication;
+    using InterpoolCloudWebRole.Datatypes;
+
     public class InterpoolWP7 : IInterpoolWP7
     {
         
