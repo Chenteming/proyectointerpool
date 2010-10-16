@@ -6,8 +6,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterpoolCloudWebRole", "InterpoolCloudWebRole\InterpoolCloudWebRole.csproj", "{8316B726-7705-434D-BB23-7677E1AAB905}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B2B11C1-F8A0-4CBD-9D9D-79C82F9ABA8B}"
+	ProjectSection(SolutionItems) = preProject
+		InterpoolCloud.vsmdi = InterpoolCloud.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterpoolCloudTest", "InterpoolCloudTest\InterpoolCloudTest.csproj", "{2403FD19-94E6-41AA-A972-7D28C2DC2153}"
 EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = InterpoolCloud.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -21,6 +31,10 @@ Global
 		{8316B726-7705-434D-BB23-7677E1AAB905}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8316B726-7705-434D-BB23-7677E1AAB905}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8316B726-7705-434D-BB23-7677E1AAB905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2403FD19-94E6-41AA-A972-7D28C2DC2153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2403FD19-94E6-41AA-A972-7D28C2DC2153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2403FD19-94E6-41AA-A972-7D28C2DC2153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2403FD19-94E6-41AA-A972-7D28C2DC2153}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
