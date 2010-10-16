@@ -29,14 +29,14 @@ namespace WP7
             language = LanguageManager.GetInstance();
             if (language.GetXDoc() != null)
                 language.TranslatePage(this);
-            client = new InterpoolWP7Client();
-            client.GetCitiesCompleted += new EventHandler<GetCitiesCompletedEventArgs>(client_GetCitiesCompleted);
-            client.GetCitiesAsync(gm.userId);
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
-            button1.Visibility = System.Windows.Visibility.Collapsed;
-            button2.Visibility = System.Windows.Visibility.Collapsed;
-            button3.Visibility = System.Windows.Visibility.Collapsed;
+//            client = new InterpoolWP7Client();
+//            client.GetCitiesCompleted += new EventHandler<GetCitiesCompletedEventArgs>(client_GetCitiesCompleted);
+//            client.GetCitiesAsync(gm.userId);
+//            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+//            client.CloseAsync();
+//            button1.Visibility = System.Windows.Visibility.Collapsed;
+//            button2.Visibility = System.Windows.Visibility.Collapsed;
+//            button3.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         void client_GetCitiesCompleted(object sender, GetCitiesCompletedEventArgs e)
@@ -153,12 +153,19 @@ namespace WP7
 
         private void button3_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-        	InterpoolWP7Client client = new InterpoolWP7Client();
-            client.TravelCompleted +=new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
-            client.TravelAsync(gm.userId, button3.Content.ToString());
-            gm.SetCurrentCity(button3.Content.ToString());
-			client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
+//        	InterpoolWP7Client client = new InterpoolWP7Client();
+//            client.TravelCompleted +=new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
+//            client.TravelAsync(gm.userId, button3.Content.ToString());
+//            gm.SetCurrentCity(button3.Content.ToString());
+//			client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+//            client.CloseAsync();
+			
+			if (MessageBox.Show("¿Desea viajar?", "title", 
+				MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+			{
+			// OK Event Logic Here
+			}
+
 			
         }
     }
