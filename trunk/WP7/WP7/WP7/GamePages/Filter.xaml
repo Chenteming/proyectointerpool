@@ -242,11 +242,14 @@
         <!--ContentPanel - place additional content here-->
         <Image x:Name="paper" Margin="180,8,8,8" Source="/WP7;component/GameImages/FilterScreen.png" Stretch="Fill" Grid.RowSpan="2"/>
         <Grid x:Name="ContentGrid" Grid.Row="1">
-        	<Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="83*" />
+                <ColumnDefinition Width="645*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
         		<RowDefinition Height="0*"/>
         		<RowDefinition/>
         	</Grid.RowDefinitions>
-        	<Button Click="Button_Click" x:Name="OpenButton" BorderBrush="#FF1D7281" Margin="0,340,189,11" HorizontalAlignment="Right" Width="112" Foreground="#FF1D7281" Grid.Row="1" Visibility="Collapsed" />
         	<ComboBox Height="40" HorizontalAlignment="Left" Margin="-432,0,0,114" x:Name="comboFilm" VerticalAlignment="Bottom" Width="250" Foreground="#FFFB0000" Background="Blue" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" Grid.Row="1" >
         		<ComboBox.BorderBrush>
         			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -279,7 +282,7 @@
         			</LinearGradientBrush>
         		</ComboBox.BorderBrush>            		
         	</ComboBox>
-        	<ComboBox HorizontalAlignment="Left" Margin="24,58,0,0" x:Name="comboGender" Width="250" Foreground="#FFFB0000" d:LayoutOverrides="HorizontalAlignment" Background="Blue" Grid.Row="1" Height="40" VerticalAlignment="Top" >
+        	<ComboBox HorizontalAlignment="Left" Margin="24,58,0,0" x:Name="comboGender" Width="250" Foreground="#FFFB0000" d:LayoutOverrides="HorizontalAlignment" Background="Blue" Grid.Row="1" Height="40" VerticalAlignment="Top" Grid.ColumnSpan="2">
         		<ComboBox.BorderBrush>
         			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
         				<GradientStop Color="Black" Offset="0"/>
@@ -288,18 +291,18 @@
         		</ComboBox.BorderBrush>
                 	
         	</ComboBox>
-        	<Button x:Name="FilterButton" Height="69" Margin="8,0,0,8" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="156" Click="FilterButton_Click" BorderBrush="#FF1D7281" Foreground="#FF1D7281" Grid.Row="1"/>
-        	<TextBlock x:Name="textblock1" HorizontalAlignment="Left" Margin="196,170,0,0" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top"/>
-        	<TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="196,220,0,192" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33"/>
-        	<TextBlock x:Name="textblock3" HorizontalAlignment="Left" Margin="196,270,0,141" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33"/>
-        	<TextBlock x:Name="textblock4" HorizontalAlignment="Left" Margin="196,320,0,91" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33"/>
-        	<TextBlock x:Name="textblock5" HorizontalAlignment="Left" Margin="196,370,0,41" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33"/>
-        	<Image HorizontalAlignment="Left" Margin="46,-22,0,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/tv.png" Stretch="Fill" Width="59" Height="65" VerticalAlignment="Top"/>
-        	<Button x:Name="TVBtn" Content="TVBtn" HorizontalAlignment="Left" Height="68" Margin="24,105,0,0" VerticalAlignment="Top" Width="181" Click="TVBtn_Click"/>
-        	<Button x:Name="CinemaBtn" Content="CinemaBtn" HorizontalAlignment="Left" Height="68" Margin="24,8,0,0" VerticalAlignment="Top" Width="181" Click="CinemaBtn_Click"/>
-        	<Button x:Name="GenderBtn" Content="GenderBtn" Height="68" Margin="225,8,327,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Click="GenderBtn_Click"/>
-        	<Button x:Name="MusicBtn" Content="MusicBtn" Height="68" Margin="225,108,327,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Click="MusicBtn_Click"/>
-        	<Button x:Name="HometownBtn" Content="Hometown" HorizontalAlignment="Right" Margin="0,157,35,219" Width="180" Click="HometownBtn_Click"/>
+        	<Button x:Name="FilterButton" Height="69" Margin="8,0,0,8" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="156" Click="FilterButton_Click" BorderBrush="#FF1D7281" Foreground="#FF1D7281" Grid.Row="1" Grid.ColumnSpan="2" />
+        	<TextBlock x:Name="textblock1" HorizontalAlignment="Left" Margin="113,170,0,0" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top" Grid.Column="1" />
+        	<TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="113,220,0,192" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock3" HorizontalAlignment="Left" Margin="113,270,0,141" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock4" HorizontalAlignment="Left" Margin="113,320,0,91" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock5" HorizontalAlignment="Left" Margin="113,370,0,41" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<Image HorizontalAlignment="Left" Margin="46,-22,0,0" Source="/WP7;component/interpool_Images/pantalla_6_Images/tv.png" Stretch="Fill" Width="59" Height="65" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        	<Button x:Name="TVBtn" Content="TVBtn" HorizontalAlignment="Left" Height="68" Margin="24,105,0,0" VerticalAlignment="Top" Width="181" Click="TVBtn_Click" Grid.ColumnSpan="2" Grid.Row="1" />
+        	<Button x:Name="CinemaBtn" Content="CinemaBtn" HorizontalAlignment="Left" Height="68" Margin="24,8,0,0" VerticalAlignment="Top" Width="181" Click="CinemaBtn_Click" Grid.ColumnSpan="2" Grid.Row="1" />
+        	<Button x:Name="GenderBtn" Content="GenderBtn" Height="68" Margin="142,8,327,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Click="GenderBtn_Click" Grid.Column="1" Grid.Row="1" />
+        	<Button x:Name="MusicBtn" Content="MusicBtn" Height="68" Margin="142,108,327,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Click="MusicBtn_Click" Grid.Column="1" Grid.Row="1" />
+        	<Button x:Name="HometownBtn" Content="Hometown" HorizontalAlignment="Right" Margin="0,157,35,219" Width="180" Click="HometownBtn_Click" Grid.Column="1" Grid.Row="1" />
         </Grid>
         <Image Height="384" Margin="0,0,123,-435" Grid.Row="1" Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill" VerticalAlignment="Bottom" d:IsHidden="True"/>
         <Image x:Name="imageFace" HorizontalAlignment="Right" Margin="0,1,74,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png" Stretch="Fill" Width="234" Height="148" VerticalAlignment="Top"/>
