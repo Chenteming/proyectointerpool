@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using InterpoolCloudWebRole.FacebookCommunication;
-using InterpoolCloudWebRole.Datatypes;
-
+﻿
 namespace InterpoolCloudWebRole.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using InterpoolCloudWebRole.FacebookCommunication;
+    using InterpoolCloudWebRole.Datatypes;
+
     interface IDataManager
     {
         IQueryable<City> getCities(InterpoolContainer context);
