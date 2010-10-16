@@ -114,8 +114,8 @@ namespace WP7
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             WebBrowserTask task = new WebBrowserTask();
-            //task.URL = "http://servicewp7.cloudapp.net";
-            task.URL = "http://127.0.0.1:81/";
+            //task.URL = "http://pis2010.cloudapp.net/Default.aspx?loginid=" + loginId;
+            task.URL = "http://127.0.0.1:81/Default.aspx?email=vicente_cai@hotmail.com";
             task.Show();
         }
    	 	private void ExitButton_Click(object sender, System.Windows.RoutedEventArgs e)

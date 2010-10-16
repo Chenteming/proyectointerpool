@@ -598,6 +598,22 @@
             Gets and sets the RenderTransform of the associated element.
             </summary>
         </member>
+        <member name="T:Microsoft.Expression.Interactivity.Core.NavigateToPageAction">
+            <summary>
+            Makes the attached element switch to a different XAML page when clicked on.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Expression.Interactivity.Core.NavigateToPageAction.Invoke(System.Object)">
+            <summary>
+            Invokes the navigation action.
+            </summary>
+            <param name="parameter">The parameter to the action. If the Action does not require a parameter, the parameter may be set to a null reference.</param>
+        </member>
+        <member name="P:Microsoft.Expression.Interactivity.Core.NavigateToPageAction.TargetPage">
+            <summary>
+            Gets or sets the XAML file to navigate to. This is a dependency property.
+            </summary>
+        </member>
         <member name="T:Microsoft.Expression.Interactivity.Media.PlaySoundAction">
             <summary>
             An Action that will play a sound to completion.
