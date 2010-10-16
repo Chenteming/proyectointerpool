@@ -19,7 +19,6 @@ namespace InterpoolCloudTest
         public void init()
         {
             container = new InterpoolContainer(@"metadata=res://*/Data.InterpoolModel.csdl|res://*/Data.InterpoolModel.ssdl|res://*/Data.InterpoolModel.msl; provider=System.Data.SqlClient; ;provider connection string='Data Source=Diego-PC\SQLSERVER;Initial Catalog=InterpoolDB;Integrated Security=True;MultipleActiveResultSets=True'");
-            
             dm = new DataManager();
         }
 
@@ -39,8 +38,24 @@ namespace InterpoolCloudTest
             Assert.IsTrue(currentNode.NodePathCurrent == false);
             Assert.IsTrue(nextNode.NodePathCurrent == true);
 
+        }
 
-            
+        [TestMethod]
+        public void TravelWrong()
+        {
+            ProcessController controller = new ProcessController(container);
+            string userIdFacebook = dm.GetLastUserIdFacebook(container);
+            NodePath currentNode = controller.GetCurrentNode(userIdFacebook);
+            NodePath nextNode = controller.GetNextNode(userIdFacebook);
+
+            Assert.IsTrue(currentNode.NodePathCurrent == true);
+            Assert.IsTrue(nextNode.NodePathCurrent == false);
+
+            controller.Travel(userIdFacebook, "Jupiter");
+
+            Assert.IsTrue(currentNode.NodePathCurrent == true);
+            Assert.IsTrue(nextNode.NodePathCurrent == false);
+
         }
     }
 }
