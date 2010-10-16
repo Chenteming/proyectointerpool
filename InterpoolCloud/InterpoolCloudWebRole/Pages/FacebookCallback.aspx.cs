@@ -16,6 +16,8 @@ namespace InterpoolCloudWebRole
         protected void Page_Load(object sender, EventArgs e)
         {
             oAuthFacebook oAuth = new oAuthFacebook();
+            // Para probar
+            var code = Request["code"];
 
             if (Request["code"] == null)
             {
@@ -24,8 +26,11 @@ namespace InterpoolCloudWebRole
             }
             else
             {
-                //Get the access token and secret.
+                // Get the access token and secret.
                 oAuth.AccessTokenGet(Request["code"]);
+
+                // Para probar
+                var token = oAuth.Token;
 
                 if (oAuth.Token.Length > 0)
                 {
