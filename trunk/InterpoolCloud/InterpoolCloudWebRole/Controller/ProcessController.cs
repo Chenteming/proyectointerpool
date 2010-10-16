@@ -142,7 +142,7 @@ namespace InterpoolCloudWebRole.Controller
             facebookController.DownloadFacebookUserData(oAuth, newGame, container);
         }
 
-        private Game BuiltTravel(User user, InterpoolContainer conteiner)
+        public Game BuiltTravel(User user, InterpoolContainer conteiner)
         {
 
             Game newGame = new Game();
