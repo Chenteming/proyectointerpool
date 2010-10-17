@@ -148,6 +148,8 @@ namespace WP7
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
             Emit.IsEnabled = false;
+            MessageBox.Show("Se ha emitido una orden de arresto para " + Name_Suspect.Text);
+            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));            
         }
 
         void client_EmitOrderOfArrestCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
