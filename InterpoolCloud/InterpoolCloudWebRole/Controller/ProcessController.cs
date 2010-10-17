@@ -686,7 +686,6 @@ namespace InterpoolCloudWebRole.Controller
         public string GetUserIdFacebook(string userLoginId)
         {
             IDataManager dm = new DataManager();
-            // This wont work for multiuser game
             return dm.GetUserIdFacebookByLoginId(userLoginId, dm.GetContainer());
         }
     }
