@@ -65,6 +65,8 @@ namespace InterpoolCloudWebRole.Services
         public string GetUserIdFacebook(string idLogin)
         {
             return controller.GetLastUserIdFacebook(idLogin);
+            // This is the correct function to use when the login screen is ready
+            //return controller.GetUserIdFacebook(idLogin);
         }
 
     }
