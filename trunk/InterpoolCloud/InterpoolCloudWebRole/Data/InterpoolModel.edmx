@@ -117,7 +117,7 @@
     <Property Name="UserTokenFacebook" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SubLevel" Type="int" Nullable="true" />
     <Property Name="LevelLevelId" Type="int" Nullable="false" />
-    <Property Name="UserLoginId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserLoginId" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Games">
     <Key>
@@ -618,7 +618,7 @@
           <Property Type="Int32" Name="SubLevel" Nullable="true" />
           <NavigationProperty Name="Level" Relationship="InterpoolModel.UserLevel" FromRole="User" ToRole="Level" />
           <Property Type="Int32" Name="LevelLevelId" Nullable="false" />
-          <Property Type="String" Name="UserLoginId" Nullable="false" />
+          <Property Type="String" Name="UserLoginId" Nullable="true" />
         </EntityType>
         <EntityType Name="Game">
           <Key>
