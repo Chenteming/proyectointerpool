@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/17/2010 16:05:10
+-- Date Created: 10/18/2010 18:06:45
 -- Generated from EDMX file: C:\Users\Vicente\Documents\Facultad\4to\Proyecto Ingeniería de Software\Repositorio\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -148,7 +148,7 @@ CREATE TABLE [dbo].[Users] (
     [UserTokenFacebook] nvarchar(max)  NOT NULL,
     [SubLevel] int  NULL,
     [LevelLevelId] int  NOT NULL,
-    [UserLoginId] nvarchar(max)  NOT NULL
+    [UserLoginId] nvarchar(max)  NULL
 );
 GO
 
