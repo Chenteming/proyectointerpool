@@ -13,12 +13,17 @@ namespace InterpoolCloudWebRole.FacebookCommunication
     public class oAuthFacebook
     {
         public enum Method { GET, POST };
+
         public const string AUTHORIZE = "https://graph.facebook.com/oauth/authorize";
+
         public const string ACCESS_TOKEN = "https://graph.facebook.com/oauth/access_token";
+
         public string CALLBACK_URL = Constants.FACEBOK_CALLBACK_URL;
 
         private string _consumerKey = "";
+
         private string _consumerSecret = "";
+
         private string _token = "";
 
         #region Properties
@@ -31,9 +36,14 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 {
                     _consumerKey = Constants.CONSUMER_KEY; //Your application ID
                 }
+
                 return _consumerKey;
             }
-            set { _consumerKey = value; }
+
+            set 
+            { 
+                _consumerKey = value;
+            }
         }
 
         public string ConsumerSecret
@@ -44,9 +54,14 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 {
                     _consumerSecret = Constants.CONSUMER_SECRET; //Your application secret
                 }
+
                 return _consumerSecret;
             }
-            set { _consumerSecret = value; }
+
+            set 
+            {
+                _consumerSecret = value;
+            }
         }
 
         public string Token { get { return _token; } set { _token = value; } }
@@ -123,7 +138,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 {
                     throw;
                 }
-
                 finally
                 {
                     requestWriter.Close();
@@ -165,5 +179,4 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return responseData;
         }
     }
-
 }

@@ -27,6 +27,5 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
         // Save all the friends information in the db.
         void DownloadFacebookUserData(oAuthFacebook oAuth, Game game, InterpoolContainer context);
-
     }
 }

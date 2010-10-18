@@ -16,6 +16,5 @@ namespace InterpoolCloudWebRole.Utilities
         public static string LAST_CLUE1_ESP = "LAST_CLUE1_ESP";
         public static string LAST_CLUE2_ESP = "LAST_CLUE2_ESP";
         public static string LAST_CLUE3_ESP = "LAST_CLUE3_ESP";
-
     }
 }

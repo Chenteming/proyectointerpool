@@ -26,8 +26,8 @@ namespace InterpoolCloudWebRole.Account
             {
                 continueUrl = "~/";
             }
+
             Response.Redirect(continueUrl);
         }
-
     }
 }

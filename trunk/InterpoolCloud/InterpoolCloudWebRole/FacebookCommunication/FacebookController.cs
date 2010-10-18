@@ -15,7 +15,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
     public class FacebookController : IFacebookController
     {
         // Stores al recovered data form user facebook friends.
-        private Dictionary<String,DataFacebookUser> userIdOauth = new Dictionary<string,DataFacebookUser>();
+        private Dictionary<String,DataFacebookUser> userIdOauth = new Dictionary<string, DataFacebookUser>();
         private IDataManager dataManager = new DataManager();
 
         // Downloads from Facebook all the information from user and user's friends
@@ -54,11 +54,13 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                             game.PossibleSuspect.Add(suspect);
                         i++;
                     }
+
                     if (i >= limit)
                     {
                         break;
                     }
                 }
+
                 // Stores the changes made to the game
                 dataManager.SaveChanges(context);
             }
@@ -71,22 +73,27 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             {
                 cant++;
             }
+
             if (fbudOfSuspect.SuspectCinema != "")
             {
                 cant++;
             }
+
             if (fbudOfSuspect.SuspectGender != "")
             {
                 cant++;
             }
+
             if (fbudOfSuspect.SuspectHometown != "")
             {
                 cant++;
             }
+
             if (fbudOfSuspect.SuspectMusic != "")
             {
                 cant++;
             }
+
             if (fbudOfSuspect.SuspectTelevision != "")
             {
                 cant++;
@@ -100,8 +107,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             {
                 return true;
             } 
-            
         }
+
         private Suspect NewSuspectFromFacebookUserData(DataFacebookUser fbudOfSuspect)
         {
             Suspect suspect = new Suspect();
@@ -116,7 +123,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             suspect.SuspectGender = (fbudOfSuspect.gender == null) ? "" : fbudOfSuspect.gender;
             suspect.SuspectPicLInk = (fbudOfSuspect.pictureLink == null) ? "" : fbudOfSuspect.pictureLink;
             
-
             return suspect;
         }
 
@@ -130,7 +136,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
             return null;
         }
-
 
         public string GetUserId(oAuthFacebook oAuth)
         {
@@ -167,13 +172,13 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 List<string> friendsId = GetFriendsIdByJson(jsonFriends);
                 return friendsId;
             }
+
             return null;
         }    
         
 
         public void UploadUserFriendsInformation()
         {
-
         }
 
         public DataFacebookUser GetFriendInfo(string userId, string userFriendId)
@@ -270,14 +275,15 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                         break;
                 }
             }
+
             fbud.gender = (string)jsonFriendObject.SelectToken("gender", error);
-            JObject jsonFriendObjectAnid= (JObject)jsonFriendObject.SelectToken("hometown", error);
+            JObject jsonFriendObjectAnid = (JObject)jsonFriendObject.SelectToken("hometown", error);
             if (jsonFriendObjectAnid != null)
             {
                 fbud.hometown = (string)jsonFriendObjectAnid.SelectToken("name", error);
             }
-            return fbud;
-                                    
+
+            return fbud;                           
         }
 
         // TODO: see if this method will stay in this class
@@ -311,17 +317,15 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                         friendData.cinema = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         break;
                 }
+
                 i++;
                 like_category = (string)jsonFriendObject.SelectToken("data[" + i + "].category");
                 if (friendData.music != "" && friendData.television != "" && friendData.cinema != "")
                 {
                     exit = true;
-                }
-                
+                }           
             }
-
-            return friendData;
-                        
+            return friendData;           
         }
             
         // TODO: see if this method will stay in this class
@@ -349,6 +353,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 id = (string)jsonFriendObject.SelectToken("data[" + i + "].id");
                 i++;
             }
+
             return friendsId;
         }
 
@@ -385,9 +390,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 name = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                 i++;
             }
+
             return friendsNames;
         }
-
 
         public void DownloadFacebookUserData(oAuthFacebook oAuth, InterpoolContainer context)
         {

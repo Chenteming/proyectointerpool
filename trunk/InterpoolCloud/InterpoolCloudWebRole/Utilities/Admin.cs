@@ -46,6 +46,7 @@ namespace InterpoolCloudWebRole.Utilities
                 resultado = ReemplazarTexto(resultado, "Este País", country);
                 return ReemplazarTexto(resultado, "Esta Ciudad", ciudad);
             }
+
             return resultado;
         }
         #endregion FindCity
@@ -77,9 +78,7 @@ namespace InterpoolCloudWebRole.Utilities
                 }
             }
 
-
             return ReemplazarTexto(resultado, "Yo", famoso);
-
         }
         #endregion  FindFamous
 
@@ -98,8 +97,10 @@ namespace InterpoolCloudWebRole.Utilities
                 {
                     result.Append(" ").Append(cadenaSplit[index]);
                 }
+
                 result.Append("\"");
             }
+
             return result.ToString();
         }
         #endregion EscapearQuery
@@ -110,7 +111,6 @@ namespace InterpoolCloudWebRole.Utilities
         {
             BingSearchService.BingPortTypeClient client = new BingSearchService.BingPortTypeClient();
             SearchRequest request = new SearchRequest()
-
             {
                 AppId = Constants.APPID,
                 Sources = new SourceType[] { SourceType.Web, SourceType.News },
@@ -118,10 +118,8 @@ namespace InterpoolCloudWebRole.Utilities
                 AdultSpecified = true,
                 Query = Query,
                 Market = Constants.MARKET,
-
             };
             request.Version = Constants.REQUEST_VERSION;
-
             request.News = new NewsRequest();
             request.News.Offset = Constants.NEWS_OFFSET;
             request.News.OffsetSpecified = true;
@@ -131,6 +129,7 @@ namespace InterpoolCloudWebRole.Utilities
 
             return client.Search(request);
         }
+
         #endregion BingRequest
         //Devuelve caracteres hasta la primer ocurrencia de un punto (.) despues mas de 95 caracteres
         #region ParsearNoticia
@@ -147,6 +146,7 @@ namespace InterpoolCloudWebRole.Utilities
             {
                 return matchNoticia.ToString();
             }
+
             return resultado;
         }
         #endregion ParsearNoticia
@@ -160,6 +160,7 @@ namespace InterpoolCloudWebRole.Utilities
                 string entradaSinPais = expRegQuitarPais.Replace(noticia, nuevoTxt);
                 return entradaSinPais;
             }
+
             return "";
         }
         #endregion ReemplazarTexto
@@ -185,8 +186,8 @@ namespace InterpoolCloudWebRole.Utilities
                     container.AddToNews(newsF);
                 }
             }
-            container.SaveChanges();
 
+            container.SaveChanges();
 
             CityProperty newsCity;
             foreach (City c in container.Cities)
@@ -204,6 +205,7 @@ namespace InterpoolCloudWebRole.Utilities
                     container.AddToCityPropertySet(newsCity);
                 }
             }
+
             container.SaveChanges();
         }
     }

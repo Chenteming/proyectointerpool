@@ -14,14 +14,19 @@ namespace InterpoolCloudWebRole.Controller
     public class ProcessController : IProcessController
     {
         private String output = "Inicio";
+
         private InterpoolContainer container;
-        public ProcessController  (InterpoolContainer container){
+
+        public ProcessController  (InterpoolContainer container)
+        {
             this.container = container;
         }
 
-        public InterpoolContainer GetContainer (){
+        public InterpoolContainer GetContainer ()
+        {
             return container;
         }
+
         public DataCity GetCurrentCity(string userIdFacebook)
         {
             
@@ -33,6 +38,7 @@ namespace InterpoolCloudWebRole.Controller
                 dataCity.name_file_city = node.City.NameFile;
                 return dataCity;
             }
+
             return null;
         }
 
@@ -47,6 +53,7 @@ namespace InterpoolCloudWebRole.Controller
                 dataCity.name_file_city = node.City.NameFile;
                 result.Add(dataCity);
             }
+
             return result;
         }
 
@@ -60,13 +67,14 @@ namespace InterpoolCloudWebRole.Controller
                 dataFamous.fileFamous = node.Clue.ElementAt(numClue).Famous.NameFileFamous;
                 return dataFamous;
             }
+
             return null;
         }
 
         public NodePath GetCurrentNode(string userIdFacebook)
         {
             IDataManager dm = new DataManager();
-            Game game = dm.GetGameByUser(userIdFacebook,container);
+            Game game = dm.GetGameByUser(userIdFacebook, container);
             foreach (NodePath node in game.NodePath)
             {
                 if (node.NodePathCurrent)
@@ -74,6 +82,7 @@ namespace InterpoolCloudWebRole.Controller
                     return node;
                 }
             }
+
             return null;
         }
 
@@ -88,11 +97,13 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     return node;
                 }
+
                 if (node.NodePathCurrent)
                 {
                     next = true;
                 }
             }
+
             return null;
         }
 
@@ -102,7 +113,6 @@ namespace InterpoolCloudWebRole.Controller
             try
             {
                 bool existGame = container.Games.Where(game => game.User.UserIdFacebook == userIdFacebook).Count() != 0;
-
                 
                 if (existGame)
                     return;
@@ -130,9 +140,7 @@ namespace InterpoolCloudWebRole.Controller
                 log.LogName = output;
                 log.LogStackTrace = e.StackTrace;
                 
-                
                 //conteiner.AddToLogs(log);
-                
                 throw e;
             }
         }
@@ -191,8 +199,10 @@ namespace InterpoolCloudWebRole.Controller
                             {
                                 node.PossibleCities.Add(next);
                             }
+
                             selectedCities.Add(next.CityNumber);
                         }
+
                     } while (!find);
                 }
                 // the current node in the first time is 0
@@ -202,6 +212,7 @@ namespace InterpoolCloudWebRole.Controller
                 newGame.NodePath.Add(node);
                 //conteiner.AddToNodePaths(node);
             }
+
             return newGame;
         }
 
@@ -216,9 +227,9 @@ namespace InterpoolCloudWebRole.Controller
 
             /* define the number of characteristics of the suspect by city */
             int[] amountCharacteristicsSuspects = new int[3];
-            amountCharacteristicsSuspects[0]=1; 
-            amountCharacteristicsSuspects[1]=2; 
-            amountCharacteristicsSuspects[2]=2;
+            amountCharacteristicsSuspects[0] = 1; 
+            amountCharacteristicsSuspects[1] = 2; 
+            amountCharacteristicsSuspects[2] = 2;
 
             /* built the structure for the characteristics that I will put on each clue */
             bool[] cSuspect = new bool[5];
@@ -228,7 +239,6 @@ namespace InterpoolCloudWebRole.Controller
             cSuspect[3] = true;
             cSuspect[4] = true;
             
-
             /* iterates over the NodePath of the game */
             int i;
             NodePath cnp;
@@ -250,6 +260,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     rnd = r.Next(0, 3);
                 }
+
                 characteristicsSuspect = amountCharacteristicsSuspects[rnd];
                 amountCharacteristicsSuspects[rnd] = -1;
                 /* get the next city by NodePath */
@@ -259,6 +270,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     break;
                 }
+
                 /* build the last clue */
                 Clue c3 = new Clue();
                 /* set the city */
@@ -278,6 +290,7 @@ namespace InterpoolCloudWebRole.Controller
                     {
                         c3.ClueContent = GetRandomCharacteristicSuspect(g.Suspect, cSuspect);
                     }
+
                     characteristicsSuspect--;
                 }
 
@@ -292,7 +305,6 @@ namespace InterpoolCloudWebRole.Controller
                     cpd = queryCity.First();
                 }
 
-
                 /* set de city */
                 c2.City = cnp.City;
                 /* if i have to put characteristics on the clue of the suspect */
@@ -302,22 +314,22 @@ namespace InterpoolCloudWebRole.Controller
                 if (characteristicsSuspect != 0)
                 {
 
-
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c2.ClueContent = dynProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " +famous.New.First().NewContent;
+                        c2.ClueContent = dynProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " + famous.New.First().NewContent;
                     }
                     else
                     {
                         c2.ClueContent = dynProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect);
                     }
+
                     characteristicsSuspect--;
                 }
                 else
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c2.ClueContent = dynProperty + " " +famous.New.First().NewContent;
+                        c2.ClueContent = dynProperty + " " + famous.New.First().NewContent;
                     }
                     else
                     {
@@ -341,20 +353,20 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First().NewContent != null)
                     {
-                        c1.ClueContent = staticProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " +famous.New.First().NewContent;
+                        c1.ClueContent = staticProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " + famous.New.First().NewContent;
                     }
                     else
                     {
                         c2.ClueContent = staticProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect);
                     }
-                    characteristicsSuspect--;
 
+                    characteristicsSuspect--;
                 }
                 else
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c1.ClueContent = staticProperty + " "+famous.New.First().NewContent;
+                        c1.ClueContent = staticProperty + " " + famous.New.First().NewContent;
                     }
                     else
                     {
@@ -367,7 +379,8 @@ namespace InterpoolCloudWebRole.Controller
                 cnp.Clue.Add(c2);
                 cnp.Clue.Add(c3);
             }
-            currentNodePath = g.NodePath.Where(cp => cp.NodePathOrder == Constants.NUMBERLASTCITY-1);
+
+            currentNodePath = g.NodePath.Where(cp => cp.NodePathOrder == Constants.NUMBERLASTCITY - 1);
             cnp = currentNodePath.First();
             /* build the clues for the last city*/
             Clue lastClue1 = new Clue();
@@ -376,8 +389,7 @@ namespace InterpoolCloudWebRole.Controller
             famous = cnp.Famous.ElementAt(0);
             lastClue1.Famous = famous;
             /* this is in the class parameters  */
-            lastClue1.ClueContent = dm.GetParameter(Parameters.LAST_CLUE1_ESP,container);
-
+            lastClue1.ClueContent = dm.GetParameter(Parameters.LAST_CLUE1_ESP, container);
 
             Clue lastClue2 = new Clue();
             /* set de city */
@@ -398,8 +410,7 @@ namespace InterpoolCloudWebRole.Controller
             /* add clues to nodepath */
             cnp.Clue.Add(lastClue1);
             cnp.Clue.Add(lastClue2);
-            cnp.Clue.Add(lastClue3);
-            
+            cnp.Clue.Add(lastClue3);            
         }
 
         private City NextCity(Game g, NodePath currentNodePath)
@@ -424,10 +435,12 @@ namespace InterpoolCloudWebRole.Controller
         private string GetRandomCharacteristicSuspect (Suspect s, bool[] csuspect){
             /* get the random index for the characteristic of the suspect */
             Random rnd = new Random();
-            int indexRandom = rnd.Next(0,5);
-            while (!csuspect[indexRandom]){
-                indexRandom = rnd.Next(0,5);
+            int indexRandom = rnd.Next(0, 5);
+            while (!csuspect[indexRandom])
+            {
+                indexRandom = rnd.Next(0, 5);
             }
+
             /* set flase in the structure of characteristics of the suspects */
             csuspect[indexRandom] = false;
 
@@ -436,23 +449,22 @@ namespace InterpoolCloudWebRole.Controller
             {
                 /* faltan definir las características 2, 3 y 4*/
                 case 0:
-                    return s.SuspectCinema == "" ? "Al sospechoso le gusta ...mmmm, no me acuerdo." : "Al sospechoso le gusta "+s.SuspectCinema + ".";
+                    return s.SuspectCinema == "" ? "Al sospechoso le gusta ...mmmm, no me acuerdo." : "Al sospechoso le gusta " + s.SuspectCinema + ".";
                     
                 case 1:
-                    return s.SuspectMusic == "" ? "Al ladrón le gusta escuchar ...mmmm, no me acuerdo en este momento." : "Al ladrón le gusta escuchar "+s.SuspectMusic + ".";
+                    return s.SuspectMusic == "" ? "Al ladrón le gusta escuchar ...mmmm, no me acuerdo en este momento." : "Al ladrón le gusta escuchar " + s.SuspectMusic + ".";
 
                 case 2:
-                    return s.SuspectBirthday == "" ? "Su cumpleaños es el ...mmmm, en alguna fecha, que me supongo sabrá su mamá." : "Su cumpleaños es el "+s.SuspectBirthday.ToString() + ".";
+                    return s.SuspectBirthday == "" ? "Su cumpleaños es el ...mmmm, en alguna fecha, que me supongo sabrá su mamá." : "Su cumpleaños es el " + s.SuspectBirthday.ToString() + ".";
 
                 case 3:
-                    return s.SuspectHometown == "" ? "El ladrón nació en ...mmmm, una ciudad cuyo nombre no recuerdo." : "El ladrón nació en "+ s.SuspectHometown + ".";
+                    return s.SuspectHometown == "" ? "El ladrón nació en ...mmmm, una ciudad cuyo nombre no recuerdo." : "El ladrón nació en " + s.SuspectHometown + ".";
 
                 case 4:
-                    return s.SuspectTelevision == "" ? "Al sospechoso le gusta mirar ...mmmm, no recuerdo que programa mira en este momento." : "Al sospechoso le gusta mirar "+s.SuspectTelevision + ".";
+                    return s.SuspectTelevision == "" ? "Al sospechoso le gusta mirar ...mmmm, no recuerdo que programa mira en este momento." : "Al sospechoso le gusta mirar " + s.SuspectTelevision + ".";
                 default:
                     return "";
             }
-                        
         }
 
         public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
@@ -474,6 +486,7 @@ namespace InterpoolCloudWebRole.Controller
                 datacity.name_file_city = node.City.NameFile;
                 return datacity;
             }
+
             node.NodePathCurrent = false;
             nextNode.NodePathCurrent = true;
             container.SaveChanges();
@@ -490,6 +503,7 @@ namespace InterpoolCloudWebRole.Controller
             {
                 throw new GameException("error_existOneOrderOfArrest");
             }
+
             Suspect suspect = null;
 
             if (game.Suspect.SuspectFacebookId == userIdFacebookSuspect)
@@ -508,7 +522,6 @@ namespace InterpoolCloudWebRole.Controller
             game.OrderOfArrest = order;
 
             container.SaveChanges();
-            
         }
 
         /**
@@ -533,7 +546,6 @@ namespace InterpoolCloudWebRole.Controller
                         if (game.User.Level.LevelNumber == Constants.MAX_LEVELS)
                         {
                             // the user win, and the game is finish
-
                         }
                         else
                         {
@@ -548,7 +560,6 @@ namespace InterpoolCloudWebRole.Controller
                     {
                         // advance the subLevel
                         game.User.SubLevel++;
-
                     }
                     // TODO delete
                     // deleteGame(user, container);
@@ -631,6 +642,7 @@ namespace InterpoolCloudWebRole.Controller
                 datacity.name_file_city = c.NameFile;
                 cities.Add(datacity);
             }
+
             datacity = new DataCity();
             datacity.longitud = node.City.Longitud;
             datacity.latitud = node.City.Latitud;
@@ -638,7 +650,6 @@ namespace InterpoolCloudWebRole.Controller
             datacity.name_file_city = node.City.NameFile;
             cities.Add(datacity);
             return cities;
-
         }
 
         public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
@@ -651,7 +662,7 @@ namespace InterpoolCloudWebRole.Controller
                 clue = new DataClue();
 
                 //TODO make a Constant
-                clue.clue = node.Clue.ElementAt(2-numFamous).ClueContent;
+                clue.clue = node.Clue.ElementAt(2 - numFamous).ClueContent;
                 if (node.NodePathOrder == (Constants.NUMBERLASTCITY - 1))
                 {
                     //last city
@@ -667,9 +678,9 @@ namespace InterpoolCloudWebRole.Controller
                     clue.state = DataClue.State.PL;
                 }
                 
-                
                 return clue;
             }
+
             clue = new DataClue();
             clue.state = DataClue.State.PL;
             clue.clue = "";
@@ -689,5 +700,4 @@ namespace InterpoolCloudWebRole.Controller
             return dm.GetUserIdFacebookByLoginId(userLoginId, dm.GetContainer());
         }
     }
-
 }
