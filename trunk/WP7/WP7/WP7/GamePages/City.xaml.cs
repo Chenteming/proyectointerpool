@@ -34,6 +34,15 @@ namespace WP7
             client.GetCitiesAsync(gm.userId);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
+			
+//			Thickness margin = avion_Copy.Margin;
+//			margin.Top = 200;
+//			margin.Bottom = 100;
+//			avion_Copy.Margin = margin;
+//			Thickness margin1 = avion.Margin;
+//			margin1.Left = 100;
+//			margin1.Top = 300;
+//			avion.Margin = margin1;
             button1.Visibility = System.Windows.Visibility.Collapsed;
             button2.Visibility = System.Windows.Visibility.Collapsed;
             button3.Visibility = System.Windows.Visibility.Collapsed;
@@ -136,7 +145,7 @@ namespace WP7
 			keyframeY4.SetValue(EasingDoubleKeyFrame.ValueProperty,init_frame4);
 			trY4.SetValue(EasingDoubleKeyFrame.ValueProperty,init_Y4);
 			
-			//plane_sound.Play();
+			plane_sound.Play();
 			//Start plane animation 			
 			animacion2.Begin();
 			

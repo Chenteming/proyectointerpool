@@ -112,9 +112,30 @@ namespace WP7.GamePages
             }
         }        
 
-        private void HometownBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+
+        private void TVButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            btnPosition = 3;
+        	btnPosition = 7;
+            string[] filterField = gm.GetFilterField();
+            ComboList.ItemsSource = tv;
+            ContentGrid.Visibility = Visibility.Collapsed;
+            ContentGrid2.Visibility = Visibility.Visible;
+            ComboList.Visibility = Visibility.Visible;
+        }
+
+        private void CinemaButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	btnPosition = 6;
+            string[] filterField = gm.GetFilterField();
+            ComboList.ItemsSource = film;
+            ContentGrid.Visibility = Visibility.Collapsed;
+            ContentGrid2.Visibility = Visibility.Visible;
+            ComboList.Visibility = Visibility.Visible;
+        }
+
+        private void HometownButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	btnPosition = 3;
             string[] filterField = gm.GetFilterField();
             ComboList.ItemsSource = homeTown;
             ContentGrid.Visibility = Visibility.Collapsed;
@@ -122,7 +143,12 @@ namespace WP7.GamePages
             ComboList.Visibility = Visibility.Visible;
         }
 
-        private void GenderBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void BirthdayButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	// TODO: Add event handler implementation here.
+        }
+
+        private void GenderButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             btnPosition = 4;
             string[] filterField = gm.GetFilterField();
@@ -132,9 +158,9 @@ namespace WP7.GamePages
             ComboList.Visibility = Visibility.Visible;
         }
 
-        private void MusicBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void MusicButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            btnPosition = 5;
+ 			btnPosition = 5;
             string[] filterField = gm.GetFilterField();
             ComboList.ItemsSource = music;
             ContentGrid.Visibility = Visibility.Collapsed;
@@ -142,24 +168,6 @@ namespace WP7.GamePages
             ComboList.Visibility = Visibility.Visible;
         }
 
-        private void CinemaBtn_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            btnPosition = 6;
-            string[] filterField = gm.GetFilterField();
-            ComboList.ItemsSource = film;
-            ContentGrid.Visibility = Visibility.Collapsed;
-            ContentGrid2.Visibility = Visibility.Visible;
-            ComboList.Visibility = Visibility.Visible;
-        }
-
-        private void TVBtn_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            btnPosition = 7;
-            string[] filterField = gm.GetFilterField();
-            ComboList.ItemsSource = tv;
-            ContentGrid.Visibility = Visibility.Collapsed;
-            ContentGrid2.Visibility = Visibility.Visible;
-            ComboList.Visibility = Visibility.Visible;
-        }       
+            
     }
 }
