@@ -16,7 +16,6 @@ namespace InterpoolCloudWebRole
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -62,7 +61,7 @@ namespace InterpoolCloudWebRole
 
             foreach (DataCity d in col)
             {
-                pruebaGetCities.Text = pruebaGetCities.Text+d.latitud + " " + d.longitud + " " + d.name_city + " " + d.name_file_city + "\n";
+                pruebaGetCities.Text = pruebaGetCities.Text + d.latitud + " " + d.longitud + " " + d.name_city + " " + d.name_file_city + "\n";
             }
         }
 
@@ -72,7 +71,6 @@ namespace InterpoolCloudWebRole
             IProcessController ipc = new ProcessController(container);
             string userId = "1358576832";
             DataCity dc = ipc.Travel(userId, "Auckland");
-
         }
 
         protected void Button6_Click(object sender, EventArgs e)
@@ -102,6 +100,5 @@ namespace InterpoolCloudWebRole
            /* ProcessController ipc = new ProcessController();
             ipc.Arrest();*/
         }
-
     }
 }

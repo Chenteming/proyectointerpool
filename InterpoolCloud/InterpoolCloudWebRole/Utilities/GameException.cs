@@ -16,8 +16,6 @@ namespace InterpoolCloudWebRole.Utilities
         {
             //TODO internationalize the msg to show 
             this.msg = msg;
-        }
-
-        
+        }   
     }
 }

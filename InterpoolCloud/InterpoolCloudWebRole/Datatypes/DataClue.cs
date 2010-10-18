@@ -18,6 +18,7 @@ namespace InterpoolCloudWebRole.Datatypes
         }
 
         public State state { get; set; }
+
         public string clue { get; set; }
     }
 }
