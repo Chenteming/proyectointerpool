@@ -37,7 +37,6 @@ namespace InterpoolCloudTest
 
             Assert.IsTrue(currentNode.NodePathCurrent == false);
             Assert.IsTrue(nextNode.NodePathCurrent == true);
-
         }
 
         [TestMethod]
@@ -55,7 +54,6 @@ namespace InterpoolCloudTest
 
             Assert.IsTrue(currentNode.NodePathCurrent == true);
             Assert.IsTrue(nextNode.NodePathCurrent == false);
-
         }
     }
 }

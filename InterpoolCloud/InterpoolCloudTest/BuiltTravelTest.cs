@@ -1,13 +1,14 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using InterpoolCloudWebRole.Data;
-using InterpoolCloudWebRole.Controller;
-
+﻿
 namespace InterpoolCloudTest
 {
+    using System;
+    using System.Text;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using InterpoolCloudWebRole.Data;
+    using InterpoolCloudWebRole.Controller;
+
     /// <summary>
     /// BuiltTravelTest
     /// </summary>
@@ -36,6 +37,7 @@ namespace InterpoolCloudTest
             {
                 return testContextInstance;
             }
+
             set
             {
                 testContextInstance = value;
