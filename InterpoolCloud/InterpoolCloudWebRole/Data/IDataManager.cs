@@ -11,15 +11,23 @@ namespace InterpoolCloudWebRole.Data
     interface IDataManager
     {
         IQueryable<City> getCities(InterpoolContainer context);
+
         IQueryable<Level> getLevels(InterpoolContainer context);
+
         IQueryable<Famous> GetFamousByCity(City city, InterpoolContainer context);
+
         IQueryable<CityProperty> GetCityPropertyByCity(City city, InterpoolContainer context);
+
         IQueryable<Suspect> GetSuspectByGame(Game g, InterpoolContainer context);
+
         string GetLastUserIdFacebook(InterpoolContainer context);
+
         string GetUserIdFacebookByLoginId(string userLoginId, InterpoolContainer context);
+
         oAuthFacebook GetLastUserToken(InterpoolContainer context);
 
         void StoreUser(User user, InterpoolContainer context);
+
         void StoreSuspect(Suspect suspect, InterpoolContainer context);
 
         void SaveChanges(InterpoolContainer context);
