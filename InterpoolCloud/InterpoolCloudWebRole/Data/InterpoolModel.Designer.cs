@@ -2818,15 +2818,13 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="userIdFacebook">Initial value of the UserIdFacebook property.</param>
         /// <param name="userTokenFacebook">Initial value of the UserTokenFacebook property.</param>
         /// <param name="levelLevelId">Initial value of the LevelLevelId property.</param>
-        /// <param name="userLoginId">Initial value of the UserLoginId property.</param>
-        public static User CreateUser(global::System.Int32 userId, global::System.String userIdFacebook, global::System.String userTokenFacebook, global::System.Int32 levelLevelId, global::System.String userLoginId)
+        public static User CreateUser(global::System.Int32 userId, global::System.String userIdFacebook, global::System.String userTokenFacebook, global::System.Int32 levelLevelId)
         {
             User user = new User();
             user.UserId = userId;
             user.UserIdFacebook = userIdFacebook;
             user.UserTokenFacebook = userTokenFacebook;
             user.LevelLevelId = levelLevelId;
-            user.UserLoginId = userLoginId;
             return user;
         }
 
@@ -2959,7 +2957,7 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String UserLoginId
         {
@@ -2971,7 +2969,7 @@ namespace InterpoolCloudWebRole.Data
             {
                 OnUserLoginIdChanging(value);
                 ReportPropertyChanging("UserLoginId");
-                _UserLoginId = StructuralObject.SetValidValue(value, false);
+                _UserLoginId = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("UserLoginId");
                 OnUserLoginIdChanged();
             }
