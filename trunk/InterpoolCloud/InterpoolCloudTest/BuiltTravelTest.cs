@@ -2,13 +2,13 @@
 namespace InterpoolCloudTest
 {
     using System;
-    using System.Text;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using InterpoolCloudWebRole.Data;
+    using System.Text;
     using InterpoolCloudWebRole.Controller;
-
+    using InterpoolCloudWebRole.Data;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+        
     /// <summary>
     /// BuiltTravelTest
     /// </summary>

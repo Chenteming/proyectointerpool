@@ -7,17 +7,17 @@ namespace InterpoolCloudWebRole
     using System.Web;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using Newtonsoft.Json;
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.FacebookCommunication;
     using InterpoolCloudWebRole.Utilities;
-
+    using Newtonsoft.Json;
+        
     public partial class Face : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             oAuthFacebook oAuth = new oAuthFacebook();
-            // Para probar
+            //// Para probar
             var code = Request["code"];
 
             if (Request["code"] == null)

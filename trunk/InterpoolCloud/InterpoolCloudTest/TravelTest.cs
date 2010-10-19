@@ -1,19 +1,19 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using InterpoolCloudWebRole.Data;
-using InterpoolCloudWebRole.Controller;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+﻿
 namespace InterpoolCloudTest
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using InterpoolCloudWebRole.Controller;
+    using InterpoolCloudWebRole.Data;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    
     [TestClass]
     public class TravelTest
     {
         private InterpoolContainer container;
         private DataManager dm;
-
 
         [TestInitialize()]
         public void init()

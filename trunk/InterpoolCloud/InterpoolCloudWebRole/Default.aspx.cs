@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using InterpoolCloudWebRole.Controller;
-using InterpoolCloudWebRole.Utilities;
-using InterpoolCloudWebRole.Data;
-using InterpoolCloudWebRole.FacebookCommunication;
-using InterpoolCloudWebRole.Datatypes;
-
+﻿
 namespace InterpoolCloudWebRole
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+    using InterpoolCloudWebRole.Controller;
+    using InterpoolCloudWebRole.Data;
+    using InterpoolCloudWebRole.Datatypes;
+    using InterpoolCloudWebRole.FacebookCommunication;
+    using InterpoolCloudWebRole.Utilities;
+        
     public partial class _Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -21,7 +22,7 @@ namespace InterpoolCloudWebRole
         protected void Button1_Click(object sender, EventArgs e)
         {
             InterpoolContainer conteiner = new InterpoolContainer();
-            //Poner el id de facebook que se trae en el loguin cada vez que se conecta.
+            ////Poner el id de facebook que se trae en el loguin cada vez que se conecta.
             IDataManager dm = new DataManager();
             string userId = dm.GetLastUserIdFacebook(dm.GetContainer());
             IProcessController ipc = new ProcessController(dm.GetContainer());
@@ -39,7 +40,6 @@ namespace InterpoolCloudWebRole
             Response.Redirect(oAuth.AuthorizationLinkGet());
         }
 
-
         protected void Button3_Click(object sender, EventArgs e)
         {
             string id = "1358576832";
@@ -50,7 +50,6 @@ namespace InterpoolCloudWebRole
             //pc.deleteGame(user, container);
            // pc.deleteGame(user, container);
         }
-
 
         protected void Button4_Click(object sender, EventArgs e)
         {
@@ -80,7 +79,6 @@ namespace InterpoolCloudWebRole
             string userId = "1358576832";
             ipc.EmitOrderOfArrest(userId, userId);
         }
-
 
         protected void Button6_Click1(object sender, EventArgs e)
         {

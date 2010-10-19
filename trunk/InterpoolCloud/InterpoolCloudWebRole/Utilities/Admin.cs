@@ -3,15 +3,15 @@ namespace InterpoolCloudWebRole.Utilities
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
     using System.Linq;
+    using System.Net;
+    using System.Text.RegularExpressions;
     using System.Web;
     using InterpoolCloudWebRole.BingSearchService;
     using InterpoolCloudWebRole.Data;
-    using System.Text.RegularExpressions;
-    using System.IO;
-    using System.Net;
-    using System.Diagnostics;
-
+    
     public static class Admin
     {
         //FindCity()  "Este País" -- "Esta Ciudad"
@@ -31,7 +31,9 @@ namespace InterpoolCloudWebRole.Utilities
                 int indice = 0;
                 int maxNews = 0;
                 if (response.News != null && response.News.Results != null)
+                {
                     maxNews = response.News.Results.Length;
+                }
 
                 while (resultado == null && indice < maxNews)
                 {
@@ -68,7 +70,9 @@ namespace InterpoolCloudWebRole.Utilities
                 int indice = 0;
                 int maxNews = 0;
                 if (response.News != null && response.News.Results != null)
+                {
                     maxNews = response.News.Results.Length;
+                }
 
                 while (resultado == null && indice < maxNews)
                 {
@@ -84,7 +88,7 @@ namespace InterpoolCloudWebRole.Utilities
 
         //devuelve el string del query con comillas dobles escapedas
         #region EscapearQuery
-        static String EscapearQuery(string QueryIn)
+        static string EscapearQuery(string QueryIn)
         {
             var cadenaSplit = QueryIn.Split(' ');
             System.Text.StringBuilder result = new System.Text.StringBuilder();
@@ -133,12 +137,12 @@ namespace InterpoolCloudWebRole.Utilities
         #endregion BingRequest
         //Devuelve caracteres hasta la primer ocurrencia de un punto (.) despues mas de 95 caracteres
         #region ParsearNoticia
-        static String ParsearNoticia(string entrada, string Query)
+        static string ParsearNoticia(string entrada, string Query)
         {
-            String resultado = null;
+            string resultado = null;
             Regex expRegNoticia;
 
-            String patron1 = @"(.){95}[^\.]{0,105}";
+            string patron1 = @"(.){95}[^\.]{0,105}";
             expRegNoticia = new Regex(patron1, RegexOptions.Multiline);
 
             Match matchNoticia = expRegNoticia.Match(entrada);
@@ -152,7 +156,7 @@ namespace InterpoolCloudWebRole.Utilities
         #endregion ParsearNoticia
 
         #region ReemplazarTexto
-        static String ReemplazarTexto(string noticia, string nuevoTxt, string viejoTxt)
+        static string ReemplazarTexto(string noticia, string nuevoTxt, string viejoTxt)
         {
             if (noticia != null)
             {
@@ -161,20 +165,19 @@ namespace InterpoolCloudWebRole.Utilities
                 return entradaSinPais;
             }
 
-            return "";
+            return string.Empty;
         }
         #endregion ReemplazarTexto
 
         public static void loadFamousData()
         {
-            string news = "";
+            string news = string.Empty;
 
             InterpoolContainer container = new InterpoolContainer();
             New newsF;
 
             foreach (Famous f in container.Famous)
             {
-
                 //Se trae la noticia
                 news = FindFamous(f.FamousName);
 
@@ -192,7 +195,6 @@ namespace InterpoolCloudWebRole.Utilities
             CityProperty newsCity;
             foreach (City c in container.Cities)
             {
-
                 //Se trae la noticia
                 news = FindCity(c.CityName, c.CityCountry);
 
