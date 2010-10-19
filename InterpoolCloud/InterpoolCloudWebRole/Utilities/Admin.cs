@@ -19,10 +19,10 @@ namespace InterpoolCloudWebRole.Utilities
         public static string FindCity(string ciudad, string country)
         {
             //agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
-            string QueryOut = EscapearQuery(ciudad);
+            string queryOut = EscapearQuery(ciudad);
 
             //realiza la busqueda en BING
-            SearchResponse response = BingRequest(QueryOut);
+            SearchResponse response = BingRequest(queryOut);
 
             string resultado = null;
 
@@ -58,10 +58,10 @@ namespace InterpoolCloudWebRole.Utilities
         public static string FindFamous(string famoso)
         {
             //agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
-            string QueryOut = EscapearQuery(famoso);
+            string queryOut = EscapearQuery(famoso);
 
             //realiza la busqueda en BING
-            SearchResponse response = BingRequest(QueryOut);
+            SearchResponse response = BingRequest(queryOut);
 
             string resultado = null;
 
@@ -88,9 +88,9 @@ namespace InterpoolCloudWebRole.Utilities
 
         //devuelve el string del query con comillas dobles escapedas
         #region EscapearQuery
-        static string EscapearQuery(string QueryIn)
+        static string EscapearQuery(string queryIn)
         {
-            var cadenaSplit = QueryIn.Split(' ');
+            var cadenaSplit = queryIn.Split(' ');
             System.Text.StringBuilder result = new System.Text.StringBuilder();
 
             if (cadenaSplit != null)
@@ -111,23 +111,23 @@ namespace InterpoolCloudWebRole.Utilities
 
         //se trae la noticia
         #region BingRequest
-        static SearchResponse BingRequest(string Query)
+        static SearchResponse BingRequest(string query)
         {
             BingSearchService.BingPortTypeClient client = new BingSearchService.BingPortTypeClient();
             SearchRequest request = new SearchRequest()
             {
-                AppId = Constants.APPID,
+                AppId = Constants.AppId,
                 Sources = new SourceType[] { SourceType.Web, SourceType.News },
                 Adult = AdultOption.Moderate,
                 AdultSpecified = true,
-                Query = Query,
-                Market = Constants.MARKET,
+                Query = query,
+                Market = Constants.Market,
             };
-            request.Version = Constants.REQUEST_VERSION;
+            request.Version = Constants.RequestVersion;
             request.News = new NewsRequest();
-            request.News.Offset = Constants.NEWS_OFFSET;
+            request.News.Offset = Constants.NewsOffset;
             request.News.OffsetSpecified = true;
-            request.News.Count = Constants.NEWS_COUNT;
+            request.News.Count = Constants.NewsCount;
             request.News.SortBy = NewsSortOption.Relevance;
             request.News.SortBySpecified = true;
 
@@ -137,7 +137,7 @@ namespace InterpoolCloudWebRole.Utilities
         #endregion BingRequest
         //Devuelve caracteres hasta la primer ocurrencia de un punto (.) despues mas de 95 caracteres
         #region ParsearNoticia
-        static string ParsearNoticia(string entrada, string Query)
+        static string ParsearNoticia(string entrada, string query)
         {
             string resultado = null;
             Regex expRegNoticia;

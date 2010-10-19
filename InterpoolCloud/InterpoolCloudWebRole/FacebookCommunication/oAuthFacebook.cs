@@ -17,17 +17,17 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             GET, POST 
         };
 
-        public const string AUTHORIZE = "https://graph.facebook.com/oauth/authorize";
+        public const string Authorize = "https://graph.facebook.com/oauth/authorize";
 
-        public const string ACCESS_TOKEN = "https://graph.facebook.com/oauth/access_token";
+        public const string AccessToken = "https://graph.facebook.com/oauth/access_token";
 
-        public string CALLBACK_URL = Constants.FACEBOK_CALLBACK_URL;
+        public string callBackUrl = Constants.FacebookCallbackUrl;
 
-        private string _consumerKey = string.Empty;
+        private string consumerKey = string.Empty;
 
-        private string _consumerSecret = string.Empty;
+        private string consumerSecret = string.Empty;
 
-        private string _token = string.Empty;
+        private string token = string.Empty;
 
         #region Properties
 
@@ -35,17 +35,17 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         {
             get
             {
-                if (_consumerKey.Length == 0)
+                if (consumerKey.Length == 0)
                 {
-                    _consumerKey = Constants.CONSUMER_KEY; //Your application ID
+                    consumerKey = Constants.ConsumerKey; //Your application ID
                 }
 
-                return _consumerKey;
+                return consumerKey;
             }
 
             set 
             { 
-                _consumerKey = value;
+                consumerKey = value;
             }
         }
 
@@ -53,17 +53,17 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         {
             get
             {
-                if (_consumerSecret.Length == 0)
+                if (consumerSecret.Length == 0)
                 {
-                    _consumerSecret = Constants.CONSUMER_SECRET; //Your application secret
+                    consumerSecret = Constants.ConsumerSecret; //Your application secret
                 }
 
-                return _consumerSecret;
+                return consumerSecret;
             }
 
             set 
             {
-                _consumerSecret = value;
+                consumerSecret = value;
             }
         }
 
@@ -71,12 +71,12 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         { 
             get 
             {
-                return _token; 
+                return token; 
             } 
             
             set 
             { 
-                _token = value; 
+                token = value; 
             } 
         }
 
@@ -88,9 +88,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <returns>The url with a valid request token, or a null string.</returns>
         public string AuthorizationLinkGet()
         {
-            // return string.Format("{0}?client_id={1}&redirect_uri={2}", AUTHORIZE, this.ConsumerKey, CALLBACK_URL);
+            // return string.Format("{0}?client_id={1}&redirect_uri={2}", Authorize, this.ConsumerKey, callBackUrl);
             return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access,publish_stream,friends_about_me,friends_birthday,friends_hometown,friends_interests,friends_likes,friends_online_presence, friends_status",
-                AUTHORIZE, this.ConsumerKey, CALLBACK_URL);
+                Authorize, this.ConsumerKey, callBackUrl);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         {
             this.Token = authToken;
             string accessTokenUrl = string.Format("{0}?client_id={1}&redirect_uri={2}&client_secret={3}&code={4}",
-            ACCESS_TOKEN, this.ConsumerKey, CALLBACK_URL, this.ConsumerSecret, authToken);
+            AccessToken, this.ConsumerKey, callBackUrl, this.ConsumerSecret, authToken);
 
             string response = WebRequest(Method.GET, accessTokenUrl, String.Empty);
             

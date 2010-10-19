@@ -168,7 +168,7 @@ namespace InterpoolCloudWebRole.Controller
             City next;
             Random random = new Random();
 
-            int maxNumber = Int32.Parse(dm.GetParameter(Parameters.AMOUNT_CITIES, container));
+            int maxNumber = Int32.Parse(dm.GetParameter(Parameters.AmountCities, container));
             int nextCity = 0;
             bool find = false;
             ////TODO, maybe the amount of NodePath should be a param in the data base
@@ -248,7 +248,7 @@ namespace InterpoolCloudWebRole.Controller
             int characteristicsSuspect;
             Random r;
             Famous famous;
-            for (i = 0; i < Constants.NUMBERLASTCITY - 1; i++)
+            for (i = 0; i < Constants.NumberLastCity - 1; i++)
             {
                 /* get the Current NodePath  */
                 currentNodePath = g.NodePath.Where(cp => cp.NodePathOrder == i);
@@ -379,7 +379,7 @@ namespace InterpoolCloudWebRole.Controller
                 cnp.Clue.Add(c3);
             }
 
-            currentNodePath = g.NodePath.Where(cp => cp.NodePathOrder == Constants.NUMBERLASTCITY - 1);
+            currentNodePath = g.NodePath.Where(cp => cp.NodePathOrder == Constants.NumberLastCity - 1);
             cnp = currentNodePath.First();
             /* build the clues for the last city*/
             Clue lastClue1 = new Clue();
@@ -388,7 +388,7 @@ namespace InterpoolCloudWebRole.Controller
             famous = cnp.Famous.ElementAt(0);
             lastClue1.Famous = famous;
             /* this is in the class parameters  */
-            lastClue1.ClueContent = dm.GetParameter(Parameters.LAST_CLUE1_ESP, container);
+            lastClue1.ClueContent = dm.GetParameter(Parameters.LastClue1Esp, container);
 
             Clue lastClue2 = new Clue();
             /* set de city */
@@ -396,7 +396,7 @@ namespace InterpoolCloudWebRole.Controller
             famous = cnp.Famous.ElementAt(1);
             lastClue2.Famous = famous;
             /* this is in the class parameters  */
-            lastClue2.ClueContent = dm.GetParameter(Parameters.LAST_CLUE2_ESP, container);
+            lastClue2.ClueContent = dm.GetParameter(Parameters.LastClue2Esp, container);
 
             Clue lastClue3 = new Clue();
             /* set de city */
@@ -404,7 +404,7 @@ namespace InterpoolCloudWebRole.Controller
             famous = cnp.Famous.ElementAt(2);
             lastClue3.Famous = famous;
             /* this is in the class parameters  */
-            lastClue3.ClueContent = dm.GetParameter(Parameters.LAST_CLUE3_ESP, container);
+            lastClue3.ClueContent = dm.GetParameter(Parameters.LastClue3Esp, container);
 
             /* add clues to nodepath */
             cnp.Clue.Add(lastClue1);
@@ -419,7 +419,7 @@ namespace InterpoolCloudWebRole.Controller
             orderNodePath = currentNodePath.NodePathOrder + 1;
 
             /* if the last nodePath of the game return null */
-            if (Constants.NUMBERLASTCITY < orderNodePath)
+            if (Constants.NumberLastCity < orderNodePath)
             {
                 return null;
             }
@@ -540,9 +540,9 @@ namespace InterpoolCloudWebRole.Controller
                     // TODO level and score
                     //User user = game.User;
                     //Level level = user.LevelReference.Value;
-                    if (game.User.SubLevel == Constants.NUMBER_SUB_LEVELS)
+                    if (game.User.SubLevel == Constants.NumberSubLevels)
                     {
-                        if (game.User.Level.LevelNumber == Constants.MAX_LEVELS)
+                        if (game.User.Level.LevelNumber == Constants.MaxLevels)
                         {
                             // the user win, and the game is finish
                         }
@@ -662,7 +662,7 @@ namespace InterpoolCloudWebRole.Controller
 
                 //TODO make a Constant
                 clue.clue = node.Clue.ElementAt(2 - numFamous).ClueContent;
-                if (node.NodePathOrder == (Constants.NUMBERLASTCITY - 1))
+                if (node.NodePathOrder == (Constants.NumberLastCity - 1))
                 {
                     //last city
                     //TODO make a Constant

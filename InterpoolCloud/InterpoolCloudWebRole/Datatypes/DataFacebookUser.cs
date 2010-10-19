@@ -9,7 +9,7 @@ namespace InterpoolCloudWebRole.Datatypes
 
     public class DataFacebookUser
     {
-        public string userId { get; set; }
+        public string UserId { get; set; }
 
         public oAuthFacebook oAuth { get; set; }
 
@@ -29,7 +29,7 @@ namespace InterpoolCloudWebRole.Datatypes
 
         public string cinema { get; set; }
 
-        public string television { get; set; }
+        public string Television { get; set; }
 
         public string pictureLink { get; set; }
     }
