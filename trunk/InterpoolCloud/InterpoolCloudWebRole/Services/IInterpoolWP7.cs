@@ -1,5 +1,4 @@
-﻿
-namespace InterpoolCloudWebRole.Services
+﻿namespace InterpoolCloudWebRole.Services
 {
     using System;
     using System.Collections.Generic;

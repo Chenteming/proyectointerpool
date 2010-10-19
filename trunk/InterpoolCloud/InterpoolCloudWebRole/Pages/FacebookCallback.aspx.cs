@@ -40,13 +40,13 @@ namespace InterpoolCloudWebRole
                     InterpoolContainer container = dataManager.GetContainer();
                     User user = new User();
                     user.SubLevel = 0;
-                    string codLevel = dataManager.GetParameter(Parameters.LEVEL_ROOKIE, container);
+                    string codLevel = dataManager.GetParameter(Parameters.LevelRookie, container);
                     user.Level = container.Levels.Where(l => l.LevelName == codLevel).First();
                     user.UserIdFacebook = facebookController.GetUserId(oAuth);
                     user.UserTokenFacebook = oAuth.Token;
                     dataManager.StoreUser(user, container);
 
-                    Response.Redirect(Constants.REDIRECT_URL_AFTER_LOGIN_FACEBOOK);
+                    Response.Redirect(Constants.RedirectUrlAfterLoginFacebook);
 
                     /*string userId = facebookController.GetUserId(oAuth);
                     //add userId - oAuth [multiplayer feature]
