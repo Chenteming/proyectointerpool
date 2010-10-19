@@ -9,8 +9,7 @@ namespace InterpoolCloudWebRole.Utilities
     public class GameException : Exception
     {
         private string msg;
-        
-       
+               
         public GameException(string msg)
             : base(msg)
         {

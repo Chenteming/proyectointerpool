@@ -8,9 +8,9 @@ namespace InterpoolCloudWebRole.Services
     using System.ServiceModel;
     using System.Text;
     using InterpoolCloudWebRole.Data;
-    using InterpoolCloudWebRole.FacebookCommunication;
     using InterpoolCloudWebRole.Datatypes;
-
+    using InterpoolCloudWebRole.FacebookCommunication;
+        
     [ServiceContract]
     public interface IInterpoolWP7
     {

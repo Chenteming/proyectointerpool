@@ -3,16 +3,19 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using System.Collections.Specialized;
-    using System.Net;
     using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Web;
     using InterpoolCloudWebRole.Utilities;
-
+    
     public class oAuthFacebook
     {
-        public enum Method { GET, POST };
+        public enum Method 
+        { 
+            GET, POST 
+        };
 
         public const string AUTHORIZE = "https://graph.facebook.com/oauth/authorize";
 
@@ -20,11 +23,11 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
         public string CALLBACK_URL = Constants.FACEBOK_CALLBACK_URL;
 
-        private string _consumerKey = "";
+        private string _consumerKey = string.Empty;
 
-        private string _consumerSecret = "";
+        private string _consumerSecret = string.Empty;
 
-        private string _token = "";
+        private string _token = string.Empty;
 
         #region Properties
 
@@ -64,7 +67,18 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
-        public string Token { get { return _token; } set { _token = value; } }
+        public string Token 
+        { 
+            get 
+            {
+                return _token; 
+            } 
+            
+            set 
+            { 
+                _token = value; 
+            } 
+        }
 
         #endregion
 
@@ -74,7 +88,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <returns>The url with a valid request token, or a null string.</returns>
         public string AuthorizationLinkGet()
         {
-           // return string.Format("{0}?client_id={1}&redirect_uri={2}", AUTHORIZE, this.ConsumerKey, CALLBACK_URL);
+            // return string.Format("{0}?client_id={1}&redirect_uri={2}", AUTHORIZE, this.ConsumerKey, CALLBACK_URL);
             return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access,publish_stream,friends_about_me,friends_birthday,friends_hometown,friends_interests,friends_likes,friends_online_presence, friends_status",
                 AUTHORIZE, this.ConsumerKey, CALLBACK_URL);
         }
@@ -112,10 +126,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <returns>The web server response.</returns>
         public string WebRequest(Method method, string url, string postData)
         {
-
             HttpWebRequest webRequest = null;
             StreamWriter requestWriter = null;
-            string responseData = "";
+            string responseData = string.Empty;
 
             webRequest = System.Net.WebRequest.Create(url) as HttpWebRequest;
             webRequest.Method = method.ToString();
@@ -158,7 +171,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         public string WebResponseGet(HttpWebRequest webRequest)
         {
             StreamReader responseReader = null;
-            string responseData = "";
+            string responseData = string.Empty;
 
             try
             {

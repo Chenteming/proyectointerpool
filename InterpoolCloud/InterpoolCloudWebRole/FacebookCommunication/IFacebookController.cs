@@ -17,7 +17,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
         // Returns the data of the friend with id userFriendId, who is a friend
         // of the user with id userId
-        DataFacebookUser GetFriendInfo(String userId, String userFriendId);
+        DataFacebookUser GetFriendInfo(string userId, string userFriendId);
 
         // Only for the protoype
         List<string> GetFriendsNames(oAuthFacebook oAuth, string userId);

@@ -9,12 +9,11 @@ namespace InterpoolCloudWebRole.Services
     using System.Text;
     using InterpoolCloudWebRole.Controller;
     using InterpoolCloudWebRole.Data;
-    using InterpoolCloudWebRole.FacebookCommunication;
     using InterpoolCloudWebRole.Datatypes;
-
+    using InterpoolCloudWebRole.FacebookCommunication;
+    
     public class InterpoolWP7 : IInterpoolWP7
-    {
-        
+    {   
         private IProcessController controller = new ProcessController(new InterpoolContainer());
 
         public void StartGame(string userIdFacebook)
@@ -65,7 +64,7 @@ namespace InterpoolCloudWebRole.Services
         public string GetUserIdFacebook(string idLogin)
         {
             return controller.GetLastUserIdFacebook(idLogin);
-            // This is the correct function to use when the login screen is ready
+            //// This is the correct function to use when the login screen is ready
             //return controller.GetUserIdFacebook(idLogin);
         }
     }
