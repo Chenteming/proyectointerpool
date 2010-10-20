@@ -8,7 +8,10 @@ namespace InterpoolCloudTest
     using InterpoolCloudWebRole.Controller;
     using InterpoolCloudWebRole.Data;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    
+
+    /// <summary>
+    /// Class statement TravelTest
+    /// </summary>
     [TestClass]
     public class TravelTest
     {
