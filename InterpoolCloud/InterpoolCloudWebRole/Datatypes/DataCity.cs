@@ -6,6 +6,9 @@ namespace InterpoolCloudWebRole.Datatypes
     using System.Linq;
     using System.Web;
 
+    /// <summary>
+    /// Class statement DataCity
+    /// </summary>
     public class DataCity
     {
         public string name_city { get; set; }

@@ -12,7 +12,10 @@ namespace InterpoolCloudWebRole
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
     using InterpoolCloudWebRole.Utilities;
-        
+
+    /// <summary>
+    /// Partial class declaration _Default
+    /// </summary>
     public partial class _Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -36,7 +39,7 @@ namespace InterpoolCloudWebRole
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
         {
-            oAuthFacebook oAuth = new oAuthFacebook();
+            OAuthFacebook oAuth = new OAuthFacebook();
             Response.Redirect(oAuth.AuthorizationLinkGet());
         }
 
@@ -47,8 +50,8 @@ namespace InterpoolCloudWebRole
             User user = container.Users.Where(u => u.UserIdFacebook == id).First();
             ProcessController pc = new ProcessController(container);
 
-            //pc.deleteGame(user, container);
-           // pc.deleteGame(user, container);
+            ////pc.deleteGame(user, container);
+            //// pc.deleteGame(user, container);
         }
 
         protected void Button4_Click(object sender, EventArgs e)
@@ -91,7 +94,6 @@ namespace InterpoolCloudWebRole
 
         protected void Button7_Click(object sender, EventArgs e)
         {
-
             InterpoolContainer c = new InterpoolContainer();
             ProcessController ipc = new ProcessController(c);
 

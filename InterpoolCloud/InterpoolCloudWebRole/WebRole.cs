@@ -8,6 +8,9 @@ namespace InterpoolCloudWebRole
     using Microsoft.WindowsAzure.Diagnostics;
     using Microsoft.WindowsAzure.ServiceRuntime;
 
+    /// <summary>
+    /// Class statement WebRole
+    /// </summary>
     public class WebRole : RoleEntryPoint
     {
         public override bool OnStart()

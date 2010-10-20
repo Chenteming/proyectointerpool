@@ -11,17 +11,62 @@ namespace InterpoolCloudWebRole.Utilities
     using System.Web;
     using InterpoolCloudWebRole.BingSearchService;
     using InterpoolCloudWebRole.Data;
-    
+
+    /// <summary>
+    /// Class statement Admin
+    /// </summary>
     public static class Admin
     {
-        //FindCity()  "Este País" -- "Esta Ciudad"
+        public static void loadFamousData()
+        {
+            string news = string.Empty;
+
+            InterpoolContainer container = new InterpoolContainer();
+            New newsF;
+
+            foreach (Famous f in container.Famous)
+            {
+                ////Se trae la noticia
+                news = FindFamous(f.FamousName);
+
+                if (news != null)
+                {
+                    newsF = new New();
+                    newsF.NewContent = news;
+                    newsF.Famous = f;
+                    container.AddToNews(newsF);
+                }
+            }
+
+            container.SaveChanges();
+
+            CityProperty newsCity;
+            foreach (City c in container.Cities)
+            {
+                ////Se trae la noticia
+                news = FindCity(c.CityName, c.CityCountry);
+
+                if (news != null)
+                {
+                    newsCity = new CityProperty();
+                    newsCity.CityPropertyContent = news;
+                    newsCity.City = c;
+                    newsCity.Dyn = true;
+                    container.AddToCityPropertySet(newsCity);
+                }
+            }
+
+            container.SaveChanges();
+        }
+
+        ////FindCity()  "Este País" -- "Esta Ciudad"
         #region FindCity (string ciudad, string country)
         public static string FindCity(string ciudad, string country)
         {
-            //agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
+            ////agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
             string queryOut = EscapearQuery(ciudad);
 
-            //realiza la busqueda en BING
+            ////realiza la busqueda en BING
             SearchResponse response = BingRequest(queryOut);
 
             string resultado = null;
@@ -53,14 +98,14 @@ namespace InterpoolCloudWebRole.Utilities
         }
         #endregion FindCity
 
-        //"Yo"
+        ////"Yo"
         #region  FindFamous(string famoso)
         public static string FindFamous(string famoso)
         {
-            //agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
+            ////agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
             string queryOut = EscapearQuery(famoso);
 
-            //realiza la busqueda en BING
+            ////realiza la busqueda en BING
             SearchResponse response = BingRequest(queryOut);
 
             string resultado = null;
@@ -86,7 +131,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
         #endregion  FindFamous
 
-        //devuelve el string del query con comillas dobles escapedas
+        ////devuelve el string del query con comillas dobles escapedas
         #region EscapearQuery
         static string EscapearQuery(string queryIn)
         {
@@ -109,7 +154,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
         #endregion EscapearQuery
 
-        //se trae la noticia
+        ////se trae la noticia
         #region BingRequest
         static SearchResponse BingRequest(string query)
         {
@@ -135,7 +180,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         #endregion BingRequest
-        //Devuelve caracteres hasta la primer ocurrencia de un punto (.) despues mas de 95 caracteres
+        ////Devuelve caracteres hasta la primer ocurrencia de un punto (.) despues mas de 95 caracteres
         #region ParsearNoticia
         static string ParsearNoticia(string entrada, string query)
         {
@@ -168,47 +213,5 @@ namespace InterpoolCloudWebRole.Utilities
             return string.Empty;
         }
         #endregion ReemplazarTexto
-
-        public static void loadFamousData()
-        {
-            string news = string.Empty;
-
-            InterpoolContainer container = new InterpoolContainer();
-            New newsF;
-
-            foreach (Famous f in container.Famous)
-            {
-                //Se trae la noticia
-                news = FindFamous(f.FamousName);
-
-                if (news != null)
-                {
-                    newsF = new New();
-                    newsF.NewContent = news;
-                    newsF.Famous = f;
-                    container.AddToNews(newsF);
-                }
-            }
-
-            container.SaveChanges();
-
-            CityProperty newsCity;
-            foreach (City c in container.Cities)
-            {
-                //Se trae la noticia
-                news = FindCity(c.CityName, c.CityCountry);
-
-                if (news != null)
-                {
-                    newsCity = new CityProperty();
-                    newsCity.CityPropertyContent = news;
-                    newsCity.City = c;
-                    newsCity.Dyn = true;
-                    container.AddToCityPropertySet(newsCity);
-                }
-            }
-
-            container.SaveChanges();
-        }
     }
 }

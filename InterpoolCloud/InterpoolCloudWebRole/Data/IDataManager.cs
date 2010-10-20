@@ -24,7 +24,7 @@ namespace InterpoolCloudWebRole.Data
 
         string GetUserIdFacebookByLoginId(string userLoginId, InterpoolContainer context);
 
-        oAuthFacebook GetLastUserToken(InterpoolContainer context);
+        OAuthFacebook GetLastUserToken(InterpoolContainer context);
 
         void StoreUser(User user, InterpoolContainer context);
 

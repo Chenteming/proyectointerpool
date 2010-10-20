@@ -10,7 +10,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
     interface IFacebookController
     {
-        string GetUserId(oAuthFacebook oAuth);
+        string GetUserId(OAuthFacebook oAuth);
 
         // Returns the user's friends ids
         List<string> GetFriendsId(string userId);
@@ -20,12 +20,12 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         DataFacebookUser GetFriendInfo(string userId, string userFriendId);
 
         // Only for the protoype
-        List<string> GetFriendsNames(oAuthFacebook oAuth, string userId);
+        List<string> GetFriendsNames(OAuthFacebook oAuth, string userId);
 
         // Add a new user to the datatype userID - oAuth (for multiplayer)
-        void AddFriend(string name, string id, oAuthFacebook oAuth);
+        void AddFriend(string name, string id, OAuthFacebook oAuth);
 
         // Save all the friends information in the db.
-        void DownloadFacebookUserData(oAuthFacebook oAuth, Game game, InterpoolContainer context);
+        void DownloadFacebookUserData(OAuthFacebook oAuth, Game game, InterpoolContainer context);
     }
 }
