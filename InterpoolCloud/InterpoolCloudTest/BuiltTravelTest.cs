@@ -17,11 +17,11 @@ namespace InterpoolCloudTest
     {
         private InterpoolContainer container;
         private DataManager dm;
-        
+
         public BuiltTravelTest()
         {
-            string conn = @"metadata=res://*/Data.InterpoolModel.csdl|res://*/Data.InterpoolModel.ssdl|res://*/Data.InterpoolModel.msl; provider=System.Data.SqlClient; ;provider connection string='Data Source=MARTIN-PC\SQLEXPRESS;Initial Catalog=InterpoolDB;Integrated Security=True;MultipleActiveResultSets=True'";
-            container = new InterpoolContainer(conn);
+            //string conn = @"metadata=res://*/Data.InterpoolModel.csdl|res://*/Data.InterpoolModel.ssdl|res://*/Data.InterpoolModel.msl; provider=System.Data.SqlClient; ;provider connection string='Data Source=MARTIN-PC\SQLEXPRESS;Initial Catalog=InterpoolDB;Integrated Security=True;MultipleActiveResultSets=True'";
+            container = new InterpoolContainer();
             dm = new DataManager();
         }
 
@@ -66,6 +66,7 @@ namespace InterpoolCloudTest
         //
         #endregion
 
+
         [TestMethod]
         public void TestMethod()
         {
@@ -76,7 +77,25 @@ namespace InterpoolCloudTest
 
             Game game = controler.BuiltTravel(user);
 
-            Console.WriteLine("Test: {0} ", "BuiltTravelTest");
+            List<int> numCities = new List<int>();
+
+            Assert.AreEqual(game.NodePath.Count, 4, "Amount of NodePath");
+           
+            // check if not repeat city
+            foreach (NodePath node in game.NodePath)
+            {
+                Assert.IsFalse(numCities.Contains(node.City.CityNumber));
+                foreach (City city in node.PossibleCities)
+                {
+                    Assert.IsFalse(numCities.Contains(city.CityNumber));
+                    numCities.Add(city.CityNumber);
+                }
+                numCities.Add(node.City.CityNumber);
+
+                Assert.AreEqual(3, node.Famous.Count);
+
+            }
+             
         }
     }
 }

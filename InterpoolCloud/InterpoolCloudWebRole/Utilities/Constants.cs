@@ -21,6 +21,12 @@ namespace InterpoolCloudWebRole.Utilities
         //public static string ConsumerSecret = "2ea5107535d2ee3f514a06a186139be6";
 
         // for local test only
+
+    
+        public static uint AmountHardCodeSuspects = 10;
+  
+
+
         public static string ConsumerKey = "146049795426501";
         public static string ConsumerSecret = "ea1aab4d4b19644875b4b22a54e17163";
         ////constants used in the search with BING
@@ -31,5 +37,6 @@ namespace InterpoolCloudWebRole.Utilities
         public static uint NewsCount = 10;
         ////public static string FacebookCallbackUrl = "http://pis2010.cloudapp.net/Pages/FacebookCallback.aspx/";
         public static string FacebookCallbackUrl = "http://127.0.0.1:81/Pages/FacebookCallback.aspx/";
+
     }
 }

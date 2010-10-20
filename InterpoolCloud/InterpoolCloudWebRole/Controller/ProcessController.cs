@@ -1,4 +1,17 @@
-﻿
+
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.Objects.DataClasses;
+
+using InterpoolCloudWebRole.Data;
+using InterpoolCloudWebRole.Utilities;
+using InterpoolCloudWebRole.FacebookCommunication;
+using InterpoolCloudWebRole.Datatypes;
+using System.Reflection;
+
+
 namespace InterpoolCloudWebRole.Controller
 {
     using System;
@@ -181,7 +194,7 @@ namespace InterpoolCloudWebRole.Controller
                     find = false;
                     do
                     {
-                        nextCity = random.Next(maxNumber);
+                        nextCity = random.Next(1, maxNumber);
                         next = dm.getCities(container).Where(c => c.CityNumber == nextCity).First();
                         if (!selectedCities.Contains(next.CityNumber))
                         {
@@ -693,10 +706,84 @@ namespace InterpoolCloudWebRole.Controller
             return dm.GetLastUserIdFacebook(dm.GetContainer());
         }
 
+
+        public void CreateHardCodeSuspects(Suspect bigSuspect, List<string> privatesProperties)
+        {
+            
+           
+            List<Suspect> hardCodeSuspects = new List<Suspect>();
+
+            Suspect hardCode;
+            PropertyInfo info;
+            for (int i = 0; i < Constants.AmountHardCodeSuspects; i++)
+            {
+                hardCode = new Suspect();
+                foreach (string prop in privatesProperties)
+                {
+                    string newValue = "<GO Random>"; //TODO get the new values random
+                    info = hardCode.GetType().GetProperty(prop);
+                    info.SetValue(hardCode, newValue, null);
+                }
+                hardCodeSuspects.Add(hardCode);
+            }
+            
+            var properties = typeof(Suspect).GetProperties();
+            int index = 0;
+
+            Suspect auxSuspect;
+            bool finish = false;
+            do
+            {
+                foreach (var property in properties)
+                {
+                    string propType = property.PropertyType.Name;
+                    if ("String".Equals(propType))
+                    {
+                        auxSuspect = hardCodeSuspects.ElementAt(index);
+                        string prop = property.Name;
+                        if (!privatesProperties.Equals(prop))
+                        {
+                            if (!privatesProperties.Contains(prop))
+                            {
+                                PropertyInfo inf = auxSuspect.GetType().GetProperty(prop);
+                                string propValue = (string)inf.GetValue(bigSuspect, null);
+                                inf.SetValue(auxSuspect, propValue, null);
+                            }
+                            index++;
+                        }
+                    }
+                    
+                }
+                finish = true;
+                //TODO for now only set one value
+            } while (!finish);
+
+            foreach (Suspect hardCodeS in hardCodeSuspects)
+            {
+                foreach (var property in properties)
+                {
+                    string propType = property.PropertyType.Name;
+                    if ("String".Equals(propType))
+                    {
+                        string prop = property.Name;
+                        PropertyInfo inf = hardCodeS.GetType().GetProperty(prop);
+                        string value = (string)inf.GetValue(hardCodeS, null);
+                        if (null == value)
+                        {
+                            string newValue = "<GO Random>"; //TODO get the new values random
+                            info = hardCodeS.GetType().GetProperty(prop);
+                            info.SetValue(hardCodeS, newValue, null);
+                        }
+                    }
+                }
+            }
+        }
+
         public string GetUserIdFacebook(string userLoginId)
         {
             IDataManager dm = new DataManager();
             return dm.GetUserIdFacebookByLoginId(userLoginId, dm.GetContainer());
         }
+
     }
 }

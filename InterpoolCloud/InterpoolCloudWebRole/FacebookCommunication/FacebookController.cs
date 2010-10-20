@@ -123,7 +123,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             suspect.SuspectBirthday = (fbudOfSuspect.birthday == null) ? string.Empty : fbudOfSuspect.birthday;
             suspect.SuspectHometown = (fbudOfSuspect.hometown == null) ? string.Empty : fbudOfSuspect.hometown;
             suspect.SuspectMusic = (fbudOfSuspect.music == null) ? string.Empty : fbudOfSuspect.music;
-            suspect.SuspectTelevision = (fbudOfSuspect.Television == null) ? string.Empty : fbudOfSuspect.Television;
+            suspect.SuspectTelevision = (fbudOfSuspect.television == null) ? string.Empty : fbudOfSuspect.television;
             suspect.SuspectCinema = (fbudOfSuspect.cinema == null) ? string.Empty : fbudOfSuspect.cinema;
             suspect.SuspectGender = (fbudOfSuspect.gender == null) ? string.Empty : fbudOfSuspect.gender;
             suspect.SuspectPicLInk = (fbudOfSuspect.pictureLink == null) ? string.Empty : fbudOfSuspect.pictureLink;
@@ -223,7 +223,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             fbud.hometown = string.Empty;
             fbud.last_name = string.Empty;
             fbud.music = string.Empty;
-            fbud.Television = string.Empty;
+            fbud.television = string.Empty;
             fbud.UserId = string.Empty;
             fbud.id_friend = string.Empty;
             fbud.gender = string.Empty;
@@ -304,7 +304,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             int i = 0;
             bool exit = false;
             friendData.music = string.Empty;
-            friendData.Television = string.Empty;
+            friendData.television = string.Empty;
             friendData.cinema = string.Empty;
             
             while (like_category != null && !exit)
@@ -316,7 +316,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                         friendData.music = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         break;
                     case "Television":
-                        friendData.Television = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        friendData.television = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         break;
                     case "Movie":
                     case "Film":
@@ -326,7 +326,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
                 i++;
                 like_category = (string)jsonFriendObject.SelectToken("data[" + i + "].category");
-                if (friendData.music != string.Empty && friendData.Television != string.Empty && friendData.cinema != string.Empty)
+                if (friendData.music != string.Empty && friendData.television != string.Empty && friendData.cinema != string.Empty)
                 {
                     exit = true;
                 }           
