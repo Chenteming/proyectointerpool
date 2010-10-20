@@ -8,6 +8,9 @@ namespace InterpoolCloudWebRole
     using System.Web.Security;
     using System.Web.SessionState;
 
+    /// <summary> 
+    /// Class statement Global
+    /// </summary>
     public class Global : System.Web.HttpApplication
     {
         void Application_Start(object sender, EventArgs e)
@@ -17,7 +20,7 @@ namespace InterpoolCloudWebRole
 
         void Application_End(object sender, EventArgs e)
         {
-            //  Code that runs on application shutdown
+            ////  Code that runs on application shutdown
         }
 
         void Application_Error(object sender, EventArgs e)

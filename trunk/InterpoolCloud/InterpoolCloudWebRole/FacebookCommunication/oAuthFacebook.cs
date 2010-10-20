@@ -9,19 +9,22 @@ namespace InterpoolCloudWebRole.FacebookCommunication
     using System.Net;
     using System.Web;
     using InterpoolCloudWebRole.Utilities;
-    
-    public class oAuthFacebook
+
+    /// <summary>
+    /// Class statement OAuthFacebook
+    /// </summary>
+    public class OAuthFacebook
     {
         public enum Method 
         { 
             GET, POST 
-        };
+        }
 
         public const string Authorize = "https://graph.facebook.com/oauth/authorize";
 
         public const string AccessToken = "https://graph.facebook.com/oauth/access_token";
 
-        public string callBackUrl = Constants.FacebookCallbackUrl;
+        public string CallBackUrl = Constants.FacebookCallbackUrl;
 
         private string consumerKey = string.Empty;
 
@@ -37,7 +40,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             {
                 if (consumerKey.Length == 0)
                 {
-                    consumerKey = Constants.ConsumerKey; //Your application ID
+                    consumerKey = Constants.ConsumerKey; ////Your application ID
                 }
 
                 return consumerKey;
@@ -55,7 +58,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             {
                 if (consumerSecret.Length == 0)
                 {
-                    consumerSecret = Constants.ConsumerSecret; //Your application secret
+                    consumerSecret = Constants.ConsumerSecret; ////Your application secret
                 }
 
                 return consumerSecret;
@@ -88,9 +91,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <returns>The url with a valid request token, or a null string.</returns>
         public string AuthorizationLinkGet()
         {
-            // return string.Format("{0}?client_id={1}&redirect_uri={2}", Authorize, this.ConsumerKey, callBackUrl);
+            // return string.Format("{0}?client_id={1}&redirect_uri={2}", Authorize, this.ConsumerKey, CallBackUrl);
             return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access,publish_stream,friends_about_me,friends_birthday,friends_hometown,friends_interests,friends_likes,friends_online_presence, friends_status",
-                Authorize, this.ConsumerKey, callBackUrl);
+                Authorize, this.ConsumerKey, CallBackUrl);
         }
 
         /// <summary>
@@ -101,13 +104,13 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         {
             this.Token = authToken;
             string accessTokenUrl = string.Format("{0}?client_id={1}&redirect_uri={2}&client_secret={3}&code={4}",
-            AccessToken, this.ConsumerKey, callBackUrl, this.ConsumerSecret, authToken);
+            AccessToken, this.ConsumerKey, CallBackUrl, this.ConsumerSecret, authToken);
 
             string response = WebRequest(Method.GET, accessTokenUrl, String.Empty);
             
             if (response.Length > 0)
             {
-                //Store the returned access_token
+                ////Store the returned access_token
                 NameValueCollection qs = HttpUtility.ParseQueryString(response);
 
                 if (qs["access_token"] != null)
@@ -140,7 +143,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             {
                 webRequest.ContentType = "application/x-www-form-urlencoded";
 
-                //POST the data.
+                ////POST the data.
                 requestWriter = new StreamWriter(webRequest.GetRequestStream());
 
                 try

@@ -1,41 +1,32 @@
 
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Objects.DataClasses;
-
-using InterpoolCloudWebRole.Data;
-using InterpoolCloudWebRole.Utilities;
-using InterpoolCloudWebRole.FacebookCommunication;
-using InterpoolCloudWebRole.Datatypes;
-using System.Reflection;
-
-
 namespace InterpoolCloudWebRole.Controller
 {
     using System;
     using System.Collections.Generic;
     using System.Data.Objects.DataClasses;
     using System.Linq;
+    using System.Reflection;
     using System.Web;
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
     using InterpoolCloudWebRole.Utilities;
-        
+
+    /// <summary>
+    /// Class Description ProcessController
+    /// </summary>
     public class ProcessController : IProcessController
     {
         private string output = "Inicio";
 
         private InterpoolContainer container;
 
-        public ProcessController  (InterpoolContainer container)
+        public ProcessController(InterpoolContainer container)
         {
             this.container = container;
         }
 
-        public InterpoolContainer GetContainer ()
+        public InterpoolContainer GetContainer()
         {
             return container;
         }
@@ -58,7 +49,7 @@ namespace InterpoolCloudWebRole.Controller
         {
             NodePath node = GetCurrentNode(userIdFacebook);
             List<DataCity> result = new List<DataCity>();
-            foreach ( City c in node.PossibleCities)
+            foreach(City c in node.PossibleCities)
             {
                 DataCity dataCity = new DataCity();
                 dataCity.name_city = node.City.CityName;
@@ -153,8 +144,8 @@ namespace InterpoolCloudWebRole.Controller
                 Log log = new Log();
                 log.LogName = output;
                 log.LogStackTrace = e.StackTrace;
-                
-                //conteiner.AddToLogs(log);
+
+                ////conteiner.AddToLogs(log);
                 throw e;
             }
         }
@@ -165,7 +156,7 @@ namespace InterpoolCloudWebRole.Controller
 
             IFacebookController facebookController = new FacebookController();
             IDataManager dm = new DataManager();
-            oAuthFacebook oAuth = dm.GetLastUserToken(dm.GetContainer());
+            OAuthFacebook oAuth = dm.GetLastUserToken(dm.GetContainer());
             facebookController.DownloadFacebookUserData(oAuth, newGame, container);
         }
 
@@ -176,7 +167,7 @@ namespace InterpoolCloudWebRole.Controller
             
             IDataManager dm = new DataManager();
 
-            List<Int32> selectedCities = new List<Int32>();
+            List<int> selectedCities = new List<Int32>();
             NodePath node;
             City next;
             Random random = new Random();
@@ -228,6 +219,212 @@ namespace InterpoolCloudWebRole.Controller
             }
 
             return newGame;
+        }
+
+        public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
+        {
+            IDataManager dm = new DataManager();
+            ////InterpoolContainer container = dm.GetContainer();
+            return dm.FilterSuspects(userIdFacebook, fbud, container);
+        }
+
+        public DataCity Travel(string userIdFacebook, string nameNextCity)
+        {
+            DataCity datacity = new DataCity();
+            NodePath node = GetCurrentNode(userIdFacebook);
+            NodePath nextNode = GetNextNode(userIdFacebook);
+            if (!nextNode.City.CityName.Equals(nameNextCity))
+            {
+                ////TODO: the user lose time
+                datacity.name_city = node.City.CityName;
+                datacity.name_file_city = node.City.NameFile;
+                return datacity;
+            }
+
+            node.NodePathCurrent = false;
+            nextNode.NodePathCurrent = true;
+            container.SaveChanges();
+            datacity.name_city = nextNode.City.CityName;
+            datacity.name_file_city = nextNode.City.NameFile;
+            return datacity;
+        }
+
+        public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
+        {
+            IDataManager dm = new DataManager();
+            Game game = dm.GetGameByUser(userIdFacebook, container);
+            if (game.OrderOfArrest != null)
+            {
+                throw new GameException("error_existOneOrderOfArrest");
+            }
+
+            Suspect suspect = null;
+
+            if (game.Suspect.SuspectFacebookId == userIdFacebookSuspect)
+            {
+                suspect = game.Suspect;
+            }
+            else
+            {
+                ////TODO, check if exist the suspect with that idFacebook
+                suspect = game.PossibleSuspect.Where(s => s.SuspectFacebookId == userIdFacebookSuspect).First();
+            }
+
+            OrderOfArrest order = new OrderOfArrest();
+            order.Suspect = suspect;
+            container.AddToOrdersOfArrest(order);
+            game.OrderOfArrest = order;
+
+            container.SaveChanges();
+        }
+
+        public List<DataCity> GetCities(string userId)
+        {
+            ////TODO: order random
+            IDataManager dm = new DataManager();
+            NodePath node = GetNextNode(userId);
+            List<DataCity> cities = new List<DataCity>();
+            DataCity datacity;
+            foreach (City c in node.PossibleCities)
+            {
+                datacity = new DataCity();
+                datacity.longitud = c.Longitud;
+                datacity.latitud = c.Latitud;
+                datacity.name_city = c.CityName;
+                datacity.name_file_city = c.NameFile;
+                cities.Add(datacity);
+            }
+
+            datacity = new DataCity();
+            datacity.longitud = node.City.Longitud;
+            datacity.latitud = node.City.Latitud;
+            datacity.name_city = node.City.CityName;
+            datacity.name_file_city = node.City.NameFile;
+            cities.Add(datacity);
+            return cities;
+        }
+
+        public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
+        {
+            IDataManager dm = new DataManager();
+            NodePath node = GetCurrentNode(userIdFacebook);
+            DataClue clue;
+            if (node != null)
+            {
+                clue = new DataClue();
+
+                ////TODO make a Constant
+                clue.clue = node.Clue.ElementAt(2 - numFamous).ClueContent;
+                if (node.NodePathOrder == (Constants.NumberLastCity - 1))
+                {
+                    ////last city
+                    ////TODO make a Constant
+                    if (numFamous == 1)
+                    {
+                        Game game = dm.GetGameByUser(userIdFacebook, container);
+                        bool arrest = Arrest(game, clue);
+                    }
+                }
+                else
+                {
+                    clue.state = DataClue.State.PL;
+                }
+
+                return clue;
+            }
+
+            clue = new DataClue();
+            clue.state = DataClue.State.PL;
+            clue.clue = string.Empty;
+            return clue;
+        }
+
+        public string GetLastUserIdFacebook(string idLogin)
+        {
+            IDataManager dm = new DataManager();
+            //// This wont work for multiuser game
+            return dm.GetLastUserIdFacebook(dm.GetContainer());
+        }
+
+
+        public void CreateHardCodeSuspects(Suspect bigSuspect, List<string> privatesProperties)
+        {
+            List<Suspect> hardCodeSuspects = new List<Suspect>();
+
+            Suspect hardCode;
+            PropertyInfo info;
+            for (int i = 0; i < Constants.AmountHardCodeSuspects; i++)
+            {
+                hardCode = new Suspect();
+                foreach (string prop in privatesProperties)
+                {
+                    string newValue = "<GO Random>"; ////TODO get the new values random
+                    info = hardCode.GetType().GetProperty(prop);
+                    info.SetValue(hardCode, newValue, null);
+                }
+
+                hardCodeSuspects.Add(hardCode);
+            }
+
+            var properties = typeof(Suspect).GetProperties();
+            int index = 0;
+
+            Suspect auxSuspect;
+            bool finish = false;
+            do
+            {
+                foreach (var property in properties)
+                {
+                    string propType = property.PropertyType.Name;
+                    if ("String".Equals(propType))
+                    {
+                        auxSuspect = hardCodeSuspects.ElementAt(index);
+                        string prop = property.Name;
+                        if (!privatesProperties.Equals(prop))
+                        {
+                            if (!privatesProperties.Contains(prop))
+                            {
+                                PropertyInfo inf = auxSuspect.GetType().GetProperty(prop);
+                                string propValue = (string)inf.GetValue(bigSuspect, null);
+                                inf.SetValue(auxSuspect, propValue, null);
+                            }
+
+                            index++;
+                        }
+                    }
+                }
+
+                finish = true;
+
+                ////TODO for now only set one value
+            }
+            while (!finish);
+
+            foreach (Suspect hardCodeS in hardCodeSuspects)
+            {
+                foreach (var property in properties)
+                {
+                    string propType = property.PropertyType.Name;
+                    if ("String".Equals(propType))
+                    {
+                        string prop = property.Name;
+                        PropertyInfo inf = hardCodeS.GetType().GetProperty(prop);
+                        string value = (string)inf.GetValue(hardCodeS, null);
+                        if (null == value)
+                        {
+                            string newValue = "<GO Random>"; ////TODO get the new values random
+                            info = hardCodeS.GetType().GetProperty(prop);
+                            info.SetValue(hardCodeS, newValue, null);
+                        }
+                    }
+                }
+            }
+        }
+
+        public string GetUserIdFacebook(string userLoginId)
+        {
+            IDataManager dm = new DataManager();
+            return dm.GetUserIdFacebookByLoginId(userLoginId, dm.GetContainer());
         }
 
         /* to consider: 
@@ -444,7 +641,7 @@ namespace InterpoolCloudWebRole.Controller
             return nextNodePath.First().City;
         }
 
-        private string GetRandomCharacteristicSuspect (Suspect s, bool[] csuspect)
+        private string GetRandomCharacteristicSuspect(Suspect s, bool[] csuspect)
         {
             /* get the random index for the characteristic of the suspect */
             Random rnd = new Random();
@@ -480,63 +677,6 @@ namespace InterpoolCloudWebRole.Controller
             }
         }
 
-        public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
-        {
-            IDataManager dm = new DataManager();
-            ////InterpoolContainer container = dm.GetContainer();
-            return dm.FilterSuspects(userIdFacebook, fbud, container);
-        }
-
-        public DataCity Travel(string userIdFacebook, string nameNextCity)
-        {
-            DataCity datacity = new DataCity();
-            NodePath node = GetCurrentNode(userIdFacebook);
-            NodePath nextNode = GetNextNode(userIdFacebook);
-            if (!nextNode.City.CityName.Equals(nameNextCity))
-            {
-                //TODO: the user lose time
-                datacity.name_city = node.City.CityName;
-                datacity.name_file_city = node.City.NameFile;
-                return datacity;
-            }
-
-            node.NodePathCurrent = false;
-            nextNode.NodePathCurrent = true;
-            container.SaveChanges();
-            datacity.name_city = nextNode.City.CityName;
-            datacity.name_file_city = nextNode.City.NameFile;
-            return datacity;
-        }
-
-        public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
-        {
-            IDataManager dm = new DataManager();
-            Game game = dm.GetGameByUser(userIdFacebook, container);
-            if (game.OrderOfArrest != null)
-            {
-                throw new GameException("error_existOneOrderOfArrest");
-            }
-
-            Suspect suspect = null;
-
-            if (game.Suspect.SuspectFacebookId == userIdFacebookSuspect)
-            {
-                suspect = game.Suspect;
-            }
-            else
-            {
-                //TODO, check if exist the suspect with that idFacebook
-                suspect = game.PossibleSuspect.Where(s => s.SuspectFacebookId == userIdFacebookSuspect).First();
-            }
-
-            OrderOfArrest order = new OrderOfArrest();
-            order.Suspect = suspect;
-            container.AddToOrdersOfArrest(order);
-            game.OrderOfArrest = order;
-
-            container.SaveChanges();
-        }
-
         /**
          * summary This function is invoque by the controller when the user reaches the last city
          * 
@@ -549,10 +689,10 @@ namespace InterpoolCloudWebRole.Controller
             {
                 if (game.Suspect.SuspectFacebookId == game.OrderOfArrest.Suspect.SuspectFacebookId)
                 {
-                    // the order is for the guillty, the user win
-                    // TODO level and score
-                    //User user = game.User;
-                    //Level level = user.LevelReference.Value;
+                    //// the order is for the guillty, the user win
+                    //// TODO level and score
+                    ////User user = game.User;
+                    ////Level level = user.LevelReference.Value;
                     if (game.User.SubLevel == Constants.NumberSubLevels)
                     {
                         if (game.User.Level.LevelNumber == Constants.MaxLevels)
@@ -596,12 +736,12 @@ namespace InterpoolCloudWebRole.Controller
             return false;
         }
 
-        //TODO private
+        ////TODO private
         private void deleteGame(User user)
         {
             Game game = user.Game;
 
-            //user.Game = null;
+            ////user.Game = null;
             IEnumerator<NodePath> itNodes = game.NodePath.GetEnumerator();
             while (itNodes.MoveNext())
             {
@@ -614,8 +754,8 @@ namespace InterpoolCloudWebRole.Controller
                 node.PossibleCities = null;
                 node.Famous = null;*/
             }
-           
-            //game.NodePath = null;
+
+            ////game.NodePath = null;
             container.DeleteObject(game.NodePath);
             OrderOfArrest order = game.OrderOfArrest;
             game.OrderOfArrest = null;
@@ -637,153 +777,5 @@ namespace InterpoolCloudWebRole.Controller
             container.DeleteObject(game);
             container.SaveChanges();
         }
-
-        public List<DataCity> GetCities(string userId)
-        {
-            //TODO: order random
-            IDataManager dm = new DataManager();
-            NodePath node = GetNextNode(userId);
-            List<DataCity> cities = new List<DataCity>();
-            DataCity datacity;
-            foreach (City c in node.PossibleCities)
-            {
-                datacity = new DataCity();
-                datacity.longitud = c.Longitud;
-                datacity.latitud = c.Latitud;
-                datacity.name_city = c.CityName;
-                datacity.name_file_city = c.NameFile;
-                cities.Add(datacity);
-            }
-
-            datacity = new DataCity();
-            datacity.longitud = node.City.Longitud;
-            datacity.latitud = node.City.Latitud;
-            datacity.name_city = node.City.CityName;
-            datacity.name_file_city = node.City.NameFile;
-            cities.Add(datacity);
-            return cities;
-        }
-
-        public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
-        {
-            IDataManager dm = new DataManager();
-            NodePath node = GetCurrentNode(userIdFacebook);
-            DataClue clue;
-            if (node != null)
-            {
-                clue = new DataClue();
-
-                //TODO make a Constant
-                clue.clue = node.Clue.ElementAt(2 - numFamous).ClueContent;
-                if (node.NodePathOrder == (Constants.NumberLastCity - 1))
-                {
-                    //last city
-                    //TODO make a Constant
-                    if (numFamous == 1)
-                    {
-                        Game game = dm.GetGameByUser(userIdFacebook, container);
-                        bool arrest = Arrest(game, clue);
-                     }
-                }
-                else
-                {
-                    clue.state = DataClue.State.PL;
-                }
-                
-                return clue;
-            }
-
-            clue = new DataClue();
-            clue.state = DataClue.State.PL;
-            clue.clue = string.Empty;
-            return clue;
-        }
-
-        public string GetLastUserIdFacebook(string idLogin)
-        {
-            IDataManager dm = new DataManager();
-            //// This wont work for multiuser game
-            return dm.GetLastUserIdFacebook(dm.GetContainer());
-        }
-
-
-        public void CreateHardCodeSuspects(Suspect bigSuspect, List<string> privatesProperties)
-        {
-            
-           
-            List<Suspect> hardCodeSuspects = new List<Suspect>();
-
-            Suspect hardCode;
-            PropertyInfo info;
-            for (int i = 0; i < Constants.AmountHardCodeSuspects; i++)
-            {
-                hardCode = new Suspect();
-                foreach (string prop in privatesProperties)
-                {
-                    string newValue = "<GO Random>"; //TODO get the new values random
-                    info = hardCode.GetType().GetProperty(prop);
-                    info.SetValue(hardCode, newValue, null);
-                }
-                hardCodeSuspects.Add(hardCode);
-            }
-            
-            var properties = typeof(Suspect).GetProperties();
-            int index = 0;
-
-            Suspect auxSuspect;
-            bool finish = false;
-            do
-            {
-                foreach (var property in properties)
-                {
-                    string propType = property.PropertyType.Name;
-                    if ("String".Equals(propType))
-                    {
-                        auxSuspect = hardCodeSuspects.ElementAt(index);
-                        string prop = property.Name;
-                        if (!privatesProperties.Equals(prop))
-                        {
-                            if (!privatesProperties.Contains(prop))
-                            {
-                                PropertyInfo inf = auxSuspect.GetType().GetProperty(prop);
-                                string propValue = (string)inf.GetValue(bigSuspect, null);
-                                inf.SetValue(auxSuspect, propValue, null);
-                            }
-                            index++;
-                        }
-                    }
-                    
-                }
-                finish = true;
-                //TODO for now only set one value
-            } while (!finish);
-
-            foreach (Suspect hardCodeS in hardCodeSuspects)
-            {
-                foreach (var property in properties)
-                {
-                    string propType = property.PropertyType.Name;
-                    if ("String".Equals(propType))
-                    {
-                        string prop = property.Name;
-                        PropertyInfo inf = hardCodeS.GetType().GetProperty(prop);
-                        string value = (string)inf.GetValue(hardCodeS, null);
-                        if (null == value)
-                        {
-                            string newValue = "<GO Random>"; //TODO get the new values random
-                            info = hardCodeS.GetType().GetProperty(prop);
-                            info.SetValue(hardCodeS, newValue, null);
-                        }
-                    }
-                }
-            }
-        }
-
-        public string GetUserIdFacebook(string userLoginId)
-        {
-            IDataManager dm = new DataManager();
-            return dm.GetUserIdFacebookByLoginId(userLoginId, dm.GetContainer());
-        }
-
     }
 }

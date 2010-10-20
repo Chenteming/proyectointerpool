@@ -7,11 +7,14 @@ namespace InterpoolCloudWebRole.Datatypes
     using System.Web;
     using InterpoolCloudWebRole.FacebookCommunication;
 
+    /// <summary>
+    /// Class statement DataFacebookUser
+    /// </summary>
     public class DataFacebookUser
     {
         public string UserId { get; set; }
 
-        public oAuthFacebook oAuth { get; set; }
+        public OAuthFacebook oAuth { get; set; }
 
         public string id_friend { get; set; }
 
@@ -32,7 +35,5 @@ namespace InterpoolCloudWebRole.Datatypes
         public string television { get; set; }
 
         public string pictureLink { get; set; }
-
-       
     }
 }

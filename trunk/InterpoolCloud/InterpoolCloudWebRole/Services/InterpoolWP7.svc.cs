@@ -10,7 +10,10 @@
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
-    
+
+    /// <summary>
+    /// Class statement InterpoolWP7
+    /// </summary>
     public class InterpoolWP7 : IInterpoolWP7
     {   
         private IProcessController controller = new ProcessController(new InterpoolContainer());
@@ -64,7 +67,7 @@
         {
             return controller.GetLastUserIdFacebook(idLogin);
             //// This is the correct function to use when the login screen is ready
-            //return controller.GetUserIdFacebook(idLogin);
+            ////return controller.GetUserIdFacebook(idLogin);
         }
     }
 }

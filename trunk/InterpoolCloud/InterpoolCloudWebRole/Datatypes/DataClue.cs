@@ -6,6 +6,9 @@ namespace InterpoolCloudWebRole.Datatypes
     using System.Linq;
     using System.Web;
 
+    /// <summary>
+    /// Class statement DataClue
+    /// </summary>
     public class DataClue
     {
         public enum State

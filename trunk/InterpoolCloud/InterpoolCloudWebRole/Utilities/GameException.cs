@@ -6,6 +6,9 @@ namespace InterpoolCloudWebRole.Utilities
     using System.Linq;
     using System.Web;
 
+    /// <summary> 
+    /// Class statement GameException
+    /// </summary>
     public class GameException : Exception
     {
         private string msg;
@@ -13,7 +16,7 @@ namespace InterpoolCloudWebRole.Utilities
         public GameException(string msg)
             : base(msg)
         {
-            //TODO internationalize the msg to show 
+            ////TODO internationalize the msg to show 
             this.msg = msg;
         }   
     }

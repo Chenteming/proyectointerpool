@@ -9,6 +9,9 @@ namespace InterpoolCloudWebRole.Account
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
+    /// <summary>
+    /// Partial class declaration Register
+    /// </summary>
     public partial class Register : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)

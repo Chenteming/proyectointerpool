@@ -6,6 +6,9 @@ namespace InterpoolCloudWebRole.Utilities
     using System.Linq;
     using System.Web;
 
+    /// <summary>
+    /// Class statement Parameters
+    /// </summary>
     public static class Parameters
     {
         public static string LevelRookie = "LEVEL_ROOKIE";

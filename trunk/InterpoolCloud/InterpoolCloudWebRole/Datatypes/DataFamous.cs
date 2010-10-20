@@ -6,6 +6,9 @@ namespace InterpoolCloudWebRole.Datatypes
     using System.Linq;
     using System.Web;
 
+    /// <summary>
+    /// Class statement DataFamous
+    /// </summary>
     public class DataFamous
     {
         public string nameFamous { set; get; }

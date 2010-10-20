@@ -8,6 +8,9 @@ namespace InterpoolCloudWebRole.Account
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
+    /// <summary>
+    /// Partial class declaration ChangePasswordSuccess
+    /// </summary>
     public partial class ChangePasswordSuccess : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)

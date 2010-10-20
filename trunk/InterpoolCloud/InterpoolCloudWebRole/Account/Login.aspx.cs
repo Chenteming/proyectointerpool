@@ -8,6 +8,9 @@ namespace InterpoolCloudWebRole.Account
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
+    /// <summary>
+    /// Partial class declaration Login
+    /// </summary>
     public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
