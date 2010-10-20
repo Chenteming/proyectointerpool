@@ -7,7 +7,10 @@ namespace InterpoolCloudTest
     using System.Text;
     using InterpoolCloudWebRole.Data;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    
+
+    /// <summary>
+    /// Class statement UnitTest1
+    /// </summary>
     [TestClass]
     public class UnitTest1
     {

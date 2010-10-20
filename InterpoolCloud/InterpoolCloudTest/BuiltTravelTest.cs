@@ -10,7 +10,7 @@ namespace InterpoolCloudTest
     using Microsoft.VisualStudio.TestTools.UnitTesting;
         
     /// <summary>
-    /// BuiltTravelTest
+    /// Built Travel Test.
     /// </summary>
     [TestClass]
     public class BuiltTravelTest
@@ -20,7 +20,7 @@ namespace InterpoolCloudTest
 
         public BuiltTravelTest()
         {
-            //string conn = @"metadata=res://*/Data.InterpoolModel.csdl|res://*/Data.InterpoolModel.ssdl|res://*/Data.InterpoolModel.msl; provider=System.Data.SqlClient; ;provider connection string='Data Source=MARTIN-PC\SQLEXPRESS;Initial Catalog=InterpoolDB;Integrated Security=True;MultipleActiveResultSets=True'";
+            ////string conn = @"metadata=res://*/Data.InterpoolModel.csdl|res://*/Data.InterpoolModel.ssdl|res://*/Data.InterpoolModel.msl; provider=System.Data.SqlClient; ;provider connection string='Data Source=MARTIN-PC\SQLEXPRESS;Initial Catalog=InterpoolDB;Integrated Security=True;MultipleActiveResultSets=True'";
             container = new InterpoolContainer();
             dm = new DataManager();
         }
@@ -28,9 +28,7 @@ namespace InterpoolCloudTest
         private TestContext testContextInstance;
 
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
+        ///Gets or sets the test context which provides information about and functionality for the current test run.</summary>
         public TestContext TestContext
         {
             get
@@ -45,7 +43,7 @@ namespace InterpoolCloudTest
         }
 
         #region Additional test attributes
-        //
+
         // You can use the following additional attributes as you write your tests:
         //
         // Use ClassInitialize to run code before running the first test in the class
@@ -63,9 +61,8 @@ namespace InterpoolCloudTest
         // Use TestCleanup to run code after each test has run
         // [TestCleanup()]
         // public void MyTestCleanup() { }
-        //
-        #endregion
 
+        #endregion
 
         [TestMethod]
         public void TestMethod()
@@ -90,12 +87,11 @@ namespace InterpoolCloudTest
                     Assert.IsFalse(numCities.Contains(city.CityNumber));
                     numCities.Add(city.CityNumber);
                 }
+
                 numCities.Add(node.City.CityNumber);
 
                 Assert.AreEqual(3, node.Famous.Count);
-
             }
-             
         }
     }
 }
