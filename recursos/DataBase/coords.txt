@@ -1,0 +1,69 @@
+1 - Buenos Aires, Argentina
+2 - Rio de Janeiro, Brasil
+3 - Paris, Francia
+4 - Londres, Inglaterra
+5 - Montevideo, Uruguay
+6 - Madrid, España
+7 - Roma, Italia
+8 - New York, Estados Unidos
+9 - El Cairo, Egipto
+10 - Sydney, Australia
+11 - Nueva Delhi, India
+12 - Tokio, Japón
+13 - Praga, Republica Checa
+14 - Katmandu, Nepal
+15 - La Habana, Cuba
+16 - Hong Kong, China
+17 - Berlin, Alemania
+18 - Mexico DF, Mexico
+19 - Pekin, China
+20 - Moscu, Rusia
+21 - Cusco, Perú
+22 - Cape Town, Sudáfrica
+23 - Dubai, Emiratos Árabes Unidos
+24 - Seul, Corea del Sur
+25 - Barcelona, España
+26 - Bangkok, Tailandia
+27 - Auckland, Nueva Zelanda 
+28 - Singapur, Singapur
+29 - Jerusalen, Israel
+30 - Cope, Cope
+31 - Dublin, República de Irlanda
+32 - Marrakech, Marruecos
+33 - Amsterdam, Países Bajos
+
+(left,top)
+1-189,283
+2-213,255
+3-303,111
+4-297,97
+5-193,285
+6-293,123
+7-327,122
+8-166,124
+9-363,149
+10-594,279
+11-456,160
+12-566,131
+13-330,105
+14-467,152
+15-146,160
+16-529,158
+17-312,98
+18-122,178
+19-528,122
+20-360,93
+21-155,229
+22-337,276
+23-412,159
+24-543,129
+25-303,123
+26-506,182
+27-628,293
+28-514,189
+29-367,140
+30-323,90
+31-291,98
+32-290,140
+33-313,101
+
