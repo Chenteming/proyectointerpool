@@ -17,28 +17,30 @@ namespace InterpoolCloudTest
     {
         private InterpoolContainer container;
         private DataManager dm;
-
-        public BuiltTravelTest()
-        {
-            ////string conn = @"metadata=res://*/Data.InterpoolModel.csdl|res://*/Data.InterpoolModel.ssdl|res://*/Data.InterpoolModel.msl; provider=System.Data.SqlClient; ;provider connection string='Data Source=MARTIN-PC\SQLEXPRESS;Initial Catalog=InterpoolDB;Integrated Security=True;MultipleActiveResultSets=True'";
-            container = new InterpoolContainer();
-            dm = new DataManager();
-        }
-
         private TestContext testContextInstance;
 
         /// <summary>
-        ///Gets or sets the test context which provides information about and functionality for the current test run.</summary>
+        /// Initializes a new instance of the BuiltTravelTest class.</summary>
+        public BuiltTravelTest()
+        {
+            ////string conn = @"metadata=res://*/Data.InterpoolModel.csdl|res://*/Data.InterpoolModel.ssdl|res://*/Data.InterpoolModel.msl; provider=System.Data.SqlClient; ;provider connection string='Data Source=MARTIN-PC\SQLEXPRESS;Initial Catalog=InterpoolDB;Integrated Security=True;MultipleActiveResultSets=True'";
+            this.container = new InterpoolContainer();
+            this.dm = new DataManager();
+        }
+
+        /// <summary>
+        /// Gets or sets the test context which provides information about and functionality for the current test run.
+        /// </summary>
         public TestContext TestContext
         {
             get
             {
-                return testContextInstance;
+                return this.testContextInstance;
             }
 
             set
             {
-                testContextInstance = value;
+                this.testContextInstance = value;
             }
         }
 
@@ -60,17 +62,17 @@ namespace InterpoolCloudTest
         //
         // Use TestCleanup to run code after each test has run
         // [TestCleanup()]
-        // public void MyTestCleanup() { }
+        //// public void MyTestCleanup() { }
 
         #endregion
 
         [TestMethod]
         public void TestMethod()
         {
-            ProcessController controler = new ProcessController(container);
+            ProcessController controler = new ProcessController(this.container);
 
             string userIdFacebook = "1358576832";
-            User user = container.Users.Where(u => u.UserIdFacebook == userIdFacebook).First();
+            User user = this.container.Users.Where(u => u.UserIdFacebook == userIdFacebook).First();
 
             Game game = controler.BuiltTravel(user);
 
