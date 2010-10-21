@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using InterpoolCloudWebRole.FacebookCommunication;
-using System.Data.Objects.DataClasses;
-using InterpoolCloudWebRole.Datatypes;
-
+﻿
 namespace InterpoolCloudWebRole.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
+    using System.Web;
+    using InterpoolCloudWebRole.Datatypes;
+    using InterpoolCloudWebRole.FacebookCommunication;
+
+    /// <summary>
+    /// DataManager IDataManager.
+    /// </summary>
     public class DataManager : IDataManager
     {
         public IQueryable<City> getCities(InterpoolContainer context)
-        {
-             
+        {    
             return context.Cities;
         }
 
@@ -21,13 +24,11 @@ namespace InterpoolCloudWebRole.Data
             return context.Levels;
         }
 
-
         public IQueryable<Famous> GetFamousByCity(City city, InterpoolContainer context)
         {
             return from f in context.Famous
                       where f.City == city
-                      select f;
-                    
+                      select f;           
         }
 
         public IQueryable<CityProperty> GetCityPropertyByCity(City city, InterpoolContainer context)
@@ -35,7 +36,6 @@ namespace InterpoolCloudWebRole.Data
             return from c in context.CityPropertySet
                    where c.City == city
                    select c;
-
         }
 
         public IQueryable<Suspect> GetSuspectByGame(Game g, InterpoolContainer context)
@@ -63,7 +63,6 @@ namespace InterpoolCloudWebRole.Data
             return query.First();
         }
 
-
         public void StoreUser(User user, InterpoolContainer context)
         {
             bool userExists = context.Users.Where(u => u.UserIdFacebook == user.UserIdFacebook).Count() > 0;
@@ -73,7 +72,10 @@ namespace InterpoolCloudWebRole.Data
                 userDB.UserTokenFacebook = user.UserTokenFacebook;
             }
             else
+            {
                 context.AddToUsers(user);
+            }
+
             context.SaveChanges();
         }
 
@@ -90,7 +92,7 @@ namespace InterpoolCloudWebRole.Data
         public void StoreSuspect(Suspect suspect, InterpoolContainer context)
         {
             context.AddToSuspects(suspect);
-            // context.SaveChanges();
+            //// context.SaveChanges();
         }
 
         public void SaveChanges(InterpoolContainer context)
@@ -104,21 +106,18 @@ namespace InterpoolCloudWebRole.Data
             return container;
         }
 
-
-        public oAuthFacebook GetLastUserToken(InterpoolContainer context)
+        public OAuthFacebook GetLastUserToken(InterpoolContainer context)
         {
             int userId = (from u in context.Users
                             select u.UserId).Max();
             string token = (from u in context.Users
                             where u.UserId == userId
                             select u.UserTokenFacebook).First();
-            return new oAuthFacebook() { Token = token }; 
+            return new OAuthFacebook() { Token = token }; 
         }
 
         public void insertEntity(EntityObject entity, InterpoolContainer container)
-        {
-            
-           
+        {     
         }
 
         public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud, InterpoolContainer container)
@@ -127,14 +126,14 @@ namespace InterpoolCloudWebRole.Data
             List<Suspect> list = game.PossibleSuspect.ToList();
             list.Add(game.Suspect);
             var suspects = list.AsEnumerable();
-           // var suspects = game.PossibleSuspect.AsEnumerable();
+            //// var suspects = game.PossibleSuspect.AsEnumerable();
             
             // If the hometown is not empty, gets all the suspects with the selected hometown
             if (!string.IsNullOrEmpty(fbud.hometown))
             {
-                suspects =  from hometownSuspects in suspects
-                            where (hometownSuspects.SuspectHometown == fbud.hometown)
-                            select hometownSuspects;
+                suspects = from hometownSuspects in suspects
+                           where (hometownSuspects.SuspectHometown == fbud.hometown)
+                           select hometownSuspects;
             }
 
             // If the music is not empty, gets all the suspects with the selected music
@@ -162,7 +161,7 @@ namespace InterpoolCloudWebRole.Data
             }
 
             // If the television is not empty, gets all the suspects with the selected television
-            if (!string.IsNullOrEmpty(fbud.television))
+            if (!string.IsNullOrEmpty(fbud.Television))
             {
                 suspects = from televisionSuspects in suspects
                            where (televisionSuspects.SuspectTelevision == fbud.cinema)
@@ -177,9 +176,7 @@ namespace InterpoolCloudWebRole.Data
                            select birthdaySuspects;
             }
 
-
-
-            // TODO: filter with all the remaining fields
+            //// TODO: filter with all the remaining fields
 
             DataFacebookUser fbudSuspect;
             List<DataFacebookUser> listFbudSuspect = new List<DataFacebookUser>();
@@ -193,7 +190,7 @@ namespace InterpoolCloudWebRole.Data
                 fbudSuspect.gender = suspect.SuspectGender;
                 fbudSuspect.hometown = suspect.SuspectHometown;
                 fbudSuspect.music = suspect.SuspectMusic;
-                fbudSuspect.television = suspect.SuspectTelevision;
+                fbudSuspect.Television = suspect.SuspectTelevision;
                 fbudSuspect.cinema = suspect.SuspectCinema;
                 fbudSuspect.birthday = suspect.SuspectBirthday;
                 fbudSuspect.pictureLink = suspect.SuspectPicLInk;
@@ -204,12 +201,11 @@ namespace InterpoolCloudWebRole.Data
             return listFbudSuspect;
         }
 
-
         public string GetUserIdFacebookByLoginId(string userLoginId, InterpoolContainer context)
         {
             /*return from user in context.Users
                        where user.;*/
-            return "";
+            return string.Empty;
         }
     }
 }
