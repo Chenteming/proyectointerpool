@@ -23,17 +23,17 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
         // Downloads from Facebook all the information from user and user's friends
         // and stores it on the data base.
-        public void DownloadFacebookUserData(OAuthFacebook oAuth, Game game, InterpoolContainer context)
+        public void DownloadFacebookUserData(OAuthFacebook auth, Game game, InterpoolContainer context)
         {
-            string userId = this.GetUserId(oAuth);
+            string userId = this.GetUserId(auth);
             if (!userId.Equals(string.Empty))
             {
                 DataFacebookUser fbud = new DataFacebookUser();
                 fbud.UserId = userId;
-                fbud.oAuth = oAuth;
+                fbud.OAuth = auth;
 
                 // TODO: this must be stored in the database
-                userIdOauth.Add(userId, fbud);
+                this.userIdOauth.Add(userId, fbud);
 
                 List<string> friendsIds = this.GetFriendsId(userId);
                 Suspect suspect;
@@ -47,10 +47,10 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 foreach (string friendId in friendsIds)
                 {
                     fbudOfSuspect = this.GetFriendInfo(userId, friendId);
-                    suspect = NewSuspectFromFacebookUserData(fbudOfSuspect);
-                    if (haveEnouthFields(suspect, Constants.DataRequired))
+                    suspect = this.NewSuspectFromFacebookUserData(fbudOfSuspect);
+                    if (this.haveEnouthFields(suspect, Constants.DataRequired))
                     {
-                        dataManager.StoreSuspect(suspect, context);
+                        this.dataManager.StoreSuspect(suspect, context);
                         if (numberSuspect == i)
                         {
                             game.Suspect = suspect;
@@ -70,26 +70,25 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 }
 
                 // Stores the changes made to the game
-                dataManager.SaveChanges(context);
+                this.dataManager.SaveChanges(context);
             }
         }
 
         public OAuthFacebook GetOauth(string userId) 
         {
             DataFacebookUser fbud;
-            if (userIdOauth.TryGetValue(userId, out fbud) == true) 
+            if (this.userIdOauth.TryGetValue(userId, out fbud) == true) 
             {
-                return fbud.oAuth;
+                return fbud.OAuth;
             }
 
             return null;
         }
 
-        public string GetUserId(OAuthFacebook oAuth)
+        public string GetUserId(OAuthFacebook auth)
         {
-            string url = String.Format("https://graph.facebook.com/me?access_token={0}",
-                    oAuth.Token);
-            string jsonUser = oAuth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
+            string url = String.Format("https://graph.facebook.com/me?access_token={0}", auth.Token);
+            string jsonUser = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
             Dictionary<string, string> userValues = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonUser);
             string userId;
             if (userValues.TryGetValue("id", out userId))
@@ -102,25 +101,25 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
-        public void AddFriend(string name, string id, OAuthFacebook oAuth)
+        public void AddFriend(string name, string id, OAuthFacebook auth)
         {
             DataFacebookUser fbud = new DataFacebookUser();
-            fbud.oAuth = oAuth;
+            fbud.OAuth = auth;
             fbud.UserId = id;
 
-            userIdOauth.Add(id, fbud);
+            this.userIdOauth.Add(id, fbud);
         }
 
         public List<string> GetFriendsId(string userId)
         {
-            OAuthFacebook oAuth = this.GetOAuthFacebook(userId);
+            OAuthFacebook auth = this.GetOAuthFacebook(userId);
 
-            if (oAuth != null && oAuth.Token.Length > 0)
+            if (auth != null && auth.Token.Length > 0)
             {
                 // We now have the credentials, so we can start making API calls
-                string url = String.Format("https://graph.facebook.com/{0}/friends?access_token={1}", userId, oAuth.Token);
-                string jsonFriends = oAuth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
-                List<string> friendsId = GetFriendsIdByJson(jsonFriends);
+                string url = String.Format("https://graph.facebook.com/{0}/friends?access_token={1}", userId, auth.Token);
+                string jsonFriends = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
+                List<string> friendsId = this.GetFriendsIdByJson(jsonFriends);
                 return friendsId;
             }
 
@@ -131,25 +130,44 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         {
         }
 
+        public void DownloadFacebookUserData(OAuthFacebook auth, InterpoolContainer context)
+        {
+            throw new NotImplementedException();
+        }
+
+        // Only for the Prototype
+        public List<string> GetFriendsNames(OAuthFacebook auth, string userId)
+        {
+            if (auth != null && auth.Token.Length > 0)
+            {
+                ////We now have the credentials, so we can start making API calls
+                string url = String.Format("https://graph.facebook.com/{0}/friends?access_token={1}", userId, auth.Token);
+                string jsonFriends = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
+                List<string> friendsId = this.GetFriendsNamesByJson(jsonFriends);
+                return friendsId;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public DataFacebookUser GetFriendInfo(string userId, string userFriendId)
         {
-            OAuthFacebook oAuth = GetOAuthFacebook(userId);
+            OAuthFacebook auth = this.GetOAuthFacebook(userId);
             DataFacebookUser friendData = new DataFacebookUser();
 
-            string url = String.Format("https://graph.facebook.com/{0}?access_token={1}",
-                userFriendId, oAuth.Token);
-            string jsonFriendInfo = oAuth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
-            friendData = GetFriendStandardInfoByJson(jsonFriendInfo);
+            string url = String.Format("https://graph.facebook.com/{0}?access_token={1}", userFriendId, auth.Token);
+            string jsonFriendInfo = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
+            friendData = this.GetFriendStandardInfoByJson(jsonFriendInfo);
 
-            url = String.Format("https://graph.facebook.com/{0}/likes?access_token={1}",
-                userFriendId, oAuth.Token);
-            jsonFriendInfo = oAuth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
+            url = String.Format("https://graph.facebook.com/{0}/likes?access_token={1}", userFriendId, auth.Token);
+            jsonFriendInfo = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
 
             // The likes will be discriminates as Television, Cinema and Music
-            friendData = GetFriendLikesInfoByJson(jsonFriendInfo, friendData);
+            friendData = this.GetFriendLikesInfoByJson(jsonFriendInfo, friendData);
 
-            friendData.pictureLink = String.Format("https://graph.facebook.com/{0}/picture",
-                friendData.id_friend, string.Empty);
+            friendData.pictureLink = String.Format("https://graph.facebook.com/{0}/picture", friendData.id_friend, string.Empty);
             
             return friendData;
         }
@@ -206,7 +224,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             suspect.SuspectBirthday = (fbudOfSuspect.birthday == null) ? string.Empty : fbudOfSuspect.birthday;
             suspect.SuspectHometown = (fbudOfSuspect.hometown == null) ? string.Empty : fbudOfSuspect.hometown;
             suspect.SuspectMusic = (fbudOfSuspect.music == null) ? string.Empty : fbudOfSuspect.music;
-            suspect.SuspectTelevision = (fbudOfSuspect.television == null) ? string.Empty : fbudOfSuspect.television;
+            suspect.SuspectTelevision = (fbudOfSuspect.Television == null) ? string.Empty : fbudOfSuspect.Television;
             suspect.SuspectCinema = (fbudOfSuspect.cinema == null) ? string.Empty : fbudOfSuspect.cinema;
             suspect.SuspectGender = (fbudOfSuspect.gender == null) ? string.Empty : fbudOfSuspect.gender;
             suspect.SuspectPicLInk = (fbudOfSuspect.pictureLink == null) ? string.Empty : fbudOfSuspect.pictureLink;
@@ -226,7 +244,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             fbud.hometown = string.Empty;
             fbud.last_name = string.Empty;
             fbud.music = string.Empty;
-            fbud.television = string.Empty;
+            fbud.Television = string.Empty;
             fbud.UserId = string.Empty;
             fbud.id_friend = string.Empty;
             fbud.gender = string.Empty;
@@ -245,7 +263,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             if (fbud.birthday != null)
             {
                 string[] fecha = fbud.birthday.Split('/');
-                switch(fecha[1])
+                switch (fecha[1])
                 {
                     case "1":
                         fbud.birthday = "Enero";
@@ -307,19 +325,19 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             int i = 0;
             bool exit = false;
             friendData.music = string.Empty;
-            friendData.television = string.Empty;
+            friendData.Television = string.Empty;
             friendData.cinema = string.Empty;
             
             while (like_category != null && !exit)
             {
-                switch(like_category)
+                switch (like_category)
                 {
                     case "Music":
                     case "Musicians":
                         friendData.music = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         break;
                     case "Television":
-                        friendData.television = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        friendData.Television = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         break;
                     case "Movie":
                     case "Film":
@@ -329,7 +347,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
                 i++;
                 like_category = (string)jsonFriendObject.SelectToken("data[" + i + "].category");
-                if (friendData.music != string.Empty && friendData.television != string.Empty && friendData.cinema != string.Empty)
+                if (friendData.music != string.Empty && friendData.Television != string.Empty && friendData.cinema != string.Empty)
                 {
                     exit = true;
                 }           
@@ -344,7 +362,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             // this is for single user game
             return this.GetOauth(userId);
             
- 	        // TODO: [multiUserGame]we must ask for the oAuth for the actual user
+ 	        // TODO: [multiUserGame]we must ask for the auth for the actual user
             throw new NotImplementedException();
         }
 
@@ -368,24 +386,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         }
 
         // Only for the Prototype
-        public List<string> GetFriendsNames(OAuthFacebook oAuth, string userId)
-        {
-            if (oAuth != null && oAuth.Token.Length > 0)
-            {
-                ////We now have the credentials, so we can start making API calls
-                string url = String.Format("https://graph.facebook.com/{0}/friends?access_token={1}",
-                    userId, oAuth.Token);
-                string jsonFriends = oAuth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
-                List<string> friendsId = GetFriendsNamesByJson(jsonFriends);
-                return friendsId;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        // Only for the Prototype
         private List<string> GetFriendsNamesByJson(string jsonFriends)
         {
             JObject jsonFriendObject = JObject.Parse(jsonFriends);
@@ -402,11 +402,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
 
             return friendsNames;
-        }
-
-        public void DownloadFacebookUserData(OAuthFacebook oAuth, InterpoolContainer context)
-        {
-            throw new NotImplementedException();
         }
     }
 }

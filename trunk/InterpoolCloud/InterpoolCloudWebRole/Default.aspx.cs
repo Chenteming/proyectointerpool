@@ -39,8 +39,8 @@ namespace InterpoolCloudWebRole
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
         {
-            OAuthFacebook oAuth = new OAuthFacebook();
-            Response.Redirect(oAuth.AuthorizationLinkGet());
+            OAuthFacebook auth = new OAuthFacebook();
+            Response.Redirect(auth.AuthorizationLinkGet());
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace InterpoolCloudWebRole
 
             foreach (DataCity d in col)
             {
-                pruebaGetCities.Text = pruebaGetCities.Text + d.latitud + " " + d.longitud + " " + d.name_city + " " + d.name_file_city + "\n";
+                this.pruebaGetCities.Text = this.pruebaGetCities.Text + d.latitud + " " + d.longitud + " " + d.name_city + " " + d.name_file_city + "\n";
             }
         }
 

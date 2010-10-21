@@ -20,52 +20,52 @@
 
         public void StartGame(string userIdFacebook)
         {
-            controller.StartGame(userIdFacebook); 
+            this.controller.StartGame(userIdFacebook); 
         }
 
         public DataCity GetCurrentCity(string userIdFacebook)
         {
-            return controller.GetCurrentCity(userIdFacebook);
+            return this.controller.GetCurrentCity(userIdFacebook);
         }
 
         public List<DataCity> GetPossibleCities(string userIdFacebook)
         {
-            return controller.GetPossibleCities(userIdFacebook);
+            return this.controller.GetPossibleCities(userIdFacebook);
         }
 
         public DataFamous GetCurrentFamous(string userIdFacebook, int numClue)
         {
-            return controller.GetCurrentFamous(userIdFacebook, numClue);
+            return this.controller.GetCurrentFamous(userIdFacebook, numClue);
         }
 
         public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
         {
-            return controller.FilterSuspects(userIdFacebook, fbud);
+            return this.controller.FilterSuspects(userIdFacebook, fbud);
         }
 
         public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
         {
-            controller.EmitOrderOfArrest(userIdFacebook, userIdFacebookSuspect);
+            this.controller.EmitOrderOfArrest(userIdFacebook, userIdFacebookSuspect);
         }
 
         public List<DataCity> GetCities(string userIdFacebook)
         {
-            return controller.GetCities(userIdFacebook);
+            return this.controller.GetCities(userIdFacebook);
         }
 
         public DataCity Travel(string userIdFacebook, string nameNextCity)
         {
-            return controller.Travel(userIdFacebook, nameNextCity);
+            return this.controller.Travel(userIdFacebook, nameNextCity);
         }
 
         public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
         {
-            return controller.GetClueByFamous(userIdFacebook, numFamous);
+            return this.controller.GetClueByFamous(userIdFacebook, numFamous);
         }
 
         public string GetUserIdFacebook(string idLogin)
         {
-            return controller.GetLastUserIdFacebook(idLogin);
+            return this.controller.GetLastUserIdFacebook(idLogin);
             //// This is the correct function to use when the login screen is ready
             ////return controller.GetUserIdFacebook(idLogin);
         }

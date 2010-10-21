@@ -21,6 +21,9 @@ namespace InterpoolCloudWebRole.Controller
 
         private InterpoolContainer container;
 
+        /// <summary>
+        /// Initializes a new instance of the ProcessController class.</summary>
+        /// <param name="container"> Parameter description for container goes here</param>
         public ProcessController(InterpoolContainer container)
         {
             this.container = container;
@@ -28,12 +31,12 @@ namespace InterpoolCloudWebRole.Controller
 
         public InterpoolContainer GetContainer()
         {
-            return container;
+            return this.container;
         }
 
         public DataCity GetCurrentCity(string userIdFacebook)
-        {   
-            NodePath node = GetCurrentNode(userIdFacebook);
+        {
+            NodePath node = this.GetCurrentNode(userIdFacebook);
             if (node != null)
             {
                 DataCity dataCity = new DataCity();
@@ -47,9 +50,9 @@ namespace InterpoolCloudWebRole.Controller
 
         public List<DataCity> GetPossibleCities(string userIdFacebook)
         {
-            NodePath node = GetCurrentNode(userIdFacebook);
+            NodePath node = this.GetCurrentNode(userIdFacebook);
             List<DataCity> result = new List<DataCity>();
-            foreach(City c in node.PossibleCities)
+            foreach (City c in node.PossibleCities)
             {
                 DataCity dataCity = new DataCity();
                 dataCity.name_city = node.City.CityName;
@@ -62,7 +65,7 @@ namespace InterpoolCloudWebRole.Controller
 
         public DataFamous GetCurrentFamous(string userIdFacebook, int numClue)
         {
-            NodePath node = GetCurrentNode(userIdFacebook);
+            NodePath node = this.GetCurrentNode(userIdFacebook);
             if (node != null)
             {
                 DataFamous dataFamous = new DataFamous();
@@ -77,7 +80,7 @@ namespace InterpoolCloudWebRole.Controller
         public NodePath GetCurrentNode(string userIdFacebook)
         {
             IDataManager dm = new DataManager();
-            Game game = dm.GetGameByUser(userIdFacebook, container);
+            Game game = dm.GetGameByUser(userIdFacebook, this.container);
             foreach (NodePath node in game.NodePath)
             {
                 if (node.NodePathCurrent)
@@ -92,7 +95,7 @@ namespace InterpoolCloudWebRole.Controller
         public NodePath GetNextNode(string userIdFacebook)
         {
             IDataManager dm = new DataManager();
-            Game game = dm.GetGameByUser(userIdFacebook, container);
+            Game game = dm.GetGameByUser(userIdFacebook, this.container);
             bool next = false;
             foreach (NodePath node in game.NodePath)
             {
@@ -115,7 +118,7 @@ namespace InterpoolCloudWebRole.Controller
             // this is only the structs that we should follow
             try
             {
-                bool existGame = container.Games.Where(game => game.User.UserIdFacebook == userIdFacebook).Count() != 0;
+                bool existGame = this.container.Games.Where(game => game.User.UserIdFacebook == userIdFacebook).Count() != 0;
 
                 if (existGame)
                 {
@@ -123,26 +126,26 @@ namespace InterpoolCloudWebRole.Controller
                 }
 
                 TimeSpan current = DateTime.Now.TimeOfDay;
-            
-                User user = container.Users.Where(u => u.UserIdFacebook == userIdFacebook).First();
+
+                User user = this.container.Users.Where(u => u.UserIdFacebook == userIdFacebook).First();
                 //// 1 the trip is built to be followed by user
-                Game newGame = BuiltTravel(user);
+                Game newGame = this.BuiltTravel(user);
 
                 // 2 Get suspects
-                GetSuspects(newGame);
+                this.GetSuspects(newGame);
 
                 // 3 Create clues
-                CreateClue(newGame);
+                this.CreateClue(newGame);
 
-                container.AddToGames(newGame);
-                output = "add to games";
-                container.SaveChanges();
-                output = "savechanges";
+                this.container.AddToGames(newGame);
+                this.output = "add to games";
+                this.container.SaveChanges();
+                this.output = "savechanges";
             }
             catch (Exception e)
             {
                 Log log = new Log();
-                log.LogName = output;
+                log.LogName = this.output;
                 log.LogStackTrace = e.StackTrace;
 
                 ////conteiner.AddToLogs(log);
@@ -156,8 +159,8 @@ namespace InterpoolCloudWebRole.Controller
 
             IFacebookController facebookController = new FacebookController();
             IDataManager dm = new DataManager();
-            OAuthFacebook oAuth = dm.GetLastUserToken(dm.GetContainer());
-            facebookController.DownloadFacebookUserData(oAuth, newGame, container);
+            OAuthFacebook auth = dm.GetLastUserToken(dm.GetContainer());
+            facebookController.DownloadFacebookUserData(auth, newGame, this.container);
         }
 
         public Game BuiltTravel(User user)
@@ -167,12 +170,12 @@ namespace InterpoolCloudWebRole.Controller
             
             IDataManager dm = new DataManager();
 
-            List<int> selectedCities = new List<Int32>();
+            List<int> selectedCities = new List<int>();
             NodePath node;
             City next;
             Random random = new Random();
 
-            int maxNumber = Int32.Parse(dm.GetParameter(Parameters.AmountCities, container));
+            int maxNumber = Int32.Parse(dm.GetParameter(Parameters.AmountCities, this.container));
             int nextCity = 0;
             bool find = false;
             ////TODO, maybe the amount of NodePath should be a param in the data base
@@ -186,7 +189,7 @@ namespace InterpoolCloudWebRole.Controller
                     do
                     {
                         nextCity = random.Next(1, maxNumber);
-                        next = dm.getCities(container).Where(c => c.CityNumber == nextCity).First();
+                        next = dm.getCities(this.container).Where(c => c.CityNumber == nextCity).First();
                         if (!selectedCities.Contains(next.CityNumber))
                         {
                             find = true;
@@ -211,7 +214,7 @@ namespace InterpoolCloudWebRole.Controller
                 }
 
                 //// the current node in the first time is 0
-                node.NodePathCurrent = (i == 0);
+                node.NodePathCurrent = i == 0;
                 node.NodePathOrder = i;
 
                 newGame.NodePath.Add(node);
@@ -225,14 +228,14 @@ namespace InterpoolCloudWebRole.Controller
         {
             IDataManager dm = new DataManager();
             ////InterpoolContainer container = dm.GetContainer();
-            return dm.FilterSuspects(userIdFacebook, fbud, container);
+            return dm.FilterSuspects(userIdFacebook, fbud, this.container);
         }
 
         public DataCity Travel(string userIdFacebook, string nameNextCity)
         {
             DataCity datacity = new DataCity();
-            NodePath node = GetCurrentNode(userIdFacebook);
-            NodePath nextNode = GetNextNode(userIdFacebook);
+            NodePath node = this.GetCurrentNode(userIdFacebook);
+            NodePath nextNode = this.GetNextNode(userIdFacebook);
             if (!nextNode.City.CityName.Equals(nameNextCity))
             {
                 ////TODO: the user lose time
@@ -243,7 +246,7 @@ namespace InterpoolCloudWebRole.Controller
 
             node.NodePathCurrent = false;
             nextNode.NodePathCurrent = true;
-            container.SaveChanges();
+            this.container.SaveChanges();
             datacity.name_city = nextNode.City.CityName;
             datacity.name_file_city = nextNode.City.NameFile;
             return datacity;
@@ -252,7 +255,7 @@ namespace InterpoolCloudWebRole.Controller
         public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
         {
             IDataManager dm = new DataManager();
-            Game game = dm.GetGameByUser(userIdFacebook, container);
+            Game game = dm.GetGameByUser(userIdFacebook, this.container);
             if (game.OrderOfArrest != null)
             {
                 throw new GameException("error_existOneOrderOfArrest");
@@ -272,17 +275,17 @@ namespace InterpoolCloudWebRole.Controller
 
             OrderOfArrest order = new OrderOfArrest();
             order.Suspect = suspect;
-            container.AddToOrdersOfArrest(order);
+            this.container.AddToOrdersOfArrest(order);
             game.OrderOfArrest = order;
 
-            container.SaveChanges();
+            this.container.SaveChanges();
         }
 
         public List<DataCity> GetCities(string userId)
         {
             ////TODO: order random
             IDataManager dm = new DataManager();
-            NodePath node = GetNextNode(userId);
+            NodePath node = this.GetNextNode(userId);
             List<DataCity> cities = new List<DataCity>();
             DataCity datacity;
             foreach (City c in node.PossibleCities)
@@ -307,7 +310,7 @@ namespace InterpoolCloudWebRole.Controller
         public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
         {
             IDataManager dm = new DataManager();
-            NodePath node = GetCurrentNode(userIdFacebook);
+            NodePath node = this.GetCurrentNode(userIdFacebook);
             DataClue clue;
             if (node != null)
             {
@@ -321,8 +324,8 @@ namespace InterpoolCloudWebRole.Controller
                     ////TODO make a Constant
                     if (numFamous == 1)
                     {
-                        Game game = dm.GetGameByUser(userIdFacebook, container);
-                        bool arrest = Arrest(game, clue);
+                        Game game = dm.GetGameByUser(userIdFacebook, this.container);
+                        bool arrest = this.Arrest(game, clue);
                     }
                 }
                 else
@@ -345,7 +348,6 @@ namespace InterpoolCloudWebRole.Controller
             //// This wont work for multiuser game
             return dm.GetLastUserIdFacebook(dm.GetContainer());
         }
-
 
         public void CreateHardCodeSuspects(Suspect bigSuspect, List<string> privatesProperties)
         {
@@ -443,12 +445,12 @@ namespace InterpoolCloudWebRole.Controller
             amountCharacteristicsSuspects[2] = 2;
 
             /* built the structure for the characteristics that I will put on each clue */
-            bool[] cSuspect = new bool[5];
-            cSuspect[0] = true;
-            cSuspect[1] = true;
-            cSuspect[2] = true;
-            cSuspect[3] = true;
-            cSuspect[4] = true;
+            bool[] characterSuspect = new bool[5];
+            characterSuspect[0] = true;
+            characterSuspect[1] = true;
+            characterSuspect[2] = true;
+            characterSuspect[3] = true;
+            characterSuspect[4] = true;
             
             /* iterates over the NodePath of the game */
             int i;
@@ -475,7 +477,7 @@ namespace InterpoolCloudWebRole.Controller
                 characteristicsSuspect = amountCharacteristicsSuspects[rnd];
                 amountCharacteristicsSuspects[rnd] = -1;
                 /* get the next city by NodePath */
-                City nextCity = NextCity(g, cnp);
+                City nextCity = this.NextCity(g, cnp);
                 /* if nextCity is null, break the cicle */
                 if (nextCity == null)
                 {
@@ -494,11 +496,11 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c3.ClueContent = GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " + famous.New.First().NewContent;
+                        c3.ClueContent = this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + famous.New.First().NewContent;
                     }
                     else
                     {
-                        c3.ClueContent = GetRandomCharacteristicSuspect(g.Suspect, cSuspect);
+                        c3.ClueContent = this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect);
                     }
 
                     characteristicsSuspect--;
@@ -525,11 +527,11 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c2.ClueContent = dynProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " + famous.New.First().NewContent;
+                        c2.ClueContent = dynProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + famous.New.First().NewContent;
                     }
                     else
                     {
-                        c2.ClueContent = dynProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect);
+                        c2.ClueContent = dynProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect);
                     }
 
                     characteristicsSuspect--;
@@ -562,11 +564,11 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First().NewContent != null)
                     {
-                        c1.ClueContent = staticProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect) + " " + famous.New.First().NewContent;
+                        c1.ClueContent = staticProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + famous.New.First().NewContent;
                     }
                     else
                     {
-                        c2.ClueContent = staticProperty + " " + GetRandomCharacteristicSuspect(g.Suspect, cSuspect);
+                        c2.ClueContent = staticProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect);
                     }
 
                     characteristicsSuspect--;
@@ -598,7 +600,7 @@ namespace InterpoolCloudWebRole.Controller
             famous = cnp.Famous.ElementAt(0);
             lastClue1.Famous = famous;
             /* this is in the class parameters  */
-            lastClue1.ClueContent = dm.GetParameter(Parameters.LastClue1Esp, container);
+            lastClue1.ClueContent = dm.GetParameter(Parameters.LastClue1Esp, this.container);
 
             Clue lastClue2 = new Clue();
             /* set de city */
@@ -606,7 +608,7 @@ namespace InterpoolCloudWebRole.Controller
             famous = cnp.Famous.ElementAt(1);
             lastClue2.Famous = famous;
             /* this is in the class parameters  */
-            lastClue2.ClueContent = dm.GetParameter(Parameters.LastClue2Esp, container);
+            lastClue2.ClueContent = dm.GetParameter(Parameters.LastClue2Esp, this.container);
 
             Clue lastClue3 = new Clue();
             /* set de city */
@@ -614,7 +616,7 @@ namespace InterpoolCloudWebRole.Controller
             famous = cnp.Famous.ElementAt(2);
             lastClue3.Famous = famous;
             /* this is in the class parameters  */
-            lastClue3.ClueContent = dm.GetParameter(Parameters.LastClue3Esp, container);
+            lastClue3.ClueContent = dm.GetParameter(Parameters.LastClue3Esp, this.container);
 
             /* add clues to nodepath */
             cnp.Clue.Add(lastClue1);
@@ -716,7 +718,7 @@ namespace InterpoolCloudWebRole.Controller
                     //// TODO delete
                     // deleteGame(user, container);
                     clue.state = DataClue.State.WIN;
-                    container.SaveChanges();
+                    this.container.SaveChanges();
                     return true;
                 }
                 else
@@ -742,10 +744,10 @@ namespace InterpoolCloudWebRole.Controller
             Game game = user.Game;
 
             ////user.Game = null;
-            IEnumerator<NodePath> itNodes = game.NodePath.GetEnumerator();
-            while (itNodes.MoveNext())
+            IEnumerator<NodePath> nodes = game.NodePath.GetEnumerator();
+            while (nodes.MoveNext())
             {
-                NodePath node = itNodes.Current;
+                NodePath node = nodes.Current;
                 node.Game = null;
                 //// container.DeleteObject(node.Clue);
                // node.Clue = null;
@@ -756,13 +758,13 @@ namespace InterpoolCloudWebRole.Controller
             }
 
             ////game.NodePath = null;
-            container.DeleteObject(game.NodePath);
+            this.container.DeleteObject(game.NodePath);
             OrderOfArrest order = game.OrderOfArrest;
             game.OrderOfArrest = null;
             if (order != null)
             {
-                container.DeleteObject(order.Suspect);
-                container.DeleteObject(order);
+                this.container.DeleteObject(order.Suspect);
+                this.container.DeleteObject(order);
             }
             ////container.DeleteObject(game.Suspect);
             game.Suspect = null;
@@ -774,8 +776,8 @@ namespace InterpoolCloudWebRole.Controller
             game.User = null;
             game.NodePath = null;
             ////container.SaveChanges();
-            container.DeleteObject(game);
-            container.SaveChanges();
+            this.container.DeleteObject(game);
+            this.container.SaveChanges();
         }
     }
 }

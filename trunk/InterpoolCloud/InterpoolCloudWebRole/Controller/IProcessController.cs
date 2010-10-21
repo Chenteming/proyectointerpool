@@ -8,7 +8,10 @@ namespace InterpoolCloudWebRole.Controller
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
-    
+
+    /// <summary>
+    /// Interface Description IProcessController
+    /// </summary>
     interface IProcessController
     {
         void StartGame(string userIdFacebook);

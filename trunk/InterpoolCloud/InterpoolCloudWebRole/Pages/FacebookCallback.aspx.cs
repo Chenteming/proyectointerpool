@@ -19,24 +19,24 @@ namespace InterpoolCloudWebRole
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            OAuthFacebook oAuth = new OAuthFacebook();
+            OAuthFacebook auth = new OAuthFacebook();
             //// Para probar
             var code = Request["code"];
 
             if (Request["code"] == null)
             {
                 // Redirect the user back to Facebook for authorization.
-                Response.Redirect(oAuth.AuthorizationLinkGet());
+                Response.Redirect(auth.AuthorizationLinkGet());
             }
             else
             {
                 // Get the access token and secret.
-                oAuth.AccessTokenGet(Request["code"]);
+                auth.AccessTokenGet(Request["code"]);
 
                 // Para probar
-                var token = oAuth.Token;
+                var token = auth.Token;
 
-                if (oAuth.Token.Length > 0)
+                if (auth.Token.Length > 0)
                 {
                     IFacebookController facebookController = new FacebookController();
                     IDataManager dataManager = new DataManager();
@@ -45,21 +45,21 @@ namespace InterpoolCloudWebRole
                     user.SubLevel = 0;
                     string codLevel = dataManager.GetParameter(Parameters.LevelRookie, container);
                     user.Level = container.Levels.Where(l => l.LevelName == codLevel).First();
-                    user.UserIdFacebook = facebookController.GetUserId(oAuth);
-                    user.UserTokenFacebook = oAuth.Token;
+                    user.UserIdFacebook = facebookController.GetUserId(auth);
+                    user.UserTokenFacebook = auth.Token;
                     dataManager.StoreUser(user, container);
 
                     Response.Redirect(Constants.RedirectUrlAfterLoginFacebook);
 
-                    /*string userId = facebookController.GetUserId(oAuth);
-                    //add userId - oAuth [multiplayer feature]
-                    facebookController.AddFriend("", userId, oAuth);                   
+                    /*string userId = facebookController.GetUserId(auth);
+                    //add userId - auth [multiplayer feature]
+                    facebookController.AddFriend("", userId, auth);                   
 
 
                     if (!userId.Equals(""))
                     {
                         List<string> friendsIds = facebookController.GetFriendsId(userId);
-                        //List<string> friendsNames = facebookController.GetFriendsNames(oAuth, userId);
+                        //List<string> friendsNames = facebookController.GetFriendsNames(auth, userId);
                         InterpoolContainer context = new InterpoolContainer();
                         List<Friends> listFriends = new List<Friends>(context.Friends);
                         // Deletes all the existing suspects

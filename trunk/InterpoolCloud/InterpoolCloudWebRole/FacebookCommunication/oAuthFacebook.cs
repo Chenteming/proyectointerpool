@@ -38,17 +38,17 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         {
             get
             {
-                if (consumerKey.Length == 0)
+                if (this.consumerKey.Length == 0)
                 {
-                    consumerKey = Constants.ConsumerKey; ////Your application ID
+                    this.consumerKey = Constants.ConsumerKey; ////Your application ID
                 }
 
-                return consumerKey;
+                return this.consumerKey;
             }
 
             set 
-            { 
-                consumerKey = value;
+            {
+                this.consumerKey = value;
             }
         }
 
@@ -56,17 +56,17 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         {
             get
             {
-                if (consumerSecret.Length == 0)
+                if (this.consumerSecret.Length == 0)
                 {
-                    consumerSecret = Constants.ConsumerSecret; ////Your application secret
+                    this.consumerSecret = Constants.ConsumerSecret; ////Your application secret
                 }
 
-                return consumerSecret;
+                return this.consumerSecret;
             }
 
             set 
             {
-                consumerSecret = value;
+                this.consumerSecret = value;
             }
         }
 
@@ -74,12 +74,12 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         { 
             get 
             {
-                return token; 
+                return this.token; 
             } 
             
             set 
-            { 
-                token = value; 
+            {
+                this.token = value; 
             } 
         }
 
@@ -92,8 +92,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         public string AuthorizationLinkGet()
         {
             // return string.Format("{0}?client_id={1}&redirect_uri={2}", Authorize, this.ConsumerKey, CallBackUrl);
-            return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access,publish_stream,friends_about_me,friends_birthday,friends_hometown,friends_interests,friends_likes,friends_online_presence, friends_status",
-                Authorize, this.ConsumerKey, CallBackUrl);
+            return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access,publish_stream,friends_about_me,friends_birthday,friends_hometown,friends_interests,friends_likes,friends_online_presence, friends_status", Authorize, this.ConsumerKey, this.CallBackUrl);
         }
 
         /// <summary>
@@ -103,10 +102,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         public void AccessTokenGet(string authToken)
         {
             this.Token = authToken;
-            string accessTokenUrl = string.Format("{0}?client_id={1}&redirect_uri={2}&client_secret={3}&code={4}",
-            AccessToken, this.ConsumerKey, CallBackUrl, this.ConsumerSecret, authToken);
+            string accessTokenUrl = string.Format("{0}?client_id={1}&redirect_uri={2}&client_secret={3}&code={4}", AccessToken, this.ConsumerKey, this.CallBackUrl, this.ConsumerSecret, authToken);
 
-            string response = WebRequest(Method.GET, accessTokenUrl, String.Empty);
+            string response = this.WebRequest(Method.GET, accessTokenUrl, String.Empty);
             
             if (response.Length > 0)
             {
@@ -161,7 +159,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 }
             }
 
-            responseData = WebResponseGet(webRequest);
+            responseData = this.WebResponseGet(webRequest);
             webRequest = null;
             return responseData;
         }

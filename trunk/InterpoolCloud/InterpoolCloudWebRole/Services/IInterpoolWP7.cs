@@ -9,7 +9,10 @@
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
-        
+
+    /// <summary>
+    /// Interface Description IInterpoolWP7
+    /// </summary>
     [ServiceContract]
     public interface IInterpoolWP7
     {
