@@ -14,7 +14,7 @@ namespace InterpoolCloudWebRole.Datatypes
     {
         public string UserId { get; set; }
 
-        public OAuthFacebook oAuth { get; set; }
+        public OAuthFacebook OAuth { get; set; }
 
         public string id_friend { get; set; }
 
@@ -32,7 +32,7 @@ namespace InterpoolCloudWebRole.Datatypes
 
         public string cinema { get; set; }
 
-        public string television { get; set; }
+        public string Television { get; set; }
 
         public string pictureLink { get; set; }
     }
