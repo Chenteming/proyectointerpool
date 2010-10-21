@@ -21,15 +21,15 @@ namespace InterpoolCloudTest
         [TestInitialize()]
         public void init()
         {
-            container = new InterpoolContainer(@"metadata=res://*/Data.InterpoolModel.csdl|res://*/Data.InterpoolModel.ssdl|res://*/Data.InterpoolModel.msl; provider=System.Data.SqlClient; ;provider connection string='Data Source=Diego-PC\SQLSERVER;Initial Catalog=InterpoolDB;Integrated Security=True;MultipleActiveResultSets=True'");
-            dm = new DataManager();
+            this.container = new InterpoolContainer(@"metadata=res://*/Data.InterpoolModel.csdl|res://*/Data.InterpoolModel.ssdl|res://*/Data.InterpoolModel.msl; provider=System.Data.SqlClient; ;provider connection string='Data Source=Diego-PC\SQLSERVER;Initial Catalog=InterpoolDB;Integrated Security=True;MultipleActiveResultSets=True'");
+            this.dm = new DataManager();
         }
 
         [TestMethod]
         public void TravelGood()
         {
-            ProcessController controller = new ProcessController(container);
-            string userIdFacebook = dm.GetLastUserIdFacebook(container);
+            ProcessController controller = new ProcessController(this.container);
+            string userIdFacebook = this.dm.GetLastUserIdFacebook(this.container);
             NodePath currentNode = controller.GetCurrentNode(userIdFacebook);
             NodePath nextNode = controller.GetNextNode(userIdFacebook);
 
@@ -45,8 +45,8 @@ namespace InterpoolCloudTest
         [TestMethod]
         public void TravelWrong()
         {
-            ProcessController controller = new ProcessController(container);
-            string userIdFacebook = dm.GetLastUserIdFacebook(container);
+            ProcessController controller = new ProcessController(this.container);
+            string userIdFacebook = this.dm.GetLastUserIdFacebook(this.container);
             NodePath currentNode = controller.GetCurrentNode(userIdFacebook);
             NodePath nextNode = controller.GetNextNode(userIdFacebook);
 
