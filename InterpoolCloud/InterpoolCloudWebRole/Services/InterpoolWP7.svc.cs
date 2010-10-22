@@ -15,7 +15,10 @@
     /// Class statement InterpoolWP7
     /// </summary>
     public class InterpoolWP7 : IInterpoolWP7
-    {   
+    {
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private IProcessController controller = new ProcessController(new InterpoolContainer());
 
         public void StartGame(string userIdFacebook)

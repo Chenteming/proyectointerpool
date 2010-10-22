@@ -17,7 +17,7 @@ namespace InterpoolCloudWebRole.Utilities
     /// </summary>
     public static class Admin
     {
-        public static void loadFamousData()
+        public static void LoadFamousData()
         {
             string news = string.Empty;
 

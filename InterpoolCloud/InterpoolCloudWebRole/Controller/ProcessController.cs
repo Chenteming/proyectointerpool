@@ -17,8 +17,14 @@ namespace InterpoolCloudWebRole.Controller
     /// </summary>
     public class ProcessController : IProcessController
     {
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private string output = "Inicio";
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private InterpoolContainer container;
 
         /// <summary>
@@ -29,25 +35,39 @@ namespace InterpoolCloudWebRole.Controller
             this.container = container;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public InterpoolContainer GetContainer()
         {
             return this.container;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public DataCity GetCurrentCity(string userIdFacebook)
         {
             NodePath node = this.GetCurrentNode(userIdFacebook);
             if (node != null)
             {
                 DataCity dataCity = new DataCity();
-                dataCity.name_city = node.City.CityName;
-                dataCity.name_file_city = node.City.NameFile;
+                dataCity.NameCity = node.City.CityName;
+                dataCity.NameFileCity = node.City.NameFile;
                 return dataCity;
             }
 
             return null;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public List<DataCity> GetPossibleCities(string userIdFacebook)
         {
             NodePath node = this.GetCurrentNode(userIdFacebook);
@@ -55,28 +75,39 @@ namespace InterpoolCloudWebRole.Controller
             foreach (City c in node.PossibleCities)
             {
                 DataCity dataCity = new DataCity();
-                dataCity.name_city = node.City.CityName;
-                dataCity.name_file_city = node.City.NameFile;
+                dataCity.NameCity = node.City.CityName;
+                dataCity.NameFileCity = node.City.NameFile;
                 result.Add(dataCity);
             }
 
             return result;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <param name="numClue"> Parameter description for numClue goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public DataFamous GetCurrentFamous(string userIdFacebook, int numClue)
         {
             NodePath node = this.GetCurrentNode(userIdFacebook);
             if (node != null)
             {
                 DataFamous dataFamous = new DataFamous();
-                dataFamous.nameFamous = node.Clue.ElementAt(numClue).Famous.FamousName;
-                dataFamous.fileFamous = node.Clue.ElementAt(numClue).Famous.NameFileFamous;
+                dataFamous.NameFamous = node.Clue.ElementAt(numClue).Famous.FamousName;
+                dataFamous.FileFamous = node.Clue.ElementAt(numClue).Famous.NameFileFamous;
                 return dataFamous;
             }
 
             return null;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public NodePath GetCurrentNode(string userIdFacebook)
         {
             IDataManager dm = new DataManager();
@@ -92,6 +123,11 @@ namespace InterpoolCloudWebRole.Controller
             return null;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public NodePath GetNextNode(string userIdFacebook)
         {
             IDataManager dm = new DataManager();
@@ -113,6 +149,9 @@ namespace InterpoolCloudWebRole.Controller
             return null;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         public void StartGame(string userIdFacebook)
         {
             // this is only the structs that we should follow
@@ -153,6 +192,9 @@ namespace InterpoolCloudWebRole.Controller
             }
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="newGame"> Parameter description for newGame goes here</param>
         public void GetSuspects(Game newGame)
         {
             //// In this operation we should go to find the possibles suspects, and asign the suspect
@@ -163,6 +205,11 @@ namespace InterpoolCloudWebRole.Controller
             facebookController.DownloadFacebookUserData(auth, newGame, this.container);
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="user"> Parameter description for user goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public Game BuiltTravel(User user)
         {
             Game newGame = new Game();
@@ -189,7 +236,7 @@ namespace InterpoolCloudWebRole.Controller
                     do
                     {
                         nextCity = random.Next(1, maxNumber);
-                        next = dm.getCities(this.container).Where(c => c.CityNumber == nextCity).First();
+                        next = dm.GetCities(this.container).Where(c => c.CityNumber == nextCity).First();
                         if (!selectedCities.Contains(next.CityNumber))
                         {
                             find = true;
@@ -224,6 +271,12 @@ namespace InterpoolCloudWebRole.Controller
             return newGame;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <param name="fbud"> Parameter description for fbud goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
         {
             IDataManager dm = new DataManager();
@@ -231,6 +284,12 @@ namespace InterpoolCloudWebRole.Controller
             return dm.FilterSuspects(userIdFacebook, fbud, this.container);
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <param name="nameNextCity"> Parameter description for nameNextCity goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public DataCity Travel(string userIdFacebook, string nameNextCity)
         {
             DataCity datacity = new DataCity();
@@ -239,19 +298,23 @@ namespace InterpoolCloudWebRole.Controller
             if (!nextNode.City.CityName.Equals(nameNextCity))
             {
                 ////TODO: the user lose time
-                datacity.name_city = node.City.CityName;
-                datacity.name_file_city = node.City.NameFile;
+                datacity.NameCity = node.City.CityName;
+                datacity.NameFileCity = node.City.NameFile;
                 return datacity;
             }
 
             node.NodePathCurrent = false;
             nextNode.NodePathCurrent = true;
             this.container.SaveChanges();
-            datacity.name_city = nextNode.City.CityName;
-            datacity.name_file_city = nextNode.City.NameFile;
+            datacity.NameCity = nextNode.City.CityName;
+            datacity.NameFileCity = nextNode.City.NameFile;
             return datacity;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <param name="userIdFacebookSuspect"> Parameter description for userIdFacebookSuspect goes here</param>
         public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
         {
             IDataManager dm = new DataManager();
@@ -281,6 +344,11 @@ namespace InterpoolCloudWebRole.Controller
             this.container.SaveChanges();
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userId"> Parameter description for userId goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public List<DataCity> GetCities(string userId)
         {
             ////TODO: order random
@@ -291,22 +359,28 @@ namespace InterpoolCloudWebRole.Controller
             foreach (City c in node.PossibleCities)
             {
                 datacity = new DataCity();
-                datacity.longitud = c.Longitud;
-                datacity.latitud = c.Latitud;
-                datacity.name_city = c.CityName;
-                datacity.name_file_city = c.NameFile;
+                datacity.Longitud = c.Longitud;
+                datacity.Latitud = c.Latitud;
+                datacity.NameCity = c.CityName;
+                datacity.NameFileCity = c.NameFile;
                 cities.Add(datacity);
             }
 
             datacity = new DataCity();
-            datacity.longitud = node.City.Longitud;
-            datacity.latitud = node.City.Latitud;
-            datacity.name_city = node.City.CityName;
-            datacity.name_file_city = node.City.NameFile;
+            datacity.Longitud = node.City.Longitud;
+            datacity.Latitud = node.City.Latitud;
+            datacity.NameCity = node.City.CityName;
+            datacity.NameFileCity = node.City.NameFile;
             cities.Add(datacity);
             return cities;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <param name="numFamous"> Parameter description for numFamous goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
         {
             IDataManager dm = new DataManager();
@@ -317,7 +391,7 @@ namespace InterpoolCloudWebRole.Controller
                 clue = new DataClue();
 
                 ////TODO make a Constant
-                clue.clue = node.Clue.ElementAt(2 - numFamous).ClueContent;
+                clue.Clue = node.Clue.ElementAt(2 - numFamous).ClueContent;
                 if (node.NodePathOrder == (Constants.NumberLastCity - 1))
                 {
                     ////last city
@@ -330,18 +404,23 @@ namespace InterpoolCloudWebRole.Controller
                 }
                 else
                 {
-                    clue.state = DataClue.State.PL;
+                    clue.States = DataClue.State.PL;
                 }
 
                 return clue;
             }
 
             clue = new DataClue();
-            clue.state = DataClue.State.PL;
-            clue.clue = string.Empty;
+            clue.States = DataClue.State.PL;
+            clue.Clue = string.Empty;
             return clue;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="idLogin"> Parameter description for idLogin goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public string GetLastUserIdFacebook(string idLogin)
         {
             IDataManager dm = new DataManager();
@@ -349,6 +428,10 @@ namespace InterpoolCloudWebRole.Controller
             return dm.GetLastUserIdFacebook(dm.GetContainer());
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="bigSuspect"> Parameter description for bigSuspect goes here</param>
+        /// <param name="privatesProperties"> Parameter description for privatesProperties goes here</param>
         public void CreateHardCodeSuspects(Suspect bigSuspect, List<string> privatesProperties)
         {
             List<Suspect> hardCodeSuspects = new List<Suspect>();
@@ -423,6 +506,11 @@ namespace InterpoolCloudWebRole.Controller
             }
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public string GetUserIdFacebook(string userLoginId)
         {
             IDataManager dm = new DataManager();
@@ -434,6 +522,10 @@ namespace InterpoolCloudWebRole.Controller
          * - first clue is final
          * - second clue is dynamic
          * - third clue only have news of the famous*/
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="g"> Parameter description for g goes here</param>
         private void CreateClue(Game g)
         {
             DataManager dm = new DataManager();
@@ -624,6 +716,12 @@ namespace InterpoolCloudWebRole.Controller
             cnp.Clue.Add(lastClue3);            
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="g"> Parameter description for g goes here</param>
+        /// <param name="currentNodePath"> Parameter description for currentNodePath goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private City NextCity(Game g, NodePath currentNodePath)
         {
             /* get the order for the next NodePath */
@@ -643,6 +741,12 @@ namespace InterpoolCloudWebRole.Controller
             return nextNodePath.First().City;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="s"> Parameter description for s goes here</param>
+        /// <param name="csuspect"> Parameter description for csuspect goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private string GetRandomCharacteristicSuspect(Suspect s, bool[] csuspect)
         {
             /* get the random index for the characteristic of the suspect */
@@ -683,6 +787,13 @@ namespace InterpoolCloudWebRole.Controller
          * summary This function is invoque by the controller when the user reaches the last city
          * 
          * */
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="game"> Parameter description for game goes here</param>
+        /// <param name="clue"> Parameter description for clue goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private bool Arrest(Game game, DataClue clue)
         //// TODO, change to private
         {
@@ -717,20 +828,20 @@ namespace InterpoolCloudWebRole.Controller
                     }
                     //// TODO delete
                     // deleteGame(user, container);
-                    clue.state = DataClue.State.WIN;
+                    clue.States = DataClue.State.WIN;
                     this.container.SaveChanges();
                     return true;
                 }
                 else
                 {
                     // wrong order of arrest
-                    clue.state = DataClue.State.LOSE_EOAW;
+                    clue.States = DataClue.State.LOSE_EOAW;
                 }
             }
             else
             {
                 // no emit order of arrest
-                clue.state = DataClue.State.LOSE_NEOA;
+                clue.States = DataClue.State.LOSE_NEOA;
             }
 
             // user lose
@@ -739,7 +850,11 @@ namespace InterpoolCloudWebRole.Controller
         }
 
         ////TODO private
-        private void deleteGame(User user)
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="user"> Parameter description for user goes here</param>
+        private void DeleteGame(User user)
         {
             Game game = user.Game;
 

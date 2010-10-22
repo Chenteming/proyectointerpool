@@ -11,12 +11,12 @@ namespace InterpoolCloudWebRole.Datatypes
     /// </summary>
     public class DataCity
     {
-        public string name_city { get; set; }
+        public string NameCity { get; set; }
 
-        public string name_file_city { get; set; }
+        public string NameFileCity { get; set; }
 
-        public double latitud { get; set; }
+        public double Latitud { get; set; }
 
-        public double longitud { get; set; }
+        public double Longitud { get; set; }
     }
 }

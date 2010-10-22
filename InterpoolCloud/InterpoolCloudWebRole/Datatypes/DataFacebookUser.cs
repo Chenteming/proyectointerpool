@@ -16,24 +16,24 @@ namespace InterpoolCloudWebRole.Datatypes
 
         public OAuthFacebook OAuth { get; set; }
 
-        public string id_friend { get; set; }
+        public string IdFriend { get; set; }
 
-        public string first_name { get; set; }
+        public string FirstName { get; set; }
 
-        public string last_name { get; set; }
+        public string LastName { get; set; }
 
-        public string birthday { get; set; }
+        public string Birthday { get; set; }
 
-        public string hometown { get; set; }
+        public string Hometown { get; set; }
 
-        public string gender { get; set; }
+        public string Gender { get; set; }
 
-        public string music { get; set; }
+        public string Music { get; set; }
 
-        public string cinema { get; set; }
+        public string Cinema { get; set; }
 
         public string Television { get; set; }
 
-        public string pictureLink { get; set; }
+        public string PictureLink { get; set; }
     }
 }

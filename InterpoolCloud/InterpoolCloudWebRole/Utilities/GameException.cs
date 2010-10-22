@@ -11,6 +11,9 @@ namespace InterpoolCloudWebRole.Utilities
     /// </summary>
     public class GameException : Exception
     {
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private string msg;
 
         /// <summary>
