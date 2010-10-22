@@ -20,8 +20,8 @@ namespace InterpoolCloudWebRole.Datatypes
             WIN
         }
 
-        public State state { get; set; }
+        public State States { get; set; }
 
-        public string clue { get; set; }
+        public string Clue { get; set; }
     }
 }

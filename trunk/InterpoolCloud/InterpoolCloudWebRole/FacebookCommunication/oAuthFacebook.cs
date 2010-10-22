@@ -20,16 +20,34 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             GET, POST 
         }
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         public const string Authorize = "https://graph.facebook.com/oauth/authorize";
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         public const string AccessToken = "https://graph.facebook.com/oauth/access_token";
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         public string CallBackUrl = Constants.FacebookCallbackUrl;
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private string consumerKey = string.Empty;
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private string consumerSecret = string.Empty;
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private string token = string.Empty;
 
         #region Properties

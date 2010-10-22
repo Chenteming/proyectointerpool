@@ -11,8 +11,8 @@ namespace InterpoolCloudWebRole.Datatypes
     /// </summary>
     public class DataFamous
     {
-        public string nameFamous { set; get; }
+        public string NameFamous { set; get; }
 
-        public string fileFamous { set; get; }
+        public string FileFamous { set; get; }
     }
 }

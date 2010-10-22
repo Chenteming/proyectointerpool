@@ -13,34 +13,112 @@ namespace InterpoolCloudWebRole.Data
     /// </summary>
     interface IDataManager
     {
-        IQueryable<City> getCities(InterpoolContainer context);
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        IQueryable<City> GetCities(InterpoolContainer context);
 
-        IQueryable<Level> getLevels(InterpoolContainer context);
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        IQueryable<Level> GetLevels(InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="city"> Parameter description for city goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         IQueryable<Famous> GetFamousByCity(City city, InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="city"> Parameter description for city goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         IQueryable<CityProperty> GetCityPropertyByCity(City city, InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="g"> Parameter description for g goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         IQueryable<Suspect> GetSuspectByGame(Game g, InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         string GetLastUserIdFacebook(InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         string GetUserIdFacebookByLoginId(string userLoginId, InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         OAuthFacebook GetLastUserToken(InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="user"> Parameter description for user goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
         void StoreUser(User user, InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="suspect"> Parameter description for suspect goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
         void StoreSuspect(Suspect suspect, InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="context"> Parameter description for context goes here</param>
         void SaveChanges(InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         InterpoolContainer GetContainer();
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="name"> Parameter description for name goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         string GetParameter(string name, InterpoolContainer context);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFaceook"> Parameter description for userIdFaceook goes here</param>
+        /// <param name="conteiner"> Parameter description for conteiner goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         Game GetGameByUser(string userIdFaceook, InterpoolContainer conteiner);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <param name="fbud"> Parameter description for fbud fbud here</param>
+        /// <param name="container"> Parameter description for container goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud, InterpoolContainer container);
     }
 }

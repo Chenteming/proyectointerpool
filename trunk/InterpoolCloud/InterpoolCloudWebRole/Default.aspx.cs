@@ -34,7 +34,7 @@ namespace InterpoolCloudWebRole
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Admin.loadFamousData();
+            Admin.LoadFamousData();
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace InterpoolCloudWebRole
 
             foreach (DataCity d in col)
             {
-                this.pruebaGetCities.Text = this.pruebaGetCities.Text + d.latitud + " " + d.longitud + " " + d.name_city + " " + d.name_file_city + "\n";
+                this.pruebaGetCities.Text = this.pruebaGetCities.Text + d.Latitud + " " + d.Longitud + " " + d.NameCity + " " + d.NameFileCity + "\n";
             }
         }
 

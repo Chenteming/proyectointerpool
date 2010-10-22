@@ -18,7 +18,15 @@ namespace InterpoolCloudWebRole.FacebookCommunication
     public class FacebookController : IFacebookController
     {
         // Stores al recovered data form user facebook friends.
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private Dictionary<string, DataFacebookUser> userIdOauth = new Dictionary<string, DataFacebookUser>();
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private IDataManager dataManager = new DataManager();
 
         // Downloads from Facebook all the information from user and user's friends
@@ -48,7 +56,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 {
                     fbudOfSuspect = this.GetFriendInfo(userId, friendId);
                     suspect = this.NewSuspectFromFacebookUserData(fbudOfSuspect);
-                    if (this.haveEnouthFields(suspect, Constants.DataRequired))
+                    if (this.HaveEnouthFields(suspect, Constants.DataRequired))
                     {
                         this.dataManager.StoreSuspect(suspect, context);
                         if (numberSuspect == i)
@@ -167,12 +175,12 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             // The likes will be discriminates as Television, Cinema and Music
             friendData = this.GetFriendLikesInfoByJson(jsonFriendInfo, friendData);
 
-            friendData.pictureLink = String.Format("https://graph.facebook.com/{0}/picture", friendData.id_friend, string.Empty);
+            friendData.PictureLink = String.Format("https://graph.facebook.com/{0}/picture", friendData.IdFriend, string.Empty);
             
             return friendData;
         }
 
-        private bool haveEnouthFields(Suspect fbudOfSuspect, int cantDataRequired)
+        private bool HaveEnouthFields(Suspect fbudOfSuspect, int cantDataRequired)
         {
             int cant = 0;
             if (fbudOfSuspect.SuspectBirthday != string.Empty)
@@ -218,16 +226,16 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         private Suspect NewSuspectFromFacebookUserData(DataFacebookUser fbudOfSuspect)
         {
             Suspect suspect = new Suspect();
-            suspect.SuspectFacebookId = (fbudOfSuspect.id_friend == null) ? string.Empty : fbudOfSuspect.id_friend;
-            suspect.SuspectFirstName = fbudOfSuspect.first_name;
-            suspect.SuspectLastName = fbudOfSuspect.last_name;
-            suspect.SuspectBirthday = (fbudOfSuspect.birthday == null) ? string.Empty : fbudOfSuspect.birthday;
-            suspect.SuspectHometown = (fbudOfSuspect.hometown == null) ? string.Empty : fbudOfSuspect.hometown;
-            suspect.SuspectMusic = (fbudOfSuspect.music == null) ? string.Empty : fbudOfSuspect.music;
+            suspect.SuspectFacebookId = (fbudOfSuspect.IdFriend == null) ? string.Empty : fbudOfSuspect.IdFriend;
+            suspect.SuspectFirstName = fbudOfSuspect.FirstName;
+            suspect.SuspectLastName = fbudOfSuspect.LastName;
+            suspect.SuspectBirthday = (fbudOfSuspect.Birthday == null) ? string.Empty : fbudOfSuspect.Birthday;
+            suspect.SuspectHometown = (fbudOfSuspect.Hometown == null) ? string.Empty : fbudOfSuspect.Hometown;
+            suspect.SuspectMusic = (fbudOfSuspect.Music == null) ? string.Empty : fbudOfSuspect.Music;
             suspect.SuspectTelevision = (fbudOfSuspect.Television == null) ? string.Empty : fbudOfSuspect.Television;
-            suspect.SuspectCinema = (fbudOfSuspect.cinema == null) ? string.Empty : fbudOfSuspect.cinema;
-            suspect.SuspectGender = (fbudOfSuspect.gender == null) ? string.Empty : fbudOfSuspect.gender;
-            suspect.SuspectPicLInk = (fbudOfSuspect.pictureLink == null) ? string.Empty : fbudOfSuspect.pictureLink;
+            suspect.SuspectCinema = (fbudOfSuspect.Cinema == null) ? string.Empty : fbudOfSuspect.Cinema;
+            suspect.SuspectGender = (fbudOfSuspect.Gender == null) ? string.Empty : fbudOfSuspect.Gender;
+            suspect.SuspectPicLInk = (fbudOfSuspect.PictureLink == null) ? string.Empty : fbudOfSuspect.PictureLink;
 
             return suspect;
         }
@@ -238,77 +246,77 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             JObject jsonFriendObject = JObject.Parse(jsonFriendInfo);
             List<string> friendsId = new List<string>();
             DataFacebookUser fbud = new DataFacebookUser();
-            fbud.birthday = string.Empty;
-            fbud.cinema = string.Empty;
-            fbud.first_name = string.Empty;
-            fbud.hometown = string.Empty;
-            fbud.last_name = string.Empty;
-            fbud.music = string.Empty;
+            fbud.Birthday = string.Empty;
+            fbud.Cinema = string.Empty;
+            fbud.FirstName = string.Empty;
+            fbud.Hometown = string.Empty;
+            fbud.LastName = string.Empty;
+            fbud.Music = string.Empty;
             fbud.Television = string.Empty;
             fbud.UserId = string.Empty;
-            fbud.id_friend = string.Empty;
-            fbud.gender = string.Empty;
-            fbud.pictureLink = string.Empty;
+            fbud.IdFriend = string.Empty;
+            fbud.Gender = string.Empty;
+            fbud.PictureLink = string.Empty;
 
             ////string id = (string)jsonFriendObject.SelectToken("name");
 
             ////================GETTING STANDARD FRIENDS DATA=====================//
             // Error = if true rise exception when does not match token.
             bool error = false;
-            fbud.id_friend = (string)jsonFriendObject.SelectToken("id", error);
-            fbud.first_name = (string)jsonFriendObject.SelectToken("first_name", error);
-            fbud.last_name = (string)jsonFriendObject.SelectToken("last_name", error);
-            fbud.birthday = (string)jsonFriendObject.SelectToken("birthday", error);
+            fbud.IdFriend = (string)jsonFriendObject.SelectToken("id", error);
+            fbud.FirstName = (string)jsonFriendObject.SelectToken("first_name", error);
+            fbud.LastName = (string)jsonFriendObject.SelectToken("last_name", error);
+            fbud.Birthday = (string)jsonFriendObject.SelectToken("birthday", error);
             ////TODO: check the output format
-            if (fbud.birthday != null)
+            if (fbud.Birthday != null)
             {
-                string[] fecha = fbud.birthday.Split('/');
+                string[] fecha = fbud.Birthday.Split('/');
                 switch (fecha[1])
                 {
                     case "1":
-                        fbud.birthday = "Enero";
+                        fbud.Birthday = "Enero";
                         break;
                     case "2":
-                        fbud.birthday = "Febrero";
+                        fbud.Birthday = "Febrero";
                         break;
                     case "3":
-                        fbud.birthday = "Marzo";
+                        fbud.Birthday = "Marzo";
                         break;
                     case "4":
-                        fbud.birthday = "Abril";
+                        fbud.Birthday = "Abril";
                         break;
                     case "5":
-                        fbud.birthday = "Mayo";
+                        fbud.Birthday = "Mayo";
                         break;
                     case "6":
-                        fbud.birthday = "Junio";
+                        fbud.Birthday = "Junio";
                         break;
                     case "7":
-                        fbud.birthday = "Julio";
+                        fbud.Birthday = "Julio";
                         break;
                     case "8":
-                        fbud.birthday = "Agosto";
+                        fbud.Birthday = "Agosto";
                         break;
                     case "9":
-                        fbud.birthday = "Setiembre";
+                        fbud.Birthday = "Setiembre";
                         break;
                     case "10":
-                        fbud.birthday = "Octubre";
+                        fbud.Birthday = "Octubre";
                         break;
                     case "11":
-                        fbud.birthday = "Noviembre";
+                        fbud.Birthday = "Noviembre";
                         break;
                     case "12":
-                        fbud.birthday = "Diciembre";
+                        fbud.Birthday = "Diciembre";
                         break;
                 }
             }
 
-            fbud.gender = (string)jsonFriendObject.SelectToken("gender", error);
+            fbud.Gender = (string)jsonFriendObject.SelectToken("gender", error);
             JObject jsonFriendObjectAnid = (JObject)jsonFriendObject.SelectToken("hometown", error);
             if (jsonFriendObjectAnid != null)
             {
-                fbud.hometown = (string)jsonFriendObjectAnid.SelectToken("name", error);
+                fbud.Hometown = (string)jsonFriendObjectAnid.SelectToken("name", error);
             }
 
             return fbud;                           
@@ -324,9 +332,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
             int i = 0;
             bool exit = false;
-            friendData.music = string.Empty;
+            friendData.Music = string.Empty;
             friendData.Television = string.Empty;
-            friendData.cinema = string.Empty;
+            friendData.Cinema = string.Empty;
             
             while (like_category != null && !exit)
             {
@@ -334,20 +342,20 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 {
                     case "Music":
                     case "Musicians":
-                        friendData.music = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        friendData.Music = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         break;
                     case "Television":
                         friendData.Television = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         break;
                     case "Movie":
                     case "Film":
-                        friendData.cinema = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        friendData.Cinema = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         break;
                 }
 
                 i++;
                 like_category = (string)jsonFriendObject.SelectToken("data[" + i + "].category");
-                if (friendData.music != string.Empty && friendData.Television != string.Empty && friendData.cinema != string.Empty)
+                if (friendData.Music != string.Empty && friendData.Television != string.Empty && friendData.Cinema != string.Empty)
                 {
                     exit = true;
                 }           
