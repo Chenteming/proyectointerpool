@@ -15,8 +15,19 @@ namespace InterpoolCloudTest
     [TestClass]
     public class BuiltTravelTest
     {
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private InterpoolContainer container;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private DataManager dm;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private TestContext testContextInstance;
 
         /// <summary>
