@@ -54,6 +54,10 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 this.userIdOauth.Add(userId, fbud);
 
                 List<string> friendsIds = this.GetFriendsId(userId);
+                
+                Functions functions = new Functions();
+                List<string> shufflefriendsIds = functions.SuffleList<string>(friendsIds);
+
                 Suspect suspect;
                 List<Suspect> suspects = new List<Suspect>();
                 DataFacebookUser fbudOfSuspect; 
@@ -62,7 +66,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 int limit = Constants.MaxSuspects;
                 int i = 0;
                 int numberSuspect = new Random().Next(0, limit);
-                foreach (string friendId in friendsIds)
+                foreach (string friendId in shufflefriendsIds)
                 {
                     fbudOfSuspect = this.GetFriendInfo(userId, friendId);
                     suspect = this.NewSuspectFromFacebookUserData(fbudOfSuspect);
