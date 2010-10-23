@@ -1,4 +1,8 @@
-﻿
+﻿//-----------------------------------------------------------------------
+// <copyright file="BuiltTravelTest.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace InterpoolCloudTest
 {
     using System;
