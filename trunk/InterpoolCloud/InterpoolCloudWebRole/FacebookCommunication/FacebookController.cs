@@ -15,7 +15,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
     using InterpoolCloudWebRole.Utilities;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-
+    
     /// <summary>
     /// Class statement FacebookController
     /// </summary>
