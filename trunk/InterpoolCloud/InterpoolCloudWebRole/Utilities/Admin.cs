@@ -156,7 +156,7 @@ namespace InterpoolCloudWebRole.Utilities
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         #region EscapearQuery
-        static string EscapearQuery(string queryIn)
+        public static string EscapearQuery(string queryIn)
         {
             var cadenaSplit = queryIn.Split(' ');
             System.Text.StringBuilder result = new System.Text.StringBuilder();
@@ -185,7 +185,7 @@ namespace InterpoolCloudWebRole.Utilities
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         #region BingRequest
-        static SearchResponse BingRequest(string query)
+        public static SearchResponse BingRequest(string query)
         {
             BingSearchService.BingPortTypeClient client = new BingSearchService.BingPortTypeClient();
             SearchRequest request = new SearchRequest()
@@ -218,7 +218,7 @@ namespace InterpoolCloudWebRole.Utilities
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         #region ParsearNoticia
-        static string ParsearNoticia(string entrada, string query)
+        public static string ParsearNoticia(string entrada, string query)
         {
             string resultado = null;
             Regex expRegNoticia;
@@ -244,7 +244,7 @@ namespace InterpoolCloudWebRole.Utilities
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         #region ReemplazarTexto
-        static string ReemplazarTexto(string noticia, string nuevoTxt, string viejoTxt)
+        public static string ReemplazarTexto(string noticia, string nuevoTxt, string viejoTxt)
         {
             if (noticia != null)
             {

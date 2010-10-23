@@ -15,7 +15,7 @@ namespace InterpoolCloudWebRole.Data
     /// <summary>
     /// Interface Description IDataManager
     /// </summary>
-    interface IDataManager
+    public interface IDataManager
     {
         /// <summary>
         /// Description for Method.</summary>

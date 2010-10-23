@@ -17,10 +17,18 @@ namespace InterpoolCloudWebRole.Datatypes
     {
         /// <summary>
         /// Gets or sets for Method.</summary>
-        public string NameFamous { set; get; }
+        public string NameFamous 
+        {
+            get;
+            set; 
+        }
 
         /// <summary>
         /// Gets or sets for Method.</summary>
-        public string FileFamous { set; get; }
+        public string FileFamous 
+        {
+            get;
+            set;  
+        }
     }
 }

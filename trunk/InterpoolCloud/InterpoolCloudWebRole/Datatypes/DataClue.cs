@@ -20,10 +20,29 @@ namespace InterpoolCloudWebRole.Datatypes
         /// </summary>
         public enum State
         {
+            /// <summary>
+            /// listed field
+            /// </summary>
             PL,
+
+            /// <summary>
+            /// listed field
+            /// </summary>
             LOSE_NEOA,
+
+            /// <summary>
+            /// listed field
+            /// </summary>
             LOSE_EOAW,
+
+            /// <summary>
+            /// listed field
+            /// </summary>
             LOSE_TO,
+
+            /// <summary>
+            /// listed field
+            /// </summary>
             WIN
         }
 

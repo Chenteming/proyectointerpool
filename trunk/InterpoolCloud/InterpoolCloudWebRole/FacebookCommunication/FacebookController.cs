@@ -599,10 +599,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             //// this is for single user game
 
             return this.GetOauth(userId);
-            
- 	        //// TODO: [multiUserGame]we must ask for the auth for the actual user
-
-            throw new NotImplementedException();
         }
 
         //// TODO: see if this method will stay in this class

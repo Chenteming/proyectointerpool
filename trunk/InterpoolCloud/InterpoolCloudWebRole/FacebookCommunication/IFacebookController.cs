@@ -15,7 +15,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
     /// <summary>
     /// Interface Description IFacebookController
     /// </summary>
-    interface IFacebookController
+    public interface IFacebookController
     {
         /// <summary>
         /// Description for Method.</summary>
