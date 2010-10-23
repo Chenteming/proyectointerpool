@@ -11,8 +11,12 @@ namespace InterpoolCloudWebRole.Datatypes
     /// </summary>
     public class DataFamous
     {
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public string NameFamous { set; get; }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public string FileFamous { set; get; }
     }
 }

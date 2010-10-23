@@ -13,6 +13,10 @@ namespace InterpoolCloudWebRole
     /// </summary>
     public class WebRole : RoleEntryPoint
     {
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public override bool OnStart()
         {
             DiagnosticMonitor.Start("DiagnosticsConnectionString");
@@ -24,6 +28,10 @@ namespace InterpoolCloudWebRole
             return base.OnStart();
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         private void RoleEnvironmentChanging(object sender, RoleEnvironmentChangingEventArgs e)
         {
             // If a configuration setting is changing
