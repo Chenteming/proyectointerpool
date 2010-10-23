@@ -14,49 +14,103 @@ namespace InterpoolCloudWebRole.Utilities
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static int NumberLastCity = 4;
+        public static int NumberLastCity
+        {
+            get
+            {
+                return 4;
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static int NumberSubLevels = 3;
+        public static int NumberSubLevels
+        {
+            get
+            {
+                return 3;
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static int MaxLevels = 10;
+        public static int MaxLevels
+        {
+            get
+            {
+                return 10;
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static int MaxSuspects = 10;
+        public static int MaxSuspects
+        {
+            get
+            {
+                return 10;
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static int DataRequired = 3;
+        public static int DataRequired
+        {
+            get
+            {
+                return 3;
+            }
+        }
 
         //// All this constants are for the cloud application ////
         /*
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string RedirectUrlAfterLoginFacebook = "http://pis2010.cloudapp.net/Default.aspx";
+        public static string RedirectUrlAfterLoginFacebook
+        {
+            get
+            {
+                return "http://pis2010.cloudapp.net/Default.aspx";
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string ConsumerKey = "123625261023469";
+        private static string ConsumerKey
+        {
+            get
+            {
+                return "123625261023469";
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string ConsumerSecret = "2ea5107535d2ee3f514a06a186139be6";
-        
+        private static string ConsumerSecret
+        {
+            get
+            {
+                return "2ea5107535d2ee3f514a06a186139be6";
+            }
+        }
+
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string FacebookCallbackUrl = "http://pis2010.cloudapp.net/Pages/FacebookCallback.aspx/";
+        private static string FacebookCallbackUrl
+        {
+            get
+            {
+                return "http://pis2010.cloudapp.net/Pages/FacebookCallback.aspx/";
+            }
+        }
         */
         //// End of constants for the cloud application ////
 
@@ -65,55 +119,115 @@ namespace InterpoolCloudWebRole.Utilities
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string RedirectUrlAfterLoginFacebook = "http://127.0.0.1:81/Default.aspx/";
+        public static string RedirectUrlAfterLoginFacebook
+        {
+            get
+            {
+                return "http://127.0.0.1:81/Default.aspx/";
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string ConsumerKey = "146049795426501";
+        public static string ConsumerKey
+        {
+            get
+            {
+                return "146049795426501";
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string ConsumerSecret = "ea1aab4d4b19644875b4b22a54e17163";
-        
+        public static string ConsumerSecret
+        {
+            get
+            {
+                return "ea1aab4d4b19644875b4b22a54e17163";
+            }
+        }
+
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string FacebookCallbackUrl = "http://127.0.0.1:81/Pages/FacebookCallback.aspx/";
-        
+        public static string FacebookCallbackUrl
+        {
+            get
+            {
+                return "http://127.0.0.1:81/Pages/FacebookCallback.aspx/";
+            }
+        }
+
         //// End of constants for local test ////
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static uint AmountHardCodeSuspects = 10;
+        public static uint AmountHardCodeSuspects
+        {
+            get
+            {
+                return 10;
+            }
+        }
 
         ////constants used in the search with BING
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string AppId = "A00C4105122186E4F9F0DFD82CDF594DD866BC1F";
+        public static string AppId
+        {
+            get
+            {
+                return "A00C4105122186E4F9F0DFD82CDF594DD866BC1F";
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string Market = "es-Mx";
+        public static string Market
+        {
+            get
+            {
+                return "es-Mx";
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static string RequestVersion = "2.0";
+        public static string RequestVersion
+        {
+            get
+            {
+                return "2.0";
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static uint NewsOffset = 0;
+        public static uint NewsOffset
+        {
+            get
+            {
+                return 0;
+            }
+        }
 
         /// <summary>
         /// Store for the property
         /// </summary>
-        public static uint NewsCount = 10;
+        public static uint NewsCount
+        {
+            get
+            {
+                return 10;
+            }
+        }
     }
 }
