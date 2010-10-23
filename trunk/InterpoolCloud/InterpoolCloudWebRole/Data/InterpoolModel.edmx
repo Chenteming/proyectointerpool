@@ -68,10 +68,6 @@
       <End Role="Clue" EntitySet="Clues" />
       <End Role="Famous" EntitySet="Famous" />
     </AssociationSet>
-    <AssociationSet Name="CityLevel" Association="InterpoolModel.Store.CityLevel">
-      <End Role="City" EntitySet="Cities" />
-      <End Role="Level" EntitySet="Levels" />
-    </AssociationSet>
     <AssociationSet Name="NodePathCity" Association="InterpoolModel.Store.NodePathCity">
       <End Role="NodePath" EntitySet="NodePaths" />
       <End Role="City" EntitySet="Cities" />
@@ -108,6 +104,10 @@
       <End Role="User" EntitySet="Users" />
       <End Role="Level" EntitySet="Levels" />
     </AssociationSet>
+    <AssociationSet Name="LevelCity" Association="InterpoolModel.Store.LevelCity">
+      <End Role="Level" EntitySet="Levels" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
@@ -117,8 +117,8 @@
     <Property Name="UserIdFacebook" Type="nvarchar(max)" Nullable="false" />
     <Property Name="UserTokenFacebook" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SubLevel" Type="int" Nullable="true" />
-    <Property Name="LevelLevelId" Type="int" Nullable="false" />
     <Property Name="UserLoginId" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="LevelLevelId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Games">
     <Key>
@@ -149,7 +149,7 @@
     <Property Name="Longitud" Type="int" Nullable="false" />
     <Property Name="Latitud" Type="int" Nullable="false" />
     <Property Name="NameFile" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Level_LevelId" Type="int" Nullable="false" />
+    <Property Name="LevelLevelId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Famous">
     <Key>
@@ -338,18 +338,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="CityLevel">
-    <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="*" />
-    <End Role="Level" Type="InterpoolModel.Store.Levels" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Level">
-        <PropertyRef Name="LevelId" />
-      </Principal>
-      <Dependent Role="City">
-        <PropertyRef Name="Level_LevelId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="NodePathCity">
     <End Role="NodePath" Type="InterpoolModel.Store.NodePaths" Multiplicity="*" />
     <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="1" />
@@ -430,6 +418,18 @@
         <PropertyRef Name="LevelId" />
       </Principal>
       <Dependent Role="User">
+        <PropertyRef Name="LevelLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LevelCity">
+    <End Role="Level" Type="InterpoolModel.Store.Levels" Multiplicity="1" />
+    <End Role="City" Type="InterpoolModel.Store.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Level">
+        <PropertyRef Name="LevelId" />
+      </Principal>
+      <Dependent Role="City">
         <PropertyRef Name="LevelLevelId" />
       </Dependent>
     </ReferentialConstraint>
@@ -576,10 +576,6 @@
             <End Role="Clue" EntitySet="Clues" />
             <End Role="Famous" EntitySet="Famous" />
           </AssociationSet>
-          <AssociationSet Name="CityLevel" Association="InterpoolModel.CityLevel">
-            <End Role="City" EntitySet="Cities" />
-            <End Role="Level" EntitySet="Levels" />
-          </AssociationSet>
           <AssociationSet Name="NodePathCity" Association="InterpoolModel.NodePathCity">
             <End Role="NodePath" EntitySet="NodePaths" />
             <End Role="City" EntitySet="Cities" />
@@ -612,11 +608,15 @@
             <End Role="OrderOfArrest" EntitySet="OrdersOfArrest" />
             <End Role="Suspect" EntitySet="Suspects" />
           </AssociationSet>
-          <AssociationSet Name="UserLevel" Association="InterpoolModel.UserLevel">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Level" EntitySet="Levels" />
-          </AssociationSet>
           <EntitySet Name="HardCodedSuspects" EntityType="InterpoolModel.HardCodedSuspect" />
+          <AssociationSet Name="UserLevel" Association="InterpoolModel.UserLevel">
+            <End EntitySet="Users" Role="User" />
+            <End EntitySet="Levels" Role="Level" />
+          </AssociationSet>
+          <AssociationSet Name="LevelCity" Association="InterpoolModel.LevelCity">
+            <End Role="Level" EntitySet="Levels" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -627,9 +627,9 @@
           <Property Type="String" Name="UserTokenFacebook" Nullable="false" />
           <NavigationProperty Name="Game" Relationship="InterpoolModel.UserGame" FromRole="User" ToRole="Game" />
           <Property Type="Int32" Name="SubLevel" Nullable="true" />
+          <Property Type="String" Name="UserLoginId" Nullable="true" />
           <NavigationProperty Name="Level" Relationship="InterpoolModel.UserLevel" FromRole="User" ToRole="Level" />
           <Property Type="Int32" Name="LevelLevelId" Nullable="false" />
-          <Property Type="String" Name="UserLoginId" Nullable="true" />
         </EntityType>
         <EntityType Name="Game">
           <Key>
@@ -665,7 +665,6 @@
           <Property Type="String" Name="CityCountry" Nullable="false" />
           <NavigationProperty Name="Famous" Relationship="InterpoolModel.CityFamous" FromRole="City" ToRole="Famous" />
           <NavigationProperty Name="Clue" Relationship="InterpoolModel.ClueCity" FromRole="City" ToRole="Clue" />
-          <NavigationProperty Name="Level" Relationship="InterpoolModel.CityLevel" FromRole="City" ToRole="Level" />
           <NavigationProperty Name="NodePath" Relationship="InterpoolModel.NodePathCity" FromRole="City" ToRole="NodePath" />
           <NavigationProperty Name="CityProperty" Relationship="InterpoolModel.CityCityProperty" FromRole="City" ToRole="CityProperty" />
           <Property Type="Int32" Name="CityNumber" Nullable="false" />
@@ -673,6 +672,8 @@
           <Property Type="Int32" Name="Longitud" Nullable="false" />
           <Property Type="Int32" Name="Latitud" Nullable="false" />
           <Property Type="String" Name="NameFile" Nullable="true" />
+          <NavigationProperty Name="Level" Relationship="InterpoolModel.LevelCity" FromRole="City" ToRole="Level" />
+          <Property Type="Int32" Name="LevelLevelId" Nullable="false" />
         </EntityType>
         <EntityType Name="Famous">
           <Key>
@@ -729,7 +730,6 @@
           <Property Type="Int32" Name="LevelId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="LevelName" Nullable="false" />
           <Property Type="String" Name="GroupFacebookId" Nullable="false" />
-          <NavigationProperty Name="City" Relationship="InterpoolModel.CityLevel" FromRole="Level" ToRole="City" />
           <Property Type="Int32" Name="LevelNumber" Nullable="false" />
         </EntityType>
         <Association Name="GameSuspect">
@@ -763,10 +763,6 @@
         <Association Name="ClueFamous">
           <End Type="InterpoolModel.Clue" Role="Clue" Multiplicity="*" />
           <End Type="InterpoolModel.Famous" Role="Famous" Multiplicity="0..1" />
-        </Association>
-        <Association Name="CityLevel">
-          <End Type="InterpoolModel.City" Role="City" Multiplicity="1" />
-          <End Type="InterpoolModel.Level" Role="Level" Multiplicity="1" />
         </Association>
         <Association Name="NodePathCity">
           <End Type="InterpoolModel.NodePath" Role="NodePath" Multiplicity="*" />
@@ -829,18 +825,6 @@
           <End Type="InterpoolModel.OrderOfArrest" Role="OrderOfArrest" Multiplicity="0..1" />
           <End Type="InterpoolModel.Suspect" Role="Suspect" Multiplicity="1" />
         </Association>
-        <Association Name="UserLevel">
-          <End Type="InterpoolModel.User" Role="User" Multiplicity="*" />
-          <End Type="InterpoolModel.Level" Role="Level" Multiplicity="1" />
-          <ReferentialConstraint>
-            <Principal Role="Level">
-              <PropertyRef Name="LevelId" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="LevelLevelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="HardCodedSuspect">
           <Key>
             <PropertyRef Name="HardCodedSuspecId" />
@@ -850,6 +834,30 @@
           <Property Type="String" Name="HardCodedSuspectLastName" Nullable="false" />
           <Property Type="String" Name="HardCodedSuspectGender" Nullable="false" />
         </EntityType>
+        <Association Name="UserLevel">
+          <End Type="InterpoolModel.User" Multiplicity="*" Role="User" />
+          <End Type="InterpoolModel.Level" Multiplicity="1" Role="Level" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="LevelId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="LevelLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LevelCity">
+          <End Type="InterpoolModel.Level" Role="Level" Multiplicity="1" />
+          <End Type="InterpoolModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="LevelId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="LevelLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -863,8 +871,8 @@
           <ScalarProperty Name="UserIdFacebook" ColumnName="UserIdFacebook" />
           <ScalarProperty Name="UserTokenFacebook" ColumnName="UserTokenFacebook" />
           <ScalarProperty Name="SubLevel" ColumnName="SubLevel" />
-          <ScalarProperty Name="LevelLevelId" ColumnName="LevelLevelId" />
           <ScalarProperty Name="UserLoginId" ColumnName="UserLoginId" />
+          <ScalarProperty Name="LevelLevelId" ColumnName="LevelLevelId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -895,6 +903,7 @@
           <ScalarProperty Name="Longitud" ColumnName="Longitud" />
           <ScalarProperty Name="Latitud" ColumnName="Latitud" />
           <ScalarProperty Name="NameFile" ColumnName="NameFile" />
+          <ScalarProperty Name="LevelLevelId" ColumnName="LevelLevelId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1061,14 +1070,6 @@
       </EndProperty>
       <Condition ColumnName="Famous_FamousId" IsNull="false" />
     </AssociationSetMapping>
-    <AssociationSetMapping Name="CityLevel" TypeName="InterpoolModel.CityLevel" StoreEntitySet="Cities">
-      <EndProperty Name="Level">
-        <ScalarProperty Name="LevelId" ColumnName="Level_LevelId" />
-      </EndProperty>
-      <EndProperty Name="City">
-        <ScalarProperty Name="CityId" ColumnName="CityId" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="NodePathCity" TypeName="InterpoolModel.NodePathCity" StoreEntitySet="NodePaths">
       <EndProperty Name="City">
         <ScalarProperty Name="CityId" ColumnName="City_CityId" />
@@ -1146,7 +1147,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Model1" ZoomLevel="73" >
-        <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="4.625" PointY="5.5" Height="2.5571907552083335" />
+        <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="4.625" PointY="5.5" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="InterpoolModel.Game" Width="1.5" PointX="1.25" PointY="5.375" Height="2.3648893229166656" />
         <EntityTypeShape EntityType="InterpoolModel.NodePath" Width="1.5" PointX="4.125" PointY="8.25" Height="2.5571907552083335" />
         <EntityTypeShape EntityType="InterpoolModel.City" Width="1.5" PointX="8.375" PointY="4.25" Height="3.5186979166666656" />
@@ -1197,10 +1198,6 @@
           <ConnectorPoint PointX="13.5937475" PointY="10.386536458333334" />
           <ConnectorPoint PointX="9.625" PointY="10.386536458333334" />
         </AssociationConnector>
-        <AssociationConnector Association="InterpoolModel.CityLevel">
-          <ConnectorPoint PointX="8.375" PointY="4.4276432291666667" />
-          <ConnectorPoint PointX="7.125" PointY="4.4276432291666667" />
-        </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.NodePathCity">
           <ConnectorPoint PointX="5.625" PointY="8.265625" />
           <ConnectorPoint PointX="8.9166666666666661" PointY="8.265625" />
@@ -1246,11 +1243,16 @@
           <ConnectorPoint PointX="3.625" PointY="0.984014518116543" />
           <ConnectorPoint PointX="7.875" PointY="0.984014518116543" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="InterpoolModel.HardCodedSuspect" Width="1.5" PointX="16.25" PointY="0.625" Height="1.787985026041667" />
         <AssociationConnector Association="InterpoolModel.UserLevel">
           <ConnectorPoint PointX="5.8125" PointY="5.5" />
-          <ConnectorPoint PointX="5.8125" PointY="4.6052864583333335" />
+          <ConnectorPoint PointX="5.8125" PointY="4.4129850260416665" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="InterpoolModel.HardCodedSuspect" Width="1.5" PointX="16.25" PointY="0.625" Height="1.787985026041667" />
+        <AssociationConnector Association="InterpoolModel.LevelCity">
+          <ConnectorPoint PointX="6.84375" PointY="4.4129850260416665" />
+          <ConnectorPoint PointX="6.84375" PointY="4.9564950130208327" />
+          <ConnectorPoint PointX="8.375" PointY="4.9564950130208327" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

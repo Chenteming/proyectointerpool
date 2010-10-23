@@ -26,7 +26,6 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathClue", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.NodePath), "Clue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.Clue))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "ClueCity", "Clue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.Clue), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.City))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "ClueFamous", "Clue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.Clue), "Famous", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Famous))]
-[assembly: EdmRelationshipAttribute("InterpoolModel", "CityLevel", "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.City), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "NodePathCity", "NodePath", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.NodePath), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.City))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "GameSuspect1", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Game), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Suspect))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserGame", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.User), "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Game))]
@@ -35,6 +34,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("InterpoolModel", "GameOrderOfArrest", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Game), "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.OrderOfArrest))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "OrderOfArrestSuspect", "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.OrderOfArrest), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Suspect))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserLevel", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.User), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level), true)]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "LevelCity", "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.City), true)]
 
 #endregion
 
@@ -452,7 +452,8 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="cityNumber">Initial value of the CityNumber property.</param>
         /// <param name="longitud">Initial value of the Longitud property.</param>
         /// <param name="latitud">Initial value of the Latitud property.</param>
-        public static City CreateCity(global::System.Int32 cityId, global::System.String cityName, global::System.String cityCountry, global::System.Int32 cityNumber, global::System.Int32 longitud, global::System.Int32 latitud)
+        /// <param name="levelLevelId">Initial value of the LevelLevelId property.</param>
+        public static City CreateCity(global::System.Int32 cityId, global::System.String cityName, global::System.String cityCountry, global::System.Int32 cityNumber, global::System.Int32 longitud, global::System.Int32 latitud, global::System.Int32 levelLevelId)
         {
             City city = new City();
             city.CityId = cityId;
@@ -461,6 +462,7 @@ namespace InterpoolCloudWebRole.Data
             city.CityNumber = cityNumber;
             city.Longitud = longitud;
             city.Latitud = latitud;
+            city.LevelLevelId = levelLevelId;
             return city;
         }
 
@@ -637,6 +639,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _NameFile;
         partial void OnNameFileChanging(global::System.String value);
         partial void OnNameFileChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LevelLevelId
+        {
+            get
+            {
+                return _LevelLevelId;
+            }
+            set
+            {
+                OnLevelLevelIdChanging(value);
+                ReportPropertyChanging("LevelLevelId");
+                _LevelLevelId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LevelLevelId");
+                OnLevelLevelIdChanged();
+            }
+        }
+        private global::System.Int32 _LevelLevelId;
+        partial void OnLevelLevelIdChanging(global::System.Int32 value);
+        partial void OnLevelLevelIdChanged();
 
         #endregion
     
@@ -682,44 +708,6 @@ namespace InterpoolCloudWebRole.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Clue>("InterpoolModel.ClueCity", "Clue", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "CityLevel", "Level")]
-        public Level Level
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Level>("InterpoolModel.CityLevel", "Level").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Level>("InterpoolModel.CityLevel", "Level").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Level> LevelReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Level>("InterpoolModel.CityLevel", "Level");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Level>("InterpoolModel.CityLevel", "Level", value);
                 }
             }
         }
@@ -786,6 +774,44 @@ namespace InterpoolCloudWebRole.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<NodePath>("InterpoolModel.NodePathCity1", "NodePath", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "LevelCity", "Level")]
+        public Level Level
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Level>("InterpoolModel.LevelCity", "Level").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Level>("InterpoolModel.LevelCity", "Level").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Level> LevelReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Level>("InterpoolModel.LevelCity", "Level");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Level>("InterpoolModel.LevelCity", "Level", value);
                 }
             }
         }
@@ -1843,47 +1869,6 @@ namespace InterpoolCloudWebRole.Data
 
         #endregion
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "CityLevel", "City")]
-        public City City
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<City>("InterpoolModel.CityLevel", "City").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<City>("InterpoolModel.CityLevel", "City").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<City> CityReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<City>("InterpoolModel.CityLevel", "City");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<City>("InterpoolModel.CityLevel", "City", value);
-                }
-            }
-        }
-
-        #endregion
     }
     
     /// <summary>
@@ -3090,30 +3075,6 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 LevelLevelId
-        {
-            get
-            {
-                return _LevelLevelId;
-            }
-            set
-            {
-                OnLevelLevelIdChanging(value);
-                ReportPropertyChanging("LevelLevelId");
-                _LevelLevelId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("LevelLevelId");
-                OnLevelLevelIdChanged();
-            }
-        }
-        private global::System.Int32 _LevelLevelId;
-        partial void OnLevelLevelIdChanging(global::System.Int32 value);
-        partial void OnLevelLevelIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String UserLoginId
@@ -3134,6 +3095,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _UserLoginId;
         partial void OnUserLoginIdChanging(global::System.String value);
         partial void OnUserLoginIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LevelLevelId
+        {
+            get
+            {
+                return _LevelLevelId;
+            }
+            set
+            {
+                OnLevelLevelIdChanging(value);
+                ReportPropertyChanging("LevelLevelId");
+                _LevelLevelId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LevelLevelId");
+                OnLevelLevelIdChanged();
+            }
+        }
+        private global::System.Int32 _LevelLevelId;
+        partial void OnLevelLevelIdChanging(global::System.Int32 value);
+        partial void OnLevelLevelIdChanged();
 
         #endregion
     
