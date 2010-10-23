@@ -80,7 +80,6 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="context"> Parameter description for context goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-
         public string GetLastUserIdFacebook(InterpoolContainer context)
         {
             int userId = (from u in context.Users
