@@ -186,12 +186,11 @@ namespace InterpoolCloudWebRole.Controller
                     log.LogStackTrace = e.StackTrace;
                     container.AddToLogs(log);
                     throw e;
-
                 }
-                // 2 Get suspects
+                //// 2 Get suspects
                 this.GetSuspects(newGame);
 
-                // 3 Create clues
+                //// 3 Create clues
                 try
                 {
                     this.CreateClue(newGame);
@@ -204,8 +203,8 @@ namespace InterpoolCloudWebRole.Controller
                     log.LogStackTrace = e.StackTrace;
                     container.AddToLogs(log);
                     throw e;
-
                 }
+
                 this.container.AddToGames(newGame);
                 this.output = "add to games";
                 this.container.SaveChanges();
@@ -465,14 +464,13 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="privatesProperties"> Parameter description for privatesProperties goes here</param>
         public void CreateHardCodeSuspects(Game game, Suspect bigSuspect, List<string> privatesProperties)
         {
-            
             List<Suspect> hardCodeSuspects = new List<Suspect>();
 
             Suspect hardCode;
             PropertyInfo info;
             
-            List<Int64> idsHardCoded = new List<long>();
-            List<HardCodedSuspect> sameGenders = container.HardCodedSuspects.Where(h => h.HardCodedSuspectGender.Equals(bigSuspect.SuspectGender)).ToList();
+            List<long> idsHardCoded = new List<long>();
+            List<HardCodedSuspect> sameGenders = this.container.HardCodedSuspects.Where(h => h.HardCodedSuspectGender.Equals(bigSuspect.SuspectGender)).ToList();
             List<HardCodedSuspect> hardCodedList = new List<HardCodedSuspect>();
 
             Random rand = new Random();
@@ -482,7 +480,7 @@ namespace InterpoolCloudWebRole.Controller
             //// Pre: supose that we have more than 2 hardcoded suspects per gender
             int amountHardCodedSuspects = Constants.AmountHardCodeSuspects;
             int amountSameGender = (int)Math.Min(sameGenders.Count, amountHardCodedSuspects);
-            int a = amountSameGender/ 2 - 1;
+            int a = (amountSameGender / 2) - 1;
             amountSameGender = rand.Next(a, amountSameGender);
 
             int count = 0;
@@ -503,7 +501,7 @@ namespace InterpoolCloudWebRole.Controller
 
             //// Step 1: choose the rest of the hardcoded suspects
 
-            List<HardCodedSuspect> restHarCoded = container.HardCodedSuspects.Where(p => !idsHardCoded.Contains(p.HardCodedSuspecId)).ToList();
+            List<HardCodedSuspect> restHarCoded = this.container.HardCodedSuspects.Where(p => !idsHardCoded.Contains(p.HardCodedSuspecId)).ToList();
             do
             {
                 index = rand.Next(0, restHarCoded.Count - 1);
@@ -514,18 +512,19 @@ namespace InterpoolCloudWebRole.Controller
                     hardCodedList.Add(hard);
                     count++;
                 }
-            } while (count < amountHardCodedSuspects);
+            } 
+            while (count < amountHardCodedSuspects);
 
             //// Step 2: create the new hardcoded suspcts 
 
-            String newValue;
-            String propHard;
+            string newValue;
+            string propHard;
             for (int i = 0; i < Constants.AmountHardCodeSuspects; i++)
             {
                 hardCode = new Suspect();
                 foreach (string prop in privatesProperties)
                 {
-                    propHard = "HardCoded"+prop;
+                    propHard = "HardCoded" + prop;
                     
                     hard = (HardCodedSuspect)hardCodedList.ElementAt(i);
                     info = hard.GetType().GetProperty(propHard);
@@ -535,8 +534,8 @@ namespace InterpoolCloudWebRole.Controller
                     }
                     else
                     {
-                        //TODO only for null values
-                        newValue = "";
+                        ////TODO only for null values
+                        newValue = string.Empty;
                     }
 
                     info = hardCode.GetType().GetProperty(prop);
@@ -555,7 +554,6 @@ namespace InterpoolCloudWebRole.Controller
             string propS;
             string propValue;
             
-
             foreach (var property in properties)
             {
                 string propType = property.PropertyType.Name;
@@ -576,11 +574,9 @@ namespace InterpoolCloudWebRole.Controller
                             count++;
                         }
                     }
-                    //TODO make a const or to made dependent for the time and level
                     while (count < 3);
                 }
             }
-
 
             //// Step 4: complete the info, 
 
@@ -596,7 +592,6 @@ namespace InterpoolCloudWebRole.Controller
                         string value = (string)info.GetValue(hardCodeS, null);
                         if (null == value)
                         {
-
                             index = rand.Next(0, game.PossibleSuspect.Count - 1);
                             Suspect realSuspect = game.PossibleSuspect.ToList().ElementAt(index);
                             newValue = (string)info.GetValue(realSuspect, null);
@@ -608,15 +603,15 @@ namespace InterpoolCloudWebRole.Controller
                 }
             }
            
-
             //// Step 5: persist
 
             foreach (Suspect s in hardCodeSuspects)
             {
-                container.AddToSuspects(s);
+                this.container.AddToSuspects(s);
                 game.PossibleSuspect.Add(s);
             }
-            container.SaveChanges();
+
+            this.container.SaveChanges();
         }
 
         /// <summary>

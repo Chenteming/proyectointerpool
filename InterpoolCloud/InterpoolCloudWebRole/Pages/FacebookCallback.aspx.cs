@@ -12,10 +12,10 @@ namespace InterpoolCloudWebRole
     using System.Web.UI;
     using System.Web.UI.WebControls;
     using InterpoolCloudWebRole.Data;
+    using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
     using InterpoolCloudWebRole.Utilities;
     using Newtonsoft.Json;
-    using InterpoolCloudWebRole.Datatypes;
 
     /// <summary>
     /// Partial class declaration Face

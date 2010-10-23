@@ -140,7 +140,6 @@ namespace InterpoolCloudWebRole
         {
             InterpoolContainer c = new InterpoolContainer();
             ProcessController ipc = new ProcessController(c);
-
             
             List<string> list = new List<string>();
             list.Add("SuspectFirstName");
