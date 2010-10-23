@@ -30,6 +30,37 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         public const string AccessToken = "https://graph.facebook.com/oauth/access_token";
 
         /// <summary>
+        /// Store for the property
+        /// </summary>
+        private string consumerKey = string.Empty;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        private string consumerSecret = string.Empty;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        private string token = string.Empty;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        public enum Method
+        {
+            /// <summary>
+            /// listed field
+            /// </summary>
+            GET,
+
+            /// <summary>
+            /// listed field
+            /// </summary>
+            POST
+        }
+
+        /// <summary>
         /// Gets for the property
         /// </summary>
         public string CallBackUrl
@@ -206,25 +237,5 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
             return responseData;
         }
-
-        public enum Method
-        {
-            GET, POST
-        }
-
-        /// <summary>
-        /// Store for the property
-        /// </summary>
-        private string consumerKey = string.Empty;
-
-        /// <summary>
-        /// Store for the property
-        /// </summary>
-        private string consumerSecret = string.Empty;
-
-        /// <summary>
-        /// Store for the property
-        /// </summary>
-        private string token = string.Empty;
     }
 }

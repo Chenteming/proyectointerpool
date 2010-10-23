@@ -21,7 +21,7 @@ namespace InterpoolCloudWebRole
         /// Description for Method.</summary>
         /// <param name="sender"> Parameter description for sender goes here</param>
         /// <param name="e"> Parameter description for e goes here</param>
-        void Application_Start(object sender, EventArgs e)
+        public void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
         }
@@ -30,7 +30,7 @@ namespace InterpoolCloudWebRole
         /// Description for Method.</summary>
         /// <param name="sender"> Parameter description for sender goes here</param>
         /// <param name="e"> Parameter description for e goes here</param>
-        void Application_End(object sender, EventArgs e)
+        public void Application_End(object sender, EventArgs e)
         {
             ////  Code that runs on application shutdown
         }
@@ -39,7 +39,7 @@ namespace InterpoolCloudWebRole
         /// Description for Method.</summary>
         /// <param name="sender"> Parameter description for sender goes here</param>
         /// <param name="e"> Parameter description for e goes here</param>
-        void Application_Error(object sender, EventArgs e)
+        public void Application_Error(object sender, EventArgs e)
         {
             // Code that runs when an unhandled error occurs
         }
@@ -48,7 +48,7 @@ namespace InterpoolCloudWebRole
         /// Description for Method.</summary>
         /// <param name="sender"> Parameter description for sender goes here</param>
         /// <param name="e"> Parameter description for e goes here</param>
-        void Session_Start(object sender, EventArgs e)
+        public void Session_Start(object sender, EventArgs e)
         {
             // Code that runs when a new session is started
         }
@@ -57,7 +57,7 @@ namespace InterpoolCloudWebRole
         /// Description for Method.</summary>
         /// <param name="sender"> Parameter description for sender goes here</param>
         /// <param name="e"> Parameter description for e goes here</param>
-        void Session_End(object sender, EventArgs e)
+        public void Session_End(object sender, EventArgs e)
         {
             // Code that runs when a session ends. 
             // Note: The Session_End event is raised only when the sessionstate mode

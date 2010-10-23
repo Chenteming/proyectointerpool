@@ -16,7 +16,7 @@ namespace InterpoolCloudWebRole.Controller
     /// <summary>
     /// Interface Description IProcessController
     /// </summary>
-    interface IProcessController
+    public interface IProcessController
     {
         /// <summary>
         /// Description for Method.</summary>
