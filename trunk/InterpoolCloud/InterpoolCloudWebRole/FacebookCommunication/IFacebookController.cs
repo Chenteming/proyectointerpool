@@ -42,7 +42,12 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// Return results are described through the returns tag.</returns>
         DataFacebookUser GetFriendInfo(string userId, string userFriendId);
 
-        //// Only for the protoype
+		/// <summary>
+        /// Returns all the user info by the token
+        /// </summary>
+        /// <param name="auth"></param>
+        /// <returns></returns>
+        DataFacebookUser GetUserInfoByToken(OAuthFacebook auth);
 
         /// <summary>
         /// Description for Method.</summary>
