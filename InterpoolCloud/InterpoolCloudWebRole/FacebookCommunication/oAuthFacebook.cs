@@ -105,8 +105,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <returns>The url with a valid request token, or a null string.</returns>
         public string AuthorizationLinkGet()
         {
-            // return string.Format("{0}?client_id={1}&redirect_uri={2}", Authorize, this.ConsumerKey, CallBackUrl);
-            return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access,publish_stream,friends_about_me,friends_birthday,friends_hometown,friends_interests,friends_likes,friends_online_presence, friends_status", Authorize, this.ConsumerKey, this.CallBackUrl);
+            ////this.CallBackUrl += "?email=vicente_cai@hotmail.com&";
+            return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access,email,friends_about_me,friends_birthday,friends_hometown,friends_interests,friends_likes,friends_online_presence, friends_status", Authorize, this.ConsumerKey, this.CallBackUrl);
         }
 
         /// <summary>

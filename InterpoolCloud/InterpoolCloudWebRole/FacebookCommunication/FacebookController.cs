@@ -204,13 +204,165 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         }
 
         /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="userId"> Parameter description for userId goes here</param>
-        /// <param name="userFriendId"> Parameter description for userFriendId goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
+        /// Returns the user's info
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public DataFacebookUser GetUserInfoByToken(OAuthFacebook auth)
+        {
+            DataFacebookUser userData = new DataFacebookUser();
+            
+            string url = String.Format("https://graph.facebook.com/me?access_token={0}", auth.Token);
+            string jsonUserInfo = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
+            userData = this.GetUserStandardInfoByJson(jsonUserInfo);
+            
+            url = String.Format("https://graph.facebook.com/{0}/likes?access_token={1}", userData.UserId, auth.Token);
+            jsonUserInfo = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
+
+            //// The likes will be discriminated as Television, Cinema and Music
+            userData = this.GetLikesInfoByJson(jsonUserInfo, userData);
+
+            userData.PictureLink = String.Format("https://graph.facebook.com/{0}/picture", userData.UserId);   
+            
+            return userData;
+        }
+
+        /// <summary>
+        /// Returns the likes of an user
+        /// </summary>
+        /// <param name="jsonUserInfo"></param>
+        /// <param name="userData"></param>
+        /// <returns></returns>
+        private DataFacebookUser GetLikesInfoByJson(string jsonUserInfo, DataFacebookUser userData)
+        {
+            JObject jsonUserObject = JObject.Parse(jsonUserInfo);
+
+            ////================GETTING LIKES FRIENDS DATA=====================//
+            string like_category = (string)jsonUserObject.SelectToken("data[0].category");
+
+            int i = 0;
+            bool exit = false;
+            userData.Music = string.Empty;
+            userData.Television = string.Empty;
+            userData.Cinema = string.Empty;
+
+            while (like_category != null && !exit)
+            {
+                switch (like_category)
+                {
+                    case "Music":
+                    case "Musicians":
+                        userData.Music = (string)jsonUserObject.SelectToken("data[" + i + "].name");
+                        break;
+                    case "Television":
+                        userData.Television = (string)jsonUserObject.SelectToken("data[" + i + "].name");
+                        break;
+                    case "Movie":
+                    case "Film":
+                        userData.Cinema = (string)jsonUserObject.SelectToken("data[" + i + "].name");
+                        break;
+                }
+
+                i++;
+                like_category = (string)jsonUserObject.SelectToken("data[" + i + "].category");
+                if (userData.Music != string.Empty && userData.Television != string.Empty && userData.Cinema != string.Empty)
+                {
+                    exit = true;
+                }
+            }
+            return userData;
+        }
+
+        /// <summary>
+        /// Returns the standard information by a json object
+        /// </summary>
+        /// <param name="jsonFriendInfo"></param>
+        /// <returns></returns>
+        private DataFacebookUser GetUserStandardInfoByJson(string jsonUserInfo)
+        {
+            //// It's the same code as GetFriendStandardInfo, and the caller must
+            //// set what's needed in the UserId and IdFriend
+            JObject jsonFriendObject = JObject.Parse(jsonUserInfo);
+            List<string> friendsId = new List<string>();
+            DataFacebookUser fbud = new DataFacebookUser();
+            fbud.Birthday = string.Empty;
+            fbud.Cinema = string.Empty;
+            fbud.FirstName = string.Empty;
+            fbud.Hometown = string.Empty;
+            fbud.LastName = string.Empty;
+            fbud.Email = string.Empty;
+            fbud.Music = string.Empty;
+            fbud.Television = string.Empty;
+            fbud.UserId = string.Empty;
+            fbud.IdFriend = string.Empty;
+            fbud.Gender = string.Empty;
+            fbud.PictureLink = string.Empty;
+
+            //// Error = if true rise exception when does not match token.
+            bool error = false;
+            fbud.UserId = (string)jsonFriendObject.SelectToken("id", error);
+            fbud.FirstName = (string)jsonFriendObject.SelectToken("first_name", error);
+            fbud.LastName = (string)jsonFriendObject.SelectToken("last_name", error);
+            fbud.Birthday = (string)jsonFriendObject.SelectToken("birthday", error);
+            fbud.Email = (string)jsonFriendObject.SelectToken("email", error);
+            //// TODO: check the output format
+            if (fbud.Birthday != null)
+            {
+                string[] fecha = fbud.Birthday.Split('/');
+                switch (fecha[1])
+                {
+                    case "1":
+                        fbud.Birthday = "Enero";
+                        break;
+                    case "2":
+                        fbud.Birthday = "Febrero";
+                        break;
+                    case "3":
+                        fbud.Birthday = "Marzo";
+                        break;
+                    case "4":
+                        fbud.Birthday = "Abril";
+                        break;
+                    case "5":
+                        fbud.Birthday = "Mayo";
+                        break;
+                    case "6":
+                        fbud.Birthday = "Junio";
+                        break;
+                    case "7":
+                        fbud.Birthday = "Julio";
+                        break;
+                    case "8":
+                        fbud.Birthday = "Agosto";
+                        break;
+                    case "9":
+                        fbud.Birthday = "Setiembre";
+                        break;
+                    case "10":
+                        fbud.Birthday = "Octubre";
+                        break;
+                    case "11":
+                        fbud.Birthday = "Noviembre";
+                        break;
+                    case "12":
+                        fbud.Birthday = "Diciembre";
+                        break;
+                }
+            }
+
+            fbud.Gender = (string)jsonFriendObject.SelectToken("gender", error);
+            JObject jsonFriendObjectAnid = (JObject)jsonFriendObject.SelectToken("hometown", error);
+            if (jsonFriendObjectAnid != null)
+            {
+                fbud.Hometown = (string)jsonFriendObjectAnid.SelectToken("name", error);
+            }
+
+            return fbud;
+        }
+
         public DataFacebookUser GetFriendInfo(string userId, string userFriendId)
         {
+            //// TODO: This method goes to Facebook, is it necessary?
             OAuthFacebook auth = this.GetOAuthFacebook(userId);
             DataFacebookUser friendData = new DataFacebookUser();
 
@@ -221,7 +373,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             url = String.Format("https://graph.facebook.com/{0}/likes?access_token={1}", userFriendId, auth.Token);
             jsonFriendInfo = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
 
-            // The likes will be discriminates as Television, Cinema and Music
+            // The likes will be discriminated as Television, Cinema and Music
             friendData = this.GetFriendLikesInfoByJson(jsonFriendInfo, friendData);
 
             friendData.PictureLink = String.Format("https://graph.facebook.com/{0}/picture", friendData.IdFriend, string.Empty);
@@ -324,8 +476,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             fbud.Gender = string.Empty;
             fbud.PictureLink = string.Empty;
 
-            ////string id = (string)jsonFriendObject.SelectToken("name");
-
             ////================GETTING STANDARD FRIENDS DATA=====================//
             // Error = if true rise exception when does not match token.
             bool error = false;
@@ -385,7 +535,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 fbud.Hometown = (string)jsonFriendObjectAnid.SelectToken("name", error);
             }
 
-            return fbud;                           
+            return fbud;                     
         }
 
         //// TODO: see if this method will stay in this class
@@ -434,7 +584,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 }           
             }
 
-            return friendData;           
+            return friendData;          
         }
             
         //// TODO: see if this method will stay in this class
@@ -506,4 +656,3 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         }
     }
 }
-
