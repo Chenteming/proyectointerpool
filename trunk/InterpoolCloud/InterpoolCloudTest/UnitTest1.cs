@@ -24,6 +24,8 @@ namespace InterpoolCloudTest
         /// </summary>
         private DataManager dm;
 
+        /// <summary>
+        /// Description for Method.</summary>
         [TestInitialize()]
         public void Init()
         {
@@ -31,6 +33,8 @@ namespace InterpoolCloudTest
             this.dm = new DataManager();
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
         [TestMethod]
         public void TestMethod1()
         {
