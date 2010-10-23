@@ -50,6 +50,10 @@ namespace InterpoolCloudWebRole.Datatypes
 
         /// <summary>
         /// Gets or sets for Method.</summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public string Music { get; set; }
 
         /// <summary>
