@@ -206,8 +206,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <summary>
         /// Returns the user's info
         /// </summary>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        /// <param name="auth"> Parameter description for auth goes here</param>
+        /// <returns>Return results are described through the returns tag</returns>
         public DataFacebookUser GetUserInfoByToken(OAuthFacebook auth)
         {
             DataFacebookUser userData = new DataFacebookUser();
@@ -228,11 +228,38 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         }
 
         /// <summary>
+        /// Returns the standard information by a json object
+        /// </summary>
+        /// <param name="userId">Parameter description for userId goes here</param>
+        /// <param name="userFriendId">Parameter description for userFriendId goes here</param>
+        /// <returns>Return results are described through the returns tag</returns>
+        public DataFacebookUser GetFriendInfo(string userId, string userFriendId)
+        {
+            //// TODO: This method goes to Facebook, is it necessary?
+            OAuthFacebook auth = this.GetOAuthFacebook(userId);
+            DataFacebookUser friendData = new DataFacebookUser();
+
+            string url = String.Format("https://graph.facebook.com/{0}?access_token={1}", userFriendId, auth.Token);
+            string jsonFriendInfo = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
+            friendData = this.GetFriendStandardInfoByJson(jsonFriendInfo);
+
+            url = String.Format("https://graph.facebook.com/{0}/likes?access_token={1}", userFriendId, auth.Token);
+            jsonFriendInfo = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
+
+            // The likes will be discriminated as Television, Cinema and Music
+            friendData = this.GetFriendLikesInfoByJson(jsonFriendInfo, friendData);
+
+            friendData.PictureLink = String.Format("https://graph.facebook.com/{0}/picture", friendData.IdFriend, string.Empty);
+
+            return friendData;
+        }
+
+        /// <summary>
         /// Returns the likes of an user
         /// </summary>
-        /// <param name="jsonUserInfo"></param>
-        /// <param name="userData"></param>
-        /// <returns></returns>
+        /// <param name="jsonUserInfo"> Parameter description for jsonUserInfo goes here</param>
+        /// <param name="userData"> Parameter description for userData goes here</param>
+        /// <returns>Return results are described through the returns tag</returns>
         private DataFacebookUser GetLikesInfoByJson(string jsonUserInfo, DataFacebookUser userData)
         {
             JObject jsonUserObject = JObject.Parse(jsonUserInfo);
@@ -270,14 +297,15 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                     exit = true;
                 }
             }
+
             return userData;
         }
 
         /// <summary>
         /// Returns the standard information by a json object
         /// </summary>
-        /// <param name="jsonFriendInfo"></param>
-        /// <returns></returns>
+        /// <param name="jsonUserInfo">Parameter description for jsonUserInfo goes here</param>
+        /// <returns>Return results are described through the returns tag</returns>
         private DataFacebookUser GetUserStandardInfoByJson(string jsonUserInfo)
         {
             //// It's the same code as GetFriendStandardInfo, and the caller must
@@ -358,27 +386,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
 
             return fbud;
-        }
-
-        public DataFacebookUser GetFriendInfo(string userId, string userFriendId)
-        {
-            //// TODO: This method goes to Facebook, is it necessary?
-            OAuthFacebook auth = this.GetOAuthFacebook(userId);
-            DataFacebookUser friendData = new DataFacebookUser();
-
-            string url = String.Format("https://graph.facebook.com/{0}?access_token={1}", userFriendId, auth.Token);
-            string jsonFriendInfo = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
-            friendData = this.GetFriendStandardInfoByJson(jsonFriendInfo);
-
-            url = String.Format("https://graph.facebook.com/{0}/likes?access_token={1}", userFriendId, auth.Token);
-            jsonFriendInfo = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
-
-            // The likes will be discriminated as Television, Cinema and Music
-            friendData = this.GetFriendLikesInfoByJson(jsonFriendInfo, friendData);
-
-            friendData.PictureLink = String.Format("https://graph.facebook.com/{0}/picture", friendData.IdFriend, string.Empty);
-            
-            return friendData;
         }
 
         /// <summary>

@@ -177,7 +177,6 @@ namespace InterpoolCloudWebRole.Utilities
             }
         }
 
-
         ////constants used in the search with BING
 
         /// <summary>
