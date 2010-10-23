@@ -29,8 +29,14 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// </summary>
         private IDataManager dataManager = new DataManager();
 
-        // Downloads from Facebook all the information from user and user's friends
-        // and stores it on the data base.
+        //// Downloads from Facebook all the information from user and user's friends
+        //// and stores it on the data base.
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="auth"> Parameter description for auth goes here</param>
+        /// <param name="game"> Parameter description for game goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
         public void DownloadFacebookUserData(OAuthFacebook auth, Game game, InterpoolContainer context)
         {
             string userId = this.GetUserId(auth);
@@ -82,6 +88,11 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userId"> Parameter description for userId goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public OAuthFacebook GetOauth(string userId) 
         {
             DataFacebookUser fbud;
@@ -93,6 +104,11 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return null;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="auth"> Parameter description for auth goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public string GetUserId(OAuthFacebook auth)
         {
             string url = String.Format("https://graph.facebook.com/me?access_token={0}", auth.Token);
@@ -109,6 +125,11 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="name"> Parameter description for name goes here</param>
+        /// <param name="id"> Parameter description for id goes here</param>
+        /// <param name="auth"> Parameter description for auth goes here</param>
         public void AddFriend(string name, string id, OAuthFacebook auth)
         {
             DataFacebookUser fbud = new DataFacebookUser();
@@ -118,6 +139,11 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             this.userIdOauth.Add(id, fbud);
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userId"> Parameter description for userId goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public List<string> GetFriendsId(string userId)
         {
             OAuthFacebook auth = this.GetOAuthFacebook(userId);
@@ -132,18 +158,31 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
 
             return null;
-        }    
-        
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
         public void UploadUserFriendsInformation()
         {
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="auth"> Parameter description for auth goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
         public void DownloadFacebookUserData(OAuthFacebook auth, InterpoolContainer context)
         {
             throw new NotImplementedException();
         }
 
-        // Only for the Prototype
+        //// Only for the Prototype
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="auth"> Parameter description for auth goes here</param>
+        /// <param name="userId"> Parameter description for userId goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public List<string> GetFriendsNames(OAuthFacebook auth, string userId)
         {
             if (auth != null && auth.Token.Length > 0)
@@ -160,6 +199,12 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userId"> Parameter description for userId goes here</param>
+        /// <param name="userFriendId"> Parameter description for userFriendId goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public DataFacebookUser GetFriendInfo(string userId, string userFriendId)
         {
             OAuthFacebook auth = this.GetOAuthFacebook(userId);
@@ -180,6 +225,12 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return friendData;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="fbudOfSuspect"> Parameter description for fbudOfSuspect goes here</param>
+        /// <param name="cantDataRequired"> Parameter description for cantDataRequired goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private bool HaveEnouthFields(Suspect fbudOfSuspect, int cantDataRequired)
         {
             int cant = 0;
@@ -223,6 +274,11 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="fbudOfSuspect"> Parameter description for fbudOfSuspect goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private Suspect NewSuspectFromFacebookUserData(DataFacebookUser fbudOfSuspect)
         {
             Suspect suspect = new Suspect();
@@ -240,7 +296,13 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return suspect;
         }
 
-        // TODO: see if this method will stay in this class
+        //// TODO: see if this method will stay in this class
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="jsonFriendInfo"> Parameter description for jsonFriendInfo goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private DataFacebookUser GetFriendStandardInfoByJson(string jsonFriendInfo)
         {
             JObject jsonFriendObject = JObject.Parse(jsonFriendInfo);
@@ -322,7 +384,14 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return fbud;                           
         }
 
-        // TODO: see if this method will stay in this class
+        //// TODO: see if this method will stay in this class
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="jsonFriendInfo"> Parameter description for jsonFriendInfo goes here</param>
+        /// <param name="friendData"> Parameter description for friendData goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private DataFacebookUser GetFriendLikesInfoByJson(string jsonFriendInfo, DataFacebookUser friendData)
         {
             JObject jsonFriendObject = JObject.Parse(jsonFriendInfo);
@@ -364,7 +433,13 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return friendData;           
         }
             
-        // TODO: see if this method will stay in this class
+        //// TODO: see if this method will stay in this class
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userId"> Parameter description for userId goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private OAuthFacebook GetOAuthFacebook(string userId)
         {
             // this is for single user game
@@ -374,7 +449,13 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             throw new NotImplementedException();
         }
 
-        // TODO: see if this method will stay in this class
+        //// TODO: see if this method will stay in this class
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="jsonFriends"> Parameter description for jsonFriends goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private List<string> GetFriendsIdByJson(string jsonFriends)
         {
             JObject jsonFriendObject = JObject.Parse(jsonFriends);
@@ -393,7 +474,13 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return friendsId;
         }
 
-        // Only for the Prototype
+        //// Only for the Prototype
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="jsonFriends"> Parameter description for jsonFriends goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private List<string> GetFriendsNamesByJson(string jsonFriends)
         {
             JObject jsonFriendObject = JObject.Parse(jsonFriends);
@@ -413,3 +500,4 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         }
     }
 }
+

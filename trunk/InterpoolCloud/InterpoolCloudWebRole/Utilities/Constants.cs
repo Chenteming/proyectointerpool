@@ -12,7 +12,7 @@ namespace InterpoolCloudWebRole.Utilities
     public static class Constants
     {
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static int NumberLastCity
         {
@@ -23,7 +23,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static int NumberSubLevels
         {
@@ -34,7 +34,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static int MaxLevels
         {
@@ -45,7 +45,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static int MaxSuspects
         {
@@ -56,7 +56,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static int DataRequired
         {
@@ -117,7 +117,7 @@ namespace InterpoolCloudWebRole.Utilities
         //// All these constants are for local test ////
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static string RedirectUrlAfterLoginFacebook
         {
@@ -128,7 +128,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static string ConsumerKey
         {
@@ -139,7 +139,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static string ConsumerSecret
         {
@@ -150,7 +150,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static string FacebookCallbackUrl
         {
@@ -163,7 +163,7 @@ namespace InterpoolCloudWebRole.Utilities
         //// End of constants for local test ////
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static uint AmountHardCodeSuspects
         {
@@ -176,7 +176,7 @@ namespace InterpoolCloudWebRole.Utilities
         ////constants used in the search with BING
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static string AppId
         {
@@ -187,7 +187,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static string Market
         {
@@ -198,7 +198,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static string RequestVersion
         {
@@ -209,7 +209,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static uint NewsOffset
         {
@@ -220,7 +220,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
         public static uint NewsCount
         {

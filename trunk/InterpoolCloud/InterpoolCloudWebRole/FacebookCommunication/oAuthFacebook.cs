@@ -31,9 +31,15 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         public const string AccessToken = "https://graph.facebook.com/oauth/access_token";
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
-        public string CallBackUrl = Constants.FacebookCallbackUrl;
+        public string CallBackUrl
+        {
+            get
+            {
+                return Constants.FacebookCallbackUrl;
+            }
+        }
 
         /// <summary>
         /// Store for the property
@@ -52,6 +58,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
         #region Properties
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public string ConsumerKey
         {
             get
@@ -70,6 +78,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public string ConsumerSecret
         {
             get
@@ -88,6 +98,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public string Token 
         { 
             get 

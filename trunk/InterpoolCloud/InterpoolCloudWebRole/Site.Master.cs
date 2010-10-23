@@ -13,6 +13,10 @@ namespace InterpoolCloudWebRole
     /// </summary>
     public partial class SiteMaster : System.Web.UI.MasterPage
     {
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Page_Load(object sender, EventArgs e)
         {
         }

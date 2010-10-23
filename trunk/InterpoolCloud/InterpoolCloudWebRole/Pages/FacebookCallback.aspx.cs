@@ -17,6 +17,10 @@ namespace InterpoolCloudWebRole
     /// </summary>
     public partial class Face : System.Web.UI.Page
     {
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             OAuthFacebook auth = new OAuthFacebook();

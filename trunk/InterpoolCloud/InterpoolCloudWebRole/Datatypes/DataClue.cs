@@ -11,6 +11,9 @@ namespace InterpoolCloudWebRole.Datatypes
     /// </summary>
     public class DataClue
     {
+        /// <summary>
+        /// Class statement DataClue
+        /// </summary>
         public enum State
         {
             PL,
@@ -20,8 +23,12 @@ namespace InterpoolCloudWebRole.Datatypes
             WIN
         }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public State States { get; set; }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public string Clue { get; set; }
     }
 }

@@ -12,33 +12,69 @@ namespace InterpoolCloudWebRole.Utilities
     public static class Parameters
     {
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
-        public static string LevelRookie = "LEVEL_ROOKIE";
+        public static string LevelRookie 
+        {
+            get
+            {
+                return "LEVEL_ROOKIE";
+            }
+        }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
-        public static string None = "none";
+        public static string None
+        {
+            get
+            {
+                return "none";
+            }
+        }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
-        public static string AmountCities = "AMOUNT_CITIES";
+        public static string AmountCities
+        {
+            get
+            {
+                return "AMOUNT_CITIES";
+            }
+        }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
-        public static string LastClue1Esp = "LAST_CLUE1_ESP";
+        public static string LastClue1Esp
+        {
+            get
+            {
+                return "LAST_CLUE1_ESP";
+            }
+        }
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
-        public static string LastClue2Esp = "LAST_CLUE2_ESP";
+        public static string LastClue2Esp
+        {
+            get
+            {
+                return "LAST_CLUE2_ESP";
+            }
+        } 
 
         /// <summary>
-        /// Store for the property
+        /// Gets for the property
         /// </summary>
-        public static string LastClue3Esp = "LAST_CLUE3_ESP";
+        public static string LastClue3Esp
+        {
+            get
+            {
+                return "LAST_CLUE3_ESP";
+            }
+        }
     }
 }

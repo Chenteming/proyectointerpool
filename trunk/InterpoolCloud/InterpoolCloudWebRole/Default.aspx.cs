@@ -18,10 +18,18 @@ namespace InterpoolCloudWebRole
     /// </summary>
     public partial class _Default : System.Web.UI.Page
     {
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Page_Load(object sender, EventArgs e)
         {
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Button1_Click(object sender, EventArgs e)
         {
             InterpoolContainer conteiner = new InterpoolContainer();
@@ -32,17 +40,29 @@ namespace InterpoolCloudWebRole
             ipc.StartGame(userId);
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Button2_Click(object sender, EventArgs e)
         {
             Admin.LoadFamousData();
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void ButtonLogin_Click(object sender, EventArgs e)
         {
             OAuthFacebook auth = new OAuthFacebook();
             Response.Redirect(auth.AuthorizationLinkGet());
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Button3_Click(object sender, EventArgs e)
         {
             string id = "1358576832";
@@ -54,6 +74,10 @@ namespace InterpoolCloudWebRole
             //// pc.deleteGame(user, container);
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Button4_Click(object sender, EventArgs e)
         {
             InterpoolContainer container = new InterpoolContainer();
@@ -67,6 +91,10 @@ namespace InterpoolCloudWebRole
             }
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Button5_Click(object sender, EventArgs e)
         {
             InterpoolContainer container = new InterpoolContainer();
@@ -75,6 +103,10 @@ namespace InterpoolCloudWebRole
             DataCity dc = ipc.Travel(userId, "Auckland");
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Button6_Click(object sender, EventArgs e)
         {
             InterpoolContainer container = new InterpoolContainer();
@@ -83,6 +115,10 @@ namespace InterpoolCloudWebRole
             ipc.EmitOrderOfArrest(userId, userId);
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Button6_Click1(object sender, EventArgs e)
         {
             InterpoolContainer container = new InterpoolContainer();
@@ -92,6 +128,10 @@ namespace InterpoolCloudWebRole
             ipc.EmitOrderOfArrest(user, culpable);
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
         protected void Button7_Click(object sender, EventArgs e)
         {
             InterpoolContainer c = new InterpoolContainer();
