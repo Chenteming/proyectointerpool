@@ -132,7 +132,8 @@ namespace InterpoolCloudWebRole.Data
         /// Return results are described through the returns tag.</returns>
         public Game GetGameByUser(string userIdFaceook, InterpoolContainer conteiner)
         {
-            var query = from user in conteiner.Users join game in conteiner.Games 
+            var query = from user in conteiner.Users 
+                        join game in conteiner.Games 
                         on user.Game.GameId equals game.GameId 
                         where user.UserIdFacebook == userIdFaceook
                         select game;
