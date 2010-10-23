@@ -169,13 +169,14 @@ namespace InterpoolCloudWebRole.Utilities
         /// <summary>
         /// Gets for the property
         /// </summary>
-        public static uint AmountHardCodeSuspects
+        public static int AmountHardCodeSuspects
         {
             get
             {
                 return 10;
             }
         }
+
 
         ////constants used in the search with BING
 

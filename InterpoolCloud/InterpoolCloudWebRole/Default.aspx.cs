@@ -141,14 +141,15 @@ namespace InterpoolCloudWebRole
             InterpoolContainer c = new InterpoolContainer();
             ProcessController ipc = new ProcessController(c);
 
-            Suspect trucho = new Suspect();
-            trucho.SuspectMusic = "mi musica";
-            trucho.SuspectFirstName = "mi nombre";
+            
             List<string> list = new List<string>();
             list.Add("SuspectFirstName");
             list.Add("SuspectFacebookId");
+            list.Add("SuspectGender");
             list.Add("SuspectLastName");
-            ipc.CreateHardCodeSuspects(trucho, list);
+            list.Add("SuspectPicLInk");
+            Game game = c.Games.First();
+            ipc.CreateHardCodeSuspects(game, game.Suspect, list);
            /* string user = "1358576832";
             InterpoolContainer c = new InterpoolContainer();
             Int32 id = 1;

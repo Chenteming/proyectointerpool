@@ -19,6 +19,7 @@
     <EntitySet Name="Parameters" EntityType="InterpoolModel.Store.Parameters" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Logs" EntityType="InterpoolModel.Store.Logs" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="OrdersOfArrest" EntityType="InterpoolModel.Store.OrdersOfArrest" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HardCodedSuspects" EntityType="InterpoolModel.Store.HardCodedSuspects" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GamePossibleSuspect" EntityType="InterpoolModel.Store.GameSuspect" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="NodePathFamous" EntityType="InterpoolModel.Store.NodePathFamous" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="NodePathClue" EntityType="InterpoolModel.Store.NodePathClue" store:Type="Tables" Schema="dbo" />
@@ -235,6 +236,15 @@
     <Property Name="OrderOfArrestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="GameOrderOfArrest_OrderOfArrest_GameId" Type="int" Nullable="false" />
     <Property Name="Suspect_SuspectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HardCodedSuspects">
+    <Key>
+      <PropertyRef Name="HardCodedSuspecId" />
+    </Key>
+    <Property Name="HardCodedSuspecId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HardCodedSuspectFirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HardCodedSuspectLastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HardCodedSuspectGender" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="GameSuspect">
     <Key>
@@ -606,6 +616,7 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Level" EntitySet="Levels" />
           </AssociationSet>
+          <EntitySet Name="HardCodedSuspects" EntityType="InterpoolModel.HardCodedSuspect" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -830,6 +841,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="HardCodedSuspect">
+          <Key>
+            <PropertyRef Name="HardCodedSuspecId" />
+          </Key>
+          <Property Type="Int32" Name="HardCodedSuspecId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="HardCodedSuspectFirstName" Nullable="false" />
+          <Property Type="String" Name="HardCodedSuspectLastName" Nullable="false" />
+          <Property Type="String" Name="HardCodedSuspectGender" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -962,6 +982,16 @@
       <EntityTypeMapping TypeName="IsTypeOf(InterpoolModel.OrderOfArrest)">
         <MappingFragment StoreEntitySet="OrdersOfArrest">
           <ScalarProperty Name="OrderOfArrestId" ColumnName="OrderOfArrestId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HardCodedSuspects">
+      <EntityTypeMapping TypeName="IsTypeOf(InterpoolModel.HardCodedSuspect)">
+        <MappingFragment StoreEntitySet="HardCodedSuspects">
+          <ScalarProperty Name="HardCodedSuspecId" ColumnName="HardCodedSuspecId" />
+          <ScalarProperty Name="HardCodedSuspectFirstName" ColumnName="HardCodedSuspectFirstName" />
+          <ScalarProperty Name="HardCodedSuspectLastName" ColumnName="HardCodedSuspectLastName" />
+          <ScalarProperty Name="HardCodedSuspectGender" ColumnName="HardCodedSuspectGender" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1220,6 +1250,7 @@
           <ConnectorPoint PointX="5.8125" PointY="5.5" />
           <ConnectorPoint PointX="5.8125" PointY="4.6052864583333335" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="InterpoolModel.HardCodedSuspect" Width="1.5" PointX="16.25" PointY="0.625" Height="1.787985026041667" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
