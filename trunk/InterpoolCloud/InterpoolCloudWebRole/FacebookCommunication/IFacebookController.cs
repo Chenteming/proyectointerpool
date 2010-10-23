@@ -1,4 +1,8 @@
-﻿
+﻿//-----------------------------------------------------------------------
+// <copyright file="IFacebookController.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
     using System;

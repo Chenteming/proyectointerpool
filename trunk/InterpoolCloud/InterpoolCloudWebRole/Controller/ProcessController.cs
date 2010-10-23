@@ -1,4 +1,8 @@
-
+//-----------------------------------------------------------------------
+// <copyright file="ProcessController.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace InterpoolCloudWebRole.Controller
 {
     using System;

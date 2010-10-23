@@ -1,4 +1,8 @@
-﻿
+﻿//-----------------------------------------------------------------------
+// <copyright file="OAuthFacebook.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
     using System;
@@ -15,11 +19,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
     /// </summary>
     public class OAuthFacebook
     {
-        public enum Method 
-        { 
-            GET, POST 
-        }
-
         /// <summary>
         /// Store for the property
         /// </summary>
@@ -40,21 +39,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 return Constants.FacebookCallbackUrl;
             }
         }
-
-        /// <summary>
-        /// Store for the property
-        /// </summary>
-        private string consumerKey = string.Empty;
-
-        /// <summary>
-        /// Store for the property
-        /// </summary>
-        private string consumerSecret = string.Empty;
-
-        /// <summary>
-        /// Store for the property
-        /// </summary>
-        private string token = string.Empty;
 
         #region Properties
 
@@ -222,5 +206,25 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
             return responseData;
         }
+
+        public enum Method
+        {
+            GET, POST
+        }
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        private string consumerKey = string.Empty;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        private string consumerSecret = string.Empty;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        private string token = string.Empty;
     }
 }

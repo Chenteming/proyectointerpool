@@ -1,4 +1,8 @@
-﻿
+﻿//-----------------------------------------------------------------------
+// <copyright file="FacebookController.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace InterpoolCloudWebRole.FacebookCommunication
 {
     using System;
@@ -442,10 +446,12 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// Return results are described through the returns tag.</returns>
         private OAuthFacebook GetOAuthFacebook(string userId)
         {
-            // this is for single user game
+            //// this is for single user game
+
             return this.GetOauth(userId);
             
- 	        // TODO: [multiUserGame]we must ask for the auth for the actual user
+ 	        //// TODO: [multiUserGame]we must ask for the auth for the actual user
+
             throw new NotImplementedException();
         }
 

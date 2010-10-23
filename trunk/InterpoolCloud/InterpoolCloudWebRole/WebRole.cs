@@ -1,4 +1,8 @@
-
+//-----------------------------------------------------------------------
+// <copyright file="WebRole.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace InterpoolCloudWebRole
 {
     using System;

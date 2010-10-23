@@ -1,4 +1,9 @@
-﻿namespace InterpoolCloudWebRole.Services
+﻿//-----------------------------------------------------------------------
+// <copyright file="InterpoolWP7.svc.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+namespace InterpoolCloudWebRole.Services
 {
     using System;
     using System.Collections.Generic;
