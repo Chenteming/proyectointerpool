@@ -172,14 +172,40 @@ namespace InterpoolCloudWebRole.Controller
 
                 User user = this.container.Users.Where(u => u.UserIdFacebook == userIdFacebook).First();
                 //// 1 the trip is built to be followed by user
-                Game newGame = this.BuiltTravel(user);
+                // TODO borrar
+                Game newGame = null;
+                try
+                {
+                    newGame = this.BuiltTravel(user);
+                }
+                catch (Exception e)
+                {
+                    InterpoolContainer container = new InterpoolContainer();
+                    Log log = new Log();
+                    log.LogName = "BuiltTravel";
+                    log.LogStackTrace = e.StackTrace;
+                    container.AddToLogs(log);
+                    throw e;
 
+                }
                 // 2 Get suspects
                 this.GetSuspects(newGame);
 
                 // 3 Create clues
-                this.CreateClue(newGame);
+                try
+                {
+                    this.CreateClue(newGame);
+                }
+                catch (Exception e)
+                {
+                    InterpoolContainer container = new InterpoolContainer();
+                    Log log = new Log();
+                    log.LogName = "CreateClue";
+                    log.LogStackTrace = e.StackTrace;
+                    container.AddToLogs(log);
+                    throw e;
 
+                }
                 this.container.AddToGames(newGame);
                 this.output = "add to games";
                 this.container.SaveChanges();
@@ -434,20 +460,85 @@ namespace InterpoolCloudWebRole.Controller
 
         /// <summary>
         /// Description for Method.</summary>
+        /// <param name="game"> The current game</param> 
         /// <param name="bigSuspect"> Parameter description for bigSuspect goes here</param>
         /// <param name="privatesProperties"> Parameter description for privatesProperties goes here</param>
-        public void CreateHardCodeSuspects(Suspect bigSuspect, List<string> privatesProperties)
+        public void CreateHardCodeSuspects(Game game, Suspect bigSuspect, List<string> privatesProperties)
         {
+            
             List<Suspect> hardCodeSuspects = new List<Suspect>();
 
             Suspect hardCode;
             PropertyInfo info;
+            
+            List<Int64> idsHardCoded = new List<long>();
+            List<HardCodedSuspect> sameGenders = container.HardCodedSuspects.Where(h => h.HardCodedSuspectGender.Equals(bigSuspect.SuspectGender)).ToList();
+            List<HardCodedSuspect> hardCodedList = new List<HardCodedSuspect>();
+
+            Random rand = new Random();
+
+            //// Step 0: choose some hardcode suspect with the same gander
+
+            //// Pre: supose that we have more than 2 hardcoded suspects per gender
+            int amountHardCodedSuspects = Constants.AmountHardCodeSuspects;
+            int amountSameGender = (int)Math.Min(sameGenders.Count, amountHardCodedSuspects);
+            int a = amountSameGender/ 2 - 1;
+            amountSameGender = rand.Next(a, amountSameGender);
+
+            int count = 0;
+            int index = 0;
+            HardCodedSuspect hard = null;
+            do
+            {
+                index = rand.Next(0, sameGenders.Count - 1);
+                hard = sameGenders.ElementAt(index);
+                if (!idsHardCoded.Contains(hard.HardCodedSuspecId))
+                {
+                    idsHardCoded.Add(hard.HardCodedSuspecId);
+                    hardCodedList.Add(hard);
+                    count++;
+                }
+            }
+            while (count < amountSameGender);
+
+            //// Step 1: choose the rest of the hardcoded suspects
+
+            List<HardCodedSuspect> restHarCoded = container.HardCodedSuspects.Where(p => !idsHardCoded.Contains(p.HardCodedSuspecId)).ToList();
+            do
+            {
+                index = rand.Next(0, restHarCoded.Count - 1);
+                hard = restHarCoded.ElementAt(index);
+                if (!idsHardCoded.Contains(hard.HardCodedSuspecId))
+                {
+                    idsHardCoded.Add(hard.HardCodedSuspecId);
+                    hardCodedList.Add(hard);
+                    count++;
+                }
+            } while (count < amountHardCodedSuspects);
+
+            //// Step 2: create the new hardcoded suspcts 
+
+            String newValue;
+            String propHard;
             for (int i = 0; i < Constants.AmountHardCodeSuspects; i++)
             {
                 hardCode = new Suspect();
                 foreach (string prop in privatesProperties)
                 {
-                    string newValue = "<GO Random>"; ////TODO get the new values random
+                    propHard = "HardCoded"+prop;
+                    
+                    hard = (HardCodedSuspect)hardCodedList.ElementAt(i);
+                    info = hard.GetType().GetProperty(propHard);
+                    if (info != null)
+                    {
+                        newValue = (string)info.GetValue(hard, null);
+                    }
+                    else
+                    {
+                        //TODO only for null values
+                        newValue = "";
+                    }
+
                     info = hardCode.GetType().GetProperty(prop);
                     info.SetValue(hardCode, newValue, null);
                 }
@@ -455,39 +546,43 @@ namespace InterpoolCloudWebRole.Controller
                 hardCodeSuspects.Add(hardCode);
             }
 
+            //// Step 3: set the suspect's property to new hard coded suspect
+
             var properties = typeof(Suspect).GetProperties();
-            int index = 0;
-
+            index = 0;
+            count = 0;
             Suspect auxSuspect;
-            bool finish = false;
-            do
-            {
-                foreach (var property in properties)
-                {
-                    string propType = property.PropertyType.Name;
-                    if ("String".Equals(propType))
-                    {
-                        auxSuspect = hardCodeSuspects.ElementAt(index);
-                        string prop = property.Name;
-                        if (!privatesProperties.Equals(prop))
-                        {
-                            if (!privatesProperties.Contains(prop))
-                            {
-                                PropertyInfo inf = auxSuspect.GetType().GetProperty(prop);
-                                string propValue = (string)inf.GetValue(bigSuspect, null);
-                                inf.SetValue(auxSuspect, propValue, null);
-                            }
+            string propS;
+            string propValue;
+            
 
-                            index++;
+            foreach (var property in properties)
+            {
+                string propType = property.PropertyType.Name;
+                if ("String".Equals(propType))
+                {
+                    do
+                    {
+                        index = rand.Next(0, amountHardCodedSuspects);
+                        auxSuspect = hardCodeSuspects.ElementAt(index);
+
+                        propS = property.Name;
+                        info = auxSuspect.GetType().GetProperty(propS);
+                        propValue = (string)info.GetValue(bigSuspect, null);
+
+                        if (!privatesProperties.Equals(propS) && propValue != null)
+                        {
+                            info.SetValue(auxSuspect, propValue, null);
+                            count++;
                         }
                     }
+                    //TODO make a const or to made dependent for the time and level
+                    while (count < 3);
                 }
-
-                finish = true;
-
-                ////TODO for now only set one value
             }
-            while (!finish);
+
+
+            //// Step 4: complete the info, 
 
             foreach (Suspect hardCodeS in hardCodeSuspects)
             {
@@ -497,17 +592,31 @@ namespace InterpoolCloudWebRole.Controller
                     if ("String".Equals(propType))
                     {
                         string prop = property.Name;
-                        PropertyInfo inf = hardCodeS.GetType().GetProperty(prop);
-                        string value = (string)inf.GetValue(hardCodeS, null);
+                        info = hardCodeS.GetType().GetProperty(prop);
+                        string value = (string)info.GetValue(hardCodeS, null);
                         if (null == value)
                         {
-                            string newValue = "<GO Random>"; ////TODO get the new values random
+
+                            index = rand.Next(0, game.PossibleSuspect.Count - 1);
+                            Suspect realSuspect = game.PossibleSuspect.ToList().ElementAt(index);
+                            newValue = (string)info.GetValue(realSuspect, null);
+                                                      
                             info = hardCodeS.GetType().GetProperty(prop);
                             info.SetValue(hardCodeS, newValue, null);
                         }
                     }
                 }
             }
+           
+
+            //// Step 5: persist
+
+            foreach (Suspect s in hardCodeSuspects)
+            {
+                container.AddToSuspects(s);
+                game.PossibleSuspect.Add(s);
+            }
+            container.SaveChanges();
         }
 
         /// <summary>

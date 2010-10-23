@@ -293,6 +293,22 @@ namespace InterpoolCloudWebRole.Data
             }
         }
         private ObjectSet<OrderOfArrest> _OrdersOfArrest;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<HardCodedSuspect> HardCodedSuspects
+        {
+            get
+            {
+                if ((_HardCodedSuspects == null))
+                {
+                    _HardCodedSuspects = base.CreateObjectSet<HardCodedSuspect>("HardCodedSuspects");
+                }
+                return _HardCodedSuspects;
+            }
+        }
+        private ObjectSet<HardCodedSuspect> _HardCodedSuspects;
 
         #endregion
         #region AddTo Methods
@@ -399,6 +415,14 @@ namespace InterpoolCloudWebRole.Data
         public void AddToOrdersOfArrest(OrderOfArrest orderOfArrest)
         {
             base.AddObject("OrdersOfArrest", orderOfArrest);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the HardCodedSuspects EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToHardCodedSuspects(HardCodedSuspect hardCodedSuspect)
+        {
+            base.AddObject("HardCodedSuspects", hardCodedSuspect);
         }
 
         #endregion
@@ -1553,6 +1577,139 @@ namespace InterpoolCloudWebRole.Data
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="InterpoolModel", Name="HardCodedSuspect")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class HardCodedSuspect : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new HardCodedSuspect object.
+        /// </summary>
+        /// <param name="hardCodedSuspecId">Initial value of the HardCodedSuspecId property.</param>
+        /// <param name="hardCodedSuspectFirstName">Initial value of the HardCodedSuspectFirstName property.</param>
+        /// <param name="hardCodedSuspectLastName">Initial value of the HardCodedSuspectLastName property.</param>
+        /// <param name="hardCodedSuspectGender">Initial value of the HardCodedSuspectGender property.</param>
+        public static HardCodedSuspect CreateHardCodedSuspect(global::System.Int32 hardCodedSuspecId, global::System.String hardCodedSuspectFirstName, global::System.String hardCodedSuspectLastName, global::System.String hardCodedSuspectGender)
+        {
+            HardCodedSuspect hardCodedSuspect = new HardCodedSuspect();
+            hardCodedSuspect.HardCodedSuspecId = hardCodedSuspecId;
+            hardCodedSuspect.HardCodedSuspectFirstName = hardCodedSuspectFirstName;
+            hardCodedSuspect.HardCodedSuspectLastName = hardCodedSuspectLastName;
+            hardCodedSuspect.HardCodedSuspectGender = hardCodedSuspectGender;
+            return hardCodedSuspect;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 HardCodedSuspecId
+        {
+            get
+            {
+                return _HardCodedSuspecId;
+            }
+            set
+            {
+                if (_HardCodedSuspecId != value)
+                {
+                    OnHardCodedSuspecIdChanging(value);
+                    ReportPropertyChanging("HardCodedSuspecId");
+                    _HardCodedSuspecId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("HardCodedSuspecId");
+                    OnHardCodedSuspecIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _HardCodedSuspecId;
+        partial void OnHardCodedSuspecIdChanging(global::System.Int32 value);
+        partial void OnHardCodedSuspecIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String HardCodedSuspectFirstName
+        {
+            get
+            {
+                return _HardCodedSuspectFirstName;
+            }
+            set
+            {
+                OnHardCodedSuspectFirstNameChanging(value);
+                ReportPropertyChanging("HardCodedSuspectFirstName");
+                _HardCodedSuspectFirstName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("HardCodedSuspectFirstName");
+                OnHardCodedSuspectFirstNameChanged();
+            }
+        }
+        private global::System.String _HardCodedSuspectFirstName;
+        partial void OnHardCodedSuspectFirstNameChanging(global::System.String value);
+        partial void OnHardCodedSuspectFirstNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String HardCodedSuspectLastName
+        {
+            get
+            {
+                return _HardCodedSuspectLastName;
+            }
+            set
+            {
+                OnHardCodedSuspectLastNameChanging(value);
+                ReportPropertyChanging("HardCodedSuspectLastName");
+                _HardCodedSuspectLastName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("HardCodedSuspectLastName");
+                OnHardCodedSuspectLastNameChanged();
+            }
+        }
+        private global::System.String _HardCodedSuspectLastName;
+        partial void OnHardCodedSuspectLastNameChanging(global::System.String value);
+        partial void OnHardCodedSuspectLastNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String HardCodedSuspectGender
+        {
+            get
+            {
+                return _HardCodedSuspectGender;
+            }
+            set
+            {
+                OnHardCodedSuspectGenderChanging(value);
+                ReportPropertyChanging("HardCodedSuspectGender");
+                _HardCodedSuspectGender = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("HardCodedSuspectGender");
+                OnHardCodedSuspectGenderChanged();
+            }
+        }
+        private global::System.String _HardCodedSuspectGender;
+        partial void OnHardCodedSuspectGenderChanging(global::System.String value);
+        partial void OnHardCodedSuspectGenderChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

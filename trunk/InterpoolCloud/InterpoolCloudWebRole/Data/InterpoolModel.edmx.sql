@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/19/2010 23:01:47
+-- Date Created: 10/23/2010 13:11:25
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [interpooldb];
+USE [InterpoolDB];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -269,6 +269,15 @@ CREATE TABLE [dbo].[OrdersOfArrest] (
 );
 GO
 
+-- Creating table 'HardCodedSuspects'
+CREATE TABLE [dbo].[HardCodedSuspects] (
+    [HardCodedSuspecId] int IDENTITY(1,1) NOT NULL,
+    [HardCodedSuspectFirstName] nvarchar(max)  NOT NULL,
+    [HardCodedSuspectLastName] nvarchar(max)  NOT NULL,
+    [HardCodedSuspectGender] nvarchar(max)  NOT NULL
+);
+GO
+
 -- Creating table 'GamePossibleSuspect'
 CREATE TABLE [dbo].[GamePossibleSuspect] (
     [Game_GameId] int  NOT NULL,
@@ -377,6 +386,12 @@ GO
 ALTER TABLE [dbo].[OrdersOfArrest]
 ADD CONSTRAINT [PK_OrdersOfArrest]
     PRIMARY KEY CLUSTERED ([OrderOfArrestId] ASC);
+GO
+
+-- Creating primary key on [HardCodedSuspecId] in table 'HardCodedSuspects'
+ALTER TABLE [dbo].[HardCodedSuspects]
+ADD CONSTRAINT [PK_HardCodedSuspects]
+    PRIMARY KEY CLUSTERED ([HardCodedSuspecId] ASC);
 GO
 
 -- Creating primary key on [Game_GameId], [PossibleSuspect_SuspectId] in table 'GamePossibleSuspect'
