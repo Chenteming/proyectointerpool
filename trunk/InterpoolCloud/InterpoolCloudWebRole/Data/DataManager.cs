@@ -24,7 +24,7 @@ namespace InterpoolCloudWebRole.Data
             return context.Cities;
         }
 
-		/// <summary>
+        /// <summary>
         /// Description for Method.</summary>
         /// <param name="context"> Parameter description for context goes here</param>
         /// <returns>
@@ -40,7 +40,7 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="context"> Parameter description for context goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-		public IQueryable<Famous> GetFamousByCity(City city, InterpoolContainer context)
+        public IQueryable<Famous> GetFamousByCity(City city, InterpoolContainer context)
         {
             return from f in context.Famous
                       where f.City == city
@@ -103,7 +103,7 @@ namespace InterpoolCloudWebRole.Data
             return query.First();
         }
 
-		/// <summary>
+        /// <summary>
         /// Description for Method.</summary>
         /// <param name="user"> Parameter description for user goes here</param>
         /// <param name="context"> Parameter description for context goes here</param>
@@ -287,9 +287,11 @@ namespace InterpoolCloudWebRole.Data
         /// Return results are described through the returns tag.</returns>
         public string GetUserIdFacebookByLoginId(string userLoginId, InterpoolContainer context)
         {
-            /*return from user in context.Users
-                       where user.;*/
-            return string.Empty;
+            var query = from user in context.Users
+                        where user.UserLoginId == userLoginId
+                        select user.UserIdFacebook;
+            //// TODO: Check if it has elements
+            return query.First();
         }
     }
 }
