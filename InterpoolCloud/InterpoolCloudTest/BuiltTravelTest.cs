@@ -77,6 +77,8 @@ namespace InterpoolCloudTest
 
         #endregion
 
+        /// <summary>
+        /// Description for Method.</summary>
         [TestMethod]
         public void TestMethod()
         {
