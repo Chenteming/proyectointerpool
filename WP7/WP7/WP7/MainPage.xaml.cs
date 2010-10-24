@@ -24,12 +24,11 @@ namespace WP7
 
         public MainPage()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
             client.Endpoint.Binding.SendTimeout = TimeSpan.FromSeconds(3000);
             //client.Endpoint.Binding.OpenTimeout = TimeSpan.FromSeconds(300);
             intro_wma.Play();
-			intro_animation.Begin();			
+			intro_animation.Begin();
             if (language.GetXDoc() != null)
 			{
                 language.TranslatePage(this);     
@@ -105,6 +104,9 @@ namespace WP7
 
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {		
+			//Usando el mail de FACEBOOK
+			//client.GetUserIdFacebookAsync(gm.userEmail);
+			
             client.GetUserIdFacebookAsync("");
             client.GetUserIdFacebookCompleted += new EventHandler<GetUserIdFacebookCompletedEventArgs>(client_GetUserIdFacebookCompleted);
            
@@ -122,5 +124,10 @@ namespace WP7
         {
         	NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
         }
+
+   	 	private void LoginButton_Click(object sender, System.Windows.RoutedEventArgs e)
+   	 	{
+			NavigationService.Navigate(new Uri("/GamePages/Login.xaml", UriKind.RelativeOrAbsolute));
+   	 	}
     }
 }

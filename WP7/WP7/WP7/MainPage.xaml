@@ -5,7 +5,7 @@
 	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"	
 	x:Class="WP7.MainPage"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -314,6 +314,8 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
+
+        <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12" Grid.Column="1"/>
 
         <!--ContentPanel - place additional content here-->
@@ -322,7 +324,7 @@
                 <ColumnDefinition Width="0*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="imageBackground" Source="GameImages\InterpoolScreen.jpg" Stretch="Fill" Grid.Column="1" Margin="0,-28,0,8" d:IsHidden="True"/>
+            <Image x:Name="imageBackground" Source="GameImages\InterpoolScreen.jpg" Stretch="Fill" Margin="-2,-28,2,8" d:IsHidden="True" Grid.ColumnSpan="2"/>
             <Image x:Name="Capa_3" Opacity="0.91" Source="interpool_Images/Capa 3.png" Height="464" Grid.ColumnSpan="2" Margin="-112,0,-112,-559" VerticalAlignment="Bottom" d:IsHidden="True"/>
             <Image x:Name="Capa_1" Source="interpool_Images/Capa 1.png" Grid.ColumnSpan="2" Margin="-342,-38,-401,-71"/>
             <Image x:Name="Capa_2" Opacity="0.459" Source="interpool_Images/Capa 2.png" Height="577" Grid.ColumnSpan="2" Margin="-112,-62,-129,-71"/>
@@ -359,10 +361,15 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
+            <Button x:Name="LoginButton" Content="Button" Grid.Column="1" Margin="252,41,287,0" Style="{StaticResource PlayButton}" Click="LoginButton_Click" RenderTransformOrigin="0.5,0.5" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333" Height="78" VerticalAlignment="Top">
+            	<Button.RenderTransform>
+            		<CompositeTransform/>
+            	</Button.RenderTransform>
+            </Button>
         </Grid>
         <Canvas x:Name="interpool">
         	<Image x:Name="interp____" Height="180" Canvas.Left="54" Source="interpool_Images/interp    .png" Canvas.Top="164" Width="412"/>
-        	<Image x:Name="l" Height="145" Canvas.Left="626" Source="interpool_Images/l.png" Canvas.Top="166" Width="38"/>
+        	<Image x:Name="l" Height="145" Canvas.Left="626" Source="interpool_Images/l.png" Canvas.Top="139" Width="38"/>
         	<Image x:Name="Capa_6" Height="163" Canvas.Left="72" Source="interpool_Images/Capa 6.png" Canvas.Top="172" Width="583"/>
         	<Image x:Name="gorro" Height="60" Canvas.Left="217" Source="interpool_Images/Capa 7.png" Canvas.Top="-218.179" Width="103" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
         		<Image.RenderTransform>
@@ -372,6 +379,6 @@
         </Canvas>
         <Rectangle Fill="Black" HorizontalAlignment="Left" Margin="-109,-2,0,-71" Grid.RowSpan="3" Stroke="Black" Width="109"/>
         <Rectangle Fill="Black" Margin="0,-2,-110,-71" Grid.RowSpan="3" Stroke="Black" Grid.Column="1" HorizontalAlignment="Right" Width="109"/>
-        <MediaElement x:Name="intro_wma" Grid.Column="1" HorizontalAlignment="Left" Height="0" Margin="109,0,0,-36" Grid.Row="2" Source="/GameSounds/intro.wma" Stretch="Fill" VerticalAlignment="Bottom" Width="0" Volume="1"/>       
+        <MediaElement x:Name="intro_wma" Grid.Column="1" HorizontalAlignment="Left" Height="0" Margin="109,0,0,-36" Grid.Row="2" Source="/GameSounds/intro.wma" Stretch="Fill" VerticalAlignment="Bottom" Width="0" Volume="1"/>
     </Grid>
 </phone:PhoneApplicationPage>

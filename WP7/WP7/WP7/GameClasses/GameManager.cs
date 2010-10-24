@@ -27,6 +27,8 @@ namespace WP7
         private int currentFamous = -1;
         public string userId { get; set; }
         private string[] filterField;
+		public bool logged { get; set; }
+		public string userEmail { get; set; }
 
         public static GameManager getInstance()
         {
@@ -42,6 +44,7 @@ namespace WP7
             filterField = new string[Constants.MAX_FILTERFIELD];
             clues = new List<string>();
             suspects = new List<string>();
+			logged = false;
         }
 
         public void AddCity(int position, string name)
