@@ -413,22 +413,39 @@ namespace InterpoolCloudWebRole.Controller
         public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
         {
             IDataManager dm = new DataManager();
-            NodePath node = this.GetCurrentNode(userIdFacebook);
+            User user = dm.GetUserByIdFacebook(container, userIdFacebook).First();
+            NodePath node = GetCurrentNode(userIdFacebook);
             DataClue clue;
             if (node != null)
             {
                 clue = new DataClue();
 
-                ////TODO make a Constant
-                clue.Clue = node.Clue.ElementAt(2 - numFamous).ClueContent;
+                //TODO make a Constant
+                if (user.Level.LevelNumber > 5)
+                {
+                    clue.Clue = node.Clue.ElementAt(numFamous).ClueContent;
+                }
+                else if (user.Level.LevelNumber > 2)
+                {
+                    int index = (1 - numFamous);
+                    index += 3;
+                    index = index % 3;
+                    clue.Clue = node.Clue.ElementAt(index).ClueContent;
+                }
+                else
+                {
+                    clue.Clue = node.Clue.ElementAt(2 - numFamous).ClueContent;
+                }
+
+
                 if (node.NodePathOrder == (Constants.NumberLastCity - 1))
                 {
-                    ////last city
-                    ////TODO make a Constant
+                    //last city
+                    //TODO make a Constant
                     if (numFamous == 1)
                     {
-                        Game game = dm.GetGameByUser(userIdFacebook, this.container);
-                        bool arrest = this.Arrest(game, clue);
+                        Game game = dm.GetGameByUser(userIdFacebook, container);
+                        bool arrest = Arrest(game, clue);
                     }
                 }
                 else
@@ -436,12 +453,12 @@ namespace InterpoolCloudWebRole.Controller
                     clue.States = DataClue.State.PL;
                 }
 
+
                 return clue;
             }
-
             clue = new DataClue();
             clue.States = DataClue.State.PL;
-            clue.Clue = string.Empty;
+            clue.Clue = "";
             return clue;
         }
 
@@ -611,8 +628,55 @@ namespace InterpoolCloudWebRole.Controller
                 game.PossibleSuspect.Add(s);
             }
 
-            this.container.SaveChanges();
+            if (CheckConsistencySuspect(game))
+            {
+                container.SaveChanges();
+            }
+            
+
         }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userLoginId"> Parameter description for newGame goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        public bool CheckConsistencySuspect(Game newGame)
+        {
+            IDataManager dm = new DataManager();
+
+            //IQueryable<Suspect> colSuspect = dm.GetSuspectByGame(newGame, container);
+
+
+            List<string> params1 = new List<string>();
+            List<string> params2 = new List<string>();
+            List<string> params3 = new List<string>();
+            List<string> params4 = new List<string>();
+            List<string> params5 = new List<string>();
+            List<string> params6 = new List<string>();
+
+            foreach (Suspect currentSuspect in newGame.PossibleSuspect)
+            {
+
+                if ((params1.Contains(currentSuspect.SuspectBirthday))
+                    && (params2.Contains(currentSuspect.SuspectCinema))
+                    && (params3.Contains(currentSuspect.SuspectHometown))
+                    && (params4.Contains(currentSuspect.SuspectMusic))
+                    && (params5.Contains(currentSuspect.SuspectGender))
+                    && (params6.Contains(currentSuspect.SuspectTelevision)))
+                {
+                    return false;
+                }
+                params1.Add(currentSuspect.SuspectBirthday);
+                params2.Add(currentSuspect.SuspectCinema);
+                params3.Add(currentSuspect.SuspectHometown);
+                params4.Add(currentSuspect.SuspectMusic);
+                params5.Add(currentSuspect.SuspectGender);
+                params6.Add(currentSuspect.SuspectTelevision);
+            }
+            return true;
+        }
+
 
         /// <summary>
         /// Description for Method.</summary>
