@@ -39,7 +39,7 @@
      
                 <asp:Label ID="labelInfo" runat="server" Text=""></asp:Label>
                 <br />
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="LabelEmail" runat="server" Text="Email Facebook"></asp:Label>
                 <asp:TextBox ID="TextBoxEmail" runat="server"></asp:TextBox>
               <p>
         
