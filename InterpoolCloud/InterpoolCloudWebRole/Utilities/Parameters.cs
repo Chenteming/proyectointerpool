@@ -80,5 +80,61 @@ namespace InterpoolCloudWebRole.Utilities
                 return "LAST_CLUE3_ESP";
             }
         }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string MinHoursQuestionFamous
+        {
+            get
+            {
+                return "MIN_HOURS_QUESTION_FAMOUS";
+            }
+        }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string MaxHoursQuestionFamous
+        {
+            get
+            {
+                return "MAX_HOURS_QUESTION_FAMOUS";
+            }
+        }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string MinHoursTravel
+        {
+            get
+            {
+                return "MIN_HOURS_TRAVEL";
+            }
+        }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string MaxHoursTravel
+        {
+            get
+            {
+                return "MAX_HOURS_TRAVEL";
+            }
+        }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string HoursFilterSuspect
+        {
+            get
+            {
+                return "HOURS_FILTER_SUSPECT";
+            }
+        }
+
     }
 }
