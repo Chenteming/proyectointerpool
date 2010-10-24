@@ -1,4 +1,8 @@
-﻿
+﻿//-----------------------------------------------------------------------
+// <copyright file="DataManager.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace InterpoolCloudWebRole.Data
 {
     using System;
@@ -62,15 +66,15 @@ namespace InterpoolCloudWebRole.Data
 
         /// <summary>
         /// Description for Method.</summary>
-        /// <param name="g"> Parameter description for g goes here</param>
         /// <param name="context"> Parameter description for context goes here</param>
+        /// <param name="userIdFaceook"> Parameter description for userIdFaceook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         public IQueryable<User> GetUserByIdFacebook(InterpoolContainer context, string userIdFaceook)
         {
-            return (from u in context.Users
+            return from u in context.Users
                     where u.UserIdFacebook == userIdFaceook
-                    select u);
+                    select u;
         }
 
         /// <summary>
@@ -213,6 +217,7 @@ namespace InterpoolCloudWebRole.Data
         /// Return results are described through the returns tag.</returns>
         public List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud, InterpoolContainer container)
         {
+            //// TODO: game passed as parameter
             var game = this.GetGameByUser(userIdFacebook, container);
             List<Suspect> list = game.PossibleSuspect.ToList();
             list.Add(game.Suspect);
