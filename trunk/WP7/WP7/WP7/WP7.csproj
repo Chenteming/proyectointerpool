@@ -76,6 +76,12 @@
     </Compile>
     <Compile Include="GameClasses\GameManager.cs" />
     <Compile Include="GameClasses\LanguageManager.cs" />
+    <Compile Include="GameControls\LoginScreenControl.xaml.cs">
+      <DependentUpon>LoginScreenControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\MessageInterpoolControl.xaml.cs">
+      <DependentUpon>MessageInterpoolControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GamePages\City.xaml.cs">
       <DependentUpon>City.xaml</DependentUpon>
     </Compile>
@@ -87,6 +93,9 @@
     </Compile>
     <Compile Include="GamePages\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="GamePages\PhonePage1.xaml.cs">
       <DependentUpon>PhonePage1.xaml</DependentUpon>
@@ -110,6 +119,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="GameControls\LoginScreenControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GameControls\MessageInterpoolControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GamePages\City.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,6 +141,10 @@
     </Page>
     <Page Include="GamePages\Game.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\Login.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="GamePages\PhonePage1.xaml">
@@ -168,6 +189,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <Resource Include="GameImages\aeroplane.png" />
+    <Resource Include="GameImages\CancelIcon.png" />
+    <Resource Include="GameImages\ContinueIcon.png" />
     <Resource Include="GameImages\FilterScreen2.png" />
     <Resource Include="FamousImages\amsterdam_arjen_robben.jpg" />
     <Resource Include="FamousImages\amsterdam_dj_tiesto.jpg" />
@@ -268,6 +291,7 @@
     <Resource Include="FamousImages\tokio_junichiro_koizumi.jpg" />
     <Resource Include="FamousImages\tokio_koda_kumi.jpg" />
     <Resource Include="FamousImages\tokio_miyavi.jpg" />
+    <Resource Include="GameImages\LoginScreen.jpg" />
     <Content Include="GameLanguages\English.xml" />
     <Content Include="GameLanguages\Spanish.xml">
       <SubType>Designer</SubType>
@@ -281,6 +305,9 @@
     <Content Include="interpool_Images\pantalla_1_Images\Capa 1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="GameImages\LoginScreen2.jpg" />
+    <Resource Include="GameImages\MailIcon.png" />
+    <Resource Include="GameImages\AcceptIcon.png" />
     <Resource Include="interpool_Images\pantalla_6_Images\building.png" />
     <Resource Include="interpool_Images\pantalla_6_Images\calendario.png" />
     <Resource Include="interpool_Images\pantalla_6_Images\gender.png" />

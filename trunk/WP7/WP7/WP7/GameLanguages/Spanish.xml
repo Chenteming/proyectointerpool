@@ -6,6 +6,7 @@
 			<control name="OptionButton" Content="Opciones"/>
 			<control name="CreditButton" Content="Creditos"/>
 			<control name="HelpButton" Content="Ayuda"/>
+            <control name="LoginButton" Content="Entrar"/>
         </class>
         <class name="City" Title="City">
             <control name="Travel1" Content="Viajar1"/>
@@ -35,4 +36,7 @@
 			<control name="textblock5" Text="Cine:"/>
 			<control name="textblock6" Text="Cumpleaños:"/>
 	  	</class>
+		<class name="Login" Title="Login">	    	
+	    	<control name="loginMessage" Text="Ingrese su email de Facebook"/>
+	  </class>
 </language>
