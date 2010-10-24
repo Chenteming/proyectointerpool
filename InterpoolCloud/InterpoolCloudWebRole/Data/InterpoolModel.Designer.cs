@@ -1378,11 +1378,15 @@ namespace InterpoolCloudWebRole.Data
         /// </summary>
         /// <param name="gameId">Initial value of the GameId property.</param>
         /// <param name="gameTime">Initial value of the GameTime property.</param>
-        public static Game CreateGame(global::System.Int32 gameId, global::System.Int16 gameTime)
+        /// <param name="currentTime">Initial value of the CurrentTime property.</param>
+        /// <param name="deadLine">Initial value of the DeadLine property.</param>
+        public static Game CreateGame(global::System.Int32 gameId, global::System.Int16 gameTime, global::System.DateTime currentTime, global::System.DateTime deadLine)
         {
             Game game = new Game();
             game.GameId = gameId;
             game.GameTime = gameTime;
+            game.CurrentTime = currentTime;
+            game.DeadLine = deadLine;
             return game;
         }
 
@@ -1439,6 +1443,54 @@ namespace InterpoolCloudWebRole.Data
         private global::System.Int16 _GameTime;
         partial void OnGameTimeChanging(global::System.Int16 value);
         partial void OnGameTimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CurrentTime
+        {
+            get
+            {
+                return _CurrentTime;
+            }
+            set
+            {
+                OnCurrentTimeChanging(value);
+                ReportPropertyChanging("CurrentTime");
+                _CurrentTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CurrentTime");
+                OnCurrentTimeChanged();
+            }
+        }
+        private global::System.DateTime _CurrentTime;
+        partial void OnCurrentTimeChanging(global::System.DateTime value);
+        partial void OnCurrentTimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DeadLine
+        {
+            get
+            {
+                return _DeadLine;
+            }
+            set
+            {
+                OnDeadLineChanging(value);
+                ReportPropertyChanging("DeadLine");
+                _DeadLine = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DeadLine");
+                OnDeadLineChanged();
+            }
+        }
+        private global::System.DateTime _DeadLine;
+        partial void OnDeadLineChanging(global::System.DateTime value);
+        partial void OnDeadLineChanged();
 
         #endregion
     
