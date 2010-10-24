@@ -248,11 +248,22 @@ namespace InterpoolCloudWebRole.Utilities
         /// <summary>
         /// Gets for the property
         /// </summary>
-        public static string Travel
+        public static string TravelWrong
         {
             get
             {
-                return "TRAVEL";
+                return "TRAVEL_WRONG";
+            }
+        }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string TravelGood
+        {
+            get
+            {
+                return "TRAVEL_GOOD";
             }
         }
 
