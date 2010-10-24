@@ -1,160 +1,104 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="Default.aspx.cs" company="Interpool">
-//     Copyright Interpool. All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using InterpoolCloudWebRole.Controller;
+using InterpoolCloudWebRole.Utilities;
+using InterpoolCloudWebRole.Data;
+using InterpoolCloudWebRole.FacebookCommunication;
+using InterpoolCloudWebRole.Datatypes;
+using System.Diagnostics;
+
 namespace InterpoolCloudWebRole
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
-    using System.Web.UI;
-    using System.Web.UI.WebControls;
-    using InterpoolCloudWebRole.Controller;
-    using InterpoolCloudWebRole.Data;
-    using InterpoolCloudWebRole.Datatypes;
-    using InterpoolCloudWebRole.FacebookCommunication;
-    using InterpoolCloudWebRole.Utilities;
-
-    /// <summary>
-    /// Partial class declaration _Default
-    /// </summary>
     public partial class _Default : System.Web.UI.Page
     {
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="sender"> Parameter description for sender goes here</param>
-        /// <param name="e"> Parameter description for e goes here</param>
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="sender"> Parameter description for sender goes here</param>
-        /// <param name="e"> Parameter description for e goes here</param>
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void StartGame_Click(object sender, EventArgs e)
         {
+            labelInfo.Text = "Game Started";
             InterpoolContainer conteiner = new InterpoolContainer();
-            ////Poner el id de facebook que se trae en el loguin cada vez que se conecta.
+            //Poner el id de facebook que se trae en el loguin cada vez que se conecta.
             IDataManager dm = new DataManager();
             string userId = dm.GetLastUserIdFacebook(dm.GetContainer());
-            IProcessController ipc = new ProcessController(dm.GetContainer());
+            IProcessController ipc = new ProcessController();
             ipc.StartGame(userId);
         }
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="sender"> Parameter description for sender goes here</param>
-        /// <param name="e"> Parameter description for e goes here</param>
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void NewsFamous_Click(object sender, EventArgs e)
         {
-            Admin.LoadFamousData();
+            Admin.loadFamousData();
+            labelInfo.Text = "News Famous updated";
         }
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="sender"> Parameter description for sender goes here</param>
-        /// <param name="e"> Parameter description for e goes here</param>
-        protected void ButtonLogin_Click(object sender, EventArgs e)
+        protected void Login_Click(object sender, EventArgs e)
         {
-            OAuthFacebook auth = new OAuthFacebook();
-            Response.Redirect(auth.AuthorizationLinkGet());
+            oAuthFacebook oAuth = new oAuthFacebook();
+            Response.Redirect(oAuth.AuthorizationLinkGet());
         }
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="sender"> Parameter description for sender goes here</param>
-        /// <param name="e"> Parameter description for e goes here</param>
-        protected void Button3_Click(object sender, EventArgs e)
+        protected void DeleteGame_Click(object sender, EventArgs e)
         {
             string id = "1358576832";
             InterpoolContainer container = new InterpoolContainer();
             User user = container.Users.Where(u => u.UserIdFacebook == id).First();
-            ProcessController pc = new ProcessController(container);
+            ProcessController pc = new ProcessController();
 
-            ////pc.deleteGame(user, container);
-            //// pc.deleteGame(user, container);
+            //pc.deleteGame(user, container);
+            // pc.deleteGame(user, container);
         }
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="sender"> Parameter description for sender goes here</param>
-        /// <param name="e"> Parameter description for e goes here</param>
-        protected void Button4_Click(object sender, EventArgs e)
+        protected void PruebaGetCities_Click(object sender, EventArgs e)
         {
-            InterpoolContainer container = new InterpoolContainer();
-            IProcessController ipc = new ProcessController(container);
+            labelInfo.Text = "Cities updated";
+            IProcessController ipc = new ProcessController();
             string userId = "1358576832";
             List<DataCity> col = ipc.GetCities(userId);
 
             foreach (DataCity d in col)
             {
-                this.pruebaGetCities.Text = this.pruebaGetCities.Text + d.Latitud + " " + d.Longitud + " " + d.NameCity + " " + d.NameFileCity + "\n";
+                pruebaGetCities.Text = pruebaGetCities.Text + d.latitud + " " + d.longitud + " " + d.name_city + " " + d.name_file_city + "\n";
             }
+
         }
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="sender"> Parameter description for sender goes here</param>
-        /// <param name="e"> Parameter description for e goes here</param>
-        protected void Button5_Click(object sender, EventArgs e)
+        protected void PruebaTravel_Click(object sender, EventArgs e)
         {
-            InterpoolContainer container = new InterpoolContainer();
-            IProcessController ipc = new ProcessController(container);
+            IProcessController ipc = new ProcessController();
             string userId = "1358576832";
-            DataCity dc = ipc.Travel(userId, "Auckland");
+            DataCity dc = ipc.Travel(userId, "a");
         }
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="sender"> Parameter description for sender goes here</param>
-        /// <param name="e"> Parameter description for e goes here</param>
-        protected void Button6_Click(object sender, EventArgs e)
+        protected void PruebaArrestar_Click1(object sender, EventArgs e)
         {
-            InterpoolContainer container = new InterpoolContainer();
-            IProcessController ipc = new ProcessController(container);
-            string userId = "1358576832";
-            ipc.EmitOrderOfArrest(userId, userId);
-        }
-
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="sender"> Parameter description for sender goes here</param>
-        /// <param name="e"> Parameter description for e goes here</param>
-        protected void Button6_Click1(object sender, EventArgs e)
-        {
-            InterpoolContainer container = new InterpoolContainer();
             string user = "1358576832";
             string culpable = "1212";
-            IProcessController ipc = new ProcessController(container);
+            IProcessController ipc = new ProcessController();
             ipc.EmitOrderOfArrest(user, culpable);
         }
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="sender"> Parameter description for sender goes here</param>
-        /// <param name="e"> Parameter description for e goes here</param>
-        protected void Button7_Click(object sender, EventArgs e)
+        protected void PruebaEOA_Click(object sender, EventArgs e)
+ 
         {
-            InterpoolContainer c = new InterpoolContainer();
-            ProcessController ipc = new ProcessController(c);
-            
-            List<string> list = new List<string>();
-            list.Add("SuspectFirstName");
-            list.Add("SuspectFacebookId");
-            list.Add("SuspectGender");
-            list.Add("SuspectLastName");
-            list.Add("SuspectPicLInk");
-            Game game = c.Games.First();
-            ipc.CreateHardCodeSuspects(game, game.Suspect, list);
-           /* string user = "1358576832";
-            InterpoolContainer c = new InterpoolContainer();
-            Int32 id = 1;
-            Game g = c.Games.Where(ga => ga.GameId==id).First(); */
-           /* ProcessController ipc = new ProcessController();
-            ipc.Arrest();*/
+            /* string user = "1358576832";
+ InterpoolContainer c = new InterpoolContainer();
+ Int32 id = 1;
+ Game g = c.Games.Where(ga => ga.GameId==id).First(); */
+            /* ProcessController ipc = new ProcessController();
+             ipc.Arrest();*/
         }
+
+        protected void PruebaArrestar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
