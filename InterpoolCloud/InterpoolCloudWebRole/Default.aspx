@@ -23,8 +23,6 @@
             <ProgressTemplate>
 
             <center>
-                <img alt="" src="/ajax-loader.gif"  style="width: 150px; height: 150px" />
-
 
 
                 </center>
@@ -50,9 +48,6 @@
         </td>      
        <td>    
         <asp:Button ID="Newsfamous" runat="server" onclick="NewsFamous_Click" 
-
-
-
             CssClass="boton" Text="News Famous" Width="150px" Height="40px" />
        </td>  
      </tr> 
