@@ -1,42 +1,119 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Default.aspx.cs" Inherits="InterpoolCloudWebRole._Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.master" CodeBehind="Default.aspx.cs" Inherits="InterpoolCloudWebRole._Default" %>
+
+<%@ Register Assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI" TagPrefix="asp" %>
+
+
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
+
+
+
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
-        Welcome to ASP.NET!
-    </h2>
-    <p>
-        To learn more about ASP.NET visit <a href="http://www.asp.net" title="ASP.NET Website">www.asp.net</a>.</p>
-    <p>
-        &nbsp;<asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
-            Text="StartGame" />
-        <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
-            Text="Newsfamois" />
-        <asp:Button ID="ButtonLogin" runat="server" OnClick="ButtonLogin_Click" Text="Login" />
 
-        <asp:Button ID="Button3" runat="server" Text="DeleteGame" 
-            onclick="Button3_Click" />
 
-        <asp:Button ID="Button4" runat="server" onclick="Button4_Click" 
-            Text="Prueba GetCities" />
+    
+        <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeOut="600">
 
-        <asp:Button ID="Button5" runat="server" onclick="Button5_Click" 
-            Text="Prueba Travel" />
 
-        <asp:Button ID="Button6" runat="server" 
-            Text="Prueba EOA" onclick="Button6_Click1" />
+        </asp:ScriptManager>
+   
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+            
+            <ProgressTemplate>
 
-        <asp:Button ID="Button7" runat="server" 
-            Text="Prueba Arrestar" onclick="Button7_Click" />
+            <center>
+                <img alt="" src="/ajax-loader.gif"  style="width: 150px; height: 150px" />
 
+
+
+                </center>
+            </ProgressTemplate>
+
+        </asp:UpdateProgress>
+
+
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
+            <ContentTemplate>                
+                <center>
+        <div>
+
+     
+                <asp:Label ID="labelInfo" runat="server" Text=""></asp:Label>
+              <p>
+        
+     <table>
+     <tr>
+        <td>   
+        <asp:Button ID="StartGame" runat="server" onclick="StartGame_Click" 
+        CssClass="boton"  Text="StartGame" Width="150px" Height="40px" />
+        </td>      
+       <td>    
+        <asp:Button ID="Newsfamous" runat="server" onclick="NewsFamous_Click" 
+
+
+
+            CssClass="boton" Text="News Famous" Width="150px" Height="40px" />
+       </td>  
+     </tr> 
+     <tr>
+        <td>      
+            <asp:Button ID="Login" runat="server"  
+              CssClass="boton" Text="Login" Width="150px" Height="40px" 
+                onclick="Login_Click" />
+        </td> 
+        <td> 
+        <asp:Button ID="DeleteGame" runat="server" Text="Delete Game" 
+            CssClass="boton"  Width="150px" Height="40px" onclick="DeleteGame_Click" />
+
+        </td> 
+        </tr> 
+        <tr>
+        <td>
+            <asp:Button ID="PruebaGetCity" runat="server" CssClass="boton" Text="Prueba GetCities"  Width="150px" Height="40px" onclick="PruebaGetCities_Click" />
+        </td>
+        <td>
+            <asp:Button ID="PruebaTravel" runat="server" 
+            CssClass="boton" Text="Prueba Travel" Width="150px" Height="40px" 
+
+                onclick="PruebaTravel_Click" />
+        </td>
+        </tr>
+        <tr>
+        <td>
+            <asp:Button ID="PruebaEOA" runat="server" 
+
+
+            CssClass="boton" Text="Prueba EOA"  Width="150px" Height="40px" 
+                onclick="PruebaEOA_Click" />
+        </td>
+        <td>
+                <asp:Button ID="PruebaArrestar" runat="server" 
+                 CssClass="boton"   Text="Prueba Arrestar" Width="150px" Height="40px" 
+
+
+
+
+                    onclick="PruebaArrestar_Click" />
+        </td>
+        </tr>
+        <tr><td>
+            <asp:Label ID="pruebaGetCities" runat="server" Text=""></asp:Label>
+        </td>
+        </tr>
+
+      </table>   
     </p>
-    <p>
-        <asp:Label ID="pruebaGetCities" runat="server"></asp:Label>
-    </p>
-    <p>
-        You can also find <a href="http://go.microsoft.com/fwlink/?LinkID=152368&amp;clcid=0x409"
-            title="MSDN ASP.NET Docs">documentation on ASP.NET at MSDN</a>.
-    </p>
+        </div>
+        </center>
+        
+            </ContentTemplate>
+         </asp:UpdatePanel>
+
+
+
+        <asp:UpdatePanel runat="server" id="UpdatePanel2">
+</asp:UpdatePanel>
+
+    
 </asp:Content>
