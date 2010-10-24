@@ -135,6 +135,5 @@ namespace InterpoolCloudWebRole.Utilities
                 return "HOURS_FILTER_SUSPECT";
             }
         }
-
     }
 }
