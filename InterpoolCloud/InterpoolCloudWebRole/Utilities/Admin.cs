@@ -115,20 +115,20 @@ namespace InterpoolCloudWebRole.Utilities
             SearchRequest request = new SearchRequest()
 
             {
-                AppId = Constants.APPID,
+                AppId = Constants.AppId,
                 Sources = new SourceType[] { SourceType.Web, SourceType.News },
                 Adult = AdultOption.Moderate,
                 AdultSpecified = true,
                 Query = Query,
-                Market = Constants.MARKET,
+                Market = Constants.Market,
 
             };
-            request.Version = Constants.REQUEST_VERSION;
+            request.Version = Constants.RequestVersion;
 
             request.News = new NewsRequest();
-            request.News.Offset = Constants.NEWS_OFFSET;
+            request.News.Offset = Constants.NewsOffset;
             request.News.OffsetSpecified = true;
-            request.News.Count = Constants.NEWS_COUNT;
+            request.News.Count = Constants.NewsCount;
             request.News.SortBy = NewsSortOption.Relevance;
             request.News.SortBySpecified = true;
 
