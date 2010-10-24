@@ -233,5 +233,38 @@ namespace InterpoolCloudWebRole.Utilities
                 return 10;
             }
         }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string FilterSuspect
+        {
+            get
+            {
+                return "FILTER_SUSPECT";
+            }
+        }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string Travel
+        {
+            get
+            {
+                return "TRAVEL";
+            }
+        }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string QuestionFamous
+        {
+            get
+            {
+                return "QUESTION_FAMOUS";
+            }
+        }
     }
 }
