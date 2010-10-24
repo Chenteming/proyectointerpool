@@ -66,6 +66,19 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="context"> Parameter description for context goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        public IQueryable<User> GetUserByIdFacebook(InterpoolContainer context, string userIdFaceook)
+        {
+            return (from u in context.Users
+                    where u.UserIdFacebook == userIdFaceook
+                    select u);
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="g"> Parameter description for g goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public IQueryable<Suspect> GetSuspectByGame(Game g, InterpoolContainer context)
         {
             return from s in context.Suspects
