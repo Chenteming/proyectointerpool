@@ -210,8 +210,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <summary>
         /// Returns the user's info
         /// </summary>
-        /// <param name="token">token</param>
-        /// <returns>Returns</returns>
+        /// <param name="auth">Contains the token</param>
+        /// <returns>Returns the data of the user with token auth.Token</returns>
         public DataFacebookUser GetUserInfoByToken(OAuthFacebook auth)
         {
             DataFacebookUser userData = new DataFacebookUser();
