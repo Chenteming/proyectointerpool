@@ -55,7 +55,7 @@ namespace InterpoolCloudWebRole
         protected void NewsFamous_Click(object sender, EventArgs e)
         {
             Admin.LoadFamousData();
-            labelInfo.Text = "News Famous updated";
+            this.labelInfo.Text = "News Famous updated";
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace InterpoolCloudWebRole
 
             foreach (DataCity d in col)
             {
-                pruebaGetCities.Text = pruebaGetCities.Text + d.Latitud + " " + d.Longitud + " " + d.NameCity + " " + d.NameFileCity + "\n";
+                this.pruebaGetCities.Text = this.pruebaGetCities.Text + d.Latitud + " " + d.Longitud + " " + d.NameCity + " " + d.NameFileCity + "\n";
             }
         }
         
