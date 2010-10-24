@@ -34,5 +34,13 @@ namespace InterpoolCloudWebRole.Datatypes
         /// <summary>
         /// Gets or sets for Method.</summary>
         public double GameTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public DateTime CurrentDate
+        {
+            get;
+            set;
+        }
     }
 }

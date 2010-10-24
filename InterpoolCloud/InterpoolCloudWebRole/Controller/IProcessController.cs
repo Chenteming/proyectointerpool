@@ -57,7 +57,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="fbud"> Parameter description for fbud fbud here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        DataGame FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
+        DataListFacebookUser FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
 
         /// <summary>
         /// Description for Method.</summary>
@@ -65,7 +65,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="nameNextCity"> Parameter description for nameNextCity fbud here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        DataGame Travel(string userIdFacebook, string nameNextCity);
+        DataCity Travel(string userIdFacebook, string nameNextCity);
 
         /// <summary>
         /// Description for Method.</summary>                 
@@ -86,7 +86,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="numFamous"> Parameter description for numFamous fbud here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        DataGame GetClueByFamous(string userIdFacebook, int numFamous);
+        DataClue GetClueByFamous(string userIdFacebook, int numFamous);
 
         /// <summary>
         /// Description for Method.</summary>

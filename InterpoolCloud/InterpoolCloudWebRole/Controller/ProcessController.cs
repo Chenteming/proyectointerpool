@@ -308,14 +308,14 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="fbud"> Parameter description for fbud goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        public DataGame FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
+        public DataListFacebookUser FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
         {
             IDataManager dm = new DataManager();
-            DataGame datagame = new DataGame();
+            DataListFacebookUser dataListFabookUser = new DataListFacebookUser();
             ////InterpoolContainer container = dm.GetContainer();
-            datagame.ListSuspect = dm.FilterSuspects(userIdFacebook, fbud, this.container);
-            datagame.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.FilterSuspect);
-            return datagame;
+            dataListFabookUser.ListFacebookUser = dm.FilterSuspects(userIdFacebook, fbud, this.container);
+            dataListFabookUser.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.FilterSuspect);
+            return dataListFabookUser;
         }
 
         /// <summary>
@@ -324,10 +324,9 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="nameNextCity"> Parameter description for nameNextCity goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        public DataGame Travel(string userIdFacebook, string nameNextCity)
+        public DataCity Travel(string userIdFacebook, string nameNextCity)
         {
             DataCity datacity = new DataCity();
-            DataGame datagame = new DataGame();
             DataManager dm = new DataManager();
             NodePath node = this.GetCurrentNode(userIdFacebook);
             NodePath nextNode = this.GetNextNode(userIdFacebook);
@@ -335,9 +334,8 @@ namespace InterpoolCloudWebRole.Controller
             {
                 datacity.NameCity = node.City.CityName;
                 datacity.NameFileCity = node.City.NameFile;
-                datagame.City = datacity;
-                datagame.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.TravelWrong);
-                return datagame;
+                datacity.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.TravelWrong);
+                return datacity;
             }
 
             node.NodePathCurrent = false;
@@ -345,9 +343,8 @@ namespace InterpoolCloudWebRole.Controller
             this.container.SaveChanges();
             datacity.NameCity = nextNode.City.CityName;
             datacity.NameFileCity = nextNode.City.NameFile;
-            datagame.City = datacity;
-            datagame.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.TravelGood);
-            return datagame;
+            datacity.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.TravelGood);
+            return datacity;
         }
 
         /// <summary>
@@ -420,10 +417,9 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="numFamous"> Parameter description for numFamous goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        public DataGame GetClueByFamous(string userIdFacebook, int numFamous)
+        public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
         {
             IDataManager dm = new DataManager();
-            DataGame datagame = new DataGame();
             User user = dm.GetUserByIdFacebook(this.container, userIdFacebook).First();
             NodePath node = this.GetCurrentNode(userIdFacebook);
             DataClue clue;
@@ -462,16 +458,14 @@ namespace InterpoolCloudWebRole.Controller
                     clue.States = DataClue.State.PL;
                 }
 
-                datagame.Clue = clue;
-                datagame.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.QuestionFamous);
-                return datagame;
+                clue.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.QuestionFamous);
+                return clue;
             }
 
             clue = new DataClue();
             clue.States = DataClue.State.PL;
             clue.Clue = String.Empty;
-            datagame.Clue = clue;
-            return datagame;
+            return clue;
         }
 
         /// <summary>

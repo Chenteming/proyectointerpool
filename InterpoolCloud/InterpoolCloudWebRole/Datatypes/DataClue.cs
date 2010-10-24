@@ -53,5 +53,13 @@ namespace InterpoolCloudWebRole.Datatypes
         /// <summary>
         /// Gets or sets for Method.</summary>
         public string Clue { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public DateTime CurrentDate
+        {
+            get;
+            set;
+        }
     }
 }
