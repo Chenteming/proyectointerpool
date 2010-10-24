@@ -116,7 +116,7 @@ namespace InterpoolCloudWebRole
             InterpoolContainer container = new InterpoolContainer();
             IProcessController ipc = new ProcessController(container);
             string userId = "1358576832";
-            DataGame dc = ipc.Travel(userId, "Auckland");
+            DataCity dc = ipc.Travel(userId, "Auckland");
         }
 
         /// <summary>
