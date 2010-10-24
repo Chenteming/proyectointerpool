@@ -97,9 +97,6 @@
     <Compile Include="GamePages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GamePages\PhonePage1.xaml.cs">
-      <DependentUpon>PhonePage1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GamePages\Suspect.xaml.cs">
       <DependentUpon>Suspect.xaml</DependentUpon>
     </Compile>
@@ -144,10 +141,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="GamePages\Login.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="GamePages\PhonePage1.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
