@@ -1,86 +1,27 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="Admin.cs" company="Interpool">
-//     Copyright Interpool. All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using InterpoolCloudWebRole.BingSearchService;
+using InterpoolCloudWebRole.Data;
+using System.Text.RegularExpressions;
+using System.IO;
+using System.Net;
+using System.Diagnostics;
+
 namespace InterpoolCloudWebRole.Utilities
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.IO;
-    using System.Linq;
-    using System.Net;
-    using System.Text.RegularExpressions;
-    using System.Web;
-    using InterpoolCloudWebRole.BingSearchService;
-    using InterpoolCloudWebRole.Data;
-
-    /// <summary>
-    /// Class statement Admin
-    /// </summary>
     public static class Admin
     {
-        /// <summary>
-        /// Description for Method.</summary>
-        public static void LoadFamousData()
-        {
-            string news = string.Empty;
-
-            InterpoolContainer container = new InterpoolContainer();
-            New newsF;
-
-            foreach (Famous f in container.Famous)
-            {
-                ////Se trae la noticia
-                news = FindFamous(f.FamousName);
-
-                if (news != null)
-                {
-                    newsF = new New();
-                    newsF.NewContent = news;
-                    newsF.Famous = f;
-                    container.AddToNews(newsF);
-                }
-            }
-
-            container.SaveChanges();
-
-            CityProperty newsCity;
-            foreach (City c in container.Cities)
-            {
-                ////Se trae la noticia
-                news = FindCity(c.CityName, c.CityCountry);
-
-                if (news != null)
-                {
-                    newsCity = new CityProperty();
-                    newsCity.CityPropertyContent = news;
-                    newsCity.City = c;
-                    newsCity.Dyn = true;
-                    container.AddToCityPropertySet(newsCity);
-                }
-            }
-
-            container.SaveChanges();
-        }
-
-        ////FindCity()  "Este País" -- "Esta Ciudad"
-
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="ciudad"> Parameter description for ciudad goes here</param>
-        /// <param name="country"> Parameter description for country goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
+        //FindCity()  "Este País" -- "Esta Ciudad"
         #region FindCity (string ciudad, string country)
         public static string FindCity(string ciudad, string country)
         {
-            ////agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
-            string queryOut = EscapearQuery(ciudad);
+            //agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
+            string QueryOut = EscapearQuery(ciudad);
 
-            ////realiza la busqueda en BING
-            SearchResponse response = BingRequest(queryOut);
+            //realiza la busqueda en BING
+            SearchResponse response = BingRequest(QueryOut);
 
             string resultado = null;
 
@@ -89,9 +30,7 @@ namespace InterpoolCloudWebRole.Utilities
                 int indice = 0;
                 int maxNews = 0;
                 if (response.News != null && response.News.Results != null)
-                {
                     maxNews = response.News.Results.Length;
-                }
 
                 while (resultado == null && indice < maxNews)
                 {
@@ -103,27 +42,25 @@ namespace InterpoolCloudWebRole.Utilities
 
             if (country != null)
             {
+                resultado = QuitarTildes(resultado);
+                country = QuitarTildes(country);
                 resultado = ReemplazarTexto(resultado, "Este País", country);
+                ciudad = QuitarTildes(ciudad);
                 return ReemplazarTexto(resultado, "Esta Ciudad", ciudad);
             }
-
             return resultado;
         }
         #endregion FindCity
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="famoso"> Parameter description for famoso goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
+        //"Yo"
         #region  FindFamous(string famoso)
         public static string FindFamous(string famoso)
         {
-            ////agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
-            string queryOut = EscapearQuery(famoso);
+            //agrega comillas dobles escapeadas para que devuelva ocurrencias de toda la cadena
+            string QueryOut = EscapearQuery(famoso);
 
-            ////realiza la busqueda en BING
-            SearchResponse response = BingRequest(queryOut);
+            //realiza la busqueda en BING
+            SearchResponse response = BingRequest(QueryOut);
 
             string resultado = null;
 
@@ -132,9 +69,7 @@ namespace InterpoolCloudWebRole.Utilities
                 int indice = 0;
                 int maxNews = 0;
                 if (response.News != null && response.News.Results != null)
-                {
                     maxNews = response.News.Results.Length;
-                }
 
                 while (resultado == null && indice < maxNews)
                 {
@@ -144,21 +79,18 @@ namespace InterpoolCloudWebRole.Utilities
                 }
             }
 
+            resultado = QuitarTildes(resultado);
+            famoso = QuitarTildes(famoso);
             return ReemplazarTexto(resultado, "Yo", famoso);
+
         }
         #endregion  FindFamous
 
-        ////devuelve el string del query con comillas dobles escapedas
-
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="queryIn"> Parameter description for queryIn goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
+        //devuelve el string del query con comillas dobles escapedas
         #region EscapearQuery
-        public static string EscapearQuery(string queryIn)
+        static String EscapearQuery(string QueryIn)
         {
-            var cadenaSplit = queryIn.Split(' ');
+            var cadenaSplit = QueryIn.Split(' ');
             System.Text.StringBuilder result = new System.Text.StringBuilder();
 
             if (cadenaSplit != null)
@@ -169,61 +101,48 @@ namespace InterpoolCloudWebRole.Utilities
                 {
                     result.Append(" ").Append(cadenaSplit[index]);
                 }
-
                 result.Append("\"");
             }
-
             return result.ToString();
         }
         #endregion EscapearQuery
 
-        ////se trae la noticia
-
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="query"> Parameter description for query goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
+        //se trae la noticia
         #region BingRequest
-        public static SearchResponse BingRequest(string query)
+        static SearchResponse BingRequest(string Query)
         {
             BingSearchService.BingPortTypeClient client = new BingSearchService.BingPortTypeClient();
             SearchRequest request = new SearchRequest()
+
             {
-                AppId = Constants.AppId,
+                AppId = Constants.APPID,
                 Sources = new SourceType[] { SourceType.Web, SourceType.News },
                 Adult = AdultOption.Moderate,
                 AdultSpecified = true,
-                Query = query,
-                Market = Constants.Market,
+                Query = Query,
+                Market = Constants.MARKET,
+
             };
-            request.Version = Constants.RequestVersion;
+            request.Version = Constants.REQUEST_VERSION;
+
             request.News = new NewsRequest();
-            request.News.Offset = Constants.NewsOffset;
+            request.News.Offset = Constants.NEWS_OFFSET;
             request.News.OffsetSpecified = true;
-            request.News.Count = Constants.NewsCount;
+            request.News.Count = Constants.NEWS_COUNT;
             request.News.SortBy = NewsSortOption.Relevance;
             request.News.SortBySpecified = true;
 
             return client.Search(request);
         }
         #endregion BingRequest
-
-        ////Devuelve caracteres hasta la primer ocurrencia de un punto (.) despues mas de 95 caracteres
-
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="entrada"> Parameter description for entrada goes here</param>
-        /// <param name="query"> Parameter description for query goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
+        //Devuelve caracteres hasta la primer ocurrencia de un punto (.) despues mas de 95 caracteres
         #region ParsearNoticia
-        public static string ParsearNoticia(string entrada, string query)
+        static String ParsearNoticia(string entrada, string Query)
         {
-            string resultado = null;
+            String resultado = null;
             Regex expRegNoticia;
 
-            string patron1 = @"(.){95}[^\.]{0,105}";
+            String patron1 = @"(.){95}[^\.]{0,105}";
             expRegNoticia = new Regex(patron1, RegexOptions.Multiline);
 
             Match matchNoticia = expRegNoticia.Match(entrada);
@@ -231,30 +150,97 @@ namespace InterpoolCloudWebRole.Utilities
             {
                 return matchNoticia.ToString();
             }
-
             return resultado;
         }
         #endregion ParsearNoticia
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="noticia"> Parameter description for noticia goes here</param>
-        /// <param name="nuevoTxt"> Parameter description for nuevoTxt goes here</param>
-        /// <param name="viejoTxt"> Parameter description for viejoTxt goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
         #region ReemplazarTexto
-        public static string ReemplazarTexto(string noticia, string nuevoTxt, string viejoTxt)
+        static String ReemplazarTexto(string noticia, string nuevoTxt, string viejoTxt)
         {
             if (noticia != null)
             {
-                Regex expRegQuitarPais = new Regex(viejoTxt, RegexOptions.IgnoreCase);
-                string entradaSinPais = expRegQuitarPais.Replace(noticia, nuevoTxt);
-                return entradaSinPais;
+                Regex expRegReplace = new Regex(viejoTxt, RegexOptions.IgnoreCase);
+                return expRegReplace.Replace(noticia, nuevoTxt);
             }
-
-            return string.Empty;
+            return "";
         }
         #endregion ReemplazarTexto
+
+        #region QuitarTildes
+        static String QuitarTildes(String entrada)
+        {
+            if (entrada != null)
+            {
+                char[] arr = entrada.ToCharArray();
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    switch (arr[i])
+                    {
+                        case 'á':
+                            arr[i] = 'a';
+                            break;
+                        case 'é':
+                            arr[i] = 'e';
+                            break;
+                        case 'í':
+                            arr[i] = 'i';
+                            break;
+                        case 'ó':
+                            arr[i] = 'o';
+                            break;
+                        case 'ú':
+                            arr[i] = 'u';
+                            break;
+                    }
+
+                }
+                return new String(arr);
+            }
+            return "";
+        }
+        #endregion QuitarTildes
+
+        public static void loadFamousData()
+        {
+            string news = "";
+
+            InterpoolContainer container = new InterpoolContainer();
+            New newsF;
+
+            foreach (Famous f in container.Famous)
+            {
+
+                //Se trae la noticia
+                news = FindFamous(f.FamousName);
+
+                if (news != null)
+                {
+                    newsF = new New();
+                    newsF.NewContent = news;
+                    newsF.Famous = f;
+                    container.AddToNews(newsF);
+                }
+            }
+            container.SaveChanges();
+
+
+            CityProperty newsCity;
+            foreach (City c in container.Cities)
+            {
+
+                //Se trae la noticia
+                news = FindCity(c.CityName, c.CityCountry);
+
+                if (news != null)
+                {
+                    newsCity = new CityProperty();
+                    newsCity.CityPropertyContent = news;
+                    newsCity.City = c;
+                    newsCity.Dyn = true;
+                    container.AddToCityPropertySet(newsCity);
+                }
+            }
+            container.SaveChanges();
+        }
     }
 }
