@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Controller\IProcessController.cs" />
     <Compile Include="Controller\ProcessController.cs" />
+    <Compile Include="Datatypes\DataGame.cs" />
     <Compile Include="Datatypes\DataClue.cs" />
     <Compile Include="Datatypes\DataCity.cs" />
     <Compile Include="Datatypes\DataFamous.cs" />

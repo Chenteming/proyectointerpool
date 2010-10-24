@@ -67,7 +67,7 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
-        List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
+        DataGame FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
 
         /// <summary>
         /// Description for Method.</summary>
@@ -91,6 +91,6 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
-        DataCity Travel(string userIdFacebook, string nameNextCity);
+        DataGame Travel(string userIdFacebook, string nameNextCity);
     }
 }

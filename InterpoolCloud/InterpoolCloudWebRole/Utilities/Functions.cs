@@ -10,23 +10,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+
     /// <summary>
     /// Class statement Functions
     /// </summary>    
     public class Functions
     {
-
         /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="noticia"> Parameter description for inputList goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
+        /// Initializes a new instance of the Functions class.</summary>
         public Functions()
         { 
         }
+
         /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="noticia"> Parameter description for inputList goes here</param>
+        /// Suffle List function
+        /// </summary>
+        /// <typeparam name="E">Parameter description for E goes here</typeparam>
+        /// <param name="inputList">Parameter description for inputList goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         public List<E> SuffleList<E>(List<E> inputList)
@@ -40,6 +40,7 @@ using System.Web;
                 randomList.Add(inputList[randomIndex]); ////add it to the new, random list 
                 inputList.RemoveAt(randomIndex); ////remove to avoid duplicates 
             }
+
             return randomList; ////return the new random list
         }
     }

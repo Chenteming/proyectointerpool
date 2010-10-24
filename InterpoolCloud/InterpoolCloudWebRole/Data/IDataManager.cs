@@ -126,13 +126,12 @@ namespace InterpoolCloudWebRole.Data
         List<DataFacebookUser> FilterSuspects(string userIdFacebook, DataFacebookUser fbud, InterpoolContainer container);
 
         /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
-        /// <param name="fbud"> Parameter description for fbud fbud here</param>
-        /// <param name="container"> Parameter description for container goes here</param>
-        /// <returns>
+        /// Description for Method.
+        /// </summary>
+        /// <param name="context">Parameter description for userIdFaceook goes here</param>
+        /// <param name="userIdFaceook">Parameter description for context goes here</param>
+        /// <returns> 
         /// Return results are described through the returns tag.</returns>
         IQueryable<User> GetUserByIdFacebook(InterpoolContainer context, string userIdFaceook);
-
     }
 }
