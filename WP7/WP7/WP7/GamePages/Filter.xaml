@@ -389,6 +389,18 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
+		<Style x:Key="FilterButtonStyle" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<Image RenderTransformOrigin="0.32,-0.86" Source="/WP7;component/GameImages/ContinueIcon.png" Stretch="Fill"/>
+							<ContentPresenter Margin="20,55,8,0" VerticalAlignment="Top" Content="Filter" Height="37"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 		
 
 	</phone:PhoneApplicationPage.Resources>
@@ -422,13 +434,6 @@
         		<RowDefinition Height="0*"/>
         		<RowDefinition/>
         	</Grid.RowDefinitions>
-        	<TextBlock x:Name="textblock1" HorizontalAlignment="Left" Margin="113,159,0,0" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top" Grid.Column="1" />
-        	<TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="113,204,0,207" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
-        	<TextBlock x:Name="textblock3" HorizontalAlignment="Left" Margin="113,249,0,162" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
-        	<TextBlock x:Name="textblock4" HorizontalAlignment="Left" Margin="113,294,0,117" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
-        	<TextBlock x:Name="textblock5" HorizontalAlignment="Left" Margin="113,339,0,72" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
-        	<TextBlock x:Name="textblock6" HorizontalAlignment="Left" Margin="116,384,0,27" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Column="1"/>
-        	<Button x:Name="FilterButton" Height="69" Margin="8,0,0,8" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="156" Click="FilterButton_Click" BorderBrush="#FF1D7281" Foreground="#FF1D7281" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Collapsed" />
         	<Image x:Name="paper" Margin="97,-37,8,17" Source="/WP7;component/GameImages/FilterScreen.png" Stretch="Fill" Grid.Column="1" Grid.RowSpan="2"/>
         	<Image x:Name="imageFace" HorizontalAlignment="Right" Margin="0,-3,74,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png" Stretch="Fill" Width="234" Height="148" VerticalAlignment="Top" Grid.Column="1"/>
         	<Image x:Name="imageQuestionSymbol" HorizontalAlignment="Right" Margin="0,4,145,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 2.png" Stretch="Fill" Width="94" Height="117" VerticalAlignment="Top" Grid.Column="1"/>
@@ -444,6 +449,19 @@
         	<Button x:Name="BirthdayButton" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="-38,211,0,169" Grid.Row="1" Style="{StaticResource BirthdayButton}" Width="95" Click="BirthdayButton_Click"/>
         	<Button x:Name="GenderButton" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="70" Margin="-38,0,0,90" Grid.Row="1" Style="{StaticResource Buttongender}" VerticalAlignment="Bottom" Width="95" Click="GenderButton_Click"/>
         	<Button x:Name="MusicButton" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="86" Margin="-41,0,0,0" Grid.Row="1" Style="{StaticResource ButtonMusic}" VerticalAlignment="Bottom" Width="105" Click="MusicButton_Click"/>
+        	<TextBlock x:Name="textblock1" HorizontalAlignment="Left" Margin="113,159,0,0" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top" Grid.Column="1" />
+        	<TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="113,204,0,207" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock3" HorizontalAlignment="Left" Margin="113,249,0,162" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock4" HorizontalAlignment="Left" Margin="113,294,0,117" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock5" HorizontalAlignment="Left" Margin="113,339,0,72" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" />
+        	<TextBlock x:Name="textblock6" HorizontalAlignment="Left" Margin="116,384,0,27" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Width="138" Foreground="#FF1D7281" Grid.Column="1"/>
+        	<TextBlock x:Name="GenderText" Grid.Column="1" Height="34" Margin="222,160,35,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        	<TextBlock x:Name="HometownText" Grid.Column="1" Margin="222,206,35,204" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock"/>
+        	<TextBlock x:Name="MusicText" Grid.Column="1" Margin="222,0,35,159" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Height="34" VerticalAlignment="Bottom"/>
+        	<TextBlock x:Name="TVText" Grid.Column="1" Margin="222,0,35,115" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Height="34" VerticalAlignment="Bottom"/>
+        	<TextBlock x:Name="CinemaText" Grid.Column="1" Margin="222,0,35,70" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Height="34" VerticalAlignment="Bottom"/>
+        	<TextBlock x:Name="BirthdayText" Grid.Column="1" Margin="222,0,35,24" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Height="34" VerticalAlignment="Bottom"/>
+        	<Button x:Name="FilterButton" Style="{StaticResource FilterButtonStyle}" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="102,55,0,0" Grid.Row="1" VerticalAlignment="Top" Width="149"/>
         </Grid>
        <!-- <Image Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill"/>-->
 	   <Grid x:Name="ContentGrid2" Grid.Row="1" Visibility="Collapsed">

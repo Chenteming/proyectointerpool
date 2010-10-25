@@ -285,7 +285,9 @@
     <Resource Include="FamousImages\tokio_koda_kumi.jpg" />
     <Resource Include="FamousImages\tokio_miyavi.jpg" />
     <Resource Include="GameImages\LoginScreen.jpg" />
-    <Content Include="GameLanguages\English.xml" />
+    <Content Include="GameLanguages\English.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="GameLanguages\Spanish.xml">
       <SubType>Designer</SubType>
     </Content>

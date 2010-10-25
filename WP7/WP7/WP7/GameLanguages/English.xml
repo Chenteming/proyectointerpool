@@ -22,7 +22,8 @@
 		<control name="hometown" Text="Hometown:"/>
 		<control name="gender" Text="Gender:"/>
 		<control name="music" Text="Music:"/>
-		<control name="cinema" Text="Cinema:"/>		<control name="television" Text="TV:"/>
+		<control name="cinema" Text="Cinema:"/>
+		<control name="television" Text="TV:"/>
 		<control name="Emit" Content="To blame"/>
 	  </class>
 	  <class name="Filter" Title="Filter">

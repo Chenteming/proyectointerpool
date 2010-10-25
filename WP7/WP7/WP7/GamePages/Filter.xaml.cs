@@ -22,11 +22,13 @@ namespace WP7.GamePages
 		private List<String> film;
 		private List<String> music;
         private List<String> tv;
+        private List<String> birthday;
         private string[] filters;
         private InterpoolWP7Client client = new InterpoolWP7Client();
         private GameManager gm = GameManager.getInstance();
 		private LanguageManager language = LanguageManager.GetInstance();
         int btnPosition = 0;
+        private int Item = 0;
 		
         public Filter()
         {			
@@ -41,9 +43,21 @@ namespace WP7.GamePages
             client.FilterSuspectsAsync(gm.userId, dfu);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
-            filters = new string[Constants.MAX_FILTERFIELD];
-        }
+            filters = new string[Constants.MAX_FILTERFIELD]; 
+			updateFilters();
+			ComboList.Visibility = Visibility.Collapsed;
+		}
 
+		void updateFilters() {
+			string[] filterField = gm.GetFilterField();			
+			GenderText.Text = filterField[3];
+			HometownText.Text = filterField[4];
+			MusicText.Text = filterField[5];
+			TVText.Text = filterField[7];
+			CinemaText.Text = filterField[6];
+			BirthdayText.Text = filterField[2];
+		} 
+			
         void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
            
@@ -57,6 +71,7 @@ namespace WP7.GamePages
             homeTown = new List<String>();
             music = new List<String>();
 			tv = new List<String>();
+            birthday = new List<String>();
             foreach(DataFacebookUser df in dfu) 
             {
                 if (!film.Contains(df.cinema))
@@ -69,27 +84,10 @@ namespace WP7.GamePages
                     music.Add(df.music);
 				if (!tv.Contains(df.television))
                     tv.Add(df.television);
+                if (!birthday.Contains(df.birthday))
+                    birthday.Add(df.birthday);
             }
         }
-
-        /*private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	//FilterSuspectsStoryboard.Begin();
-			comboHomeTown.Visibility = System.Windows.Visibility.Visible;
-			comboFilm.Visibility = System.Windows.Visibility.Visible;
-			comboMusic.Visibility = System.Windows.Visibility.Visible;
-			comboGender.Visibility = System.Windows.Visibility.Visible;
-			comboTV.Visibility = System.Windows.Visibility.Visible;
-            OpenButton.Visibility = System.Windows.Visibility.Collapsed;
-
-            string[] filterField = gm.GetFilterField();			
-			comboHomeTown.SelectedItem = filterField[3];
-			comboGender.SelectedItem = filterField[4];
-			comboMusic.SelectedItem = filterField[5];
-			comboFilm.SelectedItem = filterField[6];
-			comboTV.SelectedItem = filterField[7];
-			FilterButton.Visibility = System.Windows.Visibility.Visible;
-        }*/
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
@@ -105,10 +103,13 @@ namespace WP7.GamePages
         {
             if (ComboList.SelectedIndex != -1)
             {
+				string[] filterField = gm.GetFilterField();
+				filterField[btnPosition] = ComboList.SelectedItem.ToString();
                 filters[btnPosition] = ComboList.SelectedItem.ToString();
                 ComboList.Visibility = Visibility.Collapsed;
                 ContentGrid2.Visibility = Visibility.Collapsed;
                 ContentGrid.Visibility = Visibility.Visible;
+				updateFilters();
             }
         }        
 
@@ -145,7 +146,12 @@ namespace WP7.GamePages
 
         private void BirthdayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-        	// TODO: Add event handler implementation here.
+            btnPosition = 2;
+            string[] filterField = gm.GetFilterField();
+            ComboList.ItemsSource = birthday;
+            ContentGrid.Visibility = Visibility.Collapsed;
+            ContentGrid2.Visibility = Visibility.Visible;
+            ComboList.Visibility = Visibility.Visible;
         }
 
         private void GenderButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -168,6 +174,15 @@ namespace WP7.GamePages
             ComboList.Visibility = Visibility.Visible;
         }
 
-            
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            /*if (ComboList.Visibility == Visibility.Visible)
+            {
+                Item = 1;
+                NavigationService.Navigate(new Uri("/GamePages/Filter.xaml?Item=" + Item, UriKind.Relative));
+            }
+            else
+                NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.Relative));*/
+        }
     }
 }
