@@ -36,8 +36,7 @@ namespace WP7.GamePages
 			AnimationPage.Begin();
 			// Change the language of the page            
             if (language.GetXDoc() != null)
-                language.TranslatePage(this);	
-            FilterButton.Visibility = System.Windows.Visibility.Collapsed;
+                language.TranslatePage(this);
             client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(client_FilterSuspectsCompleted);
             DataFacebookUser dfu = new DataFacebookUser();
             client.FilterSuspectsAsync(gm.userId, dfu);
@@ -50,8 +49,8 @@ namespace WP7.GamePages
 
 		void updateFilters() {
 			string[] filterField = gm.GetFilterField();			
-			GenderText.Text = filterField[3];
-			HometownText.Text = filterField[4];
+			GenderText.Text = filterField[4];
+			HometownText.Text = filterField[3];
 			MusicText.Text = filterField[5];
 			TVText.Text = filterField[7];
 			CinemaText.Text = filterField[6];
