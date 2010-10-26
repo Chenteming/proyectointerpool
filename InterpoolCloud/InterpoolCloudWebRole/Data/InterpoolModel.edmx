@@ -204,6 +204,7 @@
     <Property Name="LevelName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="GroupFacebookId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LevelNumber" Type="int" Nullable="false" />
+    <Property Name="TimeToAdd" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CityPropertySet">
     <Key>
@@ -735,6 +736,7 @@
           <Property Type="String" Name="LevelName" Nullable="false" />
           <Property Type="String" Name="GroupFacebookId" Nullable="false" />
           <Property Type="Int32" Name="LevelNumber" Nullable="false" />
+          <Property Type="Int32" Name="TimeToAdd" Nullable="false" />
         </EntityType>
         <Association Name="GameSuspect">
           <End Type="InterpoolModel.Game" Role="Game" Multiplicity="*" />
@@ -962,6 +964,7 @@
           <ScalarProperty Name="LevelName" ColumnName="LevelName" />
           <ScalarProperty Name="GroupFacebookId" ColumnName="GroupFacebookId" />
           <ScalarProperty Name="LevelNumber" ColumnName="LevelNumber" />
+          <ScalarProperty Name="TimeToAdd" ColumnName="TimeToAdd" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1161,7 +1164,7 @@
         <EntityTypeShape EntityType="InterpoolModel.New" Width="1.5" PointX="10.75" PointY="8.375" Height="1.4033821614583326" />
         <EntityTypeShape EntityType="InterpoolModel.Clue" Width="1.5" PointX="13.25" PointY="4.625" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="InterpoolModel.Suspect" Width="2.125" PointX="7.875" PointY="0.5" Height="3.5186979166666665" />
-        <EntityTypeShape EntityType="InterpoolModel.Level" Width="2" PointX="5.125" PointY="2.625" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="InterpoolModel.Level" Width="2" PointX="5.125" PointY="2.625" Height="1.9802864583333326" />
         <AssociationConnector Association="InterpoolModel.GameSuspect">
           <ConnectorPoint PointX="2" PointY="5.375" />
           <ConnectorPoint PointX="2" PointY="1.5309815135874079" />
@@ -1254,12 +1257,11 @@
         <EntityTypeShape EntityType="InterpoolModel.HardCodedSuspect" Width="1.5" PointX="16.25" PointY="0.625" Height="1.787985026041667" />
         <AssociationConnector Association="InterpoolModel.UserLevel">
           <ConnectorPoint PointX="5.8125" PointY="5.5" />
-          <ConnectorPoint PointX="5.8125" PointY="4.4129850260416665" />
+          <ConnectorPoint PointX="5.8125" PointY="4.6052864583333326" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.LevelCity">
-          <ConnectorPoint PointX="6.84375" PointY="4.4129850260416665" />
-          <ConnectorPoint PointX="6.84375" PointY="4.9564950130208327" />
-          <ConnectorPoint PointX="8.375" PointY="4.9564950130208327" />
+          <ConnectorPoint PointX="7.125" PointY="4.4276432291666659" />
+          <ConnectorPoint PointX="8.375" PointY="4.4276432291666659" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

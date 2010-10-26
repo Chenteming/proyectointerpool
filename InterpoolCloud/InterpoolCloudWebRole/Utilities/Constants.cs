@@ -277,5 +277,14 @@ namespace InterpoolCloudWebRole.Utilities
                 return "QUESTION_FAMOUS";
             }
         }
+
+        public static int HourWakeUp
+        {
+            get
+            {
+                return 8;
+            }
+        }
+            
     }
 }

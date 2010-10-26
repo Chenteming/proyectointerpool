@@ -207,6 +207,17 @@ namespace InterpoolCloudWebRole.Controller
                     throw e;
                 }
 
+                //// set the date to monday
+                DateTime currentTime = new DateTime(2010,01,01);
+                while (currentTime.DayOfWeek != DayOfWeek.Monday)
+                {
+                    currentTime.AddDays(1);
+                }
+
+                CalculateDeadLine(newGame);
+
+                //currentTime.
+
                 this.container.AddToGames(newGame);
                 this.output = "add to games";
                 this.container.SaveChanges();
@@ -221,6 +232,16 @@ namespace InterpoolCloudWebRole.Controller
                 ////conteiner.AddToLogs(log);
                 throw e;
             }
+        }
+
+        /// <summary>
+        /// Calculate Daed Line
+        /// </summary>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        private DateTime CalculateDeadLine(Game newGame)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -1076,7 +1097,7 @@ namespace InterpoolCloudWebRole.Controller
         /// Return results are described through the returns tag.</returns>
         private DateTime RestTime(Game game, string function)
         {
-            game.CurrentTime = game.CurrentTime.AddHours(this.CalculateTime(game, function));
+            this.CalculateTime(game, function);
             return game.CurrentTime;
         }
 
@@ -1086,10 +1107,117 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="function"> Parameter description for function goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        private double CalculateTime(Game game, string function)
+        private void CalculateTime(Game game, string function)
         {
-            // TODO: implement a function
-            return 0;
+            double hours = 0;
+            DataManager dm = new DataManager();
+            Random rnd = new Random();
+            City currentcity = this.CurrentCity(game);
+            City nextcity = this.NextCity(game);
+
+            if (function.Equals(Constants.FilterSuspect))
+            {
+                hours = Double.Parse(dm.GetParameter(Parameters.HoursFilterSuspect,this.container));
+                
+            }
+            else if (function.Equals(Constants.QuestionFamous))
+            {
+                hours = rnd.Next(Int32.Parse(dm.GetParameter(Parameters.MinHoursQuestionFamous, container)), Int32.Parse(dm.GetParameter(Parameters.MaxHoursQuestionFamous, container)));
+                
+            }
+            else if (function.Equals(Constants.TravelGood))
+            {
+                hours = nextcity == null ? 0 : TimeToTravel(currentcity, nextcity);
+            }
+            else if (function.Equals(Constants.TravelWrong))
+            {
+                //TODO: calculate the time between two cities
+                hours = nextcity == null ? 0 : TimeToTravel(currentcity, nextcity);
+                hours += rnd.Next(Int32.Parse(dm.GetParameter(Parameters.MinHoursQuestionFamous, container)), Int32.Parse(dm.GetParameter(Parameters.MaxHoursQuestionFamous, container)));
+                hours += rnd.Next(Int32.Parse(dm.GetParameter(Parameters.MinHoursQuestionFamous, container)), Int32.Parse(dm.GetParameter(Parameters.MaxHoursQuestionFamous, container)));
+                hours = nextcity == null ? 0 : TimeToTravel(currentcity, nextcity);
+                
+            }
+            game.CurrentTime.AddHours(hours);
+            if (CanSleep(game))
+            {
+                int dif = Constants.HourWakeUp - game.CurrentTime.Hour;
+                game.CurrentTime.AddHours(dif);
+            }
+            
         }
+
+        /// <summary>
+        /// Function Can Sleep
+        /// </summary>
+        /// <param name="game">game of user</param>
+        /// <returns>i sleep?</returns>
+        private bool CanSleep(Game game)
+        {
+            return game.CurrentTime.Hour > 0 && game.CurrentTime.Hour < 8;
+        }
+
+        /// <summary>
+        /// Current City function
+        /// </summary>
+        /// <param name="game">game of user</param>
+        /// <returns>Current city of the game</returns>
+        private City CurrentCity(Game game)
+        {
+            foreach (NodePath node in game.NodePath)
+            {
+                if (node.NodePathCurrent)
+                {
+                    return node.City;
+                }
+
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Next City function
+        /// </summary>
+        /// <param name="game">game of user</param>
+        /// <returns>Next city of the game</returns>
+        private City NextCity(Game game)
+        {
+            bool next = false;
+            foreach (NodePath node in game.NodePath)
+            {
+                if (next)
+                {
+                    return node.City;
+                    
+                }
+                if (node.NodePathCurrent)
+                {
+                    next = true;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Time between two cities
+        /// </summary>
+        /// <param name="game">Game of user</param>
+        /// <returns>return hours to travel</returns>
+        private int TimeToTravel(City currentcity, City nextcity)
+        {
+            DataManager dm = new DataManager();
+            int long1 = currentcity.Longitud;
+            int long2 = nextcity.Longitud;
+            int lat1 = currentcity.Latitud;
+            int lat2 = nextcity.Latitud;
+            double distancia = Math.Sqrt((long1 - long2) * (long1 - long2) + (lat1 - lat2) * (lat1 - lat2));
+            //// watch this
+            int maxtotravel = Int32.Parse(dm.GetParameter(Parameters.MaxHoursTravel, this.container));
+            int timetotravel = (int)(Math.Truncate(distancia) % maxtotravel);
+            int mintotravel = Int32.Parse(dm.GetParameter(Parameters.MinHoursTravel,this.container));
+            return timetotravel < mintotravel ? mintotravel : timetotravel;
+         }
+
+        
     }
 }
