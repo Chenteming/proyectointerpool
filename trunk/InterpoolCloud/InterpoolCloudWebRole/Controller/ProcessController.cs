@@ -416,16 +416,16 @@ namespace InterpoolCloudWebRole.Controller
             foreach (City c in node.PossibleCities)
             {
                 datacity = new DataCity();
-                datacity.Longitud = c.Longitud;
-                datacity.Latitud = c.Latitud;
+                datacity.Left = c.Longitud;
+                datacity.Top = c.Latitud;
                 datacity.NameCity = c.CityName;
                 datacity.NameFileCity = c.NameFile;
                 cities.Add(datacity);
             }
 
             datacity = new DataCity();
-            datacity.Longitud = node.City.Longitud;
-            datacity.Latitud = node.City.Latitud;
+            datacity.Left = node.City.Longitud;
+            datacity.Top = node.City.Latitud;
             datacity.NameCity = node.City.CityName;
             datacity.NameFileCity = node.City.NameFile;
             cities.Add(datacity);
