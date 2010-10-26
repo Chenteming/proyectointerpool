@@ -124,9 +124,9 @@ namespace InterpoolCloudWebRole.Services
         /// Return results are described through the returns tag.</returns>
         public string GetUserIdFacebook(string idLogin)
         {
-            return this.controller.GetLastUserIdFacebook(idLogin);
+            ////return this.controller.GetLastUserIdFacebook(idLogin);
             //// This is the correct function to use when the login screen is ready
-            ////return controller.GetUserIdFacebook(idLogin);
+            return this.controller.GetUserIdFacebook(idLogin);
         }
     }
 }
