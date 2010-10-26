@@ -135,5 +135,16 @@ namespace InterpoolCloudWebRole.Utilities
                 return "HOURS_FILTER_SUSPECT";
             }
         }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string MaxDistance
+        {
+            get
+            {
+                return "MAX_DISTANCE";
+            }
+        }
     }
 }
