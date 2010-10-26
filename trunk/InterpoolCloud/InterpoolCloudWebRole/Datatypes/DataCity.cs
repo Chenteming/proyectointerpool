@@ -25,11 +25,11 @@ namespace InterpoolCloudWebRole.Datatypes
 
         /// <summary>
         /// Gets or sets for Method.</summary>
-        public double Latitud { get; set; }
+        public double Top { get; set; }
 
         /// <summary>
         /// Gets or sets for Method.</summary>
-        public double Longitud { get; set; }
+        public double Left { get; set; }
 
         /// <summary>
         /// Gets or sets for Method.</summary>
