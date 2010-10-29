@@ -1,0 +1,13 @@
+Pelusa,Acosta,hombre
+Inspector,Ghiringhell,hombre
+Picaflor,Andradre,hombre
+Metalero,Corde,hombre
+La Pequeña,Lety,mujer
+Pibe,Valderrama,hombre
+Campanita,Vilariño,mujer
+Despegado,Ricca,hombre
+Bolazero,Ricca,hombre
+Alvarito,Trinidad,hombre
+Hinasio,Hinfante,hombre
+Reportero,García,hombre
+Rosadita,Acosta,mujer
