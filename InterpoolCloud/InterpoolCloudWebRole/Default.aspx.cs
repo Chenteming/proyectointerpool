@@ -154,10 +154,18 @@ namespace InterpoolCloudWebRole
         protected void PruebaArrestar_Click(object sender, EventArgs e)
         {
             InterpoolContainer container = new InterpoolContainer();
-            string user = "1358576832";
-            string culpable = "1212";
             IProcessController ipc = new ProcessController(container);
-            ipc.EmitOrderOfArrest(user, culpable);
+            Game game = container.Games.First();
+            List<string> lista = new List<string>();
+            
+            lista.Add("SuspectFirstName");
+            lista.Add("SuspectFacebookId");
+            lista.Add("SuspectLastName");
+            lista.Add("SuspectGender");
+            lista.Add("SuspectPicLInk");
+            ipc.CreateHardCodeSuspects(game, lista);
+
+            //// ipc.EmitOrderOfArrest(user, culpable);
         }
     }
 }

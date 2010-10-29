@@ -235,6 +235,47 @@ namespace InterpoolCloudWebRole.Controller
         }
 
         /// <summary>
+
+        /// Calculate Daed Line
+        /// </summary>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        private void CalculateDeadLine(Game newGame)
+        {
+            IDataManager dm = new DataManager();
+            Level level = newGame.User.Level;
+
+            #region minimum time
+
+            //// In the best game the user interogate 1 famous * amount travels
+            double time = Double.Parse(dm.GetParameter(Parameters.MaxHoursQuestionFamous, this.container)) * (newGame.NodePath.Count - 1);
+
+            //// In the best game the user dont travel wron
+            City citySource = newGame.NodePath.ElementAt(0).City;
+            for (int i = 1; i < newGame.NodePath.Count; i++)
+            {
+                time += TimeToTravel(citySource, newGame.NodePath.ElementAt(i).City);
+                citySource = newGame.NodePath.ElementAt(i).City;
+            }
+
+            
+            //// In te best game the user, filter one time
+            time += Double.Parse(dm.GetParameter(Parameters.HoursFilterSuspect, this.container));
+
+            double days = time /(24 - Constants.HoursToSleep);
+
+            time += (days * Constants.HoursToSleep);
+
+            newGame.DeadLine = newGame.CurrentTime;
+            newGame.DeadLine.AddHours(Math.Round(time));
+            //// In the best game the user 
+            #endregion
+
+            
+        }
+
+        /// <summary>
+
         /// Description for Method.</summary>
         /// <param name="newGame"> Parameter description for newGame goes here</param>
         public void GetSuspects(Game newGame)
@@ -496,9 +537,11 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="game"> The current game</param> 
         /// <param name="bigSuspect"> Parameter description for bigSuspect goes here</param>
         /// <param name="privatesProperties"> Parameter description for privatesProperties goes here</param>
-        public void CreateHardCodeSuspects(Game game, Suspect bigSuspect, List<string> privatesProperties)
+        public void CreateHardCodeSuspects(Game game, List<string> privatesProperties)
         {
             List<Suspect> hardCodeSuspects = new List<Suspect>();
+
+            Suspect bigSuspect = game.Suspect;
 
             Suspect hardCode;
             PropertyInfo info;
@@ -645,10 +688,10 @@ namespace InterpoolCloudWebRole.Controller
                 game.PossibleSuspect.Add(s);
             }
 
-            if (this.CheckConsistencySuspect(game))
+           /* if (this.CheckConsistencySuspect(game))
             {
                 this.container.SaveChanges();
-            }
+            }*/
         }
 
         /// <summary>
@@ -1204,16 +1247,5 @@ namespace InterpoolCloudWebRole.Controller
             int mintotravel = Int32.Parse(dm.GetParameter(Parameters.MinHoursTravel, this.container));
             return timetotravel < mintotravel ? mintotravel : timetotravel;
          }
-
-        /// <summary>
-        /// Calculate Daed Line
-        /// </summary>
-        /// <param name="newGame"> Parameter description for newGame goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
-        private DateTime CalculateDeadLine(Game newGame)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
