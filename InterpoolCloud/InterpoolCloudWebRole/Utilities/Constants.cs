@@ -278,6 +278,9 @@ namespace InterpoolCloudWebRole.Utilities
             }
         }
 
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
         public static int HourWakeUp
         {
             get
@@ -285,6 +288,5 @@ namespace InterpoolCloudWebRole.Utilities
                 return 8;
             }
         }
-            
     }
 }
