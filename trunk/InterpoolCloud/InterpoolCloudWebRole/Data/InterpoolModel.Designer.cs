@@ -1807,13 +1807,15 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="levelName">Initial value of the LevelName property.</param>
         /// <param name="groupFacebookId">Initial value of the GroupFacebookId property.</param>
         /// <param name="levelNumber">Initial value of the LevelNumber property.</param>
-        public static Level CreateLevel(global::System.Int32 levelId, global::System.String levelName, global::System.String groupFacebookId, global::System.Int32 levelNumber)
+        /// <param name="timeToAdd">Initial value of the TimeToAdd property.</param>
+        public static Level CreateLevel(global::System.Int32 levelId, global::System.String levelName, global::System.String groupFacebookId, global::System.Int32 levelNumber, global::System.Int32 timeToAdd)
         {
             Level level = new Level();
             level.LevelId = levelId;
             level.LevelName = levelName;
             level.GroupFacebookId = groupFacebookId;
             level.LevelNumber = levelNumber;
+            level.TimeToAdd = timeToAdd;
             return level;
         }
 
@@ -1918,6 +1920,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.Int32 _LevelNumber;
         partial void OnLevelNumberChanging(global::System.Int32 value);
         partial void OnLevelNumberChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TimeToAdd
+        {
+            get
+            {
+                return _TimeToAdd;
+            }
+            set
+            {
+                OnTimeToAddChanging(value);
+                ReportPropertyChanging("TimeToAdd");
+                _TimeToAdd = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TimeToAdd");
+                OnTimeToAddChanged();
+            }
+        }
+        private global::System.Int32 _TimeToAdd;
+        partial void OnTimeToAddChanging(global::System.Int32 value);
+        partial void OnTimeToAddChanged();
 
         #endregion
     
