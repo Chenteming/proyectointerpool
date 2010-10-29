@@ -102,7 +102,7 @@ namespace InterpoolCloudWebRole
 
             foreach (DataCity d in col)
             {
-                this.pruebaGetCities.Text = this.pruebaGetCities.Text + d.Latitud + " " + d.Longitud + " " + d.NameCity + " " + d.NameFileCity + "\n";
+                this.pruebaGetCities.Text = this.pruebaGetCities.Text + d.Top + " " + d.Left + " " + d.NameCity + " " + d.NameFileCity + "\n";
             }
         }
         
