@@ -209,15 +209,15 @@ namespace InterpoolCloudWebRole.Controller
 
                 //// set the date to monday
                 DateTime currentTime = new DateTime(2010, 01, 01);
-                while (currentTime.DayOfWeek != DayOfWeek.Monday)
-                {
-                    currentTime.AddDays(1);
-                }
+                currentTime = currentTime.AddDays(3);
+                
 
                 this.CalculateDeadLine(newGame);
 
                 ////currentTime.
-
+                
+                newGame.CurrentTime = currentTime;
+                newGame.DeadLine = currentTime;
                 this.container.AddToGames(newGame);
                 this.output = "add to games";
                 this.container.SaveChanges();
@@ -267,7 +267,7 @@ namespace InterpoolCloudWebRole.Controller
             time += (days * Constants.HoursToSleep);
 
             newGame.DeadLine = newGame.CurrentTime;
-            newGame.DeadLine.AddHours(Math.Round(time));
+            newGame.DeadLine = newGame.DeadLine.AddHours(Math.Round(time));
             //// In the best game the user 
             #endregion
 
@@ -286,6 +286,18 @@ namespace InterpoolCloudWebRole.Controller
             IDataManager dm = new DataManager();
             OAuthFacebook auth = dm.GetLastUserToken(dm.GetContainer());
             facebookController.DownloadFacebookUserData(auth, newGame, this.container);
+
+            //// TODO change that
+            List<string> list = new List<string>();
+
+            list.Add("SuspectFirstName");
+            list.Add("SuspectFacebookId");
+           
+            list.Add("SuspectLastName");
+            list.Add("SuspectGender");
+            list.Add("SuspectPicLInk");
+
+            //CreateHardCodeSuspects(newGame, list);
         }
 
         /// <summary>
@@ -557,7 +569,7 @@ namespace InterpoolCloudWebRole.Controller
             //// Pre: supose that we have more than 2 hardcoded suspects per gender
             int amountHardCodedSuspects = Constants.AmountHardCodeSuspects;
             int amountSameGender = (int)Math.Min(sameGenders.Count, amountHardCodedSuspects);
-            int a = (amountSameGender / 2) - 1;
+            int a = (amountSameGender / 2);
             amountSameGender = rand.Next(a, amountSameGender);
 
             int count = 0;
@@ -576,6 +588,12 @@ namespace InterpoolCloudWebRole.Controller
             }
             while (count < amountSameGender);
 
+            int prob = rand.Next(0, 3);
+            int x = -1;
+            if (prob == 3)
+            {
+                x = rand.Next(0, hardCodedList.Count - 1);   
+            }
             //// Step 1: choose the rest of the hardcoded suspects
 
             List<HardCodedSuspect> restHarCoded = this.container.HardCodedSuspects.Where(p => !idsHardCoded.Contains(p.HardCodedSuspecId)).ToList();
@@ -618,8 +636,16 @@ namespace InterpoolCloudWebRole.Controller
                     info = hardCode.GetType().GetProperty(prop);
                     info.SetValue(hardCode, newValue, null);
                 }
-
-                hardCodeSuspects.Add(hardCode);
+                if (i == x)
+                {
+                    bigSuspect = hardCode;
+                    game.Suspect = bigSuspect;
+                    game.PossibleSuspect.Add(bigSuspect);
+                }
+                else
+                {
+                    hardCodeSuspects.Add(hardCode);
+                }
             }
 
             //// Step 3: set the suspect's property to new hard coded suspect
@@ -681,6 +707,10 @@ namespace InterpoolCloudWebRole.Controller
             }
            
             //// Step 5: persist
+            if (prob == 3)
+            {
+                this.container.AddToSuspects(game.Suspect);
+            }
 
             foreach (Suspect s in hardCodeSuspects)
             {
@@ -688,10 +718,12 @@ namespace InterpoolCloudWebRole.Controller
                 game.PossibleSuspect.Add(s);
             }
 
-           /* if (this.CheckConsistencySuspect(game))
-            {
-                this.container.SaveChanges();
-            }*/
+
+            //if (this.CheckConsistencySuspect(game))
+           // {
+             //   this.container.SaveChanges();
+          //  }
+
         }
 
         /// <summary>
@@ -1167,11 +1199,11 @@ namespace InterpoolCloudWebRole.Controller
                 hours = nextcity == null ? 0 : this.TimeToTravel(currentcity, nextcity);                
             }
 
-            game.CurrentTime.AddHours(hours);
+            game.CurrentTime = game.CurrentTime.AddHours(hours);
             if (this.CanSleep(game))
             {
                 int dif = Constants.HourWakeUp - game.CurrentTime.Hour;
-                game.CurrentTime.AddHours(dif);
+                game.CurrentTime = game.CurrentTime.AddHours(dif);
             }
         }
 
