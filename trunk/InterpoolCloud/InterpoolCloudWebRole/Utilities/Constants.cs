@@ -288,5 +288,16 @@ namespace InterpoolCloudWebRole.Utilities
                 return 8;
             }
         }
+
+
+        public static int HoursToSleep
+        {
+            get
+            {
+                return 8;
+            }
+        }
+            
+
     }
 }
