@@ -108,6 +108,6 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="privatesProperties"> Parameter description for privatesProperties goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        public void CreateHardCodeSuspects(Game game, List<string> privatesProperties);
+        void CreateHardCodeSuspects(Game game, List<string> privatesProperties);
     }
 }
