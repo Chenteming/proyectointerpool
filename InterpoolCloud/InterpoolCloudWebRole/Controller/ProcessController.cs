@@ -162,9 +162,9 @@ namespace InterpoolCloudWebRole.Controller
             // this is only the structs that we should follow
             try
             {
-                bool existGame = this.container.Games.Where(game => game.User.UserIdFacebook == userIdFacebook).Count() != 0;
+                bool gameExists = this.container.Games.Where(game => game.User.UserIdFacebook == userIdFacebook).Count() != 0;
 
-                if (existGame)
+                if (gameExists)
                 {
                     return;
                 }
@@ -283,8 +283,16 @@ namespace InterpoolCloudWebRole.Controller
 
             IFacebookController facebookController = new FacebookController();
             IDataManager dm = new DataManager();
-            OAuthFacebook auth = dm.GetLastUserToken(dm.GetContainer());
-            facebookController.DownloadFacebookUserData(auth, newGame, this.container);
+            OAuthFacebook auth = new OAuthFacebook() { Token = newGame.User.UserTokenFacebook };
+            bool specialGame = dm.UserHasSubLevel(newGame.User.UserId, Constants.NumberSubLevels - 1, this.container);
+            if (specialGame)
+            {
+                this.GetSuspectsFromDatabase(newGame);
+            }
+            else
+            {
+                facebookController.DownloadFacebookUserData(auth, newGame, this.container);
+            }
 
             //// TODO change that
             List<string> list = new List<string>();
@@ -1283,6 +1291,12 @@ namespace InterpoolCloudWebRole.Controller
             container.AddToLogs(log);
             container.SaveChanges();
             container.Dispose();
+        }
+
+		void GetSuspectsFromDatabase(Game game)
+        {
+            //// TODO: logic to get user's from a higher level (from the database)
+
         }
     }
 }

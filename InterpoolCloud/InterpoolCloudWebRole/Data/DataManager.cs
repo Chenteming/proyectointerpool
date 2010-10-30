@@ -305,11 +305,38 @@ namespace InterpoolCloudWebRole.Data
         /// Return results are described through the returns tag.</returns>
         public string GetUserIdFacebookByLoginId(string userLoginId, InterpoolContainer context)
         {
-            var query = from user in context.Users
-                        where user.UserLoginId == userLoginId
-                        select user.UserIdFacebook;
-            //// TODO: Check if it has elements
-            return query.First();
+            bool userExists = context.Users.Where(u => u.UserLoginId == userLoginId).Count() > 0;
+            string userIdFacebook;
+            if (userExists)
+            {
+                User user = context.Users.Where(u => u.UserLoginId == userLoginId).First();
+                userIdFacebook = user.UserIdFacebook;
+            }
+            else
+            {
+                userIdFacebook = string.Empty;
+            }
+            return userIdFacebook;
         }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        public bool UserHasSubLevel(int userId, int subLevel, InterpoolContainer context)
+        {
+            var query = from users in context.Users
+                        where users.UserId == userId
+                        select users.SubLevel;
+            int currentSubLevel = -1;
+            if (query.Count() > 0)
+            {
+                currentSubLevel = (int)query.First();
+            }
+            return currentSubLevel == subLevel;
+        }
+
     }
 }
