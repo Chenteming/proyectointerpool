@@ -1807,15 +1807,13 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="levelName">Initial value of the LevelName property.</param>
         /// <param name="groupFacebookId">Initial value of the GroupFacebookId property.</param>
         /// <param name="levelNumber">Initial value of the LevelNumber property.</param>
-        /// <param name="timeToAdd">Initial value of the TimeToAdd property.</param>
-        public static Level CreateLevel(global::System.Int32 levelId, global::System.String levelName, global::System.String groupFacebookId, global::System.Int32 levelNumber, global::System.Int32 timeToAdd)
+        public static Level CreateLevel(global::System.Int32 levelId, global::System.String levelName, global::System.String groupFacebookId, global::System.Int32 levelNumber)
         {
             Level level = new Level();
             level.LevelId = levelId;
             level.LevelName = levelName;
             level.GroupFacebookId = groupFacebookId;
             level.LevelNumber = levelNumber;
-            level.TimeToAdd = timeToAdd;
             return level;
         }
 
@@ -1924,9 +1922,9 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 TimeToAdd
+        public Nullable<global::System.Int32> TimeToAdd
         {
             get
             {
@@ -1941,8 +1939,8 @@ namespace InterpoolCloudWebRole.Data
                 OnTimeToAddChanged();
             }
         }
-        private global::System.Int32 _TimeToAdd;
-        partial void OnTimeToAddChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _TimeToAdd;
+        partial void OnTimeToAddChanging(Nullable<global::System.Int32> value);
         partial void OnTimeToAddChanged();
 
         #endregion

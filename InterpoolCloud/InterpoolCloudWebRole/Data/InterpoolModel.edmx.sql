@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/30/2010 12:47:04
+-- Date Created: 10/30/2010 17:09:28
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -151,7 +151,16 @@ CREATE TABLE [dbo].[Users] (
     [UserTokenFacebook] nvarchar(max)  NOT NULL,
     [SubLevel] int  NULL,
     [UserLoginId] nvarchar(max)  NULL,
-    [LevelLevelId] int  NOT NULL
+    [LevelLevelId] int  NOT NULL,
+    [UserFirstName] nvarchar(max)  NULL,
+    [UserLastName] nvarchar(max)  NULL,
+    [UserMusic] nvarchar(max)  NULL,
+    [UserCinema] nvarchar(max)  NULL,
+    [UserTelevision] nvarchar(max)  NULL,
+    [UserHometown] nvarchar(max)  NULL,
+    [UserBirthday] nvarchar(max)  NULL,
+    [UserGender] nvarchar(max)  NOT NULL,
+    [UserPictureLink] nvarchar(max)  NULL
 );
 GO
 
@@ -237,7 +246,7 @@ CREATE TABLE [dbo].[Levels] (
     [LevelName] nvarchar(max)  NOT NULL,
     [GroupFacebookId] nvarchar(max)  NOT NULL,
     [LevelNumber] int  NOT NULL,
-    [TimeToAdd] int  NOT NULL
+    [TimeToAdd] int  NULL
 );
 GO
 
