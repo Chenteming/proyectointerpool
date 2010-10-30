@@ -102,7 +102,8 @@ namespace InterpoolCloudWebRole
 
             foreach (DataCity d in col)
             {
-                this.pruebaGetCities.Text = this.pruebaGetCities.Text + d.Top + " " + d.Left + " " + d.NameCity + " " + d.NameFileCity + "\n";
+                this.pruebaGetCities.Text = this.pruebaGetCities.Text + d.Left + " " + d.Top + " " + d.NameCity + " " + d.NameFileCity + "\n";
+
             }
         }
         
@@ -153,8 +154,39 @@ namespace InterpoolCloudWebRole
         /// <param name="e">Parameter description for e goes here</param>
         protected void PruebaArrestar_Click(object sender, EventArgs e)
         {
-            InterpoolContainer container = new InterpoolContainer();
+            /*InterpoolContainer container = new InterpoolContainer();
             IProcessController ipc = new ProcessController(container);
+            ipc.EmitOrderOfArrest(user, culpable);*/
+
+            InterpoolContainer container = new InterpoolContainer();
+            DataManager dm = new DataManager();
+            ProcessController ipc = new ProcessController(container);
+            /*
+            List<City> listallcities = new List<City>();
+            IQueryable<City> allcities = container.Cities;
+            double distance = 0;
+            double maxdistance = 0;
+            int long1;
+            int long2;
+            int lat1;
+            int lat2;
+            foreach (City city in allcities)
+            {
+                foreach (City othercity in allcities)
+                {
+                    long1 = othercity.Longitud;
+                    long2 = city.Longitud;
+                    lat1 = othercity.Latitud;
+                    lat2 = city.Latitud;
+                    distance = Math.Sqrt((long1 - long2) * (long1 - long2) + (lat1 - lat2) * (lat1 - lat2));
+                    if (distance >= maxdistance)
+                    {
+                        maxdistance = distance;
+                    }
+                }
+            }
+            this.pruebaGetCities.Text = "max distance "+maxdistance;
+            */
             Game game = container.Games.First();
             List<string> lista = new List<string>();
             
@@ -167,6 +199,7 @@ namespace InterpoolCloudWebRole
             container.SaveChanges();
 
             //// ipc.EmitOrderOfArrest(user, culpable);
+            
         }
     }
 }
