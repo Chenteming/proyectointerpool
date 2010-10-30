@@ -164,6 +164,7 @@ namespace InterpoolCloudWebRole
             lista.Add("SuspectGender");
             lista.Add("SuspectPicLInk");
             ipc.CreateHardCodeSuspects(game, lista);
+            container.SaveChanges();
 
             //// ipc.EmitOrderOfArrest(user, culpable);
         }

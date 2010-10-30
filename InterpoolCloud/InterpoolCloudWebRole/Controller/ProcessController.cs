@@ -182,15 +182,19 @@ namespace InterpoolCloudWebRole.Controller
                 }
                 catch (Exception e)
                 {
-                    InterpoolContainer container = new InterpoolContainer();
-                    Log log = new Log();
-                    log.LogName = "BuiltTravel";
-                    log.LogStackTrace = e.StackTrace;
-                    container.AddToLogs(log);
+                    registerLog("BuiltTravel", e, "error");
                     throw e;
                 }
                 //// 2 Get suspects
-                this.GetSuspects(newGame);
+                try
+                {
+                    this.GetSuspects(newGame);
+                }
+                catch (Exception e)
+                {
+                    registerLog("GetSuspects", e, "error");
+                    throw e;
+                }
 
                 //// 3 Create clues
                 try
@@ -199,20 +203,23 @@ namespace InterpoolCloudWebRole.Controller
                 }
                 catch (Exception e)
                 {
-                    InterpoolContainer container = new InterpoolContainer();
-                    Log log = new Log();
-                    log.LogName = "CreateClue";
-                    log.LogStackTrace = e.StackTrace;
-                    container.AddToLogs(log);
+                    registerLog("CreateClue", e, "error");
                     throw e;
                 }
 
                 //// set the date to monday
                 DateTime currentTime = new DateTime(2010, 01, 01);
                 currentTime = currentTime.AddDays(3);
-                
 
-                this.CalculateDeadLine(newGame);
+                try
+                {
+                    // this.CalculateDeadLine(newGame);
+                }
+                catch (Exception e)
+                {
+                    registerLog("CalculateDeadLine", e, "error");
+                    throw e;
+                }
 
                 ////currentTime.
                 
@@ -225,11 +232,6 @@ namespace InterpoolCloudWebRole.Controller
             }
             catch (Exception e)
             {
-                Log log = new Log();
-                log.LogName = this.output;
-                log.LogStackTrace = e.StackTrace;
-
-                ////conteiner.AddToLogs(log);
                 throw e;
             }
         }
@@ -269,9 +271,7 @@ namespace InterpoolCloudWebRole.Controller
             newGame.DeadLine = newGame.CurrentTime;
             newGame.DeadLine = newGame.DeadLine.AddHours(Math.Round(time));
             //// In the best game the user 
-            #endregion
-
-            
+            #endregion    
         }
 
         /// <summary>
@@ -291,13 +291,12 @@ namespace InterpoolCloudWebRole.Controller
             List<string> list = new List<string>();
 
             list.Add("SuspectFirstName");
-            list.Add("SuspectFacebookId");
-           
+            list.Add("SuspectFacebookId");     
             list.Add("SuspectLastName");
             list.Add("SuspectGender");
             list.Add("SuspectPicLInk");
 
-            //CreateHardCodeSuspects(newGame, list);
+            CreateHardCodeSuspects(newGame, list);
         }
 
         /// <summary>
@@ -693,7 +692,7 @@ namespace InterpoolCloudWebRole.Controller
                         string prop = property.Name;
                         info = hardCodeS.GetType().GetProperty(prop);
                         string value = (string)info.GetValue(hardCodeS, null);
-                        if (null == value)
+                        if (!privatesProperties.Equals(prop) && null == value)
                         {
                             index = rand.Next(0, game.PossibleSuspect.Count - 1);
                             Suspect realSuspect = game.PossibleSuspect.ToList().ElementAt(index);
@@ -719,10 +718,14 @@ namespace InterpoolCloudWebRole.Controller
             }
 
 
-            //if (this.CheckConsistencySuspect(game))
-           // {
-             //   this.container.SaveChanges();
-          //  }
+            if (this.CheckConsistencySuspect(game))
+            {
+                this.container.SaveChanges();
+            }
+            else
+            {
+                throw new GameException("error_hardCodedSuspectConsistencia", null);
+            }
 
         }
 
@@ -1279,5 +1282,23 @@ namespace InterpoolCloudWebRole.Controller
             int mintotravel = Int32.Parse(dm.GetParameter(Parameters.MinHoursTravel, this.container));
             return timetotravel < mintotravel ? mintotravel : timetotravel;
          }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="operation"></param>
+        /// <param name="e"></param>
+        /// <param name="type"></param>
+        private void registerLog(string operation, Exception e, string type)
+        {
+            InterpoolContainer container = new InterpoolContainer();
+            Log log = new Log();
+            log.LogName = operation;
+            log.LogStackTrace = e.StackTrace;
+            log.LogType = type;
+            container.AddToLogs(log);
+            container.SaveChanges();
+            container.Dispose();
+        }
     }
 }
