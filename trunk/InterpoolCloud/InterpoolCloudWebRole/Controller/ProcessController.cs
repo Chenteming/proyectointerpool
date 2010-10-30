@@ -26,11 +26,6 @@ namespace InterpoolCloudWebRole.Controller
         /// <summary>
         /// Store for the property
         /// </summary>
-        private string output = "Inicio";
-
-        /// <summary>
-        /// Store for the property
-        /// </summary>
         private InterpoolContainer container;
 
         /// <summary>
