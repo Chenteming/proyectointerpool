@@ -157,6 +157,9 @@ namespace InterpoolCloudWebRole
             IProcessController ipc = new ProcessController(container);
             ipc.EmitOrderOfArrest(user, culpable);*/
 
+
+
+
             InterpoolContainer container = new InterpoolContainer();
             DataManager dm = new DataManager();
             ProcessController ipc = new ProcessController(container);
@@ -187,6 +190,9 @@ namespace InterpoolCloudWebRole
             this.pruebaGetCities.Text = "max distance "+maxdistance;
             */
             Game game = container.Games.First();
+
+            ipc.DeleteGame(game.User);
+
             List<string> lista = new List<string>();
             
             lista.Add("SuspectFirstName");
