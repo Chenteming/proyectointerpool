@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+    using System.Reflection;
 
     /// <summary>
     /// Class statement Functions
@@ -45,6 +46,27 @@ using System.Web;
             }
 
             return randomList; ////return the new random list
+        }
+
+        public static bool HasEnoughFields(object obj, int numRequired)
+        {
+            PropertyInfo[] properties = obj.GetType().GetProperties();
+            int lengthProperties = properties.Length;
+            int count = 0;
+            for (int i = 0; i < lengthProperties; i++)
+            {
+                PropertyInfo property = properties[i];
+                Type type = property.PropertyType;
+                if (type.FullName == "string")
+                {
+                    string valueProperty = (string)property.GetValue(obj, null);
+                    if (!string.IsNullOrEmpty(valueProperty))
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count >= numRequired;
         }
     }
 }
