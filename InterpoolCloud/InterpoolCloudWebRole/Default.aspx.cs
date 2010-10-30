@@ -103,7 +103,6 @@ namespace InterpoolCloudWebRole
             foreach (DataCity d in col)
             {
                 this.pruebaGetCities.Text = this.pruebaGetCities.Text + d.Left + " " + d.Top + " " + d.NameCity + " " + d.NameFileCity + "\n";
-
             }
         }
         
@@ -197,9 +196,7 @@ namespace InterpoolCloudWebRole
             lista.Add("SuspectPicLInk");
             ipc.CreateHardCodeSuspects(game, lista);
             container.SaveChanges();
-
-            //// ipc.EmitOrderOfArrest(user, culpable);
-            
+            //// ipc.EmitOrderOfArrest(user, culpable
         }
     }
 }

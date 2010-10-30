@@ -93,7 +93,6 @@ namespace InterpoolCloudWebRole.Services
         [OperationContract]
         DataCity Travel(string userIdFacebook, string nameNextCity);
 
-
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
@@ -102,6 +101,5 @@ namespace InterpoolCloudWebRole.Services
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
         DataClue GetClueByFamous(string userIdFacebook, int numFamous);
-
     }
 }
