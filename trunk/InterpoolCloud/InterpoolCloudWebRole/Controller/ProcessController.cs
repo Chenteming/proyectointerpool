@@ -420,7 +420,7 @@ namespace InterpoolCloudWebRole.Controller
             Game game = dm.GetGameByUser(userIdFacebook, this.container);
             if (game.OrderOfArrest != null)
             {
-                throw new GameException("error_existOneOrderOfArrest");
+                throw new GameException("error_existOneOrderOfArrest", null);
             }
 
             Suspect suspect = null;
