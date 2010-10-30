@@ -44,7 +44,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         public void DownloadFacebookUserData(OAuthFacebook auth, Game game, InterpoolContainer context)
         {
             IDataManager dm = new DataManager();
-            string userId = dm.GetUserByToken(OAuthFacebook.AccessToken, dm.GetContainer()).UserIdFacebook;
+            string userId = dm.GetUserByToken(auth.Token, dm.GetContainer()).UserIdFacebook;
             if (!userId.Equals(string.Empty))
             {
                 DataFacebookUser fbud = new DataFacebookUser();
@@ -61,10 +61,10 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 List<Suspect> suspects = new List<Suspect>();
                 DataFacebookUser fbudOfSuspect; 
 
-                // Creates and stores the suspects for the current user
+                //// Creates and stores the suspects for the current user
                 int limit = Constants.MaxSuspects;
                 int i = 0;
-                int numberSuspect = new Random().Next(0, limit);
+                ////int numberSuspect = new Random().Next(0, limit);
                 foreach (string friendId in shuffleFriendsIds)
                 {
                     fbudOfSuspect = this.GetFriendInfo(userId, friendId);
@@ -72,15 +72,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                     if (this.HaveEnoughFields(suspect, Constants.DataRequired))
                     {
                         this.dataManager.StoreSuspect(suspect, context);
-                        if (numberSuspect == i)
-                        {
-                            game.Suspect = suspect;
-                        }
-                        else
-                        {
-                            game.PossibleSuspect.Add(suspect);
-                        }
-
+                        game.PossibleSuspect.Add(suspect);
                         i++;
                     }
 
