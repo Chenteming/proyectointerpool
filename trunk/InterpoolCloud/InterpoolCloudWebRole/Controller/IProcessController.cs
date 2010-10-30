@@ -107,5 +107,10 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="game"> Parameter description for game goes here</param>
         /// <param name="privatesProperties"> Parameter description for privatesProperties goes here</param> 
         void CreateHardCodeSuspects(Game game, List<string> privatesProperties);
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="user"> Parameter description for user goes here</param>
+        void DeleteGame(User user);
     }
 }

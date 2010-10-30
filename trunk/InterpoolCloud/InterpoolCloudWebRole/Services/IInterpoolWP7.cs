@@ -101,5 +101,11 @@ namespace InterpoolCloudWebRole.Services
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
         DataClue GetClueByFamous(string userIdFacebook, int numFamous);
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="user"> Parameter description for user goes here</param>
+        [OperationContract]
+        void DeleteGame(User user);
     }
 }

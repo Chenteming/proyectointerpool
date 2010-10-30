@@ -733,6 +733,50 @@ namespace InterpoolCloudWebRole.Controller
             return dm.GetUserIdFacebookByLoginId(userLoginId, dm.GetContainer());
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="user"> Parameter description for user goes here</param>
+        public void DeleteGame(User user)
+        {
+            Game game = user.Game;
+
+            ////user.Game = null;
+            IEnumerator<NodePath> nodes = game.NodePath.GetEnumerator();
+            while (nodes.MoveNext())
+            {
+                NodePath node = nodes.Current;
+                node.Game = null;
+                //// container.DeleteObject(node.Clue);
+                // node.Clue = null;
+                /*  container.DeleteObject(node);
+                  node.City = null;
+                  node.PossibleCities = null;
+                  node.Famous = null;*/
+            }
+
+            ////game.NodePath = null;
+            this.container.DeleteObject(game.NodePath);
+            OrderOfArrest order = game.OrderOfArrest;
+            game.OrderOfArrest = null;
+            if (order != null)
+            {
+                this.container.DeleteObject(order.Suspect);
+                this.container.DeleteObject(order);
+            }
+            ////container.DeleteObject(game.Suspect);
+            game.Suspect = null;
+            /* foreach (Suspect suspect in game.PossibleSuspect)
+             {
+                 container.DeleteObject(suspect);
+             }*/
+            game.PossibleSuspect = null;
+            game.User = null;
+            game.NodePath = null;
+            ////container.SaveChanges();
+            this.container.DeleteObject(game);
+            this.container.SaveChanges();
+        }
+
         /* to consider: 
          * - all clues maybe have characteristic of the suspect 
          * - first clue is final
@@ -1069,50 +1113,6 @@ namespace InterpoolCloudWebRole.Controller
 
         /// <summary>
         /// Description for Method.</summary>
-        /// <param name="user"> Parameter description for user goes here</param>
-        private void DeleteGame(User user)
-        {
-            Game game = user.Game;
-
-            ////user.Game = null;
-            IEnumerator<NodePath> nodes = game.NodePath.GetEnumerator();
-            while (nodes.MoveNext())
-            {
-                NodePath node = nodes.Current;
-                node.Game = null;
-                //// container.DeleteObject(node.Clue);
-               // node.Clue = null;
-              /*  container.DeleteObject(node);
-                node.City = null;
-                node.PossibleCities = null;
-                node.Famous = null;*/
-            }
-
-            ////game.NodePath = null;
-            this.container.DeleteObject(game.NodePath);
-            OrderOfArrest order = game.OrderOfArrest;
-            game.OrderOfArrest = null;
-            if (order != null)
-            {
-                this.container.DeleteObject(order.Suspect);
-                this.container.DeleteObject(order);
-            }
-            ////container.DeleteObject(game.Suspect);
-            game.Suspect = null;
-           /* foreach (Suspect suspect in game.PossibleSuspect)
-            {
-                container.DeleteObject(suspect);
-            }*/
-            game.PossibleSuspect = null;
-            game.User = null;
-            game.NodePath = null;
-            ////container.SaveChanges();
-            this.container.DeleteObject(game);
-            this.container.SaveChanges();
-        }
-
-        /// <summary>
-        /// Description for Method.</summary>
         /// <param name="game"> Parameter description for game goes here</param>
         /// <param name="function"> Parameter description for function goes here</param>
         /// <returns>
@@ -1256,20 +1256,25 @@ namespace InterpoolCloudWebRole.Controller
             container.SaveChanges();
             container.Dispose();
         }
-        
+
+        /// <summary>
+        /// register the Log
+        /// </summary>
+        /// <param name="game"> Parameter description for operation game goes here</param>
         private void GetSuspectsFromDatabase(Game game)
         {
             List<User> users = this.container.Users.ToList();
             users = Functions.ShuffleList(users);
-            // Should this be Constants.MaxSuspects?
+            //// Should this be Constants.MaxSuspects?
             int numberSuspect = new Random().Next(0, Constants.MaxSuspects - 1);
             int i = 0;
-            foreach(User user in users)
+            foreach (User user in users)
             {
                 if (i > Constants.MaxSuspects)
                 {
                     break;
                 }
+
                 Suspect suspect = this.NewSuspectFromUser(user);
                 if (i == numberSuspect)
                 {
@@ -1279,10 +1284,10 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     game.PossibleSuspect.Add(suspect);
                 }
+
                 i++;
             }
         }
-
 
         /// <summary>
         /// Calculate Daed Line
@@ -1319,7 +1324,12 @@ namespace InterpoolCloudWebRole.Controller
             //// In the best game the user 
         }
 
-		private Suspect NewSuspectFromUser(User user)
+        /// <summary>
+        /// Time between two cities
+        /// </summary>
+        /// <param name="user">Parameter description for function user goes here</param>
+        /// <returns>return hours to travel</returns>
+        private Suspect NewSuspectFromUser(User user)
         {
             Suspect suspect = new Suspect();
             
@@ -1336,6 +1346,5 @@ namespace InterpoolCloudWebRole.Controller
 
             return suspect;
         }
-
     }
 }

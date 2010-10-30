@@ -196,7 +196,12 @@ namespace InterpoolCloudWebRole
             }
         }
 
-        protected void Button6_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Get Day of week 
+        /// </summary>
+        /// <param name="sender">Parameter description for sender goes here</param>
+        /// <param name="e">Parameter description for sender e here</param>
+        private void Button6_Click(object sender, EventArgs e)
         {
             this.log.Text = String.Empty;
             InterpoolContainer container = new InterpoolContainer();
@@ -205,7 +210,7 @@ namespace InterpoolCloudWebRole
             string currentUser = this.TextBoxEmail.Text;
             this.log.Text = "Comienzo a procesar Question Famous... ";
             string userId = dm.GetUserIdFacebookByLoginId(currentUser, ipc.GetContainer());
-            User user = dm.GetUserByIdFacebook(ipc.GetContainer(),userId).First();
+            User user = dm.GetUserByIdFacebook(ipc.GetContainer(), userId).First();
             ipc.DeleteGame(user);
         }
     }

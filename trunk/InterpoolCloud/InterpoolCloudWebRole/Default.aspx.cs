@@ -157,9 +157,6 @@ namespace InterpoolCloudWebRole
             IProcessController ipc = new ProcessController(container);
             ipc.EmitOrderOfArrest(user, culpable);*/
 
-
-
-
             InterpoolContainer container = new InterpoolContainer();
             DataManager dm = new DataManager();
             ProcessController ipc = new ProcessController(container);

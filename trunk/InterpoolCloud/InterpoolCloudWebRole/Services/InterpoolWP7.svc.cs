@@ -128,5 +128,13 @@ namespace InterpoolCloudWebRole.Services
             //// This is the correct function to use when the login screen is ready
             return this.controller.GetUserIdFacebook(idLogin);
         }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="user"> Parameter description for user goes here</param>
+        public void DeleteGame(User user)
+        {
+            this.controller.DeleteGame(user);
+        }
     }
 }
