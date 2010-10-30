@@ -70,10 +70,10 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="userIdFaceook"> Parameter description for userIdFaceook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        public IQueryable<User> GetUserByIdFacebook(InterpoolContainer context, string userIdFaceook)
+        public IQueryable<User> GetUserByIdFacebook(InterpoolContainer context, string userIdFacebook)
         {
             return from u in context.Users
-                    where u.UserIdFacebook == userIdFaceook
+                    where u.UserIdFacebook == userIdFacebook
                     select u;
         }
 
@@ -131,6 +131,8 @@ namespace InterpoolCloudWebRole.Data
             {
                 User userDB = context.Users.Where(u => u.UserIdFacebook == user.UserIdFacebook).First();
                 userDB.UserTokenFacebook = user.UserTokenFacebook;
+                // TODO: update all the remaining fields
+                context.Detach(user);
             }
             else
             {
@@ -337,6 +339,27 @@ namespace InterpoolCloudWebRole.Data
             }
 
             return currentSubLevel == subLevel;
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="token"> Parameter description for userLoginId goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        public User GetUserByToken(string token, InterpoolContainer context)
+        {
+            var query =  from user in context.Users
+                        where user.UserTokenFacebook == token
+                        select user;
+            if (query.Count() > 0)
+            {
+                return query.First();
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

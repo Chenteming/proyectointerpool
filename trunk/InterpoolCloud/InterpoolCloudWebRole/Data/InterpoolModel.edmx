@@ -1183,7 +1183,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Model1" ZoomLevel="73" >
-        <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="5.5" PointY="5.75" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="InterpoolModel.User" Width="1.875" PointX="5.25" PointY="6.125" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="InterpoolModel.Game" Width="1.5" PointX="1.25" PointY="5.375" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="InterpoolModel.NodePath" Width="1.5" PointX="3.375" PointY="8.25" Height="2.5571907552083335" />
         <EntityTypeShape EntityType="InterpoolModel.City" Width="1.5" PointX="8.375" PointY="4.25" Height="3.5186979166666656" />
@@ -1248,8 +1248,8 @@
           <ConnectorPoint PointX="7.875" PointY="2.0779932567937047" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.UserGame">
-          <ConnectorPoint PointX="5.5" PointY="5.95" />
-          <ConnectorPoint PointX="2.75" PointY="5.95" />
+          <ConnectorPoint PointX="5.25" PointY="6.325" />
+          <ConnectorPoint PointX="2.75" PointY="6.325" />
         </AssociationConnector>
         <EntityTypeShape EntityType="InterpoolModel.CityProperty" Width="1.5" PointX="10.875" PointY="5.625" Height="1.5956835937499996" />
         <AssociationConnector Association="InterpoolModel.CityCityProperty">
@@ -1280,8 +1280,8 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="InterpoolModel.HardCodedSuspect" Width="1.5" PointX="16.25" PointY="0.625" Height="1.787985026041667" />
         <AssociationConnector Association="InterpoolModel.UserLevel">
-          <ConnectorPoint PointX="6.3125" PointY="5.75" />
-          <ConnectorPoint PointX="6.3125" PointY="4.6052864583333326" />
+          <ConnectorPoint PointX="6.1875" PointY="6.125" />
+          <ConnectorPoint PointX="6.1875" PointY="4.6052864583333326" />
         </AssociationConnector>
         <AssociationConnector Association="InterpoolModel.LevelCity">
           <ConnectorPoint PointX="7.125" PointY="4.4276432291666659" />
