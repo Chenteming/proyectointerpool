@@ -2073,6 +2073,54 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _LogStackTrace;
         partial void OnLogStackTraceChanging(global::System.String value);
         partial void OnLogStackTraceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UserLogin
+        {
+            get
+            {
+                return _UserLogin;
+            }
+            set
+            {
+                OnUserLoginChanging(value);
+                ReportPropertyChanging("UserLogin");
+                _UserLogin = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UserLogin");
+                OnUserLoginChanged();
+            }
+        }
+        private global::System.String _UserLogin;
+        partial void OnUserLoginChanging(global::System.String value);
+        partial void OnUserLoginChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Time
+        {
+            get
+            {
+                return _Time;
+            }
+            set
+            {
+                OnTimeChanging(value);
+                ReportPropertyChanging("Time");
+                _Time = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Time");
+                OnTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Time;
+        partial void OnTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnTimeChanged();
 
         #endregion
     

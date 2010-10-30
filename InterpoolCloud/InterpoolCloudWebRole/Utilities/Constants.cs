@@ -44,7 +44,7 @@ namespace InterpoolCloudWebRole.Utilities
         {
             get
             {
-                return 10;
+                return 5;
             }
         }
 
