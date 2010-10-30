@@ -23,8 +23,8 @@ namespace InterpoolCloudWebRole.Utilities
         /// <summary>
         /// Initializes a new instance of the GameException class.</summary>
         /// <param name="msg"> Parameter description for msg goes here</param>
-        public GameException(string msg)
-            : base(msg)
+        public GameException(string msg, Exception innerException)
+            : base(msg, innerException)
         {
             ////TODO internationalize the msg to show 
             this.msg = msg;
