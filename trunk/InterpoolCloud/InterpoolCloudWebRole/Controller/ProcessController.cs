@@ -224,9 +224,7 @@ namespace InterpoolCloudWebRole.Controller
    
                 // newGame.DeadLine = currentTime;
                 this.container.AddToGames(newGame);
-                this.output = "add to games";
                 this.container.SaveChanges();
-                this.output = "savechanges";
             }
             catch (Exception e)
             {
