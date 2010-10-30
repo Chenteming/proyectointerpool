@@ -298,6 +298,28 @@ namespace InterpoolCloudWebRole.Utilities
             {
                 return 8;
             }
-        }            
+        }
+
+        /// <summary>
+        /// Gets the property PosiblesCities
+        /// </summary>
+        public static int PosiblesCities
+        {
+            get
+            {
+                return 2;
+            }
+        }
+
+        /// <summary>
+        /// Gets the property FamousCities
+        /// </summary>
+        public static int FamousCities
+        {
+            get
+            {
+                return 3;
+            }
+        } 
     }
 }
