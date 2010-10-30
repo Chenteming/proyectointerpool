@@ -47,6 +47,8 @@
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <br />
                 <br />
+                <asp:Button ID="Button6" runat="server" onclick="Button6_Click" 
+                    Text="Delete Game" />
                 <br />
                 <br />
                 <br />
