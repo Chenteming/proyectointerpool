@@ -43,7 +43,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <param name="context"> Parameter description for context goes here</param>
         public void DownloadFacebookUserData(OAuthFacebook auth, Game game, InterpoolContainer context)
         {
-            string userId = this.GetUserId(auth);
+            IDataManager dm = new DataManager();
+            string userId = dm.GetUserByToken(OAuthFacebook.AccessToken, dm.GetContainer()).UserIdFacebook;
             if (!userId.Equals(string.Empty))
             {
                 DataFacebookUser fbud = new DataFacebookUser();
@@ -119,16 +120,11 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         {
             string url = String.Format("https://graph.facebook.com/me?access_token={0}", auth.Token);
             string jsonUser = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
-            Dictionary<string, string> userValues = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonUser);
-            string userId;
-            if (userValues.TryGetValue("id", out userId))
-            {
-                return userId;
-            }
-            else
-            {
-                return string.Empty;
-            }
+            bool error = false;
+            JObject jsonUserObject = JObject.Parse(jsonUser);
+            jsonUserObject.SelectToken("id", error);
+            string userIdFacebook = (string)jsonUserObject.SelectToken("id", error);
+            return userIdFacebook;
         }
 
         /// <summary>
