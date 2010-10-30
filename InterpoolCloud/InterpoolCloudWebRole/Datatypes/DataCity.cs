@@ -42,5 +42,13 @@ namespace InterpoolCloudWebRole.Datatypes
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public DateTime DeadLine
+        {
+            get;
+            set;
+        }
     }
 }

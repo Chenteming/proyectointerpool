@@ -71,6 +71,7 @@
     <Content Include="Libs\Newtonsoft.Json.dll" />
     <Content Include="Libs\Newtonsoft.Json.pdb" />
     <Content Include="Libs\Newtonsoft.Json.xml" />
+    <Content Include="TestPage.aspx" />
     <EntityDeploy Include="Data\InterpoolModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>InterpoolModel.Designer.cs</LastGenOutput>
@@ -195,6 +196,13 @@
     <Compile Include="Utilities\Functions.cs" />
     <Compile Include="Utilities\GameException.cs" />
     <Compile Include="Utilities\Parameters.cs" />
+    <Compile Include="TestPage.aspx.cs">
+      <DependentUpon>TestPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage.aspx.designer.cs">
+      <DependentUpon>TestPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>

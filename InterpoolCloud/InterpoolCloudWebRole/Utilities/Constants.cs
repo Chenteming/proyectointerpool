@@ -86,7 +86,7 @@ namespace InterpoolCloudWebRole.Utilities
         /// <summary>
         /// Store for the property
         /// </summary>
-        private static string ConsumerKey
+        public static string ConsumerKey
         {
             get
             {
@@ -97,7 +97,7 @@ namespace InterpoolCloudWebRole.Utilities
         /// <summary>
         /// Store for the property
         /// </summary>
-        private static string ConsumerSecret
+        public static string ConsumerSecret
         {
             get
             {
@@ -108,18 +108,18 @@ namespace InterpoolCloudWebRole.Utilities
         /// <summary>
         /// Store for the property
         /// </summary>
-        private static string FacebookCallbackUrl
+        public static string FacebookCallbackUrl
         {
             get
             {
                 return "http://pis2010.cloudapp.net/Pages/FacebookCallback.aspx/";
             }
         }
-        */
+       */
         //// End of constants for the cloud application ////
 
         //// All these constants are for local test ////
-
+        
         /// <summary>
         /// Gets for the property
         /// </summary>
@@ -130,7 +130,7 @@ namespace InterpoolCloudWebRole.Utilities
                 return "http://127.0.0.1:81/Default.aspx/";
             }
         }
-
+        
         /// <summary>
         /// Gets for the property
         /// </summary>
@@ -165,7 +165,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
 
         //// End of constants for local test ////
-
+        
         /// <summary>
         /// Gets for the property
         /// </summary>
