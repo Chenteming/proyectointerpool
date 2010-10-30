@@ -1,19 +1,19 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Collections.Generic;
-using Microsoft.Phone.Controls;
-using WP7.Utilities;
-
-namespace WP7
+﻿namespace WP7
 {
+    using System;
+    using System.Net;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Documents;
+    using System.Windows.Ink;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Animation;
+    using System.Windows.Shapes;
+    using System.Collections.Generic;
+    using Microsoft.Phone.Controls;
+    using WP7.Utilities;
+
     public class GameManager
     {
         private static GameManager instance;
@@ -25,125 +25,128 @@ namespace WP7
         private int[] famousIndex = { -1, -1, -1 };
         private int number = 0;
         private int currentFamous = -1;
-        public string userId { get; set; }
+        ////0 = first_name
+        ////1 = last_name 
+        ////2 =  birthday
+        ////3 = hometown
+        ////4 = gender
+        ////5 = music
+        ////6 = cinema
+        private GameManager()
+        {
+            this.cities = new List<string>(Constants.MAX_CITIES);
+            this.famous = new string[Constants.MAX_FAMOUS];
+            this.filterField = new string[Constants.MAX_FILTERFIELD];
+            this.clues = new List<string>();
+            this.suspects = new List<string>();
+            this.Logged = false;
+        }
+
+        public string UserId { get; set; }
+
         private string[] filterField;
-		public bool logged { get; set; }
-		public string userEmail { get; set; }
+
+		public bool Logged { get; set; }
+
+		public string UserEmail { get; set; }
 
         public static GameManager getInstance()
         {
             if (instance == null)
                 instance = new GameManager();
             return instance;
-        }
-
-        private GameManager()
-        {
-            cities = new List<string>(Constants.MAX_CITIES);
-            famous = new string[Constants.MAX_FAMOUS];
-            filterField = new string[Constants.MAX_FILTERFIELD];
-            clues = new List<string>();
-            suspects = new List<string>();
-			logged = false;
-        }
+        }        
 
         public void AddCity(int position, string name)
-        // Add the new city in the list
+        ////Add the new city in the list
         {
-            cities.Insert(position, name);
+            this.cities.Insert(position, name);
         }
 
         public void AddClue(int position, string name)
-        // Add the new clue in the list
+        ////Add the new clue in the list
         {
-            clues.Insert(position, name);
+            this.clues.Insert(position, name);
         }
 
         public void AddFamous(int position, string name)
-        // Add the new famous the list
+        ////Add the new famous the list
         {
-
-            famous[position] = name;
+            this.famous[position] = name;
         }
 
         public void SetCurrentCity(string city)
         {
-            currentCity = city;
+            this.currentCity = city;
         }
 
         public void SetCurrentCities(List<string> list)
         {
-            cities = list;
+            this.cities = list;
         }
 
         public List<string> GetCities()
-        // Return all the cities	
+        ////Return all the cities	
         {
-            return cities;
+            return this.cities;
         }
 
         public List<string> GetClues()
-        // Return all the clues	
+        ////Return all the clues	
         {
-            return clues;
+            return this.clues;
         }
 
         public string GetCurrentCity()
-        // Return the current city
+        ////Return the current city
         {
-            return currentCity;
+            return this.currentCity;
         }
 
         public List<string> GetSuspects()
         {
-            return suspects;
+            return this.suspects;
         }
 
         public void SetSuspectsList(List<string> list)
         {
-            suspects = list;
+            this.suspects = list;
         }
 
         public void SetFamousIndex(int gameObjectNumber)
-        // famousIndex[0] = phoneFamous        
-        // famousIndex[1] = newspaperFamous   (1,2,3) famousNumber
-        // famousIndex[2] = computerFamous
+        ////famousIndex[0] = phoneFamous        
+        ////famousIndex[1] = newspaperFamous   (1,2,3) famousNumber
+        ////famousIndex[2] = computerFamous
         {
             if (famousIndex[gameObjectNumber] == -1)
             {
-                number++;
-                famousIndex[gameObjectNumber] = number;
-                currentFamous = number;
+                this.number++;
+                this.famousIndex[gameObjectNumber] = number;
+                this.currentFamous = number;
             }
             else
-                currentFamous = famousIndex[gameObjectNumber];
+                this.currentFamous = famousIndex[gameObjectNumber];
         }
+
         public int GetNumber()
-        // returns the number of the actual famous
+        ////returns the number of the Actual famous
         {
-            return number;
+            return this.number;
         }
 
         public int GetCurrentFamous()
         {
-            return currentFamous;
+            return this.currentFamous;
         }
 
         public void AddFilterField(string field, int position)
         {
-            filterField[position] = field;
+            this.filterField[position] = field;
         }
 
         public string[] GetFilterField()
         {
-            return filterField;
-        /*0 = first_name
-          1 = last_name 
-          2 =  birthday
-          3 = hometown
-          4 = gender
-          5 = music
-          6 = cinema*/
+            return this.filterField;
         }
     }
 }
