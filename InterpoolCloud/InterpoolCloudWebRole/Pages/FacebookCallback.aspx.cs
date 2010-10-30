@@ -46,15 +46,23 @@ namespace InterpoolCloudWebRole
                     IDataManager dataManager = new DataManager();
                     InterpoolContainer container = dataManager.GetContainer();
                     User user = new User();
-                    user.SubLevel = 0;
-                    string codLevel = dataManager.GetParameter(Parameters.LevelRookie, container);
-                    user.Level = container.Levels.Where(l => l.LevelName == codLevel).First();
-
                     DataFacebookUser userData = facebookController.GetUserInfoByToken(auth);
                     user.UserIdFacebook = userData.UserId;
                     user.UserTokenFacebook = auth.Token;
                     user.UserLoginId = userData.Email;
-                    //// TODO: store the user's information in order to be used in future games
+                    user.UserBirthday = userData.Birthday;
+                    user.UserCinema = userData.Cinema;
+                    user.UserFirstName = userData.FirstName;
+                    user.UserGender = userData.Gender;
+                    user.UserHometown = userData.Hometown;
+                    user.UserLastName = userData.LastName;
+                    user.UserMusic = userData.Music;
+                    user.UserPictureLink = userData.PictureLink;
+                    user.UserTelevision = userData.Television;
+                    user.SubLevel = 0;
+                    string codLevel = dataManager.GetParameter(Parameters.LevelRookie, container);
+                    user.Level = container.Levels.Where(l => l.LevelName == codLevel).First();
+                    
                     dataManager.StoreUser(user, container);
 
                     Response.Redirect(Constants.RedirectUrlAfterLoginFacebook);
