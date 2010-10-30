@@ -1256,6 +1256,32 @@ namespace InterpoolCloudWebRole.Controller
             container.SaveChanges();
             container.Dispose();
         }
+        
+        private void GetSuspectsFromDatabase(Game game)
+        {
+            List<User> users = this.container.Users.ToList();
+            users = Functions.ShuffleList(users);
+            // Should this be Constants.MaxSuspects?
+            int numberSuspect = new Random().Next(0, Constants.MaxSuspects - 1);
+            int i = 0;
+            foreach(User user in users)
+            {
+                if (i > Constants.MaxSuspects)
+                {
+                    break;
+                }
+                Suspect suspect = this.NewSuspectFromUser(user);
+                if (i == numberSuspect)
+                {
+                    game.Suspect = suspect;
+                }
+                else
+                {
+                    game.PossibleSuspect.Add(suspect);
+                }
+                i++;
+            }
+        }
 
 
         /// <summary>
@@ -1293,10 +1319,22 @@ namespace InterpoolCloudWebRole.Controller
             //// In the best game the user 
         }
 
-		void GetSuspectsFromDatabase(Game game)
+		private Suspect NewSuspectFromUser(User user)
         {
-            //// TODO: logic to get user's from a higher level (from the database)
+            Suspect suspect = new Suspect();
+            
+            suspect.SuspectBirthday = user.UserBirthday;
+            suspect.SuspectCinema = user.UserCinema;
+            suspect.SuspectFacebookId = user.UserIdFacebook;
+            suspect.SuspectFirstName = user.UserFirstName;
+            suspect.SuspectGender = user.UserGender;
+            suspect.SuspectHometown = user.UserHometown;
+            suspect.SuspectLastName = user.UserLastName;
+            suspect.SuspectMusic = user.UserMusic;
+            suspect.SuspectPicLInk = user.UserPictureLink;
+            suspect.SuspectTelevision = user.UserTelevision;
 
+            return suspect;
         }
 
     }
