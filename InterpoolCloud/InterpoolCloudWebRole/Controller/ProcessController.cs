@@ -54,7 +54,7 @@ namespace InterpoolCloudWebRole.Controller
         {
             NodePath node = this.GetCurrentNode(userIdFacebook);
             DataManager dm = new DataManager();
-            Game game = dm.GetGameByUser(userIdFacebook,this.container);
+            Game game = dm.GetGameByUser(userIdFacebook, this.container);
             if (node != null)
             {
                 DataCity dataCity = new DataCity();
@@ -181,7 +181,7 @@ namespace InterpoolCloudWebRole.Controller
                 }
                 catch (Exception e)
                 {
-                    registerLog("BuiltTravel", e, "error");
+                    this.RegisterLog("BuiltTravel", e, "error");
                     throw e;
                 }
                 //// 2 Get suspects
@@ -191,7 +191,7 @@ namespace InterpoolCloudWebRole.Controller
                 }
                 catch (Exception e)
                 {
-                    registerLog("GetSuspects", e, "error");
+                    this.RegisterLog("GetSuspects", e, "error");
                     throw e;
                 }
 
@@ -202,7 +202,7 @@ namespace InterpoolCloudWebRole.Controller
                 }
                 catch (Exception e)
                 {
-                    registerLog("CreateClue", e, "error");
+                    this.RegisterLog("CreateClue", e, "error");
                     throw e;
                 }
 
@@ -214,11 +214,11 @@ namespace InterpoolCloudWebRole.Controller
    
                 try
                 {
-                    // this.CalculateDeadLine(newGame);
+                    this.CalculateDeadLine(newGame);
                 }
                 catch (Exception e)
                 {
-                    registerLog("CalculateDeadLine", e, "error");
+                    this.RegisterLog("CalculateDeadLine", e, "error");
                     throw e;
                 }
    
@@ -233,49 +233,8 @@ namespace InterpoolCloudWebRole.Controller
         }
 
         /// <summary>
-
-        /// Calculate Daed Line
+        /// Get suspects 
         /// </summary>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
-        private void CalculateDeadLine(Game newGame)
-        {
-            IDataManager dm = new DataManager();
-            Level level = newGame.User.Level;
-
-            #region minimum time
-
-            //// In the best game the user interogate 1 famous * amount travels
-            double time = Double.Parse(dm.GetParameter(Parameters.MaxHoursQuestionFamous, this.container)) * (newGame.NodePath.Count - 1);
-
-            // add hours for level user
-            time += (double)newGame.User.Level.TimeToAdd;
-
-            //// In the best game the user dont travel wron
-            City citySource = newGame.NodePath.ElementAt(0).City;
-            for (int i = 1; i < newGame.NodePath.Count; i++)
-            {
-                time += TimeToTravel(citySource, newGame.NodePath.ElementAt(i).City);
-                citySource = newGame.NodePath.ElementAt(i).City;
-            }
-
-            
-            //// In te best game the user, filter one time
-            time += Double.Parse(dm.GetParameter(Parameters.HoursFilterSuspect, this.container));
-
-            double days = time /(24 - Constants.HoursToSleep);
-
-            time += (days * Constants.HoursToSleep);
-
-            newGame.DeadLine = newGame.CurrentTime;
-            newGame.DeadLine = newGame.DeadLine.AddHours(Math.Round(time));
-            //// In the best game the user 
-            #endregion    
-        }
-
-        /// <summary>
-
-        /// Description for Method.</summary>
         /// <param name="newGame"> Parameter description for newGame goes here</param>
         public void GetSuspects(Game newGame)
         {
@@ -303,7 +262,7 @@ namespace InterpoolCloudWebRole.Controller
             list.Add("SuspectGender");
             list.Add("SuspectPicLInk");
 
-            CreateHardCodeSuspects(newGame, list);
+            this.CreateHardCodeSuspects(newGame, list);
         }
 
         /// <summary>
@@ -480,6 +439,9 @@ namespace InterpoolCloudWebRole.Controller
             datacity.NameCity = node.City.CityName;
             datacity.NameFileCity = node.City.NameFile;
             cities.Add(datacity);
+
+            cities = Functions.ShuffleList(cities);
+
             return cities;
         }
 
@@ -555,7 +517,6 @@ namespace InterpoolCloudWebRole.Controller
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="game"> The current game</param> 
-        /// <param name="bigSuspect"> Parameter description for bigSuspect goes here</param>
         /// <param name="privatesProperties"> Parameter description for privatesProperties goes here</param>
         public void CreateHardCodeSuspects(Game game, List<string> privatesProperties)
         {
@@ -577,7 +538,7 @@ namespace InterpoolCloudWebRole.Controller
             //// Pre: supose that we have more than 2 hardcoded suspects per gender
             int amountHardCodedSuspects = Constants.AmountHardCodeSuspects;
             int amountSameGender = (int)Math.Min(sameGenders.Count, amountHardCodedSuspects);
-            int a = (amountSameGender / 2);
+            int a = amountSameGender / 2;
             amountSameGender = rand.Next(a, amountSameGender);
 
             int count = 0;
@@ -644,6 +605,7 @@ namespace InterpoolCloudWebRole.Controller
                     info = hardCode.GetType().GetProperty(prop);
                     info.SetValue(hardCode, newValue, null);
                 }
+
                 if (i == x)
                 {
                     bigSuspect = hardCode;
@@ -729,12 +691,12 @@ namespace InterpoolCloudWebRole.Controller
 
             if (this.CheckConsistencySuspect(game))
             {
-                registerLog("CreateHardCodeSuspects", null, "ok");
+                this.RegisterLog("CreateHardCodeSuspects", null, "ok");
             }
             else
             {
-                registerLog("error_hardCodedSuspectConsistencia", null, "error");
-                //// TODO throw new GameException("error_hardCodedSuspectConsistencia", null);
+                this.RegisterLog("error_hardCodedSuspectConsistencia", null, "error");
+                throw new GameException("error_hardCodedSuspectConsistencia", null);
             }
         }
 
@@ -745,7 +707,6 @@ namespace InterpoolCloudWebRole.Controller
         /// Return results are described through the returns tag.</returns>
         public bool CheckConsistencySuspect(Game newGame)
         {
-
             var query = from s1 in newGame.PossibleSuspect
                         join s2 in newGame.PossibleSuspect
                         on s1.SuspectTelevision equals s2.SuspectTelevision
@@ -754,7 +715,9 @@ namespace InterpoolCloudWebRole.Controller
                             && s1.SuspectMusic == s2.SuspectMusic
                         select s1;
             if (query.Count() > 0)
+            {
                 return false;
+            }
             
             return true;
         }
@@ -1198,6 +1161,7 @@ namespace InterpoolCloudWebRole.Controller
                 int dif = Constants.HourWakeUp - game.CurrentTime.Hour;
                 game.CurrentTime = game.CurrentTime.AddHours(dif);
             }
+
             this.container.SaveChanges();
         }
 
@@ -1276,21 +1240,57 @@ namespace InterpoolCloudWebRole.Controller
          }
 
         /// <summary>
-        /// 
+        /// register the Log
         /// </summary>
-        /// <param name="operation"></param>
-        /// <param name="e"></param>
-        /// <param name="type"></param>
-        private void registerLog(string operation, Exception e, string type)
+        /// <param name="operation"> Parameter description for operation currentcity goes here</param>
+        /// <param name="e"> Parameter description for function e goes here</param>
+        /// <param name="type"> Parameter description for type currentcity goes here</param>
+        private void RegisterLog(string operation, Exception e, string type)
         {
             InterpoolContainer container = new InterpoolContainer();
             Log log = new Log();
             log.LogName = operation;
-            log.LogStackTrace = (e == null ? null : e.StackTrace);
+            log.LogStackTrace = e == null ? null : e.StackTrace;
             log.LogType = type;
             container.AddToLogs(log);
             container.SaveChanges();
             container.Dispose();
+        }
+
+
+        /// <summary>
+        /// Calculate Daed Line
+        /// </summary>
+        /// <param name="newGame"> Parameter description for newGame goes here</param>
+        private void CalculateDeadLine(Game newGame)
+        {
+            IDataManager dm = new DataManager();
+            Level level = newGame.User.Level;
+
+            //// In the best game the user interogate 1 famous * amount travels
+            double time = Double.Parse(dm.GetParameter(Parameters.MaxHoursQuestionFamous, this.container)) * (newGame.NodePath.Count - 1);
+
+            // add hours for level user
+            time += (double)newGame.User.Level.TimeToAdd;
+
+            //// In the best game the user dont travel wron
+            City citySource = newGame.NodePath.ElementAt(0).City;
+            for (int i = 1; i < newGame.NodePath.Count; i++)
+            {
+                time += this.TimeToTravel(citySource, newGame.NodePath.ElementAt(i).City);
+                citySource = newGame.NodePath.ElementAt(i).City;
+            }
+
+            //// In te best game the user, filter one time
+            time += Double.Parse(dm.GetParameter(Parameters.HoursFilterSuspect, this.container));
+
+            double days = time / (24 - Constants.HoursToSleep);
+
+            time += days * Constants.HoursToSleep;
+
+            newGame.DeadLine = newGame.CurrentTime;
+            newGame.DeadLine = newGame.DeadLine.AddHours(Math.Round(time));
+            //// In the best game the user 
         }
 
 		void GetSuspectsFromDatabase(Game game)
@@ -1298,5 +1298,6 @@ namespace InterpoolCloudWebRole.Controller
             //// TODO: logic to get user's from a higher level (from the database)
 
         }
+
     }
 }
