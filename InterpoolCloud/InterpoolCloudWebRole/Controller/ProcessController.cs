@@ -1070,26 +1070,32 @@ namespace InterpoolCloudWebRole.Controller
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="user"> Parameter description for user goes here</param>
-        private void DeleteGame(User user)
+        public void DeleteGame(User user)
         {
+            DataManager dm = new DataManager();
             Game game = user.Game;
 
             ////user.Game = null;
-            IEnumerator<NodePath> nodes = game.NodePath.GetEnumerator();
-            while (nodes.MoveNext())
+
+            for (int i = Constants.NumberLastCity - 1; i >= 0; i--)
             {
-                NodePath node = nodes.Current;
-                node.Game = null;
-                //// container.DeleteObject(node.Clue);
-               // node.Clue = null;
-              /*  container.DeleteObject(node);
-                node.City = null;
-                node.PossibleCities = null;
-                node.Famous = null;*/
+                for (int j = Constants.FamousCities - 1; j >= 0; j--)
+                {
+                    game.NodePath.ElementAt(i).Famous.Remove(game.NodePath.ElementAt(i).Famous.ElementAt(j));
+                }
+                for (int j = Constants.FamousCities - 1; j >= 0; j--)
+                {
+                    this.container.DeleteObject(game.NodePath.ElementAt(i).Clue.ElementAt(j));
+                }
+                for (int j = Constants.PosiblesCities - 1; j >= 0; j--)
+                {
+                    game.NodePath.ElementAt(i).PossibleCities.Remove(game.NodePath.ElementAt(i).PossibleCities.ElementAt(j));
+                }
+                this.container.DeleteObject(game.NodePath.ElementAt(i));    
             }
 
             ////game.NodePath = null;
-            this.container.DeleteObject(game.NodePath);
+            //this.container.DeleteObject(game.NodePath);
             OrderOfArrest order = game.OrderOfArrest;
             game.OrderOfArrest = null;
             if (order != null)
@@ -1098,14 +1104,18 @@ namespace InterpoolCloudWebRole.Controller
                 this.container.DeleteObject(order);
             }
             ////container.DeleteObject(game.Suspect);
+            
             game.Suspect = null;
            /* foreach (Suspect suspect in game.PossibleSuspect)
             {
                 container.DeleteObject(suspect);
             }*/
-            game.PossibleSuspect = null;
+            
+            for (int j = Constants.MaxSuspects + Constants.AmountHardCodeSuspects - 2; j >= 0; j--)
+            {
+                game.PossibleSuspect.Remove(game.PossibleSuspect.ElementAt(j));
+            }
             game.User = null;
-            game.NodePath = null;
             ////container.SaveChanges();
             this.container.DeleteObject(game);
             this.container.SaveChanges();
@@ -1350,5 +1360,6 @@ namespace InterpoolCloudWebRole.Controller
 
             return suspect;
         }
+
     }
 }
