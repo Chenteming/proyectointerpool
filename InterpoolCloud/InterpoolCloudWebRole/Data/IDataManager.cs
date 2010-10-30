@@ -128,8 +128,8 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// Description for Method.
         /// </summary>
-        /// <param name="context">Parameter description for userIdFaceook goes here</param>
-        /// <param name="userIdFaceook">Parameter description for context goes here</param>
+        /// <param name="context">Parameter description for context goes here</param>
+        /// <param name="userIdFacebook">Parameter description for userIdFacbeook goes here</param>
         /// <returns> 
         /// Return results are described through the returns tag.</returns>
         IQueryable<User> GetUserByIdFacebook(InterpoolContainer context, string userIdFacebook);
@@ -145,8 +145,7 @@ namespace InterpoolCloudWebRole.Data
 
         /// <summary>
         /// Description for Method.</summary>
-        /// <param name="userId"> Parameter description for userId goes here</param>
-        /// <param name="subLevel"> Parameter description for subLevel goes here</param>
+        /// <param name="token"> Parameter description for token goes here</param>
         /// <param name="context"> Parameter description for context goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
