@@ -195,5 +195,18 @@ namespace InterpoolCloudWebRole
                     return "chupame el escroto";
             }
         }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            this.log.Text = String.Empty;
+            InterpoolContainer container = new InterpoolContainer();
+            IDataManager dm = new DataManager();
+            ProcessController ipc = new ProcessController(container);
+            string currentUser = this.TextBoxEmail.Text;
+            this.log.Text = "Comienzo a procesar Question Famous... ";
+            string userId = dm.GetUserIdFacebookByLoginId(currentUser, ipc.GetContainer());
+            User user = dm.GetUserByIdFacebook(ipc.GetContainer(),userId).First();
+            ipc.DeleteGame(user);
+        }
     }
 }
