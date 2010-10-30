@@ -74,8 +74,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameClasses\GameManager.cs" />
-    <Compile Include="GameClasses\LanguageManager.cs" />
+    <Compile Include="GamePages\Options.xaml.cs">
+      <DependentUpon>Options.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\Start.xaml.cs">
+      <DependentUpon>Start.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\GameClasses\GameManager.cs" />
+    <Compile Include="Service References\GameClasses\LanguageManager.cs" />
     <Compile Include="GameControls\LoginScreenControl.xaml.cs">
       <DependentUpon>LoginScreenControl.xaml</DependentUpon>
     </Compile>
@@ -144,6 +150,14 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GamePages\Options.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GamePages\Start.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GamePages\Suspect.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -156,17 +170,17 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
-    <None Include="Service References\ServiceReference\InterpoolWP71.wsdl" />
+    <None Include="Service References\ServiceReference\InterpoolWP7.wsdl" />
+    <None Include="Service References\ServiceReference\InterpoolWP7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP71.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP72.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference\InterpoolWP73.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP731.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP732.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP733.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataCity.datasource">
@@ -175,15 +189,17 @@
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataClue.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFacebookUser.datasource">
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFamous.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFamous.datasource">
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataListFacebookUser.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <Resource Include="GameImages\aeroplane.png" />
     <Resource Include="GameImages\CancelIcon.png" />
+    <Resource Include="GameImages\Clip.png" />
     <Resource Include="GameImages\ContinueIcon.png" />
+    <Resource Include="GameImages\Detective.png" />
     <Resource Include="GameImages\FilterScreen2.png" />
     <Resource Include="FamousImages\amsterdam_arjen_robben.jpg" />
     <Resource Include="FamousImages\amsterdam_dj_tiesto.jpg" />
@@ -311,13 +327,13 @@
     <Resource Include="interpool_Images\pantalla_6_Images\music.png" />
     <Resource Include="interpool_Images\pantalla_6_Images\tv.png" />
     <Resource Include="mtbaker3.jpg" />
+    <None Include="Service References\ServiceReference\InterpoolWP7.disco" />
     <None Include="Service References\ServiceReference\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference\configuration.svcinfo" />
     <None Include="Service References\ServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\ServiceReference\InterpoolWP71.disco" />
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>

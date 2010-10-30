@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-
-namespace WP7
+﻿namespace WP7
 {
+    using Microsoft.Phone.Controls;
+    using Microsoft.Phone.Shell;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Animation;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+
     public partial class App : Application
     {
 
@@ -26,7 +26,7 @@ namespace WP7
         {
             // Global handler for uncaught exceptions. 
             // Note that exceptions thrown by ApplicationBarItem.Click will not get caught here.
-            UnhandledException += Application_UnhandledException;
+            this.UnhandledException += this.Application_UnhandledException;
 
             // Standard Silverlight initialization
             InitializeComponent();
