@@ -133,5 +133,14 @@ namespace InterpoolCloudWebRole.Data
         /// <returns> 
         /// Return results are described through the returns tag.</returns>
         IQueryable<User> GetUserByIdFacebook(InterpoolContainer context, string userIdFaceook);
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userId"> Parameter description for userId goes here</param>
+        /// <param name="subLevel"> Parameter description for subLevel goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        bool UserHasSubLevel(int userId, int subLevel, InterpoolContainer context);
     }
 }

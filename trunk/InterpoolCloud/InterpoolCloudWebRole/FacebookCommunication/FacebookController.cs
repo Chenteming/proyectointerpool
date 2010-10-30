@@ -56,7 +56,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 List<string> friendsIds = this.GetFriendsId(userId);
                 
                 Functions functions = new Functions();
-                List<string> shufflefriendsIds = functions.SuffleList<string>(friendsIds);
+                List<string> shuffleFriendsIds = functions.ShuffleList<string>(friendsIds);
 
                 Suspect suspect;
                 List<Suspect> suspects = new List<Suspect>();
@@ -66,11 +66,11 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 int limit = Constants.MaxSuspects;
                 int i = 0;
                 int numberSuspect = new Random().Next(0, limit);
-                foreach (string friendId in shufflefriendsIds)
+                foreach (string friendId in shuffleFriendsIds)
                 {
                     fbudOfSuspect = this.GetFriendInfo(userId, friendId);
                     suspect = this.NewSuspectFromFacebookUserData(fbudOfSuspect);
-                    if (this.HaveEnouthFields(suspect, Constants.DataRequired))
+                    if (this.HaveEnoughFields(suspect, Constants.DataRequired))
                     {
                         this.dataManager.StoreSuspect(suspect, context);
                         if (numberSuspect == i)
@@ -172,15 +172,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// Description for Method.</summary>
         public void UploadUserFriendsInformation()
         {
-        }
-
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="auth"> Parameter description for auth goes here</param>
-        /// <param name="context"> Parameter description for context goes here</param>
-        public void DownloadFacebookUserData(OAuthFacebook auth, InterpoolContainer context)
-        {
-            throw new NotImplementedException();
         }
 
         //// Only for the Prototype
@@ -398,7 +389,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <param name="cantDataRequired"> Parameter description for cantDataRequired goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        private bool HaveEnouthFields(Suspect fbudOfSuspect, int cantDataRequired)
+        private bool HaveEnoughFields(Suspect fbudOfSuspect, int cantDataRequired)
         {
             int cant = 0;
             if (fbudOfSuspect.SuspectBirthday != string.Empty)

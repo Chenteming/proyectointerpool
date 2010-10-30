@@ -29,16 +29,19 @@ using System.Web;
         /// <param name="inputList">Parameter description for inputList goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        public List<E> SuffleList<E>(List<E> inputList)
+        public List<E> ShuffleList<E>(List<E> inputList)
         {
             List<E> randomList = new List<E>();
             Random r = new Random();
             int randomIndex = 0;
             while (inputList.Count > 0)
-            {
-                randomIndex = r.Next(0, inputList.Count); ////Choose a random object in the list 
-                randomList.Add(inputList[randomIndex]); ////add it to the new, random list 
-                inputList.RemoveAt(randomIndex); ////remove to avoid duplicates 
+            { 
+                //// Choose a random object in the list
+                randomIndex = r.Next(0, inputList.Count);
+                //// Add it to the new, random list 
+                randomList.Add(inputList[randomIndex]);
+                //// Remove to avoid duplicates
+                inputList.RemoveAt(randomIndex);
             }
 
             return randomList; ////return the new random list
