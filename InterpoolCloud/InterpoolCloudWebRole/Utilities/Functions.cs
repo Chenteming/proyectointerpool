@@ -29,7 +29,7 @@ using System.Web;
         /// <param name="inputList">Parameter description for inputList goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
-        public List<E> ShuffleList<E>(List<E> inputList)
+        public static List<E> ShuffleList<E>(List<E> inputList)
         {
             List<E> randomList = new List<E>();
             Random r = new Random();
