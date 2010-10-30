@@ -659,7 +659,8 @@ namespace InterpoolCloudWebRole.Controller
             foreach (var property in properties)
             {
                 string propType = property.PropertyType.Name;
-                if ("String".Equals(propType))
+                propS = property.Name;
+                if ("String".Equals(propType) && !privatesProperties.Contains(propS))
                 {
                     do
                     {
@@ -670,7 +671,7 @@ namespace InterpoolCloudWebRole.Controller
                         info = auxSuspect.GetType().GetProperty(propS);
                         propValue = (string)info.GetValue(bigSuspect, null);
 
-                        if (!privatesProperties.Equals(propS) && propValue != null)
+                        if (propValue != null)
                         {
                             info.SetValue(auxSuspect, propValue, null);
                             count++;
@@ -692,7 +693,7 @@ namespace InterpoolCloudWebRole.Controller
                         string prop = property.Name;
                         info = hardCodeS.GetType().GetProperty(prop);
                         string value = (string)info.GetValue(hardCodeS, null);
-                        if (!privatesProperties.Equals(prop) && null == value)
+                        if (!privatesProperties.Contains(prop) && null == value)
                         {
                             index = rand.Next(0, game.PossibleSuspect.Count - 1);
                             Suspect realSuspect = game.PossibleSuspect.ToList().ElementAt(index);
@@ -720,11 +721,12 @@ namespace InterpoolCloudWebRole.Controller
 
             if (this.CheckConsistencySuspect(game))
             {
-                this.container.SaveChanges();
+                registerLog("CreateHardCodeSuspects", null, "ok");
             }
             else
             {
-                throw new GameException("error_hardCodedSuspectConsistencia", null);
+                registerLog("error_hardCodedSuspectConsistencia", null, "error");
+                //// TODO throw new GameException("error_hardCodedSuspectConsistencia", null);
             }
 
         }
@@ -736,35 +738,17 @@ namespace InterpoolCloudWebRole.Controller
         /// Return results are described through the returns tag.</returns>
         public bool CheckConsistencySuspect(Game newGame)
         {
-            IDataManager dm = new DataManager();
-            //// IQueryable<Suspect> colSuspect = dm.GetSuspectByGame(newGame, container);
-            List<string> params1 = new List<string>();
-            List<string> params2 = new List<string>();
-            List<string> params3 = new List<string>();
-            List<string> params4 = new List<string>();
-            List<string> params5 = new List<string>();
-            List<string> params6 = new List<string>();
 
-            foreach (Suspect currentSuspect in newGame.PossibleSuspect)
-            {
-                if (params1.Contains(currentSuspect.SuspectBirthday)
-                    && params2.Contains(currentSuspect.SuspectCinema)
-                    && params3.Contains(currentSuspect.SuspectHometown)
-                    && params4.Contains(currentSuspect.SuspectMusic)
-                    && params5.Contains(currentSuspect.SuspectGender)
-                    && params6.Contains(currentSuspect.SuspectTelevision))
-                {
-                    return false;
-                }
-
-                params1.Add(currentSuspect.SuspectBirthday);
-                params2.Add(currentSuspect.SuspectCinema);
-                params3.Add(currentSuspect.SuspectHometown);
-                params4.Add(currentSuspect.SuspectMusic);
-                params5.Add(currentSuspect.SuspectGender);
-                params6.Add(currentSuspect.SuspectTelevision);
-            }
-
+            var query = from s1 in newGame.PossibleSuspect
+                        join s2 in newGame.PossibleSuspect
+                        on s1.SuspectTelevision equals s2.SuspectTelevision
+                        where s1.SuspectId != s2.SuspectId && s1.SuspectHometown == s2.SuspectHometown
+                            && s1.SuspectCinema == s2.SuspectCinema && s1.SuspectBirthday == s2.SuspectBirthday
+                            && s1.SuspectMusic == s2.SuspectMusic
+                        select s1;
+            if (query.Count() > 0)
+                return false;
+            
             return true;
         }
 
@@ -1294,7 +1278,7 @@ namespace InterpoolCloudWebRole.Controller
             InterpoolContainer container = new InterpoolContainer();
             Log log = new Log();
             log.LogName = operation;
-            log.LogStackTrace = e.StackTrace;
+            log.LogStackTrace = (e == null ? null : e.StackTrace);
             log.LogType = type;
             container.AddToLogs(log);
             container.SaveChanges();
