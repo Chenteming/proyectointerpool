@@ -80,8 +80,6 @@
     <Compile Include="GamePages\Start.xaml.cs">
       <DependentUpon>Start.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Service References\GameClasses\GameManager.cs" />
-    <Compile Include="Service References\GameClasses\LanguageManager.cs" />
     <Compile Include="GameControls\LoginScreenControl.xaml.cs">
       <DependentUpon>LoginScreenControl.xaml</DependentUpon>
     </Compile>
