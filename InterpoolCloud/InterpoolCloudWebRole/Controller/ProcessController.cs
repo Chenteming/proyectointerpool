@@ -244,14 +244,15 @@ namespace InterpoolCloudWebRole.Controller
             IDataManager dm = new DataManager();
             OAuthFacebook auth = new OAuthFacebook() { Token = newGame.User.UserTokenFacebook };
             bool specialGame = dm.UserHasSubLevel(newGame.User.UserId, Constants.NumberSubLevels - 1, this.container);
-            if (specialGame)
+            facebookController.DownloadFacebookUserData(auth, newGame, this.container);
+            /*if (specialGame)
             {
                 this.GetSuspectsFromDatabase(newGame);
             }
             else
             {
                 facebookController.DownloadFacebookUserData(auth, newGame, this.container);
-            }
+            }*/
 
             //// TODO change that
             List<string> list = new List<string>();
@@ -263,6 +264,13 @@ namespace InterpoolCloudWebRole.Controller
             list.Add("SuspectPicLInk");
 
             this.CreateHardCodeSuspects(newGame, list);
+
+            //// Now the suspect is selected here
+            int numberSuspect = new Random().Next(0, newGame.PossibleSuspect.Count - 1);
+            List<Suspect> possibleSuspects = newGame.PossibleSuspect.ToList();
+            Suspect suspect = possibleSuspects[numberSuspect];
+            newGame.PossibleSuspect.Remove(suspect);
+            newGame.Suspect = suspect;
         }
 
         /// <summary>
@@ -606,16 +614,16 @@ namespace InterpoolCloudWebRole.Controller
                     info.SetValue(hardCode, newValue, null);
                 }
 
-                if (i == x)
-                {
+                    /*if (i == x)
+                    {
                     bigSuspect = hardCode;
-                    game.Suspect = bigSuspect;
+                    //game.Suspect = bigSuspect;
                     game.PossibleSuspect.Add(bigSuspect);
-                }
-                else
-                {
+                    }
+                    else
+                    {*/
                     hardCodeSuspects.Add(hardCode);
-                }
+                    /*}*/
             }
 
             //// Step 3: set the suspect's property to new hard coded suspect
@@ -1263,7 +1271,8 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="game"> Parameter description for operation game goes here</param>
         private void GetSuspectsFromDatabase(Game game)
         {
-            List<User> users = this.container.Users.ToList();
+            //// Gets the users who are not the user himself, and are in a higher level
+            List<User> users = this.container.Users.Where(u => u.UserId != game.User.UserId && u.Level.LevelNumber > game.User.Level.LevelNumber).ToList();
             users = Functions.ShuffleList(users);
             //// Should this be Constants.MaxSuspects?
             int numberSuspect = new Random().Next(0, Constants.MaxSuspects - 1);
@@ -1276,16 +1285,11 @@ namespace InterpoolCloudWebRole.Controller
                 }
 
                 Suspect suspect = this.NewSuspectFromUser(user);
-                if (i == numberSuspect)
-                {
-                    game.Suspect = suspect;
-                }
-                else
+                if (Functions.HasEnoughFields(suspect, Constants.DataRequired))
                 {
                     game.PossibleSuspect.Add(suspect);
+                    i++;
                 }
-
-                i++;
             }
         }
 
