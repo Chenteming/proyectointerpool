@@ -58,11 +58,15 @@ namespace InterpoolCloudWebRole.Controller
         public DataCity GetCurrentCity(string userIdFacebook)
         {
             NodePath node = this.GetCurrentNode(userIdFacebook);
+            DataManager dm = new DataManager();
+            Game game = dm.GetGameByUser(userIdFacebook,this.container);
             if (node != null)
             {
                 DataCity dataCity = new DataCity();
                 dataCity.NameCity = node.City.CityName;
                 dataCity.NameFileCity = node.City.NameFile;
+                dataCity.CurrentDate = game.CurrentTime;
+                dataCity.DeadLine = game.DeadLine;
                 return dataCity;
             }
 
@@ -209,8 +213,10 @@ namespace InterpoolCloudWebRole.Controller
 
                 //// set the date to monday
                 DateTime currentTime = new DateTime(2010, 01, 01);
-                currentTime = currentTime.AddDays(3);
-
+                newGame.CurrentTime = currentTime.AddDays(3);
+                //// set the hour
+                newGame.CurrentTime = newGame.CurrentTime.AddHours(8);
+   
                 try
                 {
                     // this.CalculateDeadLine(newGame);
@@ -220,11 +226,8 @@ namespace InterpoolCloudWebRole.Controller
                     registerLog("CalculateDeadLine", e, "error");
                     throw e;
                 }
-
-                ////currentTime.
-                
-                newGame.CurrentTime = currentTime;
-                newGame.DeadLine = currentTime;
+   
+                // newGame.DeadLine = currentTime;
                 this.container.AddToGames(newGame);
                 this.output = "add to games";
                 this.container.SaveChanges();
@@ -251,6 +254,9 @@ namespace InterpoolCloudWebRole.Controller
 
             //// In the best game the user interogate 1 famous * amount travels
             double time = Double.Parse(dm.GetParameter(Parameters.MaxHoursQuestionFamous, this.container)) * (newGame.NodePath.Count - 1);
+
+            // add hours for level user
+            time += (double)newGame.User.Level.TimeToAdd;
 
             //// In the best game the user dont travel wron
             City citySource = newGame.NodePath.ElementAt(0).City;
@@ -393,11 +399,13 @@ namespace InterpoolCloudWebRole.Controller
             DataManager dm = new DataManager();
             NodePath node = this.GetCurrentNode(userIdFacebook);
             NodePath nextNode = this.GetNextNode(userIdFacebook);
+            Game game = dm.GetGameByUser(userIdFacebook, this.container);
             if (!nextNode.City.CityName.Equals(nameNextCity))
             {
                 datacity.NameCity = node.City.CityName;
                 datacity.NameFileCity = node.City.NameFile;
-                datacity.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.TravelWrong);
+                datacity.CurrentDate = this.RestTime(game, Constants.TravelWrong);
+                datacity.DeadLine = game.DeadLine;
                 return datacity;
             }
 
@@ -718,7 +726,6 @@ namespace InterpoolCloudWebRole.Controller
                 game.PossibleSuspect.Add(s);
             }
 
-
             if (this.CheckConsistencySuspect(game))
             {
                 registerLog("CreateHardCodeSuspects", null, "ok");
@@ -728,7 +735,6 @@ namespace InterpoolCloudWebRole.Controller
                 registerLog("error_hardCodedSuspectConsistencia", null, "error");
                 //// TODO throw new GameException("error_hardCodedSuspectConsistencia", null);
             }
-
         }
 
         /// <summary>
@@ -1179,11 +1185,10 @@ namespace InterpoolCloudWebRole.Controller
             }
             else if (function.Equals(Constants.TravelWrong))
             {
-                ////TODO: calculate the time between two cities
                 hours = nextcity == null ? 0 : this.TimeToTravel(currentcity, nextcity);
                 hours += rnd.Next(Int32.Parse(dm.GetParameter(Parameters.MinHoursQuestionFamous, this.container)), Int32.Parse(dm.GetParameter(Parameters.MaxHoursQuestionFamous, this.container)));
                 hours += rnd.Next(Int32.Parse(dm.GetParameter(Parameters.MinHoursQuestionFamous, this.container)), Int32.Parse(dm.GetParameter(Parameters.MaxHoursQuestionFamous, this.container)));
-                hours = nextcity == null ? 0 : this.TimeToTravel(currentcity, nextcity);                
+                hours += nextcity == null ? 0 : this.TimeToTravel(currentcity, nextcity);                
             }
 
             game.CurrentTime = game.CurrentTime.AddHours(hours);
@@ -1192,6 +1197,7 @@ namespace InterpoolCloudWebRole.Controller
                 int dif = Constants.HourWakeUp - game.CurrentTime.Hour;
                 game.CurrentTime = game.CurrentTime.AddHours(dif);
             }
+            this.container.SaveChanges();
         }
 
         /// <summary>
@@ -1201,7 +1207,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <returns>i sleep?.....</returns>
         private bool CanSleep(Game game)
         {
-            return game.CurrentTime.Hour > 0 && game.CurrentTime.Hour < 8;
+            return game.CurrentTime.Hour >= 0 && game.CurrentTime.Hour <= 8;
         }
 
         /// <summary>
@@ -1261,6 +1267,7 @@ namespace InterpoolCloudWebRole.Controller
             int lat2 = nextcity.Latitud;
             double distancia = Math.Sqrt(((long1 - long2) * (long1 - long2)) + ((lat1 - lat2) * (lat1 - lat2)));
             //// watch this
+
             int maxtotravel = Int32.Parse(dm.GetParameter(Parameters.MaxHoursTravel, this.container));
             int timetotravel = (int)(Math.Truncate(distancia) % maxtotravel);
             int mintotravel = Int32.Parse(dm.GetParameter(Parameters.MinHoursTravel, this.container));

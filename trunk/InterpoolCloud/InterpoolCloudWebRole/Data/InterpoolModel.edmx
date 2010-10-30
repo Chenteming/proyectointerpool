@@ -204,7 +204,7 @@
     <Property Name="LevelName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="GroupFacebookId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LevelNumber" Type="int" Nullable="false" />
-    <Property Name="TimeToAdd" Type="int" Nullable="false" />
+    <Property Name="TimeToAdd" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="CityPropertySet">
     <Key>
@@ -736,7 +736,7 @@
           <Property Type="String" Name="LevelName" Nullable="false" />
           <Property Type="String" Name="GroupFacebookId" Nullable="false" />
           <Property Type="Int32" Name="LevelNumber" Nullable="false" />
-          <Property Type="Int32" Name="TimeToAdd" Nullable="false" />
+          <Property Type="Int32" Name="TimeToAdd" Nullable="true" />
         </EntityType>
         <Association Name="GameSuspect">
           <End Type="InterpoolModel.Game" Role="Game" Multiplicity="*" />
