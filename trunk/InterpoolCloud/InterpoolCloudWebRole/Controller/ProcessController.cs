@@ -1070,32 +1070,26 @@ namespace InterpoolCloudWebRole.Controller
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="user"> Parameter description for user goes here</param>
-        public void DeleteGame(User user)
+        private void DeleteGame(User user)
         {
-            DataManager dm = new DataManager();
             Game game = user.Game;
 
             ////user.Game = null;
-
-            for (int i = Constants.NumberLastCity - 1; i >= 0; i--)
+            IEnumerator<NodePath> nodes = game.NodePath.GetEnumerator();
+            while (nodes.MoveNext())
             {
-                for (int j = Constants.FamousCities - 1; j >= 0; j--)
-                {
-                    game.NodePath.ElementAt(i).Famous.Remove(game.NodePath.ElementAt(i).Famous.ElementAt(j));
-                }
-                for (int j = Constants.FamousCities - 1; j >= 0; j--)
-                {
-                    this.container.DeleteObject(game.NodePath.ElementAt(i).Clue.ElementAt(j));
-                }
-                for (int j = Constants.PosiblesCities - 1; j >= 0; j--)
-                {
-                    game.NodePath.ElementAt(i).PossibleCities.Remove(game.NodePath.ElementAt(i).PossibleCities.ElementAt(j));
-                }
-                this.container.DeleteObject(game.NodePath.ElementAt(i));    
+                NodePath node = nodes.Current;
+                node.Game = null;
+                //// container.DeleteObject(node.Clue);
+               // node.Clue = null;
+              /*  container.DeleteObject(node);
+                node.City = null;
+                node.PossibleCities = null;
+                node.Famous = null;*/
             }
 
             ////game.NodePath = null;
-            //this.container.DeleteObject(game.NodePath);
+            this.container.DeleteObject(game.NodePath);
             OrderOfArrest order = game.OrderOfArrest;
             game.OrderOfArrest = null;
             if (order != null)
@@ -1104,18 +1098,14 @@ namespace InterpoolCloudWebRole.Controller
                 this.container.DeleteObject(order);
             }
             ////container.DeleteObject(game.Suspect);
-            
             game.Suspect = null;
            /* foreach (Suspect suspect in game.PossibleSuspect)
             {
                 container.DeleteObject(suspect);
             }*/
-            
-            for (int j = Constants.MaxSuspects + Constants.AmountHardCodeSuspects - 2; j >= 0; j--)
-            {
-                game.PossibleSuspect.Remove(game.PossibleSuspect.ElementAt(j));
-            }
+            game.PossibleSuspect = null;
             game.User = null;
+            game.NodePath = null;
             ////container.SaveChanges();
             this.container.DeleteObject(game);
             this.container.SaveChanges();
@@ -1266,31 +1256,21 @@ namespace InterpoolCloudWebRole.Controller
             container.SaveChanges();
             container.Dispose();
         }
-
-        /// <summary>
-        /// Get Suspects From Database
-        /// </summary>
-        /// <param name="game">Parameter description for game e goes here</param>
+        
         private void GetSuspectsFromDatabase(Game game)
         {
-            List<User> users = this.container.Users.Where(u => u.UserId != game.User.UserId).ToList();
+            List<User> users = this.container.Users.ToList();
             users = Functions.ShuffleList(users);
-            int limitSuspects = Constants.MaxSuspects;
-            if (users.Count < limitSuspects)
-            {
-                limitSuspects = users.Count;
-            }
-            int numberSuspect = new Random().Next(0, limitSuspects - 1);
+            // Should this be Constants.MaxSuspects?
+            int numberSuspect = new Random().Next(0, Constants.MaxSuspects - 1);
             int i = 0;
-            foreach (User user in users)
+            foreach(User user in users)
             {
-                if (i >= limitSuspects)
+                if (i > Constants.MaxSuspects)
                 {
                     break;
                 }
-
                 Suspect suspect = this.NewSuspectFromUser(user);
-                //// TODO: check if he has enough fields
                 if (i == numberSuspect)
                 {
                     game.Suspect = suspect;
@@ -1299,10 +1279,10 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     game.PossibleSuspect.Add(suspect);
                 }
-
                 i++;
             }
         }
+
 
         /// <summary>
         /// Calculate Daed Line
@@ -1336,14 +1316,10 @@ namespace InterpoolCloudWebRole.Controller
 
             newGame.DeadLine = newGame.CurrentTime;
             newGame.DeadLine = newGame.DeadLine.AddHours(Math.Round(time));
+            //// In the best game the user 
         }
 
-        /// <summary>
-        /// New suspect from user
-        /// </summary>
-        /// <param name="user">Parameter description for user goes here</param>
-        /// <returns>return suspect</returns>
-        private Suspect NewSuspectFromUser(User user)
+		private Suspect NewSuspectFromUser(User user)
         {
             Suspect suspect = new Suspect();
             
