@@ -74,6 +74,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameClasses\GameManager.cs" />
+    <Compile Include="GameClasses\LanguageManager.cs" />
     <Compile Include="GamePages\Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
