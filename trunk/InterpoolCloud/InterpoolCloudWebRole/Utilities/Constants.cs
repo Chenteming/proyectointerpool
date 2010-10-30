@@ -289,15 +289,15 @@ namespace InterpoolCloudWebRole.Utilities
             }
         }
 
-
+        /// <summary>
+        /// Gets the property HoursToSleep
+        /// </summary>
         public static int HoursToSleep
         {
             get
             {
                 return 8;
             }
-        }
-            
-
+        }            
     }
 }
