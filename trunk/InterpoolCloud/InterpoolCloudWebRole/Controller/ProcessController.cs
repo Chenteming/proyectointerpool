@@ -1256,26 +1256,31 @@ namespace InterpoolCloudWebRole.Controller
             container.SaveChanges();
             container.Dispose();
         }
-        
+
         /// <summary>
         /// Get Suspects From Database
         /// </summary>
         /// <param name="game">Parameter description for game e goes here</param>
         private void GetSuspectsFromDatabase(Game game)
         {
-            List<User> users = this.container.Users.ToList();
+            List<User> users = this.container.Users.Where(u => u.UserId != game.User.UserId).ToList();
             users = Functions.ShuffleList(users);
-            //// Should this be Constants.MaxSuspects?
-            int numberSuspect = new Random().Next(0, Constants.MaxSuspects - 1);
+            int limitSuspects = Constants.MaxSuspects;
+            if (users.Count < limitSuspects)
+            {
+                limitSuspects = users.Count;
+            }
+            int numberSuspect = new Random().Next(0, limitSuspects - 1);
             int i = 0;
             foreach (User user in users)
             {
-                if (i > Constants.MaxSuspects)
+                if (i >= limitSuspects)
                 {
                     break;
                 }
 
                 Suspect suspect = this.NewSuspectFromUser(user);
+                //// TODO: check if he has enough fields
                 if (i == numberSuspect)
                 {
                     game.Suspect = suspect;
