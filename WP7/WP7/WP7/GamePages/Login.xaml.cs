@@ -1,35 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using System.Xml.Linq;
-using System.Text.RegularExpressions;
-
-namespace WP7
+﻿namespace WP7
 {
+    using Microsoft.Phone.Controls;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Text.RegularExpressions;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Animation;
+    using System.Windows.Shapes;
+    using System.Xml.Linq;    
+
     public partial class Login : PhoneApplicationPage
     {
 		private LanguageManager language = LanguageManager.GetInstance();
 		private GameManager gm = GameManager.getInstance();
+
         public Login()
         {
             InitializeComponent();
-			if (language.GetXDoc() != null)
+			if (this.language.GetXDoc() != null)
 			{
-                language.TranslatePage(this);     
+                this.language.TranslatePage(this);     
 			}
 			else
 			{
-				language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));	
-				language.TranslatePage(this);
+				this.language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));	
+				this.language.TranslatePage(this);
 			}			
         }
 		
@@ -46,13 +47,11 @@ namespace WP7
 				ContinueButton.Visibility = Visibility.Collapsed;
 				loginMessage.Visibility = Visibility.Collapsed;
 				loginImage.Visibility = Visibility.Collapsed;
-				gm.userEmail = userEmail.Text;
+				this.gm.UserEmail = userEmail.Text;
 				userEmail.Visibility = Visibility.Collapsed;				
 				WebBrowser.Visibility = Visibility.Visible;			
 				WebBrowser.Source = new Uri("http://pis2010.cloudapp.net", UriKind.Absolute);
            //}
-
-			
         }
     }
 }

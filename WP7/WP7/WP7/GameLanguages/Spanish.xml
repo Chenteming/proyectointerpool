@@ -33,10 +33,23 @@
 			<control name="textblock2" Text="Ciudad Natal:"/>
 			<control name="textblock3" Text="Música:"/>
 			<control name="textblock4" Text="TV:"/>
-			<control name="textblock5" Text="Cine:"/>
-			<control name="textblock6" Text="Cumpleaños:"/>
+			<control name="textblock5" Text="Cine:"/>			
+			<control name="genderText" Text="Sexo"/>
+			<control name="hometownText" Text="Ciudad Natal"/>
+			<control name="musicText" Text="Música"/>
+			<control name="televisionText" Text="TV"/>
+			<control name="cinemaText" Text="Cine"/>
+			<control name="birthdayText" Text="Cumpleaños"/>
+			<control name="filterText" Text="Filtrar"/>
 	  	</class>
 		<class name="Login" Title="Login">	    	
 	    	<control name="loginMessage" Text="Ingrese su email de Facebook"/>
+	  </class>
+	  <class name="Filter" Title="Filter">
+			<control name="languageText" Content="Lenguaje:"/>
+			<control name="volumeText" Content="Volúmen:"/>
+			<control name="vibrationText" Text="Vibración:"/>
+			<control name="languageEnglish" Content="Inglés"/>		
+			<control name="languageSpanish" Content="Español"/>			
 	  </class>
 </language>

@@ -336,7 +336,7 @@
             <Image x:Name="oo" Source="interpool_Images/oo.png" Grid.Column="1" Margin="0,144,85,156" HorizontalAlignment="Right" Width="199"/>
             <Image x:Name="Capa_4" Source="interpool_Images/Capa 4.png" Width="176" Grid.Column="1" HorizontalAlignment="Right" Margin="0,152,98,169"/>
             <Image x:Name="lupa" Source="interpool_Images/Capa 5.png" Grid.Column="1" Margin="362,106,77,9"/>
-            <Button x:Name="OptionButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="78" Margin="-23.805,0,0,13" Style="{StaticResource OptionButton}" VerticalAlignment="Bottom" Width="189" Click="OptionButton_Click" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333">
+            <Button x:Name="OptionButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="78" Margin="-23.805,0,0,32.035" Style="{StaticResource OptionButton}" VerticalAlignment="Bottom" Width="189" Click="OptionButton_Click" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>
