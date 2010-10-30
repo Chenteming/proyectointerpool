@@ -810,7 +810,7 @@
           <Property Type="Int32" Name="LogId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="LogName" Nullable="false" />
           <Property Type="String" Name="LogType" Nullable="false" />
-          <Property Type="String" Name="LogStackTrace" Nullable="false" />
+          <Property Type="String" Name="LogStackTrace" Nullable="true" />
         </EntityType>
         <Association Name="NodePathCity1">
           <End Type="InterpoolModel.NodePath" Role="NodePath" Multiplicity="*" />

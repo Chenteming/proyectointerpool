@@ -1965,14 +1965,12 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="logId">Initial value of the LogId property.</param>
         /// <param name="logName">Initial value of the LogName property.</param>
         /// <param name="logType">Initial value of the LogType property.</param>
-        /// <param name="logStackTrace">Initial value of the LogStackTrace property.</param>
-        public static Log CreateLog(global::System.Int32 logId, global::System.String logName, global::System.String logType, global::System.String logStackTrace)
+        public static Log CreateLog(global::System.Int32 logId, global::System.String logName, global::System.String logType)
         {
             Log log = new Log();
             log.LogId = logId;
             log.LogName = logName;
             log.LogType = logType;
-            log.LogStackTrace = logStackTrace;
             return log;
         }
 
@@ -2057,7 +2055,7 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String LogStackTrace
         {
@@ -2069,7 +2067,7 @@ namespace InterpoolCloudWebRole.Data
             {
                 OnLogStackTraceChanging(value);
                 ReportPropertyChanging("LogStackTrace");
-                _LogStackTrace = StructuralObject.SetValidValue(value, false);
+                _LogStackTrace = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("LogStackTrace");
                 OnLogStackTraceChanged();
             }
