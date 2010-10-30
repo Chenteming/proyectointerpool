@@ -1257,19 +1257,24 @@ namespace InterpoolCloudWebRole.Controller
             container.Dispose();
         }
         
+        /// <summary>
+        /// Get Suspects From Database
+        /// </summary>
+        /// <param name="game">Parameter description for game e goes here</param>
         private void GetSuspectsFromDatabase(Game game)
         {
             List<User> users = this.container.Users.ToList();
             users = Functions.ShuffleList(users);
-            // Should this be Constants.MaxSuspects?
+            //// Should this be Constants.MaxSuspects?
             int numberSuspect = new Random().Next(0, Constants.MaxSuspects - 1);
             int i = 0;
-            foreach(User user in users)
+            foreach (User user in users)
             {
                 if (i > Constants.MaxSuspects)
                 {
                     break;
                 }
+
                 Suspect suspect = this.NewSuspectFromUser(user);
                 if (i == numberSuspect)
                 {
@@ -1279,10 +1284,10 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     game.PossibleSuspect.Add(suspect);
                 }
+
                 i++;
             }
         }
-
 
         /// <summary>
         /// Calculate Daed Line
@@ -1316,10 +1321,14 @@ namespace InterpoolCloudWebRole.Controller
 
             newGame.DeadLine = newGame.CurrentTime;
             newGame.DeadLine = newGame.DeadLine.AddHours(Math.Round(time));
-            //// In the best game the user 
         }
 
-		private Suspect NewSuspectFromUser(User user)
+        /// <summary>
+        /// New suspect from user
+        /// </summary>
+        /// <param name="user">Parameter description for user goes here</param>
+        /// <returns>return suspect</returns>
+        private Suspect NewSuspectFromUser(User user)
         {
             Suspect suspect = new Suspect();
             
@@ -1336,6 +1345,5 @@ namespace InterpoolCloudWebRole.Controller
 
             return suspect;
         }
-
     }
 }

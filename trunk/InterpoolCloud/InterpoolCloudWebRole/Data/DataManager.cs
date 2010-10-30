@@ -314,12 +314,14 @@ namespace InterpoolCloudWebRole.Data
             {
                 userIdFacebook = string.Empty;
             }
+
             return userIdFacebook;
         }
 
         /// <summary>
         /// Description for Method.</summary>
-        /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
+        /// <param name="userId"> Parameter description for userId goes here</param>
+        /// <param name="subLevel"> Parameter description for subLevel goes here</param>
         /// <param name="context"> Parameter description for context goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
@@ -333,6 +335,7 @@ namespace InterpoolCloudWebRole.Data
             {
                 currentSubLevel = (int)query.First();
             }
+
             return currentSubLevel == subLevel;
         }
     }
