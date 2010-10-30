@@ -50,13 +50,11 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 fbud.UserId = userId;
                 fbud.OAuth = auth;
 
-                // TODO: this must be stored in the database
                 this.userIdOauth.Add(userId, fbud);
 
                 List<string> friendsIds = this.GetFriendsId(userId);
                 
-                Functions functions = new Functions();
-                List<string> shuffleFriendsIds = functions.ShuffleList<string>(friendsIds);
+                List<string> shuffleFriendsIds = Functions.ShuffleList<string>(friendsIds);
 
                 Suspect suspect;
                 List<Suspect> suspects = new List<Suspect>();
@@ -230,7 +228,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <returns>Return results are described through the returns tag</returns>
         public DataFacebookUser GetFriendInfo(string userId, string userFriendId)
         {
-            //// TODO: This method goes to Facebook, is it necessary?
             OAuthFacebook auth = this.GetOAuthFacebook(userId);
             DataFacebookUser friendData = new DataFacebookUser();
 

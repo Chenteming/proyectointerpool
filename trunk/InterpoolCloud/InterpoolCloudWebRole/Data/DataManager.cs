@@ -272,8 +272,6 @@ namespace InterpoolCloudWebRole.Data
                            select birthdaySuspects;
             }
 
-            //// TODO: filter with all the remaining fields
-
             DataFacebookUser fbudSuspect;
             List<DataFacebookUser> listFbudSuspect = new List<DataFacebookUser>();
             foreach (Suspect suspect in suspects)
@@ -337,6 +335,5 @@ namespace InterpoolCloudWebRole.Data
             }
             return currentSubLevel == subLevel;
         }
-
     }
 }
