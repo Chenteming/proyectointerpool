@@ -230,7 +230,7 @@
     <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LogName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LogType" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LogStackTrace" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LogStackTrace" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="OrdersOfArrest">
     <Key>
