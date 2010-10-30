@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/30/2010 17:43:51
+-- Date Created: 10/30/2010 20:11:56
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -272,7 +272,9 @@ CREATE TABLE [dbo].[Logs] (
     [LogId] int IDENTITY(1,1) NOT NULL,
     [LogName] nvarchar(max)  NOT NULL,
     [LogType] nvarchar(max)  NOT NULL,
-    [LogStackTrace] nvarchar(max)  NULL
+    [LogStackTrace] nvarchar(max)  NULL,
+    [UserLogin] nvarchar(max)  NULL,
+    [Time] datetime  NULL
 );
 GO
 

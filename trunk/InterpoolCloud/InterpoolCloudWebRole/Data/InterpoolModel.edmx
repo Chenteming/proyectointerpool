@@ -240,6 +240,8 @@
     <Property Name="LogName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LogType" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LogStackTrace" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="UserLogin" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Time" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="OrdersOfArrest">
     <Key>
@@ -829,6 +831,8 @@
           <Property Type="String" Name="LogName" Nullable="false" />
           <Property Type="String" Name="LogType" Nullable="false" />
           <Property Type="String" Name="LogStackTrace" Nullable="true" />
+          <Property Type="String" Name="UserLogin" Nullable="true" />
+          <Property Type="DateTime" Name="Time" Nullable="true" />
         </EntityType>
         <Association Name="NodePathCity1">
           <End Type="InterpoolModel.NodePath" Role="NodePath" Multiplicity="*" />
@@ -1020,6 +1024,8 @@
           <ScalarProperty Name="LogName" ColumnName="LogName" />
           <ScalarProperty Name="LogType" ColumnName="LogType" />
           <ScalarProperty Name="LogStackTrace" ColumnName="LogStackTrace" />
+          <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1257,7 +1263,7 @@
           <ConnectorPoint PointX="10.875" PointY="6.5189925130208337" />
         </AssociationConnector>
         <EntityTypeShape EntityType="InterpoolModel.Parameter" Width="2" PointX="11.75" PointY="0.625" Height="1.59568359375" />
-        <EntityTypeShape EntityType="InterpoolModel.Log" Width="1.5" PointX="14.375" PointY="0.625" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="InterpoolModel.Log" Width="1.5" PointX="14.375" PointY="0.625" Height="2.172587890625" />
         <AssociationConnector Association="InterpoolModel.NodePathCity1" ManuallyRouted="false">
           <ConnectorPoint PointX="4.875" PointY="8.296875" />
           <ConnectorPoint PointX="9.7499975" PointY="8.296875" />
