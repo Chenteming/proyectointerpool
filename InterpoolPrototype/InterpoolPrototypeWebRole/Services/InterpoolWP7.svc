@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="InterpoolPrototypeWebRole.Services.InterpoolWP7" CodeBehind="InterpoolWP7.svc.cs" %>
