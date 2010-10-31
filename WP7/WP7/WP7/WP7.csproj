@@ -170,17 +170,26 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
-    <None Include="Service References\ServiceReference\InterpoolWP7.wsdl" />
-    <None Include="Service References\ServiceReference\InterpoolWP7.xsd">
+    <None Include="Service References\ServiceReference\InterpoolWP71.wsdl" />
+    <None Include="Service References\ServiceReference\InterpoolWP74.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\InterpoolWP71.xsd">
+    <None Include="Service References\ServiceReference\InterpoolWP741.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\InterpoolWP72.xsd">
+    <None Include="Service References\ServiceReference\InterpoolWP742.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\InterpoolWP73.xsd">
+    <None Include="Service References\ServiceReference\InterpoolWP743.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP744.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP745.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP746.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataCity.datasource">
@@ -327,13 +336,13 @@
     <Resource Include="interpool_Images\pantalla_6_Images\music.png" />
     <Resource Include="interpool_Images\pantalla_6_Images\tv.png" />
     <Resource Include="mtbaker3.jpg" />
-    <None Include="Service References\ServiceReference\InterpoolWP7.disco" />
     <None Include="Service References\ServiceReference\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference\configuration.svcinfo" />
     <None Include="Service References\ServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\ServiceReference\InterpoolWP71.disco" />
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
