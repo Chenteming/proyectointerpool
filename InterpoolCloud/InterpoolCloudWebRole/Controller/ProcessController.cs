@@ -1075,12 +1075,12 @@ namespace InterpoolCloudWebRole.Controller
             return false;
         }
 
-        ////TODO private
+        
 
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="user"> Parameter description for user goes here</param>
-        private void DeleteGame(User user)
+        public void DeleteGame(User user)
         {
             DataManager dm = new DataManager();
             Game game = user.Game;
@@ -1287,7 +1287,7 @@ namespace InterpoolCloudWebRole.Controller
             int i = 0;
             foreach(User user in users)
             {
-                if (i >= limitSuspects)
+                if (i >= Constants.MaxSuspects)
                 {
                     break;
                 }

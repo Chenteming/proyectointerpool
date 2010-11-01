@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/30/2010 20:11:56
+-- Date Created: 10/31/2010 23:24:53
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [InterpoolDB];
+USE [interpooldb];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -159,7 +159,7 @@ CREATE TABLE [dbo].[Users] (
     [UserTelevision] nvarchar(max)  NULL,
     [UserHometown] nvarchar(max)  NULL,
     [UserBirthday] nvarchar(max)  NULL,
-    [UserGender] nvarchar(max)  NOT NULL,
+    [UserGender] nvarchar(max)  NULL,
     [UserPictureLink] nvarchar(max)  NULL
 );
 GO
