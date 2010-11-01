@@ -242,15 +242,15 @@ namespace InterpoolCloudWebRole.Controller
             IDataManager dm = new DataManager();
             OAuthFacebook auth = new OAuthFacebook() { Token = newGame.User.UserTokenFacebook };
             bool specialGame = dm.UserHasSubLevel(newGame.User.UserId, Constants.NumberSubLevels - 1, this.container);
-            facebookController.DownloadFacebookUserData(auth, newGame, this.container);
-            /*if (specialGame)
+            ////facebookController.DownloadFacebookUserData(auth, newGame, this.container);
+            if (specialGame)
             {
                 this.GetSuspectsFromDatabase(newGame);
             }
             else
             {
                 facebookController.DownloadFacebookUserData(auth, newGame, this.container);
-            }*/
+            }
 
             //// TODO change that
             List<string> list = new List<string>();
@@ -261,14 +261,13 @@ namespace InterpoolCloudWebRole.Controller
             list.Add("SuspectGender");
             list.Add("SuspectPicLInk");
 
-            this.CreateHardCodeSuspects(newGame, list);
-
-            //// Now the suspect is selected here
             int numberSuspect = new Random().Next(0, newGame.PossibleSuspect.Count - 1);
             List<Suspect> possibleSuspects = newGame.PossibleSuspect.ToList();
             Suspect suspect = possibleSuspects[numberSuspect];
             newGame.PossibleSuspect.Remove(suspect);
             newGame.Suspect = suspect;
+
+            this.CreateHardCodeSuspects(newGame, list);
         }
 
         /// <summary>
@@ -612,16 +611,16 @@ namespace InterpoolCloudWebRole.Controller
                     info.SetValue(hardCode, newValue, null);
                 }
 
-                    /*if (i == x)
-                    {
+                if (i == x)
+                {
                     bigSuspect = hardCode;
-                    //game.Suspect = bigSuspect;
+                    game.Suspect = bigSuspect;
                     game.PossibleSuspect.Add(bigSuspect);
-                    }
-                    else
-                    {*/
+                }
+                else
+                {
                     hardCodeSuspects.Add(hardCode);
-                    /*}*/
+                }
             }
 
             //// Step 3: set the suspect's property to new hard coded suspect
@@ -1275,8 +1274,6 @@ namespace InterpoolCloudWebRole.Controller
             //// Gets the users who are not the user himself, and are in a higher level
             List<User> users = this.container.Users.Where(u => u.UserId != game.User.UserId && u.Level.LevelNumber > game.User.Level.LevelNumber).ToList();
             users = Functions.ShuffleList(users);
-            // Should this be Constants.MaxSuspects?
-            int numberSuspect = new Random().Next(0, Constants.MaxSuspects - 1);
             int i = 0;
             foreach(User user in users)
             {
@@ -1285,7 +1282,7 @@ namespace InterpoolCloudWebRole.Controller
                     break;
                 }
                 Suspect suspect = this.NewSuspectFromUser(user);
-                if (Functions.HasEnoughFields(suspect, Constants.DataRequired))
+                if (this.HaveEnoughFields(suspect, Constants.DataRequired))
                 {
                     game.PossibleSuspect.Add(suspect);
                     i++;
@@ -1346,5 +1343,53 @@ namespace InterpoolCloudWebRole.Controller
             return suspect;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="fbudOfSuspect"> Parameter description for fbudOfSuspect goes here</param>
+        /// <param name="cantDataRequired"> Parameter description for cantDataRequired goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        private bool HaveEnoughFields(Suspect fbudOfSuspect, int cantDataRequired)
+        {
+            int cant = 0;
+            if (fbudOfSuspect.SuspectBirthday != string.Empty)
+            {
+                cant++;
+            }
+
+            if (fbudOfSuspect.SuspectCinema != string.Empty)
+            {
+                cant++;
+            }
+
+            if (fbudOfSuspect.SuspectGender != string.Empty)
+            {
+                cant++;
+            }
+
+            if (fbudOfSuspect.SuspectHometown != string.Empty)
+            {
+                cant++;
+            }
+
+            if (fbudOfSuspect.SuspectMusic != string.Empty)
+            {
+                cant++;
+            }
+
+            if (fbudOfSuspect.SuspectTelevision != string.Empty)
+            {
+                cant++;
+            }
+
+            if (cant < cantDataRequired)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
