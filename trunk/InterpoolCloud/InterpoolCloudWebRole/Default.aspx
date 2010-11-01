@@ -13,26 +13,26 @@
 
 
     
-        <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeOut="600">
+       <%-- <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeOut="600">
 
 
-        </asp:ScriptManager>
+        </asp:ScriptManager>--%>
    
-        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <%--<asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
             
             <ProgressTemplate>
-
+--%>
             <center>
 
 
                 </center>
-            </ProgressTemplate>
+          <%--  </ProgressTemplate>
 
         </asp:UpdateProgress>
+--%>
 
-
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
-            <ContentTemplate>                
+        <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" >--%>
+            <%--<ContentTemplate>                --%>
                 <center>
         <div>
 
@@ -105,13 +105,13 @@
         </div>
         </center>
         
-            </ContentTemplate>
+            <%--</ContentTemplate>
          </asp:UpdatePanel>
 
 
 
         <asp:UpdatePanel runat="server" id="UpdatePanel2">
-</asp:UpdatePanel>
+</asp:UpdatePanel>--%>
 
     
 </asp:Content>
