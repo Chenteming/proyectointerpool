@@ -50,10 +50,10 @@ namespace InterpoolCloudWebRole
                     user.UserIdFacebook = userData.UserId;
                     user.UserTokenFacebook = auth.Token;
                     user.UserLoginId = userData.Email;
-                    user.UserBirthday = userData.Birthday;
+                    user.UserBirthday = (userData.Birthday == null) ? string.Empty : userData.Birthday;
                     user.UserCinema = userData.Cinema;
                     user.UserFirstName = userData.FirstName;
-                    user.UserGender = userData.Gender;
+                    user.UserGender = (userData.Gender == null) ? string.Empty : userData.Gender;
                     user.UserHometown = userData.Hometown;
                     user.UserLastName = userData.LastName;
                     user.UserMusic = userData.Music;
