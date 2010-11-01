@@ -48,6 +48,7 @@ using System.Web;
             return randomList; ////return the new random list
         }
 
+        /*
         public static bool HasEnoughFields(object obj, int numRequired)
         {
             PropertyInfo[] properties = obj.GetType().GetProperties();
@@ -68,5 +69,6 @@ using System.Web;
             }
             return count >= numRequired;
         }
+        */
     }
 }

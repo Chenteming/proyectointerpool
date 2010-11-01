@@ -3082,15 +3082,13 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="userIdFacebook">Initial value of the UserIdFacebook property.</param>
         /// <param name="userTokenFacebook">Initial value of the UserTokenFacebook property.</param>
         /// <param name="levelLevelId">Initial value of the LevelLevelId property.</param>
-        /// <param name="userGender">Initial value of the UserGender property.</param>
-        public static User CreateUser(global::System.Int32 userId, global::System.String userIdFacebook, global::System.String userTokenFacebook, global::System.Int32 levelLevelId, global::System.String userGender)
+        public static User CreateUser(global::System.Int32 userId, global::System.String userIdFacebook, global::System.String userTokenFacebook, global::System.Int32 levelLevelId)
         {
             User user = new User();
             user.UserId = userId;
             user.UserIdFacebook = userIdFacebook;
             user.UserTokenFacebook = userTokenFacebook;
             user.LevelLevelId = levelLevelId;
-            user.UserGender = userGender;
             return user;
         }
 
@@ -3415,7 +3413,7 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String UserGender
         {
@@ -3427,7 +3425,7 @@ namespace InterpoolCloudWebRole.Data
             {
                 OnUserGenderChanging(value);
                 ReportPropertyChanging("UserGender");
-                _UserGender = StructuralObject.SetValidValue(value, false);
+                _UserGender = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("UserGender");
                 OnUserGenderChanged();
             }
