@@ -12,6 +12,7 @@ namespace InterpoolCloudWebRole.Data
     using System.Web;
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
+    using InterpoolCloudWebRole.Utilities;
 
     /// <summary>
     /// DataManager IDataManager.
@@ -294,7 +295,7 @@ namespace InterpoolCloudWebRole.Data
                 listFbudSuspect.Add(fbudSuspect);
             }
 
-            return listFbudSuspect;
+            return Functions.ShuffleList<DataFacebookUser>(listFbudSuspect);
         }
 
         /// <summary>
