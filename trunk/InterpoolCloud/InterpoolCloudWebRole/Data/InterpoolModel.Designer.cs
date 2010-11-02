@@ -3082,13 +3082,15 @@ namespace InterpoolCloudWebRole.Data
         /// <param name="userIdFacebook">Initial value of the UserIdFacebook property.</param>
         /// <param name="userTokenFacebook">Initial value of the UserTokenFacebook property.</param>
         /// <param name="levelLevelId">Initial value of the LevelLevelId property.</param>
-        public static User CreateUser(global::System.Int32 userId, global::System.String userIdFacebook, global::System.String userTokenFacebook, global::System.Int32 levelLevelId)
+        /// <param name="userScore">Initial value of the UserScore property.</param>
+        public static User CreateUser(global::System.Int32 userId, global::System.String userIdFacebook, global::System.String userTokenFacebook, global::System.Int32 levelLevelId, global::System.Int32 userScore)
         {
             User user = new User();
             user.UserId = userId;
             user.UserIdFacebook = userIdFacebook;
             user.UserTokenFacebook = userTokenFacebook;
             user.LevelLevelId = levelLevelId;
+            user.UserScore = userScore;
             return user;
         }
 
@@ -3457,6 +3459,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _UserPictureLink;
         partial void OnUserPictureLinkChanging(global::System.String value);
         partial void OnUserPictureLinkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserScore
+        {
+            get
+            {
+                return _UserScore;
+            }
+            set
+            {
+                OnUserScoreChanging(value);
+                ReportPropertyChanging("UserScore");
+                _UserScore = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserScore");
+                OnUserScoreChanged();
+            }
+        }
+        private global::System.Int32 _UserScore;
+        partial void OnUserScoreChanging(global::System.Int32 value);
+        partial void OnUserScoreChanged();
 
         #endregion
     

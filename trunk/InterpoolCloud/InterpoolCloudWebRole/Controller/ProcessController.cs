@@ -371,6 +371,7 @@ namespace InterpoolCloudWebRole.Controller
                 datacity.NameFileCity = node.City.NameFile;
                 datacity.CurrentDate = this.RestTime(game, Constants.TravelWrong);
                 datacity.DeadLine = game.DeadLine;
+                datacity.CityNumber = -1;
                 return datacity;
             }
 
@@ -379,6 +380,8 @@ namespace InterpoolCloudWebRole.Controller
             this.container.SaveChanges();
             datacity.NameCity = nextNode.City.CityName;
             datacity.NameFileCity = nextNode.City.NameFile;
+            datacity.CityNumber = nextNode.NodePathOrder + 1;
+            
             datacity.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.TravelGood);
             return datacity;
         }
@@ -1050,9 +1053,10 @@ namespace InterpoolCloudWebRole.Controller
                         game.User.SubLevel++;
                         RegisterLog("user_advanceSubLevel", null, "ok", game.User.UserLoginId);
                     }
-                    
-                    DeleteGame(game.User);
+
                     clue.States = DataClue.State.WIN;
+                    clue.GameInfo = GetGameInfo(game, clue.States);
+                    DeleteGame(game.User);
                     this.container.SaveChanges();
                     return true;
                 }
@@ -1070,8 +1074,9 @@ namespace InterpoolCloudWebRole.Controller
                 RegisterLog("user_no_emit_order_of_arrest", null, "ok", game.User.UserLoginId);
             }
 
-            // user lose
-            // TODO level and score
+            clue.GameInfo = GetGameInfo(game, clue.States);
+            DeleteGame(game.User);
+            this.container.SaveChanges();
             return false;
         }
 
@@ -1353,6 +1358,34 @@ namespace InterpoolCloudWebRole.Controller
             return suspect;
         }
 
+        private DataGameInfo GetGameInfo(Game game, DataClue.State state)
+        {
+            DataGameInfo info = new DataGameInfo();
+            info.SuspectName = game.Suspect.SuspectFirstName + " " + game.Suspect.SuspectLastName;
+
+            if (state == DataClue.State.WIN)
+            {
+                //info.ScoreWin = 
+                TimeSpan timeSpan = game.DeadLine.Subtract(game.CurrentTime);
+                info.DiffInDays = timeSpan.Days;
+                info.DiffInMinutes = timeSpan.Minutes;
+                info.DiffInseconds = timeSpan.Seconds;
+                int leftTime = (int)(timeSpan.Ticks / TimeSpan.TicksPerHour);
+                info.ScoreWin =  leftTime / 60;
+                game.User.UserScore += (Int32)info.ScoreWin;
+
+            }
+            else 
+            {
+                info.DiffInDays = 0;
+                info.DiffInMinutes = 0;
+                info.DiffInseconds = 0;
+                info.ScoreWin = 0;
+            }
+            
+            info.newLevel = game.User.Level.LevelName;
+            return info;
+        }
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="fbudOfSuspect"> Parameter description for fbudOfSuspect goes here</param>

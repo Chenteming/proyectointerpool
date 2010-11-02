@@ -50,5 +50,11 @@ namespace InterpoolCloudWebRole.Datatypes
             get;
             set;
         }
+
+        public int CityNumber
+        {
+            get;
+            set;
+        }
     }
 }

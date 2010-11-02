@@ -61,5 +61,11 @@ namespace InterpoolCloudWebRole.Datatypes
             get;
             set;
         }
+
+        public DataGameInfo GameInfo
+        {
+            get;
+            set;
+        }
     }
 }
