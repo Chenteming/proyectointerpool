@@ -126,9 +126,18 @@
 
         private void LoadPicture(string pictureLink)
         {
-            WebClient webClientImgDownloader = new WebClient();
-            webClientImgDownloader.OpenReadCompleted += new OpenReadCompletedEventHandler(webClientImgDownloader_OpenReadCompleted);
-            webClientImgDownloader.OpenReadAsync(new Uri(pictureLink, UriKind.Absolute));
+            if (null != pictureLink && pictureLink.Equals(string.Empty))
+            {
+                WebClient webClientImgDownloader = new WebClient();
+                webClientImgDownloader.OpenReadCompleted += new OpenReadCompletedEventHandler(webClientImgDownloader_OpenReadCompleted);
+                webClientImgDownloader.OpenReadAsync(new Uri(pictureLink, UriKind.Absolute));
+            }
+            else 
+            {
+                string famousURI = "/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png";
+                imageSuspect.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
+            }
+
         }
 
         void webClientImgDownloader_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e)

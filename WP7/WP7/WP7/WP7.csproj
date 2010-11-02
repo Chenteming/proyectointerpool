@@ -170,7 +170,9 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
-    <None Include="Service References\ServiceReference\InterpoolWP71.wsdl" />
+    <None Include="Service References\ServiceReference\InterpoolWP71.wsdl">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference\InterpoolWP74.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -343,7 +345,9 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\ServiceReference\InterpoolWP71.disco" />
-    <Content Include="ServiceReferences.ClientConfig" />
+    <Content Include="ServiceReferences.ClientConfig">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">
