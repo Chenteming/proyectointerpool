@@ -56,7 +56,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 List<string> friendsIds = this.GetFriendsId(userId);
                 
                 List<string> shuffleFriendsIds = Functions.ShuffleList<string>(friendsIds);
-
                 Suspect suspect;
                 List<Suspect> suspects = new List<Suspect>();
                 DataFacebookUser fbudOfSuspect; 
@@ -545,32 +544,56 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             friendData.Music = string.Empty;
             friendData.Television = string.Empty;
             friendData.Cinema = string.Empty;
+
+            List<string> music = new List<string>();
+            List<string> television = new List<string>();
+            List<string> movies = new List<string>();
+
             
-            while (like_category != null && !exit)
+            while (like_category != null) // && !exit)
             {
                 switch (like_category)
                 {
                     case "Music":
                     case "Musicians":
-                        friendData.Music = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        //friendData.Music = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        music.Add((string)jsonFriendObject.SelectToken("data[" + i + "].name"));
                         break;
                     case "Television":
-                        friendData.Television = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        //friendData.Television = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        television.Add((string)jsonFriendObject.SelectToken("data[" + i + "].name"));
                         break;
                     case "Movie":
                     case "Film":
-                        friendData.Cinema = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        //friendData.Cinema = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        movies.Add((string)jsonFriendObject.SelectToken("data[" + i + "].name"));
                         break;
                 }
 
                 i++;
                 like_category = (string)jsonFriendObject.SelectToken("data[" + i + "].category");
-                if (friendData.Music != string.Empty && friendData.Television != string.Empty && friendData.Cinema != string.Empty)
-                {
-                    exit = true;
-                }           
+                //if (friendData.Music != string.Empty && friendData.Television != string.Empty && friendData.Cinema != string.Empty)
+                //{
+                //    exit = true;
+                //}           
             }
 
+            List<string> music_shuffle = Functions.ShuffleList<string>(music);
+            List<string> television_shuffle = Functions.ShuffleList<string>(television);
+            List<string> movies_shuffle = Functions.ShuffleList<string>(movies);
+
+            if (music_shuffle.Count > 0)
+            {
+                friendData.Music = music_shuffle[0];
+            }
+            if (television_shuffle.Count > 0)
+            {
+                friendData.Television = television_shuffle[0];
+            }
+            if (movies_shuffle.Count > 0)
+            {
+                friendData.Cinema = movies_shuffle[0];
+            }
             return friendData;          
         }
             
