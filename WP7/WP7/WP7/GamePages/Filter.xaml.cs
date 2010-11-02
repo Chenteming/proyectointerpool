@@ -63,6 +63,9 @@
 
         void client_FilterSuspectsCompleted(object sender, FilterSuspectsCompletedEventArgs e)
         {
+            gm.CurrentDateTime = e.Result.CurrentDate;
+            if (e.Result.CurrentDate.CompareTo(gm.DeadLineDateTime) == 1)
+                NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
             List<DataFacebookUser> dfu = e.Result.ListFacebookUser.ToList();
             this.gender = new List<string>();
             this.film = new List<string>();

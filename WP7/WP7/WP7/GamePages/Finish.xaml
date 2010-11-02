@@ -1,0 +1,34 @@
+﻿<phone:PhoneApplicationPage 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="728" d:DesignHeight="480"
+	x:Class="WP7.Finish"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	FontSize="{StaticResource PhoneFontSizeNormal}"
+	Foreground="{StaticResource PhoneForegroundBrush}"
+	Orientation="Landscape"
+	shell:SystemTray.IsVisible="True" SupportedOrientations="PortraitOrLandscape">
+
+	<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot" Background="Transparent">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"/>
+        <Image Margin="153,0,153,149" Grid.Row="1" Source="/WP7;component/GameImages/GameOver.png" Stretch="Fill"/>
+        <TextBlock x:Name="NameSuspectTB" Margin="-21,222,0,215" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Left" Width="151"><Run Text="NameSuspect "/><Run Text=":"/><Run Text=" "/></TextBlock>
+        <TextBlock x:Name="ScoreTB" Margin="7,0,569,10" Grid.Row="1" TextWrapping="Wrap" Text="Score :" Height="43" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="TimeLeftTB" Margin="-22,0,0,165" Grid.Row="1" TextWrapping="Wrap" Text="TimeLeft:" Height="43" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="152"/>
+        <TextBlock x:Name="TotalTB" Margin="15,0,561,85" Grid.Row="1" TextWrapping="Wrap" Height="43" VerticalAlignment="Bottom"><Run Text="Total"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="NameSuspectText" Margin="229,232,238,205" Grid.Row="1" TextWrapping="Wrap"/>
+        <TextBlock x:Name="TimeLeftText" Margin="229,0,238,164" Grid.Row="1" TextWrapping="Wrap" Height="43" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="TotalText" Margin="249,0,218,73" Grid.Row="1" TextWrapping="Wrap" Height="43" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="ScoreText" Margin="261,0,206,13" Grid.Row="1" TextWrapping="Wrap" Height="43" VerticalAlignment="Bottom"/>
+    </Grid>
+</phone:PhoneApplicationPage>

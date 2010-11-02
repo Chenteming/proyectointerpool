@@ -13,17 +13,11 @@ using Microsoft.Phone.Controls;
 
 namespace WP7
 {
-    public partial class Start : PhoneApplicationPage
+    public partial class Finish : PhoneApplicationPage
     {
-        public Start()
+        public Finish()
         {
             InitializeComponent();
-			Detective2Storyboard.Completed += new EventHandler(Detective2Storyboard_Completed);
-        }
- 
-        void Detective2Storyboard_Completed(object sender, EventArgs e)
-        {
-            detectiveText.Visibility = Visibility.Visible;
         }
     }
 }

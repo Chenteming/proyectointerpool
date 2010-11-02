@@ -11,7 +11,179 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Landscape" Orientation="Landscape"
     mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="728"
+	xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
     shell:SystemTray.IsVisible="True">
+	<phone:PhoneApplicationPage.Resources>
+		<Style x:Key="ThumbStyle1" TargetType="Thumb">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Thumb">
+						<Grid Height="Auto" HorizontalAlignment="Stretch" Width="Auto">
+							<Grid.Resources>
+								<SolidColorBrush x:Key="Background" Color="#FF003255"/>
+								<Color x:Key="ThumbOuterBorderFillColor1">#FFF9FAFA</Color>
+								<Color x:Key="ThumbOuterBorderFillColor2">#FFEDF1F4</Color>
+								<Color x:Key="ThumbOuterBorderFillColor3">#FFE2E8EF</Color>
+								<Color x:Key="ThumbOuterBorderFillColor4">#FFAFB9C1</Color>
+								<SolidColorBrush x:Key="ThumbInnerRoundBorderBrush" Color="#FFFFFFFF"/>
+								<SolidColorBrush x:Key="ThumbOuterRoundBorderBrush" Color="#FF000000"/>
+								<Color x:Key="ThumbInnerBorderFillColor1">#CDFFFFFF</Color>
+								<Color x:Key="ThumbInnerBorderFillColor2">#45FFFFFF</Color>
+								<Color x:Key="MouseOverThumbOuterBorderFillColor1">#FFEAF0F0</Color>
+								<Color x:Key="MouseOverThumbOuterBorderFillColor2">#FFDCE5EC</Color>
+								<Color x:Key="MouseOverThumbOuterBorderFillColor3">#FFD5DDE6</Color>
+								<Color x:Key="MouseOverThumbOuterBorderFillColor4">#FF798893</Color>
+								<Color x:Key="MouseOverThumbInnerBorderFillColor1">#CDFFFFFF</Color>
+								<Color x:Key="MouseOverThumbInnerBorderFillColor2">#45FFFFFF</Color>
+								<Color x:Key="PressedThumbOuterBorderFillColor1">#FFEAF0F0</Color>
+								<Color x:Key="PressedThumbOuterBorderFillColor2">#FFDCE5EC</Color>
+								<Color x:Key="PressedThumbOuterBorderFillColor3">#FFD5DDE6</Color>
+								<Color x:Key="PressedThumbOuterBorderFillColor4">#FF798893</Color>
+								<Color x:Key="PressedThumbInnerBorderFillColor1">#CDFFFFFF</Color>
+								<Color x:Key="PressedThumbInnerBorderFillColor2">#45FFFFFF</Color>
+								<Color x:Key="DisabledThumbOuterBorderFillColor1">#FFF9FAFA</Color>
+								<Color x:Key="DisabledThumbOuterBorderFillColor2">#FFEDF1F4</Color>
+								<Color x:Key="DisabledThumbOuterBorderFillColor3">#FFE2E8EF</Color>
+								<Color x:Key="DisabledThumbOuterBorderFillColor4">#FFC3C9CD</Color>
+								<Color x:Key="DisabledThumbInnerBorderFillColor1">#CDFFFFFF</Color>
+								<Color x:Key="DisabledThumbInnerBorderFillColor2">#45FFFFFF</Color>
+							</Grid.Resources>
+							<vsm:VisualStateManager.VisualStateGroups>
+								<vsm:VisualStateGroup x:Name="CommonStates">
+									<vsm:VisualStateGroup.Transitions>
+										<vsm:VisualTransition  GeneratedDuration="0:0:0.1" To="MouseOver"/>
+										<vsm:VisualTransition GeneratedDuration="0:0:0.1" To="Pressed"/>
+                                        <vsm:VisualTransition GeneratedDuration="0:0:0.1" To="Disabled"/>
+									</vsm:VisualStateGroup.Transitions>
+									<vsm:VisualState x:Name="Normal"/>
+									<vsm:VisualState x:Name="MouseOver">
+										<Storyboard/>
+									</vsm:VisualState>
+									<vsm:VisualState x:Name="Pressed">
+										<Storyboard/>
+									</vsm:VisualState>
+									<vsm:VisualState x:Name="Disabled">
+										<Storyboard/>
+									</vsm:VisualState>
+								</vsm:VisualStateGroup>
+							</vsm:VisualStateManager.VisualStateGroups>
+							<Grid HorizontalAlignment="Center" Margin="0,0,0,0" x:Name="Thumb" VerticalAlignment="Center" Width="18">
+								<Grid x:Name="Thumb_asset" Height="28" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="18" RenderTransformOrigin="0.5,0.5">
+									<Grid.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+											<SkewTransform/>
+											<RotateTransform/>
+											<TranslateTransform/>
+										</TransformGroup>
+									</Grid.RenderTransform>
+									<Rectangle Stroke="#FFF09336" RadiusX="10" RadiusY="10">
+										<Rectangle.Fill>
+											<LinearGradientBrush EndPoint="0.777999997138977,0.5" StartPoint="0.222000002861023,0.5">
+												<GradientStop Color="#FFFFC100"/>
+												<GradientStop Color="#FFEDED31" Offset="1"/>
+											</LinearGradientBrush>
+										</Rectangle.Fill>
+									</Rectangle>
+									<Path x:Name="Path_8" Width="5.48" Height="Auto" Stretch="Fill" Data="F1 M 11.0443,23.0732C 14.0707,23.0732 16.5242,61.9164 16.5242,109.832L 16.5242,222.619C 16.5242,270.535 14.0707,309.379 11.0443,309.379L 11.0443,23.0732 Z " HorizontalAlignment="Right" Margin="0,3,2.25999999046326,3" VerticalAlignment="Top">
+										<Path.Fill>
+											<LinearGradientBrush StartPoint="1.7004,0.500006" EndPoint="-1.69962,0.500006">
+												<GradientStop Color="#4DFFFFFF" Offset="0"/>
+												<GradientStop Color="#00FFFFFF" Offset="0.972603"/>
+											</LinearGradientBrush>
+										</Path.Fill>
+									</Path>
+									<Path x:Name="Path_9" Width="5.48" Height="Auto" Stretch="Fill" Data="F1 M 8.72699,309.379C 5.70047,309.379 3.24701,270.536 3.24701,222.62L 3.24701,109.833C 3.24701,61.9171 5.70047,23.0738 8.72699,23.0738L 8.72699,309.379 Z " HorizontalAlignment="Left" Margin="2.25999999046326,3,0,3" VerticalAlignment="Top">
+										<Path.Fill>
+											<LinearGradientBrush StartPoint="-0.700392,0.499994" EndPoint="2.69961,0.499994">
+												<GradientStop Color="#7FFFFFFF" Offset="0"/>
+												<GradientStop Color="#00FFFFFF" Offset="0.972603"/>
+											</LinearGradientBrush>
+										</Path.Fill>
+									</Path>
+								</Grid>
+							</Grid>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="InterpoolSlider" TargetType="Slider">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Slider">
+						<Grid x:Name="Root">
+							<Grid.Resources>
+								<ControlTemplate x:Key="RepeatButtonTemplate">
+									<Grid x:Name="Root" Opacity="0" Background="Transparent"/>
+								</ControlTemplate>
+							</Grid.Resources>
+							<vsm:VisualStateManager.VisualStateGroups>
+								<vsm:VisualStateGroup x:Name="CommonStates">
+									<vsm:VisualStateGroup.Transitions>
+                                        <vsm:VisualTransition GeneratedDuration="0"/>
+									</vsm:VisualStateGroup.Transitions>
+									<vsm:VisualState x:Name="Normal"/>
+									<vsm:VisualState x:Name="MouseOver"/>
+									<vsm:VisualState x:Name="Disabled">
+										<Storyboard>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="(UIElement.Opacity)">
+												<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.5"/>
+											</DoubleAnimationUsingKeyFrames>
+										</Storyboard>
+									</vsm:VisualState>
+								</vsm:VisualStateGroup>
+								<vsm:VisualStateGroup x:Name="FocusStates">
+									<vsm:VisualStateGroup.Transitions>
+                                        <vsm:VisualTransition GeneratedDuration="0"/>
+									</vsm:VisualStateGroup.Transitions>
+									<vsm:VisualState x:Name="Unfocused"/>
+									<vsm:VisualState x:Name="Focused">
+										<Storyboard/>
+									</vsm:VisualState>
+								</vsm:VisualStateGroup>
+							</vsm:VisualStateManager.VisualStateGroups>
+							<Grid x:Name="HorizontalTemplate">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto"/>
+									<ColumnDefinition Width="Auto"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Grid Margin="-5,0,-5,0" x:Name="Background1" Height="19" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3">
+									<Grid Height="12" HorizontalAlignment="Center" Margin="0,0,0,0" x:Name="Background" VerticalAlignment="Center">
+										<Rectangle HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Stroke="#FFC2C2C2" RadiusX="10" RadiusY="10">
+											<Rectangle.Fill>
+												<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+													<GradientStop Color="#FF979797"/>
+													<GradientStop Color="#FFFFFFFF" Offset="0.917"/>
+												</LinearGradientBrush>
+											</Rectangle.Fill>
+										</Rectangle>
+										<Path Height="1" HorizontalAlignment="Stretch" Margin="4,0,4,1" VerticalAlignment="Center" Data="M165,275 L365.01001,275" Fill="#FF2B2B2B" Stretch="Fill" Stroke="#FF000000" StrokeThickness="0.2" d:LayoutOverrides="Width, Height"/>
+										<Path Height="1" HorizontalAlignment="Center" Margin="6,0,6,3" VerticalAlignment="Center" Data="M165,275 L365.01001,275" Fill="#FFECECEC" Stretch="Fill" Stroke="#FFF4F4F4" StrokeThickness="0.5" d:LayoutOverrides="Width, Height"/>
+									</Grid>
+								</Grid>
+								<RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButton" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate}" Grid.Column="0"/>
+								<Thumb Height="32" HorizontalAlignment="Center" x:Name="HorizontalThumb" Style="{StaticResource ThumbStyle1}" VerticalAlignment="Center" Width="16" Grid.Column="1"/>
+								<RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButton" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate}" Grid.Column="2"/>
+							</Grid>
+							<Grid x:Name="VerticalTemplate" Visibility="Collapsed">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="Auto"/>
+								</Grid.RowDefinitions>
+								<Rectangle Margin="0,5,0,5" Width="3" Grid.Row="0" Grid.RowSpan="3" Fill="#FFE6EFF7" Stroke="Black" StrokeThickness="0.5"/>
+								<RepeatButton x:Name="VerticalTrackLargeChangeDecreaseRepeatButton" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate}" Grid.Row="2"/>
+								<Thumb Height="11" x:Name="VerticalThumb" Width="18" Grid.Row="1"/>
+								<RepeatButton x:Name="VerticalTrackLargeChangeIncreaseRepeatButton" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate}" Grid.Row="0"/>
+							</Grid>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -26,13 +198,16 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
         <Image Grid.RowSpan="2" Source="/WP7;component/interpool_Images/pantalla_3_Images/Capa 1.png" Stretch="Fill"/>
-        <TextBlock x:Name="languageText" Height="30" Margin="64,60,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="#FFD24242" FontWeight="Bold" HorizontalAlignment="Left" Width="189"/>
-        <TextBlock x:Name="volumeText" Height="30" Margin="109,150,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="#FFD24242" FontWeight="Bold" HorizontalAlignment="Left" Width="189"/>
-        <TextBlock x:Name="vibrationText" Margin="64,0,0,165" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Foreground="#FFD24242" FontWeight="Bold" HorizontalAlignment="Left" Width="189" Height="30" VerticalAlignment="Bottom"/>
-        <CheckBox x:Name="englishCheckBox" HorizontalAlignment="Right" Margin="0,217,249,147" Grid.Row="1" Width="54" Background="#BFD62525" Checked="englishCheckBox_Checked"/>
-        <TextBlock x:Name="languageEnglish" Margin="242,0,297,165" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Foreground="#FFD24242" FontWeight="Bold" Height="30" VerticalAlignment="Bottom"/>
-        <CheckBox x:Name="spanishCheckBox" HorizontalAlignment="Right" Margin="0,0,249,72" Grid.Row="1" Width="54" Background="#BFD62525" Height="71" VerticalAlignment="Bottom" Checked="spanishCkeckBox_Checked"/>
-        <TextBlock x:Name="languageSpanish" Margin="245,0,294,90" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Foreground="#FFD24242" FontWeight="Bold" Height="30" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="languageText" Height="50" Margin="64,238,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Lenguaje:" VerticalAlignment="Top" Foreground="#FFD24242" FontWeight="Bold" HorizontalAlignment="Left" Width="189" FontSize="32" FontFamily="Futurama Bold Font"/>
+        <TextBlock x:Name="volumeText" Height="50" Margin="66,127,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Volúmen:" VerticalAlignment="Top" Foreground="#FFD24242" FontWeight="Bold" HorizontalAlignment="Left" Width="189" FontSize="32" FontFamily="Futurama Bold Font"/>
+        <TextBlock x:Name="vibrationText" Margin="64,0,0,355" Grid.Row="1" TextWrapping="Wrap" Text="Vibración:" Foreground="#FFD24242" FontWeight="Bold" HorizontalAlignment="Left" Width="189" Height="50" VerticalAlignment="Bottom" FontSize="32" FontFamily="Futurama Bold Font"/>
+        <CheckBox x:Name="englishCheckBox" HorizontalAlignment="Right" Margin="0,214,249,0" Grid.Row="1" Width="54" Background="#BFD62525" Checked="englishCheckBox_Checked" Height="71" VerticalAlignment="Top" Unchecked="englishCheckBox_Unchecked" />
+        <TextBlock x:Name="languageEnglish" Margin="242,0,297,165" Grid.Row="1" TextWrapping="Wrap" Text="Inglés" Foreground="#FFD24242" FontWeight="Bold" Height="40" VerticalAlignment="Bottom" FontSize="26.667" FontFamily="Futurama Bold Font" Width="140"/>
+        <CheckBox x:Name="spanishCheckBox" HorizontalAlignment="Right" Margin="0,0,249,72" Grid.Row="1" Width="54" Background="#BFD62525" Height="71" VerticalAlignment="Bottom" Checked="spanishCkeckBox_Checked" Unchecked="spanishCkeckBox_Unchecked"/>
+        <TextBlock x:Name="languageSpanish" Margin="270,0,318,87" Grid.Row="1" TextWrapping="Wrap" Text="Español" Foreground="#FFD24242" FontWeight="Bold" Height="40" VerticalAlignment="Bottom" FontSize="26.667" FontFamily="Futurama Bold Font" Width="140"/>
+        <TextBlock x:Name="vibrationTB" Text="Activar" Margin="271,34,317,0" Grid.Row="1" TextWrapping="Wrap" Foreground="#FFD24242" FontWeight="Bold" Height="40" VerticalAlignment="Top" FontSize="26.667" FontFamily="Futurama Bold Font" Width="140"/>
+        <CheckBox x:Name="vibrationCheckBox" HorizontalAlignment="Right" Margin="0,17,249,0" Grid.Row="1" Width="54" Background="#BFD62525" Checked="vibrationCheckBox_Checked" Height="71" VerticalAlignment="Top" Unchecked="vibrationCheckBox_Unchecked"/>
+        <Slider x:Name="mySlider" Style="{StaticResource InterpoolSlider}" Margin="270,127,228,0" Height="45" Grid.Row="1" VerticalAlignment="Top" Minimum="0" Maximum="1" Value="{Binding Path=Volume,ElementName=media}" d:LayoutOverrides="HorizontalAlignment"/>
 	</Grid>
  
     <!--Sample code showing usage of ApplicationBar-->

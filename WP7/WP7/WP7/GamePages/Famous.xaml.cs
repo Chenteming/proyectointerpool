@@ -49,21 +49,25 @@
 
         private void GetClueByFamousCallback(object sender, GetClueByFamousCompletedEventArgs e)
         {
-            DataClue dc = e.Result;
-            dialogText.Text = dc.Clue;
-            switch (dc.States)
+            DataClue data = e.Result;
+            gm.CurrentDateTime = data.CurrentDate;
+            if (data.CurrentDate.CompareTo(gm.DeadLineDateTime) == 1)
+                NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
+            dialogText.Text = data.Clue;
+            gm.Data = data;
+            switch (data.States)
             {
                 case DataClue.State.LOSE_EOAW:
-                    MessageBox.Show("Haz emitido la orden de arresto de forma incorrecta.");
-                    NavigationService.Navigate(new Uri("MainPage.xaml", UriKind.RelativeOrAbsolute));
+                    NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml?animation =" + 0, UriKind.RelativeOrAbsolute));
                     break;
                 case DataClue.State.LOSE_NEOA:
-                    MessageBox.Show("No haz emitido una orden de arresto.");
-                    NavigationService.Navigate(new Uri("MainPage.xaml", UriKind.RelativeOrAbsolute));
+                    NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml?animation =" + 1, UriKind.RelativeOrAbsolute));
                     break;
                 case DataClue.State.WIN:
-                    MessageBox.Show("Ganaste!!!!!!!");
-                    NavigationService.Navigate(new Uri("MainPage.xaml", UriKind.RelativeOrAbsolute));
+                    NavigationService.Navigate(new Uri("/GamePages/Finish.xaml?", UriKind.RelativeOrAbsolute));
+                    break;
+                case DataClue.State.LOSE_TO:
+                    NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml?animation =" + 2, UriKind.RelativeOrAbsolute));
                     break;
                 default:
                     break;

@@ -19,6 +19,10 @@
         public Game()
         {
             InitializeComponent();
+            GameManager gm = GameManager.getInstance();
+            if (gm.ShowAnimation == true)
+                ToastyStoryboard.Begin();
+            gm.ShowAnimation = false;
         }
 
         private void ComputerButton_Click(object sender, RoutedEventArgs e)
