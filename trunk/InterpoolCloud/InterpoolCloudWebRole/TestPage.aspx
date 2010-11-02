@@ -51,6 +51,9 @@
                     Text="Delete Game" />
                 <br />
                 <br />
+                <asp:Button ID="Button7" runat="server" onclick="Button7_Click" 
+                    Text="NewsFamous" Width="114px" />
+                <br />
                 <br />
         <br />
             <asp:Label ID="log" runat="server" Font-Size="Small"></asp:Label>

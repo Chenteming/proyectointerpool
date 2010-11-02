@@ -201,7 +201,7 @@ namespace InterpoolCloudWebRole
         /// </summary>
         /// <param name="sender">Parameter description for sender goes here</param>
         /// <param name="e">Parameter description for sender e here</param>
-        private void Button6_Click(object sender, EventArgs e)
+        protected void Button6_Click(object sender, EventArgs e)
         {
             this.log.Text = String.Empty;
             InterpoolContainer container = new InterpoolContainer();
@@ -212,6 +212,11 @@ namespace InterpoolCloudWebRole
             string userId = dm.GetUserIdFacebookByLoginId(currentUser, ipc.GetContainer());
             User user = dm.GetUserByIdFacebook(ipc.GetContainer(), userId).First();
             ipc.DeleteGame(user);
+        }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            Admin.LoadFamousData();
         }
     }
 }
