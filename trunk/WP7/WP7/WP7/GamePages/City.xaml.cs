@@ -32,14 +32,14 @@
             this.client.GetCitiesAsync(this.gm.UserId);
             this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
             this.client.CloseAsync();	
-////Thickness margin = avion_Copy.Margin;
-////margin.Top = 200;
-////margin.Bottom = 100;
-////avion_Copy.Margin = margin;
-////Thickness margin1 = avion.Margin;
-////margin1.Left = 100;
-////margin1.Top = 300;
-////avion.Margin = margin1;
+            ////Thickness margin = avion_Copy.Margin;
+            ////margin.Top = 200;
+            ////margin.Bottom = 100;
+            ////avion_Copy.Margin = margin;
+            ////Thickness margin1 = avion.Margin;
+            ////margin1.Left = 100;
+            ////margin1.Top = 300;
+            ////avion.Margin = margin1;
             button1.Visibility = System.Windows.Visibility.Collapsed;
             button2.Visibility = System.Windows.Visibility.Collapsed;
             button3.Visibility = System.Windows.Visibility.Collapsed;
@@ -79,20 +79,24 @@
 
         private void button1_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (MessageBox.Show("¿Desea viajar?", "title",
+            /*if (MessageBox.Show("¿Desea viajar?", "title",
                 MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            {
+            {*/
                 InterpoolWP7Client client = new InterpoolWP7Client();
                 client.TravelCompleted += new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
                 client.TravelAsync(this.gm.UserId, button1.Content.ToString());
                 this.gm.SetCurrentCity(button1.Content.ToString());
                 client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
                 client.CloseAsync();
-            }
+            ////}
         }
 
         void client_TravelCompleted(object sender, TravelCompletedEventArgs e)
         {
+            DataCity city = e.Result;
+            gm.CurrentDateTime = city.CurrentDate;
+            if (city.CurrentDate.CompareTo(gm.DeadLineDateTime) == 1)
+                NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
             ////Coords. cities
             double coordX_cityI = 165;
             double coordY_cityI = 300;
@@ -145,34 +149,35 @@
 			////Start plane animation 			
 			animacion2.Begin();			
 			MessageBox.Show("Ha viajado a " + this.gm.GetCurrentCity());
+            ////gm.ShowAnimation = (city.Number == 3);
             NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void button2_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (MessageBox.Show("¿Desea viajar?", "title", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            {
+            /*if (MessageBox.Show("¿Desea viajar?", "title", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {*/
                 InterpoolWP7Client client = new InterpoolWP7Client();
                 client.TravelCompleted += new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
                 client.TravelAsync(this.gm.UserId, button2.Content.ToString());
                 this.gm.SetCurrentCity(button2.Content.ToString());
                 this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
                 client.CloseAsync();
-            }
+            ////}
         }
 
         private void button3_Click(object sender, System.Windows.RoutedEventArgs e)
         {			
-			if (MessageBox.Show("¿Desea viajar?", "title", 
+			/*if (MessageBox.Show("¿Desea viajar?", "title", 
 				MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-			{
+			{*/
                 InterpoolWP7Client client = new InterpoolWP7Client();
                 client.TravelCompleted += new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
                 client.TravelAsync(this.gm.UserId, button3.Content.ToString());
                 this.gm.SetCurrentCity(button3.Content.ToString());
                 client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
                 client.CloseAsync();
-			}
+			////}
         }
     }
 }

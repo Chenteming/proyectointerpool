@@ -76,6 +76,12 @@
     </Compile>
     <Compile Include="GameClasses\GameManager.cs" />
     <Compile Include="GameClasses\LanguageManager.cs" />
+    <Compile Include="GamePages\Finish.xaml.cs">
+      <DependentUpon>Finish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\GameOver.xaml.cs">
+      <DependentUpon>GameOver.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GamePages\Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
@@ -142,7 +148,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GamePages\Finish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GamePages\Game.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\GameOver.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -312,6 +326,11 @@
     <Resource Include="FamousImages\tokio_koda_kumi.jpg" />
     <Resource Include="FamousImages\tokio_miyavi.jpg" />
     <Resource Include="GameImages\LoginScreen.jpg" />
+    <Resource Include="GameImages\GameOver.png" />
+    <Resource Include="GameImages\ComicBaloon.png" />
+    <Resource Include="GameImages\Detective2.png" />
+    <Resource Include="GameImages\Sneaky.png" />
+    <Resource Include="GameImages\Toasty.png" />
     <Content Include="GameLanguages\English.xml">
       <SubType>Designer</SubType>
     </Content>

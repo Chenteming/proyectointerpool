@@ -13,6 +13,7 @@
     using System.Collections.Generic;
     using Microsoft.Phone.Controls;
     using WP7.Utilities;
+    using WP7.ServiceReference;
 
     public class GameManager
     {
@@ -40,22 +41,35 @@
             this.clues = new List<string>();
             this.suspects = new List<string>();
             this.Logged = false;
+            this.Vibration = false;
+            this.ShowAnimation = false;
+            this.Data = new DataClue();
         }
 
         public string UserId { get; set; }
 
         private string[] filterField;
 
-		public bool Logged { get; set; }
+        public bool Logged { get; set; }
 
-		public string UserEmail { get; set; }
+        public string UserEmail { get; set; }
+
+        public bool Vibration { get; set; }
+
+		public DateTime CurrentDateTime { get; set; }
+
+        public DateTime DeadLineDateTime { get; set; }
+
+        public bool ShowAnimation { get; set; }
+
+        public DataClue Data;
 
         public static GameManager getInstance()
         {
             if (instance == null)
                 instance = new GameManager();
             return instance;
-        }        
+        }
 
         public void AddCity(int position, string name)
         ////Add the new city in the list

@@ -24,9 +24,9 @@
 
         public MainPage()
         {
-            InitializeComponent();
-            this.client.Endpoint.Binding.SendTimeout = TimeSpan.FromSeconds(3000);
-            ////client.Endpoint.Binding.OpenTimeout = TimeSpan.FromSeconds(300);
+            InitializeComponent();            
+            this.client.Endpoint.Binding.SendTimeout = TimeSpan.FromSeconds(6000);
+            client.Endpoint.Binding.OpenTimeout = TimeSpan.FromSeconds(6000);
             intro_wma.Play();
 			intro_animation.Begin();
             if (this.language.GetXDoc() != null)
@@ -72,6 +72,7 @@
         void GetCurrentCityCallback(object sender, GetCurrentCityCompletedEventArgs e)
         {
             DataCity dc = (DataCity)e.Result;
+            gm.DeadLineDateTime = dc.DeadLine;
             this.gm.SetCurrentCity(dc.NameCity);
             NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
