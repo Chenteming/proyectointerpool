@@ -137,7 +137,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         public string AuthorizationLinkGet()
         {
             ////this.CallBackUrl += "?email=vicente_cai@hotmail.com&";
-            return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access,email,friends_about_me,friends_birthday,friends_hometown,friends_interests,friends_likes,friends_online_presence, friends_status", Authorize, this.ConsumerKey, this.CallBackUrl);
+            return string.Format("{0}?client_id={1}&redirect_uri={2}&scope=offline_access, email, user_about_me, friends_about_me, user_birthday, friends_birthday, user_hometown, friends_hometown, user_interests, friends_interests, user_likes, friends_likes", Authorize, this.ConsumerKey, this.CallBackUrl);
         }
 
         /// <summary>

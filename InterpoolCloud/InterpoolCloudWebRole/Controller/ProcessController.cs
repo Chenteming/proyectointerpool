@@ -242,32 +242,57 @@ namespace InterpoolCloudWebRole.Controller
             IDataManager dm = new DataManager();
             OAuthFacebook auth = new OAuthFacebook() { Token = newGame.User.UserTokenFacebook };
             bool specialGame = dm.UserHasSubLevel(newGame.User.UserId, Constants.NumberSubLevels - 1, this.container);
-            ////facebookController.DownloadFacebookUserData(auth, newGame, this.container);
+            Suspect nonFriendSuspect = null;
             if (specialGame)
             {
                 this.GetSuspectsFromDatabase(newGame);
+                //// Stores the suspect chosen in a variable to be used later
+                if (newGame.Suspect != null)
+                {
+                    nonFriendSuspect = newGame.Suspect;
+                }
+                else
+                {
+                    newGame.PossibleSuspect.Clear();
+                    facebookController.DownloadFacebookUserData(auth, newGame, this.container);
+                }
             }
             else
             {
                 facebookController.DownloadFacebookUserData(auth, newGame, this.container);
             }
 
-            //// TODO change that
+            //// If the suspect has not be chosen, it chooses someone
+            if (newGame.Suspect == null)
+            {
+                int numberSuspect = new Random().Next(0, newGame.PossibleSuspect.Count - 1);
+                List<Suspect> possibleSuspects = newGame.PossibleSuspect.ToList();
+                Suspect suspect = possibleSuspects[numberSuspect];
+                newGame.PossibleSuspect.Remove(suspect);
+                newGame.Suspect = suspect;
+            }
+
             List<string> list = new List<string>();
 
             list.Add("SuspectFirstName");
-            list.Add("SuspectFacebookId");     
+            list.Add("SuspectFacebookId");
             list.Add("SuspectLastName");
             list.Add("SuspectGender");
             list.Add("SuspectPicLInk");
-
-            int numberSuspect = new Random().Next(0, newGame.PossibleSuspect.Count - 1);
-            List<Suspect> possibleSuspects = newGame.PossibleSuspect.ToList();
-            Suspect suspect = possibleSuspects[numberSuspect];
-            newGame.PossibleSuspect.Remove(suspect);
-            newGame.Suspect = suspect;
-
+            
             this.CreateHardCodeSuspects(newGame, list);
+
+            if (specialGame && nonFriendSuspect != null)
+            {
+                //// If the suspect stays the same then nothing must be done
+                if (newGame.Suspect.SuspectFacebookId != nonFriendSuspect.SuspectFacebookId)
+                {
+                    Suspect oldSuspect = newGame.Suspect;
+                    newGame.PossibleSuspect.Add(oldSuspect);
+                    newGame.PossibleSuspect.Remove(nonFriendSuspect);
+                    newGame.Suspect = nonFriendSuspect;
+                }
+            }
         }
 
         /// <summary>
@@ -613,17 +638,7 @@ namespace InterpoolCloudWebRole.Controller
                     info = hardCode.GetType().GetProperty(prop);
                     info.SetValue(hardCode, newValue, null);
                 }
-
-                if (i == x)
-                {
-                    bigSuspect = hardCode;
-                    game.Suspect = bigSuspect;
-                    game.PossibleSuspect.Add(bigSuspect);
-                }
-                else
-                {
-                    hardCodeSuspects.Add(hardCode);
-                }
+                hardCodeSuspects.Add(hardCode);
             }
 
             //// Step 3: set the suspect's property to new hard coded suspect
@@ -691,10 +706,21 @@ namespace InterpoolCloudWebRole.Controller
                 this.container.AddToSuspects(game.Suspect);
             }
 
+            int ind = 0;
             foreach (Suspect s in hardCodeSuspects)
             {
                 this.container.AddToSuspects(s);
-                game.PossibleSuspect.Add(s);
+                if (ind == x)
+                {
+                    game.PossibleSuspect.Add(bigSuspect);
+                    bigSuspect = hardCodeSuspects[ind];
+                    game.Suspect = bigSuspect;
+                }
+                else
+                {
+                    game.PossibleSuspect.Add(s);
+                }
+                ind++;
             }
 
             if (this.CheckConsistencySuspect(game))
@@ -1286,22 +1312,39 @@ namespace InterpoolCloudWebRole.Controller
         
         private void GetSuspectsFromDatabase(Game game)
         {
+            IFacebookController facebookController = new FacebookController();
+            List<String> friendIds = facebookController.GetFriendsId(game.User.UserIdFacebook);
+            
             //// Gets the users who are not the user himself, and are in a higher level
-            List<User> users = this.container.Users.Where(u => u.UserId != game.User.UserId && u.Level.LevelNumber > game.User.Level.LevelNumber).ToList();
+            List<User> users = this.container.Users.Where(u => u.UserId != game.User.UserId).ToList();
             users = Functions.ShuffleList(users);
             int i = 0;
+            Suspect gameSuspect = null;
             foreach(User user in users)
             {
-                if (i >= Constants.MaxSuspects)
+                if (i >= (Constants.MaxSuspects - 1) && gameSuspect != null)
                 {
                     break;
                 }
                 Suspect suspect = this.NewSuspectFromUser(user);
                 if (this.HaveEnoughFields(suspect, Constants.DataRequired))
                 {
-                    game.PossibleSuspect.Add(suspect);
-                    i++;
+                    //// If the suspect hasn't be chosen and is not a friend of the current user
+                    if (gameSuspect == null && !friendIds.Contains(suspect.SuspectFacebookId))
+                    {
+                        gameSuspect = suspect;
+                    }
+                    else if (i < (Constants.MaxSuspects - 1))
+                    {
+                        game.PossibleSuspect.Add(suspect);
+                        i++;
+                    }
                 }
+            }
+
+            if (gameSuspect != null)
+            {
+                game.Suspect = gameSuspect;
             }
         }
 

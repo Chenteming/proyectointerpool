@@ -21,12 +21,12 @@ namespace InterpoolCloudWebRole.FacebookCommunication
     /// </summary>
     public class FacebookController : IFacebookController
     {
-        // Stores al recovered data form user facebook friends.
-
+        /*
         /// <summary>
         /// Store for the property
         /// </summary>
         private Dictionary<string, DataFacebookUser> userIdOauth = new Dictionary<string, DataFacebookUser>();
+        */
 
         /// <summary>
         /// Store for the property
@@ -51,7 +51,8 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 fbud.UserId = userId;
                 fbud.OAuth = auth;
 
-                this.userIdOauth.Add(userId, fbud);
+                ////this.userIdOauth.Add(userId, fbud);
+
 
                 List<string> friendsIds = this.GetFriendsId(userId);
                 
@@ -66,7 +67,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 ////int numberSuspect = new Random().Next(0, limit);
                 foreach (string friendId in shuffleFriendsIds)
                 {
-                    fbudOfSuspect = this.GetFriendInfo(userId, friendId);
+                    fbudOfSuspect = this.GetFriendInfo(userId, auth, friendId);
                     suspect = this.NewSuspectFromFacebookUserData(fbudOfSuspect);
                     if (this.HaveEnoughFields(suspect, Constants.DataRequired))
                     {
@@ -86,6 +87,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
+        /*
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userId"> Parameter description for userId goes here</param>
@@ -101,6 +103,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
             return null;
         }
+        */
 
         /// <summary>
         /// Description for Method.</summary>
@@ -118,6 +121,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return userIdFacebook;
         }
 
+        /*
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="name"> Parameter description for name goes here</param>
@@ -131,6 +135,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
 
             this.userIdOauth.Add(id, fbud);
         }
+        */
 
         /// <summary>
         /// Description for Method.</summary>
@@ -139,7 +144,15 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// Return results are described through the returns tag.</returns>
         public List<string> GetFriendsId(string userId)
         {
-            OAuthFacebook auth = this.GetOAuthFacebook(userId);
+            IDataManager dm = new DataManager();
+            IQueryable<User> query = dm.GetUserByIdFacebook(dm.GetContainer(), userId);
+            User user;
+            if (query.Count() == 0)
+            {
+                throw new GameException("error_notExistsUser", null);
+            }
+
+            OAuthFacebook auth = new OAuthFacebook { Token = query.First().UserTokenFacebook };
 
             if (auth != null && auth.Token.Length > 0)
             {
@@ -157,30 +170,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// Description for Method.</summary>
         public void UploadUserFriendsInformation()
         {
-        }
-
-        //// Only for the Prototype
-
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="auth"> Parameter description for auth goes here</param>
-        /// <param name="userId"> Parameter description for userId goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
-        public List<string> GetFriendsNames(OAuthFacebook auth, string userId)
-        {
-            if (auth != null && auth.Token.Length > 0)
-            {
-                ////We now have the credentials, so we can start making API calls
-                string url = String.Format("https://graph.facebook.com/{0}/friends?access_token={1}", userId, auth.Token);
-                string jsonFriends = auth.WebRequest(OAuthFacebook.Method.GET, url, String.Empty);
-                List<string> friendsId = this.GetFriendsNamesByJson(jsonFriends);
-                return friendsId;
-            }
-            else
-            {
-                return null;
-            }
         }
 
         /// <summary>
@@ -202,7 +191,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             //// The likes will be discriminated as Television, Cinema and Music
             userData = this.GetLikesInfoByJson(jsonUserInfo, userData);
 
-            userData.PictureLink = String.Format("https://graph.facebook.com/{0}/picture", userData.UserId);   
+            userData.PictureLink = String.Format("https://graph.facebook.com/{0}/picture", userData.UserId);
             
             return userData;
         }
@@ -213,9 +202,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <param name="userId">Parameter description for userId goes here</param>
         /// <param name="userFriendId">Parameter description for userFriendId goes here</param>
         /// <returns>Return results are described through the returns tag</returns>
-        public DataFacebookUser GetFriendInfo(string userId, string userFriendId)
+        public DataFacebookUser GetFriendInfo(string userId, OAuthFacebook auth, string userFriendId)
         {
-            OAuthFacebook auth = this.GetOAuthFacebook(userId);
+            ////OAuthFacebook auth = this.GetOAuthFacebook(userId);
             DataFacebookUser friendData = new DataFacebookUser();
 
             string url = String.Format("https://graph.facebook.com/{0}?access_token={1}", userFriendId, auth.Token);
@@ -599,6 +588,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             
         //// TODO: see if this method will stay in this class
 
+        /*
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userId"> Parameter description for userId goes here</param>
@@ -606,10 +596,9 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// Return results are described through the returns tag.</returns>
         private OAuthFacebook GetOAuthFacebook(string userId)
         {
-            //// this is for single user game
-
             return this.GetOauth(userId);
         }
+        */
 
         //// TODO: see if this method will stay in this class
 

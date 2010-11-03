@@ -131,8 +131,21 @@ namespace InterpoolCloudWebRole.Data
             if (userExists)
             {
                 User userDB = context.Users.Where(u => u.UserIdFacebook == user.UserIdFacebook).First();
+                //// Updates the data of the user
+                userDB.UserBirthday = user.UserBirthday;
+                userDB.UserCinema = user.UserCinema;
+                userDB.UserFirstName = user.UserFirstName;
+                userDB.UserGender = user.UserGender;
+                userDB.UserHometown = user.UserHometown;
+                userDB.UserIdFacebook = user.UserIdFacebook;
+                userDB.UserLastName = user.UserLastName;
+                userDB.UserLoginId = user.UserLoginId;
+                userDB.UserMusic = user.UserMusic;
+                userDB.UserPictureLink = user.UserPictureLink;
+                userDB.UserTelevision = user.UserTelevision;
                 userDB.UserTokenFacebook = user.UserTokenFacebook;
-                // TODO: update all the remaining fields
+                userDB.UserHometown = user.UserHometown;
+                
                 context.Detach(user);
             }
             else

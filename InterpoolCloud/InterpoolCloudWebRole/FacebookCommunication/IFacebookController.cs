@@ -34,6 +34,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         //// Returns the data of the friend with id userFriendId, who is a friend
         //// of the user with id userId
 
+        /*
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userId"> Parameter description for userId goes here</param>
@@ -41,6 +42,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         DataFacebookUser GetFriendInfo(string userId, string userFriendId);
+        */
 
         /// <summary>
         /// Returns all the user info by the token
@@ -49,22 +51,16 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <returns>Return results are described through the returns tag</returns>
         DataFacebookUser GetUserInfoByToken(OAuthFacebook auth);
 
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="auth"> Parameter description for auth goes here</param>
-        /// <param name="userId"> Parameter description for userId goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
-        List<string> GetFriendsNames(OAuthFacebook auth, string userId);
-
         //// Add a new user to the datatype userID - auth (for multiplayer)
 
+        /*
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="name"> Parameter description for name goes here</param>
         /// <param name="id"> Parameter description for id goes here</param>
         /// <param name="auth"> Parameter description for auth goes here</param>
         void AddFriend(string name, string id, OAuthFacebook auth);
+        */
 
         //// Save all the friends information in the db.
 
