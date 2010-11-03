@@ -1415,8 +1415,8 @@ namespace InterpoolCloudWebRole.Controller
                 info.DiffInseconds = timeSpan.Seconds;
                 int leftTime = (int)(timeSpan.Ticks / TimeSpan.TicksPerHour);
                 info.ScoreWin =  leftTime / 60;
+                info.LinkBigSuspect = "www.facebook.com/#!/profile.php?id=" + game.Suspect.SuspectFacebookId;
                 game.User.UserScore += (Int32)info.ScoreWin;
-
             }
             else 
             {
