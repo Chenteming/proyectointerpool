@@ -119,6 +119,10 @@
             <Button x:Name="MapButton" Content="Button" HorizontalAlignment="Left" Margin="196,147,0,150" Style="{StaticResource MapButtonStyle}" Width="84" Opacity="0" Click="MapButton_Click" Grid.Column="1"/>
             <Button x:Name="NewspaperButton" Content="Button" Grid.Column="1" Height="92" Margin="0,0,305,0" VerticalAlignment="Bottom" Opacity="0" Click="NewspaperButton_Click" HorizontalAlignment="Right" Width="133" />
             <Button x:Name="phoneButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="64" Margin="154,0,0,28" VerticalAlignment="Bottom" Width="84" Opacity="0" Click="phoneButton_Click"/>
+            <Image Grid.Column="1" HorizontalAlignment="Left" Height="68" Margin="0,0,0,2" Source="/WP7;component/GameImages/cartel.png" Stretch="Fill" VerticalAlignment="Bottom" Width="177" Opacity="0.92"/>
+            <TextBox x:Name="TextCity" Grid.Column="1" Margin="0,0,0,28" TextWrapping="Wrap" Text="Paris" VerticalAlignment="Bottom" Width="180" FontSize="13.333" Height="53" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" HorizontalAlignment="Left" VerticalScrollBarVisibility="Disabled"/>
+            <TextBox x:Name="TextDate" Grid.Column="1" Margin="0,0,0,8" TextWrapping="Wrap" Text="Lunes, 8:00 am" VerticalAlignment="Bottom" Width="180" FontSize="13.333" Height="55" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" HorizontalAlignment="Left" VerticalScrollBarVisibility="Disabled"/>
+            <TextBox x:Name="TextLevel" Grid.Column="1" TextWrapping="Wrap" Text="Nivel I" VerticalAlignment="Bottom" Width="180" FontSize="13.333" Height="46" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" HorizontalAlignment="Left" VerticalScrollBarVisibility="Disabled"/>
         </Grid>
     	<Image x:Name="image" Margin="0,73,-246,89" Source="/WP7;component/GameImages/Toasty.png" Stretch="Fill" Grid.Row="1" HorizontalAlignment="Right" Width="239" RenderTransformOrigin="0.5,0.5">
     		<Image.RenderTransform>
