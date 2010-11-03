@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
+  <xs:import schemaLocation="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
   <xs:complexType name="User">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q1:EntityObject">
@@ -22,6 +22,7 @@
           <xs:element minOccurs="0" name="UserLoginId" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserMusic" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserPictureLink" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserScore" type="xs:int" />
           <xs:element minOccurs="0" name="UserTelevision" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserTokenFacebook" nillable="true" type="xs:string" />
         </xs:sequence>

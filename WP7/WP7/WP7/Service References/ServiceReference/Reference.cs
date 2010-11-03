@@ -20,6 +20,8 @@ namespace WP7.ServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="DataCity", Namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes")]
     public partial class DataCity : object, System.ComponentModel.INotifyPropertyChanged {
         
+        private int CityNumberField;
+        
         private System.DateTime CurrentDateField;
         
         private System.DateTime DeadLineField;
@@ -33,6 +35,19 @@ namespace WP7.ServiceReference {
         private string NameFileCityField;
         
         private double TopField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CityNumber {
+            get {
+                return this.CityNumberField;
+            }
+            set {
+                if ((this.CityNumberField.Equals(value) != true)) {
+                    this.CityNumberField = value;
+                    this.RaisePropertyChanged("CityNumber");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime CurrentDate {
@@ -505,6 +520,8 @@ namespace WP7.ServiceReference {
         
         private System.DateTime CurrentDateField;
         
+        private WP7.ServiceReference.DataGameInfo GameInfoField;
+        
         private WP7.ServiceReference.DataClue.State StatesField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
@@ -529,6 +546,19 @@ namespace WP7.ServiceReference {
                 if ((this.CurrentDateField.Equals(value) != true)) {
                     this.CurrentDateField = value;
                     this.RaisePropertyChanged("CurrentDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WP7.ServiceReference.DataGameInfo GameInfo {
+            get {
+                return this.GameInfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GameInfoField, value) != true)) {
+                    this.GameInfoField = value;
+                    this.RaisePropertyChanged("GameInfo");
                 }
             }
         }
@@ -573,6 +603,141 @@ namespace WP7.ServiceReference {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
             WIN = 4,
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DataGameInfo", Namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes")]
+    public partial class DataGameInfo : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int DiffInDaysField;
+        
+        private int DiffInMinutesField;
+        
+        private int DiffInsecondsField;
+        
+        private string LinkBigSuspectField;
+        
+        private long ScoreField;
+        
+        private long ScoreWinField;
+        
+        private string SuspectNameField;
+        
+        private string newLevelField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DiffInDays {
+            get {
+                return this.DiffInDaysField;
+            }
+            set {
+                if ((this.DiffInDaysField.Equals(value) != true)) {
+                    this.DiffInDaysField = value;
+                    this.RaisePropertyChanged("DiffInDays");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DiffInMinutes {
+            get {
+                return this.DiffInMinutesField;
+            }
+            set {
+                if ((this.DiffInMinutesField.Equals(value) != true)) {
+                    this.DiffInMinutesField = value;
+                    this.RaisePropertyChanged("DiffInMinutes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DiffInseconds {
+            get {
+                return this.DiffInsecondsField;
+            }
+            set {
+                if ((this.DiffInsecondsField.Equals(value) != true)) {
+                    this.DiffInsecondsField = value;
+                    this.RaisePropertyChanged("DiffInseconds");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LinkBigSuspect {
+            get {
+                return this.LinkBigSuspectField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinkBigSuspectField, value) != true)) {
+                    this.LinkBigSuspectField = value;
+                    this.RaisePropertyChanged("LinkBigSuspect");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Score {
+            get {
+                return this.ScoreField;
+            }
+            set {
+                if ((this.ScoreField.Equals(value) != true)) {
+                    this.ScoreField = value;
+                    this.RaisePropertyChanged("Score");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long ScoreWin {
+            get {
+                return this.ScoreWinField;
+            }
+            set {
+                if ((this.ScoreWinField.Equals(value) != true)) {
+                    this.ScoreWinField = value;
+                    this.RaisePropertyChanged("ScoreWin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SuspectName {
+            get {
+                return this.SuspectNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuspectNameField, value) != true)) {
+                    this.SuspectNameField = value;
+                    this.RaisePropertyChanged("SuspectName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string newLevel {
+            get {
+                return this.newLevelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.newLevelField, value) != true)) {
+                    this.newLevelField = value;
+                    this.RaisePropertyChanged("newLevel");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
         }
     }
     
@@ -1979,6 +2144,8 @@ namespace WP7.ServiceReference {
         
         private string UserPictureLinkField;
         
+        private int UserScoreField;
+        
         private string UserTelevisionField;
         
         private string UserTokenFacebookField;
@@ -2205,6 +2372,19 @@ namespace WP7.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserScore {
+            get {
+                return this.UserScoreField;
+            }
+            set {
+                if ((this.UserScoreField.Equals(value) != true)) {
+                    this.UserScoreField = value;
+                    this.RaisePropertyChanged("UserScore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string UserTelevision {
             get {
                 return this.UserTelevisionField;
@@ -2306,6 +2486,26 @@ namespace WP7.ServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EntityKeyMember", Namespace="http://schemas.datacontract.org/2004/07/System.Data")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataCity))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.DataCity>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataFamous))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataFacebookUser))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataListFacebookUser))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.DataFacebookUser>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataClue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataGameInfo))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataClue.State))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityObject))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.StructuralObject))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfCityNLhZOR8W))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReference))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.RelatedEnd))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfFamousNLhZOR8W))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfLevelNLhZOR8W))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfGameNLhZOR8W))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfSuspectNLhZOR8W))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfOrderOfArrestNLhZOR8W))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfUserNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityKey))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.EntityKeyMember>))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.User))]
@@ -2327,25 +2527,6 @@ namespace WP7.ServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.Suspect))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.Game>))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.Suspect>))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityObject))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.StructuralObject))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfCityNLhZOR8W))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReference))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.RelatedEnd))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfFamousNLhZOR8W))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfLevelNLhZOR8W))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfGameNLhZOR8W))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfSuspectNLhZOR8W))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfOrderOfArrestNLhZOR8W))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfUserNLhZOR8W))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataCity))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.DataCity>))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataFamous))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataFacebookUser))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataListFacebookUser))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.DataFacebookUser>))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataClue))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataClue.State))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.OAuthFacebook))]
     public partial class EntityKeyMember : object, System.ComponentModel.INotifyPropertyChanged {
         

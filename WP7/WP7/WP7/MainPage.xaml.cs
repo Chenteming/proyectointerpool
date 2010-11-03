@@ -89,6 +89,7 @@
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {		
 			////Usando el mail de FACEBOOK
+            gm.UserEmail = "taru_borio@hotmail.com";
 			client.GetUserIdFacebookAsync(gm.UserEmail);
             this.client.GetUserIdFacebookCompleted += new EventHandler<GetUserIdFacebookCompletedEventArgs>(client_GetUserIdFacebookCompleted);
             ////NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
