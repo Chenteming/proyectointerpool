@@ -222,6 +222,7 @@
     </None>
     <Resource Include="GameImages\aeroplane.png" />
     <Resource Include="GameImages\CancelIcon.png" />
+    <Resource Include="GameImages\cartel.png" />
     <Resource Include="GameImages\Clip.png" />
     <Resource Include="GameImages\ContinueIcon.png" />
     <Resource Include="GameImages\Detective.png" />
