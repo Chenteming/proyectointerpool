@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.FacebookCommunication" />
+  <xs:import schemaLocation="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.FacebookCommunication" />
   <xs:complexType name="DataCity">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CityNumber" type="xs:int" />
       <xs:element minOccurs="0" name="CurrentDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="DeadLine" type="xs:dateTime" />
       <xs:element minOccurs="0" name="GameTime" type="xs:double" />
@@ -61,10 +62,24 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Clue" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CurrentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GameInfo" nillable="true" type="tns:DataGameInfo" />
       <xs:element minOccurs="0" name="States" type="tns:DataClue.State" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DataClue" nillable="true" type="tns:DataClue" />
+  <xs:complexType name="DataGameInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DiffInDays" type="xs:int" />
+      <xs:element minOccurs="0" name="DiffInMinutes" type="xs:int" />
+      <xs:element minOccurs="0" name="DiffInseconds" type="xs:int" />
+      <xs:element minOccurs="0" name="LinkBigSuspect" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Score" type="xs:long" />
+      <xs:element minOccurs="0" name="ScoreWin" type="xs:long" />
+      <xs:element minOccurs="0" name="SuspectName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="newLevel" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataGameInfo" nillable="true" type="tns:DataGameInfo" />
   <xs:simpleType name="DataClue.State">
     <xs:restriction base="xs:string">
       <xs:enumeration value="PL" />

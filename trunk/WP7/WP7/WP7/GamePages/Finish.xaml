@@ -26,9 +26,11 @@
         <TextBlock x:Name="ScoreTB" Margin="7,0,569,10" Grid.Row="1" TextWrapping="Wrap" Text="Score :" Height="43" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="TimeLeftTB" Margin="-22,0,0,165" Grid.Row="1" TextWrapping="Wrap" Text="TimeLeft:" Height="43" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="152"/>
         <TextBlock x:Name="TotalTB" Margin="15,0,561,85" Grid.Row="1" TextWrapping="Wrap" Height="43" VerticalAlignment="Bottom"><Run Text="Total"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="NewLevelTB" Margin="288,0,288,14" Grid.Row="1" TextWrapping="Wrap" Text="NewLevel :" Height="43" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="NameSuspectText" Margin="229,232,238,205" Grid.Row="1" TextWrapping="Wrap"/>
         <TextBlock x:Name="TimeLeftText" Margin="229,0,238,164" Grid.Row="1" TextWrapping="Wrap" Height="43" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="TotalText" Margin="249,0,218,73" Grid.Row="1" TextWrapping="Wrap" Height="43" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="ScoreText" Margin="261,0,206,13" Grid.Row="1" TextWrapping="Wrap" Height="43" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="NewLevelText" Margin="0,0,18,17" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Right" Width="261" Height="43" VerticalAlignment="Bottom"/>
     </Grid>
 </phone:PhoneApplicationPage>

@@ -20,18 +20,18 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://127.0.0.1:81/Services/InterpoolWP7.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="InterpoolWP74.xsd" MetadataType="Schema" ID="cccbb0e2-b6cd-424c-874c-e57a628a3f22" SourceId="1" SourceUrl="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd0" />
-    <MetadataFile FileName="InterpoolWP741.xsd" MetadataType="Schema" ID="77888c26-3edf-4d5c-a377-6a40f34b462f" SourceId="1" SourceUrl="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd1" />
-    <MetadataFile FileName="InterpoolWP71.wsdl" MetadataType="Wsdl" ID="d5baebd0-5908-45dc-a482-a954ce1f2118" SourceId="1" SourceUrl="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?wsdl" />
-    <MetadataFile FileName="InterpoolWP71.disco" MetadataType="Disco" ID="848eea22-1de9-46cd-a8f1-e2ca46882a9e" SourceId="1" SourceUrl="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?disco" />
-    <MetadataFile FileName="InterpoolWP742.xsd" MetadataType="Schema" ID="424489a9-e4f3-4d1d-b0c5-96c27734f710" SourceId="1" SourceUrl="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd6" />
-    <MetadataFile FileName="InterpoolWP743.xsd" MetadataType="Schema" ID="b21d6566-8746-4311-b659-21e11f5f1b6a" SourceId="1" SourceUrl="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd4" />
-    <MetadataFile FileName="InterpoolWP744.xsd" MetadataType="Schema" ID="6cb458bd-aea5-4ca8-b018-d3ef4c028ff6" SourceId="1" SourceUrl="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd5" />
-    <MetadataFile FileName="InterpoolWP745.xsd" MetadataType="Schema" ID="ba445720-10e5-48ed-a289-23976b0e2fc8" SourceId="1" SourceUrl="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd2" />
-    <MetadataFile FileName="InterpoolWP746.xsd" MetadataType="Schema" ID="bd1673f9-f23c-47bf-8e66-ffb45fe34f71" SourceId="1" SourceUrl="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc?xsd=xsd3" />
+    <MetadataFile FileName="InterpoolWP7.xsd" MetadataType="Schema" ID="87ea5b5d-45db-437e-9a1e-89da5b61efce" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd2" />
+    <MetadataFile FileName="InterpoolWP71.xsd" MetadataType="Schema" ID="0ad9bce7-b62f-43fd-ad90-8111787b3d50" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd1" />
+    <MetadataFile FileName="InterpoolWP72.xsd" MetadataType="Schema" ID="b14c2705-cd22-4150-8ff1-0bd6a059d3d3" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd0" />
+    <MetadataFile FileName="InterpoolWP73.xsd" MetadataType="Schema" ID="a1856d34-1443-4d96-b936-b58ad526e982" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd5" />
+    <MetadataFile FileName="InterpoolWP7.wsdl" MetadataType="Wsdl" ID="c3226deb-6265-4581-851d-bf4b6f4435f5" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?wsdl" />
+    <MetadataFile FileName="InterpoolWP74.xsd" MetadataType="Schema" ID="ac91fa55-20b4-49d9-9edd-0a22438aaf12" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd6" />
+    <MetadataFile FileName="InterpoolWP7.disco" MetadataType="Disco" ID="028bedc7-b404-41aa-b499-5b70c23a7cb2" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?disco" />
+    <MetadataFile FileName="InterpoolWP75.xsd" MetadataType="Schema" ID="5134687d-6f6e-4571-a10e-91c0bafd7806" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd4" />
+    <MetadataFile FileName="InterpoolWP76.xsd" MetadataType="Schema" ID="bf9c3851-6d80-4a3f-a566-1ab3b2b665b0" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

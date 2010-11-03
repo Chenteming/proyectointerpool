@@ -126,7 +126,8 @@
 
         private void LoadPicture(string pictureLink)
         {
-            if (null != pictureLink && pictureLink.Equals(string.Empty))
+            string noImageM = "https://graph.facebook.com/100001441037936/picture";
+            if (null != pictureLink && !pictureLink.Equals(string.Empty) && !pictureLink.Equals(noImageM))
             {
                 WebClient webClientImgDownloader = new WebClient();
                 webClientImgDownloader.OpenReadCompleted += new OpenReadCompletedEventHandler(webClientImgDownloader_OpenReadCompleted);

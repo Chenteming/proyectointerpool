@@ -48,20 +48,24 @@
         void client_GetCitiesCompleted(object sender, GetCitiesCompletedEventArgs e)
         {
             List<DataCity> dataCities = e.Result.ToList();
-            List<string> cities = new List<string>(); 
-            foreach (DataCity dataCity in dataCities)
+
+            if (dataCities != null)
             {
-                cities.Add(dataCity.NameCity);
+                List<string> cities = new List<string>();
+                foreach (DataCity dataCity in dataCities)
+                {
+                    cities.Add(dataCity.NameCity);
+                }
+                this.gm.SetCurrentCities(cities);
+
+                button1.Visibility = System.Windows.Visibility.Visible;
+                button2.Visibility = System.Windows.Visibility.Visible;
+                button3.Visibility = System.Windows.Visibility.Visible;
+
+                button1.Content = cities.ElementAt(0);
+                button2.Content = cities.ElementAt(1);
+                button3.Content = cities.ElementAt(2);
             }
-            this.gm.SetCurrentCities(cities);
-
-            button1.Visibility = System.Windows.Visibility.Visible;
-            button2.Visibility = System.Windows.Visibility.Visible;
-            button3.Visibility = System.Windows.Visibility.Visible;
-
-            button1.Content = cities.ElementAt(0);
-            button2.Content = cities.ElementAt(1);
-            button3.Content = cities.ElementAt(2);
         }
 
         void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)

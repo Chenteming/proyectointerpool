@@ -51,8 +51,6 @@
         {
             DataClue data = e.Result;
             gm.CurrentDateTime = data.CurrentDate;
-            if (data.CurrentDate.CompareTo(gm.DeadLineDateTime) == 1)
-                NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
             dialogText.Text = data.Clue;
             gm.Data = data;
             switch (data.States)
