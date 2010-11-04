@@ -246,20 +246,22 @@ namespace InterpoolCloudWebRole.Controller
             if (specialGame)
             {
                 this.GetSuspectsFromDatabase(newGame);
-                //// Stores the suspect chosen in a variable to be used later
+                //// If exists an user in the database who's not a friend of the current user
                 if (newGame.Suspect != null)
                 {
+                    //// Stores the suspect chosen in a variable to be used later
                     nonFriendSuspect = newGame.Suspect;
                 }
-                else
+
+                int limitSuspects = Constants.MaxSuspects - newGame.PossibleSuspect.Count();
+                if (limitSuspects > 0)
                 {
-                    newGame.PossibleSuspect.Clear();
-                    facebookController.DownloadFacebookUserData(auth, newGame, this.container);
+                    facebookController.DownloadFacebookUserData(auth, newGame, limitSuspects, this.container);
                 }
             }
             else
             {
-                facebookController.DownloadFacebookUserData(auth, newGame, this.container);
+                facebookController.DownloadFacebookUserData(auth, newGame, Constants.MaxSuspects, this.container);
             }
 
             //// If the suspect has not be chosen, it chooses someone
