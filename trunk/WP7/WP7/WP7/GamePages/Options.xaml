@@ -77,12 +77,12 @@
 											<TranslateTransform/>
 										</TransformGroup>
 									</Grid.RenderTransform>
-									<Rectangle Stroke="#FFF09336" RadiusX="10" RadiusY="10">
+									<Rectangle Stroke="#FF1A1787" RadiusX="10" RadiusY="10">
 										<Rectangle.Fill>
-											<LinearGradientBrush EndPoint="0.777999997138977,0.5" StartPoint="0.222000002861023,0.5">
-												<GradientStop Color="#FFFFC100"/>
-												<GradientStop Color="#FFEDED31" Offset="1"/>
-											</LinearGradientBrush>
+											<RadialGradientBrush>
+												<GradientStop Color="#FF0C0C0C"/>
+												<GradientStop Color="#FF2E388F" Offset="1"/>
+											</RadialGradientBrush>
 										</Rectangle.Fill>
 									</Rectangle>
 									<Path x:Name="Path_8" Width="5.48" Height="Auto" Stretch="Fill" Data="F1 M 11.0443,23.0732C 14.0707,23.0732 16.5242,61.9164 16.5242,109.832L 16.5242,222.619C 16.5242,270.535 14.0707,309.379 11.0443,309.379L 11.0443,23.0732 Z " HorizontalAlignment="Right" Margin="0,3,2.25999999046326,3" VerticalAlignment="Top">
@@ -164,7 +164,7 @@
 									</Grid>
 								</Grid>
 								<RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButton" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate}" Grid.Column="0"/>
-								<Thumb Height="32" HorizontalAlignment="Center" x:Name="HorizontalThumb" Style="{StaticResource ThumbStyle1}" VerticalAlignment="Center" Width="16" Grid.Column="1"/>
+								<Thumb Height="32" HorizontalAlignment="Right" x:Name="HorizontalThumb" Style="{StaticResource ThumbStyle1}" VerticalAlignment="Center" Width="16" Grid.Column="1"/>
 								<RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButton" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate}" Grid.Column="2"/>
 							</Grid>
 							<Grid x:Name="VerticalTemplate" Visibility="Collapsed">
@@ -197,17 +197,52 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
-        <Image Grid.RowSpan="2" Source="/WP7;component/interpool_Images/pantalla_3_Images/Capa 1.png" Stretch="Fill"/>
-        <TextBlock x:Name="languageText" Height="50" Margin="64,238,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Lenguaje:" VerticalAlignment="Top" Foreground="#FFD24242" FontWeight="Bold" HorizontalAlignment="Left" Width="189" FontSize="32" FontFamily="Futurama Bold Font"/>
-        <TextBlock x:Name="volumeText" Height="50" Margin="66,127,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Volúmen:" VerticalAlignment="Top" Foreground="#FFD24242" FontWeight="Bold" HorizontalAlignment="Left" Width="189" FontSize="32" FontFamily="Futurama Bold Font"/>
-        <TextBlock x:Name="vibrationText" Margin="64,0,0,355" Grid.Row="1" TextWrapping="Wrap" Text="Vibración:" Foreground="#FFD24242" FontWeight="Bold" HorizontalAlignment="Left" Width="189" Height="50" VerticalAlignment="Bottom" FontSize="32" FontFamily="Futurama Bold Font"/>
-        <CheckBox x:Name="englishCheckBox" HorizontalAlignment="Right" Margin="0,214,249,0" Grid.Row="1" Width="54" Background="#BFD62525" Checked="englishCheckBox_Checked" Height="71" VerticalAlignment="Top" Unchecked="englishCheckBox_Unchecked" />
-        <TextBlock x:Name="languageEnglish" Margin="242,0,297,165" Grid.Row="1" TextWrapping="Wrap" Text="Inglés" Foreground="#FFD24242" FontWeight="Bold" Height="40" VerticalAlignment="Bottom" FontSize="26.667" FontFamily="Futurama Bold Font" Width="140"/>
-        <CheckBox x:Name="spanishCheckBox" HorizontalAlignment="Right" Margin="0,0,249,72" Grid.Row="1" Width="54" Background="#BFD62525" Height="71" VerticalAlignment="Bottom" Checked="spanishCkeckBox_Checked" Unchecked="spanishCkeckBox_Unchecked"/>
-        <TextBlock x:Name="languageSpanish" Margin="270,0,318,87" Grid.Row="1" TextWrapping="Wrap" Text="Español" Foreground="#FFD24242" FontWeight="Bold" Height="40" VerticalAlignment="Bottom" FontSize="26.667" FontFamily="Futurama Bold Font" Width="140"/>
-        <TextBlock x:Name="vibrationTB" Text="Activar" Margin="271,34,317,0" Grid.Row="1" TextWrapping="Wrap" Foreground="#FFD24242" FontWeight="Bold" Height="40" VerticalAlignment="Top" FontSize="26.667" FontFamily="Futurama Bold Font" Width="140"/>
-        <CheckBox x:Name="vibrationCheckBox" HorizontalAlignment="Right" Margin="0,17,249,0" Grid.Row="1" Width="54" Background="#BFD62525" Checked="vibrationCheckBox_Checked" Height="71" VerticalAlignment="Top" Unchecked="vibrationCheckBox_Unchecked"/>
-        <Slider x:Name="mySlider" Style="{StaticResource InterpoolSlider}" Margin="270,127,228,0" Height="45" Grid.Row="1" VerticalAlignment="Top" Minimum="0" Maximum="1" Value="{Binding Path=Volume,ElementName=media}" d:LayoutOverrides="HorizontalAlignment"/>
+        <Image Source="/WP7;component/interpool_Images/pantalla_3_Images/Fondo.png" Stretch="Fill" Grid.RowSpan="2" Opacity="0.55"/>
+        <Image Grid.RowSpan="2" Source="/WP7;component/interpool_Images/pantalla_3_Images/Capa 1.png" Stretch="Fill" Opacity="0.35"/>
+        <TextBlock x:Name="languageText" Height="50" Margin="64,238,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Lenguaje:" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="189" FontSize="32" FontFamily="Futurama Bold Font">
+        	<TextBlock.Foreground>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="Black" Offset="0"/>
+        			<GradientStop Color="#FF2E388F" Offset="1"/>
+        		</LinearGradientBrush>
+        	</TextBlock.Foreground>
+        </TextBlock>
+        <TextBlock x:Name="volumeText" Height="50" Margin="66,127,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Volúmen:" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="189" FontSize="32" FontFamily="Futurama Bold Font">
+        	<TextBlock.Foreground>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="Black" Offset="0"/>
+        			<GradientStop Color="#FF2E388F" Offset="1"/>
+        		</LinearGradientBrush>
+        	</TextBlock.Foreground>
+        </TextBlock>
+        <TextBlock x:Name="vibrationText" Margin="64,0,0,355" Grid.Row="1" TextWrapping="Wrap" Text="Vibración:" FontWeight="Bold" HorizontalAlignment="Left" Width="189" Height="50" VerticalAlignment="Bottom" FontSize="32" FontFamily="Futurama Bold Font">
+        	<TextBlock.Foreground>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="Black" Offset="0"/>
+        			<GradientStop Color="#FF2E388F" Offset="1"/>
+        		</LinearGradientBrush>
+        	</TextBlock.Foreground>
+        </TextBlock>
+        <CheckBox x:Name="englishCheckBox" HorizontalAlignment="Right" Margin="0,214,249,0" Grid.Row="1" Width="54" Checked="englishCheckBox_Checked" Height="71" VerticalAlignment="Top" Unchecked="englishCheckBox_Unchecked" Background="#FF3643B2" />
+        <TextBlock x:Name="languageEnglish" Margin="242,0,297,165" Grid.Row="1" TextWrapping="Wrap" Text="Inglés" FontWeight="Bold" Height="40" VerticalAlignment="Bottom" FontSize="26.667" FontFamily="Futurama Bold Font" Width="140">
+        	<TextBlock.Foreground>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="Black" Offset="0"/>
+        			<GradientStop Color="#FF2E388F" Offset="1"/>
+        		</LinearGradientBrush>
+        	</TextBlock.Foreground>
+        </TextBlock>
+        <CheckBox x:Name="spanishCheckBox" HorizontalAlignment="Right" Margin="0,0,249,72" Grid.Row="1" Width="54" Height="71" VerticalAlignment="Bottom" Checked="spanishCkeckBox_Checked" Unchecked="spanishCkeckBox_Unchecked" Background="#FF3643B2"/>
+        <TextBlock x:Name="languageSpanish" Margin="270,0,318,87" Grid.Row="1" TextWrapping="Wrap" Text="Español" FontWeight="Bold" Height="40" VerticalAlignment="Bottom" FontSize="26.667" FontFamily="Futurama Bold Font" Width="140">
+        	<TextBlock.Foreground>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="Black" Offset="0"/>
+        			<GradientStop Color="#FF2E388F" Offset="1"/>
+        		</LinearGradientBrush>
+        	</TextBlock.Foreground>
+        </TextBlock>
+        <CheckBox x:Name="vibrationCheckBox" HorizontalAlignment="Right" Margin="0,17,249,0" Grid.Row="1" Width="54" Checked="vibrationCheckBox_Checked" Height="71" VerticalAlignment="Top" Unchecked="vibrationCheckBox_Unchecked" Background="#FF3643B2" BorderBrush="#FF3643B2" Foreground="Black"/>
+        <Slider x:Name="mySlider" Style="{StaticResource InterpoolSlider}" Margin="270,127,228,0" Height="45" Grid.Row="1" VerticalAlignment="Top" Minimum="0" Maximum="1" Value="{Binding Path=Volume,ElementName=media}" d:LayoutOverrides="HorizontalAlignment" Background="#FF2E388F"/>
 	</Grid>
  
     <!--Sample code showing usage of ApplicationBar-->
