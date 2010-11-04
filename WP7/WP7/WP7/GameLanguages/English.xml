@@ -52,6 +52,5 @@
         <control name="vibrationText" Text="Vibration:"/>
         <control name="languageEnglish" Text="English"/>
         <control name="languageSpanish" Text="Spanish"/>
-        <control name="vibrationTB" Text="Activate"/>
     </class>
 </language>
