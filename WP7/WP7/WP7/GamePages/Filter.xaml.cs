@@ -33,18 +33,24 @@
         public Filter()
         {			
             InitializeComponent();
-			AnimationPage.Begin();
-			////Change the language of the page            
-            if (this.language.GetXDoc() != null)
-                this.language.TranslatePage(this);
-            this.client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(this.client_FilterSuspectsCompleted);
-            DataFacebookUser dfu = new DataFacebookUser();
-            this.client.FilterSuspectsAsync(this.gm.UserId, dfu);
-            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            this.client.CloseAsync();
-            filters = new string[Constants.MAX_FILTERFIELD]; 
-			this.updateFilters();
-            ComboList.Visibility = Visibility.Collapsed;
+            if (gm.EmitOrder)
+            {
+                AnimationPage.Begin();
+                ////Change the language of the page            
+                if (this.language.GetXDoc() != null)
+                    this.language.TranslatePage(this);
+                this.client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(this.client_FilterSuspectsCompleted);
+                DataFacebookUser dfu = new DataFacebookUser();
+                this.client.FilterSuspectsAsync(this.gm.UserId, dfu);
+                this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+                this.client.CloseAsync();
+                filters = new string[Constants.MAX_FILTERFIELD];
+                this.updateFilters();
+                ComboList.Visibility = Visibility.Collapsed;
+            }
+            else {
+                NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
+            }
         }
 
         void updateFilters() {
@@ -118,8 +124,7 @@
         private void TVButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
         	this.btnPosition = 7;
-            string[] filterField = this.gm.GetFilterField();
-            ComboList.ItemsSource = tv;
+            ComboList.ItemsSource = this.tv;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
             ComboList.Visibility = Visibility.Visible;
@@ -128,7 +133,6 @@
         private void CinemaButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
         	this.btnPosition = 6;
-            string[] filterField = this.gm.GetFilterField();
             ComboList.ItemsSource = this.film;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
@@ -138,8 +142,7 @@
         private void HometownButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
         	this.btnPosition = 3;
-            string[] filterField = this.gm.GetFilterField();
-            ComboList.ItemsSource = homeTown;
+            ComboList.ItemsSource = this.homeTown;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
             ComboList.Visibility = Visibility.Visible;
@@ -148,7 +151,6 @@
         private void BirthdayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             this.btnPosition = 2;
-            string[] filterField = this.gm.GetFilterField();
             ComboList.ItemsSource = this.birthday;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
@@ -158,8 +160,7 @@
         private void GenderButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             this.btnPosition = 4;
-            string[] filterField = this.gm.GetFilterField();
-            ComboList.ItemsSource = gender;
+            ComboList.ItemsSource = this.gender;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
             ComboList.Visibility = Visibility.Visible;
@@ -168,8 +169,7 @@
         private void MusicButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
  			this.btnPosition = 5;
-            string[] filterField = this.gm.GetFilterField();
-            ComboList.ItemsSource = music;
+            ComboList.ItemsSource = this.music;
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
             ComboList.Visibility = Visibility.Visible;

@@ -29,31 +29,22 @@
 			////Change the language of the page
             this.language = LanguageManager.GetInstance();
             if (this.language.GetXDoc() != null)
-                this.language.TranslatePage(this);
-			InterpoolWP7Client client = new InterpoolWP7Client();
-            DataFacebookUser dfbu = new DataFacebookUser();
-            /*0 = first_name
-              1 = last_name 
-              2 =  birthday
-              3 = hometown
-              4 = gender
-              5 = music
-              6 = cinema
-			  7 = television*/
-            string[] filterField = gm.GetFilterField();
-            dfbu.FirstName = filterField[0];
-            dfbu.LastName = filterField[1];
-            dfbu.Birthday = filterField[2];
-            dfbu.Hometown = filterField[3];
-            dfbu.Gender = filterField[4];
-            dfbu.Music = filterField[5];
-            dfbu.Cinema = filterField[6];
-			dfbu.Television = filterField[7];
-            client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(this.client_FilterSuspectsCompleted);
-            client.FilterSuspectsAsync(gm.UserId, dfbu);
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
-            client.CloseAsync();
+                this.language.TranslatePage(this);            
+            if (gm.EmitOrder)
+            {
+                ShowCurrentSuspect();
+                HideButtons();
+            }
+            else {
+                InterpoolWP7Client client = new InterpoolWP7Client();
+                DataFacebookUser dfbu = SetFiltersFields();
+                client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(this.client_FilterSuspectsCompleted);
+                client.FilterSuspectsAsync(gm.UserId, dfbu);
+                client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
+                client.CloseAsync();
+            }
         }
+        
 
         void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         { 
@@ -67,16 +58,8 @@
 
                 Name_Suspect.Text = "There are no suspects";
             else
-            {   
-                Name_Suspect.Text = this.dfbuList.ElementAt(0).FirstName + " " + this.dfbuList.ElementAt(0).LastName;
-                hometownTB.Text = this.dfbuList.ElementAt(0).Hometown;
-                birthdayTB.Text = this.dfbuList.ElementAt(0).Birthday;
-                hometownTB.Text = this.dfbuList.ElementAt(0).Hometown;
-                genderTB.Text = this.dfbuList.ElementAt(0).Gender;
-                musicTB.Text = this.dfbuList.ElementAt(0).Music;
-                cinemaTB.Text = this.dfbuList.ElementAt(0).Cinema;
-				televisionTB.Text = this.dfbuList.ElementAt(0).Television;
-                LoadPicture(this.dfbuList.ElementAt(0).PictureLink);
+            {
+                ShowSuspect(0);
             }
         }
 
@@ -90,15 +73,7 @@
                     index = this.dfbuList.Count - 1;
                 else
                     index--;
-
-                Name_Suspect.Text = this.dfbuList.ElementAt(index).FirstName + " " + this.dfbuList.ElementAt(index).LastName;
-                birthdayTB.Text = this.dfbuList.ElementAt(index).Birthday;
-                hometownTB.Text = this.dfbuList.ElementAt(index).Hometown;
-                genderTB.Text = this.dfbuList.ElementAt(index).Gender;
-                musicTB.Text = this.dfbuList.ElementAt(index).Music;
-                cinemaTB.Text = this.dfbuList.ElementAt(index).Cinema;
-				televisionTB.Text = this.dfbuList.ElementAt(index).Television;
-                LoadPicture(this.dfbuList.ElementAt(index).PictureLink);
+                ShowSuspect(index);
             }
         }
 
@@ -112,15 +87,7 @@
                     index = 0;
                 else
                     index++;
-
-                Name_Suspect.Text = this.dfbuList.ElementAt(index).FirstName + " " + dfbuList.ElementAt(index).LastName;
-                birthdayTB.Text = this.dfbuList.ElementAt(index).Birthday;
-                hometownTB.Text = this.dfbuList.ElementAt(index).Hometown;
-                genderTB.Text = this.dfbuList.ElementAt(index).Gender;
-                musicTB.Text = this.dfbuList.ElementAt(index).Music;
-                cinemaTB.Text = this.dfbuList.ElementAt(index).Cinema;
-				televisionTB.Text = this.dfbuList.ElementAt(index).Television;
-                LoadPicture(this.dfbuList.ElementAt(index).PictureLink);
+                ShowSuspect(index);
             }
         }
 
@@ -151,12 +118,14 @@
         private void Emit_Click(object sender, RoutedEventArgs e)
         {
             InterpoolWP7Client client = new InterpoolWP7Client();
-            client.EmitOrderOfArrestCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_EmitOrderOfArrestCompleted);
-            client.EmitOrderOfArrestAsync(gm.UserId, this.dfbuList.ElementAt(index).IdFriend);
-            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            client.CloseAsync();
+            ////client.EmitOrderOfArrestCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_EmitOrderOfArrestCompleted);
+            ////client.EmitOrderOfArrestAsync(gm.UserId, this.dfbuList.ElementAt(index).IdFriend);
+            ////client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            ////client.CloseAsync();
             Emit.IsEnabled = false;
             MessageBox.Show("Se ha emitido una orden de arresto para " + Name_Suspect.Text);
+            gm.EmitOrder = true;
+            gm.PictureLink = this.dfbuList.ElementAt(index).PictureLink;
             NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));            
         }
 
@@ -167,6 +136,53 @@
         private void Return_Click(object sender, System.Windows.RoutedEventArgs e)
         {
         	NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void ShowSuspect(int index) 
+        {
+            Name_Suspect.Text = this.dfbuList.ElementAt(index).FirstName + " " + dfbuList.ElementAt(index).LastName;
+            birthdayTB.Text = this.dfbuList.ElementAt(index).Birthday;
+            hometownTB.Text = this.dfbuList.ElementAt(index).Hometown;
+            genderTB.Text = this.dfbuList.ElementAt(index).Gender;
+            musicTB.Text = this.dfbuList.ElementAt(index).Music;
+            cinemaTB.Text = this.dfbuList.ElementAt(index).Cinema;
+            televisionTB.Text = this.dfbuList.ElementAt(index).Television;
+            LoadPicture(this.dfbuList.ElementAt(index).PictureLink);        
+        }
+
+        private void ShowCurrentSuspect()
+        {
+            string[] filterField = gm.GetFilterField();
+            Name_Suspect.Text = filterField[0] + " " + filterField[1];
+            birthdayTB.Text = filterField[2];
+            hometownTB.Text = filterField[3];
+            genderTB.Text = filterField[4];
+            musicTB.Text = filterField[5];
+            cinemaTB.Text = filterField[6];
+            televisionTB.Text = filterField[7];
+            LoadPicture(gm.PictureLink);
+        }
+
+        private DataFacebookUser SetFiltersFields()
+        {
+            string[] filterField = gm.GetFilterField();
+            DataFacebookUser dfbu = new DataFacebookUser();
+            dfbu.FirstName = filterField[0];
+            dfbu.LastName = filterField[1];
+            dfbu.Birthday = filterField[2];
+            dfbu.Hometown = filterField[3];
+            dfbu.Gender = filterField[4];
+            dfbu.Music = filterField[5];
+            dfbu.Cinema = filterField[6];
+            dfbu.Television = filterField[7];
+            return dfbu;
+        }
+
+        private void HideButtons()        
+        {
+            rightArrow.Visibility = Visibility.Collapsed;
+            leftArrow.Visibility = Visibility.Collapsed;
+            Emit.Visibility = Visibility.Collapsed;
         }
     }
 }
