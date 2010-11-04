@@ -40,7 +40,9 @@
             this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
             this.client.CloseAsync();
             ////Set the textboxes with the name of the famous
-            famousName.Visibility = System.Windows.Visibility.Collapsed;                     
+            famousName.Visibility = System.Windows.Visibility.Collapsed;
+            Bubble.Visibility = Visibility.Collapsed;
+            dialogText.Visibility = Visibility.Collapsed;
         }       
 		
 		public void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
@@ -86,6 +88,8 @@
             famousName.Text = dataF.NameFamous;
             string famousURI = "../FamousImages/" + dataF.FileFamous;
             famousImage.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
+            Bubble.Visibility = Visibility.Visible;
+            dialogText.Visibility = Visibility.Visible;
 		}
     }
 }

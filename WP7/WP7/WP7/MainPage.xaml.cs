@@ -72,6 +72,8 @@
         void GetCurrentCityCallback(object sender, GetCurrentCityCompletedEventArgs e)
         {
             DataCity dc = (DataCity)e.Result;
+            gm.Left = dc.Left;
+            gm.Top = dc.Top;
             gm.DeadLineDateTime = dc.DeadLine;
             this.gm.SetCurrentCity(dc.NameCity);
             NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
@@ -89,7 +91,7 @@
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {		
 			////Usando el mail de FACEBOOK
-            gm.UserEmail = "taru_borio@hotmail.com";
+            gm.UserEmail = "letyvila@hotmail.com";
 			client.GetUserIdFacebookAsync(gm.UserEmail);
             this.client.GetUserIdFacebookCompleted += new EventHandler<GetUserIdFacebookCompletedEventArgs>(client_GetUserIdFacebookCompleted);
             ////NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
@@ -97,10 +99,6 @@
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            WebBrowserTask task = new WebBrowserTask();
-            ////task.URL = "http://pis2010.cloudapp.net/Default.aspx?loginid=" + loginId;
-            task.URL = "http://127.0.0.1:81/Default.aspx?email=vicente_cai@hotmail.com";
-            task.Show();
         }
 
    	 	private void ExitButton_Click(object sender, System.Windows.RoutedEventArgs e)

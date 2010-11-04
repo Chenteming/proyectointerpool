@@ -13,16 +13,23 @@
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
     using WP7.ServiceReference;
+    using WP7.Utilities;
 
     public partial class City : PhoneApplicationPage
     {
         private InterpoolWP7Client client;
         private LanguageManager language;
         private GameManager gm = GameManager.getInstance();
+        private double[] coordX;
+        private double[] coordY;
+        private int currentTravel;
 
         public City()
         {
             InitializeComponent();
+            this.coordX = new double[Constants.MAX_CITIES];
+            this.coordY = new double[Constants.MAX_CITIES];
+
 			AnimationPage.Begin();
             this.language = LanguageManager.GetInstance();
             if (this.language.GetXDoc() != null)
@@ -48,23 +55,19 @@
         void client_GetCitiesCompleted(object sender, GetCitiesCompletedEventArgs e)
         {
             List<DataCity> dataCities = e.Result.ToList();
-
             if (dataCities != null)
             {
-                List<string> cities = new List<string>();
-                foreach (DataCity dataCity in dataCities)
+                button1.Content = dataCities.ElementAt(0).NameCity;
+                button2.Content = dataCities.ElementAt(1).NameCity;
+                button3.Content = dataCities.ElementAt(2).NameCity;
+                for (int i = 0; i < dataCities.Count; i++)
                 {
-                    cities.Add(dataCity.NameCity);
+                    coordX[i] = dataCities.ElementAt(0).Left;
+                    coordY[i] = dataCities.ElementAt(0).Top;
                 }
-                this.gm.SetCurrentCities(cities);
-
                 button1.Visibility = System.Windows.Visibility.Visible;
                 button2.Visibility = System.Windows.Visibility.Visible;
-                button3.Visibility = System.Windows.Visibility.Visible;
-
-                button1.Content = cities.ElementAt(0);
-                button2.Content = cities.ElementAt(1);
-                button3.Content = cities.ElementAt(2);
+                button3.Visibility = System.Windows.Visibility.Visible;                
             }
         }
 
@@ -86,6 +89,8 @@
             /*if (MessageBox.Show("¿Desea viajar?", "title",
                 MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {*/
+                currentTravel = 0;
+
                 InterpoolWP7Client client = new InterpoolWP7Client();
                 client.TravelCompleted += new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
                 client.TravelAsync(this.gm.UserId, button1.Content.ToString());
@@ -102,10 +107,10 @@
             if (city.CurrentDate.CompareTo(gm.DeadLineDateTime) == 1)
                 NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
             ////Coords. cities
-            double coordX_cityI = 165;
-            double coordY_cityI = 300;
-            double coordX_cityE = 570;
-            double coordY_cityE = 120;
+            double coordX_cityI = gm.Left; 
+            double coordY_cityI = gm.Top;
+            double coordX_cityE = coordX[currentTravel];
+            double coordY_cityE = coordY[currentTravel];
 			////pregunto si coordX_I < coordY_I, si es true, esta bien asi
 			////sino cambiar el scale del X a -1(para q el plane quede mirando para el lado que va)
 			
@@ -151,9 +156,16 @@
 			trY4.SetValue(EasingDoubleKeyFrame.ValueProperty, init_Y4);			
 			plane_sound.Play();
 			////Start plane animation 			
-			animacion2.Begin();			
-			MessageBox.Show("Ha viajado a " + this.gm.GetCurrentCity());
-            ////gm.ShowAnimation = (city.Number == 3);
+			animacion2.Begin();
+            animacion2.Completed += new EventHandler(animacion2_Completed);
+            gm.Left = coordX[currentTravel];
+            gm.Top = coordY[currentTravel];
+			////MessageBox.Show("Ha viajado a " + this.gm.GetCurrentCity());
+            ////gm.ShowAnimation = (city.Number == 3);            
+        }
+
+        void animacion2_Completed(object sender, EventArgs e)
+        {
             NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -161,6 +173,7 @@
         {
             /*if (MessageBox.Show("¿Desea viajar?", "title", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {*/
+                currentTravel = 1;
                 InterpoolWP7Client client = new InterpoolWP7Client();
                 client.TravelCompleted += new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
                 client.TravelAsync(this.gm.UserId, button2.Content.ToString());
@@ -175,6 +188,7 @@
 			/*if (MessageBox.Show("¿Desea viajar?", "title", 
 				MessageBoxButton.OKCancel) == MessageBoxResult.OK)
 			{*/
+                currentTravel = 2;
                 InterpoolWP7Client client = new InterpoolWP7Client();
                 client.TravelCompleted += new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
                 client.TravelAsync(this.gm.UserId, button3.Content.ToString());

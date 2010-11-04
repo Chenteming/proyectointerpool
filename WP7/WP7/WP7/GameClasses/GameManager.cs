@@ -64,6 +64,10 @@
 
         public DataClue Data;
 
+        public double  Left { get; set; }
+
+        public double Top { get; set; }
+
         public static GameManager getInstance()
         {
             if (instance == null)
