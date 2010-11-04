@@ -800,6 +800,7 @@ namespace InterpoolCloudWebRole.Controller
             IEnumerable<NodePath> currentNodePath;
             int rnd;
             int characteristicsSuspect;
+            string newFamous = String.Empty;
             Random r;
             Famous famous;
             for (i = 0; i < Constants.NumberLastCity - 1; i++)
@@ -834,11 +835,13 @@ namespace InterpoolCloudWebRole.Controller
                 /* if i have to put characteristics on the clue of the suspect */
                 famous = cnp.Famous.First();
                 c3.Famous = famous;
+                
                 if (characteristicsSuspect != 0)
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c3.ClueContent = this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + famous.New.First().NewContent;
+                        newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueFamousContent, this.container) + " '" + famous.New.First().NewContent + "'.";
+                        c3.ClueContent = this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + newFamous;
                     }
                     else
                     {
@@ -864,12 +867,18 @@ namespace InterpoolCloudWebRole.Controller
                 /* if i have to put characteristics on the clue of the suspect */
                 famous = cnp.Famous.ElementAt(1);
                 c2.Famous = famous;
-                string dynProperty = cpd == null ? string.Empty : cpd.CityPropertyContent;
+                string dynProperty = String.Empty;
+                if (cpd != null)
+                {
+                    dynProperty  = cpd.CityPropertyContent == string.Empty ? dm.GetParameter(Parameters.DefaultClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueContent, this.container) + " ' " + cpd.CityPropertyContent + " '.";
+                }
+                
                 if (characteristicsSuspect != 0)
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c2.ClueContent = dynProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + famous.New.First().NewContent;
+                        newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueFamousContent, this.container) + " '" + famous.New.First().NewContent + "'.";
+                        c2.ClueContent = dynProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + newFamous;
                     }
                     else
                     {
@@ -882,7 +891,8 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c2.ClueContent = dynProperty + " " + famous.New.First().NewContent;
+                        newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueFamousContent, this.container) + " '" + famous.New.First().NewContent + "'.";
+                        c2.ClueContent = dynProperty + " " + newFamous;
                     }
                     else
                     {
@@ -906,7 +916,8 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First().NewContent != null)
                     {
-                        c1.ClueContent = staticProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + famous.New.First().NewContent;
+                        newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueContent, this.container) + " '" + famous.New.First().NewContent + "'.";
+                        c1.ClueContent = staticProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + newFamous;
                     }
                     else
                     {
@@ -919,7 +930,8 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        c1.ClueContent = staticProperty + " " + famous.New.First().NewContent;
+                        newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueContent, this.container) + " '" + famous.New.First().NewContent + "'.";
+                        c1.ClueContent = staticProperty + " " + newFamous;
                     }
                     else
                     {
@@ -1115,15 +1127,19 @@ namespace InterpoolCloudWebRole.Controller
         {
             DataManager dm = new DataManager();
             Game game = user.Game;
-
             ////user.Game = null;
-
             for (int i = Constants.NumberLastCity - 1; i >= 0; i--)
             {
                 for (int j = Constants.FamousCities - 1; j >= 0; j--)
                 {
                     game.NodePath.ElementAt(i).Famous.Remove(game.NodePath.ElementAt(i).Famous.ElementAt(j));
                 }
+                /*for (int j = Constants.FamousCities - 1; j >= 0; j--)
+                {
+                    Clue clue = game.NodePath.ElementAt(i).Clue.ElementAt(j);
+                    game.NodePath.ElementAt(i).Clue.Remove(game.NodePath.ElementAt(i).Clue.ElementAt(j));
+                    clue.NodePath = null;
+                }*/
                 for (int j = Constants.FamousCities - 1; j >= 0; j--)
                 {
                     this.container.DeleteObject(game.NodePath.ElementAt(i).Clue.ElementAt(j));
@@ -1132,6 +1148,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     game.NodePath.ElementAt(i).PossibleCities.Remove(game.NodePath.ElementAt(i).PossibleCities.ElementAt(j));
                 }
+                
                 this.container.DeleteObject(game.NodePath.ElementAt(i));
             }
 
@@ -1146,15 +1163,18 @@ namespace InterpoolCloudWebRole.Controller
             }
             ////container.DeleteObject(game.Suspect);
 
+            container.DeleteObject(game.Suspect);
+
             game.Suspect = null;
             /* foreach (Suspect suspect in game.PossibleSuspect)
              {
                  container.DeleteObject(suspect);
              }*/
-
+            
             for (int j = Constants.MaxSuspects + Constants.AmountHardCodeSuspects - 2; j >= 0; j--)
             {
-                game.PossibleSuspect.Remove(game.PossibleSuspect.ElementAt(j));
+                //game.PossibleSuspect.Remove(game.PossibleSuspect.ElementAt(j));
+                this.container.DeleteObject(game.PossibleSuspect.ElementAt(j));
             }
             game.User = null;
             ////container.SaveChanges();
@@ -1319,6 +1339,7 @@ namespace InterpoolCloudWebRole.Controller
             List<User> users = this.container.Users.Where(u => u.UserId != game.User.UserId).ToList();
             users = Functions.ShuffleList(users);
             int i = 0;
+
             Suspect gameSuspect = null;
             foreach(User user in users)
             {
