@@ -220,11 +220,14 @@
     </None>
     <Resource Include="Fonts\fr-bold.ttf" />
     <Resource Include="GameImages\aeroplane.png" />
+    <Resource Include="GameImages\archive.png" />
     <Resource Include="GameImages\CancelIcon.png" />
     <Resource Include="GameImages\cartel.png" />
     <Resource Include="GameImages\Clip.png" />
     <Resource Include="GameImages\ContinueIcon.png" />
     <Resource Include="GameImages\Detective.png" />
+    <Resource Include="GameImages\door.png" />
+    <Resource Include="GameImages\earth.png" />
     <Resource Include="GameImages\FilterScreen2.png" />
     <Resource Include="FamousImages\amsterdam_arjen_robben.jpg" />
     <Resource Include="FamousImages\amsterdam_dj_tiesto.jpg" />
@@ -329,7 +332,11 @@
     <Resource Include="GameImages\GameOver.png" />
     <Resource Include="GameImages\ComicBaloon.png" />
     <Resource Include="GameImages\Detective2.png" />
+    <Resource Include="GameImages\mainScreen1.png" />
     <Resource Include="GameImages\Message.png" />
+    <Resource Include="GameImages\newspaper.png" />
+    <Resource Include="GameImages\pc.png" />
+    <Resource Include="GameImages\phone.png" />
     <Resource Include="GameImages\Sneaky.png" />
     <Resource Include="GameImages\Toasty.png" />
     <Resource Include="GameImages\Bubble.png" />
