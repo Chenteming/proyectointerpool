@@ -298,7 +298,7 @@
     			<ColumnDefinition Width="0*"/>
     			<ColumnDefinition/>
     		</Grid.ColumnDefinitions>
-            <Image x:Name="ImageBackground" Source="..\GameImages\OfficeScreen.jpg" Stretch="Fill" Margin="0,0,0,8" Grid.Column="1" d:IsHidden="True"/>
+            <Image x:Name="ImageBackground" Source="..\GameImages\OfficeScreen.jpg" Stretch="Fill" Margin="0,0,0,8" Grid.Column="1"/>
             <Image x:Name="imageCity" Margin="284,30,-3,109" Source="/interpool_Images/pantalla_1_Images/Capa 1.png" Stretch="Fill" Grid.Column="1"/>
             <Image x:Name="ImageBackground1" Source="/WP7;component/GameImages/mainScreen1.png" Stretch="Fill" Grid.Column="1"/>
             <Button x:Name="Door" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="-7,37,0,82" Style="{StaticResource ButtonDoor}" Width="121" Click="Door_Click"/>
