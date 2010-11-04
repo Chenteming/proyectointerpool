@@ -41,7 +41,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// <param name="auth"> Parameter description for auth goes here</param>
         /// <param name="game"> Parameter description for game goes here</param>
         /// <param name="context"> Parameter description for context goes here</param>
-        public void DownloadFacebookUserData(OAuthFacebook auth, Game game, InterpoolContainer context)
+        public void DownloadFacebookUserData(OAuthFacebook auth, Game game, int limitSuspects, InterpoolContainer context)
         {
             IDataManager dm = new DataManager();
             string userId = dm.GetUserByToken(auth.Token, dm.GetContainer()).UserIdFacebook;
@@ -51,20 +51,15 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 fbud.UserId = userId;
                 fbud.OAuth = auth;
 
-                ////this.userIdOauth.Add(userId, fbud);
-
-
                 List<string> friendsIds = this.GetFriendsId(userId);
-                
                 List<string> shuffleFriendsIds = Functions.ShuffleList<string>(friendsIds);
                 Suspect suspect;
                 List<Suspect> suspects = new List<Suspect>();
                 DataFacebookUser fbudOfSuspect; 
 
                 //// Creates and stores the suspects for the current user
-                int limit = Constants.MaxSuspects;
                 int i = 0;
-                ////int numberSuspect = new Random().Next(0, limit);
+                
                 foreach (string friendId in shuffleFriendsIds)
                 {
                     fbudOfSuspect = this.GetFriendInfo(userId, auth, friendId);
@@ -76,7 +71,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                         i++;
                     }
 
-                    if (i >= limit)
+                    if (i >= limitSuspects)
                     {
                         break;
                     }
