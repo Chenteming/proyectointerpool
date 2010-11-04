@@ -329,6 +329,7 @@
     <Resource Include="GameImages\GameOver.png" />
     <Resource Include="GameImages\ComicBaloon.png" />
     <Resource Include="GameImages\Detective2.png" />
+    <Resource Include="GameImages\Message.png" />
     <Resource Include="GameImages\Sneaky.png" />
     <Resource Include="GameImages\Toasty.png" />
     <Resource Include="GameImages\Bubble.png" />

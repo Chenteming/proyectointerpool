@@ -50,6 +50,7 @@
             button1.Visibility = System.Windows.Visibility.Collapsed;
             button2.Visibility = System.Windows.Visibility.Collapsed;
             button3.Visibility = System.Windows.Visibility.Collapsed;
+            closeInterpoolMessage();
         }
 
         void client_GetCitiesCompleted(object sender, GetCitiesCompletedEventArgs e)
@@ -86,11 +87,12 @@
 
         private void button1_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            /*if (MessageBox.Show("¿Desea viajar?", "title",
-                MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            {*/
-                currentTravel = 0;
+            currentTravel = 0;
+            this.showInterpoolMessage(button1.Content.ToString());
+        }
 
+        private void travel1()
+        {                
                 InterpoolWP7Client client = new InterpoolWP7Client();
                 client.TravelCompleted += new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
                 client.TravelAsync(this.gm.UserId, button1.Content.ToString());
@@ -98,6 +100,18 @@
                 client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
                 client.CloseAsync();
             ////}
+        }
+
+        private void showInterpoolMessage(string nameCity) 
+        {
+            messageText.Text = "¿Desea viajar a " + nameCity + "?";
+            MessageImage.Visibility = Visibility.Visible;
+            messageText.Visibility = Visibility.Visible;
+            YesButton.Visibility = Visibility.Visible;
+            NoButton.Visibility = Visibility.Visible;
+            button1.Visibility = Visibility.Collapsed;
+            button2.Visibility = Visibility.Collapsed;
+            button3.Visibility = Visibility.Collapsed;                
         }
 
         void client_TravelCompleted(object sender, TravelCompletedEventArgs e)
@@ -160,8 +174,7 @@
             animacion2.Completed += new EventHandler(animacion2_Completed);
             gm.Left = coordX[currentTravel];
             gm.Top = coordY[currentTravel];
-			////MessageBox.Show("Ha viajado a " + this.gm.GetCurrentCity());
-            ////gm.ShowAnimation = (city.Number == 3);            
+            gm.ShowAnimation = (city.CityNumber == 3);            
         }
 
         void animacion2_Completed(object sender, EventArgs e)
@@ -169,33 +182,73 @@
             NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
 
+
         private void button2_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            /*if (MessageBox.Show("¿Desea viajar?", "title", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            {*/
-                currentTravel = 1;
+            currentTravel = 1;
+            this.showInterpoolMessage(button2.Content.ToString());
+        }
+
+        private void travel2()
+        {        
                 InterpoolWP7Client client = new InterpoolWP7Client();
                 client.TravelCompleted += new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
                 client.TravelAsync(this.gm.UserId, button2.Content.ToString());
                 this.gm.SetCurrentCity(button2.Content.ToString());
                 this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-                client.CloseAsync();
-            ////}
+                client.CloseAsync();            
         }
 
         private void button3_Click(object sender, System.Windows.RoutedEventArgs e)
-        {			
-			/*if (MessageBox.Show("¿Desea viajar?", "title", 
-				MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-			{*/
-                currentTravel = 2;
+        {
+            currentTravel = 2;
+            this.showInterpoolMessage(button3.Content.ToString());
+        }
+
+        private void travel3()
+        {	               
                 InterpoolWP7Client client = new InterpoolWP7Client();
                 client.TravelCompleted += new EventHandler<TravelCompletedEventArgs>(client_TravelCompleted);
                 client.TravelAsync(this.gm.UserId, button3.Content.ToString());
                 this.gm.SetCurrentCity(button3.Content.ToString());
                 client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
                 client.CloseAsync();
-			////}
+        }
+
+        private void NoButton_Click(object sender, RoutedEventArgs e)
+        {
+            button1.Visibility = Visibility.Visible;
+            button2.Visibility = Visibility.Visible;
+            button3.Visibility = Visibility.Visible;
+            closeInterpoolMessage();
+        }
+
+        private void YesButton_Click(object sender, RoutedEventArgs e)
+        {
+            closeInterpoolMessage();
+            switch (currentTravel)
+            {
+                case 0:
+                    travel1();
+                    break;
+                case 1:
+                    travel2();
+                    break;
+                case 2:
+                    travel3();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void closeInterpoolMessage()
+        {
+            messageText.Text = "";
+            MessageImage.Visibility = System.Windows.Visibility.Collapsed;
+            messageText.Visibility = Visibility.Collapsed;
+            YesButton.Visibility = Visibility.Collapsed;
+            NoButton.Visibility = Visibility.Collapsed;
         }
     }
 }
