@@ -81,6 +81,192 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-9"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
+		<Style x:Key="ButtonDoor" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.074" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.074" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="2.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-4.128" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="image" Source="/WP7;component/GameImages/door.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content=""/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonEarth" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.137" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.137" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-0.413" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="image" Source="/WP7;component/GameImages/earth.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content=""/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonFiles" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.049" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.054" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.797" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-6.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="image" Source="/WP7;component/GameImages/archive.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content=""/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonPc" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.061" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.061" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-0.447" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-3" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="image" Source="/WP7;component/GameImages/pc.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content=""/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonNewspaper" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.095" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.095" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-0.571" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-4" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="image" Source="/WP7;component/GameImages/newspaper.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content=""/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonPhone" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.197" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.197" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-0.955" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="image" Source="/WP7;component/GameImages/phone.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content=""/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 	</phone:PhoneApplicationPage.Resources>
 
 	<phone:PhoneApplicationPage.FontFamily>
@@ -112,17 +298,19 @@
     			<ColumnDefinition Width="0*"/>
     			<ColumnDefinition/>
     		</Grid.ColumnDefinitions>
-            <Image x:Name="ImageBackground" Source="..\GameImages\OfficeScreen.jpg" Stretch="Fill" Margin="0,0,0,8" Grid.Column="1"/>
-            <Button x:Name="ComputerButton" Content="Button" HorizontalAlignment="Right" Margin="0,212,22,28" Style="{StaticResource ComputerButtonStyle}" Width="253" Opacity="0" Click="ComputerButton_Click" Grid.Column="1" />
-            <Button x:Name="DoorButton" Content="Button" Margin="0,34,0,107" Style="{StaticResource DoorButtonStyle}" Width="106" Opacity="0" Click="DoorButton_Click" Grid.Column="1" HorizontalAlignment="Left" Background="Transparent"/>
-            <Button x:Name="FilesButton" Content="Button" Margin="266,104,322,168" Style="{StaticResource FilesButtonStyle}" Opacity="0" Click="FilesButton_Click" Grid.Column="1"/>
-            <Button x:Name="MapButton" Content="Button" HorizontalAlignment="Left" Margin="196,147,0,150" Style="{StaticResource MapButtonStyle}" Width="84" Opacity="0" Click="MapButton_Click" Grid.Column="1"/>
-            <Button x:Name="NewspaperButton" Content="Button" Grid.Column="1" Height="92" Margin="0,0,305,0" VerticalAlignment="Bottom" Opacity="0" Click="NewspaperButton_Click" HorizontalAlignment="Right" Width="133" />
-            <Button x:Name="phoneButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="64" Margin="154,0,0,28" VerticalAlignment="Bottom" Width="84" Opacity="0" Click="phoneButton_Click"/>
-            <Image Grid.Column="1" HorizontalAlignment="Left" Height="68" Margin="0,0,0,2" Source="/WP7;component/GameImages/cartel.png" Stretch="Fill" VerticalAlignment="Bottom" Width="177" Opacity="0.92"/>
-            <TextBox x:Name="TextCity" Grid.Column="1" Margin="0,0,0,28" TextWrapping="Wrap" Text="Paris" VerticalAlignment="Bottom" Width="180" FontSize="13.333" Height="53" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" HorizontalAlignment="Left" VerticalScrollBarVisibility="Disabled"/>
-            <TextBox x:Name="TextDate" Grid.Column="1" Margin="0,0,0,8" TextWrapping="Wrap" Text="Lunes, 8:00 am" VerticalAlignment="Bottom" Width="180" FontSize="13.333" Height="55" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" HorizontalAlignment="Left" VerticalScrollBarVisibility="Disabled"/>
-            <TextBox x:Name="TextLevel" Grid.Column="1" TextWrapping="Wrap" Text="Nivel I" VerticalAlignment="Bottom" Width="180" FontSize="13.333" Height="46" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" HorizontalAlignment="Left" VerticalScrollBarVisibility="Disabled"/>
+            <Image x:Name="ImageBackground" Source="..\GameImages\OfficeScreen.jpg" Stretch="Fill" Margin="0,0,0,8" Grid.Column="1" d:IsHidden="True"/>
+            <Image x:Name="imageCity" Margin="284,30,-3,109" Source="/interpool_Images/pantalla_1_Images/Capa 1.png" Stretch="Fill" Grid.Column="1"/>
+            <Image x:Name="ImageBackground1" Source="/WP7;component/GameImages/mainScreen1.png" Stretch="Fill" Grid.Column="1"/>
+            <Button x:Name="Door" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="-7,37,0,82" Style="{StaticResource ButtonDoor}" Width="121" Click="Door_Click"/>
+            <Button x:Name="Earth" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="193,180,0,205" Style="{StaticResource ButtonEarth}" Width="81" Click="Earth_Click"/>
+            <Button x:Name="Files" Content="Button" Grid.Column="1" Margin="258,99,313,132" Style="{StaticResource ButtonFiles}" Click="Files_Click"/>
+            <Button x:Name="Laptop" Content="Button" Grid.Column="1" HorizontalAlignment="Right" Height="228" Margin="0,0,29,0" Style="{StaticResource ButtonPc}" VerticalAlignment="Bottom" Width="246" Click="Laptop_Click"/>
+            <Button x:Name="Phone" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="66" Margin="142,0,0,20" Style="{StaticResource ButtonPhone}" VerticalAlignment="Bottom" Width="102" Click="Phone_Click"/>
+            <Button x:Name="Newspaper" Content="Button" Grid.Column="1" Height="105" Margin="260,0,291,0" Style="{StaticResource ButtonNewspaper}" VerticalAlignment="Bottom" Click="Newspaper_Click"/>
+            <Image x:Name="Poster" Grid.Column="1" Margin="0,-4,0,0" Source="/WP7;component/GameImages/cartel.png" Stretch="Fill" Opacity="0.92" HorizontalAlignment="Right" Width="177" Height="68" VerticalAlignment="Top"/>
+            <TextBox x:Name="TextCity" Grid.Column="1" Margin="0,-15,-3,0" TextWrapping="Wrap" Text="Paris" FontSize="13.333" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Right" Width="180" Height="53" VerticalAlignment="Top"/>
+            <TextBox x:Name="TextDate" Grid.Column="1" Margin="0,3,-3,0" TextWrapping="Wrap" Text="Lunes, 8:00 am" FontSize="13.333" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" VerticalScrollBarVisibility="Disabled" FontFamily="Futura Bk" HorizontalAlignment="Right" Width="180" Height="55" VerticalAlignment="Top"/>
+            <TextBox x:Name="TextLevel" Grid.Column="1" TextWrapping="Wrap" Text="Nivel I" FontSize="13.333" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" VerticalScrollBarVisibility="Disabled" Margin="0,20,-3,0" HorizontalAlignment="Right" Width="180" Height="46" VerticalAlignment="Top"/>
         </Grid>
     	<Image x:Name="image" Margin="0,73,-246,89" Source="/WP7;component/GameImages/Toasty.png" Stretch="Fill" Grid.Row="1" HorizontalAlignment="Right" Width="239" RenderTransformOrigin="0.5,0.5">
     		<Image.RenderTransform>

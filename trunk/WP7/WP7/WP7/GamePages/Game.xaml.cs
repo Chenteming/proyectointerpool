@@ -25,40 +25,41 @@
             gm.ShowAnimation = false;
         }
 
-        private void ComputerButton_Click(object sender, RoutedEventArgs e)
-        {
-            GameManager gm = GameManager.getInstance();
+		private void Door_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
+		}
+
+		private void Earth_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new Uri("/GamePages/City.xaml", UriKind.RelativeOrAbsolute));
+		}
+
+		private void Files_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new Uri("/GamePages/Filter.xaml", UriKind.RelativeOrAbsolute));    
+		}
+
+		private void Laptop_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			GameManager gm = GameManager.getInstance();
             gm.SetFamousIndex(2);
             NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
-        }
-		
-		private void DoorButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
-        }
-		
-		private void FilesButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/GamePages/Filter.xaml", UriKind.RelativeOrAbsolute));    
-        }
-		
-		private void MapButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/GamePages/City.xaml", UriKind.RelativeOrAbsolute));
-        }
+		}
 
-		private void NewspaperButton_Click(object sender, System.Windows.RoutedEventArgs e)
+		private void Newspaper_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-            GameManager gm = GameManager.getInstance();
+			GameManager gm = GameManager.getInstance();
             gm.SetFamousIndex(1);
 			NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
 		}
 
-		private void phoneButton_Click(object sender, System.Windows.RoutedEventArgs e)
+		private void Phone_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-            GameManager gm = GameManager.getInstance();
+			GameManager gm = GameManager.getInstance();
             gm.SetFamousIndex(0);
-            NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));            
+            NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
 		}
+
 	}
 }
