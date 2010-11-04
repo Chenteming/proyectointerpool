@@ -4,7 +4,7 @@
         <control name="PlayButton" Content="Jugar"/>
         <control name="ExitButton" Content="Salir"/>
         <control name="OptionButton" Content="Opciones"/>
-        <control name="CreditButton" Content="Creditos"/>
+        <control name="CreditButton" Content="Créditos"/>
         <control name="HelpButton" Content="Ayuda"/>
         <control name="LoginButton" Content="Entrar"/>
     </class>
