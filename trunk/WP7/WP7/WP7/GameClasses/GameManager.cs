@@ -44,6 +44,7 @@
             this.Vibration = false;
             this.ShowAnimation = false;
             this.Data = new DataClue();
+            this.EmitOrder = false;
         }
 
         public string UserId { get; set; }
@@ -64,9 +65,13 @@
 
         public DataClue Data;
 
+        public string PictureLink { get; set; }
+
         public double  Left { get; set; }
 
         public double Top { get; set; }
+
+        public bool EmitOrder { get; set; }
 
         public static GameManager getInstance()
         {

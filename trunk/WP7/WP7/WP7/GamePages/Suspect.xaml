@@ -102,8 +102,8 @@
         	<TextBlock x:Name="musicTB" HorizontalAlignment="Right" Margin="0,0,102,184" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom" Foreground="#FF1D7281" FontWeight="Bold" FontStyle="Italic"/>
         	<TextBlock x:Name="cinemaTB" HorizontalAlignment="Right" Margin="0,0,102,123" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom" Foreground="#FF1D7281" FontWeight="Bold" FontStyle="Italic"/>
         	<TextBlock x:Name="televisionTB" HorizontalAlignment="Right" Margin="0,0,102,62" TextWrapping="Wrap" Text="TextBlock" Width="149" Height="50" VerticalAlignment="Bottom" Foreground="#FF1D7281" RenderTransformOrigin="1.859,-2.58" FontWeight="Bold" FontStyle="Italic"/>
-        	<Button Content="" HorizontalAlignment="Right" Margin="0,203,8,204" Style="{StaticResource rightArrow1}" Width="60" Click="RightArrow1_Click"/>
-        	<Button Content="" HorizontalAlignment="Left" Margin="8,203,0,203" Style="{StaticResource leftArrow1}" Width="60" Click="LeftArrow1_Click"/>
+        	<Button x:Name="rightArrow" Content="" HorizontalAlignment="Right" Margin="0,203,8,204" Style="{StaticResource rightArrow1}" Width="60" Click="RightArrow1_Click"/>
+        	<Button x:Name="leftArrow" Content="" HorizontalAlignment="Left" Margin="8,203,0,203" Style="{StaticResource leftArrow1}" Width="60" Click="LeftArrow1_Click"/>
             <Image x:Name="imageSuspect"  Height="142" HorizontalAlignment="Left" Margin="132,153,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"></Image>
             <Button Content="" Height="73" HorizontalAlignment="Left" Margin="142,368,0,0" Name="Emit" VerticalAlignment="Top" Width="174" BorderBrush="#FF1D7281" Click="Emit_Click" Foreground="#FF1D7281" />
         </Grid>        
