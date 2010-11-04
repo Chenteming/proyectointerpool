@@ -18,7 +18,7 @@ namespace InterpoolCloudWebRole.Utilities
         /// <summary>
         /// Gets for the property
         /// </summary>
-        public static string LevelRookie 
+        public static string LevelRookie
         {
             get
             {
@@ -68,7 +68,7 @@ namespace InterpoolCloudWebRole.Utilities
             {
                 return "LAST_CLUE2_ESP";
             }
-        } 
+        }
 
         /// <summary>
         /// Gets for the property
@@ -144,6 +144,41 @@ namespace InterpoolCloudWebRole.Utilities
             get
             {
                 return "MAX_DISTANCE";
+            }
+        }
+
+        /// <summary>
+        /// Gets for the property
+        /// </summary>
+        public static string PreprefixClueContent
+        {
+            get
+            {
+                return "PREFIXCLUECONTENT";
+            }
+        }
+        public static string PreprefixClueFamousContent
+        {
+            get
+            {
+                return "PREFIXCLUEFAMOUSCONTENT";
+            }
+        }
+        
+        public static string DefaultClueContent
+        {
+            get
+            {
+                return "DEFAULTCLUECONTENT";
+            }
+
+        }
+
+        public static string DefaultFamousClueContent
+        {
+            get
+            {
+                return "DEFAULTFAMOUSCLUECONTENT";
             }
         }
     }
