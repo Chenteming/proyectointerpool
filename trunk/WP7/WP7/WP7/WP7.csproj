@@ -218,6 +218,7 @@
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataListFacebookUser.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <Resource Include="Fonts\fr-bold.ttf" />
     <Resource Include="GameImages\aeroplane.png" />
     <Resource Include="GameImages\CancelIcon.png" />
     <Resource Include="GameImages\cartel.png" />
@@ -330,6 +331,7 @@
     <Resource Include="GameImages\Detective2.png" />
     <Resource Include="GameImages\Sneaky.png" />
     <Resource Include="GameImages\Toasty.png" />
+    <Resource Include="GameImages\Bubble.png" />
     <Content Include="GameLanguages\English.xml">
       <SubType>Designer</SubType>
     </Content>
