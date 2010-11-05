@@ -102,9 +102,17 @@ namespace InterpoolCloudWebRole.Data
         {
             int userId = (from u in context.Users
                           select u.UserId).Max();
-            return (from u in context.Users
+            IQueryable<String> res = (from u in context.Users
                     where u.UserId == userId
-                    select u.UserIdFacebook).First();
+                    select u.UserIdFacebook);
+            if (res !=null && res.Count()!=0)
+            {
+                return res.First();
+            }
+            else
+            {
+                return String.Empty;
+            }
         }
 
         /// <summary>
@@ -115,10 +123,17 @@ namespace InterpoolCloudWebRole.Data
         /// Return results are described through the returns tag.</returns>
         public string GetParameter(string name, InterpoolContainer context)
         {
-            var query = from p in context.Parameters
-                   where p.ParameterName == name
-                   select p.ParameterValue;
-            return query.First();
+            IQueryable<String> res = (from p in context.Parameters
+                                      where p.ParameterName == name
+                                      select p.ParameterValue);
+            if (res != null && res.Count() != 0)
+            {
+                return res.First();
+            }
+            else
+            {
+                return String.Empty;
+            }
         }
 
         /// <summary>
@@ -169,8 +184,14 @@ namespace InterpoolCloudWebRole.Data
                         on user.Game.GameId equals game.GameId 
                         where user.UserIdFacebook == userIdFaceook
                         select game;
-            
-            return query.First();
+            if (query != null && query.Count() != 0)
+            {
+                return query.First();
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         /// <summary>
@@ -210,10 +231,18 @@ namespace InterpoolCloudWebRole.Data
         {
             int userId = (from u in context.Users
                             select u.UserId).Max();
-            string token = (from u in context.Users
+            IQueryable<String> token = (from u in context.Users
                             where u.UserId == userId
-                            select u.UserTokenFacebook).First();
-            return new OAuthFacebook() { Token = token }; 
+                            select u.UserTokenFacebook);
+            if (token != null && token.Count() != 0)
+            {
+                return new OAuthFacebook() { Token = token.First() };
+            }
+            else
+            {
+                throw new Exception();
+            }
+
         }
 
         /// <summary>
@@ -347,7 +376,7 @@ namespace InterpoolCloudWebRole.Data
                         where users.UserId == userId
                         select users.SubLevel;
             int currentSubLevel = -1;
-            if (query.Count() > 0)
+            if (query!= null && query.Count() > 0)
             {
                 currentSubLevel = (int)query.First();
             }

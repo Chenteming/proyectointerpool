@@ -168,8 +168,17 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     return;
                 }
-
-                User user = this.container.Users.Where(u => u.UserIdFacebook == userIdFacebook).First();
+                User user;
+                IQueryable<User> iUser = this.container.Users.Where(u => u.UserIdFacebook == userIdFacebook);
+                if (iUser != null && iUser.Count() != 0)
+                {
+                    user = iUser.First();
+                }
+                else
+                {
+                    this.RegisterLog("StartGame: There is no user with that id", null, "error", "0");
+                    throw new GameException("There is no user with that id", new Exception());
+                }
                 //// 1 the trip is built to be followed by user
                 // TODO borrar
                 Game newGame = null;
@@ -327,8 +336,19 @@ namespace InterpoolCloudWebRole.Controller
                     find = false;
                     do
                     {
-                        nextCity = random.Next(1, maxNumber);
-                        next = dm.GetCities(this.container).Where(c => c.CityNumber == nextCity).First();
+
+                        nextCity = 1 > maxNumber ? 1 : random.Next(1, maxNumber);
+
+                        IQueryable<City> iCity = dm.GetCities(this.container).Where(c => c.CityNumber == nextCity);
+                        if (iCity != null && iCity.Count() != 0)
+                        {
+                            next = iCity.First();
+                        }
+                        else
+                        {
+                            this.RegisterLog("BuiltTravel: There is no next city", null, "error", "0");
+                            throw new GameException("There is no next city", new Exception());
+                        }
                         if (!selectedCities.Contains(next.CityNumber))
                         {
                             find = true;
@@ -434,8 +454,16 @@ namespace InterpoolCloudWebRole.Controller
             }
             else
             {
-                ////TODO, check if exist the suspect with that idFacebook
-                suspect = game.PossibleSuspect.Where(s => s.SuspectFacebookId == userIdFacebookSuspect).First();
+                IEnumerable<Suspect> iSuspect = game.PossibleSuspect.Where(s => s.SuspectFacebookId == userIdFacebookSuspect);
+                if (iSuspect != null && iSuspect.Count() != 0)
+                {
+                    suspect = iSuspect.First();
+                }
+                else
+                {
+                    this.RegisterLog("EmitOrderOfArresst: There is no Suspect with that id", null, "error", "0");
+                    throw new GameException("There is no Suspect with that id", new Exception());
+                }
             }
 
             OrderOfArrest order = new OrderOfArrest();
@@ -489,7 +517,17 @@ namespace InterpoolCloudWebRole.Controller
         public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
         {
             IDataManager dm = new DataManager();
-            User user = dm.GetUserByIdFacebook(this.container, userIdFacebook).First();
+            User user;
+            IQueryable<User> iUser = dm.GetUserByIdFacebook(this.container, userIdFacebook);
+            if (iUser != null && iUser.Count() != 0)
+            {
+                user = iUser.First();
+            }
+            else
+            {
+                this.RegisterLog("GetClueByFamous: There is no User with that id", null, "error", "0");
+                throw new GameException("There is no User with that id", new Exception());
+            }
             NodePath node = this.GetCurrentNode(userIdFacebook);
             DataClue clue;
             if (node != null)
@@ -574,14 +612,14 @@ namespace InterpoolCloudWebRole.Controller
             int amountHardCodedSuspects = Constants.AmountHardCodeSuspects;
             int amountSameGender = (int)Math.Min(sameGenders.Count, amountHardCodedSuspects);
             int a = amountSameGender / 2;
-            amountSameGender = rand.Next(a, amountSameGender);
+            amountSameGender = a > amountSameGender ? a : rand.Next(a, amountSameGender);
 
             int count = 0;
             int index = 0;
             HardCodedSuspect hard = null;
             do
             {
-                index = rand.Next(0, sameGenders.Count - 1);
+                index = 0 > sameGenders.Count - 1 ? 0 : rand.Next(0, sameGenders.Count - 1);
                 hard = sameGenders.ElementAt(index);
                 if (!idsHardCoded.Contains(hard.HardCodedSuspecId))
                 {
@@ -596,14 +634,14 @@ namespace InterpoolCloudWebRole.Controller
             int x = -1;
             if (prob == 3)
             {
-                x = rand.Next(0, hardCodedList.Count - 1);   
+                x = 0 > hardCodedList.Count - 1 ? 0 : rand.Next(0, hardCodedList.Count - 1);   
             }
             //// Step 1: choose the rest of the hardcoded suspects
 
             List<HardCodedSuspect> restHarCoded = this.container.HardCodedSuspects.Where(p => !idsHardCoded.Contains(p.HardCodedSuspecId)).ToList();
             do
             {
-                index = rand.Next(0, restHarCoded.Count - 1);
+                index = 0 > restHarCoded.Count - 1 ? 0 : rand.Next(0, restHarCoded.Count - 1);
                 hard = restHarCoded.ElementAt(index);
                 if (!idsHardCoded.Contains(hard.HardCodedSuspecId))
                 {
@@ -660,7 +698,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     do
                     {
-                        index = rand.Next(0, amountHardCodedSuspects);
+                        index = 0 > amountHardCodedSuspects ? 0 : rand.Next(0, amountHardCodedSuspects);
                         auxSuspect = hardCodeSuspects.ElementAt(index);
 
                         propS = property.Name;
@@ -691,7 +729,7 @@ namespace InterpoolCloudWebRole.Controller
                         string value = (string)info.GetValue(hardCodeS, null);
                         if (!privatesProperties.Contains(prop) && null == value)
                         {
-                            index = rand.Next(0, game.PossibleSuspect.Count - 1);
+                            index = 0 > game.PossibleSuspect.Count - 1 ? 0 : rand.Next(0, game.PossibleSuspect.Count - 1);
                             Suspect realSuspect = game.PossibleSuspect.ToList().ElementAt(index);
                             newValue = (string)info.GetValue(realSuspect, null);
                                                       
@@ -808,10 +846,17 @@ namespace InterpoolCloudWebRole.Controller
             for (i = 0; i < Constants.NumberLastCity - 1; i++)
             {
                 /* get the Current NodePath  */
-                currentNodePath = g.NodePath.Where(cp => cp.NodePathOrder == i);
-                cnp = currentNodePath.First();
+                IEnumerable<NodePath> iCnp = g.NodePath.Where(cp => cp.NodePathOrder == i);
+                if (iCnp != null && iCnp.Count() != 0)
+                {
+                    cnp = iCnp.First();
+                }
+                else
+                {
+                    this.RegisterLog("CreateClue: There is no NodePath with this order", null, "error", "0");
+                    throw new GameException("There is no NodePath with this order", new Exception());
+                }
                 r = new Random();
-
                 /* get the amount of caracteristic of the suspect by NodePath  */
                 rnd = r.Next(0, 3);
                 while (amountCharacteristicsSuspects[rnd] == -1)
@@ -835,7 +880,16 @@ namespace InterpoolCloudWebRole.Controller
                 c3.City = cnp.City;
 
                 /* if i have to put characteristics on the clue of the suspect */
-                famous = cnp.Famous.First();
+                if (cnp.Famous != null && cnp.Famous.Count() != 0)
+                {
+                    famous = cnp.Famous.First();
+                }
+                else
+                {
+                    this.RegisterLog("CreateClue: There is no Famous in this node", null, "error", "0");
+                    throw new GameException("There is no Famous in this node", new Exception());
+                }
+                
                 c3.Famous = famous;
                 
                 if (characteristicsSuspect != 0)
@@ -906,7 +960,18 @@ namespace InterpoolCloudWebRole.Controller
                 Clue c1 = new Clue();
 
                 /* get the static cityProperty for the nextCity */
-                CityProperty cps = nextCity.CityProperty.Where(qcs => qcs.Dyn == false).First();
+                CityProperty cps;
+                IEnumerable<CityProperty> iCps = nextCity.CityProperty.Where(qcs => qcs.Dyn == false);
+                if (iCps != null && iCps.Count() != 0)
+                {
+                    cps = iCps.First();
+                }
+                else
+                {
+                    this.RegisterLog("CreateClue: There is no dynamic CityProperty for next City", null, "error", "0");
+                    throw new GameException("There is no dynamic CityProperty for next City", new Exception());
+                }
+               
 
                 /* set de city */
                 c1.City = cnp.City;
@@ -918,7 +983,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First().NewContent != null)
                     {
-                        newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueContent, this.container) + " '" + famous.New.First().NewContent + "'.";
+                        newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueFamousContent, this.container) + " '" + famous.New.First().NewContent + "'.";
                         c1.ClueContent = staticProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + newFamous;
                     }
                     else
@@ -932,7 +997,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
-                        newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueContent, this.container) + " '" + famous.New.First().NewContent + "'.";
+                        newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueFamousContent, this.container) + " '" + famous.New.First().NewContent + "'.";
                         c1.ClueContent = staticProperty + " " + newFamous;
                     }
                     else
@@ -948,7 +1013,15 @@ namespace InterpoolCloudWebRole.Controller
             }
 
             currentNodePath = g.NodePath.Where(cp => cp.NodePathOrder == Constants.NumberLastCity - 1);
-            cnp = currentNodePath.First();
+            if (currentNodePath != null && currentNodePath.Count() != 0)
+            {
+                cnp = currentNodePath.First();
+            }
+            else
+            {
+                this.RegisterLog("CreateClue: There is no NodePath with this order", null, "error", "0");
+                throw new GameException("There is no NodePath with this order", new Exception());
+            }
             /* build the clues for the last city*/
             Clue lastClue1 = new Clue();
             /* set de city */
@@ -1002,7 +1075,16 @@ namespace InterpoolCloudWebRole.Controller
             IEnumerable<NodePath> nextNodePath = from nodePath in g.NodePath
                                                  where nodePath.NodePathOrder == orderNodePath
                                                  select nodePath;
-            return nextNodePath.First().City;
+            if (nextNodePath != null && nextNodePath.Count() != 0)
+            {
+                return nextNodePath.First().City;
+            }
+            else
+            {
+                this.RegisterLog("NextCity: There is no nextCity in this node", null, "error", "0");
+                throw new GameException("There is no nextCity in this node", new Exception());
+            }
+            
         }
 
         /// <summary>
@@ -1075,23 +1157,33 @@ namespace InterpoolCloudWebRole.Controller
                         if (game.User.Level.LevelNumber == Constants.MaxLevels)
                         {
                             // the user win, and the game is finish
-                            RegisterLog("user_win", null, "ok", game.User.UserLoginId);
+                            this.RegisterLog("user_win", null, "ok", game.User.UserLoginId);
                         }
                         else
                         {
                             // i have to advance level
                             User user = game.User;
-                            Level newLevel = this.container.Levels.Where(l => l.LevelNumber == (user.Level.LevelNumber + 1)).First();
+                            Level newLevel;
+                            IQueryable<Level> inewLevel = this.container.Levels.Where(l => l.LevelNumber == (user.Level.LevelNumber + 1));
+                            if (inewLevel != null && inewLevel.Count() != 0)
+                            {
+                                newLevel = inewLevel.First();
+                            }
+                            else
+                            {
+                                this.RegisterLog("Arrest: There is no Level with this number", null, "error", "0");
+                                throw new GameException("There is no Level with this number", new Exception());
+                            }
                             user.SubLevel = 0;
                             user.Level = newLevel;
-                            RegisterLog("user_advanceLevel", null, "ok", user.UserLoginId);
+                            this.RegisterLog("user_advanceLevel", null, "ok", user.UserLoginId);
                         }
                     }
                     else
                     {
                         // advance the subLevel
                         game.User.SubLevel++;
-                        RegisterLog("user_advanceSubLevel", null, "ok", game.User.UserLoginId);
+                        this.RegisterLog("user_advanceSubLevel", null, "ok", game.User.UserLoginId);
                     }
 
                     clue.States = DataClue.State.WIN;
@@ -1104,17 +1196,17 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     // wrong order of arrest
                     clue.States = DataClue.State.LOSE_EOAW;
-                    RegisterLog("user_emit_wrong_order_of_arrest", null, "ok", game.User.UserLoginId);
+                    this.RegisterLog("user_emit_wrong_order_of_arrest", null, "ok", game.User.UserLoginId);
                 }
             }
             else
             {
                 // no emit order of arrest
                 clue.States = DataClue.State.LOSE_NEOA;
-                RegisterLog("user_no_emit_order_of_arrest", null, "ok", game.User.UserLoginId);
+                this.RegisterLog("user_no_emit_order_of_arrest", null, "ok", game.User.UserLoginId);
             }
 
-            clue.GameInfo = GetGameInfo(game, clue.States);
+            clue.GameInfo = this.GetGameInfo(game, clue.States);
             DeleteGame(game.User);
             this.container.SaveChanges();
             return false;
@@ -1129,6 +1221,11 @@ namespace InterpoolCloudWebRole.Controller
         {
             DataManager dm = new DataManager();
             Game game = user.Game;
+            if (game == null) 
+            {
+                throw new GameException("No exist game to delete", new Exception());
+            }
+
             ////user.Game = null;
             for (int i = Constants.NumberLastCity - 1; i >= 0; i--)
             {
@@ -1155,7 +1252,7 @@ namespace InterpoolCloudWebRole.Controller
             }
 
             ////game.NodePath = null;
-            //this.container.DeleteObject(game.NodePath);
+            ////this.container.DeleteObject(game.NodePath);
             OrderOfArrest order = game.OrderOfArrest;
             game.OrderOfArrest = null;
             if (order != null)
@@ -1175,7 +1272,7 @@ namespace InterpoolCloudWebRole.Controller
             
             for (int j = Constants.MaxSuspects + Constants.AmountHardCodeSuspects - 2; j >= 0; j--)
             {
-                //game.PossibleSuspect.Remove(game.PossibleSuspect.ElementAt(j));
+                ////game.PossibleSuspect.Remove(game.PossibleSuspect.ElementAt(j));
                 this.container.DeleteObject(game.PossibleSuspect.ElementAt(j));
             }
             game.User = null;
@@ -1326,7 +1423,7 @@ namespace InterpoolCloudWebRole.Controller
             log.LogStackTrace = e == null ? null : e.StackTrace;
             log.LogType = type;
             log.UserLogin = userLogin;
-            log.Time =   DateTime.Now;
+            log.Time = DateTime.Now;
             container.AddToLogs(log);
             container.SaveChanges();
             container.Dispose();
@@ -1343,7 +1440,7 @@ namespace InterpoolCloudWebRole.Controller
             int i = 0;
 
             Suspect gameSuspect = null;
-            foreach(User user in users)
+            foreach (User user in users)
             {
                 if (i >= (Constants.MaxSuspects - 1) && gameSuspect != null)
                 {
@@ -1431,7 +1528,7 @@ namespace InterpoolCloudWebRole.Controller
 
             if (state == DataClue.State.WIN)
             {
-                //info.ScoreWin = 
+                ////info.ScoreWin = 
                 TimeSpan timeSpan = game.DeadLine.Subtract(game.CurrentTime);
                 info.DiffInDays = timeSpan.Days;
                 info.DiffInMinutes = timeSpan.Minutes;
