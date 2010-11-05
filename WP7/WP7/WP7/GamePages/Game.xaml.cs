@@ -16,10 +16,11 @@
 
     public partial class Game : PhoneApplicationPage
     {
+        private GameManager gm = GameManager.getInstance();
+
         public Game()
         {
-            InitializeComponent();
-            GameManager gm = GameManager.getInstance();
+            InitializeComponent();            
             if (gm.ShowAnimation == true)
                 ToastyStoryboard.Begin();
             gm.ShowAnimation = false;
@@ -37,26 +38,26 @@
 
 		private void Files_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new Uri("/GamePages/Filter.xaml", UriKind.RelativeOrAbsolute));    
+            if (!gm.EmitOrder)
+			    NavigationService.Navigate(new Uri("/GamePages/Filter.xaml", UriKind.RelativeOrAbsolute));
+            else
+                NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
 		}
 
 		private void Laptop_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			GameManager gm = GameManager.getInstance();
+		{			
             gm.SetFamousIndex(2);
             NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
 		}
 
 		private void Newspaper_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			GameManager gm = GameManager.getInstance();
+		{			
             gm.SetFamousIndex(1);
 			NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
 		}
 
 		private void Phone_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			GameManager gm = GameManager.getInstance();
+		{			
             gm.SetFamousIndex(0);
             NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
 		}

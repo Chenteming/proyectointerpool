@@ -32,25 +32,20 @@
 		
         public Filter()
         {			
-            InitializeComponent();
-            if (gm.EmitOrder)
-            {
-                AnimationPage.Begin();
-                ////Change the language of the page            
-                if (this.language.GetXDoc() != null)
-                    this.language.TranslatePage(this);
-                this.client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(this.client_FilterSuspectsCompleted);
-                DataFacebookUser dfu = new DataFacebookUser();
-                this.client.FilterSuspectsAsync(this.gm.UserId, dfu);
-                this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-                this.client.CloseAsync();
-                filters = new string[Constants.MAX_FILTERFIELD];
-                this.updateFilters();
-                ComboList.Visibility = Visibility.Collapsed;
-            }
-            else {
-                NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
-            }
+            InitializeComponent();            
+            AnimationPage.Begin();
+            ////Change the language of the page            
+            if (this.language.GetXDoc() != null)
+                this.language.TranslatePage(this);
+            this.client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(this.client_FilterSuspectsCompleted);
+            DataFacebookUser dfu = new DataFacebookUser();
+            this.client.FilterSuspectsAsync(this.gm.UserId, dfu);
+            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            this.client.CloseAsync();
+            filters = new string[Constants.MAX_FILTERFIELD];
+            this.updateFilters();
+            ComboList.Visibility = Visibility.Collapsed;
+                   
         }
 
         void updateFilters() {
@@ -70,8 +65,8 @@
         void client_FilterSuspectsCompleted(object sender, FilterSuspectsCompletedEventArgs e)
         {
             gm.CurrentDateTime = e.Result.CurrentDate;
-            if (e.Result.CurrentDate.CompareTo(gm.DeadLineDateTime) == 1)
-                NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
+            /*if (e.Result.CurrentDate.CompareTo(gm.DeadLineDateTime) == 1)
+                NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));*/
             List<DataFacebookUser> dfu = e.Result.ListFacebookUser.ToList();
             this.gender = new List<string>();
             this.film = new List<string>();
