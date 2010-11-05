@@ -29,7 +29,6 @@
             InitializeComponent();
             this.coordX = new double[Constants.MAX_CITIES];
             this.coordY = new double[Constants.MAX_CITIES];
-
 			AnimationPage.Begin();
             this.language = LanguageManager.GetInstance();
             if (this.language.GetXDoc() != null)

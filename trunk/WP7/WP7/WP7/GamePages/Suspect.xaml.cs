@@ -122,10 +122,13 @@
             client.EmitOrderOfArrestAsync(gm.UserId, this.dfbuList.ElementAt(index).IdFriend);
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
-            Emit.IsEnabled = false;
-            MessageBox.Show("Se ha emitido una orden de arresto para " + Name_Suspect.Text);
+            Emit.IsEnabled = false;            
             gm.EmitOrder = true;
+            string[] filterField = gm.GetFilterField();
+            filterField[0] = this.dfbuList.ElementAt(index).FirstName;
+            filterField[1] = this.dfbuList.ElementAt(index).LastName;
             gm.PictureLink = this.dfbuList.ElementAt(index).PictureLink;
+            MessageBox.Show("Se ha emitido una orden de arresto para " + Name_Suspect.Text);
             NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));            
         }
 

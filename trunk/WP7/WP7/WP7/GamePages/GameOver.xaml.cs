@@ -30,13 +30,11 @@ namespace WP7
 		
 		void gameOverStoryboard_Completed(object sender, EventArgs e)
         {
-            NameSuspectText.Text = gm.Data.GameInfo.SuspectName;
             ScoreText.Text = gm.Data.GameInfo.Score.ToString();
             TotalText.Text = gm.Data.GameInfo.ScoreWin.ToString();
             TimeLeftText.Text = gm.Data.GameInfo.DiffInDays.ToString() + ":" + gm.Data.GameInfo.DiffInMinutes.ToString() + 
                 ":" + gm.Data.GameInfo.DiffInseconds.ToString();
             NewLevelText.Text = gm.Data.GameInfo.newLevel.ToString();
-
             switch (animation)
             {
                 case 0:
