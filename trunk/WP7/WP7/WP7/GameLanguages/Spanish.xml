@@ -53,4 +53,7 @@
         <control name="languageEnglish" Text="Inglés"/>
         <control name="languageSpanish" Text="Español"/>
     </class>
+	<class name="Start" Title="Start">
+        <control name="GoButton" Content="JUGAR!"/>
+    </class>
 </language>
