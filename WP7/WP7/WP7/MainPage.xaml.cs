@@ -76,7 +76,8 @@
             gm.Top = dc.Top;
             gm.DeadLineDateTime = dc.DeadLine;
             this.gm.SetCurrentCity(dc.NameCity);
-            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
+			NavigationService.Navigate(new Uri("/GamePages/Start.xaml", UriKind.RelativeOrAbsolute));
+            ////NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void Setting_Click(object sender, RoutedEventArgs e)
@@ -91,7 +92,6 @@
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {		
 			////Usando el mail de FACEBOOK
-            gm.UserEmail = "letyvila@hotmail.com";
 			client.GetUserIdFacebookAsync(gm.UserEmail);
             this.client.GetUserIdFacebookCompleted += new EventHandler<GetUserIdFacebookCompletedEventArgs>(client_GetUserIdFacebookCompleted);
             ////NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
