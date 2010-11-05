@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EE1469AF-E0D7-4CCD-9330-3E54BDDD54FF}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WP7</RootNamespace>
+    <AssemblyName>WP7</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>WP7.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>WP7.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20901.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=3.7.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\..\..\..\..\samples\WP7ChildWindow\WindowsPhoneApplication2\Bin\Debug\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=3.7.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsPhoneApplication2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\..\samples\WP7ChildWindow\WindowsPhoneApplication2\Bin\Debug\WindowsPhoneApplication2.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameClasses\GameManager.cs" />
+    <Compile Include="GameClasses\LanguageManager.cs" />
+    <Compile Include="GamePages\Finish.xaml.cs">
+      <DependentUpon>Finish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\GameOver.xaml.cs">
+      <DependentUpon>GameOver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\Options.xaml.cs">
+      <DependentUpon>Options.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\Start.xaml.cs">
+      <DependentUpon>Start.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\LoginScreenControl.xaml.cs">
+      <DependentUpon>LoginScreenControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\MessageInterpoolControl.xaml.cs">
+      <DependentUpon>MessageInterpoolControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\City.xaml.cs">
+      <DependentUpon>City.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\Famous.xaml.cs">
+      <DependentUpon>Famous.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\Filter.xaml.cs">
+      <DependentUpon>Filter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePages\Suspect.xaml.cs">
+      <DependentUpon>Suspect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Constants.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="GameControls\LoginScreenControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GameControls\MessageInterpoolControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\City.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\Famous.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\Filter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\Finish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\Game.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\GameOver.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\Login.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\Options.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GamePages\Start.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GamePages\Suspect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+    <None Include="Service References\ServiceReference\InterpoolWP7.wsdl" />
+    <None Include="Service References\ServiceReference\InterpoolWP7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP71.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP72.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP73.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP74.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP75.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP76.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataCity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataClue.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFamous.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataListFacebookUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <Resource Include="Fonts\fr-bold.ttf" />
+    <Resource Include="GameImages\aeroplane.png" />
+    <Resource Include="GameImages\archive.png" />
+    <Resource Include="GameImages\CancelIcon.png" />
+    <Resource Include="GameImages\cartel.png" />
+    <Resource Include="GameImages\Clip.png" />
+    <Resource Include="GameImages\ContinueIcon.png" />
+    <Resource Include="GameImages\Detective.png" />
+    <Resource Include="GameImages\door.png" />
+    <Resource Include="GameImages\earth.png" />
+    <Resource Include="GameImages\FilterScreen2.png" />
+    <Resource Include="FamousImages\amsterdam_arjen_robben.jpg" />
+    <Resource Include="FamousImages\amsterdam_dj_tiesto.jpg" />
+    <Resource Include="FamousImages\amsterdam_frank_rijkaard.jpg" />
+    <Resource Include="FamousImages\auckland_keith_urban.jpg" />
+    <Resource Include="FamousImages\auckland_peter_jackson.jpg" />
+    <Resource Include="FamousImages\auckland_russell_crowe.jpg" />
+    <Resource Include="FamousImages\bangkok_chuan_leekpai.jpg" />
+    <Resource Include="FamousImages\bangkok_paradorn_srichaphan.jpg" />
+    <Resource Include="FamousImages\bangkok_thaksin_shinawatra.jpg" />
+    <Resource Include="FamousImages\barcelona_joan_manuel_serrat.jpg" />
+    <Resource Include="FamousImages\barcelona_juan_carlos.jpg" />
+    <Resource Include="FamousImages\barcelona_penelope_cruz.jpg" />
+    <Resource Include="FamousImages\berlin_franz_beckenbauer.jpg" />
+    <Resource Include="FamousImages\berlin_heidi_klum.jpg" />
+    <Resource Include="FamousImages\berlin_michael_schumacher.jpg" />
+    <Resource Include="FamousImages\buenos_aires_leo_messi.jpg" />
+    <Resource Include="FamousImages\buenos_aires_maradona.jpg" />
+    <Resource Include="FamousImages\buenos_aires_valeria_mazza.jpg" />
+    <Resource Include="FamousImages\cape_town_charlize_theron.jpg" />
+    <Resource Include="FamousImages\cape_town_nelson_mandela.jpg" />
+    <Resource Include="FamousImages\cape_town_thabo_mbeki.jpg" />
+    <Resource Include="FamousImages\copenhague_caroline_wozniacki.jpg" />
+    <Resource Include="FamousImages\copenhague_helena_christensen.jpg" />
+    <Resource Include="FamousImages\copenhague_lars_von_trier.jpg" />
+    <Resource Include="FamousImages\cuzco_alberto_fujimori.jpg" />
+    <Resource Include="FamousImages\cuzco_juan_manuel_vargas.jpg" />
+    <Resource Include="FamousImages\cuzco_mario_vargas_llosa.jpg" />
+    <Resource Include="FamousImages\dubai_mansour_bin_zayed.jpg" />
+    <Resource Include="FamousImages\dubai_rashid_bin.jpg" />
+    <Resource Include="FamousImages\dubai_sulaiman_al_fahim.jpg" />
+    <Resource Include="FamousImages\dublin_bono.jpg" />
+    <Resource Include="FamousImages\dublin_enya.jpg" />
+    <Resource Include="FamousImages\dublin_eoin_colfer.jpg" />
+    <Resource Include="FamousImages\el_cairo_ahmed_nazif.jpg" />
+    <Resource Include="FamousImages\el_cairo_claude_francois.jpg" />
+    <Resource Include="FamousImages\el_cairo_omar_sharif.jpg" />
+    <Resource Include="FamousImages\hong_kong_jackie_chan.jpg" />
+    <Resource Include="FamousImages\hong_kong_jet_li.jpg" />
+    <Resource Include="FamousImages\hong_kong_yao_ming.jpg" />
+    <Resource Include="FamousImages\jerusalem_bar_refaeli.jpg" />
+    <Resource Include="FamousImages\jerusalem_benny_hinn.jpg" />
+    <Resource Include="FamousImages\jerusalem_ralph_bakshi.jpg" />
+    <Resource Include="FamousImages\katmandu_arjun_ kumar.jpg" />
+    <Resource Include="FamousImages\katmandu_dichen_lachman.jpg" />
+    <Resource Include="FamousImages\katmandu_mohammad_sharif.jpg" />
+    <Resource Include="FamousImages\la_habana_fidel_castro.jpg" />
+    <Resource Include="FamousImages\la_habana_gloria_estefan.jpg" />
+    <Resource Include="FamousImages\la_habana_vida_guerra.jpg" />
+    <Resource Include="FamousImages\londres_david_beckham.jpg" />
+    <Resource Include="FamousImages\londres_eric_clapton.jpg" />
+    <Resource Include="FamousImages\londres_noami_campbell.jpg" />
+    <Resource Include="FamousImages\madrid_enrique_iglesias.jpg" />
+    <Resource Include="FamousImages\madrid_rafael_nadal.jpg" />
+    <Resource Include="FamousImages\madrid_rodriguez_zapatero.jpg" />
+    <Resource Include="FamousImages\marrakech_gad_elmaleh.jpg" />
+    <Resource Include="FamousImages\marrakech_hicham_arazi.jpg" />
+    <Resource Include="FamousImages\marrakech_mohammed_vi.jpg" />
+    <Resource Include="FamousImages\mexico_carlos_santana.jpg" />
+    <Resource Include="FamousImages\mexico_paulina_rubio.jpg" />
+    <Resource Include="FamousImages\mexico_thalia.jpg" />
+    <Resource Include="FamousImages\montevideo_diego_forlan.jpg" />
+    <Resource Include="FamousImages\montevideo_eduardo_galeano.jpg" />
+    <Resource Include="FamousImages\montevideo_natalia_oreiro.jpg" />
+    <Resource Include="FamousImages\moscu_anna_kournikova.jpg" />
+    <Resource Include="FamousImages\moscu_maria_sharapova.jpg" />
+    <Resource Include="FamousImages\moscu_vladimir_putin.jpg" />
+    <Resource Include="FamousImages\new_york_barack_obama.jpg" />
+    <Resource Include="FamousImages\new_york_eminem.jpg" />
+    <Resource Include="FamousImages\new_york_lady_gaga.jpg" />
+    <Resource Include="FamousImages\nueva_delhi_aishwarya_rai.jpg" />
+    <Resource Include="FamousImages\nueva_delhi_salman_khan.jpg" />
+    <Resource Include="FamousImages\nueva_delhi_sania_mirza.jpg" />
+    <Resource Include="FamousImages\paris_nicolas_sarkozy.jpg" />
+    <Resource Include="FamousImages\paris_roman_polanski.jpg" />
+    <Resource Include="FamousImages\paris_zinedine_zidane.jpg" />
+    <Resource Include="FamousImages\pekin_bai_ling.jpg" />
+    <Resource Include="FamousImages\pekin_hu_jintao.jpg" />
+    <Resource Include="FamousImages\pekin_yuen_biao.jpg" />
+    <Resource Include="FamousImages\praga_martina_navratilova.jpg" />
+    <Resource Include="FamousImages\praga_milos_forman.jpg" />
+    <Resource Include="FamousImages\praga_veronica_zemanova.jpg" />
+    <Resource Include="FamousImages\rio_de_janeiro_gisele_bundchen.jpg" />
+    <Resource Include="FamousImages\rio_de_janeiro_pele.jpg" />
+    <Resource Include="FamousImages\rio_de_janeiro_ronaldo.jpg" />
+    <Resource Include="FamousImages\roma_carla_bruni.jpg" />
+    <Resource Include="FamousImages\roma_fabio_cannavaro.jpg" />
+    <Resource Include="FamousImages\roma_silvio_berlusconi.jpg" />
+    <Resource Include="FamousImages\seul_chan-wook_park.jpg" />
+    <Resource Include="FamousImages\seul_james_kyson_lee.jpg" />
+    <Resource Include="FamousImages\seul_yunjin_kim.jpg" />
+    <Resource Include="FamousImages\singapur_fann_wong.jpg" />
+    <Resource Include="FamousImages\singapur_jackson_rathbone.jpg" />
+    <Resource Include="FamousImages\singapur_lee_kuan_yew.jpg" />
+    <Resource Include="FamousImages\sydney_kylie_minogue.jpg" />
+    <Resource Include="FamousImages\sydney_mark_webber.jpg" />
+    <Resource Include="FamousImages\sydney_nicole_kidman.jpg" />
+    <Resource Include="FamousImages\tokio_junichiro_koizumi.jpg" />
+    <Resource Include="FamousImages\tokio_koda_kumi.jpg" />
+    <Resource Include="FamousImages\tokio_miyavi.jpg" />
+    <Resource Include="GameImages\LoginScreen.jpg" />
+    <Resource Include="GameImages\GameOver.png" />
+    <Resource Include="GameImages\ComicBaloon.png" />
+    <Resource Include="GameImages\Detective2.png" />
+    <Resource Include="GameImages\mainScreen1.png" />
+    <Resource Include="GameImages\Message.png" />
+    <Resource Include="GameImages\newspaper.png" />
+    <Resource Include="GameImages\pc.png" />
+    <Resource Include="GameImages\phone.png" />
+    <Resource Include="GameImages\Sneaky.png" />
+    <Resource Include="GameImages\Toasty.png" />
+    <Resource Include="GameImages\Bubble.png" />
+    <Content Include="GameLanguages\English.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="GameLanguages\Spanish.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="GameSounds\intro.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GameSounds\plane_sound.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="interpool_Images\pantalla_1_Images\Capa 1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="GameImages\LoginScreen2.jpg" />
+    <Resource Include="GameImages\MailIcon.png" />
+    <Resource Include="GameImages\AcceptIcon.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\building.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\calendario.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\gender.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\line.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\movies.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\music.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\tv.png" />
+    <Resource Include="mtbaker3.jpg" />
+    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7.disco" />
+    <Content Include="ServiceReferences.ClientConfig">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <BlendEmbeddedFont Include="Fonts\BuxtonSketch.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+      <Characters>
+      </Characters>
+      <Uppercase>True</Uppercase>
+      <Lowercase>True</Lowercase>
+      <Numbers>True</Numbers>
+      <Punctuation>True</Punctuation>
+    </BlendEmbeddedFont>
+    <Resource Include="GameImages\CityScreen.jpg" />
+    <Resource Include="GameImages\FamousScreen.jpg" />
+    <Resource Include="GameImages\FilterScreen.png" />
+    <Resource Include="GameImages\FormScreen.jpg" />
+    <Resource Include="GameImages\InterpoolScreen.jpg" />
+    <Resource Include="GameImages\OfficeScreen.jpg" />
+    <Resource Include="GameImages\SuspectScreen.jpg" />
+    <Content Include="SplashScreenImage.jpg" />
+    <Resource Include="interpool_Images\Capa 1.png" />
+    <Resource Include="interpool_Images\Capa 2.png" />
+    <Resource Include="interpool_Images\Capa 3.png" />
+    <Resource Include="interpool_Images\Capa 4.png" />
+    <Resource Include="interpool_Images\Capa 5.png" />
+    <Resource Include="interpool_Images\Capa 6.png" />
+    <Resource Include="interpool_Images\Capa 7.png" />
+    <Resource Include="interpool_Images\Forma 1 copia 2.png" />
+    <Resource Include="interpool_Images\Forma 1 copia 3.png" />
+    <Resource Include="interpool_Images\Forma 1 copia 4.png" />
+    <Resource Include="interpool_Images\Forma 1 copia.png" />
+    <Resource Include="interpool_Images\Forma 1.png" />
+    <Resource Include="interpool_Images\Forma 2 copia 2.png" />
+    <Resource Include="interpool_Images\Forma 2 copia 3.png" />
+    <Resource Include="interpool_Images\Forma 2 copia 4.png" />
+    <Resource Include="interpool_Images\Forma 2 copia.png" />
+    <Resource Include="interpool_Images\Forma 2.png" />
+    <Resource Include="interpool_Images\interp    .png" />
+    <Resource Include="interpool_Images\l.png" />
+    <Resource Include="interpool_Images\oo.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 2.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 3.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 4.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 5.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 6.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia 7.png" />
+    <Resource Include="interpool_Images\pantalla_1_Images\Fondo copia.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Capa 1.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Fondo copia.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Fondo.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Forma 2 copia.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\Forma 2.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\mapamundi.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\punto_ciudades blue.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\punto_ciudades green.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\punto_ciudades red.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\punto_ciudades white.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\punto_ciudades yellow.png" />
+    <Resource Include="interpool_Images\pantalla_3_Images\rectangle.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\berlin_heidi_klum.jpg" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Capa 1.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Capa 2.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Capa 3.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\file1.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Fondo.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Forma 1 copia.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\Forma 1.png" />
+    <Resource Include="interpool_Images\pantalla_5_Images\crazy13.jpg" />
+    <Resource Include="interpool_Images\pantalla_5_Images\globoCharla copia.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 1.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 2.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 3.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 4 copia 2.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 4 copia 3.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 4 copia 4.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 4 copia.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Capa 4.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Fondo.png" />
+    <Resource Include="interpool_Images\pantalla_6_Images\Forma 2 copia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\WindowsPhone\v7.0\Microsoft.Expression.Blend.WindowsPhone.targets" />
+</Project>
