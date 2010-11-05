@@ -118,10 +118,10 @@
         private void Emit_Click(object sender, RoutedEventArgs e)
         {
             InterpoolWP7Client client = new InterpoolWP7Client();
-            ////client.EmitOrderOfArrestCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_EmitOrderOfArrestCompleted);
-            ////client.EmitOrderOfArrestAsync(gm.UserId, this.dfbuList.ElementAt(index).IdFriend);
-            ////client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            ////client.CloseAsync();
+            client.EmitOrderOfArrestCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_EmitOrderOfArrestCompleted);
+            client.EmitOrderOfArrestAsync(gm.UserId, this.dfbuList.ElementAt(index).IdFriend);
+            client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
+            client.CloseAsync();
             Emit.IsEnabled = false;
             MessageBox.Show("Se ha emitido una orden de arresto para " + Name_Suspect.Text);
             gm.EmitOrder = true;
