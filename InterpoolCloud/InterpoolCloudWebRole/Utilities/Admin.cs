@@ -119,9 +119,9 @@ namespace InterpoolCloudWebRole.Utilities
             {
                 resultado = QuitarTildes(resultado);
                 country = QuitarTildes(country);
-                resultado = ReemplazarTexto(resultado, "Este País", country);
+                resultado = ReemplazarTexto(resultado,Constants.ReplaceNombrePais, country);
                 city = QuitarTildes(city);
-                return ReemplazarTexto(resultado, "Esta Ciudad", city);
+                return ReemplazarTexto(resultado, Constants.ReplaceNombreCiudad, city);
             }
 
             return resultado;
@@ -164,7 +164,7 @@ namespace InterpoolCloudWebRole.Utilities
 
             resultado = QuitarTildes(resultado);
             famous = QuitarTildes(famous);
-            return ReemplazarTexto(resultado, "Yo", famous);
+            return ReemplazarTexto(resultado, Constants.ReplaceNombreFamoso, famous);
         }
         #endregion  FindFamous
 
@@ -299,6 +299,21 @@ namespace InterpoolCloudWebRole.Utilities
                             break;
                         case 'ú':
                             arr[i] = 'u';
+                            break;
+                        case 'Á':
+                            arr[i] = 'A';
+                            break;
+                        case 'É':
+                            arr[i] = 'E';
+                            break;
+                        case 'Í':
+                            arr[i] = 'I';
+                            break;
+                        case 'Ó':
+                            arr[i] = 'O';
+                            break;
+                        case 'Ú':
+                            arr[i] = 'U';
                             break;
                     }
                 }
