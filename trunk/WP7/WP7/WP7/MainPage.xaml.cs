@@ -99,16 +99,22 @@
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new Uri("/GamePages/Help.xaml", UriKind.RelativeOrAbsolute));
         }
 
    	 	private void ExitButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-        	NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
+        	////NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
         }
 
    	 	private void LoginButton_Click(object sender, System.Windows.RoutedEventArgs e)
    	 	{
 			NavigationService.Navigate(new Uri("/GamePages/Login.xaml", UriKind.RelativeOrAbsolute));
    	 	}
+
+        private void CreditButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/GamePages/Credits.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }
