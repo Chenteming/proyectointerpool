@@ -104,6 +104,13 @@ namespace InterpoolCloudWebRole.Controller
 
         /// <summary>
         /// Description for Method.</summary>
+        /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        DataUserInfo GetUserInfo(string userLoginId);
+
+        /// <summary>
+        /// Description for Method.</summary>
         /// <param name="game"> Parameter description for game goes here</param>
         /// <param name="privatesProperties"> Parameter description for privatesProperties goes here</param> 
         void CreateHardCodeSuspects(Game game, List<string> privatesProperties);

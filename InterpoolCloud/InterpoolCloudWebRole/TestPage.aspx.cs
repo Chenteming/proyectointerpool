@@ -133,7 +133,8 @@ namespace InterpoolCloudWebRole
             ////string userId = dm.GetLastUserIdFacebook(dm.GetContainer());
             string currentUser = this.TextBoxEmail.Text;
             this.log.Text = "Comienzo a procesar Start Game... ";
-            string userId = dm.GetUserIdFacebookByLoginId(currentUser, dm.GetContainer());
+            DataUserInfo userInfo = dm.GetUserInfoByLoginId(currentUser, dm.GetContainer());
+            string userId = userInfo.UserIdFacebook;
             IProcessController ipc = new ProcessController(dm.GetContainer());
             DataCity dc;
             ipc.StartGame(userId);
@@ -217,6 +218,19 @@ namespace InterpoolCloudWebRole
         protected void Button7_Click(object sender, EventArgs e)
         {
             Admin.LoadFamousData();
+        }
+
+        protected void ButtonUserInfo_Click(object sender, EventArgs e)
+        {
+            this.log.Text = String.Empty;
+            this.log.Text = "Comienzo a procesar el obtener info del usuario... ";
+            InterpoolContainer conteiner = new InterpoolContainer();
+            IDataManager dm = new DataManager();
+            string currentUser = this.TextBoxEmail.Text;
+            DataUserInfo userInfo = dm.GetUserInfoByLoginId(currentUser, dm.GetContainer());
+            Label5.Text = userInfo.FirstName + " " + userInfo.LastName;
+            Label6.Text = userInfo.UserState.ToString();
+            this.log.Text = "Termino de procesar el obtener info del usuario";
         }
     }
 }

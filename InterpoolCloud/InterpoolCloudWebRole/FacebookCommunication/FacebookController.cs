@@ -21,23 +21,14 @@ namespace InterpoolCloudWebRole.FacebookCommunication
     /// </summary>
     public class FacebookController : IFacebookController
     {
-        /*
-        /// <summary>
-        /// Store for the property
-        /// </summary>
-        private Dictionary<string, DataFacebookUser> userIdOauth = new Dictionary<string, DataFacebookUser>();
-        */
-
         /// <summary>
         /// Store for the property
         /// </summary>
         private IDataManager dataManager = new DataManager();
 
-        //// Downloads from Facebook all the information from user and user's friends
-        //// and stores it on the data base.
-
         /// <summary>
-        /// Description for Method.</summary>
+        /// Downloads from Facebook all the information from user and user's friends and stores it on the data base.
+        /// </summary>
         /// <param name="auth"> Parameter description for auth goes here</param>
         /// <param name="game"> Parameter description for game goes here</param>
         /// <param name="context"> Parameter description for context goes here</param>
@@ -82,24 +73,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             }
         }
 
-        /*
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="userId"> Parameter description for userId goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
-        public OAuthFacebook GetOauth(string userId) 
-        {
-            DataFacebookUser fbud;
-            if (this.userIdOauth.TryGetValue(userId, out fbud) == true) 
-            {
-                return fbud.OAuth;
-            }
-
-            return null;
-        }
-        */
-
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="auth"> Parameter description for auth goes here</param>
@@ -116,22 +89,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return userIdFacebook;
         }
 
-        /*
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="name"> Parameter description for name goes here</param>
-        /// <param name="id"> Parameter description for id goes here</param>
-        /// <param name="auth"> Parameter description for auth goes here</param>
-        public void AddFriend(string name, string id, OAuthFacebook auth)
-        {
-            DataFacebookUser fbud = new DataFacebookUser();
-            fbud.OAuth = auth;
-            fbud.UserId = id;
-
-            this.userIdOauth.Add(id, fbud);
-        }
-        */
-
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userId"> Parameter description for userId goes here</param>
@@ -141,7 +98,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         {
             IDataManager dm = new DataManager();
             IQueryable<User> query = dm.GetUserByIdFacebook(dm.GetContainer(), userId);
-            User user;
             if (query.Count() == 0)
             {
                 throw new GameException("error_notExistsUser", null);
@@ -422,8 +378,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return suspect;
         }
 
-        //// TODO: see if this method will stay in this class
-
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="jsonFriendInfo"> Parameter description for jsonFriendInfo goes here</param>
@@ -508,8 +462,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return fbud;                     
         }
 
-        //// TODO: see if this method will stay in this class
-
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="jsonFriendInfo"> Parameter description for jsonFriendInfo goes here</param>
@@ -576,22 +528,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             return friendData;          
         }
             
-        //// TODO: see if this method will stay in this class
-
-        /*
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="userId"> Parameter description for userId goes here</param>
-        /// <returns>
-        /// Return results are described through the returns tag.</returns>
-        private OAuthFacebook GetOAuthFacebook(string userId)
-        {
-            return this.GetOauth(userId);
-        }
-        */
-
-        //// TODO: see if this method will stay in this class
-
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="jsonFriends"> Parameter description for jsonFriends goes here</param>

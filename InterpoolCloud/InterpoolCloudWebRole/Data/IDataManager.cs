@@ -150,5 +150,13 @@ namespace InterpoolCloudWebRole.Data
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         User GetUserByToken(string token, InterpoolContainer context);
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userLoginId"> Parameter description for token goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        DataUserInfo GetUserInfoByLoginId(string userLoginId, InterpoolContainer context);
     }
 }

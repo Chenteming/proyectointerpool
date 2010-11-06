@@ -404,5 +404,62 @@ namespace InterpoolCloudWebRole.Data
                 return null;
             }
         }
+
+        public DataUserInfo GetUserInfoByLoginId(string userLoginId, InterpoolContainer context)
+        {
+            DataUserInfo userInfo = new DataUserInfo()
+            {
+                UserIdFacebook = string.Empty,
+                FirstName = string.Empty,
+                LastName = string.Empty
+            };
+            var usersQuery = context.Users.Where(u => u.UserLoginId == userLoginId);
+            if (usersQuery.Count() > 0)
+            {
+                User user = usersQuery.First();
+                userInfo.UserIdFacebook = user.UserIdFacebook;
+                userInfo.FirstName = user.UserFirstName;
+                userInfo.LastName = user.UserLastName;
+                bool gameExists = context.Games.Where(game => game.User.UserIdFacebook == user.UserIdFacebook).Count() > 0;
+                if (gameExists)
+                {
+                    userInfo.UserState = UserState.REGISTERED_PLAYING;
+                }
+                else
+                {
+                    bool loginRequired = this.UserIsLoginRequired(user.UserTokenFacebook);
+                    if (loginRequired)
+                    {
+                        userInfo.UserState = UserState.REGISTERED_NO_PLAYING_LOGIN_REQUIRED;
+                    }
+                    else
+                    {
+                        userInfo.UserState = UserState.REGISTERED_NO_PLAYING;
+                    }
+                }
+            }
+            else
+            {
+                userInfo.UserState = UserState.NO_REGISTERED;
+            }
+
+            return userInfo;
+        }
+
+        private bool UserIsLoginRequired(string token)
+        {
+            IFacebookController facebookController = new FacebookController();
+            try
+            {
+                // If it doesn't throw an exception then no login is required
+                facebookController.GetUserId(new OAuthFacebook() { Token = token });
+                return false;
+            }
+            catch (Exception e)
+            {
+                return true;
+            }
+            throw new NotImplementedException();
+        }
     }
 }
