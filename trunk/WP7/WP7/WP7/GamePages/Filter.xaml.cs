@@ -179,6 +179,6 @@
             }
             else
                 NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.Relative));*/
-        }
+        }           
     }
 }

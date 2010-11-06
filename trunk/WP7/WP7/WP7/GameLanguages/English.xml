@@ -35,12 +35,6 @@
         <control name="textblock4" Text="TV:"/>
         <control name="textblock5" Text="Cinema:"/>
         <control name="textblock6" Text="Birthday:"/>
-        <control name="genderText" Text="Gender"/>
-        <control name="hometownText" Text="Hometown"/>
-        <control name="musicText" Text="Music"/>
-        <control name="televisionText" Text="TV"/>
-        <control name="cinemaText" Text="Cinema"/>
-        <control name="birthdayText" Text="Birthday"/>
         <control name="filterText" Text="Filter"/>
     </class>
     <class name="Login" Title="Login">
