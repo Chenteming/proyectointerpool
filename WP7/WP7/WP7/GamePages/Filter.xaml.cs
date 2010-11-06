@@ -98,6 +98,7 @@
             {
                 filterField[i] = filters[i];
             }
+
             NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
         }       
 
@@ -114,7 +115,6 @@
 				this.updateFilters();
             }
         }        
-
 
         private void TVButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {

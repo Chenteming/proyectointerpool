@@ -168,7 +168,7 @@
 			double init_Y4 = coordY_cityE;
 			keyframeY4.SetValue(EasingDoubleKeyFrame.ValueProperty, init_frame4);
 			trY4.SetValue(EasingDoubleKeyFrame.ValueProperty, init_Y4);			
-			plane_sound.Play();
+            plane_sound.Play();
 			////Start plane animation 			
 			animacion2.Begin();
             animacion2.Completed += new EventHandler(animacion2_Completed);
@@ -244,7 +244,7 @@
 
         private void closeInterpoolMessage()
         {
-            messageText.Text = "";
+            messageText.Text = string.Empty;
             MessageImage.Visibility = System.Windows.Visibility.Collapsed;
             messageText.Visibility = Visibility.Collapsed;
             YesButton.Visibility = Visibility.Collapsed;
