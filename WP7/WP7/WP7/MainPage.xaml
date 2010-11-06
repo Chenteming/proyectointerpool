@@ -341,7 +341,7 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Button x:Name="CreditButton" Content="Button" Grid.Column="1" Margin="0,-21,-61.444,0" Style="{StaticResource CreditButton}" RenderTransformOrigin="0.5,0.5" Height="78" VerticalAlignment="Top" HorizontalAlignment="Right" Width="189" UseLayoutRounding="False" d:LayoutRounding="Auto" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333">
+            <Button x:Name="CreditButton" Content="Button" Grid.Column="1" Margin="0,-21,-61.444,0" Style="{StaticResource CreditButton}" RenderTransformOrigin="0.5,0.5" Height="78" VerticalAlignment="Top" HorizontalAlignment="Right" Width="189" UseLayoutRounding="False" d:LayoutRounding="Auto" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333" Click="CreditButton_Click">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>
