@@ -45,15 +45,6 @@
             this.gm.UserId = e.Result;
             this.client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
             this.client.StartGameAsync(this.gm.UserId);
-            ////client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
-            ////client.GetCurrentCityAsync(gm.userId);
-            ////client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
-            ////client.CloseAsync();
-
-        }
-
-        private void Play_Click(object sender, RoutedEventArgs e)
-        { 
         }
 
 		//// Asynchronous callbacks for displaying results.
@@ -64,11 +55,9 @@
         void client_StartGameCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             this.client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
-            this.client.GetCurrentCityAsync(this.gm.UserId);
-            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
-            this.client.CloseAsync();
+            this.client.GetCurrentCityAsync(this.gm.UserId);            
         }
-        
+
         void GetCurrentCityCallback(object sender, GetCurrentCityCompletedEventArgs e)
         {
             DataCity dc = (DataCity)e.Result;
@@ -76,12 +65,9 @@
             gm.Top = dc.Top;
             gm.DeadLineDateTime = dc.DeadLine;
             this.gm.SetCurrentCity(dc.NameCity);
-			NavigationService.Navigate(new Uri("/GamePages/Start.xaml", UriKind.RelativeOrAbsolute));
-            ////NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void Setting_Click(object sender, RoutedEventArgs e)
-        {
+            NavigationService.Navigate(new Uri("/GamePages/Start.xaml", UriKind.RelativeOrAbsolute));
+            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
+            this.client.CloseAsync();
         }
 
         private void OptionButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -91,10 +77,9 @@
 
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {		
-			////Usando el mail de FACEBOOK
+			////Usando el mail de FACEBOOK           
 			client.GetUserIdFacebookAsync(gm.UserEmail);
             this.client.GetUserIdFacebookCompleted += new EventHandler<GetUserIdFacebookCompletedEventArgs>(client_GetUserIdFacebookCompleted);
-            ////NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
