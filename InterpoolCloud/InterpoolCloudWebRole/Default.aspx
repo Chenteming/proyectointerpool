@@ -36,64 +36,17 @@
             <ContentTemplate>               
                 <center>
         <div>
-
-                <br />
-                <asp:Label ID="LabelEmail" runat="server" Text="Email Facebook"></asp:Label>
-                <asp:TextBox ID="TextBoxEmail" runat="server"></asp:TextBox>
               <p>
-        
      <table>
      <tr>
-        <td>   
-        <asp:Button ID="StartGame" runat="server" onclick="StartGame_Click" 
-        CssClass="boton"  Text="StartGame" Width="150px" Height="40px" />
-        </td>      
+        
        <td>    
         <asp:Button ID="Newsfamous" runat="server" onclick="NewsFamous_Click" 
             CssClass="boton" Text="News Famous" Width="150px" Height="40px" />
        </td>  
+
      </tr> 
-     <tr>
-        <td>      
-            <asp:Button ID="Login" runat="server"  
-              CssClass="boton" Text="Login" Width="150px" Height="40px" 
-                onclick="Login_Click" />
-        </td> 
-        <td> 
-        <asp:Button ID="DeleteGame" runat="server" Text="Delete Game" 
-            CssClass="boton"  Width="150px" Height="40px" onclick="DeleteGame_Click" />
 
-        </td> 
-        </tr> 
-        <tr>
-        <td>
-            <asp:Button ID="PruebaGetCities" runat="server" CssClass="boton" Text="Prueba GetCities"  Width="150px" Height="40px" onclick="PruebaGetCities_Click" />
-        </td>
-        <td>
-            <asp:Button ID="PruebaTravel" runat="server" 
-            CssClass="boton" Text="Prueba Travel" Width="150px" Height="40px" 
-
-                onclick="PruebaTravel_Click" />
-        </td>
-        </tr>
-        <tr>
-        <td>
-            <asp:Button ID="PruebaEOA" runat="server" 
-
-
-            CssClass="boton" Text="Prueba EOA"  Width="150px" Height="40px" 
-                onclick="PruebaEOA_Click" />
-        </td>
-        <td>
-                <asp:Button ID="PruebaArrestar" runat="server" 
-                 CssClass="boton"   Text="Prueba Arrestar" Width="150px" Height="40px" 
-
-
-
-
-                    onclick="PruebaArrestar_Click" />
-        </td>
-        </tr>
         <tr><td>
             <asp:Label CssClass="labelInfo" ID="pruebaGetCitieslabel" runat="server" Text=""></asp:Label>
         </td>
