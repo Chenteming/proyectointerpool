@@ -428,30 +428,30 @@
         	<Image x:Name="imageQuestionSymbol" Margin="55,4,0,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/Capa 2.png" Stretch="Fill" Height="117" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="94"/>
         	<Image Margin="54,167,191,0" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400" Grid.Column="1" Height="35" VerticalAlignment="Top"/>
         	<Image Margin="54,212,191,197" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400" Grid.Column="1"/>
-        	<Image Margin="54,302,191,107" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Grid.Column="1"/>
         	<Image Margin="54,257,191,152" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400" Grid.Column="1"/>
+        	<Image Margin="54,302,191,107" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Grid.Column="1"/>
         	<Image Margin="54,347,191,62" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Grid.Column="1"/>
         	<Image Margin="54,392,191,17" Grid.Row="1" Source="/WP7;component/interpool_Images/pantalla_6_Images/line.png" Stretch="Fill" Width="400" Grid.Column="1"/>
         	<Button x:Name="TVButton" Content="" HorizontalAlignment="Left" Margin="573,0,0,110" Style="{StaticResource ButtonTV}" Width="65" Click="TVButton_Click" Grid.Row="1" Grid.Column="1" Height="65" VerticalAlignment="Bottom"/>
         	<Button x:Name="CinemaButton" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="476,0,0,50" Grid.Row="1" Style="{StaticResource ButtonCinema}" Width="65" Click="CinemaButton_Click" d:LayoutOverrides="GridBox" Height="65" VerticalAlignment="Bottom"/>
         	<Button x:Name="HometownButton" Content="" HorizontalAlignment="Left" Margin="574,186,0,193" Grid.Row="1" Style="{StaticResource ButtonHometown}" Width="65" Click="HometownButton_Click" Grid.Column="1"/>
         	<Button x:Name="BirthdayButton" Content="" HorizontalAlignment="Left" Margin="574,0,0,13" Grid.Row="1" Style="{StaticResource BirthdayButton}" Width="65" Click="BirthdayButton_Click" Height="65" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Grid.Column="1"/>
-        	<Button x:Name="GenderButton" Content="" HorizontalAlignment="Left" Margin="484,157,0,0" Style="{StaticResource Buttongender}" Width="65" Click="GenderButton_Click" Grid.Column="1" Grid.Row="1" Height="65" VerticalAlignment="Top"/>
+        	<Button x:Name="GenderButton" Content="" HorizontalAlignment="Right" Margin="0,157,96,0" Style="{StaticResource Buttongender}" Width="65" Click="GenderButton_Click" Grid.Column="1" Grid.Row="1" Height="65" VerticalAlignment="Top"/>
         	<Button x:Name="MusicButton" Content="" HorizontalAlignment="Left" Margin="487,0,0,139" Grid.Row="1" Style="{StaticResource ButtonMusic}" Width="65" Click="MusicButton_Click" Grid.Column="1" Height="65" VerticalAlignment="Bottom"/>
-        	<TextBlock x:Name="textblock1" Margin="-68,169,0,0" TextWrapping="Wrap" Text="TextBlock" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="138" />
-        	<TextBlock x:Name="textblock2" Margin="-67,210,0,201" TextWrapping="Wrap" Text="TextBlock" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" />
-        	<TextBlock x:Name="textblock3" Margin="-67,255,0,156" TextWrapping="Wrap" Text="TextBlock" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" />
-        	<TextBlock x:Name="textblock4" Margin="-67,302,0,109" TextWrapping="Wrap" Text="TextBlock" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" />
-        	<TextBlock x:Name="textblock5" Margin="-67,347,0,64" TextWrapping="Wrap" Text="TextBlock" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" />
-        	<TextBlock x:Name="textblock6" Margin="-64,394,0,17" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" Foreground="#FF1D7281" Grid.Column="1" HorizontalAlignment="Left" Width="138"/>
-        	<TextBlock x:Name="GenderText" TextAlignment="Center" Grid.Column="1" Height="34" Margin="54,156,203,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF071518"/>
-        	<TextBlock x:Name="HometownText" TextAlignment="Center" Grid.Column="1" Margin="54,200,203,210" Grid.Row="1" TextWrapping="Wrap" Foreground="#FF071518"/>
-        	<TextBlock x:Name="MusicText" TextAlignment="Center" Grid.Column="1" Margin="54,0,203,165" Grid.Row="1" TextWrapping="Wrap" Height="34" VerticalAlignment="Bottom" Foreground="#FF071518"/>
-        	<TextBlock x:Name="TVText" TextAlignment="Center" Grid.Column="1" Margin="54,0,203,121" Grid.Row="1" TextWrapping="Wrap" Height="34" VerticalAlignment="Bottom" Foreground="#FF071518"/>
-        	<TextBlock x:Name="CinemaText" TextAlignment="Center" Grid.Column="1" Margin="54,0,203,74" Grid.Row="1" TextWrapping="Wrap" Height="34" VerticalAlignment="Bottom"/>
-        	<TextBlock x:Name="BirthdayText" TextAlignment="Center" Grid.Column="1" Margin="54,0,203,28" Grid.Row="1" TextWrapping="Wrap" Height="34" VerticalAlignment="Bottom"/>
+        	<TextBlock x:Name="textblock1" Margin="-68,169,0,0" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="138" MouseEnter="GenderButton_Click" />
+        	<TextBlock x:Name="textblock2" Margin="-67,210,0,201" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" MouseEnter="HometownButton_Click"/>
+        	<TextBlock x:Name="textblock3" Margin="-67,255,0,156" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" MouseEnter="MusicButton_Click"/>
+        	<TextBlock x:Name="textblock4" Margin="-67,302,0,109" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" MouseEnter="TVButton_Click"/>
+        	<TextBlock x:Name="textblock5" Margin="-67,347,0,64" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" MouseEnter="BirthdayButton_Click" />
+        	<TextBlock x:Name="textblock6" Margin="-64,394,0,17" Grid.Row="1" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Column="1" HorizontalAlignment="Left" Width="138"/>
+        	<TextBlock x:Name="GenderText" TextAlignment="Center" Grid.Column="1" Height="34" Margin="54,156,203,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF071518" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font"/>
+        	<TextBlock x:Name="HometownText" TextAlignment="Center" Grid.Column="1" Margin="54,200,203,210" Grid.Row="1" TextWrapping="Wrap" Foreground="#FF071518" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font"/>
+        	<TextBlock x:Name="MusicText" TextAlignment="Center" Grid.Column="1" Margin="54,0,203,165" Grid.Row="1" TextWrapping="Wrap" Height="34" VerticalAlignment="Bottom" Foreground="#FF071518" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font"/>
+        	<TextBlock x:Name="TVText" TextAlignment="Center" Grid.Column="1" Margin="54,0,203,121" Grid.Row="1" TextWrapping="Wrap" Height="34" VerticalAlignment="Bottom" Foreground="#FF071518" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font"/>
         	<Button x:Name="FilterButton" Style="{StaticResource FilterButtonStyle}" Content="Button" Grid.Column="1" Height="85" Margin="321,17,207,0" Grid.Row="1" VerticalAlignment="Top" Click="FilterButton_Click"/>
         	<TextBlock x:Name="filterText" Margin="312,109,195,0" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1"/>
+        	<TextBlock x:Name="CinemaText" TextAlignment="Center" Grid.Column="1" Margin="54,0,203,74" Grid.Row="1" TextWrapping="Wrap" Height="34" VerticalAlignment="Bottom" Foreground="Black" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font"/>
+        	<TextBlock x:Name="BirthdayText" TextAlignment="Center" Grid.Column="1" Margin="54,0,203,28" Grid.Row="1" TextWrapping="Wrap" Height="34" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="Black"/>
         	
         </Grid>
        <!-- <Image Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill"/>-->
