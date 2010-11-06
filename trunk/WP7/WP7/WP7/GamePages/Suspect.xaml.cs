@@ -44,8 +44,7 @@
                 client.CloseAsync();
             }
         }
-        
-
+       
         void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         { 
         }
@@ -105,7 +104,6 @@
                 string famousURI = "/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png";
                 imageSuspect.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
             }
-
         }
 
         void webClientImgDownloader_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e)

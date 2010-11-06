@@ -51,7 +51,7 @@
 				userEmail.Visibility = Visibility.Collapsed;				
 				WebBrowser.Visibility = Visibility.Visible;			
 				WebBrowser.Source = new Uri("http://pis2010.cloudapp.net", UriKind.Absolute);
-           //}
+           ////}
         }
     }
 }
