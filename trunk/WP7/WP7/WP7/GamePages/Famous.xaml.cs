@@ -57,16 +57,16 @@
             gm.Data = data;
             switch (data.States)
             {
-                case DataClue.State.LOSE_EOAW:
+                case GameState.LOSE_EOAW:
                     NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml?animation =" + 0, UriKind.RelativeOrAbsolute));
                     break;
-                case DataClue.State.LOSE_NEOA:
+                case GameState.LOSE_NEOA:
                     NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml?animation =" + 1, UriKind.RelativeOrAbsolute));
                     break;
-                case DataClue.State.WIN:
+                case GameState.WIN:
                     NavigationService.Navigate(new Uri("/GamePages/Finish.xaml?", UriKind.RelativeOrAbsolute));
                     break;
-                case DataClue.State.LOSE_TO:
+                case GameState.LOSE_TO:
                     NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml?animation =" + 2, UriKind.RelativeOrAbsolute));
                     break;
                 default:
