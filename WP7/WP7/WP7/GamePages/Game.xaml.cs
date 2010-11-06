@@ -12,7 +12,6 @@
     using System.Windows.Media.Animation;
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
-	using Microsoft.Phone.Shell;
     using WP7.ServiceReference;
 
     public partial class Game : PhoneApplicationPage
@@ -21,7 +20,7 @@
 
         public Game()
         {
-            InitializeComponent();
+            InitializeComponent();            
             if (gm.ShowAnimation == true)
                 ToastyStoryboard.Begin();
             gm.ShowAnimation = false;
@@ -63,15 +62,15 @@
             NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
 		}
 
-		private void help_Click(object sender, System.EventArgs e)
-		{
-			NavigationService.Navigate(new Uri("/GamePages/Help.xaml", UriKind.RelativeOrAbsolute));
-		}
+        private void help_Click(object sender, System.EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/GamePages/Help.xaml", UriKind.RelativeOrAbsolute));
+        }
 
-		private void options_Click(object sender, System.EventArgs e)
-		{
-			NavigationService.Navigate(new Uri("/GamePages/Options.xaml", UriKind.RelativeOrAbsolute));
-		}
+        private void options_Click(object sender, System.EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/GamePages/Options.xaml", UriKind.RelativeOrAbsolute));
+        }
 
 	}
 }
