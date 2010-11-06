@@ -40,15 +40,6 @@ namespace InterpoolCloudWebRole {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// labelInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelInfo;
-        
-        /// <summary>
         /// LabelEmail control.
         /// </summary>
         /// <remarks>
@@ -103,13 +94,13 @@ namespace InterpoolCloudWebRole {
         protected global::System.Web.UI.WebControls.Button DeleteGame;
         
         /// <summary>
-        /// PruebaGetCity control.
+        /// PruebaGetCities control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button PruebaGetCity;
+        protected global::System.Web.UI.WebControls.Button PruebaGetCities;
         
         /// <summary>
         /// PruebaTravel control.
@@ -139,13 +130,22 @@ namespace InterpoolCloudWebRole {
         protected global::System.Web.UI.WebControls.Button PruebaArrestar;
         
         /// <summary>
-        /// pruebaGetCities control.
+        /// pruebaGetCitieslabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pruebaGetCities;
+        protected global::System.Web.UI.WebControls.Label pruebaGetCitieslabel;
+        
+        /// <summary>
+        /// labelInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelInfo;
         
         /// <summary>
         /// UpdatePanel2 control.
