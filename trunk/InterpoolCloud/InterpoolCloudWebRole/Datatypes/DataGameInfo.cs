@@ -20,6 +20,7 @@ namespace InterpoolCloudWebRole.Datatypes
         public long Score {get; set;}
         public string LinkBigSuspect {get; set;}
         public string newLevel { get; set; }
+        public GameState state { get; set; }
 
     }
 }

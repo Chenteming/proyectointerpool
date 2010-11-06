@@ -51,7 +51,17 @@ namespace InterpoolCloudWebRole.Datatypes
             set;
         }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public int CityNumber
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public DataGameInfo  GameInfo
         {
             get;
             set;

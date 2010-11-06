@@ -147,6 +147,7 @@
     <Compile Include="Datatypes\DataGameInfo.cs" />
     <Compile Include="Datatypes\DataFamous.cs" />
     <Compile Include="Datatypes\DataListFacebookUser.cs" />
+    <Compile Include="Datatypes\GameState.cs" />
     <Compile Include="Data\DataManager.cs" />
     <Compile Include="Data\IDataManager.cs" />
     <Compile Include="Data\InterpoolModel.Designer.cs">

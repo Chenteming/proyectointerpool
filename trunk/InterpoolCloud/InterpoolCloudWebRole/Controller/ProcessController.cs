@@ -396,6 +396,11 @@ namespace InterpoolCloudWebRole.Controller
             ////InterpoolContainer container = dm.GetContainer();
             dataListFabookUser.ListFacebookUser = dm.FilterSuspects(userIdFacebook, fbud, this.container);
             dataListFabookUser.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.FilterSuspect);
+            Game game = dm.GetGameByUser(userIdFacebook, this.container);
+
+            GameState state = game.CurrentTime < game.DeadLine ? GameState.PL : GameState.LOSE_TO;
+            dataListFabookUser.GameInfo = this.GetGameInfo(game, state);
+
             return dataListFabookUser;
         }
 
@@ -430,6 +435,10 @@ namespace InterpoolCloudWebRole.Controller
             datacity.CityNumber = nextNode.NodePathOrder + 1;
             
             datacity.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.TravelGood);
+
+            GameState state = game.CurrentTime < game.DeadLine ? GameState.PL : GameState.LOSE_TO;
+            datacity.GameInfo = this.GetGameInfo(game, state);
+
             return datacity;
         }
 
@@ -484,6 +493,11 @@ namespace InterpoolCloudWebRole.Controller
             ////TODO: order random
             IDataManager dm = new DataManager();
             NodePath node = this.GetNextNode(userId);
+            if (node == null)
+            {
+                return null;
+            }
+
             List<DataCity> cities = new List<DataCity>();
             DataCity datacity;
             foreach (City c in node.PossibleCities)
@@ -558,11 +572,12 @@ namespace InterpoolCloudWebRole.Controller
                     {
                         Game game = dm.GetGameByUser(userIdFacebook, this.container);
                         bool arrest = this.Arrest(game, clue);
+                        return clue;
                     }
                 }
                 else
                 {
-                    clue.States = DataClue.State.PL;
+                    clue.States = GameState.PL;
                 }
 
                 clue.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.QuestionFamous);
@@ -570,7 +585,7 @@ namespace InterpoolCloudWebRole.Controller
             }
 
             clue = new DataClue();
-            clue.States = DataClue.State.PL;
+            clue.States = GameState.PL;
             clue.Clue = String.Empty;
             return clue;
         }
@@ -1186,7 +1201,7 @@ namespace InterpoolCloudWebRole.Controller
                         this.RegisterLog("user_advanceSubLevel", null, "ok", game.User.UserLoginId);
                     }
 
-                    clue.States = DataClue.State.WIN;
+                    clue.States = GameState.WIN;
                     clue.GameInfo = GetGameInfo(game, clue.States);
                     DeleteGame(game.User);
                     this.container.SaveChanges();
@@ -1195,14 +1210,14 @@ namespace InterpoolCloudWebRole.Controller
                 else
                 {
                     // wrong order of arrest
-                    clue.States = DataClue.State.LOSE_EOAW;
+                    clue.States = GameState.LOSE_EOAW;
                     this.RegisterLog("user_emit_wrong_order_of_arrest", null, "ok", game.User.UserLoginId);
                 }
             }
             else
             {
                 // no emit order of arrest
-                clue.States = DataClue.State.LOSE_NEOA;
+                clue.States = GameState.LOSE_NEOA;
                 this.RegisterLog("user_no_emit_order_of_arrest", null, "ok", game.User.UserLoginId);
             }
 
@@ -1276,9 +1291,11 @@ namespace InterpoolCloudWebRole.Controller
                 this.container.DeleteObject(game.PossibleSuspect.ElementAt(j));
             }
             game.User = null;
+
             ////container.SaveChanges();
             this.container.DeleteObject(game);
             this.container.SaveChanges();
+          ////  RegisterLog("deleteGame", null, "ok", game.User.UserLoginId);
         }
 
         /// <summary>
@@ -1297,6 +1314,7 @@ namespace InterpoolCloudWebRole.Controller
         /// Description for Method.</summary>
         /// <param name="game"> Parameter description for game goes here</param>
         /// <param name="function"> Parameter description for function goes here</param>
+        /// <returns> </returns>
         private void CalculateTime(Game game, string function)
         {
             double hours = 0;
@@ -1521,20 +1539,20 @@ namespace InterpoolCloudWebRole.Controller
             return suspect;
         }
 
-        private DataGameInfo GetGameInfo(Game game, DataClue.State state)
+        private DataGameInfo GetGameInfo(Game game, GameState state)
         {
             DataGameInfo info = new DataGameInfo();
             info.SuspectName = game.Suspect.SuspectFirstName + " " + game.Suspect.SuspectLastName;
 
-            if (state == DataClue.State.WIN)
+            if (state == GameState.WIN)
             {
                 ////info.ScoreWin = 
                 TimeSpan timeSpan = game.DeadLine.Subtract(game.CurrentTime);
                 info.DiffInDays = timeSpan.Days;
                 info.DiffInMinutes = timeSpan.Minutes;
                 info.DiffInseconds = timeSpan.Seconds;
-                int leftTime = (int)(timeSpan.Ticks / TimeSpan.TicksPerHour);
-                info.ScoreWin =  leftTime / 60;
+                int leftTime = (int)(timeSpan.Ticks / TimeSpan.TicksPerMinute);
+                info.ScoreWin =  leftTime;
                 info.LinkBigSuspect = "www.facebook.com/#!/profile.php?id=" + game.Suspect.SuspectFacebookId;
                 game.User.UserScore += (Int32)info.ScoreWin;
             }
@@ -1547,6 +1565,7 @@ namespace InterpoolCloudWebRole.Controller
             }
             
             info.newLevel = game.User.Level.LevelName;
+            info.state = state;
             return info;
         }
         /// <summary>
