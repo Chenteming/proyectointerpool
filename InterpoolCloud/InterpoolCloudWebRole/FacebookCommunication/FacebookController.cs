@@ -300,33 +300,33 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             if (fbud.Birthday != null)
             {
                 string[] fecha = fbud.Birthday.Split('/');
-                switch (fecha[1])
+                switch (fecha[0])
                 {
-                    case "1":
+                    case "01":
                         fbud.Birthday = "Enero";
                         break;
-                    case "2":
+                    case "02":
                         fbud.Birthday = "Febrero";
                         break;
-                    case "3":
+                    case "03":
                         fbud.Birthday = "Marzo";
                         break;
-                    case "4":
+                    case "04":
                         fbud.Birthday = "Abril";
                         break;
-                    case "5":
+                    case "05":
                         fbud.Birthday = "Mayo";
                         break;
-                    case "6":
+                    case "06":
                         fbud.Birthday = "Junio";
                         break;
-                    case "7":
+                    case "07":
                         fbud.Birthday = "Julio";
                         break;
-                    case "8":
+                    case "08":
                         fbud.Birthday = "Agosto";
                         break;
-                    case "9":
+                    case "09":
                         fbud.Birthday = "Setiembre";
                         break;
                     case "10":
@@ -457,33 +457,33 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             if (fbud.Birthday != null)
             {
                 string[] fecha = fbud.Birthday.Split('/');
-                switch (fecha[1])
+                switch (fecha[0])
                 {
-                    case "1":
+                    case "01":
                         fbud.Birthday = "Enero";
                         break;
-                    case "2":
+                    case "02":
                         fbud.Birthday = "Febrero";
                         break;
-                    case "3":
+                    case "03":
                         fbud.Birthday = "Marzo";
                         break;
-                    case "4":
+                    case "04":
                         fbud.Birthday = "Abril";
                         break;
-                    case "5":
+                    case "05":
                         fbud.Birthday = "Mayo";
                         break;
-                    case "6":
+                    case "06":
                         fbud.Birthday = "Junio";
                         break;
-                    case "7":
+                    case "07":
                         fbud.Birthday = "Julio";
                         break;
-                    case "8":
+                    case "08":
                         fbud.Birthday = "Agosto";
                         break;
-                    case "9":
+                    case "09":
                         fbud.Birthday = "Setiembre";
                         break;
                     case "10":
@@ -524,7 +524,6 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             string like_category = (string)jsonFriendObject.SelectToken("data[0].category");
 
             int i = 0;
-            bool exit = false;
             friendData.Music = string.Empty;
             friendData.Television = string.Empty;
             friendData.Cinema = string.Empty;
@@ -555,11 +554,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 }
 
                 i++;
-                like_category = (string)jsonFriendObject.SelectToken("data[" + i + "].category");
-                //if (friendData.Music != string.Empty && friendData.Television != string.Empty && friendData.Cinema != string.Empty)
-                //{
-                //    exit = true;
-                //}           
+                like_category = (string)jsonFriendObject.SelectToken("data[" + i + "].category");                         
             }
 
             List<string> music_shuffle = Functions.ShuffleList<string>(music);
