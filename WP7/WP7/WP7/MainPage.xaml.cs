@@ -44,6 +44,10 @@
         {
             this.gm.UserId = e.Result;
             this.client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
+            
+            
+            NavigationService.Navigate(new Uri("/GamePages/Start.xaml", UriKind.RelativeOrAbsolute));
+            //string uri = NavigationService.CurrentSource.AbsoluteUri;
             this.client.StartGameAsync(this.gm.UserId);
         }
 
@@ -65,7 +69,9 @@
             gm.Top = dc.Top;
             gm.DeadLineDateTime = dc.DeadLine;
             this.gm.SetCurrentCity(dc.NameCity);
-            NavigationService.Navigate(new Uri("/GamePages/Start.xaml", UriKind.RelativeOrAbsolute));
+
+            NavigationService.Navigate(new Uri("/GamePages/StartCompleted.xaml", UriKind.RelativeOrAbsolute));
+           
             this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
             this.client.CloseAsync();
         }
@@ -77,7 +83,8 @@
 
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {		
-			////Usando el mail de FACEBOOK           
+			////Usando el mail de FACEBOOK
+            gm.UserEmail = "taru_borio@hotmail.com";
 			client.GetUserIdFacebookAsync(gm.UserEmail);
             this.client.GetUserIdFacebookCompleted += new EventHandler<GetUserIdFacebookCompletedEventArgs>(client_GetUserIdFacebookCompleted);
         }
