@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/02/2010 19:48:47
+-- Date Created: 11/02/2010 20:30:54
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
