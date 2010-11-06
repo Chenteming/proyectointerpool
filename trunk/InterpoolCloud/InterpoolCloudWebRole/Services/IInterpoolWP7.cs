@@ -37,6 +37,14 @@ namespace InterpoolCloudWebRole.Services
 
         /// <summary>
         /// Description for Method.</summary>
+        /// <param name="idLogin"> Parameter description for idLogin goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        [OperationContract]
+        DataUserInfo GetUserInfo(string idLogin);
+
+        /// <summary>
+        /// Description for Method.</summary>
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>

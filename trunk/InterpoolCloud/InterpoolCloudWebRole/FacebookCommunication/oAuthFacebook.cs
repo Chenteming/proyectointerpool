@@ -204,8 +204,16 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 }
             }
 
-            responseData = this.WebResponseGet(webRequest);
-            webRequest = null;
+            try
+            {
+                responseData = this.WebResponseGet(webRequest);
+                webRequest = null;
+            }
+            catch (Exception e)
+            {
+                responseData = null;
+                throw new GameException("error_tokenNotValid", e);
+            }
             return responseData;
         }
 

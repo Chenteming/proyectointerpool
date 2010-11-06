@@ -392,16 +392,16 @@ namespace InterpoolCloudWebRole.Controller
         public DataListFacebookUser FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
         {
             IDataManager dm = new DataManager();
-            DataListFacebookUser dataListFabookUser = new DataListFacebookUser();
+            DataListFacebookUser dataListFacebookUser = new DataListFacebookUser();
             ////InterpoolContainer container = dm.GetContainer();
-            dataListFabookUser.ListFacebookUser = dm.FilterSuspects(userIdFacebook, fbud, this.container);
-            dataListFabookUser.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.FilterSuspect);
+            dataListFacebookUser.ListFacebookUser = dm.FilterSuspects(userIdFacebook, fbud, this.container);
+            dataListFacebookUser.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.FilterSuspect);
             Game game = dm.GetGameByUser(userIdFacebook, this.container);
 
             GameState state = game.CurrentTime < game.DeadLine ? GameState.PL : GameState.LOSE_TO;
-            dataListFabookUser.GameInfo = this.GetGameInfo(game, state);
+            dataListFacebookUser.GameInfo = this.GetGameInfo(game, state);
 
-            return dataListFabookUser;
+            return dataListFacebookUser;
         }
 
         /// <summary>
@@ -811,6 +811,7 @@ namespace InterpoolCloudWebRole.Controller
             return true;
         }
 
+        //// TODO: delete if GetUserInfo works fine
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
@@ -820,6 +821,17 @@ namespace InterpoolCloudWebRole.Controller
         {
             IDataManager dm = new DataManager();
             return dm.GetUserIdFacebookByLoginId(userLoginId, dm.GetContainer());
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        public DataUserInfo GetUserInfo(string userLoginId)
+        {
+            IDataManager dm = new DataManager();
+            return dm.GetUserInfoByLoginId(userLoginId, dm.GetContainer());
         }
 
         /* to consider: 

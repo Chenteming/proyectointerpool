@@ -117,6 +117,7 @@ namespace InterpoolCloudWebRole.Services
             return this.controller.GetClueByFamous(userIdFacebook, numFamous);
         }
 
+        //// TODO: delete if GetUserInfo works fine
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="idLogin"> Parameter description for idLogin goes here</param>
@@ -127,6 +128,17 @@ namespace InterpoolCloudWebRole.Services
             ////return this.controller.GetLastUserIdFacebook(idLogin);
             //// This is the correct function to use when the login screen is ready
             return this.controller.GetUserIdFacebook(idLogin);
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="idLogin"> Parameter description for idLogin goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        public DataUserInfo GetUserInfo(string idLogin)
+        {
+            //// This is the correct function to use when the login screen is ready
+            return this.controller.GetUserInfo(idLogin);
         }
 
         /// <summary>

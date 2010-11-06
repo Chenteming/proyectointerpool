@@ -49,10 +49,19 @@
                 <br />
                 <asp:Button ID="Button6" runat="server" onclick="Button6_Click" 
                     Text="Delete Game" />
-                <br />
+                &nbsp;<br />
                 <br />
                 <asp:Button ID="Button7" runat="server" onclick="Button7_Click" 
                     Text="NewsFamous" Width="114px" />
+                <br />
+                <br />
+                <asp:Button ID="ButtonUserInfo" runat="server" onclick="ButtonUserInfo_Click" 
+                    Text="Show User Info" Width="114px" />
+                &nbsp;Nombre:
+        <asp:Label ID="Label5" runat="server"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                Estado:
+        <asp:Label ID="Label6" runat="server"></asp:Label>
                 <br />
                 <br />
         <br />
