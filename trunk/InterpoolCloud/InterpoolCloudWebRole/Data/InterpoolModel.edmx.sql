@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/02/2010 20:30:54
+-- Date Created: 11/06/2010 19:51:36
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
@@ -296,6 +296,18 @@ CREATE TABLE [dbo].[HardCodedSuspects] (
 );
 GO
 
+-- Creating table 'Filters'
+CREATE TABLE [dbo].[Filters] (
+    [FilterSuspectId] int IDENTITY(1,1) NOT NULL,
+    [FilterHometown] nvarchar(max)  NULL,
+    [FilterMusic] nvarchar(max)  NULL,
+    [FilterGender] nvarchar(max)  NULL,
+    [FilterCinema] nvarchar(max)  NULL,
+    [FilterBirthday] nvarchar(max)  NULL,
+    [GameFilterSuspect_FilterSuspect_GameId] int  NOT NULL
+);
+GO
+
 -- Creating table 'GamePossibleSuspect'
 CREATE TABLE [dbo].[GamePossibleSuspect] (
     [Game_GameId] int  NOT NULL,
@@ -410,6 +422,12 @@ GO
 ALTER TABLE [dbo].[HardCodedSuspects]
 ADD CONSTRAINT [PK_HardCodedSuspects]
     PRIMARY KEY CLUSTERED ([HardCodedSuspecId] ASC);
+GO
+
+-- Creating primary key on [FilterSuspectId] in table 'Filters'
+ALTER TABLE [dbo].[Filters]
+ADD CONSTRAINT [PK_Filters]
+    PRIMARY KEY CLUSTERED ([FilterSuspectId] ASC);
 GO
 
 -- Creating primary key on [Game_GameId], [PossibleSuspect_SuspectId] in table 'GamePossibleSuspect'
@@ -712,6 +730,20 @@ ADD CONSTRAINT [FK_LevelCity]
 CREATE INDEX [IX_FK_LevelCity]
 ON [dbo].[Cities]
     ([LevelLevelId]);
+GO
+
+-- Creating foreign key on [GameFilterSuspect_FilterSuspect_GameId] in table 'Filters'
+ALTER TABLE [dbo].[Filters]
+ADD CONSTRAINT [FK_GameFilterSuspect]
+    FOREIGN KEY ([GameFilterSuspect_FilterSuspect_GameId])
+    REFERENCES [dbo].[Games]
+        ([GameId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_GameFilterSuspect'
+CREATE INDEX [IX_FK_GameFilterSuspect]
+ON [dbo].[Filters]
+    ([GameFilterSuspect_FilterSuspect_GameId]);
 GO
 
 -- --------------------------------------------------

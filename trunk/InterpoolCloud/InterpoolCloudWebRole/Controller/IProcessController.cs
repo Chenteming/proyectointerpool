@@ -119,5 +119,8 @@ namespace InterpoolCloudWebRole.Controller
         /// Description for Method.</summary>
         /// <param name="user"> Parameter description for user goes here</param>
         void DeleteGame(User user);
+
+        DataFacebookUser GetFilters(string userIdFacebook);
+
     }
 }
