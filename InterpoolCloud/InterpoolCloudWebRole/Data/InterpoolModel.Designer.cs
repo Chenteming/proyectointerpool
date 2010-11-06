@@ -35,6 +35,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("InterpoolModel", "OrderOfArrestSuspect", "OrderOfArrest", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.OrderOfArrest), "Suspect", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Suspect))]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "UserLevel", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.User), "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level), true)]
 [assembly: EdmRelationshipAttribute("InterpoolModel", "LevelCity", "Level", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Level), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InterpoolCloudWebRole.Data.City), true)]
+[assembly: EdmRelationshipAttribute("InterpoolModel", "GameFilterSuspect", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InterpoolCloudWebRole.Data.Game), "FilterSuspect", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InterpoolCloudWebRole.Data.Filter))]
 
 #endregion
 
@@ -309,6 +310,22 @@ namespace InterpoolCloudWebRole.Data
             }
         }
         private ObjectSet<HardCodedSuspect> _HardCodedSuspects;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Filter> Filters
+        {
+            get
+            {
+                if ((_Filters == null))
+                {
+                    _Filters = base.CreateObjectSet<Filter>("Filters");
+                }
+                return _Filters;
+            }
+        }
+        private ObjectSet<Filter> _Filters;
 
         #endregion
         #region AddTo Methods
@@ -423,6 +440,14 @@ namespace InterpoolCloudWebRole.Data
         public void AddToHardCodedSuspects(HardCodedSuspect hardCodedSuspect)
         {
             base.AddObject("HardCodedSuspects", hardCodedSuspect);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Filters EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFilters(Filter filter)
+        {
+            base.AddObject("Filters", filter);
         }
 
         #endregion
@@ -1366,6 +1391,181 @@ namespace InterpoolCloudWebRole.Data
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="InterpoolModel", Name="Filter")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Filter : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Filter object.
+        /// </summary>
+        /// <param name="filterSuspectId">Initial value of the FilterSuspectId property.</param>
+        public static Filter CreateFilter(global::System.Int32 filterSuspectId)
+        {
+            Filter filter = new Filter();
+            filter.FilterSuspectId = filterSuspectId;
+            return filter;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FilterSuspectId
+        {
+            get
+            {
+                return _FilterSuspectId;
+            }
+            set
+            {
+                if (_FilterSuspectId != value)
+                {
+                    OnFilterSuspectIdChanging(value);
+                    ReportPropertyChanging("FilterSuspectId");
+                    _FilterSuspectId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("FilterSuspectId");
+                    OnFilterSuspectIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _FilterSuspectId;
+        partial void OnFilterSuspectIdChanging(global::System.Int32 value);
+        partial void OnFilterSuspectIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FilterHometown
+        {
+            get
+            {
+                return _FilterHometown;
+            }
+            set
+            {
+                OnFilterHometownChanging(value);
+                ReportPropertyChanging("FilterHometown");
+                _FilterHometown = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FilterHometown");
+                OnFilterHometownChanged();
+            }
+        }
+        private global::System.String _FilterHometown;
+        partial void OnFilterHometownChanging(global::System.String value);
+        partial void OnFilterHometownChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FilterMusic
+        {
+            get
+            {
+                return _FilterMusic;
+            }
+            set
+            {
+                OnFilterMusicChanging(value);
+                ReportPropertyChanging("FilterMusic");
+                _FilterMusic = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FilterMusic");
+                OnFilterMusicChanged();
+            }
+        }
+        private global::System.String _FilterMusic;
+        partial void OnFilterMusicChanging(global::System.String value);
+        partial void OnFilterMusicChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FilterGender
+        {
+            get
+            {
+                return _FilterGender;
+            }
+            set
+            {
+                OnFilterGenderChanging(value);
+                ReportPropertyChanging("FilterGender");
+                _FilterGender = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FilterGender");
+                OnFilterGenderChanged();
+            }
+        }
+        private global::System.String _FilterGender;
+        partial void OnFilterGenderChanging(global::System.String value);
+        partial void OnFilterGenderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FilterCinema
+        {
+            get
+            {
+                return _FilterCinema;
+            }
+            set
+            {
+                OnFilterCinemaChanging(value);
+                ReportPropertyChanging("FilterCinema");
+                _FilterCinema = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FilterCinema");
+                OnFilterCinemaChanged();
+            }
+        }
+        private global::System.String _FilterCinema;
+        partial void OnFilterCinemaChanging(global::System.String value);
+        partial void OnFilterCinemaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FilterBirthday
+        {
+            get
+            {
+                return _FilterBirthday;
+            }
+            set
+            {
+                OnFilterBirthdayChanging(value);
+                ReportPropertyChanging("FilterBirthday");
+                _FilterBirthday = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FilterBirthday");
+                OnFilterBirthdayChanged();
+            }
+        }
+        private global::System.String _FilterBirthday;
+        partial void OnFilterBirthdayChanging(global::System.String value);
+        partial void OnFilterBirthdayChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="InterpoolModel", Name="Game")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1650,6 +1850,44 @@ namespace InterpoolCloudWebRole.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<OrderOfArrest>("InterpoolModel.GameOrderOfArrest", "OrderOfArrest", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("InterpoolModel", "GameFilterSuspect", "FilterSuspect")]
+        public Filter FilterSuspect
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Filter>("InterpoolModel.GameFilterSuspect", "FilterSuspect").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Filter>("InterpoolModel.GameFilterSuspect", "FilterSuspect").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Filter> FilterSuspectReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Filter>("InterpoolModel.GameFilterSuspect", "FilterSuspect");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Filter>("InterpoolModel.GameFilterSuspect", "FilterSuspect", value);
                 }
             }
         }

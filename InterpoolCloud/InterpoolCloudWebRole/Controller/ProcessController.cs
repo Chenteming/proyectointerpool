@@ -315,7 +315,9 @@ namespace InterpoolCloudWebRole.Controller
         {
             Game newGame = new Game();
             user.Game = newGame;
-            
+
+            newGame.FilterSuspect = new Filter();
+
             IDataManager dm = new DataManager();
 
             List<int> selectedCities = new List<int>();
@@ -396,8 +398,10 @@ namespace InterpoolCloudWebRole.Controller
             ////InterpoolContainer container = dm.GetContainer();
             dataListFacebookUser.ListFacebookUser = dm.FilterSuspects(userIdFacebook, fbud, this.container);
             dataListFacebookUser.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.FilterSuspect);
-            Game game = dm.GetGameByUser(userIdFacebook, this.container);
-
+            Game game = dm.GetGameByUser(userIdFacebook, container);
+            
+            this.SaveFilters(game, fbud);
+            
             GameState state = game.CurrentTime < game.DeadLine ? GameState.PL : GameState.LOSE_TO;
             dataListFacebookUser.GameInfo = this.GetGameInfo(game, state);
 
@@ -1284,14 +1288,13 @@ namespace InterpoolCloudWebRole.Controller
             game.OrderOfArrest = null;
             if (order != null)
             {
-                this.container.DeleteObject(order.Suspect);
+                order.Suspect = null;
                 this.container.DeleteObject(order);
             }
             ////container.DeleteObject(game.Suspect);
-
             container.DeleteObject(game.Suspect);
-
             game.Suspect = null;
+            
             /* foreach (Suspect suspect in game.PossibleSuspect)
              {
                  container.DeleteObject(suspect);
@@ -1308,6 +1311,47 @@ namespace InterpoolCloudWebRole.Controller
             this.container.DeleteObject(game);
             this.container.SaveChanges();
           ////  RegisterLog("deleteGame", null, "ok", game.User.UserLoginId);
+        }
+
+        public DataFacebookUser GetFilters(string userIdFacebook)
+        {
+            
+            IDataManager dm = new DataManager();
+
+            string propS;
+            string propFilter;
+            string newValue;
+            PropertyInfo info;
+
+            Game game = dm.GetGameByUser(userIdFacebook, container);
+
+            Filter filter = game.FilterSuspect;
+            var properties = typeof(Filter).GetProperties();
+
+            DataFacebookUser fbud = new DataFacebookUser();
+
+            foreach (var property in properties)
+            {
+                string propType = property.PropertyType.Name;
+                propS = property.Name;
+                if ("String".Equals(propType))
+                {
+                    propFilter = propS;
+                    info = filter.GetType().GetProperty(propFilter);
+                    if (info != null)
+                    {
+                        newValue = (string)info.GetValue(filter, null);
+                        propFilter = propS.Replace("Filter", string.Empty);
+                        info = fbud.GetType().GetProperty(propFilter);
+                        if (info != null)
+                        {
+                            info.SetValue(fbud, newValue, null);
+                        }
+                    }
+                }
+            }
+
+            return fbud;
         }
 
         /// <summary>
@@ -1627,6 +1671,42 @@ namespace InterpoolCloudWebRole.Controller
             {
                 return true;
             }
+        }
+
+        private void SaveFilters(Game game, DataFacebookUser fbud)
+        {
+            var properties = typeof(DataFacebookUser).GetProperties();
+
+            string propS;
+            string propFilter;
+            string newValue;
+            PropertyInfo info;
+
+            Filter filter = game.FilterSuspect;
+
+            foreach (var property in properties)
+            {
+                string propType = property.PropertyType.Name;
+                propS = property.Name;
+                if ("String".Equals(propType))
+                {
+                    propFilter = propS;
+                    info = fbud.GetType().GetProperty(propFilter);
+                    if (info != null)
+                    {
+                        newValue = (string)info.GetValue(fbud, null);
+                        propFilter = "Filter" + propS;
+                        info = filter.GetType().GetProperty(propFilter);
+                        if (info != null)
+                        {
+                            info.SetValue(filter, newValue, null);
+                        }
+                    }
+                }
+            }
+
+            this.container.SaveChanges();
+
         }
     }
 }
