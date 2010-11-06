@@ -10,7 +10,7 @@
     SupportedOrientations="Landscape" Orientation="Landscape"
     mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="728"
     shell:SystemTray.IsVisible="True">
-	<phone:PhoneApplicationPage.ApplicationBar>
+    <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar x:Name="LocalApplicationBar" Opacity="0.5" IsMenuEnabled="True" IsVisible="True">
             <shell:ApplicationBar.Buttons>
                 <shell:ApplicationBarIconButton x:Name="ApplicationBarHelp" Text="Help" Click="help_Click" IconUri="/icons/appbar_help.png"/>
@@ -18,8 +18,7 @@
             </shell:ApplicationBar.Buttons>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
-    
-	<phone:PhoneApplicationPage.Resources>
+    <phone:PhoneApplicationPage.Resources>
 		<Style x:Key="WP7Button" TargetType="Button">
 			<Setter Property="Template">
 				<Setter.Value>
