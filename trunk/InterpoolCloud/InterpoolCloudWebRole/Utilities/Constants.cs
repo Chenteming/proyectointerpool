@@ -16,6 +16,41 @@ namespace InterpoolCloudWebRole.Utilities
     public static class Constants
     {
         /// <summary>
+        /// Gets for the property 
+        /// </summary>
+        public static string ReplaceNombrePais
+        {
+            get
+            {
+                return "\"este país\"";
+            }
+        }
+        
+        /// <summary>
+        /// Gets for the property 
+        /// </summary>
+        public static string ReplaceNombreFamoso
+        { 
+            get
+            {
+                return "\"Yo\"";
+            }
+        }
+        
+        /// <summary>
+        /// Gets for the property 
+        /// </summary>
+        public static string ReplaceNombreCiudad
+        { 
+            get
+            {
+                return "\"esta ciudad\"";
+            }
+        }
+
+        
+
+        /// <summary>
         /// Gets for the property
         /// </summary>
         public static int NumberLastCity
@@ -116,8 +151,8 @@ namespace InterpoolCloudWebRole.Utilities
             }
         }
         //// End of constants for the cloud application ////
-        */
         
+        */
         //// All these constants are for local test ////
         
         /// <summary>
@@ -152,7 +187,7 @@ namespace InterpoolCloudWebRole.Utilities
                 return "ea1aab4d4b19644875b4b22a54e17163";
             }
         }
-
+        
         /// <summary>
         /// Gets for the property
         /// </summary>
