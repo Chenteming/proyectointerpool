@@ -67,6 +67,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="ajax-loader.gif" />
     <Content Include="Data\InterpoolModel.edmx.sql" />
     <Content Include="Libs\Newtonsoft.Json.dll" />
     <Content Include="Libs\Newtonsoft.Json.pdb" />
@@ -141,7 +142,9 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controller\IProcessController.cs" />
-    <Compile Include="Controller\ProcessController.cs" />
+    <Compile Include="Controller\ProcessController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Datatypes\DataClue.cs" />
     <Compile Include="Datatypes\DataCity.cs" />
     <Compile Include="Datatypes\DataGameInfo.cs" />
