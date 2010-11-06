@@ -38,10 +38,16 @@ namespace InterpoolCloudWebRole.Utilities
 
                 if (news != null)
                 {
-                    newsF = new New();
-                    newsF.NewContent = news;
-                    newsF.Famous = f;
-                    container.AddToNews(newsF);
+                    if (container.News.Where(noticia => noticia.Famous.FamousId == f.FamousId).Count() > 0)
+
+                        container.News.Where(noticia => noticia.Famous.FamousId == f.FamousId).FirstOrDefault().NewContent = news;
+                    else
+                    {
+                        newsF = new New();
+                        newsF.NewContent = news;
+                        newsF.Famous = f;
+                        container.AddToNews(newsF);
+                    }
                 }
             }
 
@@ -54,11 +60,20 @@ namespace InterpoolCloudWebRole.Utilities
 
                 if (news != null)
                 {
-                    newsCity = new CityProperty();
-                    newsCity.CityPropertyContent = news;
-                    newsCity.City = c;
-                    newsCity.Dyn = true;
-                    container.AddToCityPropertySet(newsCity);
+                    if (container.CityPropertySet.Where(cp => cp.City.CityId == c.CityId).Count() > 0)
+
+                        container.CityPropertySet.Where(cp => cp.City.CityId == c.CityId).FirstOrDefault().CityPropertyContent = news;
+
+                    else
+                    {
+                        newsCity = new CityProperty();
+                        newsCity.CityPropertyContent = news;
+                        newsCity.City = c;
+                        newsCity.Dyn = true;
+                        container.AddToCityPropertySet(newsCity);
+                    }
+
+                    
                 }
             }
 
