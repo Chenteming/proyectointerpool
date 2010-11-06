@@ -92,25 +92,42 @@
 
         private void LoadPicture(string pictureLink)
         {
-            string noImageM = "https://graph.facebook.com/100001441037936/picture";
-            if (null != pictureLink && !pictureLink.Equals(string.Empty) && !pictureLink.Equals(noImageM))
+            try
             {
-                WebClient webClientImgDownloader = new WebClient();
-                webClientImgDownloader.OpenReadCompleted += new OpenReadCompletedEventHandler(webClientImgDownloader_OpenReadCompleted);
-                webClientImgDownloader.OpenReadAsync(new Uri(pictureLink, UriKind.Absolute));
+                if (pictureLink != null && !pictureLink.Equals(string.Empty))                    
+                {
+                    WebClient webClientImgDownloader = new WebClient();
+                    webClientImgDownloader.OpenReadCompleted += new OpenReadCompletedEventHandler(webClientImgDownloader_OpenReadCompleted);
+                    webClientImgDownloader.OpenReadAsync(new Uri(pictureLink, UriKind.Absolute));
+                }
+                else
+                {
+                    string famousURI = "/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png";
+                    imageSuspect.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
+                }
+
             }
-            else 
+            catch (Exception excepcion)
             {
                 string famousURI = "/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png";
                 imageSuspect.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
             }
+
         }
 
         void webClientImgDownloader_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
         {
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.SetSource(e.Result);
-            imageSuspect.Source = bitmap;
+            try
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.SetSource(e.Result);
+                imageSuspect.Source = bitmap;
+            }
+            catch (Exception excepcion)
+            {
+                string famousURI = "/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png";
+                imageSuspect.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
+            }
         }
 
         private void Emit_Click(object sender, RoutedEventArgs e)
