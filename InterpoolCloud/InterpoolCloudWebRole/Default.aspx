@@ -13,31 +13,30 @@
 
 
     
-       <%-- <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeOut="600">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeOut="600">
 
 
-        </asp:ScriptManager>--%>
+        </asp:ScriptManager>
    
-        <%--<asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
             
             <ProgressTemplate>
---%>
+
             <center>
+				<img alt="" src="/ajax-loader.gif"  style="width: 150px; height: 150px" />
 
 
                 </center>
-          <%--  </ProgressTemplate>
+          </ProgressTemplate>
 
         </asp:UpdateProgress>
---%>
 
-        <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" >--%>
-            <%--<ContentTemplate>                --%>
+
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
+            <ContentTemplate>               
                 <center>
         <div>
 
-     
-                <asp:Label ID="labelInfo" runat="server" Text=""></asp:Label>
                 <br />
                 <asp:Label ID="LabelEmail" runat="server" Text="Email Facebook"></asp:Label>
                 <asp:TextBox ID="TextBoxEmail" runat="server"></asp:TextBox>
@@ -68,7 +67,7 @@
         </tr> 
         <tr>
         <td>
-            <asp:Button ID="PruebaGetCity" runat="server" CssClass="boton" Text="Prueba GetCities"  Width="150px" Height="40px" onclick="PruebaGetCities_Click" />
+            <asp:Button ID="PruebaGetCities" runat="server" CssClass="boton" Text="Prueba GetCities"  Width="150px" Height="40px" onclick="PruebaGetCities_Click" />
         </td>
         <td>
             <asp:Button ID="PruebaTravel" runat="server" 
@@ -96,22 +95,26 @@
         </td>
         </tr>
         <tr><td>
-            <asp:Label ID="pruebaGetCities" runat="server" Text=""></asp:Label>
+            <asp:Label CssClass="labelInfo" ID="pruebaGetCitieslabel" runat="server" Text=""></asp:Label>
         </td>
         </tr>
 
       </table>   
     </p>
+    <p>
+    <br>
+    <asp:Label ID="labelInfo" runat="server" Text=""></asp:Label>
+    </p>
         </div>
         </center>
         
-            <%--</ContentTemplate>
+            </ContentTemplate>
          </asp:UpdatePanel>
 
 
 
         <asp:UpdatePanel runat="server" id="UpdatePanel2">
-</asp:UpdatePanel>--%>
+</asp:UpdatePanel>
 
     
 </asp:Content>
