@@ -123,7 +123,7 @@
 
         public string PictureCityLink { get; set; }
 
-        public static GameManager getInstance()
+        public static GameManager GetInstance()
         {
             if (instance == null)
             {
