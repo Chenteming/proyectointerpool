@@ -68,8 +68,9 @@
             gm.Left = dc.Left;
             gm.Top = dc.Top;
             gm.DeadLineDateTime = dc.DeadLine;
+            gm.CurrentDateTime = dc.CurrentDate;
             this.gm.SetCurrentCity(dc.NameCity);
-
+            this.gm.PictureCityLink = dc.NameFileCity;
             NavigationService.Navigate(new Uri("/GamePages/StartCompleted.xaml", UriKind.RelativeOrAbsolute));
            
             this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
@@ -83,8 +84,7 @@
 
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {		
-			////Usando el mail de FACEBOOK
-            gm.UserEmail = "taru_borio@hotmail.com";
+			////Usando el mail de FACEBOOK            
 			client.GetUserIdFacebookAsync(gm.UserEmail);
             this.client.GetUserIdFacebookCompleted += new EventHandler<GetUserIdFacebookCompletedEventArgs>(client_GetUserIdFacebookCompleted);
         }
