@@ -39,5 +39,13 @@
                 return 8;
             }
         }
+
+        public static string FACEBOOK_LOGIN_URL
+        {
+            get
+            {
+                return "http://127.0.0.1:81/TestPage.aspx";
+            }
+        }
     }
 }
