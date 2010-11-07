@@ -72,6 +72,7 @@
     <Content Include="Libs\Newtonsoft.Json.dll" />
     <Content Include="Libs\Newtonsoft.Json.pdb" />
     <Content Include="Libs\Newtonsoft.Json.xml" />
+    <Content Include="LoginSuccess.aspx" />
     <Content Include="TestPage.aspx" />
     <EntityDeploy Include="Data\InterpoolModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -173,6 +174,13 @@
     <Compile Include="FacebookCommunication\oAuthFacebook.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LoginSuccess.aspx.cs">
+      <DependentUpon>LoginSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginSuccess.aspx.designer.cs">
+      <DependentUpon>LoginSuccess.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\FacebookCallback.aspx.cs">
       <DependentUpon>FacebookCallback.aspx</DependentUpon>
