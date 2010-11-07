@@ -19,7 +19,7 @@
     {
         private static int index;
 		private LanguageManager language;
-		private GameManager gm = GameManager.getInstance();
+		private GameManager gm = GameManager.GetInstance();
         private List<DataFacebookUser> dfbuList = new List<DataFacebookUser>();
 
         public Suspect()
