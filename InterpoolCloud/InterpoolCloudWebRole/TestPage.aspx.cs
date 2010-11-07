@@ -193,9 +193,40 @@ namespace InterpoolCloudWebRole
                 case DayOfWeek.Wednesday:
                     return "Wednesday";
                 default:
-                    return "chupame el escroto";
+                    return "no existe día de la semana";
             }
         }
+
+        /// <summary>
+        /// Get Day of week 
+        /// </summary>
+        /// <param name="currentDate">Parameter description for currentDate goes here</param>
+        /// <returns>
+        /// the day of the week</returns>
+        private string GetDayOfWeek(DateTime currentDate, bool english)
+        {
+            switch (currentDate.DayOfWeek)
+            {
+                case DayOfWeek.Friday:
+                    return english ? "Friday" : "Viernes";
+                case DayOfWeek.Monday:
+                    return english ? "Monday" : "Lunes";
+                case DayOfWeek.Saturday:
+                    return english ? "Saturday" : "Sabado";
+                case DayOfWeek.Sunday:
+                    return english ? "Sunday" : "Domingo";
+                case DayOfWeek.Thursday:
+                    return english? "Thursday" : "Jueves";
+                case DayOfWeek.Tuesday:
+                    return english ? "Tuesday" : "Martes";
+                case DayOfWeek.Wednesday:
+                    return english ? "Wednesday" : "Miércoles";
+                default:
+                    return "no existe día de la semana";
+            }
+        }
+
+
 
         /// <summary>
         /// Get Day of week 
