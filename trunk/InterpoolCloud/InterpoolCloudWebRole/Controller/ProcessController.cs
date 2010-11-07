@@ -62,6 +62,8 @@ namespace InterpoolCloudWebRole.Controller
                 dataCity.NameFileCity = node.City.NameFile;
                 dataCity.CurrentDate = game.CurrentTime;
                 dataCity.DeadLine = game.DeadLine;
+                dataCity.Left = node.City.Longitud;
+                dataCity.Top = node.City.Latitud;
                 return dataCity;
             }
 
@@ -290,7 +292,15 @@ namespace InterpoolCloudWebRole.Controller
             list.Add("SuspectLastName");
             list.Add("SuspectGender");
             list.Add("SuspectPicLInk");
-            
+
+            try
+            {
+            }
+
+            catch (Exception e)
+            {
+
+            }
             this.CreateHardCodeSuspects(newGame, list);
 
             if (specialGame && nonFriendSuspect != null)
@@ -344,6 +354,8 @@ namespace InterpoolCloudWebRole.Controller
                         IQueryable<City> iCity = dm.GetCities(this.container).Where(c => c.CityNumber == nextCity);
                         if (iCity != null && iCity.Count() != 0)
                         {
+                            //// start to select cities
+
                             next = iCity.First();
                         }
                         else
