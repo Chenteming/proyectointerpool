@@ -23,15 +23,15 @@
     <MetadataSource Address="http://127.0.0.1:81/Services/InterpoolWP7.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="InterpoolWP7.xsd" MetadataType="Schema" ID="e74ed16e-33e9-49ca-98af-71bd0c561e40" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd2" />
-    <MetadataFile FileName="InterpoolWP71.xsd" MetadataType="Schema" ID="3083376b-a150-4cd3-93ae-a90734259506" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd1" />
-    <MetadataFile FileName="InterpoolWP72.xsd" MetadataType="Schema" ID="d40096ea-1061-47b4-8060-6b4c0adf9159" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd0" />
-    <MetadataFile FileName="InterpoolWP73.xsd" MetadataType="Schema" ID="67a1b9ae-7977-4568-9c3e-21933c480b38" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd5" />
-    <MetadataFile FileName="InterpoolWP7.wsdl" MetadataType="Wsdl" ID="9dc8dfcf-aef1-468c-ba59-284789970ff1" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?wsdl" />
-    <MetadataFile FileName="InterpoolWP74.xsd" MetadataType="Schema" ID="cedf6c65-572e-4275-854e-913cb1f84be6" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd6" />
-    <MetadataFile FileName="InterpoolWP7.disco" MetadataType="Disco" ID="3fad52ea-e206-4581-827e-8e228686c394" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?disco" />
-    <MetadataFile FileName="InterpoolWP75.xsd" MetadataType="Schema" ID="b6ef87a6-3da4-4a62-98c4-9b4c22a3545a" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd4" />
-    <MetadataFile FileName="InterpoolWP76.xsd" MetadataType="Schema" ID="c58aae4e-5ba2-44e1-8357-ce960d8d1bc3" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd3" />
+    <MetadataFile FileName="InterpoolWP7.xsd" MetadataType="Schema" ID="8c3e2b9e-88e0-4b0f-8dab-525ba9ff6e4f" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd2" />
+    <MetadataFile FileName="InterpoolWP71.xsd" MetadataType="Schema" ID="2d639439-87ec-4e77-b881-a74d4fcfcac6" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd1" />
+    <MetadataFile FileName="InterpoolWP72.xsd" MetadataType="Schema" ID="93dbb84d-7419-4f2c-964a-582ba86d7966" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd0" />
+    <MetadataFile FileName="InterpoolWP73.xsd" MetadataType="Schema" ID="3b205e7b-1f6a-4e6b-b6a5-07eadc01d61f" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd5" />
+    <MetadataFile FileName="InterpoolWP7.wsdl" MetadataType="Wsdl" ID="4114ba35-3172-4db3-b8c5-85c8888e2131" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?wsdl" />
+    <MetadataFile FileName="InterpoolWP74.xsd" MetadataType="Schema" ID="a8a9c33b-a8cf-4d42-823a-c5556ca74e49" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd6" />
+    <MetadataFile FileName="InterpoolWP7.disco" MetadataType="Disco" ID="606998c3-5f1a-4832-bafb-7a4a49c7a025" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?disco" />
+    <MetadataFile FileName="InterpoolWP75.xsd" MetadataType="Schema" ID="03921e7c-20eb-4096-9af0-cb4a24009d3d" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd4" />
+    <MetadataFile FileName="InterpoolWP76.xsd" MetadataType="Schema" ID="312a0e23-95e7-4aa9-93d1-ee3f4445e067" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

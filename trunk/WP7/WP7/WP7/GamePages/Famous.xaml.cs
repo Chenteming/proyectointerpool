@@ -48,12 +48,12 @@
 				this.client = new InterpoolWP7Client();
 				this.client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
 				this.client.GetClueByFamousAsync(gm.UserId, gm.GetCurrentFamous() - 1);
-				this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
+                this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
 				this.client.CloseAsync();
 				this.client = new InterpoolWP7Client();
-				this.client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(this.client_GetCurrentFamousCompleted);
+                this.client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(this.ClientGetCurrentFamousCompleted);
 				this.client.GetCurrentFamousAsync(this.gm.UserId, this.gm.GetCurrentFamous() - 1);
-				this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
+                this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
 				this.client.CloseAsync();
 			} catch (Exception e) {
 				ShowHideInterpoolFailMessage(e.Message, true);			

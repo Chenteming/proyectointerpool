@@ -50,18 +50,29 @@
 
         void client_GetCitiesCompleted(object sender, GetCitiesCompletedEventArgs e)
         {
-            List<DataCity> dataCities = e.Result.ToList();
-            if (dataCities != null)
+            if (e.Result == null)
             {
-                button1.Content = dataCities.ElementAt(0).NameCity;
-                button2.Content = dataCities.ElementAt(1).NameCity;
-                button3.Content = dataCities.ElementAt(2).NameCity;
-                for (int i = 0; i < dataCities.Count; i++)
+                textToTravel.Visibility = Visibility.Collapsed;
+                button1.Visibility = Visibility.Collapsed;
+                button2.Visibility = Visibility.Collapsed;
+                button3.Visibility = Visibility.Collapsed;
+                
+            }
+            else
+            {
+                List<DataCity> dataCities = e.Result.ToList();
+                if (dataCities != null)
                 {
-                    coordX[i] = dataCities.ElementAt(0).Left;
-                    coordY[i] = dataCities.ElementAt(0).Top;
+                    button1.Content = dataCities.ElementAt(0).NameCity;
+                    button2.Content = dataCities.ElementAt(1).NameCity;
+                    button3.Content = dataCities.ElementAt(2).NameCity;
+                    for (int i = 0; i < dataCities.Count; i++)
+                    {
+                        coordX[i] = dataCities.ElementAt(0).Left;
+                        coordY[i] = dataCities.ElementAt(0).Top;
+                    }
+                    ShowContext();
                 }
-                ShowContext();               
             }
         }       
 

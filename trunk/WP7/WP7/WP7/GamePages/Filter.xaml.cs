@@ -50,10 +50,13 @@
         /// </summary>
         private List<string> birthday;
 
+        //private string[] filters;
+
+
         /// <summary>
         /// Store for the property
         /// </summary>
-        private string[] filters;
+
 
         /// <summary>
         /// Store for the property
@@ -82,6 +85,7 @@
 
         /// <summary>
         /// Initializes a new instance of the Filter class.</summary>
+
         public Filter()
         {
             InitializeComponent();            
@@ -94,12 +98,19 @@
 
             this.client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(this.ClientFilterSuspectsCompleted);
             DataFacebookUser dfu = new DataFacebookUser();
+            this.client.GetFiltersCompleted += new EventHandler<GetFiltersCompletedEventArgs>(client_GetFiltersCompleted);
             this.client.FilterSuspectsAsync(this.gm.UserId, dfu);
+
+            this.client.GetFiltersAsync(this.gm.UserId);
+           
             this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
+
             this.client.CloseAsync();
-            this.filters = new string[Constants.MaxFilterfield];
+
+            
             this.UpdateFilters();
             ComboList.Visibility = Visibility.Collapsed;
+
         }
 
         public void UpdateFilters() 
@@ -116,6 +127,28 @@
         public void ClientCloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {    
         }
+
+
+        void client_GetFiltersCompleted(object sender, GetFiltersCompletedEventArgs e)
+        {
+            string[] filters = this.gm.GetFilterField();
+
+            DataFacebookUser res = e.Result;
+           
+            filters[0] = res.FirstName;
+            filters[1] = res.LastName;
+            filters[2] = res.Birthday;
+            filters[3] = res.Hometown;
+            filters[4] = res.Gender;
+            filters[3] = res.Music;
+            filters[4] = res.Cinema;
+
+            this.UpdateFilters();
+            ComboList.Visibility = Visibility.Collapsed;
+        }
+
+        void client_FilterSuspectsCompleted(object sender, FilterSuspectsCompletedEventArgs e)
+        {}
 
         public void ClientFilterSuspectsCompleted(object sender, FilterSuspectsCompletedEventArgs e)
         {
@@ -176,12 +209,6 @@
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
-            string[] filterField = this.gm.GetFilterField();
-            for (int i = 0; i < 8; i++) 
-            {
-                filterField[i] = this.filters[i];
-            }
-
             NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
         }       
 
@@ -191,7 +218,6 @@
             {
                 string[] filterField = this.gm.GetFilterField();
                 filterField[this.btnPosition] = ComboList.SelectedItem.ToString();
-                this.filters[this.btnPosition] = ComboList.SelectedItem.ToString();
                 ComboList.Visibility = Visibility.Collapsed;
                 ContentGrid2.Visibility = Visibility.Collapsed;
                 ContentGrid.Visibility = Visibility.Visible;
