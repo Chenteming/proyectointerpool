@@ -12,9 +12,11 @@
         <control name="Travel1" Content="Viajar1"/>
         <control name="Travel2" Content="Viajar2"/>
         <control name="Travel3" Content="Viajar3"/>
-        <control name="textToTravel" Text="Viajar a:"/>
+        <control name="messageText2" Text="¿Realmente deseas viajar a "/>
+        <control name="failMessageText" Text="Lamentablemente viajaste a la ciudad incorrecta y has perdido tiempo..."/>
+        <control name="textToTravel" Text="Viajar a:"/>        
     </class>
-    <class name="Famous" Title="Famous">
+    <class name="Famous" Title="Famous">	
         <control name="interrogateButton" Content="Interrogar"/>
     </class>
     <class name="Suspect" Title="Suspect">
@@ -49,5 +51,8 @@
     </class>
 	<class name="Start" Title="Start">
         <control name="GoButton" Content="JUGAR!"/>
+    </class>
+	<class name="Game" Title="Game">
+        <control name="TextLevel" Content="Nivel"/>
     </class>
 </language>
