@@ -16,7 +16,7 @@
 
     public partial class Game : PhoneApplicationPage
     {
-        private GameManager gm = GameManager.getInstance();
+        private GameManager gm = GameManager.GetInstance();
 		private LanguageManager lm = LanguageManager.GetInstance();
 
         public Game()

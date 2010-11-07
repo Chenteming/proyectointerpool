@@ -19,7 +19,7 @@
     {
         private InterpoolWP7Client client;
         private LanguageManager language;
-        private GameManager gm = GameManager.getInstance();
+        private GameManager gm = GameManager.GetInstance();
         private double[] coordX;
         private double[] coordY;
         private int currentTravel;
@@ -27,8 +27,8 @@
         public City()
         {
             InitializeComponent();
-            this.coordX = new double[Constants.MAX_CITIES];
-            this.coordY = new double[Constants.MAX_CITIES];
+            this.coordX = new double[Constants.MaxCities];
+            this.coordY = new double[Constants.MaxCities];
 			AnimationPage.Begin();
             this.language = LanguageManager.GetInstance();
             if (this.language.GetXDoc() != null)
