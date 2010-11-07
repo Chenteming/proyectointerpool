@@ -17,6 +17,7 @@
     public partial class Game : PhoneApplicationPage
     {
         private GameManager gm = GameManager.getInstance();
+		private LanguageManager lm = LanguageManager.GetInstance();
 
         public Game()
         {
@@ -24,6 +25,16 @@
             if (gm.ShowAnimation == true)
                 ToastyStoryboard.Begin();
             gm.ShowAnimation = false;
+			TextCity.Text = gm.GetCurrentCity();
+			DateTime dt = gm.CurrentDateTime;
+			string hour = dt.Hour < 10 ? "0" + dt.Hour : String.Empty + dt.Hour;
+			string time = " pm";
+			if (dt.Hour >= 0 && dt.Hour <= 12)
+				time = " am";
+			TextDate.Text = GetDayOfWeek(dt, lm.GetCurrentLanguage() == "English") + 
+			" " + hour + time;
+            ////string cityURI = "../CitiesImages/" + gm.PictureCityLink;
+            ////cityImage.Source = new BitmapImage(new Uri(cityURI, UriKind.Relative));
         }
 
 		private void Door_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -72,5 +83,34 @@
             NavigationService.Navigate(new Uri("/GamePages/Options.xaml", UriKind.RelativeOrAbsolute));
         }
 
+		 /// <summary>
+       /// Get Day of week 
+       /// </summary>
+       /// <param name="currentDate">Parameter description for currentDate goes here</param>
+       /// <returns>
+       /// the day of the week</returns>
+       private string GetDayOfWeek(DateTime currentDate, bool english)
+       {
+           switch (currentDate.DayOfWeek)
+           {
+               case DayOfWeek.Friday:
+                   return english ? "Friday" : "Viernes";
+               case DayOfWeek.Monday:
+                   return english ? "Monday" : "Lunes";
+               case DayOfWeek.Saturday:
+                   return english ? "Saturday" : "Sabado";
+               case DayOfWeek.Sunday:
+                   return english ? "Sunday" : "Domingo";
+               case DayOfWeek.Thursday:
+                   return english? "Thursday" : "Jueves";
+               case DayOfWeek.Tuesday:
+                   return english ? "Tuesday" : "Martes";
+               case DayOfWeek.Wednesday:
+                   return english ? "Wednesday" : "Miércoles";
+               default:
+                   return "no existe día de la semana";
+           }
+       }
+ 
 	}
 }
