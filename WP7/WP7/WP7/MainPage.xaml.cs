@@ -84,8 +84,9 @@
 
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {		
-			////Usando el mail de FACEBOOK            
-			client.GetUserIdFacebookAsync(gm.UserEmail);
+			////Usando el mail de FACEBOOK
+            client.GetUserIdFacebookAsync(gm.UserEmail);
+
             this.client.GetUserIdFacebookCompleted += new EventHandler<GetUserIdFacebookCompletedEventArgs>(client_GetUserIdFacebookCompleted);
         }
 

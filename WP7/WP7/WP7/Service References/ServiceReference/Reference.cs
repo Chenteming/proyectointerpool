@@ -17,6 +17,98 @@ namespace WP7.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DataUserInfo", Namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes")]
+    public partial class DataUserInfo : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string FirstNameField;
+        
+        private string LastNameField;
+        
+        private string UserIdFacebookField;
+        
+        private WP7.ServiceReference.UserState UserStateField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserIdFacebook {
+            get {
+                return this.UserIdFacebookField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserIdFacebookField, value) != true)) {
+                    this.UserIdFacebookField = value;
+                    this.RaisePropertyChanged("UserIdFacebook");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WP7.ServiceReference.UserState UserState {
+            get {
+                return this.UserStateField;
+            }
+            set {
+                if ((this.UserStateField.Equals(value) != true)) {
+                    this.UserStateField = value;
+                    this.RaisePropertyChanged("UserState");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserState", Namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes")]
+    public enum UserState : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NO_REGISTERED = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        REGISTERED_PLAYING = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        REGISTERED_NO_PLAYING = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        REGISTERED_NO_PLAYING_LOGIN_REQUIRED = 3,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DataCity", Namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Datatypes")]
     public partial class DataCity : object, System.ComponentModel.INotifyPropertyChanged {
         
@@ -791,6 +883,7 @@ namespace WP7.ServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="StructuralObject", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses", IsReference=true)]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityObject))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.Game))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.Filter))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.NodePath))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.City))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.CityProperty))]
@@ -817,6 +910,7 @@ namespace WP7.ServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EntityObject", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses", IsReference=true)]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.Game))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.Filter))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.NodePath))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.City))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.CityProperty))]
@@ -853,6 +947,10 @@ namespace WP7.ServiceReference {
         private System.DateTime CurrentTimeField;
         
         private System.DateTime DeadLineField;
+        
+        private WP7.ServiceReference.Filter FilterSuspectField;
+        
+        private WP7.ServiceReference.EntityReferenceOfFilterNLhZOR8W FilterSuspectReferenceField;
         
         private int GameIdField;
         
@@ -896,6 +994,32 @@ namespace WP7.ServiceReference {
                 if ((this.DeadLineField.Equals(value) != true)) {
                     this.DeadLineField = value;
                     this.RaisePropertyChanged("DeadLine");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WP7.ServiceReference.Filter FilterSuspect {
+            get {
+                return this.FilterSuspectField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FilterSuspectField, value) != true)) {
+                    this.FilterSuspectField = value;
+                    this.RaisePropertyChanged("FilterSuspect");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WP7.ServiceReference.EntityReferenceOfFilterNLhZOR8W FilterSuspectReference {
+            get {
+                return this.FilterSuspectReferenceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FilterSuspectReferenceField, value) != true)) {
+                    this.FilterSuspectReferenceField = value;
+                    this.RaisePropertyChanged("FilterSuspectReference");
                 }
             }
         }
@@ -1026,6 +1150,102 @@ namespace WP7.ServiceReference {
                 if ((object.ReferenceEquals(this.UserReferenceField, value) != true)) {
                     this.UserReferenceField = value;
                     this.RaisePropertyChanged("UserReference");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Filter", Namespace="http://schemas.datacontract.org/2004/07/InterpoolCloudWebRole.Data", IsReference=true)]
+    public partial class Filter : WP7.ServiceReference.EntityObject {
+        
+        private string FilterBirthdayField;
+        
+        private string FilterCinemaField;
+        
+        private string FilterGenderField;
+        
+        private string FilterHometownField;
+        
+        private string FilterMusicField;
+        
+        private int FilterSuspectIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FilterBirthday {
+            get {
+                return this.FilterBirthdayField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FilterBirthdayField, value) != true)) {
+                    this.FilterBirthdayField = value;
+                    this.RaisePropertyChanged("FilterBirthday");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FilterCinema {
+            get {
+                return this.FilterCinemaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FilterCinemaField, value) != true)) {
+                    this.FilterCinemaField = value;
+                    this.RaisePropertyChanged("FilterCinema");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FilterGender {
+            get {
+                return this.FilterGenderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FilterGenderField, value) != true)) {
+                    this.FilterGenderField = value;
+                    this.RaisePropertyChanged("FilterGender");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FilterHometown {
+            get {
+                return this.FilterHometownField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FilterHometownField, value) != true)) {
+                    this.FilterHometownField = value;
+                    this.RaisePropertyChanged("FilterHometown");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FilterMusic {
+            get {
+                return this.FilterMusicField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FilterMusicField, value) != true)) {
+                    this.FilterMusicField = value;
+                    this.RaisePropertyChanged("FilterMusic");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FilterSuspectId {
+            get {
+                return this.FilterSuspectIdField;
+            }
+            set {
+                if ((this.FilterSuspectIdField.Equals(value) != true)) {
+                    this.FilterSuspectIdField = value;
+                    this.RaisePropertyChanged("FilterSuspectId");
                 }
             }
         }
@@ -2531,6 +2751,8 @@ namespace WP7.ServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EntityKeyMember", Namespace="http://schemas.datacontract.org/2004/07/System.Data")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataUserInfo))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.UserState))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataCity))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataGameInfo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.GameState))]
@@ -2542,9 +2764,10 @@ namespace WP7.ServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.DataClue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityObject))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.StructuralObject))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfCityNLhZOR8W))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfFilterNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReference))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.RelatedEnd))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfCityNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfFamousNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfLevelNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfGameNLhZOR8W))]
@@ -2555,6 +2778,7 @@ namespace WP7.ServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.EntityKeyMember>))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.User))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.Game))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.Filter))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<WP7.ServiceReference.NodePath>))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.NodePath))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.City))]
@@ -2617,20 +2841,21 @@ namespace WP7.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EntityReferenceOfCityNLhZOR8W", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses")]
-    public partial class EntityReferenceOfCityNLhZOR8W : WP7.ServiceReference.EntityReference {
+    [System.Runtime.Serialization.DataContractAttribute(Name="EntityReferenceOfFilterNLhZOR8W", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses")]
+    public partial class EntityReferenceOfFilterNLhZOR8W : WP7.ServiceReference.EntityReference {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EntityReference", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfCityNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfFamousNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfLevelNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfGameNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfSuspectNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfOrderOfArrestNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfUserNLhZOR8W))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfCityNLhZOR8W))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfFilterNLhZOR8W))]
     public partial class EntityReference : WP7.ServiceReference.RelatedEnd {
         
         private WP7.ServiceReference.EntityKey EntityKeyField;
@@ -2653,13 +2878,14 @@ namespace WP7.ServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="RelatedEnd", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses")]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReference))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfCityNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfFamousNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfLevelNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfGameNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfSuspectNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfOrderOfArrestNLhZOR8W))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfUserNLhZOR8W))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfCityNLhZOR8W))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WP7.ServiceReference.EntityReferenceOfFilterNLhZOR8W))]
     public partial class RelatedEnd : object, System.ComponentModel.INotifyPropertyChanged {
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -2670,6 +2896,12 @@ namespace WP7.ServiceReference {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EntityReferenceOfCityNLhZOR8W", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses")]
+    public partial class EntityReferenceOfCityNLhZOR8W : WP7.ServiceReference.EntityReference {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2709,6 +2941,11 @@ namespace WP7.ServiceReference {
         System.IAsyncResult BeginGetUserIdFacebook(string idLogin, System.AsyncCallback callback, object asyncState);
         
         string EndGetUserIdFacebook(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IInterpoolWP7/GetUserInfo", ReplyAction="http://tempuri.org/IInterpoolWP7/GetUserInfoResponse")]
+        System.IAsyncResult BeginGetUserInfo(string idLogin, System.AsyncCallback callback, object asyncState);
+        
+        WP7.ServiceReference.DataUserInfo EndGetUserInfo(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IInterpoolWP7/GetCurrentCity", ReplyAction="http://tempuri.org/IInterpoolWP7/GetCurrentCityResponse")]
         System.IAsyncResult BeginGetCurrentCity(string userIdFacebook, System.AsyncCallback callback, object asyncState);
@@ -2754,6 +2991,11 @@ namespace WP7.ServiceReference {
         System.IAsyncResult BeginDeleteGame(WP7.ServiceReference.User user, System.AsyncCallback callback, object asyncState);
         
         void EndDeleteGame(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IInterpoolWP7/GetFilters", ReplyAction="http://tempuri.org/IInterpoolWP7/GetFiltersResponse")]
+        System.IAsyncResult BeginGetFilters(string userIdFacebook, System.AsyncCallback callback, object asyncState);
+        
+        WP7.ServiceReference.DataFacebookUser EndGetFilters(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2775,6 +3017,25 @@ namespace WP7.ServiceReference {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public WP7.ServiceReference.DataUserInfo Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((WP7.ServiceReference.DataUserInfo)(this.results[0]));
             }
         }
     }
@@ -2914,6 +3175,25 @@ namespace WP7.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetFiltersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetFiltersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public WP7.ServiceReference.DataFacebookUser Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((WP7.ServiceReference.DataFacebookUser)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class InterpoolWP7Client : System.ServiceModel.ClientBase<WP7.ServiceReference.IInterpoolWP7>, WP7.ServiceReference.IInterpoolWP7 {
         
         private BeginOperationDelegate onBeginStartGameDelegate;
@@ -2927,6 +3207,12 @@ namespace WP7.ServiceReference {
         private EndOperationDelegate onEndGetUserIdFacebookDelegate;
         
         private System.Threading.SendOrPostCallback onGetUserIdFacebookCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetUserInfoDelegate;
+        
+        private EndOperationDelegate onEndGetUserInfoDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserInfoCompletedDelegate;
         
         private BeginOperationDelegate onBeginGetCurrentCityDelegate;
         
@@ -2981,6 +3267,12 @@ namespace WP7.ServiceReference {
         private EndOperationDelegate onEndDeleteGameDelegate;
         
         private System.Threading.SendOrPostCallback onDeleteGameCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetFiltersDelegate;
+        
+        private EndOperationDelegate onEndGetFiltersDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetFiltersCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -3039,6 +3331,8 @@ namespace WP7.ServiceReference {
         
         public event System.EventHandler<GetUserIdFacebookCompletedEventArgs> GetUserIdFacebookCompleted;
         
+        public event System.EventHandler<GetUserInfoCompletedEventArgs> GetUserInfoCompleted;
+        
         public event System.EventHandler<GetCurrentCityCompletedEventArgs> GetCurrentCityCompleted;
         
         public event System.EventHandler<GetPossibleCitiesCompletedEventArgs> GetPossibleCitiesCompleted;
@@ -3056,6 +3350,8 @@ namespace WP7.ServiceReference {
         public event System.EventHandler<GetClueByFamousCompletedEventArgs> GetClueByFamousCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteGameCompleted;
+        
+        public event System.EventHandler<GetFiltersCompletedEventArgs> GetFiltersCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -3150,6 +3446,52 @@ namespace WP7.ServiceReference {
             }
             base.InvokeAsync(this.onBeginGetUserIdFacebookDelegate, new object[] {
                         idLogin}, this.onEndGetUserIdFacebookDelegate, this.onGetUserIdFacebookCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult WP7.ServiceReference.IInterpoolWP7.BeginGetUserInfo(string idLogin, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserInfo(idLogin, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WP7.ServiceReference.DataUserInfo WP7.ServiceReference.IInterpoolWP7.EndGetUserInfo(System.IAsyncResult result) {
+            return base.Channel.EndGetUserInfo(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserInfo(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string idLogin = ((string)(inValues[0]));
+            return ((WP7.ServiceReference.IInterpoolWP7)(this)).BeginGetUserInfo(idLogin, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserInfo(System.IAsyncResult result) {
+            WP7.ServiceReference.DataUserInfo retVal = ((WP7.ServiceReference.IInterpoolWP7)(this)).EndGetUserInfo(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserInfoCompleted(object state) {
+            if ((this.GetUserInfoCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserInfoCompleted(this, new GetUserInfoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserInfoAsync(string idLogin) {
+            this.GetUserInfoAsync(idLogin, null);
+        }
+        
+        public void GetUserInfoAsync(string idLogin, object userState) {
+            if ((this.onBeginGetUserInfoDelegate == null)) {
+                this.onBeginGetUserInfoDelegate = new BeginOperationDelegate(this.OnBeginGetUserInfo);
+            }
+            if ((this.onEndGetUserInfoDelegate == null)) {
+                this.onEndGetUserInfoDelegate = new EndOperationDelegate(this.OnEndGetUserInfo);
+            }
+            if ((this.onGetUserInfoCompletedDelegate == null)) {
+                this.onGetUserInfoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserInfoCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserInfoDelegate, new object[] {
+                        idLogin}, this.onEndGetUserInfoDelegate, this.onGetUserInfoCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3574,6 +3916,52 @@ namespace WP7.ServiceReference {
                         user}, this.onEndDeleteGameDelegate, this.onDeleteGameCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult WP7.ServiceReference.IInterpoolWP7.BeginGetFilters(string userIdFacebook, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetFilters(userIdFacebook, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WP7.ServiceReference.DataFacebookUser WP7.ServiceReference.IInterpoolWP7.EndGetFilters(System.IAsyncResult result) {
+            return base.Channel.EndGetFilters(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetFilters(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string userIdFacebook = ((string)(inValues[0]));
+            return ((WP7.ServiceReference.IInterpoolWP7)(this)).BeginGetFilters(userIdFacebook, callback, asyncState);
+        }
+        
+        private object[] OnEndGetFilters(System.IAsyncResult result) {
+            WP7.ServiceReference.DataFacebookUser retVal = ((WP7.ServiceReference.IInterpoolWP7)(this)).EndGetFilters(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetFiltersCompleted(object state) {
+            if ((this.GetFiltersCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetFiltersCompleted(this, new GetFiltersCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetFiltersAsync(string userIdFacebook) {
+            this.GetFiltersAsync(userIdFacebook, null);
+        }
+        
+        public void GetFiltersAsync(string userIdFacebook, object userState) {
+            if ((this.onBeginGetFiltersDelegate == null)) {
+                this.onBeginGetFiltersDelegate = new BeginOperationDelegate(this.OnBeginGetFilters);
+            }
+            if ((this.onEndGetFiltersDelegate == null)) {
+                this.onEndGetFiltersDelegate = new EndOperationDelegate(this.OnEndGetFilters);
+            }
+            if ((this.onGetFiltersCompletedDelegate == null)) {
+                this.onGetFiltersCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetFiltersCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetFiltersDelegate, new object[] {
+                        userIdFacebook}, this.onEndGetFiltersDelegate, this.onGetFiltersCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -3672,6 +4060,19 @@ namespace WP7.ServiceReference {
             public string EndGetUserIdFacebook(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 string _result = ((string)(base.EndInvoke("GetUserIdFacebook", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetUserInfo(string idLogin, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = idLogin;
+                System.IAsyncResult _result = base.BeginInvoke("GetUserInfo", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public WP7.ServiceReference.DataUserInfo EndGetUserInfo(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                WP7.ServiceReference.DataUserInfo _result = ((WP7.ServiceReference.DataUserInfo)(base.EndInvoke("GetUserInfo", _args, result)));
                 return _result;
             }
             
@@ -3793,6 +4194,19 @@ namespace WP7.ServiceReference {
             public void EndDeleteGame(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 base.EndInvoke("DeleteGame", _args, result);
+            }
+            
+            public System.IAsyncResult BeginGetFilters(string userIdFacebook, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = userIdFacebook;
+                System.IAsyncResult _result = base.BeginInvoke("GetFilters", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public WP7.ServiceReference.DataFacebookUser EndGetFilters(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                WP7.ServiceReference.DataFacebookUser _result = ((WP7.ServiceReference.DataFacebookUser)(base.EndInvoke("GetFilters", _args, result)));
+                return _result;
             }
         }
     }

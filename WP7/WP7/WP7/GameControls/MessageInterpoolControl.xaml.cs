@@ -64,7 +64,7 @@
                 /*WebBrowserTask task = new WebBrowserTask();
                 task.URL = "http://google.com";
                 task.Show();*/
-                GameManager gm = GameManager.getInstance();
+                GameManager gm = GameManager.GetInstance();
                 gm.Logged = true;
                 login = false;                
             }
