@@ -1,4 +1,9 @@
-﻿namespace WP7
+﻿//-----------------------------------------------------------------------
+// <copyright file="LanguageManager.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+namespace WP7
 {
     using System;
     using System.Linq;
@@ -70,7 +75,10 @@
             return this.current;
         }
 
-
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <param name="language">Parameter description for language goes here</param>
         public void SetCurrentLanguage(string language)
         {
             this.current = language;
@@ -79,7 +87,7 @@
         /// <summary>
         /// Method for translate the page language
         /// </summary>
-        /// <param name="page"></param>
+        /// <param name="page">Parameter description for page goes here</param>
         public void TranslatePage(PhoneApplicationPage page)
         {           
             var controls = from us in this.xdoc.Elements("language").Elements("class").Elements("control")
@@ -114,7 +122,6 @@
 
         /// <summary>
         /// Description for Method.</summary>
-        /// <param name="user"> Parameter description for user goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         public static LanguageManager GetInstance()
