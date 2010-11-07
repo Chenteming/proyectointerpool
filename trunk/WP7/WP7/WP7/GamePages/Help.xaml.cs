@@ -14,8 +14,13 @@ namespace WP7
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
 
+    /// <summary>
+    /// Partial class declaration Help
+    /// </summary>
     public partial class Help : PhoneApplicationPage
     {
+        /// <summary>
+        /// Initializes a new instance of the Help class.</summary>
         public Help()
         {
             InitializeComponent();

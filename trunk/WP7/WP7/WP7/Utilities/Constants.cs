@@ -11,10 +11,33 @@
     using System.Windows.Media.Animation;
     using System.Windows.Shapes;
 
+    /// <summary>
+    /// Class Description Constants
+    /// </summary>
     public class Constants
     {
-        public static int MAX_FAMOUS = 3;
-        public static int MAX_CITIES = 3;
-        public static int MAX_FILTERFIELD = 8;
+        public static int MaxFamous
+        {
+            get
+            {
+                return 3;
+            }
+        }
+
+        public static int MaxCities
+        {
+            get
+            {
+                return 3;
+            }
+        }
+
+        public static int MaxFilterfield
+        {
+            get
+            {
+                return 8;
+            }
+        }
     }
 }

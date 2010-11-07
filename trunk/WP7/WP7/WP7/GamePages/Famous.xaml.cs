@@ -10,51 +10,88 @@
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Media.Animation;
+    using System.Windows.Media.Imaging;
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
     using WP7.ServiceReference;
-    using System.Windows.Media.Imaging;
 
+    /// <summary>
+    /// Partial class declaration Famous
+    /// </summary>
     public partial class Famous : PhoneApplicationPage
     {
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private InterpoolWP7Client client;
-        private LanguageManager language = LanguageManager.GetInstance();
-        private GameManager gm = GameManager.getInstance();
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        private LanguageManager language = LanguageManager.GetInstance();
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        private GameManager gm = GameManager.GetInstance();
+
+        /// <summary>
+        /// Initializes a new instance of the Famous class.</summary>
         public Famous()
         {
             InitializeComponent();
-			AnimationPage.Begin();
+            AnimationPage.Begin();
             //// Change the language of the page            
             if (this.language.GetXDoc() != null)
+            {
                 this.language.TranslatePage(this);
-			////famousImage.Source = "/WP7;component/FamousImages/Lety.jpg";
-			this.client = new InterpoolWP7Client();
-            this.client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
-            this.client.GetClueByFamousAsync(gm.UserId, gm.GetCurrentFamous() - 1);
-            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
+            }
+            
+            ////famousImage.Source = "/WP7;component/FamousImages/Lety.jpg";
+            this.client = new InterpoolWP7Client();
+            this.client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(this.GetClueByFamousCallback);
+            this.client.GetClueByFamousAsync(this.gm.UserId, this.gm.GetCurrentFamous() - 1);
+            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
             this.client.CloseAsync();
             this.client = new InterpoolWP7Client();
-            this.client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(this.client_GetCurrentFamousCompleted);
+            this.client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(this.ClientGetCurrentFamousCompleted);
             this.client.GetCurrentFamousAsync(this.gm.UserId, this.gm.GetCurrentFamous() - 1);
-            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
+            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
             this.client.CloseAsync();
             ////Set the textboxes with the name of the famous
             famousName.Visibility = System.Windows.Visibility.Collapsed;
             Bubble.Visibility = Visibility.Collapsed;
             dialogText.Visibility = Visibility.Collapsed;
-        }       
-		
-		public void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-		{
-		}
+        }
+
+        public void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        public void ClientCloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+        }
+
+        public void ClientGetCurrentFamousCompleted(object sender, GetCurrentFamousCompletedEventArgs e)
+        {
+            DataFamous dataF = e.Result;
+            int num = this.gm.GetCurrentFamous();
+            this.gm.AddFamous(num - 1, dataF.NameFamous);
+            famousName.Visibility = System.Windows.Visibility.Visible;
+            ////Show in the content of the button the name of the famous is going to be interrogated
+            famousName.Text = dataF.NameFamous;
+            string famousURI = "../FamousImages/" + dataF.FileFamous;
+            famousImage.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
+            Bubble.Visibility = Visibility.Visible;
+            dialogText.Visibility = Visibility.Visible;
+        }
 
         private void GetClueByFamousCallback(object sender, GetClueByFamousCompletedEventArgs e)
         {
             DataClue data = e.Result;
-            gm.CurrentDateTime = data.CurrentDate;
+            this.gm.CurrentDateTime = data.CurrentDate;
             dialogText.Text = data.Clue;
-            gm.Data = data;
+            this.gm.Data = data;
             switch (data.States)
             {
                 case GameState.LOSE_EOAW:
@@ -73,23 +110,5 @@
                     break;
             }
         }
-
-        void client_CloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-        }
-
-        void client_GetCurrentFamousCompleted(object sender, GetCurrentFamousCompletedEventArgs e)
-        {
-            DataFamous dataF = e.Result;
-            int num = this.gm.GetCurrentFamous();
-            this.gm.AddFamous(num - 1, dataF.NameFamous);
-            famousName.Visibility = System.Windows.Visibility.Visible;
-            ////Show in the content of the button the name of the famous is going to be interrogated
-            famousName.Text = dataF.NameFamous;
-            string famousURI = "../FamousImages/" + dataF.FileFamous;
-            famousImage.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
-            Bubble.Visibility = Visibility.Visible;
-            dialogText.Visibility = Visibility.Visible;
-		}
     }
 }

@@ -9,12 +9,17 @@
     using System.Windows.Media;
     using System.Windows.Media.Animation;
     using System.Windows.Shapes;
-    
+
+    /// <summary>
+    /// Partial class declaration LoginScreenControl
+    /// </summary>
     public partial class LoginScreenControl : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the LoginScreenControl class.</summary>
         public LoginScreenControl()
-		{
-			////Required to initialize variables
+        {
+            ////Required to initialize variables
             InitializeComponent();
         }
     }
