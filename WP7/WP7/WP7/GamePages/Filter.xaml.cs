@@ -153,8 +153,13 @@
         public void ClientFilterSuspectsCompleted(object sender, FilterSuspectsCompletedEventArgs e)
         {
             this.gm.CurrentDateTime = e.Result.CurrentDate;
-            /*if (e.Result.CurrentDate.CompareTo(gm.DeadLineDateTime) == 1)
-                NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));*/
+            DataGameInfo info = e.Result.GameInfo;
+            if (info.state == GameState.LOSE_TO)
+            {
+                this.gm.Info = info;
+                NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
+                return;
+            }
             List<DataFacebookUser> dfu = e.Result.ListFacebookUser.ToList();
             this.gender = new List<string>();
             this.film = new List<string>();

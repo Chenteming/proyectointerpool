@@ -84,8 +84,13 @@
             else
             {
                 gm.CurrentDateTime = city.CurrentDate;
-                if (city.CurrentDate.CompareTo(gm.DeadLineDateTime) == 1)
+
+                if (city.GameInfo.state == GameState.LOSE_TO)
+                {
+                    gm.Info = city.GameInfo;  
                     NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
+                    return;
+                }
                 ////Coords. cities
                 double coordX_cityI = gm.Left;
                 double coordY_cityI = gm.Top;
