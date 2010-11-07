@@ -1,4 +1,9 @@
-﻿namespace WP7
+﻿//-----------------------------------------------------------------------
+// <copyright file="GameManager.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+namespace WP7
 {
     using System;
     using System.Collections.Generic;
@@ -128,14 +133,22 @@
 
         public bool Logged { get; set; }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public string UserEmail { get; set; }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public bool Vibration { get; set; }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public DateTime CurrentDateTime { get; set; }
 
         public DateTime DeadLineDateTime { get; set; }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public bool ShowAnimation { get; set; }
 
         /// <summary>
@@ -143,16 +156,30 @@
         /// </summary>
         public DataClue Data;
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public string PictureLink { get; set; }
 
-        public double  Left { get; set; }
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public double Left { get; set; }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public double Top { get; set; }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public bool EmitOrder { get; set; }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public string PictureCityLink { get; set; }
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        /// <returns> Return results are described through the returns tag.</returns>
         public static GameManager GetInstance()
         {
             if (instance == null)
@@ -163,60 +190,107 @@
             return instance;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <param name="position">Parameter description for position goes here</param>
+        /// <param name="name">Parameter description for name goes here</param>
         public void AddCity(int position, string name)
         ////Add the new city in the list
         {
             this.cities.Insert(position, name);
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <param name="position">Parameter description for position goes here</param>
+        /// <param name="name">Parameter description for name goes here</param>
         public void AddClue(int position, string name)
         ////Add the new clue in the list
         {
             this.clues.Insert(position, name);
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <param name="position">Parameter description for position goes here</param>
+        /// <param name="name">Parameter description for name goes here</param>
         public void AddFamous(int position, string name)
         ////Add the new famous the list
         {
             this.famous[position] = name;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <param name="city">Parameter description for city goes here</param>
         public void SetCurrentCity(string city)
         {
             this.currentCity = city;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <param name="list">Parameter description for list goes here</param>
         public void SetCurrentCities(List<string> list)
         {
             this.cities = list;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <returns> Return results are described through the returns tag.</returns>
         public List<string> GetCities()
         {
             return this.cities;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <returns> Return results are described through the returns tag.</returns>
         public List<string> GetClues()
         {
             return this.clues;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <returns> Return results are described through the returns tag.</returns>
         public string GetCurrentCity()
         ////Return the current city
         {
             return this.currentCity;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <returns> Return results are described through the returns tag.</returns>
         public List<string> GetSuspects()
         {
             return this.suspects;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <param name="list">Parameter description for list goes here</param>
         public void SetSuspectsList(List<string> list)
         {
             this.suspects = list;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <param name="gameObjectNumber">Parameter description for gameObjectNumber goes here</param>
         public void SetFamousIndex(int gameObjectNumber)
         ////famousIndex[0] = phoneFamous        
         ////famousIndex[1] = newspaperFamous   (1,2,3) famousNumber
@@ -234,22 +308,39 @@
             }
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <returns> Return results are described through the returns tag.</returns>
         public int GetNumber()
         ////returns the number of the Actual famous
         {
             return this.number;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <returns> Return results are described through the returns tag.</returns>
         public int GetCurrentFamous()
         {
             return this.currentFamous;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <param name="field">Parameter description for field goes here</param>
+        /// <param name="position">Parameter description for position goes here</param>
         public void AddFilterField(string field, int position)
         {
             this.filterField[position] = field;
         }
 
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <returns> Return results are described through the returns tag.</returns>
         public string[] GetFilterField()
         {
             return this.filterField;
