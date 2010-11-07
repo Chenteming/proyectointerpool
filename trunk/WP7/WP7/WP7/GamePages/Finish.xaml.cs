@@ -29,12 +29,12 @@ namespace WP7
         public Finish()
         {
             InitializeComponent();
-            NameSuspectText.Text = this.gm.Data.GameInfo.SuspectName;
-            ScoreText.Text = this.gm.Data.GameInfo.Score.ToString();
-            TotalText.Text = this.gm.Data.GameInfo.ScoreWin.ToString();
-            TimeLeftText.Text = this.gm.Data.GameInfo.DiffInDays.ToString() + ":" + this.gm.Data.GameInfo.DiffInMinutes.ToString() +
-                ":" + this.gm.Data.GameInfo.DiffInseconds.ToString();
-            NewLevelText.Text = this.gm.Data.GameInfo.newLevel.ToString();
+            NameSuspectText.Text = this.gm.Info.SuspectName;
+            ScoreText.Text = this.gm.Info.Score.ToString();
+            TotalText.Text = this.gm.Info.ScoreWin.ToString();
+            TimeLeftText.Text = this.gm.Info.DiffInDays.ToString() + ":" +this.gm.Info.DiffInMinutes.ToString() +
+                ":" + this.gm.Info.DiffInseconds.ToString();
+            NewLevelText.Text = this.gm.Info.newLevel.ToString();
         }
     }
 }

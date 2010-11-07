@@ -65,6 +65,8 @@
         /// </summary>
         private int currentFamous = -1;
 
+        public DataGameInfo Info { get; set; }
+
         ////0 = first_name
         ////1 = last_name 
         ////2 =  birthday
@@ -86,6 +88,7 @@
             this.Vibration = false;
             this.ShowAnimation = false;
             this.Data = new DataClue();
+            this.Info = new DataGameInfo();
             this.EmitOrder = false;
         }
 
@@ -224,5 +227,7 @@
         {
             return this.filterField;
         }
+
+        
     }
 }

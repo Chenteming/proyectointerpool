@@ -91,6 +91,7 @@
             this.gm.CurrentDateTime = data.CurrentDate;
             dialogText.Text = data.Clue;
             this.gm.Data = data;
+            this.gm.Info = data.GameInfo;
             switch (data.States)
             {
                 case GameState.LOSE_EOAW:
