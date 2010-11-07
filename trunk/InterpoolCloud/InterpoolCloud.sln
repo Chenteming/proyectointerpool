@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterpoolCloudTest", "InterpoolCloudTest\InterpoolCloudTest.csproj", "{2403FD19-94E6-41AA-A972-7D28C2DC2153}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{6BC1CEAA-E8C2-495A-A551-2912D51474DE}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = InterpoolCloud.vsmdi
