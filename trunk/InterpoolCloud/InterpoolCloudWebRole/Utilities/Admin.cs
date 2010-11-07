@@ -60,7 +60,7 @@ namespace InterpoolCloudWebRole.Utilities
 
                 if (news != null)
                 {
-                    if (container.CityPropertySet.Where(cp => cp.City.CityId == c.CityId).Count() > 0)
+                    if (container.CityPropertySet.Where(cp => cp.City.CityId == c.CityId && cp.Dyn == true).Count() > 0)
 
                         container.CityPropertySet.Where(cp => cp.City.CityId == c.CityId).FirstOrDefault().CityPropertyContent = news;
 
