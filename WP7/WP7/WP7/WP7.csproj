@@ -213,7 +213,6 @@
     <None Include="Service References\ServiceReference\InterpoolWP71.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\InterpoolWP711.wsdl" />
     <None Include="Service References\ServiceReference\InterpoolWP72.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -235,18 +234,6 @@
     <None Include="Service References\ServiceReference\InterpoolWP771.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\InterpoolWP7710.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP7711.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP7712.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP7713.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ServiceReference\InterpoolWP772.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -262,33 +249,51 @@
     <None Include="Service References\ServiceReference\InterpoolWP776.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\InterpoolWP777.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP778.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP779.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataCity.datasource">
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataCity1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataClue.datasource">
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataClue1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFacebookUser.datasource">
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFamous1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFamous.datasource">
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataListFacebookUser1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataListFacebookUser.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataUserInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
+    <Resource Include="cities3_Images\bangkok.png" />
+    <Resource Include="cities3_Images\auckland.png" />
+    <Resource Include="cities3_Images\amsterdam.png" />
+    <Resource Include="cities3_Images\tokio.png" />
+    <Resource Include="cities3_Images\sydney.png" />
+    <Resource Include="cities3_Images\roma.png" />
+    <Resource Include="cities3_Images\singapur.png" />
+    <Resource Include="cities3_Images\seul.png" />
+    <Resource Include="cities3_Images\rio_janeiro.png" />
+    <Resource Include="cities3_Images\praga.png" />
+    <Resource Include="cities3_Images\dublin.png" />
+    <Resource Include="cities3_Images\pekin.png" />
+    <Resource Include="cities3_Images\paris.png" />
+    <Resource Include="cities3_Images\nueva_york.png" />
+    <Resource Include="cities3_Images\moscu.png" />
+    <Resource Include="cities3_Images\nueva_delhi.png" />
+    <Resource Include="cities3_Images\montevideo.png" />
+    <Resource Include="cities3_Images\mexico.png" />
+    <Resource Include="cities3_Images\marrakech.png" />
+    <Resource Include="cities3_Images\madrid.png" />
+    <Resource Include="cities3_Images\londres.png" />
+    <Resource Include="cities3_Images\dubai.png" />
+    <Resource Include="cities3_Images\la_habana.png" />
+    <Resource Include="cities3_Images\katmandu.png" />
+    <Resource Include="cities3_Images\jerusalem.png" />
+    <Resource Include="cities3_Images\hong_kong.png" />
+    <Resource Include="cities3_Images\el_cairo.png" />
+    <Resource Include="cities3_Images\cusco.png" />
+    <Resource Include="cities3_Images\copenhagen.png" />
+    <Resource Include="cities3_Images\cape_town.png" />
+    <Resource Include="cities3_Images\buenos_aires.png" />
+    <Resource Include="cities3_Images\berlin.png" />
+    <Resource Include="cities3_Images\barcelona.png" />
     <Resource Include="Fonts\fr-bold.ttf" />
     <Resource Include="GameImages\aeroplane.png" />
     <Resource Include="GameImages\archive.png" />
@@ -411,7 +416,6 @@
     <Resource Include="GameImages\Sneaky.png" />
     <Resource Include="GameImages\Toasty.png" />
     <Resource Include="GameImages\Bubble.png" />
-    <Resource Include="GameImages\MessageImage.png" />
     <Content Include="GameLanguages\English.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -452,7 +456,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\ServiceReference\InterpoolWP71.disco" />
-    <None Include="Service References\ServiceReference\InterpoolWP711.disco" />
     <None Include="Service References\ServiceReference\InterpoolWP7.disco" />
     <Content Include="ServiceReferences.ClientConfig">
       <SubType>Designer</SubType>
