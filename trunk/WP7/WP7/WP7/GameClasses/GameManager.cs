@@ -73,6 +73,8 @@
 
         public bool EmitOrder { get; set; }
 
+        public string PictureCityLink { get; set; }
+
         public static GameManager getInstance()
         {
             if (instance == null)
