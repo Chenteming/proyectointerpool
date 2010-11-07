@@ -6,9 +6,7 @@
 namespace InterpoolCloudWebRole.Controller
 {
     using System;
-
     using System.Collections.Generic;
-
     using System.Data.Objects.DataClasses;
     using System.Linq;
     using System.Reflection;
@@ -1303,6 +1301,14 @@ namespace InterpoolCloudWebRole.Controller
                 order.Suspect = null;
                 this.container.DeleteObject(order);
             }
+
+            Filter filter = game.FilterSuspect;
+            game.FilterSuspect = null;
+            if (filter != null)
+            {
+                this.container.DeleteObject(filter);
+            }
+
             ////container.DeleteObject(game.Suspect);
             container.DeleteObject(game.Suspect);
             game.Suspect = null;
