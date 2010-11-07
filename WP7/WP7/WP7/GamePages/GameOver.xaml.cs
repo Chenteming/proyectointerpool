@@ -14,11 +14,23 @@ namespace WP7
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
 
+    /// <summary>
+    /// Partial class declaration GameOver
+    /// </summary>
     public partial class GameOver : PhoneApplicationPage
     {
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private int animation = 0;
-        private GameManager gm = GameManager.getInstance();
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        private GameManager gm = GameManager.GetInstance();
+
+        /// <summary>
+        /// Initializes a new instance of the GameOver class.</summary>
         public GameOver()
         {            
             InitializeComponent();
@@ -26,17 +38,17 @@ namespace WP7
             didNotEmitOrderOfArrest.Visibility = Visibility.Collapsed;
             afterDeadLine.Visibility = Visibility.Collapsed;                            
             gameOverStoryboard.Begin();
-			gameOverStoryboard.Completed += new EventHandler(gameOverStoryboard_Completed);
+            gameOverStoryboard.Completed += new EventHandler(this.GameOverStoryboardCompleted);
         }
-		
-		void gameOverStoryboard_Completed(object sender, EventArgs e)
+
+        public void GameOverStoryboardCompleted(object sender, EventArgs e)
         {
-            ScoreText.Text = gm.Data.GameInfo.Score.ToString();
-            TotalText.Text = gm.Data.GameInfo.ScoreWin.ToString();
-            TimeLeftText.Text = gm.Data.GameInfo.DiffInDays.ToString() + ":" + gm.Data.GameInfo.DiffInMinutes.ToString() + 
-                ":" + gm.Data.GameInfo.DiffInseconds.ToString();
-            NewLevelText.Text = gm.Data.GameInfo.newLevel.ToString();
-            switch (animation)
+            ScoreText.Text = this.gm.Data.GameInfo.Score.ToString();
+            TotalText.Text = this.gm.Data.GameInfo.ScoreWin.ToString();
+            TimeLeftText.Text = this.gm.Data.GameInfo.DiffInDays.ToString() + ":" + this.gm.Data.GameInfo.DiffInMinutes.ToString() + 
+                ":" + this.gm.Data.GameInfo.DiffInseconds.ToString();
+            NewLevelText.Text = this.gm.Data.GameInfo.newLevel.ToString();
+            switch (this.animation)
             {
                 case 0:
                     incorrectOrderOfArrest.Visibility = Visibility.Visible;

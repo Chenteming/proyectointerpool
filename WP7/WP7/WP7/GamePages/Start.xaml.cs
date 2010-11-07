@@ -14,30 +14,35 @@ namespace WP7
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
 
+    /// <summary>
+    /// Partial class declaration Start
+    /// </summary>
     public partial class Start : PhoneApplicationPage
     {
+        /// <summary>
+        /// Initializes a new instance of the Start class.</summary>
         public Start()
         {
             InitializeComponent();
             this.GoButton.IsEnabled = false;
-			Detective2Storyboard.Begin();
-			Detective2Storyboard.Completed += new EventHandler(Detective2Storyboard_Completed);
-        }
- 
-        void Detective2Storyboard_Completed(object sender, EventArgs e)
-        {
-            detectiveText.Visibility = Visibility.Visible;
-			GoButton.Visibility = Visibility.Visible;
+            Detective2Storyboard.Begin();
+            Detective2Storyboard.Completed += new EventHandler(this.Detective2Storyboard_Completed);
         }
 
-        private void GoButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        public void Detective2Storyboard_Completed(object sender, EventArgs e)
         {
-        	NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
+            detectiveText.Visibility = Visibility.Visible;
+            GoButton.Visibility = Visibility.Visible;
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+        }
+
+        private void GoButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

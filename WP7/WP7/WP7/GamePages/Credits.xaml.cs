@@ -14,8 +14,13 @@ namespace WP7.GamePages
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
 
+    /// <summary>
+    /// Partial class declaration Credits
+    /// </summary>
     public partial class Credits : PhoneApplicationPage
     {
+        /// <summary>
+        /// Initializes a new instance of the Credits class.</summary>
         public Credits()
         {
             InitializeComponent();
