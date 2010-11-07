@@ -42,23 +42,22 @@
             InitializeComponent();
             AnimationPage.Begin();
             //// Change the language of the page            
-            if (this.language.GetXDoc() != null)
-            {
+            if (this.language.GetXDoc() != null)            
                 this.language.TranslatePage(this);
-            }
-            
-            ////famousImage.Source = "/WP7;component/FamousImages/Lety.jpg";
-            this.client = new InterpoolWP7Client();
-            this.client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(this.GetClueByFamousCallback);
-            this.client.GetClueByFamousAsync(this.gm.UserId, this.gm.GetCurrentFamous() - 1);
-            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
-            this.client.CloseAsync();
-            this.client = new InterpoolWP7Client();
-            this.client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(this.ClientGetCurrentFamousCompleted);
-            this.client.GetCurrentFamousAsync(this.gm.UserId, this.gm.GetCurrentFamous() - 1);
-            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
-            this.client.CloseAsync();
-            ////Set the textboxes with the name of the famous
+			try {
+				this.client = new InterpoolWP7Client();
+				this.client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
+				this.client.GetClueByFamousAsync(gm.UserId, gm.GetCurrentFamous() - 1);
+				this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
+				this.client.CloseAsync();
+				this.client = new InterpoolWP7Client();
+				this.client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(this.client_GetCurrentFamousCompleted);
+				this.client.GetCurrentFamousAsync(this.gm.UserId, this.gm.GetCurrentFamous() - 1);
+				this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
+				this.client.CloseAsync();
+			} catch (Exception e) {
+				ShowHideInterpoolFailMessage(e.Message, true);			
+			}   
             famousName.Visibility = System.Windows.Visibility.Collapsed;
             Bubble.Visibility = Visibility.Collapsed;
             dialogText.Visibility = Visibility.Collapsed;
@@ -109,6 +108,20 @@
                 default:
                     break;
             }
+        }
+		
+		private void YesFailButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ShowHideInterpoolFailMessage("", false);           
+        }
+		
+		private void ShowHideInterpoolFailMessage(string message, bool flag)
+        {
+            failMessageText.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+            if (flag)
+                failMessageText.Text = message;
+			MessageImage.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+            YesFailButton.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;            
         }
     }
 }
