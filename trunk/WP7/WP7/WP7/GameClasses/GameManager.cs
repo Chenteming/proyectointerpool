@@ -1,6 +1,7 @@
 ﻿namespace WP7
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Windows;
     using System.Windows.Controls;
@@ -10,22 +11,60 @@
     using System.Windows.Media;
     using System.Windows.Media.Animation;
     using System.Windows.Shapes;
-    using System.Collections.Generic;
     using Microsoft.Phone.Controls;
-    using WP7.Utilities;
     using WP7.ServiceReference;
+    using WP7.Utilities;
 
+    /// <summary>
+    /// Class Description GameManager
+    /// </summary>
     public class GameManager
     {
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private static GameManager instance;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private string currentCity;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private List<string> cities;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private List<string> clues;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private string[] famous;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private List<string> suspects;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private int[] famousIndex = { -1, -1, -1 };
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private int number = 0;
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private int currentFamous = -1;
+
         ////0 = first_name
         ////1 = last_name 
         ////2 =  birthday
@@ -33,11 +72,14 @@
         ////4 = gender
         ////5 = music
         ////6 = cinema
+
+        /// <summary>
+        /// Initializes a new instance of the GameManager class.</summary>
         private GameManager()
         {
-            this.cities = new List<string>(Constants.MAX_CITIES);
-            this.famous = new string[Constants.MAX_FAMOUS];
-            this.filterField = new string[Constants.MAX_FILTERFIELD];
+            this.cities = new List<string>(Constants.MaxCities);
+            this.famous = new string[Constants.MaxFamous];
+            this.filterField = new string[Constants.MaxFilterfield];
             this.clues = new List<string>();
             this.suspects = new List<string>();
             this.Logged = false;
@@ -49,6 +91,9 @@
 
         public string UserId { get; set; }
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         private string[] filterField;
 
         public bool Logged { get; set; }
@@ -57,12 +102,15 @@
 
         public bool Vibration { get; set; }
 
-		public DateTime CurrentDateTime { get; set; }
+        public DateTime CurrentDateTime { get; set; }
 
         public DateTime DeadLineDateTime { get; set; }
 
         public bool ShowAnimation { get; set; }
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         public DataClue Data;
 
         public string PictureLink { get; set; }
@@ -78,7 +126,10 @@
         public static GameManager getInstance()
         {
             if (instance == null)
+            {
                 instance = new GameManager();
+            }
+
             return instance;
         }
 
@@ -111,13 +162,11 @@
         }
 
         public List<string> GetCities()
-        ////Return all the cities	
         {
             return this.cities;
         }
 
         public List<string> GetClues()
-        ////Return all the clues	
         {
             return this.clues;
         }
@@ -143,14 +192,16 @@
         ////famousIndex[1] = newspaperFamous   (1,2,3) famousNumber
         ////famousIndex[2] = computerFamous
         {
-            if (famousIndex[gameObjectNumber] == -1)
+            if (this.famousIndex[gameObjectNumber] == -1)
             {
                 this.number++;
-                this.famousIndex[gameObjectNumber] = number;
-                this.currentFamous = number;
+                this.famousIndex[gameObjectNumber] = this.number;
+                this.currentFamous = this.number;
             }
             else
-                this.currentFamous = famousIndex[gameObjectNumber];
+            {
+                this.currentFamous = this.famousIndex[gameObjectNumber];
+            }
         }
 
         public int GetNumber()
