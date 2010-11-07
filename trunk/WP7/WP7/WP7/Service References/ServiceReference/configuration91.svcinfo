@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="M+8UPmobgmf+k6vKS2NfPtby0LE=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="L01ip9nbyFMAML/ucRla+wGLams=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IInterpoolWP7">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IInterpoolWP7" contract="ServiceReference.IInterpoolWP7" bindingType="basicHttpBinding" address="http://127.0.0.1:81/Services/InterpoolWP7.svc" bindingConfiguration="BasicHttpBinding_IInterpoolWP7">
+    <endpoint name="BasicHttpBinding_IInterpoolWP7" contract="ServiceReference.IInterpoolWP7" bindingType="basicHttpBinding" address="http://pis2010.cloudapp.net/Services/InterpoolWP7.svc" bindingConfiguration="BasicHttpBinding_IInterpoolWP7">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://127.0.0.1:81/Services/InterpoolWP7.svc</serializedValue>
+          <serializedValue>http://pis2010.cloudapp.net/Services/InterpoolWP7.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
