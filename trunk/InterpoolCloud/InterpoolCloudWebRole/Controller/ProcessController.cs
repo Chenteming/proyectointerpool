@@ -558,10 +558,14 @@ namespace InterpoolCloudWebRole.Controller
             }
             NodePath node = this.GetCurrentNode(userIdFacebook);
             DataClue clue;
+
+           
+
             if (node != null)
             {
                 clue = new DataClue();
                 //// TODO make a Constant
+                clue.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.QuestionFamous);
                 if (user.Level.LevelNumber > 5)
                 {
                     clue.Clue = node.Clue.ElementAt(numFamous).ClueContent;
@@ -594,11 +598,12 @@ namespace InterpoolCloudWebRole.Controller
                     clue.States = GameState.PL;
                 }
 
-                clue.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.QuestionFamous);
+                
                 return clue;
             }
 
             clue = new DataClue();
+            clue.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.QuestionFamous);
             clue.States = GameState.PL;
             clue.Clue = String.Empty;
             return clue;
