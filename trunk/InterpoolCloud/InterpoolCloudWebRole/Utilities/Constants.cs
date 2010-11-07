@@ -162,7 +162,7 @@ namespace InterpoolCloudWebRole.Utilities
         {
             get
             {
-                return "http://127.0.0.1:81/Default.aspx/";
+                return "http://127.0.0.1:81/testPage.aspx/";
             }
         }
         
@@ -200,7 +200,6 @@ namespace InterpoolCloudWebRole.Utilities
         }
         
         //// End of constants for local test ////
-        
         /// <summary>
         /// Gets for the property
         /// </summary>
