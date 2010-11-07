@@ -15,6 +15,7 @@
     using WP7.ServiceReference;
     using System.Xml.Linq;
     using Microsoft.Phone.Tasks;
+    using WP7.Utilities;
 
     public partial class MainPage : PhoneApplicationPage
     {
@@ -49,6 +50,39 @@
             NavigationService.Navigate(new Uri("/GamePages/Start.xaml", UriKind.RelativeOrAbsolute));
             //string uri = NavigationService.CurrentSource.AbsoluteUri;
             this.client.StartGameAsync(this.gm.UserId);
+        }
+
+        void client_GetUserInfoCompleted(object sender, GetUserInfoCompletedEventArgs e)
+        {
+            this.gm.UserInfo = e.Result;
+            this.gm.UserId = gm.UserInfo.UserIdFacebook;
+            this.gm.GetUserInfoTries++;
+            if (gm.UserInfo.UserState == UserState.NO_REGISTERED || gm.UserInfo.UserState == UserState.REGISTERED_NO_PLAYING_LOGIN_REQUIRED)
+            {
+                if (gm.GetUserInfoTries >= 3)
+                {
+                    //// TODO: Message telling the user that his email or the login to Facebook is wrong
+                    gm.FromMainPage = true;
+                    NavigationService.Navigate(new Uri("/GamePages/Login.xaml", UriKind.RelativeOrAbsolute));
+                }
+                else
+                {
+                    WebBrowserTask task = new WebBrowserTask();
+                    task.URL = Constants.FACEBOOK_LOGIN_URL;
+                    task.Show();
+                    gm.BrowserOpened = true;
+                }
+            }
+            else
+            {
+                this.client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
+                if (gm.UserInfo.UserState == UserState.REGISTERED_NO_PLAYING)
+                {
+                    NavigationService.Navigate(new Uri("/GamePages/Start.xaml", UriKind.RelativeOrAbsolute));
+                }
+
+                this.client.StartGameAsync(this.gm.UserId);
+            }
         }
 
 		//// Asynchronous callbacks for displaying results.

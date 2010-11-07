@@ -90,9 +90,36 @@
             this.Data = new DataClue();
             this.Info = new DataGameInfo();
             this.EmitOrder = false;
+            this.FromMainPage = false;
+            this.BrowserOpened = false;
+            this.GetUserInfoTries = 0;
         }
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        public DataUserInfo UserInfo { get; set; }
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
         public string UserId { get; set; }
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        public bool FromMainPage { get; set; }
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        public bool BrowserOpened { get; set; }
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        public int GetUserInfoTries { get; set; }
+
 
         /// <summary>
         /// Store for the property

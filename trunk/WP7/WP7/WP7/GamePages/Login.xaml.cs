@@ -14,12 +14,20 @@
     using System.Windows.Shapes;
     using System.Xml.Linq;
     using Microsoft.Phone.Controls;
+    using WP7.ServiceReference;
+    using WP7.Utilities;
 
     /// <summary>
     /// Partial class declaration Login
     /// </summary>
     public partial class Login : PhoneApplicationPage
     {
+
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        private InterpoolWP7Client client = new InterpoolWP7Client();
+
         /// <summary>
         /// Store for the property
         /// </summary>
@@ -55,6 +63,35 @@
             userEmail.Visibility = Visibility.Collapsed;
             WebBrowser.Visibility = Visibility.Visible;
             WebBrowser.Source = new Uri("http://pis2010.cloudapp.net", UriKind.Absolute);
+
+            gm.GetUserInfoTries = 0;
+            this.client.GetUserInfoCompleted += new EventHandler<GetUserInfoCompletedEventArgs>(client_GetUserInfoCompleted);
+            client.GetUserInfoAsync(gm.UserEmail);
+        }
+
+        void client_GetUserInfoCompleted(object sender, GetUserInfoCompletedEventArgs e)
+        {
+            this.gm.UserInfo = e.Result;
+            this.gm.UserId = gm.UserInfo.UserIdFacebook;
+            this.gm.GetUserInfoTries++;
+            if (gm.FromMainPage == true)
+            {
+                gm.FromMainPage = false;
+                if (gm.UserInfo.UserState == UserState.NO_REGISTERED || gm.UserInfo.UserState == UserState.REGISTERED_NO_PLAYING_LOGIN_REQUIRED)
+                {
+                    WebBrowser.Visibility = Visibility.Visible;
+                    WebBrowser.Source = new Uri(Constants.FACEBOOK_LOGIN_URL, UriKind.Absolute);
+                }
+                else
+                {
+                    gm.FromMainPage = false;
+                    NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
+                }
+            }
+            else
+            {
+                NavigationService.Navigate(new Uri("/GamePages/Options.xaml", UriKind.RelativeOrAbsolute));
+            }
         }
     }
 }
