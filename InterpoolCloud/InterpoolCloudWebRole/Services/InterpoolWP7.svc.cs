@@ -148,5 +148,13 @@ namespace InterpoolCloudWebRole.Services
         {
             this.controller.DeleteGame(user);
         }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for user goes here</param>
+        public DataFacebookUser GetFilters(string userIdFacebook)
+        {
+            return this.controller.GetFilters(userIdFacebook);
+        }
     }
 }

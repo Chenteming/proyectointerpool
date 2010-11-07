@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/06/2010 19:51:36
+-- Date Created: 11/07/2010 20:43:52
 -- Generated from EDMX file: C:\Users\Martín\Documents\FING\PIS\SVN\trunk\InterpoolCloud\InterpoolCloudWebRole\Data\InterpoolModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [InterpoolDB];
+USE [interpooldb2];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -80,6 +80,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_LevelCity]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Cities] DROP CONSTRAINT [FK_LevelCity];
 GO
+IF OBJECT_ID(N'[dbo].[FK_GameFilterSuspect]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Filters] DROP CONSTRAINT [FK_GameFilterSuspect];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -126,6 +129,9 @@ IF OBJECT_ID(N'[dbo].[OrdersOfArrest]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[HardCodedSuspects]', 'U') IS NOT NULL
     DROP TABLE [dbo].[HardCodedSuspects];
+GO
+IF OBJECT_ID(N'[dbo].[Filters]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Filters];
 GO
 IF OBJECT_ID(N'[dbo].[GamePossibleSuspect]', 'U') IS NOT NULL
     DROP TABLE [dbo].[GamePossibleSuspect];

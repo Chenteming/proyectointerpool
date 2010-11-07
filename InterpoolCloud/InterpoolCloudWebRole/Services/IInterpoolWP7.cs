@@ -115,5 +115,11 @@ namespace InterpoolCloudWebRole.Services
         /// <param name="user"> Parameter description for user goes here</param>
         [OperationContract]
         void DeleteGame(User user);
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for user goes here</param>
+        [OperationContract]
+        DataFacebookUser GetFilters(string userIdFacebook);
     }
 }
