@@ -20,7 +20,7 @@
     {
         private InterpoolWP7Client client = new InterpoolWP7Client();
         private LanguageManager language = LanguageManager.GetInstance();
-        private GameManager gm = GameManager.getInstance();
+        private GameManager gm = GameManager.GetInstance();
 
         public MainPage()
         {
