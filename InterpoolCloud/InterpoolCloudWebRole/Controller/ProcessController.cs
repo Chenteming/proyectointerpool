@@ -1144,6 +1144,7 @@ namespace InterpoolCloudWebRole.Controller
         {
             /* get the random index for the characteristic of the suspect */
             Random rnd = new Random();
+            IDataManager dm = new DataManager();
             int indexRandom = rnd.Next(0, 5);
             while (!csuspect[indexRandom])
             {
@@ -1158,19 +1159,19 @@ namespace InterpoolCloudWebRole.Controller
             {
                 /* faltan definir las características 2, 3 y 4*/
                 case 0:
-                    return s.SuspectCinema == string.Empty ? "Al sospechoso le gusta ...mmmm, no me acuerdo." : "Al sospechoso le gusta " + s.SuspectCinema + ".";
+                    return s.SuspectCinema == string.Empty ? dm.GetParameter(Parameters.PrefixNoCharacteristicSuspectCinema, this.container) : dm.GetParameter(Parameters.PrefixCharacteristicSuspectCinema, this.container) + s.SuspectCinema + ".";
                     
                 case 1:
-                    return s.SuspectMusic == string.Empty ? "Al ladrón le gusta escuchar ...mmmm, no me acuerdo en este momento." : "Al ladrón le gusta escuchar " + s.SuspectMusic + ".";
+                    return s.SuspectMusic == string.Empty ? dm.GetParameter(Parameters.PrefixNoCharacteristicSuspectMusic, this.container) : dm.GetParameter(Parameters.PrefixCharacteristicSuspectMusic, this.container) + s.SuspectMusic + ".";
 
                 case 2:
-                    return s.SuspectBirthday == string.Empty ? "Su cumpleaños es el ...mmmm, en alguna fecha, que me supongo sabrá su mamá." : "Su cumpleaños es el " + s.SuspectBirthday.ToString() + ".";
+                    return s.SuspectBirthday == string.Empty ? dm.GetParameter(Parameters.PrefixNoCharacteristicSuspectBirthday, this.container) : dm.GetParameter(Parameters.PrefixCharacteristicSuspectBirthday, this.container) + s.SuspectBirthday.ToString() + ".";
 
                 case 3:
-                    return s.SuspectHometown == string.Empty ? "El ladrón nació en ...mmmm, una ciudad cuyo nombre no recuerdo." : "El ladrón nació en " + s.SuspectHometown + ".";
+                    return s.SuspectHometown == string.Empty ? dm.GetParameter(Parameters.PrefixNoCharacteristicSuspectHomeTown, this.container) : dm.GetParameter(Parameters.PrefixCharacteristicSuspectHomeTown, this.container) + s.SuspectHometown + ".";
 
                 case 4:
-                    return s.SuspectTelevision == string.Empty ? "Al sospechoso le gusta mirar ...mmmm, no recuerdo que programa mira en este momento." : "Al sospechoso le gusta mirar " + s.SuspectTelevision + ".";
+                    return s.SuspectTelevision == string.Empty ? dm.GetParameter(Parameters.PrefixNoCharacteristicSuspectTV, this.container) : dm.GetParameter(Parameters.PrefixCharacteristicSuspectTV, this.container) + s.SuspectTelevision + ".";
                 default:
                     return string.Empty;
             }

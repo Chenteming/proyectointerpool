@@ -180,6 +180,89 @@ namespace InterpoolCloudWebRole.Utilities
             {
                 return "DEFAULTFAMOUSCLUECONTENT";
             }
+
         }
-    }
+
+        public static string PrefixCharacteristicSuspectCinema
+        {
+            get
+            {
+                return "PREFIX_CHARACTERISTIC_SUSPECT_CINEMA";
+            }
+        }
+
+        public static string PrefixCharacteristicSuspectMusic
+        {
+            get
+            {
+                return "PREFIX_CHARACTERISTIC_SUSPECT_MUSIC";
+            }
+        }
+
+        public static string PrefixCharacteristicSuspectBirthday
+        {
+            get
+            {
+                return "PREFIX_CHARACTERISTIC_SUSPECT_BIRTHDAY";
+            }
+
+        }
+
+        public static string PrefixCharacteristicSuspectHomeTown
+        {
+            get
+            {
+                return "PREFIX_CHARACTERISTIC_SUSPECT_HOMETOWN";
+            }
+        }
+        public static string PrefixCharacteristicSuspectTV
+        {
+            get
+            {
+                return "PREFIX_CHARACTERISTIC_SUSPECT_TV";
+            }
+        }
+
+        public static string PrefixNoCharacteristicSuspectCinema
+        {
+            get
+            {
+                return "PREFIX_NO_CHARACTERISTIC_SUSPECT_CINEMA";
+            }
+
+        }
+
+        public static string PrefixNoCharacteristicSuspectMusic
+        {
+            get
+            {
+                return "PREFIX_NO_CHARACTERISTIC_SUSPECT_MUSIC";
+            }
+        }
+        public static string PrefixNoCharacteristicSuspectBirthday
+        {
+            get
+            {
+                return "PREFIX_NO_CHARACTERISTIC_SUSPECT_BIRTHDAY";
+            }
+        }
+
+        public static string PrefixNoCharacteristicSuspectHomeTown
+        {
+            get
+            {
+                return "PREFIX_NO_CHARACTERISTIC_SUSPECT_HOMETOWN";
+            }
+
+        }
+
+        public static string PrefixNoCharacteristicSuspectTV
+        {
+            get
+            {
+                return "PREFIX_NO_CHARACTERISTIC_SUSPECT_TV";
+            }
+        }
+
+   }
 }
