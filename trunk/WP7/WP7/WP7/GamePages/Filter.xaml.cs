@@ -95,18 +95,24 @@
             {
                 this.language.TranslatePage(this);
             }
+            try
+            {
 
-            this.client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(this.ClientFilterSuspectsCompleted);
-            DataFacebookUser dfu = new DataFacebookUser();
-            this.client.GetFiltersCompleted += new EventHandler<GetFiltersCompletedEventArgs>(client_GetFiltersCompleted);
-            this.client.FilterSuspectsAsync(this.gm.UserId, dfu);
+                this.client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(this.ClientFilterSuspectsCompleted);
+                DataFacebookUser dfu = new DataFacebookUser();
+                this.client.GetFiltersCompleted += new EventHandler<GetFiltersCompletedEventArgs>(client_GetFiltersCompleted);
+                this.client.FilterSuspectsAsync(this.gm.UserId, dfu);
 
-            this.client.GetFiltersAsync(this.gm.UserId);
-           
-            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
+                this.client.GetFiltersAsync(this.gm.UserId);
 
-            this.client.CloseAsync();
+                this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
 
+                this.client.CloseAsync();
+            }
+            catch (Exception e) 
+            {
+                ShowHideInterpoolFailMessage(e.Message, true);
+            }
             
             this.UpdateFilters();
             ComboList.Visibility = Visibility.Collapsed;
@@ -307,6 +313,20 @@
             ContentGrid.Visibility = Visibility.Collapsed;
             ContentGrid2.Visibility = Visibility.Visible;
             ComboList.Visibility = Visibility.Visible;
+        }
+
+        private void YesFailButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ShowHideInterpoolFailMessage("", false);
+        }
+
+        private void ShowHideInterpoolFailMessage(string message, bool flag)
+        {
+            failMessageText.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+            if (flag)
+                failMessageText.Text = message;
+            MessageImage.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+            YesFailButton.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

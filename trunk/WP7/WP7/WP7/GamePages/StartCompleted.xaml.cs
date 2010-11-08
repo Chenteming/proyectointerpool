@@ -25,13 +25,6 @@ namespace WP7.GamePages
         {
             InitializeComponent();
             InitializeComponent();
-            //// this.GoButton.IsEnabled = false;
-            Detective2Storyboard.Begin();
-            Detective2Storyboard.Completed += new EventHandler(this.Detective2Storyboard_Completed);
-        }
-
-        public void Detective2Storyboard_Completed(object sender, EventArgs e)
-        {
             detectiveText.Visibility = Visibility.Visible;
             GoButton.Visibility = Visibility.Visible;
         }

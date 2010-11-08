@@ -62,8 +62,15 @@
             this.gm.UserEmail = userEmail.Text;
             userEmail.Visibility = Visibility.Collapsed;
             gm.GetUserInfoTries = 0;
-            this.client.GetUserInfoCompleted += new EventHandler<GetUserInfoCompletedEventArgs>(client_GetUserInfoCompleted);
-            client.GetUserInfoAsync(gm.UserEmail);
+            try
+            {
+                this.client.GetUserInfoCompleted += new EventHandler<GetUserInfoCompletedEventArgs>(client_GetUserInfoCompleted);
+                client.GetUserInfoAsync(gm.UserEmail);
+            }
+            catch (Exception ex) 
+            {
+                ShowHideInterpoolFailMessage(ex.Message, true); 
+            }
         }
 
         void client_GetUserInfoCompleted(object sender, GetUserInfoCompletedEventArgs e)
@@ -89,6 +96,20 @@
             {
                 NavigationService.Navigate(new Uri("/GamePages/Options.xaml", UriKind.RelativeOrAbsolute));
             }
+        }
+
+        private void YesFailButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ShowHideInterpoolFailMessage("", false);
+        }
+
+        private void ShowHideInterpoolFailMessage(string message, bool flag)
+        {
+            failMessageText.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+            if (flag)
+                failMessageText.Text = message;
+            MessageImage.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+            YesFailButton.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }
