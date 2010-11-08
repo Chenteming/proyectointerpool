@@ -52,6 +52,17 @@
                 this.language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));
                 this.language.TranslatePage(this);
             }
+
+            if (string.IsNullOrEmpty(gm.UserEmail))
+            {
+                userEmail.Text = Constants.DEFAULT_DOMAIN;
+                userEmail.SelectionStart = 0;
+            }
+            else
+            {
+                userEmail.Text = gm.UserEmail;
+                userEmail.SelectAll();
+            }
         }
         
         private void ContinueButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -59,7 +70,7 @@
             ContinueButton.Visibility = Visibility.Collapsed;
             loginMessage.Visibility = Visibility.Collapsed;
             loginImage.Visibility = Visibility.Collapsed;
-            this.gm.UserEmail = userEmail.Text;
+            gm.UserEmail = userEmail.Text;
             userEmail.Visibility = Visibility.Collapsed;
             gm.GetUserInfoTries = 0;
             try
