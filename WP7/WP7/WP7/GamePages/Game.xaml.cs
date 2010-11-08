@@ -13,6 +13,7 @@
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
     using WP7.ServiceReference;
+    using System.Windows.Media.Imaging;
 
     public partial class Game : PhoneApplicationPage
     {
@@ -25,21 +26,23 @@
             if (gm.ShowAnimation == true)
                 ToastyStoryboard.Begin();
             gm.ShowAnimation = false;
-			TextCity.Text = gm.GetCurrentCity();
+			TextCity.Text = nameCityTB.Text + gm.GetCurrentCity();
 			DateTime dt = gm.CurrentDateTime;
+			DateTime dl = gm.DeadLineDateTime;
 			string hour = dt.Hour < 10 ? "0" + dt.Hour : String.Empty + dt.Hour;
-			string time = " pm";
-
-
+			string time1 = " pm";
 			if (dt.Hour >= 0 && dt.Hour <= 12)
-				time = " am";
-			TextDate.Text = GetDayOfWeek(dt, lm.GetCurrentLanguage() == "English") + 
-			" " + hour + time;
-
-            ////TextLevel.Text = gm.Info.newLevel;
-
-            ////string cityURI = "../CitiesImages/" + gm.PictureCityLink;
-            ////cityImage.Source = new BitmapImage(new Uri(cityURI, UriKind.Relative));
+				time1 = " am";
+			string time2 = " pm";
+			if (dl.Hour >= 0 && dl.Hour <= 12)
+				time2 = " am";			
+			TextDate.Text = dateTB.Text + GetDayOfWeek(dt, lm.GetCurrentLanguage() == "English") + 
+			" " + hour1 + time1;
+            TextDeadline.Text =  deadlineTB.Text + GetDayOfWeek(dl, lm.GetCurrentLanguage() == "English") + 
+			" " + hour2 + time2;
+			levelText = levelTB.Text + gm.Info.newLevel;
+            string cityURI = "../cities3_Images/" + gm.PictureCityLink;
+            imageCity.Source = new BitmapImage(new Uri(cityURI, UriKind.Relative));
         }
 
 		private void Door_Click(object sender, System.Windows.RoutedEventArgs e)

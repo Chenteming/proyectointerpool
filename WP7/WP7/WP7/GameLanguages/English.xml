@@ -62,5 +62,9 @@
     </class>
 	<class name="Game" Title="Game">
         <control name="TextLevel" Content="Level"/>
+		<control name="deadlineTB" Text="Deadline: "/>
+		<control name="nameCityTB" Text="City: "/>
+		<control name="dateTB" Text="Date: "/>
+		<control name="levelTB" Text="Level: "/>
     </class>
 </language>
