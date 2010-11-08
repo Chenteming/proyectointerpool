@@ -62,5 +62,9 @@
     </class>
 	<class name="Game" Title="Game">
         <control name="TextLevel" Content="Nivel"/>
+		<control name="deadlineTB" Text="Fecha límite: "/>
+		<control name="nameCityTB" Text="Ciudad: "/>
+		<control name="dateTB" Text="Fecha actual: "/>
+		<control name="levelTB" Text="Nivel: "/>
     </class>
 </language>
