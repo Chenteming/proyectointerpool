@@ -35,6 +35,8 @@ namespace WP7
             TimeLeftText.Text = this.gm.Info.DiffInDays.ToString() + ":" +this.gm.Info.DiffInMinutes.ToString() +
                 ":" + this.gm.Info.DiffInseconds.ToString();
             NewLevelText.Text = this.gm.Info.newLevel.ToString();
+            if (gm.Info.newLevel != gm.CurrentLevel)
+                BigSuspectHyperlinkButton.NavigateUri = new Uri(gm.Info.LinkBigSuspect, UriKind.RelativeOrAbsolute);           
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)

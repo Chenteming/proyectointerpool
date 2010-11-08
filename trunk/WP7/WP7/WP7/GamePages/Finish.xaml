@@ -24,6 +24,7 @@
             <TextBlock x:Name="TotalTB" Margin="0,0,618,-1" TextWrapping="Wrap" Height="33" VerticalAlignment="Bottom"><Run Text="Total" /><Run Text=":" /></TextBlock>
             <TextBlock x:Name="TotalText" Margin="94,0,0,1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="111" />
             <TextBlock x:Name="ScoreTB" Margin="0,0,618,33" TextWrapping="Wrap" Text="Score :" Height="30" VerticalAlignment="Bottom" />
+            <HyperlinkButton x:Name="BigSuspectHyperlinkButton" Content="BigSuspectHyperlinkButton" Height="42" Margin="0,0,0,74" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="293"/>
         </Grid>
         <Image Margin="153,0,153,149" Grid.Row="1" Source="/WP7;component/GameImages/GameOver.png" Stretch="Fill"/>
         <TextBlock x:Name="NameSuspectTB" Margin="9,0,0,95" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Left" Width="151" Height="30" VerticalAlignment="Bottom"><Run Text="NameSuspect "/><Run Text=":"/><Run Text=" "/></TextBlock>

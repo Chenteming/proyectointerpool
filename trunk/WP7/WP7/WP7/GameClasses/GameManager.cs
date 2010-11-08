@@ -177,6 +177,10 @@ namespace WP7
         public string PictureCityLink { get; set; }
 
         /// <summary>
+        /// Gets or sets for Method.</summary>
+        public string CurrentLevel { get; set; }
+        
+        /// <summary>
         /// Store for the property
         /// </summary>
         /// <returns> Return results are described through the returns tag.</returns>
