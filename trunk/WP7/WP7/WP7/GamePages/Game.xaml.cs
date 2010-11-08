@@ -29,10 +29,15 @@
 			DateTime dt = gm.CurrentDateTime;
 			string hour = dt.Hour < 10 ? "0" + dt.Hour : String.Empty + dt.Hour;
 			string time = " pm";
+
+
 			if (dt.Hour >= 0 && dt.Hour <= 12)
 				time = " am";
 			TextDate.Text = GetDayOfWeek(dt, lm.GetCurrentLanguage() == "English") + 
 			" " + hour + time;
+
+            TextLevel.Text = gm.Info.newLevel;
+
             ////string cityURI = "../CitiesImages/" + gm.PictureCityLink;
             ////cityImage.Source = new BitmapImage(new Uri(cityURI, UriKind.Relative));
         }

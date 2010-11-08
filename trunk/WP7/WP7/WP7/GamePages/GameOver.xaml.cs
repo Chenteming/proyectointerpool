@@ -13,6 +13,7 @@ namespace WP7
     using System.Windows.Media.Animation;
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
+    using WP7.ServiceReference;
 
     /// <summary>
     /// Partial class declaration GameOver
@@ -48,15 +49,15 @@ namespace WP7
             TimeLeftText.Text = this.gm.Info.DiffInDays.ToString() + ":" + this.gm.Info.DiffInMinutes.ToString() +
                 ":" + this.gm.Info.DiffInseconds.ToString();
             NewLevelText.Text = this.gm.Info.newLevel.ToString();
-            switch (this.animation)
+            switch (this.gm.Info.state)
             {
-                case 0:
+                case GameState.LOSE_EOAW:
                     incorrectOrderOfArrest.Visibility = Visibility.Visible;
                     break;
-                case 1:
+                case GameState.LOSE_NEOA:
                     didNotEmitOrderOfArrest.Visibility = Visibility.Visible;
                     break;
-                case 2:
+                case GameState.LOSE_TO:
                     afterDeadLine.Visibility = Visibility.Visible;
                     break;
                 default:
