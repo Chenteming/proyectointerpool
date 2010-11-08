@@ -30,7 +30,7 @@
 			DateTime dt = gm.CurrentDateTime;
 			DateTime dl = gm.DeadLineDateTime;
 			string hour1 = dt.Hour < 10 ? "0" + dt.Hour : String.Empty + dt.Hour;
-            string hour2 = dl.Hour < 10 ? "0" + dl.Hour : String.Empty + dt.Hour;
+            string hour2 = dl.Hour < 10 ? "0" + dl.Hour : String.Empty + dl.Hour;
 			string time1 = " pm";
 			if (dt.Hour >= 0 && dt.Hour <= 12)
 				time1 = " am";
