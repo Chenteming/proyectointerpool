@@ -40,11 +40,35 @@
             }
         }
 
+        //// This is for local test
+        /// <summary>
+        /// Description for the attribute
+        /// </summary>
         public static string FACEBOOK_LOGIN_URL
         {
             get
             {
-                return "http://127.0.0.1:81/TestPage.aspx";
+                return "http://127.0.0.1:81/Pages/FacebookRedirect.aspx";
+            }
+        }
+        /*
+        //// This is for cloud test
+        /// <summary>
+        /// Description for the attribute
+        /// </summary>
+        public static string FACEBOOK_LOGIN_URL
+        {
+            get
+            {
+                return "http://pis2010.cloudapp.net/TestPage.aspx";
+            }
+        }
+        */
+        public static string DEFAULT_DOMAIN
+        {
+            get
+            {
+                return "@hotmail.com";
             }
         }
     }
