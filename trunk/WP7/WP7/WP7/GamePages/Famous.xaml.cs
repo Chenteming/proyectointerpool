@@ -14,6 +14,8 @@
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
     using WP7.ServiceReference;
+    using System.ServiceModel;
+
 
     /// <summary>
     /// Partial class declaration Famous
@@ -55,7 +57,7 @@
 				this.client.GetCurrentFamousAsync(this.gm.UserId, this.gm.GetCurrentFamous() - 1);
                 this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
 				this.client.CloseAsync();
-			} catch (Exception e) {
+			} catch (FaultException e) {
 				ShowHideInterpoolFailMessage(e.Message, true);			
 			}   
             famousName.Visibility = System.Windows.Visibility.Collapsed;

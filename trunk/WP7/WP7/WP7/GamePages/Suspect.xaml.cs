@@ -14,6 +14,7 @@
     using Microsoft.Phone.Controls;
     using WP7.ServiceReference;
     using System.Windows.Media.Imaging;
+    using System.ServiceModel;
 
     public partial class Suspect : PhoneApplicationPage
     {
@@ -107,7 +108,7 @@
                 }
 
             }
-            catch (Exception excepcion)
+            catch (FaultException excepcion)
             {
                 string famousURI = "/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png";
                 imageSuspect.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
@@ -123,7 +124,7 @@
                 bitmap.SetSource(e.Result);
                 imageSuspect.Source = bitmap;
             }
-            catch (Exception excepcion)
+            catch (FaultException excepcion)
             {
                 string famousURI = "/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png";
                 imageSuspect.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));

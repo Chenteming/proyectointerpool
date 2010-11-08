@@ -16,6 +16,7 @@
     using Microsoft.Phone.Controls;
     using WP7.ServiceReference;
     using WP7.Utilities;
+    using System.ServiceModel;
 
     /// <summary>
     /// Partial class declaration Login
@@ -78,7 +79,7 @@
                 this.client.GetUserInfoCompleted += new EventHandler<GetUserInfoCompletedEventArgs>(client_GetUserInfoCompleted);
                 client.GetUserInfoAsync(gm.UserEmail);
             }
-            catch (Exception ex) 
+            catch (FaultException ex) 
             {
                 ShowHideInterpoolFailMessage(ex.Message, true); 
             }
