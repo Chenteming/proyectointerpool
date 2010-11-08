@@ -373,5 +373,9 @@
         <Rectangle Fill="Black" HorizontalAlignment="Left" Margin="-109,-2,0,-71" Grid.RowSpan="3" Stroke="Black" Width="109"/>
         <Rectangle Fill="Black" Margin="0,-2,-110,-71" Grid.RowSpan="3" Stroke="Black" Grid.Column="1" HorizontalAlignment="Right" Width="109"/>
         <MediaElement x:Name="intro_wma" Grid.Column="1" HorizontalAlignment="Left" Height="0" Margin="109,0,0,-36" Grid.Row="2" Source="/GameSounds/intro.wma" Stretch="Fill" VerticalAlignment="Bottom" Width="0" Volume="1"/>
+        <Image x:Name="MessageImage" Margin="175,76,175,173" Source="/WP7;component/GameImages/MessageImage.png" Stretch="Fill" Grid.Row="3" Width="250" Visibility="Collapsed"/>
+        <TextBlock x:Name="messageText" Margin="266,122,266,233" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="18.667" Foreground="#FFC9CA45" Visibility="Collapsed"/>
+        <Button x:Name="YesFailButton" Content="" Height="30" Margin="351,251,0,199" Grid.Row="3" Click="YesFailButton_Click" Width="30" HorizontalAlignment="Left" d:LayoutOverrides="GridBox" Visibility="Collapsed" />
+        <TextBlock x:Name="failMessageText" Height="127" Margin="266,99,266,0" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="16" Foreground="#FFC9CA45" VerticalAlignment="Top" d:LayoutOverrides="GridBox" Visibility="Collapsed"/>
     </Grid>
 </phone:PhoneApplicationPage>
