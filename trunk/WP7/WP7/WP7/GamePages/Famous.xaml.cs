@@ -60,7 +60,7 @@
 			}   
             famousName.Visibility = System.Windows.Visibility.Collapsed;
             Bubble.Visibility = Visibility.Collapsed;
-            dialogText1.Visibility = Visibility.Collapsed;
+            dialogText.Visibility = Visibility.Collapsed;
 			
         }
 
@@ -83,14 +83,14 @@
             string famousURI = "../FamousImages/" + dataF.FileFamous;
             famousImage.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
             Bubble.Visibility = Visibility.Visible;
-            dialogText1.Visibility = Visibility.Visible;
+            dialogText.Visibility = Visibility.Visible;
         }
 
         private void GetClueByFamousCallback(object sender, GetClueByFamousCompletedEventArgs e)
         {
             DataClue data = e.Result;
             this.gm.CurrentDateTime = data.CurrentDate;
-            dialogText1.Content = data.Clue;
+            dialogText.Text = data.Clue;
             this.gm.Data = data;
             this.gm.Info = data.GameInfo;
             switch (data.States)
