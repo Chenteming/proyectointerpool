@@ -104,9 +104,9 @@ namespace InterpoolCloudWebRole.Utilities
                 return 3;
             }
         }
-        /*
-        //// All this constants are for the cloud application ////
         
+        //// All this constants are for the cloud application ////
+        /*
         /// <summary>
         /// Store for the property
         /// </summary>
@@ -139,7 +139,7 @@ namespace InterpoolCloudWebRole.Utilities
                 return "2ea5107535d2ee3f514a06a186139be6";
             }
         }
-
+        
         /// <summary>
         /// Store for the property
         /// </summary>
@@ -151,8 +151,8 @@ namespace InterpoolCloudWebRole.Utilities
             }
         }
         //// End of constants for the cloud application ////
-        
         */
+
         //// All these constants are for local test ////
         
         /// <summary>
