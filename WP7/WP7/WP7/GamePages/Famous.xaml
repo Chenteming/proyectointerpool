@@ -187,7 +187,9 @@
             <Image Source="/WP7;component/interpool_Images/pantalla_5_Images/Capa 1.png" Stretch="Fill" Opacity="0.15"/>
             <TextBlock x:Name="famousName" HorizontalAlignment="Left" Height="63" Margin="36,0,0,57" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom" Width="193" Foreground="Black" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font"/>
             <Image x:Name="famousImage" Stretch="Fill" Width="194" Height="197" Margin="36,131,0,144" HorizontalAlignment="Left" d:LayoutOverrides="Width" />
-            <ScrollViewer x:Name="dialogText1" Margin="329,69,79,218"/>
+            <ScrollViewer x:Name="dialogText1" Margin="329,69,79,218" Grid.Row="1" Grid.Column="1">
+            	<TextBlock x:Name="dialogText" TextWrapping="Wrap"/>
+            </ScrollViewer>
         </Grid>
         <Image x:Name="MessageImage" Margin="175,76,175,173" Source="/WP7;component/GameImages/MessageImage.png" Stretch="Fill" Grid.Row="3" Width="250" Visibility="Collapsed"/>        
         <TextBlock x:Name="messageText" Margin="266,122,266,233" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="18.667" Foreground="#FFC9CA45" Visibility="Collapsed"/>
