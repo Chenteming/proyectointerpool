@@ -116,13 +116,20 @@
         public void UpdateFilters() 
         {
             string[] filterField = this.gm.GetFilterField();
-            GenderText.Text = filterField[4];
-            HometownText.Text = filterField[3];
-            MusicText.Text = filterField[5];
-            TVText.Text = filterField[7];
-            CinemaText.Text = filterField[6];
-            BirthdayText.Text = filterField[2];
+            GenderText.Text = ChangeFilter(filterField[4]);
+            HometownText.Text = ChangeFilter(filterField[3]);
+            MusicText.Text = ChangeFilter(filterField[5]);
+            TVText.Text = ChangeFilter(filterField[7]);
+            CinemaText.Text = ChangeFilter(filterField[6]);
+            BirthdayText.Text = ChangeFilter(filterField[2]);
         }
+		
+		public string ChangeFilter(string change)
+		{
+			if (change == noneValue.Text)
+				return "";
+			return change;
+		}
 
         public void ClientCloseCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {    
@@ -167,6 +174,12 @@
             this.music = new List<string>();
             this.tv = new List<string>();
             this.birthday = new List<string>();
+			InsertEmptyNoneValues(birthday);
+			InsertEmptyNoneValues(gender);
+			InsertEmptyNoneValues(homeTown);
+			InsertEmptyNoneValues(music);
+			InsertEmptyNoneValues(tv);
+			InsertEmptyNoneValues(film);
             foreach (DataFacebookUser df in dfu)
             {
                 if (!this.film.Contains(df.Cinema))
@@ -201,6 +214,12 @@
             }
         }
 
+		public void InsertEmptyNoneValues(List<string> list)
+		{
+			list.Add(noneValue.Text);
+			list.Add(emptyValue.Text);
+		}
+		
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             /*if (ComboList.Visibility == Visibility.Visible)
@@ -222,8 +241,14 @@
             if (ComboList.SelectedIndex != -1)
             {
                 string[] filterField = this.gm.GetFilterField();
-                filterField[this.btnPosition] = ComboList.SelectedItem.ToString();
-                ComboList.Visibility = Visibility.Collapsed;
+				string itemValue = ComboList.SelectedItem.ToString();
+				if (itemValue == noneValue.Text)					
+                	filterField[this.btnPosition] = null;
+				if (itemValue == emptyValue.Text)					
+                	filterField[this.btnPosition] = "";
+				if (itemValue != noneValue.Text && itemValue != emptyValue.Text)					
+                	filterField[this.btnPosition] = itemValue;
+				ComboList.Visibility = Visibility.Collapsed;
                 ContentGrid2.Visibility = Visibility.Collapsed;
                 ContentGrid.Visibility = Visibility.Visible;
                 this.UpdateFilters();

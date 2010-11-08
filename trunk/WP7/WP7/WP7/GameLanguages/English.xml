@@ -26,6 +26,7 @@
         <control name="music" Text="Music:"/>
         <control name="cinema" Text="Cinema:"/>
         <control name="television" Text="TV:"/>
+		<control name="messageText" Text="You have emit and order of arrest for "/>		
         <control name="Emit" Content="To blame"/>
     </class>
     <class name="Filter" Title="Filter">
@@ -38,6 +39,8 @@
         <control name="textblock5" Text="Cinema:"/>
         <control name="textblock6" Text="Birthday:"/>
         <control name="filterText" Text="Filter"/>
+        <control name="noneValue" Text="**NONE**"></control>
+        <control name="emptyValue" Text="**EMPTY**"></control>
     </class>
     <class name="Login" Title="Login">
         <control name="loginMessage" Text="Enter your Facebook email"/>

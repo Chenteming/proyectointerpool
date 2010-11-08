@@ -27,6 +27,7 @@
         <control name="cinema" Text="Cine:"/>
         <control name="television" Text="TV:"/>
         <control name="Emit" Content="Culpar"/>
+		<control name="messageText" Text="Has emitido una orden de arresto para "/>		
     </class>
     <class name="Filter" Title="Filter">
         <control name="FilterButton" Content="Filtrar"/>
@@ -38,6 +39,8 @@
         <control name="textblock5" Text="Cine:"/>
 		<control name="textblock6" Text="Cumpleaños:"/>
         <control name="filterText" Text="Filtrar"/>
+        <control name="noneValue" Text="**NINGUNO**"></control>
+        <control name="emptyValue" Text="**VACÍO**"></control>
     </class>
     <class name="Login" Title="Login">
         <control name="loginMessage" Text="Ingrese su email de Facebook"/>

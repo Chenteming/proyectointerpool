@@ -143,8 +143,7 @@
             filterField[0] = this.dfbuList.ElementAt(index).FirstName;
             filterField[1] = this.dfbuList.ElementAt(index).LastName;
             gm.PictureLink = this.dfbuList.ElementAt(index).PictureLink;
-            MessageBox.Show("Se ha emitido una orden de arresto para " + Name_Suspect.Text);
-            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));            
+            ShowHideInterpoolFailMessage(messageText.Text + Name_Suspect.Text, true);            
         }
 
         void client_EmitOrderOfArrestCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
@@ -201,6 +200,21 @@
             rightArrow.Visibility = Visibility.Collapsed;
             leftArrow.Visibility = Visibility.Collapsed;
             Emit.Visibility = Visibility.Collapsed;
+        }
+
+        private void YesFailButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ShowHideInterpoolFailMessage("", false);
+			NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));            
+        }
+
+        private void ShowHideInterpoolFailMessage(string message, bool flag)
+        {
+            failMessageText.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+            if (flag)
+                failMessageText.Text = message;
+            MessageImage.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+            YesFailButton.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }
