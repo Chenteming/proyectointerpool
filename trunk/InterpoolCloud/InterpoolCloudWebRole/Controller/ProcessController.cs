@@ -49,6 +49,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataCity GetCurrentCity(string userIdFacebook)
         {
             NodePath node = this.GetCurrentNode(userIdFacebook);
@@ -74,6 +75,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public List<DataCity> GetPossibleCities(string userIdFacebook)
         {
             NodePath node = this.GetCurrentNode(userIdFacebook);
@@ -95,6 +97,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="numClue"> Parameter description for numClue goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataFamous GetCurrentFamous(string userIdFacebook, int numClue)
         {
             NodePath node = this.GetCurrentNode(userIdFacebook);
@@ -114,6 +117,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public NodePath GetCurrentNode(string userIdFacebook)
         {
             IDataManager dm = new DataManager();
@@ -134,6 +138,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public NodePath GetNextNode(string userIdFacebook)
         {
             IDataManager dm = new DataManager();
@@ -158,6 +163,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        [FaultContract(typeof(FaultException))]
         public void StartGame(string userIdFacebook)
         {
             // this is only the structs that we should follow
@@ -234,7 +240,7 @@ namespace InterpoolCloudWebRole.Controller
                 this.container.AddToGames(newGame);
                 this.container.SaveChanges();
             }
-            catch (Exception e)
+            catch (FaultException e)
             {
                 throw new FaultException(new FaultReason(e.Message), new FaultCode("ESG6"));
             }
@@ -244,6 +250,7 @@ namespace InterpoolCloudWebRole.Controller
         /// Get suspects 
         /// </summary>
         /// <param name="newGame"> Parameter description for newGame goes here</param>
+        [FaultContract(typeof(FaultException))]
         public void GetSuspects(Game newGame)
         {
             //// In this operation we should go to find the possibles suspects, and asign the suspect
@@ -312,6 +319,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="user"> Parameter description for user goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public Game BuiltTravel(User user)
         {
             Game newGame = new Game();
@@ -394,6 +402,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="fbud"> Parameter description for fbud goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataListFacebookUser FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
         {
             IDataManager dm = new DataManager();
@@ -417,6 +426,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="nameNextCity"> Parameter description for nameNextCity goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataCity Travel(string userIdFacebook, string nameNextCity)
         {
             DataCity datacity = new DataCity();
@@ -453,6 +463,7 @@ namespace InterpoolCloudWebRole.Controller
         /// Description for Method.</summary>
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <param name="userIdFacebookSuspect"> Parameter description for userIdFacebookSuspect goes here</param>
+        [FaultContract(typeof(FaultException))]
         public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
         {
             IDataManager dm = new DataManager();
@@ -495,6 +506,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userId"> Parameter description for userId goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public List<DataCity> GetCities(string userId)
         {
             ////TODO: order random
@@ -535,6 +547,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="numFamous"> Parameter description for numFamous goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
         {
             IDataManager dm = new DataManager();
@@ -840,13 +853,14 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataUserInfo GetUserInfo(string userLoginId)
         {
             IDataManager dm = new DataManager();
             return dm.GetUserInfoByLoginId(userLoginId, dm.GetContainer());
         }
 
-
+        [FaultContract(typeof(FaultException))]
         public void DeleteGame(string userIdFacebook)
         {
             IDataManager dm = new DataManager();

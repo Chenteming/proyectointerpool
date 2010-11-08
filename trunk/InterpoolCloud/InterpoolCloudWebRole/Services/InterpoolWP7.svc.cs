@@ -30,6 +30,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        [FaultContract(typeof(FaultException))]
         public void StartGame(string userIdFacebook)
         {
             this.controller.StartGame(userIdFacebook); 
@@ -40,6 +41,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataCity GetCurrentCity(string userIdFacebook)
         {
             return this.controller.GetCurrentCity(userIdFacebook);
@@ -50,6 +52,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public List<DataCity> GetPossibleCities(string userIdFacebook)
         {
             return this.controller.GetPossibleCities(userIdFacebook);
@@ -61,6 +64,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <param name="numClue"> Parameter description for numClue goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataFamous GetCurrentFamous(string userIdFacebook, int numClue)
         {
             return this.controller.GetCurrentFamous(userIdFacebook, numClue);
@@ -72,6 +76,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <param name="fbud"> Parameter description for fbud goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataListFacebookUser FilterSuspects(string userIdFacebook, DataFacebookUser fbud)
         {
             return this.controller.FilterSuspects(userIdFacebook, fbud);
@@ -81,6 +86,7 @@ using InterpoolCloudWebRole.Utilities;
         /// Description for Method.</summary>
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <param name="userIdFacebookSuspect"> Parameter description for userIdFacebookSuspect goes here</param>
+        [FaultContract(typeof(FaultException))]
         public void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect)
         {
             this.controller.EmitOrderOfArrest(userIdFacebook, userIdFacebookSuspect);
@@ -91,6 +97,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public List<DataCity> GetCities(string userIdFacebook)
         {
             return this.controller.GetCities(userIdFacebook);
@@ -102,6 +109,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <param name="nameNextCity"> Parameter description for nameNextCity goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataCity Travel(string userIdFacebook, string nameNextCity)
         {
             return this.controller.Travel(userIdFacebook, nameNextCity);
@@ -113,6 +121,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <param name="numFamous"> Parameter description for numFamous goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataClue GetClueByFamous(string userIdFacebook, int numFamous)
         {
             return this.controller.GetClueByFamous(userIdFacebook, numFamous);
@@ -124,6 +133,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <param name="idLogin"> Parameter description for idLogin goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public string GetUserIdFacebook(string idLogin)
         {
             ////return this.controller.GetLastUserIdFacebook(idLogin);
@@ -136,6 +146,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <param name="idLogin"> Parameter description for idLogin goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         public DataUserInfo GetUserInfo(string idLogin)
         {
             //// This is the correct function to use when the login screen is ready
@@ -145,6 +156,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="user"> Parameter description for user goes here</param>
+        [FaultContract(typeof(FaultException))]
         public void DeleteGame(User user)
         {
             this.controller.DeleteGame(user);
@@ -153,6 +165,7 @@ using InterpoolCloudWebRole.Utilities;
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userIdFacebook"> Parameter description for user goes here</param>
+        [FaultContract(typeof(FaultException))]
         public DataFacebookUser GetFilters(string userIdFacebook)
         {
             return this.controller.GetFilters(userIdFacebook);

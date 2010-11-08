@@ -270,7 +270,7 @@ namespace InterpoolCloudWebRole.Data
             //// var suspects = game.PossibleSuspect.AsEnumerable();
             
             // If the hometown is not empty, gets all the suspects with the selected hometown
-            if (!string.IsNullOrEmpty(fbud.Hometown))
+            if (fbud.Hometown != null)
             {
                 suspects = from hometownSuspects in suspects
                            where (hometownSuspects.SuspectHometown == fbud.Hometown)
@@ -278,7 +278,7 @@ namespace InterpoolCloudWebRole.Data
             }
 
             // If the music is not empty, gets all the suspects with the selected music
-            if (!string.IsNullOrEmpty(fbud.Music))
+            if (fbud.Music != null)
             {
                 suspects = from musicSuspects in suspects
                            where (musicSuspects.SuspectMusic == fbud.Music)
@@ -286,7 +286,7 @@ namespace InterpoolCloudWebRole.Data
             }
 
             // If the gender is not empty, gets all the suspects with the selected gender
-            if (!string.IsNullOrEmpty(fbud.Gender))
+            if (fbud.Gender != null)
             {
                 suspects = from genderSuspects in suspects
                            where (genderSuspects.SuspectGender == fbud.Gender)
@@ -294,7 +294,7 @@ namespace InterpoolCloudWebRole.Data
             }
 
             // If the cinema is not empty, gets all the suspects with the selected cinema
-            if (!string.IsNullOrEmpty(fbud.Cinema))
+            if (fbud.Cinema != null)
             {
                 suspects = from cinemaSuspects in suspects
                            where (cinemaSuspects.SuspectCinema == fbud.Cinema)
@@ -302,7 +302,7 @@ namespace InterpoolCloudWebRole.Data
             }
 
             // If the television is not empty, gets all the suspects with the selected television
-            if (!string.IsNullOrEmpty(fbud.Television))
+            if (fbud.Television != null)
             {
                 suspects = from televisionSuspects in suspects
                            where (televisionSuspects.SuspectTelevision == fbud.Cinema)
@@ -310,7 +310,7 @@ namespace InterpoolCloudWebRole.Data
             }
 
             // If the birthday is not empty, gets all the suspects with the selected birthday
-            if (!string.IsNullOrEmpty(fbud.Birthday))
+            if (fbud.Birthday != null)
             {
                 suspects = from birthdaySuspects in suspects
                            where (birthdaySuspects.SuspectBirthday == fbud.Birthday)
