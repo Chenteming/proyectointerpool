@@ -87,7 +87,8 @@
 
                 if (city.GameInfo.state == GameState.LOSE_TO)
                 {
-                    gm.Info = city.GameInfo;  
+                    gm.Info = city.GameInfo;
+                    this.client.DeleteGameAsync(this.client.us);
                     NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
                     return;
                 }

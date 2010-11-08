@@ -36,7 +36,7 @@
 			TextDate.Text = GetDayOfWeek(dt, lm.GetCurrentLanguage() == "English") + 
 			" " + hour + time;
 
-            TextLevel.Text = gm.Info.newLevel;
+            //TextLevel.Text = gm.Info.newLevel;
 
             ////string cityURI = "../CitiesImages/" + gm.PictureCityLink;
             ////cityImage.Source = new BitmapImage(new Uri(cityURI, UriKind.Relative));
