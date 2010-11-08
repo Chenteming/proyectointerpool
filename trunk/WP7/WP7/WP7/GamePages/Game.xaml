@@ -331,6 +331,10 @@
         <TextBlock x:Name="messageText" Margin="266,122,266,233" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="18.667" Foreground="#FFC9CA45" Visibility="Collapsed"/>
         <Button x:Name="YesFailButton" Content="" Height="30" Margin="351,251,0,199" Grid.Row="3" Click="YesFailButton_Click" Width="30" HorizontalAlignment="Left" d:LayoutOverrides="GridBox" Visibility="Collapsed" />
         <TextBlock x:Name="failMessageText" Height="127" Margin="266,99,266,0" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="16" Foreground="#FFC9CA45" VerticalAlignment="Top" d:LayoutOverrides="GridBox" Visibility="Collapsed"/>
+        <TextBlock x:Name="nameCityTB" Height="47" Margin="342,0,266,-60" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="levelTB" HorizontalAlignment="Right" Height="38" Margin="0,0,180,-59" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="93"/>
+        <TextBlock x:Name="deadlineTB" HorizontalAlignment="Right" Height="38" Margin="0,0,86,-59" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="94"/>
+        <TextBlock x:Name="dateTB" HorizontalAlignment="Right" Height="38" Margin="0,0,181,-109" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="93"/>
     </Grid>
 
 </phone:PhoneApplicationPage>
