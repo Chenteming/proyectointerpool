@@ -213,13 +213,6 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentGrid" Height="480" VerticalAlignment="Bottom" Grid.RowSpan="2">
-            <Canvas x:Name="canva1">
-				<Image x:Name="avion"  Source="/WP7;component/GameImages/aeroplane.png" Width="12" Margin="0" Height="7" Canvas.Left="-20">
-					<Image.RenderTransform>
-						<CompositeTransform ScaleY="1"/>
-					</Image.RenderTransform>
-				</Image>
-			</Canvas>
             <Image x:Name="Whitespace" Source="/WP7;component/interpool_Images/pantalla_3_Images/Fondo.png" Stretch="Fill" Margin="0"/>
             <Image x:Name="Background1" Source="/WP7;component/interpool_Images/pantalla_3_Images/Capa 1.png" Stretch="Fill" Opacity="0.15" Margin="0"/>
             <TextBox x:Name="textToTravel" HorizontalAlignment="Left" Margin="2,0,0,51" TextWrapping="Wrap" Width="146" Foreground="#FFE91818" Height="64" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="21.333" Visibility="Collapsed"/>
@@ -238,6 +231,13 @@
         <Image x:Name="YellowPoint" Margin="29,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades yellow.png" Stretch="Fill" RenderTransformOrigin="-0.912,-0.207" HorizontalAlignment="Left" Width="24" Grid.Row="1" Height="20" VerticalAlignment="Bottom" Visibility="Collapsed"/>
         <Image x:Name="BluePoint" Margin="53,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades blue.png" Stretch="Fill" HorizontalAlignment="Left" Width="24" Height="20" VerticalAlignment="Bottom" Grid.Row="1" Visibility="Collapsed"/>
         <Image x:Name="GreenPoint" Margin="77,0,0,-29" Source="/WP7;component/interpool_Images/pantalla_3_Images/punto_ciudades green.png" Stretch="Fill" HorizontalAlignment="Left" Width="24" Grid.Row="1" Height="20" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+        <Canvas x:Name="canva1" Grid.RowSpan="2">
+        	<Image x:Name="avion"  Source="/WP7;component/GameImages/aeroplane.png" Width="9" Margin="0" Height="9" Canvas.Left="-1" Canvas.Top="480">
+        		<Image.RenderTransform>
+        			<CompositeTransform ScaleY="1"/>
+        		</Image.RenderTransform>
+        	</Image>
+        </Canvas>
         <MediaElement x:Name="plane_sound" HorizontalAlignment="Left" Height="0" Margin="120,-60,0,0" Source="/GameSounds/plane_sound.wma" Stretch="Fill" VerticalAlignment="Top" Width="0" AutoPlay="False"/>
         <Image x:Name="MessageImage" Margin="175,76,175,189" Source="/WP7;component/GameImages/MessageImage.png" Stretch="Fill" Grid.Row="1" Width="250" Visibility="Collapsed"/>
         <Button x:Name="YesButton" Content="" HorizontalAlignment="Right" Height="30" Margin="0,203,286,211" Grid.Row="1" Style="{StaticResource YesButton}" Width="30" Click="YesButton_Click" Visibility="Collapsed"/>
