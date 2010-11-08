@@ -38,14 +38,14 @@
             this.client.GetCitiesAsync(this.gm.UserId);
             this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
             this.client.CloseAsync();	
-            Thickness margin = plane.Margin;
-            margin.Top = 200;
-            margin.Bottom = 100;
-            plane.Margin = margin;
-            Thickness margin1 = avion.Margin;
-            margin1.Left = 100;
-            margin1.Top = 300;
-            avion.Margin = margin1;            
+            ////Thickness margin = plane.Margin;
+            ////margin.Top = 200;
+            ////margin.Bottom = 100;
+            ////plane.Margin = margin;
+            ////Thickness margin1 = avion.Margin;
+            ////margin1.Left = 100;
+            ////margin1.Top = 300;
+            ////avion.Margin = margin1;            
         }
 
         void client_GetCitiesCompleted(object sender, GetCitiesCompletedEventArgs e)
