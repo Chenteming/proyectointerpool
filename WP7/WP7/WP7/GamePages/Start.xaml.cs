@@ -43,6 +43,6 @@ namespace WP7
         private void GoButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
-        }
+        }        
     }
 }

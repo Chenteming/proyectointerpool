@@ -14,6 +14,7 @@
     using Microsoft.Phone.Controls;
     using WP7.ServiceReference;
     using WP7.Utilities;
+    using System.ServiceModel;
 
     /// <summary>
     /// Partial class declaration Filter
@@ -109,7 +110,7 @@
 
                 this.client.CloseAsync();
             }
-            catch (Exception e) 
+            catch (FaultException e) 
             {
                 ShowHideInterpoolFailMessage(e.Message, true);
             }
