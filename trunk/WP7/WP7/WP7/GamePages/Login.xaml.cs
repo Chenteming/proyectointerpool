@@ -61,9 +61,6 @@
             loginImage.Visibility = Visibility.Collapsed;
             this.gm.UserEmail = userEmail.Text;
             userEmail.Visibility = Visibility.Collapsed;
-            WebBrowser.Visibility = Visibility.Visible;
-            WebBrowser.Source = new Uri("http://pis2010.cloudapp.net", UriKind.Absolute);
-
             gm.GetUserInfoTries = 0;
             this.client.GetUserInfoCompleted += new EventHandler<GetUserInfoCompletedEventArgs>(client_GetUserInfoCompleted);
             client.GetUserInfoAsync(gm.UserEmail);

@@ -359,11 +359,6 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Button x:Name="LoginButton" Content="Button" Grid.Column="1" Margin="252,41,287,0" Style="{StaticResource PlayButton}" Click="LoginButton_Click" RenderTransformOrigin="0.5,0.5" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="29.333" Height="78" VerticalAlignment="Top">
-            	<Button.RenderTransform>
-            		<CompositeTransform/>
-            	</Button.RenderTransform>
-            </Button>
         </Grid>
         <Canvas x:Name="interpool">
         	<Image x:Name="interp____" Height="180" Canvas.Left="54" Source="interpool_Images/interp    .png" Canvas.Top="164" Width="412"/>

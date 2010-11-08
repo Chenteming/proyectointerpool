@@ -111,6 +111,10 @@
                    return "no existe día de la semana";
            }
        }
- 
+
+       protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+       {
+           NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
+       }
 	}
 }

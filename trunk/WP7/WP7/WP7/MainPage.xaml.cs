@@ -41,17 +41,6 @@
 			}
         }
 
-        void client_GetUserIdFacebookCompleted(object sender, GetUserIdFacebookCompletedEventArgs e)
-        {
-            this.gm.UserId = e.Result;
-            this.client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
-            
-            
-            NavigationService.Navigate(new Uri("/GamePages/Start.xaml", UriKind.RelativeOrAbsolute));
-            //string uri = NavigationService.CurrentSource.AbsoluteUri;
-            this.client.StartGameAsync(this.gm.UserId);
-        }
-
         void client_GetUserInfoCompleted(object sender, GetUserInfoCompletedEventArgs e)
         {
             this.gm.UserInfo = e.Result;
@@ -105,8 +94,15 @@
             gm.CurrentDateTime = dc.CurrentDate;
             this.gm.SetCurrentCity(dc.NameCity);
             this.gm.PictureCityLink = dc.NameFileCity;
-            NavigationService.Navigate(new Uri("/GamePages/StartCompleted.xaml", UriKind.RelativeOrAbsolute));
-           
+            if (gm.UserInfo.UserState == UserState.REGISTERED_NO_PLAYING)
+            {
+                NavigationService.Navigate(new Uri("/GamePages/StartCompleted.xaml", UriKind.RelativeOrAbsolute));
+            }
+            else if (gm.UserInfo.UserState == UserState.REGISTERED_PLAYING)
+            {
+                NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
+            }
+
             this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
             this.client.CloseAsync();
         }
@@ -117,12 +113,20 @@
         }
 
         private void PlayButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {		
-			////Usando el mail de FACEBOOK
-            gm.UserEmail = "letyvila@hotmail.com";
-            client.GetUserIdFacebookAsync(gm.UserEmail);
-
-            this.client.GetUserIdFacebookCompleted += new EventHandler<GetUserIdFacebookCompletedEventArgs>(client_GetUserIdFacebookCompleted);
+        {
+            //// If no mail was entered or the user has tried more than 3 times to start the game
+            if (String.IsNullOrEmpty(gm.UserEmail) || gm.GetUserInfoTries >= 3)
+            {
+                gm.FromMainPage = true;
+                NavigationService.Navigate(new Uri("/GamePages/Login.xaml", UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                ////gm.UserEmail = "taru_borio@hotmail.com";
+                ////client.GetUserIdFacebookAsync(gm.UserEmail);
+                this.client.GetUserInfoCompleted += new EventHandler<GetUserInfoCompletedEventArgs>(client_GetUserInfoCompleted);
+                client.GetUserInfoAsync(gm.UserEmail);
+            }
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
@@ -134,11 +138,6 @@
         {
         	////NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));
         }
-
-   	 	private void LoginButton_Click(object sender, System.Windows.RoutedEventArgs e)
-   	 	{
-			NavigationService.Navigate(new Uri("/GamePages/Login.xaml", UriKind.RelativeOrAbsolute));
-   	 	}
 
         private void CreditButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
