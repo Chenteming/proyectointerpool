@@ -12,6 +12,7 @@ namespace InterpoolCloudWebRole.Controller
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
+    using System.ServiceModel;
 
     /// <summary>
     /// Interface Description IProcessController
@@ -21,12 +22,14 @@ namespace InterpoolCloudWebRole.Controller
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        [FaultContract(typeof(FaultException))]
         void StartGame(string userIdFacebook);
 
         /// <summary>
         /// Description for Method.</summary>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         InterpoolContainer GetContainer();
 
         /// <summary>
@@ -34,6 +37,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         DataCity GetCurrentCity(string userIdFacebook);
 
         /// <summary>
@@ -41,6 +45,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         List<DataCity> GetPossibleCities(string userIdFacebook);
 
         /// <summary>
@@ -49,6 +54,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="numClue"> Parameter description for fbud numClue here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         DataFamous GetCurrentFamous(string userIdFacebook, int numClue);
 
         /// <summary>
@@ -57,6 +63,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="fbud"> Parameter description for fbud fbud here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         DataListFacebookUser FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
 
         /// <summary>
@@ -65,12 +72,14 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="nameNextCity"> Parameter description for nameNextCity fbud here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         DataCity Travel(string userIdFacebook, string nameNextCity);
 
         /// <summary>
         /// Description for Method.</summary>                 
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <param name="userIdFacebookSuspect"> Parameter description for userIdFacebookSuspect fbud here</param>
+        [FaultContract(typeof(FaultException))]
         void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect);
 
         /// <summary>
@@ -78,6 +87,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userId"> Parameter description for userId goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         List<DataCity> GetCities(string userId);
 
         /// <summary>
@@ -86,6 +96,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="numFamous"> Parameter description for numFamous fbud here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         DataClue GetClueByFamous(string userIdFacebook, int numFamous);
 
         /// <summary>
@@ -93,6 +104,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="idLogin"> Parameter description for idLogin goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         string GetLastUserIdFacebook(string idLogin);
 
         /// <summary>
@@ -100,6 +112,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         string GetUserIdFacebook(string userLoginId);
 
         /// <summary>
@@ -107,20 +120,26 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
+        [FaultContract(typeof(FaultException))]
         DataUserInfo GetUserInfo(string userLoginId);
 
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="game"> Parameter description for game goes here</param>
         /// <param name="privatesProperties"> Parameter description for privatesProperties goes here</param> 
+        [FaultContract(typeof(FaultException))]
         void CreateHardCodeSuspects(Game game, List<string> privatesProperties);
 
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="user"> Parameter description for user goes here</param>
+        [FaultContract(typeof(FaultException))]
         void DeleteGame(User user);
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="user"> Parameter description for user goes here</param>
+        [FaultContract(typeof(FaultException))]
         DataFacebookUser GetFilters(string userIdFacebook);
-
     }
 }
