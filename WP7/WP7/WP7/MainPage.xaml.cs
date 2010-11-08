@@ -16,6 +16,7 @@
     using System.Xml.Linq;
     using Microsoft.Phone.Tasks;
     using WP7.Utilities;
+    using System.ServiceModel;
 
     public partial class MainPage : PhoneApplicationPage
     {
@@ -74,7 +75,7 @@
 
                     this.client.StartGameAsync(this.gm.UserId);
                 }
-                catch (Exception ex) 
+                catch (FaultException ex) 
                 {
                     ShowHideInterpoolFailMessage(ex.Message, true);
                 }
@@ -93,7 +94,7 @@
                 this.client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
                 this.client.GetCurrentCityAsync(this.gm.UserId);
             }
-            catch (Exception ex) 
+            catch (FaultException ex) 
             {
                 ShowHideInterpoolFailMessage(ex.Message, true);
             }           
@@ -121,7 +122,7 @@
                 this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
                 this.client.CloseAsync();
             }
-            catch (Exception ex) 
+            catch (FaultException ex) 
             {
                 ShowHideInterpoolFailMessage(ex.Message, true);
             }
@@ -149,7 +150,7 @@
                     this.client.GetUserInfoCompleted += new EventHandler<GetUserInfoCompletedEventArgs>(client_GetUserInfoCompleted);
                     client.GetUserInfoAsync(gm.UserEmail);
                 }
-                catch (Exception ex) 
+                catch (FaultException ex) 
                 {
                     ShowHideInterpoolFailMessage(ex.Message, true);
                 }
