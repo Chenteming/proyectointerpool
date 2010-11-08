@@ -13,6 +13,7 @@ namespace InterpoolCloudWebRole.Services
     using System.Text;
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.Datatypes;
+    using InterpoolCloudWebRole.Utilities;
     using InterpoolCloudWebRole.FacebookCommunication;
 
     /// <summary>
@@ -25,6 +26,7 @@ namespace InterpoolCloudWebRole.Services
         /// Description for Method.</summary>
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         void StartGame(string userIdFacebook);
 
         /// <summary>
@@ -33,6 +35,7 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         string GetUserIdFacebook(string idLogin);
 
         /// <summary>
@@ -41,6 +44,7 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         DataUserInfo GetUserInfo(string idLogin);
 
         /// <summary>
@@ -49,6 +53,7 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         DataCity GetCurrentCity(string userIdFacebook);
 
         /// <summary>
@@ -57,6 +62,7 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         List<DataCity> GetPossibleCities(string userIdFacebook);
 
         /// <summary>
@@ -66,6 +72,7 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         DataFamous GetCurrentFamous(string userIdFacebook, int numClue);
 
         /// <summary>
@@ -75,6 +82,7 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         DataListFacebookUser FilterSuspects(string userIdFacebook, DataFacebookUser fbud);
 
         /// <summary>
@@ -82,6 +90,7 @@ namespace InterpoolCloudWebRole.Services
         /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <param name="userIdFacebookSuspect"> Parameter description for userIdFacebookSuspect goes here</param>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         void EmitOrderOfArrest(string userIdFacebook, string userIdFacebookSuspect);
 
         /// <summary>
@@ -90,6 +99,7 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         List<DataCity> GetCities(string userIdFacebook);
 
         /// <summary>
@@ -99,6 +109,7 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         DataCity Travel(string userIdFacebook, string nameNextCity);
 
         /// <summary>
@@ -108,12 +119,14 @@ namespace InterpoolCloudWebRole.Services
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         DataClue GetClueByFamous(string userIdFacebook, int numFamous);
 
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="user"> Parameter description for user goes here</param>
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         void DeleteGame(User user);
 
         /// <summary>

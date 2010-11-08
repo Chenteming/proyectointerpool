@@ -15,6 +15,7 @@ namespace InterpoolCloudWebRole.Services
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
+using InterpoolCloudWebRole.Utilities;
 
     /// <summary>
     /// Class statement InterpoolWP7
