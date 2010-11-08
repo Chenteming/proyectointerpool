@@ -15,6 +15,7 @@ namespace InterpoolCloudWebRole.Controller
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
     using InterpoolCloudWebRole.Utilities;
+    using System.ServiceModel;
 
     /// <summary>
     /// Class Description ProcessController
@@ -177,7 +178,7 @@ namespace InterpoolCloudWebRole.Controller
                 else
                 {
                     this.RegisterLog("StartGame: There is no user with that id", null, "error", "0");
-                    throw new GameException("There is no user with that id", new Exception());
+                    throw new FaultException(new FaultReason("There is no user with that id"), new FaultCode("ESG1"));
                 }
                 //// 1 the trip is built to be followed by user
                 // TODO borrar
@@ -189,7 +190,7 @@ namespace InterpoolCloudWebRole.Controller
                 catch (Exception e)
                 {
                     this.RegisterLog("BuiltTravel", e, "error", user.UserLoginId);
-                    throw e;
+                    throw new FaultException(new FaultReason(e.Message), new FaultCode("ESG2"));
                 }
                 //// 2 Get suspects
                 try
@@ -199,7 +200,7 @@ namespace InterpoolCloudWebRole.Controller
                 catch (Exception e)
                 {
                     this.RegisterLog("GetSuspects", e, "error", user.UserLoginId);
-                    throw e;
+                    throw new FaultException(new FaultReason(e.Message), new FaultCode("ESG3"));
                 }
 
                 //// 3 Create clues
@@ -210,7 +211,7 @@ namespace InterpoolCloudWebRole.Controller
                 catch (Exception e)
                 {
                     this.RegisterLog("CreateClue", e, "error", user.UserLoginId);
-                    throw e;
+                    throw new FaultException(new FaultReason(e.Message), new FaultCode("ESG4"));
                 }
 
                 //// set the date to monday
@@ -226,7 +227,7 @@ namespace InterpoolCloudWebRole.Controller
                 catch (Exception e)
                 {
                     this.RegisterLog("CalculateDeadLine", e, "error", user.UserLoginId);
-                    throw e;
+                    throw new FaultException(new FaultReason(e.Message), new FaultCode("ESG5"));
                 }
    
                 // newGame.DeadLine = currentTime;
@@ -235,7 +236,7 @@ namespace InterpoolCloudWebRole.Controller
             }
             catch (Exception e)
             {
-                throw e;
+                throw new FaultException(new FaultReason(e.Message), new FaultCode("ESG6"));
             }
         }
 
@@ -291,14 +292,6 @@ namespace InterpoolCloudWebRole.Controller
             list.Add("SuspectGender");
             list.Add("SuspectPicLInk");
 
-            try
-            {
-            }
-
-            catch (Exception e)
-            {
-
-            }
             this.CreateHardCodeSuspects(newGame, list);
 
             if (specialGame && nonFriendSuspect != null)
@@ -466,7 +459,7 @@ namespace InterpoolCloudWebRole.Controller
             Game game = dm.GetGameByUser(userIdFacebook, this.container);
             if (game.OrderOfArrest != null)
             {
-                throw new GameException("error_existOneOrderOfArrest", null);
+                throw new FaultException(new FaultReason("error_existOneOrderOfArrest"), new FaultCode("ESG6"));
             }
 
             Suspect suspect = null;
@@ -485,7 +478,7 @@ namespace InterpoolCloudWebRole.Controller
                 else
                 {
                     this.RegisterLog("EmitOrderOfArresst: There is no Suspect with that id", null, "error", "0");
-                    throw new GameException("There is no Suspect with that id", new Exception());
+                    throw new FaultException(new FaultReason("There is no Suspect with that id"), new FaultCode("ESG6"));
                 }
             }
 
@@ -554,7 +547,7 @@ namespace InterpoolCloudWebRole.Controller
             else
             {
                 this.RegisterLog("GetClueByFamous: There is no User with that id", null, "error", "0");
-                throw new GameException("There is no User with that id", new Exception());
+                throw new FaultException(new FaultReason("There is no User with that id"), new FaultCode("ESG7"));
             }
             NodePath node = this.GetCurrentNode(userIdFacebook);
             DataClue clue;
@@ -804,7 +797,7 @@ namespace InterpoolCloudWebRole.Controller
             else
             {
                 this.RegisterLog("error_hardCodedSuspectConsistencia", null, "error", game.User.UserLoginId);
-                throw new GameException("error_hardCodedSuspectConsistencia", null);
+                throw new FaultException(new FaultReason("error_hardCodedSuspectConsistencia"), new FaultCode("ESG8"));
             }
         }
 
@@ -908,7 +901,7 @@ namespace InterpoolCloudWebRole.Controller
                 else
                 {
                     this.RegisterLog("CreateClue: There is no NodePath with this order", null, "error", "0");
-                    throw new GameException("There is no NodePath with this order", new Exception());
+                    throw new FaultException(new FaultReason("There is no NodePath with this order"), new FaultCode("ESG9"));
                 }
                 r = new Random();
                 /* get the amount of caracteristic of the suspect by NodePath  */
@@ -941,7 +934,7 @@ namespace InterpoolCloudWebRole.Controller
                 else
                 {
                     this.RegisterLog("CreateClue: There is no Famous in this node", null, "error", "0");
-                    throw new GameException("There is no Famous in this node", new Exception());
+                    throw new FaultException(new FaultReason("There is no Famous in this node"), new FaultCode("ESG10"));
                 }
                 
                 c3.Famous = famous;
@@ -1022,8 +1015,8 @@ namespace InterpoolCloudWebRole.Controller
                 }
                 else
                 {
-                    this.RegisterLog("CreateClue: There is no dynamic CityProperty for next City", null, "error", "0");
-                    throw new GameException("There is no dynamic CityProperty for next City", new Exception());
+                    this.RegisterLog("CreateClue: There is no static CityProperty for next City", null, "error", "0");
+                    throw new FaultException(new FaultReason("There is no dynamic CityProperty for next City"), new FaultCode("ESG10"));
                 }
                
 
@@ -1074,7 +1067,7 @@ namespace InterpoolCloudWebRole.Controller
             else
             {
                 this.RegisterLog("CreateClue: There is no NodePath with this order", null, "error", "0");
-                throw new GameException("There is no NodePath with this order", new Exception());
+                throw new FaultException(new FaultReason("There is no NodePath with this order"), new FaultCode("ESG10"));
             }
             /* build the clues for the last city*/
             Clue lastClue1 = new Clue();
@@ -1136,7 +1129,7 @@ namespace InterpoolCloudWebRole.Controller
             else
             {
                 this.RegisterLog("NextCity: There is no nextCity in this node", null, "error", "0");
-                throw new GameException("There is no nextCity in this node", new Exception());
+                throw new FaultException(new FaultReason("There is no nextCity in this node"), new FaultCode("ESG10"));
             }
             
         }
@@ -1226,7 +1219,7 @@ namespace InterpoolCloudWebRole.Controller
                             else
                             {
                                 this.RegisterLog("Arrest: There is no Level with this number", null, "error", "0");
-                                throw new GameException("There is no Level with this number", new Exception());
+                                throw new FaultException(new FaultReason("There is no Level with this number"), new FaultCode("ESG10"));
                             }
                             user.SubLevel = 0;
                             user.Level = newLevel;
