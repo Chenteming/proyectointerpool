@@ -64,13 +64,20 @@
             }
             else
             {
-                this.client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
-                if (gm.UserInfo.UserState == UserState.REGISTERED_NO_PLAYING)
+                try
                 {
-                    NavigationService.Navigate(new Uri("/GamePages/Start.xaml", UriKind.RelativeOrAbsolute));
-                }
+                    this.client.StartGameCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_StartGameCompleted);
+                    if (gm.UserInfo.UserState == UserState.REGISTERED_NO_PLAYING)
+                    {
+                        NavigationService.Navigate(new Uri("/GamePages/Start.xaml", UriKind.RelativeOrAbsolute));
+                    }
 
-                this.client.StartGameAsync(this.gm.UserId);
+                    this.client.StartGameAsync(this.gm.UserId);
+                }
+                catch (Exception ex) 
+                {
+                    ShowHideInterpoolFailMessage(ex.Message, true);
+                }
             }
         }
 
@@ -81,8 +88,15 @@
 
         void client_StartGameCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            this.client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
-            this.client.GetCurrentCityAsync(this.gm.UserId);            
+            try
+            {
+                this.client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
+                this.client.GetCurrentCityAsync(this.gm.UserId);
+            }
+            catch (Exception ex) 
+            {
+                ShowHideInterpoolFailMessage(ex.Message, true);
+            }           
         }
 
         void GetCurrentCityCallback(object sender, GetCurrentCityCompletedEventArgs e)
@@ -102,9 +116,15 @@
             {
                 NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
             }
-
-            this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
-            this.client.CloseAsync();
+            try
+            {
+                this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.client_CloseCompleted);
+                this.client.CloseAsync();
+            }
+            catch (Exception ex) 
+            {
+                ShowHideInterpoolFailMessage(ex.Message, true);
+            }
         }
 
         private void OptionButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -124,8 +144,15 @@
             {
                 ////gm.UserEmail = "taru_borio@hotmail.com";
                 ////client.GetUserIdFacebookAsync(gm.UserEmail);
-                this.client.GetUserInfoCompleted += new EventHandler<GetUserInfoCompletedEventArgs>(client_GetUserInfoCompleted);
-                client.GetUserInfoAsync(gm.UserEmail);
+                try
+                {
+                    this.client.GetUserInfoCompleted += new EventHandler<GetUserInfoCompletedEventArgs>(client_GetUserInfoCompleted);
+                    client.GetUserInfoAsync(gm.UserEmail);
+                }
+                catch (Exception ex) 
+                {
+                    ShowHideInterpoolFailMessage(ex.Message, true);
+                }
             }
         }
 
@@ -142,6 +169,22 @@
         private void CreditButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/GamePages/Credits.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void YesFailButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ShowHideInterpoolFailMessage("", false);
+        }
+
+        private void ShowHideInterpoolFailMessage(string message, bool flag)
+        {
+            failMessageText.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+            if (flag)
+            {
+                failMessageText.Text = message;
+            }
+            MessageImage.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+            YesFailButton.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }
