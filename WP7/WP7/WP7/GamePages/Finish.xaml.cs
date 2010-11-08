@@ -36,5 +36,10 @@ namespace WP7
                 ":" + this.gm.Info.DiffInseconds.ToString();
             NewLevelText.Text = this.gm.Info.newLevel.ToString();
         }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }
