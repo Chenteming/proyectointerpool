@@ -853,6 +853,14 @@ namespace InterpoolCloudWebRole.Controller
             return dm.GetUserInfoByLoginId(userLoginId, dm.GetContainer());
         }
 
+
+        public void DeleteGame(string userIdFacebook)
+        {
+            IDataManager dm = new DataManager();
+            User user = dm.GetGameByUser(userIdFacebook, this.container).User;
+            this.DeleteGame(user);
+        }
+
         /* to consider: 
          * - all clues maybe have characteristic of the suspect 
          * - first clue is final
