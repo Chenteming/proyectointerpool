@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4b32e1c7-4da1-41a1-8ccb-b091ba53d2ef" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://127.0.0.1:81/Services/InterpoolWP7.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="InterpoolWP7.xsd" MetadataType="Schema" ID="4444b03a-f620-4bb3-b118-ac50c8783804" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd2" />
+    <MetadataFile FileName="InterpoolWP71.xsd" MetadataType="Schema" ID="f2fcfebb-19d6-4cb3-9d09-757f65a69ddd" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd1" />
+    <MetadataFile FileName="InterpoolWP72.xsd" MetadataType="Schema" ID="537953f3-4c7e-40ec-9b55-7b4cc3e44003" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd0" />
+    <MetadataFile FileName="InterpoolWP73.xsd" MetadataType="Schema" ID="0bc93aff-023f-476b-8cc8-155142298c97" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd5" />
+    <MetadataFile FileName="InterpoolWP7.wsdl" MetadataType="Wsdl" ID="cff0c4f9-9b18-41eb-8b5c-fef522767974" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?wsdl" />
+    <MetadataFile FileName="InterpoolWP74.xsd" MetadataType="Schema" ID="187a647c-eccc-42ee-ab97-d1487d8e4aca" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd6" />
+    <MetadataFile FileName="InterpoolWP7.disco" MetadataType="Disco" ID="52e05f16-9850-4ae8-b82c-c5968fea91c7" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?disco" />
+    <MetadataFile FileName="InterpoolWP75.xsd" MetadataType="Schema" ID="25287e96-6311-4769-81d6-9a9de070b7f5" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd4" />
+    <MetadataFile FileName="InterpoolWP76.xsd" MetadataType="Schema" ID="25a28a40-1a8a-43a4-a0e4-23818f19de5a" SourceId="1" SourceUrl="http://127.0.0.1:81/Services/InterpoolWP7.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
