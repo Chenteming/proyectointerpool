@@ -43,26 +43,32 @@
         
         private void SpanishCkeckBoxChecked(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (englishCheckBox.IsChecked == true)
+            if (spanishCheckBox.IsChecked == false)
             {
-                englishCheckBox.IsChecked = false;
+                if (englishCheckBox.IsChecked == true)
+                {
+                    englishCheckBox.IsChecked = false;
+                }
+
+                this.language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));
+                this.language.SetCurrentLanguage("Spanish");
+                this.language.TranslatePage(this);
             }
-            
-            this.language.SetXDoc(XDocument.Load("GameLanguages/Spanish.xml"));
-            this.language.SetCurrentLanguage("Spanish");
-            this.language.TranslatePage(this);
         }
         
         private void EnglishCheckBoxChecked(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (spanishCheckBox.IsChecked == true)
+            if (englishCheckBox.IsChecked == false)
             {
-                spanishCheckBox.IsChecked = false;
+                if (spanishCheckBox.IsChecked == true)
+                {
+                    spanishCheckBox.IsChecked = false;
+                }
+
+                this.language.SetXDoc(XDocument.Load("GameLanguages/English.xml"));
+                this.language.SetCurrentLanguage("English");
+                this.language.TranslatePage(this);
             }
-            
-            this.language.SetXDoc(XDocument.Load("GameLanguages/English.xml"));
-            this.language.SetCurrentLanguage("English");
-            this.language.TranslatePage(this);
         }
         
         private void EnglishCheckBoxUnchecked(object sender, System.Windows.RoutedEventArgs e)
