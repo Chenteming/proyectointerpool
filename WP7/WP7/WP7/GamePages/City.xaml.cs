@@ -79,11 +79,11 @@
         void client_TravelCompleted(object sender, TravelCompletedEventArgs e)
         {
             DataCity city = e.Result;
+            gm.CurrentDateTime = city.CurrentDate;
             if (city.CityNumber == -1)
                 ShowHideInterpoolFailMessage(true);
             else
-            {
-                gm.CurrentDateTime = city.CurrentDate;
+            {          
 
                 if (city.GameInfo.state == GameState.LOSE_TO)
                 {
