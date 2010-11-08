@@ -304,55 +304,22 @@
     	<Grid x:Name="ContentGrid" Height="472" VerticalAlignment="Bottom" Grid.RowSpan="2">
     		<Grid.ColumnDefinitions>
     			<ColumnDefinition Width="0*"/>
-    			<ColumnDefinition/>
+    			<ColumnDefinition Width="0.24*"/>
+    			<ColumnDefinition Width="0.76*"/>
     		</Grid.ColumnDefinitions>
-            <Image x:Name="ImageBackground" Source="..\GameImages\OfficeScreen.jpg" Stretch="Fill" Margin="0,0,0,8" Grid.Column="1"/>
-            <Canvas x:Name="ImagesCities" Clip="M0,0L300,0 300,250 0,250z" Height="250" UseLayoutRounding="False" VerticalAlignment="Top" Margin="0,8,-2,0" HorizontalAlignment="Right" Width="300" Grid.Column="1">
-            	<Image x:Name="dublin" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/dublin.png" Canvas.Top="2" Width="300"/>
-            	<Image x:Name="dubai" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/dubai.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="cusco" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/cusco.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="copenhagen" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/copenhagen.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="cape_town" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/cape_town.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="buenos_aires" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/buenos_aires.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="berlin" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/berlin.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="barcelona" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/barcelona.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="bangkok" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/bangkok.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="auckland" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/auckland.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="amsterdam" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/amsterdam.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="tokio" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/tokio.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="sydney" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/sydney.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="roma" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/roma.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="singapur" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/singapur.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="seul" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/seul.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="rio_janeiro" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/rio_janeiro.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="praga" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/praga.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="pekin" Height="250" Canvas.Left="-1" Source="/WP7;component/cities3_Images/pekin.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="paris" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/paris.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="nueva_york" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/nueva_york.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="moscu" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/moscu.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="nueva_delhi" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/nueva_delhi.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="montevideo" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/montevideo.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="mexico" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/mexico.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="marrakech" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/marrakech.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="madrid" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/madrid.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="londres" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/londres.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="la_habana" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/la_habana.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="katmandu" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/katmandu.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="jerusalem" Height="250" Source="/WP7;component/cities3_Images/jerusalem.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="hong_kong" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/hong_kong.png" Canvas.Top="0" Width="300"/>
-            	<Image x:Name="el_cairo" Height="250" Canvas.Left="0" Source="/WP7;component/cities3_Images/el_cairo.png" Canvas.Top="0" Width="300"/>
-            </Canvas>
-            <Image x:Name="ImageBackground1" Source="/WP7;component/GameImages/mainScreen1.png" Stretch="Fill" Grid.Column="1"/>
-            <Button x:Name="Door" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="-7,37,0,82" Style="{StaticResource ButtonDoor}" Width="121" Click="Door_Click"/>
-            <Button x:Name="Earth" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="193,180,0,205" Style="{StaticResource ButtonEarth}" Width="81" Click="Earth_Click"/>
-            <Button x:Name="Files" Content="Button" Grid.Column="1" Margin="258,99,313,132" Style="{StaticResource ButtonFiles}" Click="Files_Click"/>
-            <Button x:Name="Laptop" Content="Button" Grid.Column="1" HorizontalAlignment="Right" Height="228" Margin="0,0,29,0" Style="{StaticResource ButtonPc}" VerticalAlignment="Bottom" Width="246" Click="Laptop_Click"/>
-            <Button x:Name="Phone" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="66" Margin="142,0,0,20" Style="{StaticResource ButtonPhone}" VerticalAlignment="Bottom" Width="102" Click="Phone_Click"/>
-            <Button x:Name="Newspaper" Content="Button" Grid.Column="1" Height="105" Margin="260,0,291,0" Style="{StaticResource ButtonNewspaper}" VerticalAlignment="Bottom" Click="Newspaper_Click"/>
-            <Image x:Name="Poster" Grid.Column="1" Margin="161,-4,0,0" Source="/WP7;component/GameImages/cartel.png" Stretch="Fill" Opacity="0.92" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
-            <TextBox x:Name="TextCity" Grid.Column="1" Margin="161,-15,0,0" TextWrapping="Wrap" Text="Paris" FontSize="13.333" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" VerticalScrollBarVisibility="Disabled" Height="53" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
-            <TextBox x:Name="TextDate" Grid.Column="1" Margin="161,3,0,0" TextWrapping="Wrap" Text="Lunes, 8:00 am" FontSize="13.333" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" VerticalScrollBarVisibility="Disabled" FontFamily="Futura Bk" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
-            <TextBox x:Name="TextLevel" Grid.Column="1" TextWrapping="Wrap" Text="Nivel" FontSize="13.333" BorderThickness="0" Background="{x:Null}" FontWeight="Bold" VerticalScrollBarVisibility="Disabled" Margin="161,20,0,0" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
+            <Image x:Name="ImageBackground" Source="..\GameImages\OfficeScreen.jpg" Stretch="Fill" Margin="0,0,0,8" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Image x:Name="imageCity" Margin="109,30,-3,109" Source="/interpool_Images/pantalla_1_Images/Capa 1.png" Stretch="Fill" Grid.Column="2"/>
+            <Image x:Name="ImageBackground1" Source="/WP7;component/GameImages/mainScreen1.png" Stretch="Fill" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Button x:Name="Door" Content="Button" Margin="-7,37,61,82" Style="{StaticResource ButtonDoor}" Click="Door_Click" Grid.ColumnSpan="2"/>
+            <Button x:Name="Earth" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="18,180,0,205" Style="{StaticResource ButtonEarth}" Width="81" Click="Earth_Click"/>
+            <Button x:Name="Files" Content="Button" Grid.Column="2" Margin="83,99,0,132" Style="{StaticResource ButtonFiles}" Click="Files_Click" HorizontalAlignment="Left" Width="157"/>
+            <Button x:Name="Laptop" Content="Button" Grid.Column="2" HorizontalAlignment="Right" Height="228" Margin="0,0,29,0" Style="{StaticResource ButtonPc}" VerticalAlignment="Bottom" Width="246" Click="Laptop_Click"/>
+            <Button x:Name="Phone" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Height="66" Margin="-33,0,0,20" Style="{StaticResource ButtonPhone}" VerticalAlignment="Bottom" Width="102" Click="Phone_Click"/>
+            <Button x:Name="Newspaper" Content="Button" Grid.Column="2" Height="105" Margin="85,0,0,0" Style="{StaticResource ButtonNewspaper}" VerticalAlignment="Bottom" Click="Newspaper_Click" HorizontalAlignment="Left" Width="177"/>
+            <Image x:Name="Poster" Grid.Column="2" Margin="-14,-4,0,0" Source="/WP7;component/GameImages/cartel.png" Stretch="Fill" Opacity="0.92" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
+            <TextBlock x:Name="TextCity" Grid.Column="2" Margin="-5,-3,0,0" TextWrapping="Wrap" FontSize="13.333" FontWeight="Bold" Height="53" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Foreground="#FF0C0C0C"/>
+            <TextBlock x:Name="TextDate" Grid.Column="2" Margin="-7,16,0,0" TextWrapping="Wrap" FontSize="13.333" FontWeight="Bold" FontFamily="Futura Bk" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Foreground="#FF0C0C0C"/>
+            <TextBlock x:Name="TextLevel" Grid.Column="2" TextWrapping="Wrap" FontSize="13.333" FontWeight="Bold" Margin="-6,34,0,0" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Foreground="#FF0C0C0C"/>
         </Grid>
     	<Image x:Name="image" Margin="0,73,-246,89" Source="/WP7;component/GameImages/Toasty.png" Stretch="Fill" Grid.Row="1" HorizontalAlignment="Right" Width="239" RenderTransformOrigin="0.5,0.5">
     		<Image.RenderTransform>

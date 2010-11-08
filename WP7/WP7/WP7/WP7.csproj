@@ -213,6 +213,7 @@
     <None Include="Service References\ServiceReference\InterpoolWP71.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceReference\InterpoolWP712.wsdl" />
     <None Include="Service References\ServiceReference\InterpoolWP72.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -234,7 +235,28 @@
     <None Include="Service References\ServiceReference\InterpoolWP771.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7714.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7715.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7716.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7717.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7718.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7719.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference\InterpoolWP772.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7720.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\InterpoolWP773.xsd">
@@ -255,10 +277,16 @@
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataClue1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFacebookUser1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataFamous1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataListFacebookUser1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataUserInfo2.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <Resource Include="cities3_Images\bangkok.png" />
@@ -457,6 +485,7 @@
     </None>
     <None Include="Service References\ServiceReference\InterpoolWP71.disco" />
     <None Include="Service References\ServiceReference\InterpoolWP7.disco" />
+    <None Include="Service References\ServiceReference\InterpoolWP712.disco" />
     <Content Include="ServiceReferences.ClientConfig">
       <SubType>Designer</SubType>
     </Content>
