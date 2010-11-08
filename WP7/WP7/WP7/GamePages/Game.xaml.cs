@@ -103,7 +103,7 @@
                case DayOfWeek.Monday:
                    return english ? "Monday" : "Lunes";
                case DayOfWeek.Saturday:
-                   return english ? "Saturday" : "Sabado";
+                   return english ? "Saturday" : "Sábado";
                case DayOfWeek.Sunday:
                    return english ? "Sunday" : "Domingo";
                case DayOfWeek.Thursday:
@@ -113,13 +113,27 @@
                case DayOfWeek.Wednesday:
                    return english ? "Wednesday" : "Miércoles";
                default:
-                   return "no existe día de la semana";
+                   return string.Empty;
            }
        }
 
        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
        {
            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
+       }
+
+       private void YesFailButton_Click(object sender, System.Windows.RoutedEventArgs e)
+       {
+           ShowHideInterpoolFailMessage("", false);
+       }
+
+       private void ShowHideInterpoolFailMessage(string message, bool flag)
+       {
+           failMessageText.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+           if (flag)
+               failMessageText.Text = message;
+           MessageImage.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+           YesFailButton.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
        }
 	}
 }

@@ -326,6 +326,10 @@
     			<CompositeTransform/>
     		</Image.RenderTransform>
     	</Image>
+        <Image x:Name="MessageImage" Margin="175,76,175,173" Source="/WP7;component/GameImages/MessageImage.png" Stretch="Fill" Grid.Row="3" Width="250" Visibility="Collapsed"/>
+        <TextBlock x:Name="messageText" Margin="266,122,266,233" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="18.667" Foreground="#FFC9CA45" Visibility="Collapsed"/>
+        <Button x:Name="YesFailButton" Content="" Height="30" Margin="351,251,0,199" Grid.Row="3" Click="YesFailButton_Click" Width="30" HorizontalAlignment="Left" d:LayoutOverrides="GridBox" Visibility="Collapsed" />
+        <TextBlock x:Name="failMessageText" Height="127" Margin="266,99,266,0" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="16" Foreground="#FFC9CA45" VerticalAlignment="Top" d:LayoutOverrides="GridBox" Visibility="Collapsed"/>
     </Grid>
 
 </phone:PhoneApplicationPage>
