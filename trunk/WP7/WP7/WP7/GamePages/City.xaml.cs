@@ -68,8 +68,8 @@
                     button3.Content = dataCities.ElementAt(2).NameCity;
                     for (int i = 0; i < dataCities.Count; i++)
                     {
-                        coordX[i] = dataCities.ElementAt(0).Left;
-                        coordY[i] = dataCities.ElementAt(0).Top;
+                        coordX[i] = dataCities.ElementAt(i).Left;
+                        coordY[i] = dataCities.ElementAt(i).Top;
                     }
                     ShowContext();
                 }
@@ -96,8 +96,16 @@
                 double coordY_cityI = gm.Top;
                 double coordX_cityE = coordX[currentTravel];
                 double coordY_cityE = coordY[currentTravel];
+
+                double coef = 1;
+                if (coordX_cityI > coordX_cityE)
+                {
+                    coef = -1;
+                }             
                 ////pregunto si coordX_I < coordY_I, si es true, esta bien asi
                 ////sino cambiar el scale del X a -1(para q el plane quede mirando para el lado que va)
+
+                avion.RenderTransform.SetValue(CompositeTransform.ScaleXProperty, coef);
 
                 ////Start Frame 1, Position (init_X,init_Y)
                 DoubleKeyFrame keyframeX = translateX.KeyFrames[0];
@@ -105,13 +113,15 @@
                 keyframeX.SetValue(EasingDoubleKeyFrame.ValueProperty, init_frame);
                 trX1.SetValue(EasingDoubleKeyFrame.ValueProperty, init_X);
                 DoubleKeyFrame keyframeY = translateY.KeyFrames[0];
+                
+                
                 double init_Y = coordY_cityI;
                 keyframeY.SetValue(EasingDoubleKeyFrame.ValueProperty, init_frame);
                 trY1.SetValue(EasingDoubleKeyFrame.ValueProperty, init_Y);
 
                 ////Start Frame 2, Position (init_X2,init_Y2)
                 DoubleKeyFrame keyframeX2 = translateX.KeyFrames[1];
-                double init_frame2 = 3.0, init_X2 = coordX_cityI + 40;
+                double init_frame2 = 3.0, init_X2 = coordX_cityI + 40*coef;
                 keyframeX2.SetValue(EasingDoubleKeyFrame.ValueProperty, init_frame2);
                 trX2.SetValue(EasingDoubleKeyFrame.ValueProperty, init_X2);
                 DoubleKeyFrame keyframeY2 = translateY.KeyFrames[1];
@@ -121,7 +131,7 @@
 
                 ////Start Frame 3, Position (init_X3,init_Y3)
                 DoubleKeyFrame keyframeX3 = translateX.KeyFrames[2];
-                double init_frame3 = 6.0, init_X3 = coordX_cityI + 240;
+                double init_frame3 = 6.0, init_X3 = coordX_cityI + 240*coef;
                 keyframeX3.SetValue(EasingDoubleKeyFrame.ValueProperty, init_frame3);
                 trX3.SetValue(EasingDoubleKeyFrame.ValueProperty, init_X3);
                 DoubleKeyFrame keyframeY3 = translateY.KeyFrames[2];
@@ -143,7 +153,7 @@
                 ////Start plane animation 			
                 animacion2.Begin();
                 animacion2.Completed += new EventHandler(animacion2_Completed);
-                gm.Left = coordX[currentTravel];
+                gm.Left = coordX[currentTravel];               
                 gm.Top = coordY[currentTravel];
                 gm.ShowAnimation = (city.CityNumber == 3);
             }       

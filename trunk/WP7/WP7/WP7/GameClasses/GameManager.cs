@@ -179,10 +179,6 @@ namespace WP7
         /// <summary>
         /// Gets or sets for Method.</summary>
         public string PictureCityLink { get; set; }
-
-        /// <summary>
-        /// Gets or sets for Method.</summary>
-        public string CurrentLevel { get; set; }
         
         /// <summary>
         /// Store for the property
