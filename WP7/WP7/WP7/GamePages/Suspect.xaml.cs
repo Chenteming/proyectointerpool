@@ -124,7 +124,8 @@
                 bitmap.SetSource(e.Result);
                 imageSuspect.Source = bitmap;
             }
-            catch (FaultException excepcion)
+            ////catch (FaultException excepcion)
+            catch (Exception excepcion)
             {
                 string famousURI = "/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png";
                 imageSuspect.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
