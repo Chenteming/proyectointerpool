@@ -325,10 +325,20 @@ namespace WP7
         /// <summary>
         /// Description of the class 
         /// </summary>
-        /// <returns> Return results are described through the returns tag.</returns>
+        /// <returns> Return results are describedthrough the returns tag.</returns>
         public int GetCurrentFamous()
         {
-            return this.currentFamous;
+            return currentFamous < 0 || currentFamous > 2 ? 0 : currentFamous;
+        }
+
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
+        /// <returns> Return results are describedthrough the returns tag.</returns>
+        public void AddCurrentFamous()
+        {
+            currentFamous++;
+            currentFamous = currentFamous >= 3 ? 0 : currentFamous;
         }
 
         /// <summary>
