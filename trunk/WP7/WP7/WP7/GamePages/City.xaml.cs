@@ -80,6 +80,8 @@
         {
             DataCity city = e.Result;
             gm.CurrentDateTime = city.CurrentDate;
+            gm.Info = city.GameInfo;
+
             if (city.CityNumber == -1)
                 ShowHideInterpoolFailMessage(true);
             else
