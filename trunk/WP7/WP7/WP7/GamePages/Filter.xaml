@@ -438,12 +438,12 @@
         	<Button x:Name="BirthdayButton" Content="" HorizontalAlignment="Left" Margin="574,0,0,13" Grid.Row="1" Style="{StaticResource BirthdayButton}" Width="65" Click="BirthdayButton_Click" Height="65" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Grid.Column="1"/>
         	<Button x:Name="GenderButton" Content="" HorizontalAlignment="Right" Margin="0,157,96,0" Style="{StaticResource Buttongender}" Width="65" Click="GenderButton_Click" Grid.Column="1" Grid.Row="1" Height="65" VerticalAlignment="Top"/>
         	<Button x:Name="MusicButton" Content="" HorizontalAlignment="Left" Margin="487,0,0,139" Grid.Row="1" Style="{StaticResource ButtonMusic}" Width="65" Click="MusicButton_Click" Grid.Column="1" Height="65" VerticalAlignment="Bottom"/>
-        	<TextBlock x:Name="textblock1" Margin="-68,169,0,0" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="138" MouseEnter="GenderButton_Click" />
-        	<TextBlock x:Name="textblock2" Margin="-67,210,0,201" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" MouseEnter="HometownButton_Click"/>
-        	<TextBlock x:Name="textblock3" Margin="-67,255,0,156" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" MouseEnter="MusicButton_Click"/>
-        	<TextBlock x:Name="textblock4" Margin="-67,302,0,109" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" MouseEnter="TVButton_Click"/>
-        	<TextBlock x:Name="textblock5" Margin="-67,347,0,64" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" MouseEnter="BirthdayButton_Click" />
-        	<TextBlock x:Name="textblock6" Margin="-64,394,0,17" Grid.Row="1" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Column="1" HorizontalAlignment="Left" Width="138"/>
+        	<TextBlock x:Name="textblock1" Margin="-68,169,0,0" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="138"/>
+        	<TextBlock x:Name="textblock2" Margin="-67,210,0,201" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138"/>
+        	<TextBlock x:Name="textblock3" Margin="-67,255,0,156" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138"/>
+        	<TextBlock x:Name="textblock4" Margin="-67,302,0,109" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138"/>
+        	<TextBlock x:Name="textblock5" Margin="-67,347,0,64" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Row="1" Height="33" Grid.Column="1" HorizontalAlignment="Left" Width="138" />
+        	<TextBlock x:Name="textblock6" Margin="-64,394,0,17" Grid.Row="1" TextWrapping="Wrap" Foreground="#FF1D7281" Grid.Column="1" HorizontalAlignment="Left" Width="138" />
         	<TextBlock x:Name="GenderText" TextAlignment="Center" Grid.Column="1" Height="34" Margin="54,156,203,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF071518" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font"/>
         	<TextBlock x:Name="HometownText" TextAlignment="Center" Grid.Column="1" Margin="54,200,203,210" Grid.Row="1" TextWrapping="Wrap" Foreground="#FF071518" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font"/>
         	<TextBlock x:Name="MusicText" TextAlignment="Center" Grid.Column="1" Margin="54,0,203,165" Grid.Row="1" TextWrapping="Wrap" Height="34" VerticalAlignment="Bottom" Foreground="#FF071518" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font"/>
@@ -456,7 +456,7 @@
         </Grid>
        <!-- <Image Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill"/>-->
 	   <Grid x:Name="ContentGrid2" Grid.Row="1" Visibility="Collapsed">
-           <ListBox x:Name="ComboList" FontSize="48" Margin="0,0,0,0" MouseLeftButtonDown="ComboList_MouseLeftButtonDown" Background="#771D7281" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" Style="{StaticResource ListBoxStyle1}"/>
+           <ListBox x:Name="ComboList" FontSize="48" Margin="0,-37,0,0" MouseLeftButtonDown="ComboList_MouseLeftButtonDown" Background="#771D7281" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" Style="{StaticResource ListBoxStyle1}"/>
        </Grid>
 	   <TextBlock x:Name="noneValue" Height="51" Margin="81,0,0,-84" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="187" Visibility="Collapsed"/>
 	   <TextBlock x:Name="emptyValue" Height="51" Margin="321,0,220,-84" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" Visibility="Collapsed"/>	   
