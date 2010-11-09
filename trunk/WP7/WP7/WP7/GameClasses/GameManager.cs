@@ -48,7 +48,7 @@ namespace WP7
         /// <summary>
         /// Store for the property
         /// </summary>
-        private string[] famous;
+        private string[] famous;        
 
         /// <summary>
         /// Store for the property
@@ -125,6 +125,10 @@ namespace WP7
         /// </summary>
         public int GetUserInfoTries { get; set; }
 
+        /// <summary>
+        /// Store for the property
+        /// </summary>
+        public string CurrentLevel;
 
         /// <summary>
         /// Store for the property
