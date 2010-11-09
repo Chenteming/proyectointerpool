@@ -47,14 +47,22 @@
             if (this.language.GetXDoc() != null)            
                 this.language.TranslatePage(this);
 			try {
+                gm.AddCurrentFamous();
 				this.client = new InterpoolWP7Client();
 				this.client.GetClueByFamousCompleted += new EventHandler<GetClueByFamousCompletedEventArgs>(GetClueByFamousCallback);
-				this.client.GetClueByFamousAsync(gm.UserId, gm.GetCurrentFamous() - 1);
+                this.client.GetClueByFamousAsync(gm.UserId, gm.GetCurrentFamous());
                 this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
 				this.client.CloseAsync();
 				this.client = new InterpoolWP7Client();
                 this.client.GetCurrentFamousCompleted += new EventHandler<GetCurrentFamousCompletedEventArgs>(this.ClientGetCurrentFamousCompleted);
-				this.client.GetCurrentFamousAsync(this.gm.UserId, this.gm.GetCurrentFamous() - 1);
+                int numFamous = 1;
+                if (gm.GetCurrentFamous() == 2){
+                    numFamous = 0;
+                }
+                if (gm.GetCurrentFamous() == 0){
+                    numFamous = 2;
+                }
+                this.client.GetCurrentFamousAsync(this.gm.UserId, numFamous);
                 this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
 				this.client.CloseAsync();
 			} catch (FaultException e) {
@@ -78,7 +86,8 @@
         {
             DataFamous dataF = e.Result;
             int num = this.gm.GetCurrentFamous();
-            this.gm.AddFamous(num - 1, dataF.NameFamous);
+            //this.gm.AddFamous(num - 1, dataF.NameFamous);
+            
             famousName.Visibility = System.Windows.Visibility.Visible;
             ////Show in the content of the button the name of the famous is going to be interrogated
             famousName.Text = dataF.NameFamous;
