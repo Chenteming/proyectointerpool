@@ -64,6 +64,7 @@ namespace InterpoolCloudWebRole.Controller
                 dataCity.DeadLine = game.DeadLine;
                 dataCity.Left = node.City.Longitud;
                 dataCity.Top = node.City.Latitud;
+                dataCity.GameInfo = this.GetGameInfo(game, GameState.PL);
                 return dataCity;
             }
 
@@ -861,13 +862,6 @@ namespace InterpoolCloudWebRole.Controller
         }
 
         [FaultContract(typeof(FaultException))]
-        public void DeleteGame(string userIdFacebook)
-        {
-            IDataManager dm = new DataManager();
-            User user = dm.GetGameByUser(userIdFacebook, this.container).User;
-            this.DeleteGame(user);
-        }
-
         /* to consider: 
          * - all clues maybe have characteristic of the suspect 
          * - first clue is final
@@ -1657,6 +1651,11 @@ namespace InterpoolCloudWebRole.Controller
                 info.DiffInMinutes = 0;
                 info.DiffInseconds = 0;
                 info.ScoreWin = 0;
+                if (state == GameState.LOSE_TO)
+                {
+                    User user = game.User;
+                    this.DeleteGame(user);
+                }
             }
             
             info.newLevel = game.User.Level.LevelName;

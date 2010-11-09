@@ -170,5 +170,7 @@ using InterpoolCloudWebRole.Utilities;
         {
             return this.controller.GetFilters(userIdFacebook);
         }
+
+        
     }
 }

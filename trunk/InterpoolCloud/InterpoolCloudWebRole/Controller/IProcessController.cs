@@ -141,5 +141,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="user"> Parameter description for user goes here</param>
         [FaultContract(typeof(FaultException))]
         DataFacebookUser GetFilters(string userIdFacebook);
+        
+
     }
 }
