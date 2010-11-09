@@ -339,7 +339,7 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Button x:Name="CreditButton" Content="" Grid.Column="1" Margin="0,-21,-61.444,0" Style="{StaticResource CreditButton}" RenderTransformOrigin="0.5,0.5" Height="78" VerticalAlignment="Top" HorizontalAlignment="Right" Width="189" UseLayoutRounding="False" d:LayoutRounding="Auto" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="29.333" Click="CreditButton_Click">
+            <Button x:Name="CreditButton" Content="" Grid.Column="1" Margin="0,-21,-61.444,0" Style="{StaticResource CreditButton}" RenderTransformOrigin="0.5,0.5" Height="78" VerticalAlignment="Top" HorizontalAlignment="Right" Width="189" UseLayoutRounding="False" d:LayoutRounding="Auto" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="20" Click="CreditButton_Click">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>
@@ -349,12 +349,12 @@
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Button x:Name="ExitButton" Content="" Grid.Column="1" Margin="0,0,24.54,32.035" Style="{StaticResource ExitButton}" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" HorizontalAlignment="Right" Width="189" Height="78" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="29.333" Click="ExitButton_Click">
+            <Button x:Name="ExitButton" Content="" Grid.Column="1" Margin="0,0,24.54,32.035" Style="{StaticResource ExitButton}" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" HorizontalAlignment="Right" Width="189" Height="78" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="20" Click="ExitButton_Click">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>
             </Button>
-            <Button x:Name="HelpButton" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="8.262,-21,0,0" Style="{StaticResource HelpButton}" Width="189" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="78" VerticalAlignment="Top" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="29.333" Click="HelpButton_Click">
+            <Button x:Name="HelpButton" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="8.262,-21,0,0" Style="{StaticResource HelpButton}" Width="189" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="78" VerticalAlignment="Top" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="20" Click="HelpButton_Click">
             	<Button.RenderTransform>
             		<CompositeTransform/>
             	</Button.RenderTransform>

@@ -19,11 +19,15 @@ namespace WP7
     /// </summary>
     public partial class Start : PhoneApplicationPage
     {
+        private LanguageManager language = LanguageManager.GetInstance();
         /// <summary>
         /// Initializes a new instance of the Start class.</summary>
         public Start()
         {
             InitializeComponent();
+			this.language = LanguageManager.GetInstance();
+            if (this.language.GetXDoc() != null)
+                this.language.TranslatePage(this);
             this.GoButton.IsEnabled = false;
             Detective2Storyboard.Begin();
             Detective2Storyboard.Completed += new EventHandler(this.Detective2Storyboard_Completed);

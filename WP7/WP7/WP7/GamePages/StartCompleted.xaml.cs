@@ -19,12 +19,15 @@ namespace WP7.GamePages
     /// </summary>
     public partial class StartCompleted : PhoneApplicationPage
     {
+        private LanguageManager language = LanguageManager.GetInstance();
         /// <summary>
         /// Initializes a new instance of the StartCompleted class.</summary>
         public StartCompleted()
         {
             InitializeComponent();
-            InitializeComponent();
+			this.language = LanguageManager.GetInstance();
+            if (this.language.GetXDoc() != null)
+                this.language.TranslatePage(this);
             detectiveText.Visibility = Visibility.Visible;
             GoButton.Visibility = Visibility.Visible;
         }
