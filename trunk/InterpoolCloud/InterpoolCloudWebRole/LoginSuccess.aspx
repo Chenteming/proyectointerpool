@@ -5,9 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script type='text/javascript'>
+        function init() {
+            window.close(); 
+        }
+     </script>
 </head>
-<body>
+<body onload="init()">
     <p>
-        Login success. Press back button to return to the game.</p>
+        Login success. Press back button to return to the game.
+    </p>
 </body>
 </html>
