@@ -259,7 +259,7 @@ namespace InterpoolCloudWebRole.Controller
             IFacebookController facebookController = new FacebookController();
             IDataManager dm = new DataManager();
             OAuthFacebook auth = new OAuthFacebook() { Token = newGame.User.UserTokenFacebook };
-            bool specialGame = dm.UserHasSubLevel(newGame.User.UserId, Constants.NumberSubLevels - 1, this.container);
+            bool specialGame = dm.UserHasSubLevel(newGame.User.UserId, Constants.NumberSubLevels, this.container);
             Suspect nonFriendSuspect = null;
             if (specialGame)
             {
@@ -1542,6 +1542,7 @@ namespace InterpoolCloudWebRole.Controller
             List<String> friendIds = facebookController.GetFriendsId(game.User.UserIdFacebook);
             
             //// Gets the users who are not the user himself, and are in a higher level
+            this.container.DetectChanges();
             List<User> users = this.container.Users.Where(u => u.UserId != game.User.UserId).ToList();
             users = Functions.ShuffleList(users);
             int i = 0;
