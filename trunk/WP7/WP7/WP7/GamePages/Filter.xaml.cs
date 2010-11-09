@@ -79,10 +79,7 @@
         /// </summary>
         private int btnPosition = 0;
 
-        /// <summary>
-        /// Store for the property
-        /// </summary>
-        private int item = 0;
+        
 
         /// <summary>
         /// Initializes a new instance of the Filter class.</summary>
@@ -98,16 +95,14 @@
             }
             try
             {
-
                 this.client.FilterSuspectsCompleted += new EventHandler<FilterSuspectsCompletedEventArgs>(this.ClientFilterSuspectsCompleted);
-                DataFacebookUser dfu = new DataFacebookUser();
+                //// send dfu in null to indicate that is the first time
+                this.client.FilterSuspectsAsync(this.gm.UserId, null);
+                
                 this.client.GetFiltersCompleted += new EventHandler<GetFiltersCompletedEventArgs>(client_GetFiltersCompleted);
-                this.client.FilterSuspectsAsync(this.gm.UserId, dfu);
-
                 this.client.GetFiltersAsync(this.gm.UserId);
 
                 this.client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(this.ClientCloseCompleted);
-
                 this.client.CloseAsync();
             }
             catch (FaultException e) 
@@ -148,14 +143,15 @@
             string[] filters = this.gm.GetFilterField();
 
             DataFacebookUser res = e.Result;
-           
+
             filters[0] = res.FirstName;
             filters[1] = res.LastName;
             filters[2] = res.Birthday;
             filters[3] = res.Hometown;
             filters[4] = res.Gender;
-            filters[3] = res.Music;
-            filters[4] = res.Cinema;
+            filters[5] = res.Music;
+            filters[6] = res.Cinema;
+            filters[7] = res.Television;
 
             this.UpdateFilters();
             ComboList.Visibility = Visibility.Collapsed;
@@ -187,6 +183,7 @@
 			InsertEmptyNoneValues(music);
 			InsertEmptyNoneValues(tv);
 			InsertEmptyNoneValues(film);
+
             foreach (DataFacebookUser df in dfu)
             {
                 if (!this.film.Contains(df.Cinema))
@@ -329,5 +326,7 @@
             MessageImage.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
             YesFailButton.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
         }
-    }
+
+
+   }
 }

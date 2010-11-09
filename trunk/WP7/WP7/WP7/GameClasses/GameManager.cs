@@ -79,6 +79,7 @@ namespace WP7
         ////4 = gender
         ////5 = music
         ////6 = cinema
+        ////7 = TV
 
         /// <summary>
         /// Initializes a new instance of the GameManager class.</summary>
