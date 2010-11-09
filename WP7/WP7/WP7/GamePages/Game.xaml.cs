@@ -40,8 +40,8 @@
 			TextDate.Text = dateTB.Text + GetDayOfWeek(dt, lm.GetCurrentLanguage() == "English") + 
 			" " + hour1 + time1;
             TextDeadline.Text =  deadlineTB.Text + GetDayOfWeek(dl, lm.GetCurrentLanguage() == "English") + 
-			" " + hour2 + time2;            
-			TextLevel.Text = levelTB.Text + gm.Info.newLevel;
+			" " + hour2 + time2;
+            /// TextLevel.Text = levelTB.Text + gm.Info == null ? "" : gm.Info.newLevel;
             string cityURI = "../cities3_Images/" + gm.PictureCityLink;
             imageCity.Source = new BitmapImage(new Uri(cityURI, UriKind.Relative));
         }
