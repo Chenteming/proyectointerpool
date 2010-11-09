@@ -103,6 +103,7 @@
         void GetCurrentCityCallback(object sender, GetCurrentCityCompletedEventArgs e)
         {
             DataCity dc = (DataCity)e.Result;
+            this.gm.Info = dc.GameInfo;
             gm.Left = dc.Left;
             gm.Top = dc.Top;
             gm.DeadLineDateTime = dc.DeadLine;
