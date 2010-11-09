@@ -134,5 +134,7 @@ namespace InterpoolCloudWebRole.Services
         /// <param name="userIdFacebook"> Parameter description for user goes here</param>
         [OperationContract]
         DataFacebookUser GetFilters(string userIdFacebook);
+
+       
     }
 }
