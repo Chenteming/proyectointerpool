@@ -574,13 +574,20 @@ namespace InterpoolCloudWebRole.Controller
             NodePath node = this.GetCurrentNode(userIdFacebook);
             DataClue clue;
 
-           
-
             if (node != null)
             {
                 clue = new DataClue();
                 //// TODO make a Constant
-                clue.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.QuestionFamous);
+                Game game = dm.GetGameByUser(userIdFacebook, this.container);
+                clue.CurrentDate = this.RestTime(game, Constants.QuestionFamous);
+                GameState state = GameState.PL;
+                if (clue.CurrentDate >= game.DeadLine)
+                {
+                    state = GameState.LOSE_TO;
+                }
+
+                clue.GameInfo = this.GetGameInfo(game, state);
+
                 if (user.Level.LevelNumber > 5)
                 {
                     clue.Clue = node.Clue.ElementAt(numFamous).ClueContent;
@@ -602,8 +609,7 @@ namespace InterpoolCloudWebRole.Controller
                     // last city
                     // TODO make a Constant
                     if (numFamous == 1)
-                    {
-                        Game game = dm.GetGameByUser(userIdFacebook, this.container);
+                    { 
                         bool arrest = this.Arrest(game, clue);
                         return clue;
                     }
@@ -1641,6 +1647,7 @@ namespace InterpoolCloudWebRole.Controller
         {
             DataGameInfo info = new DataGameInfo();
             info.SuspectName = game.Suspect.SuspectFirstName + " " + game.Suspect.SuspectLastName;
+            info.newLevel = game.User.Level.LevelName;
 
             if (state == GameState.WIN)
             {
@@ -1667,7 +1674,7 @@ namespace InterpoolCloudWebRole.Controller
                 }
             }
             
-            info.newLevel = game.User.Level.LevelName;
+            
             info.state = state;
             return info;
         }
