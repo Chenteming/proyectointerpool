@@ -305,7 +305,7 @@ namespace InterpoolCloudWebRole.Data
             if (fbud.Television != null)
             {
                 suspects = from televisionSuspects in suspects
-                           where (televisionSuspects.SuspectTelevision == fbud.Cinema)
+                           where (televisionSuspects.SuspectTelevision == fbud.Television)
                            select televisionSuspects;
             }
 

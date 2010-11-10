@@ -1558,6 +1558,30 @@ namespace InterpoolCloudWebRole.Data
         private global::System.String _FilterBirthday;
         partial void OnFilterBirthdayChanging(global::System.String value);
         partial void OnFilterBirthdayChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FilterTelevision
+        {
+            get
+            {
+                return _FilterTelevision;
+            }
+            set
+            {
+                OnFilterTelevisionChanging(value);
+                ReportPropertyChanging("FilterTelevision");
+                _FilterTelevision = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FilterTelevision");
+                OnFilterTelevisionChanged();
+            }
+        }
+        private global::System.String _FilterTelevision;
+        partial void OnFilterTelevisionChanging(global::System.String value);
+        partial void OnFilterTelevisionChanged();
 
         #endregion
     
