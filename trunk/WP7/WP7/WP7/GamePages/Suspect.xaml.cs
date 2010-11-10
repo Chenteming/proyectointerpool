@@ -108,7 +108,7 @@
                 }
 
             }
-            catch (FaultException excepcion)
+            catch (Exception excepcion)
             {
                 string famousURI = "/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png";
                 imageSuspect.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
@@ -124,8 +124,7 @@
                 bitmap.SetSource(e.Result);
                 imageSuspect.Source = bitmap;
             }
-            ////catch (FaultException excepcion)
-            catch (Exception excepcion)
+            catch (Exception exception)
             {
                 string famousURI = "/WP7;component/interpool_Images/pantalla_6_Images/Capa 3.png";
                 imageSuspect.Source = new BitmapImage(new Uri(famousURI, UriKind.Relative));
@@ -217,6 +216,11 @@
                 failMessageText.Text = message;
             MessageImage.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
             YesFailButton.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
