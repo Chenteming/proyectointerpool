@@ -292,6 +292,9 @@
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataListFacebookUser1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference\WP7.ServiceReference.DataUserInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataUserInfo1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -331,6 +334,11 @@
     <Resource Include="cities3_Images\buenos_aires.png" />
     <Resource Include="cities3_Images\berlin.png" />
     <Resource Include="cities3_Images\barcelona.png" />
+    <BlendEmbeddedFont Include="Fonts\BuxtonSketch.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
     <Resource Include="Fonts\fr-bold.ttf" />
     <Resource Include="GameImages\aeroplane.png" />
     <Resource Include="GameImages\archive.png" />
@@ -441,6 +449,7 @@
     <Resource Include="FamousImages\tokio_junichiro_koizumi.jpg" />
     <Resource Include="FamousImages\tokio_koda_kumi.jpg" />
     <Resource Include="FamousImages\tokio_miyavi.jpg" />
+    <Resource Include="GameImages\wp7.png" />
     <Resource Include="GameImages\LoginScreen.jpg" />
     <Resource Include="GameImages\GameOver.png" />
     <Resource Include="GameImages\ComicBaloon.png" />
