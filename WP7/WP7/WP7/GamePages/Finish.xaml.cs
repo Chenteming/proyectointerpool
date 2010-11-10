@@ -24,6 +24,7 @@ namespace WP7
         /// Store for the property
         /// </summary>
         private GameManager gm = GameManager.GetInstance();
+        private LanguageManager lm = LanguageManager.GetInstance();
 
         bool first;
 
@@ -32,23 +33,34 @@ namespace WP7
         public Finish()
         {
             InitializeComponent();
+            if (this.lm.GetXDoc() != null)
+                this.lm.TranslatePage(this);            
             gm.EmitOrder = false;
-            NameSuspectText.Text = this.gm.Info.SuspectName;
-            ScoreText.Text = this.gm.Info.Score.ToString();
-            TotalText.Text = this.gm.Info.ScoreWin.ToString();
-            TimeLeftText.Text = this.gm.Info.DiffInDays.ToString() + ":" + this.gm.Info.DiffInMinutes.ToString() +
-                ":" + this.gm.Info.DiffInseconds.ToString();
-            NewLevelText.Text = this.gm.Info.newLevel.ToString();
+            WinText.Visibility = Visibility.Visible;
+            WinMessageStoryboard.Begin();
+            WinMessageStoryboard.Completed += new EventHandler(WinMessageStoryboard_Completed);
+        }
+
+        void WinMessageStoryboard_Completed(object sender, EventArgs e)
+        {
             if (gm.Info.newLevel != gm.CurrentLevel)
             {
-                BigSuspectButton.Visibility = System.Windows.Visibility.Visible;
-                ////BigSuspectHyperlinkButton.NavigateUri = new Uri(gm.Info.LinkBigSuspect, UriKind.RelativeOrAbsolute);
+                NewLevelTB.Visibility = Visibility.Visible;                
+                NewLevelStoryboard.Begin();
+                NewLevelStoryboard.Completed += new EventHandler(NewLevelStoryboard_Completed);
             }
             else
             {
-                BigSuspectButton.Visibility = System.Windows.Visibility.Collapsed;
+                ShowInfoUser();
             }
+        }
 
+        void NewLevelStoryboard_Completed(object sender, EventArgs e)
+        {
+            NewLevelText.Visibility = Visibility.Visible;
+            NewLevelText.Text = this.gm.Info.newLevel.ToString();
+            BigSuspectButton.Visibility = System.Windows.Visibility.Visible;
+            ShowInfoUser();
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
@@ -61,6 +73,23 @@ namespace WP7
             WebBrowserTask task = new WebBrowserTask();
             task.URL = gm.Info.LinkBigSuspect;
             task.Show();
+        }
+
+        public void ShowInfoUser()
+        {
+            NameSuspectTB.Visibility = Visibility.Visible;
+            NameSuspectText.Visibility = Visibility.Visible;
+            ScoreTB.Visibility = Visibility.Visible;
+            ScoreText.Visibility = Visibility.Visible;
+            TimeLeftTB.Visibility = Visibility.Visible;
+            TimeLeftText.Visibility = Visibility.Visible;
+            TotalTB.Visibility = Visibility.Visible;
+            TotalText.Visibility = Visibility.Visible;
+            NameSuspectText.Text = this.gm.Info.SuspectName;
+            ScoreText.Text = this.gm.Info.Score.ToString();
+            TimeLeftText.Text = this.gm.Info.DiffInDays.ToString() + ":" + this.gm.Info.DiffInMinutes.ToString() +
+                ":" + this.gm.Info.DiffInseconds.ToString();
+            TotalText.Text = this.gm.Info.ScoreWin.ToString();            
         }
     }
 }

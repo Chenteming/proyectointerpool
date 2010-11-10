@@ -22,7 +22,9 @@
 
         public Game()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            if (this.lm.GetXDoc() != null)
+                this.lm.TranslatePage(this);            
             if (gm.ShowAnimation == true)
                 ToastyStoryboard.Begin();
             gm.ShowAnimation = false;

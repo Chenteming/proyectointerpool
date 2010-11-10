@@ -61,10 +61,19 @@
 		<control name="detectiveText" Text="Detective, we need your services again in an important mission. An unidentified thief has stolen a valuable object. Your mission is to identify and find it before he makes contact with his criminal circle. GOOD LUCK!"/>
     </class>
 	<class name="Game" Title="Game">
-        <control name="TextLevel" Content="Level"/>
+        <control name="TextLevel" Text="Level"/>
 		<control name="deadlineTB" Text="Deadline: "/>
 		<control name="nameCityTB" Text="City: "/>
 		<control name="dateTB" Text="Date: "/>
 		<control name="levelTB" Text="Level: "/>
+    </class>
+	<class name="Finish" Title="Finish">
+        <control name="NameSuspectTB" Text="Suspect:"/>
+		<control name="TimeLeftTB" Text="Time left:"/>
+		<control name="ScoreTB" Text="Score:"/>
+		<control name="TotalTB" Text="Total:"/>
+		<control name="NewLevelTB" Text="New level:"/>
+        <control name="WinText" Text="YOU WIN!!!"/>
+        <control name="BigSuspectButton" Content="Big Suspect"/>
     </class>
 </language>
