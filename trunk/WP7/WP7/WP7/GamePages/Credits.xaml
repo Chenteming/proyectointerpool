@@ -24,21 +24,24 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" >
-			<Border BorderBrush="Black" BorderThickness="1" Margin="8">
+			<Canvas x:Name="images" Height="464" UseLayoutRounding="False" VerticalAlignment="Top" Margin="8,8,8,0">
+				<Image x:Name="wp7" Height="431" Canvas.Left="157" Source="../images_Images/Fondo copia.png" Width="377" Opacity="0.25"/>
+			</Canvas>
+			<Border BorderBrush="Black" BorderThickness="1" Margin="8" Opacity="0.545">
 				<Border.Background>
-					<RadialGradientBrush>
+					<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
 						<GradientStop Color="Black" Offset="0"/>
 						<GradientStop Color="#FF2E388F" Offset="0.9"/>
-					</RadialGradientBrush>
+					</LinearGradientBrush>
 				</Border.Background>
-				<ScrollViewer Margin="7" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="32">
+				<ScrollViewer Margin="7" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="32" Opacity="0.93" Foreground="{x:Null}">
 					<ScrollViewer.Background>
-						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-							<GradientStop Color="Black" Offset="0"/>
-							<GradientStop Color="#FF2E388F" Offset="0.704"/>
+						<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+							<GradientStop Color="Black" Offset="1"/>
+							<GradientStop Color="#FF3A428B" Offset="0.08"/>
 						</LinearGradientBrush>
 					</ScrollViewer.Background>
-					<TextBox TextWrapping="Wrap" FontSize="50" Text="Creditos" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Height="789" Width="673" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" Foreground="White" Background="#BF000000" FontWeight="Bold" FontStyle="Italic" TextAlignment="Center"/>
+					<TextBlock Height="1258" TextWrapping="Wrap" Width="696" FontSize="48" TextAlignment="Center" LineHeight="8" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" Foreground="White"><Run Text="Creditos"/><LineBreak/><Run/><LineBreak/><Run Text="Director:"/><LineBreak/><Run Text="Javier"/><Run Text=" "/><Run Text="Barreiro"/><LineBreak/><Run/><LineBreak/><Run Text="Cliente:"/><LineBreak/><Run Text="Marcelo Guerra"/><LineBreak/><Run/><LineBreak/><Run Text="Interpool"/><Run Text=" es:"/><LineBreak/><Run Text="Leticia Vilariño"/><LineBreak/><Run Text="Federico Trinidad "/><LineBreak/><Run Text="Diego Ricca "/><LineBreak/><Run Text="Javier Madeiro"/><LineBreak/><Run Text="Marcos Sander "/><LineBreak/><Run Text="Martín Taruselli "/><LineBreak/><Run Text="Federico Andrade "/><LineBreak/><Run Text="Ignacio Infante "/><LineBreak/><Run Text="Alejandro Garcia "/><LineBreak/><Run Text="José Cordero "/><LineBreak/><Run Text="Vicente Acosta"/><Run Text=" "/><LineBreak/><Run Text="Juan Ghiringhelli "/><LineBreak/><Run/></TextBlock>
 				</ScrollViewer>
 			</Border>
 		</Grid>
