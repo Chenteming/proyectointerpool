@@ -408,12 +408,20 @@ namespace InterpoolCloudWebRole.Controller
         {
             IDataManager dm = new DataManager();
             DataListFacebookUser dataListFacebookUser = new DataListFacebookUser();
+            bool firstTime = fbud == null;
+            if (firstTime)
+            {
+                fbud = new DataFacebookUser();
+            }
             ////InterpoolContainer container = dm.GetContainer();
             dataListFacebookUser.ListFacebookUser = dm.FilterSuspects(userIdFacebook, fbud, this.container);
             dataListFacebookUser.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.FilterSuspect);
             Game game = dm.GetGameByUser(userIdFacebook, container);
-            
-            this.SaveFilters(game, fbud);
+
+            if (!firstTime)
+            {
+                this.SaveFilters(game, fbud);
+            }
             
             GameState state = game.CurrentTime < game.DeadLine ? GameState.PL : GameState.LOSE_TO;
             dataListFacebookUser.GameInfo = this.GetGameInfo(game, state);

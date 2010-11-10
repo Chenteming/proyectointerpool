@@ -276,6 +276,7 @@
     <Property Name="FilterGender" Type="nvarchar(max)" Nullable="true" />
     <Property Name="FilterCinema" Type="nvarchar(max)" Nullable="true" />
     <Property Name="FilterBirthday" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="FilterTelevision" Type="nvarchar(max)" Nullable="true" />
     <Property Name="GameFilterSuspect_FilterSuspect_GameId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="GameSuspect">
@@ -933,6 +934,7 @@
           <Property Type="String" Name="FilterGender" Nullable="true" />
           <Property Type="String" Name="FilterCinema" Nullable="true" />
           <Property Type="String" Name="FilterBirthday" Nullable="true" />
+          <Property Type="String" Name="FilterTelevision" Nullable="true" />
         </EntityType>
         <Association Name="GameFilterSuspect">
           <End Type="InterpoolModel.Game" Role="Game" Multiplicity="1" />
@@ -1108,6 +1110,7 @@
           <ScalarProperty Name="FilterGender" ColumnName="FilterGender" />
           <ScalarProperty Name="FilterCinema" ColumnName="FilterCinema" />
           <ScalarProperty Name="FilterBirthday" ColumnName="FilterBirthday" />
+          <ScalarProperty Name="FilterTelevision" ColumnName="FilterTelevision" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1376,11 +1379,10 @@
           <ConnectorPoint PointX="8.056409256410257" PointY="4.4276432291666659" />
           <ConnectorPoint PointX="8.375" PointY="4.4276432291666659" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="InterpoolModel.Filter" Width="1.5" PointX="0.5" PointY="0.5" Height="2.172587890625" />
+        <EntityTypeShape EntityType="InterpoolModel.Filter" Width="1.5" PointX="0.5" PointY="0.5" Height="2.3648893229166665" />
         <AssociationConnector Association="InterpoolModel.GameFilterSuspect">
-          <ConnectorPoint PointX="1.25" PointY="6.5122309672919858" />
-          <ConnectorPoint PointX="0.8749995" PointY="6.5122309672919858" />
-          <ConnectorPoint PointX="0.8749995" PointY="2.672587890625" />
+          <ConnectorPoint PointX="1.5625" PointY="5.375" />
+          <ConnectorPoint PointX="1.5625" PointY="2.8648893229166665" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
