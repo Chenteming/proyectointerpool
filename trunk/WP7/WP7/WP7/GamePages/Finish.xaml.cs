@@ -13,6 +13,7 @@ namespace WP7
     using System.Windows.Media.Animation;
     using System.Windows.Shapes;
     using Microsoft.Phone.Controls;
+    using Microsoft.Phone.Tasks;
 
     /// <summary>
     /// Partial class declaration Finish
@@ -24,6 +25,8 @@ namespace WP7
         /// </summary>
         private GameManager gm = GameManager.GetInstance();
 
+        bool first;
+
         /// <summary>
         /// Initializes a new instance of the Finish class.</summary>
         public Finish()
@@ -33,16 +36,32 @@ namespace WP7
             NameSuspectText.Text = this.gm.Info.SuspectName;
             ScoreText.Text = this.gm.Info.Score.ToString();
             TotalText.Text = this.gm.Info.ScoreWin.ToString();
-            TimeLeftText.Text = this.gm.Info.DiffInDays.ToString() + ":" +this.gm.Info.DiffInMinutes.ToString() +
+            TimeLeftText.Text = this.gm.Info.DiffInDays.ToString() + ":" + this.gm.Info.DiffInMinutes.ToString() +
                 ":" + this.gm.Info.DiffInseconds.ToString();
             NewLevelText.Text = this.gm.Info.newLevel.ToString();
             if (gm.Info.newLevel != gm.CurrentLevel)
-                BigSuspectHyperlinkButton.NavigateUri = new Uri(gm.Info.LinkBigSuspect, UriKind.RelativeOrAbsolute);           
+            {
+                BigSuspectButton.Visibility = System.Windows.Visibility.Visible;
+                ////BigSuspectHyperlinkButton.NavigateUri = new Uri(gm.Info.LinkBigSuspect, UriKind.RelativeOrAbsolute);
+            }
+            else
+            {
+                BigSuspectButton.Visibility = System.Windows.Visibility.Collapsed;
+            }
+
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
         }
+
+        private void BigSuspectButton_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask task = new WebBrowserTask();
+            task.URL = gm.Info.LinkBigSuspect;
+            task.Show();
+        }
     }
 }
+
