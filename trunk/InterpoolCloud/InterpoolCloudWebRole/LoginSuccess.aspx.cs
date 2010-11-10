@@ -11,6 +11,14 @@ namespace InterpoolCloudWebRole
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //// To close the browser
+            /*
+            const string javaScript = "<script language=javascript>window.top.close();</script>";
+            if (!ClientScript.IsStartupScriptRegistered("CloseMyWindow"))
+            {
+                ClientScript.RegisterStartupScript(GetType(), "CloseMyWindow", javaScript);
+            }
+            */
         }
     }
 }

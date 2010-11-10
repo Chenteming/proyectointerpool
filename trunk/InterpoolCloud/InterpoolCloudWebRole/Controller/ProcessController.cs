@@ -1651,14 +1651,13 @@ namespace InterpoolCloudWebRole.Controller
 
             if (state == GameState.WIN)
             {
-                ////info.ScoreWin = 
                 TimeSpan timeSpan = game.DeadLine.Subtract(game.CurrentTime);
                 info.DiffInDays = timeSpan.Days;
                 info.DiffInMinutes = timeSpan.Minutes;
                 info.DiffInseconds = timeSpan.Seconds;
                 int leftTime = (int)(timeSpan.Ticks / TimeSpan.TicksPerMinute);
                 info.ScoreWin =  leftTime;
-                info.LinkBigSuspect = "www.facebook.com/#!/profile.php?id=" + game.Suspect.SuspectFacebookId;
+                info.LinkBigSuspect = "m.facebook.com/profile.php?id=" + game.Suspect.SuspectFacebookId;
                 game.User.UserScore += (Int32)info.ScoreWin;
             }
             else 
