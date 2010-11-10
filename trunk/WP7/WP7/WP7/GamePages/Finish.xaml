@@ -12,6 +12,33 @@
 	Foreground="{StaticResource PhoneForegroundBrush}"
 	Orientation="Landscape"
 	shell:SystemTray.IsVisible="True" SupportedOrientations="PortraitOrLandscape">
+	<phone:PhoneApplicationPage.Resources>
+		<Storyboard x:Name="WinMessageStoryboard">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="WinText">
+				<EasingDoubleKeyFrame KeyTime="0" Value="3"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="2"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5" Value="2"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6" Value="3"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="WinText">
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="45"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-45"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:5" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="WinText">
+				<EasingDoubleKeyFrame KeyTime="0:0:5" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="NewLevelStoryboard" RepeatBehavior="1x">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="NewLevelTB">
+				<SplineDoubleKeyFrame KeyTime="0" Value="1.5"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:1" Value="2"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</phone:PhoneApplicationPage.Resources>
 
 	<!--LayoutRoot is the root grid where all page content is placed-->
 	<Grid x:Name="LayoutRoot" Background="Transparent">
@@ -21,19 +48,28 @@
 		</Grid.RowDefinitions>
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock x:Name="TotalTB" Margin="0,0,618,-1" TextWrapping="Wrap" Height="33" VerticalAlignment="Bottom"><Run Text="Total" /><Run Text=":" /></TextBlock>
-            <TextBlock x:Name="TotalText" Margin="94,0,0,1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="111" />
-            <TextBlock x:Name="ScoreTB" Margin="0,0,618,33" TextWrapping="Wrap" Text="Score :" Height="30" VerticalAlignment="Bottom" />
+            <TextBlock x:Name="TotalTB" Margin="12,0,575,-1" TextWrapping="Wrap" Height="33" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="#FFE2311F" Visibility="Collapsed"/>
+            <TextBlock x:Name="TotalText" Margin="225,0,296,1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="#FF9D1C69" Visibility="Collapsed" />
+            <TextBlock x:Name="ScoreTB" Margin="12,0,519,33" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="#FFE2311F" Visibility="Collapsed" />
             <phone:WebBrowser x:Name="WebBrowser" Margin="0,0,0,5" Visibility="Collapsed"/>
-            <Button x:Name="BigSuspectButton" Content="Send invites" Height="42" Margin="0,0,0,74" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="293"  Click="BigSuspectButton_Click"/>
+            <Button x:Name="BigSuspectButton" Content="" Margin="0,0,26,21"  Click="BigSuspectButton_Click" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="17.333" Foreground="#FFE0C02A" BorderBrush="Yellow" HorizontalAlignment="Right" Width="239" Height="62" VerticalAlignment="Bottom" FontStyle="Italic" Background="Black" Visibility="Collapsed"/>
+            <TextBlock x:Name="WinText" HorizontalAlignment="Right" Height="38" Margin="0,99,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" FontSize="32" Foreground="#FF9D1C69" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" RenderTransformOrigin="0.5,0.5">
+            	<TextBlock.RenderTransform>
+            		<CompositeTransform/>
+            	</TextBlock.RenderTransform>
+            </TextBlock>
         </Grid>
-        <Image Margin="153,0,153,149" Grid.Row="1" Source="/WP7;component/GameImages/GameOver.png" Stretch="Fill"/>
-        <TextBlock x:Name="NameSuspectTB" Margin="9,0,0,95" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Left" Width="151" Height="30" VerticalAlignment="Bottom"><Run Text="NameSuspect "/><Run Text=":"/><Run Text=" "/></TextBlock>
-        <TextBlock x:Name="TimeLeftTB" Margin="9,0,0,62" Grid.Row="1" TextWrapping="Wrap" Text="TimeLeft:" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="121"/>
-        <TextBlock x:Name="NewLevelTB" Margin="288,0,338,1" Grid.Row="1" TextWrapping="Wrap" Text="NewLevel :" Height="30" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="NameSuspectText" Margin="202,361,265,89" Grid.Row="1" TextWrapping="Wrap" Height="30"/>
-        <TextBlock x:Name="TimeLeftText" Margin="129,0,338,62" Grid.Row="1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="ScoreText" Margin="106,0,0,33" Grid.Row="1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="113"/>
-        <TextBlock x:Name="NewLevelText" Margin="0,0,260,0" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Right" Width="73" Height="30" VerticalAlignment="Bottom"/>
+        <Image Margin="17,0,289,149" Grid.Row="1" Source="/WP7;component/GameImages/GameOver.png" Stretch="Fill"/>
+        <TextBlock x:Name="NameSuspectTB" Margin="21,0,0,96" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Left" Width="157" Height="30" VerticalAlignment="Bottom" Foreground="#FFE2311F" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="20" Visibility="Collapsed"/>
+        <TextBlock x:Name="TimeLeftTB" Margin="21,0,0,62" Grid.Row="1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="239" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="#FFE2311F" Visibility="Collapsed"/>
+        <TextBlock x:Name="NewLevelTB" Margin="0,203,71,236" Grid.Row="1" TextWrapping="Wrap" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="#FFE2311F" HorizontalAlignment="Right" Width="184" FontSize="26.667" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+        	<TextBlock.RenderTransform>
+        		<CompositeTransform/>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock x:Name="NameSuspectText" Margin="239,353,0,97" Grid.Row="1" TextWrapping="Wrap" Height="30" Foreground="#FF9D1C69" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Visibility="Collapsed"/>
+        <TextBlock x:Name="TimeLeftText" Margin="238,0,278,62" Grid.Row="1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="#FF9D1C69" Visibility="Collapsed"/>
+        <TextBlock x:Name="ScoreText" Margin="238,0,307,33" Grid.Row="1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="#FF9D1C69" Visibility="Collapsed"/>
+        <TextBlock x:Name="NewLevelText" Margin="0,0,93,189" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Right" Width="131" Height="30" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="#FF9D1C69" Visibility="Collapsed"/>
     </Grid>
 </phone:PhoneApplicationPage>
