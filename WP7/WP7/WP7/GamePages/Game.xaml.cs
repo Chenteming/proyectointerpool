@@ -66,19 +66,19 @@
 
 		private void Laptop_Click(object sender, System.Windows.RoutedEventArgs e)
 		{			
-            gm.SetFamousIndex(2);
+            //gm.SetFamousIndex(2);
             NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
 		}
 
 		private void Newspaper_Click(object sender, System.Windows.RoutedEventArgs e)
 		{			
-            gm.SetFamousIndex(1);
+            //gm.SetFamousIndex(1);
 			NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
 		}
 
 		private void Phone_Click(object sender, System.Windows.RoutedEventArgs e)
 		{			
-            gm.SetFamousIndex(0);
+            //gm.SetFamousIndex(0);
             NavigationService.Navigate(new Uri("/GamePages/Famous.xaml", UriKind.RelativeOrAbsolute));
 		}
 
