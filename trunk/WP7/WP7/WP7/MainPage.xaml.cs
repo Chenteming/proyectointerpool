@@ -91,6 +91,7 @@
         {
             try
             {
+                gm.ResetCurrentFamous();
                 this.client.GetCurrentCityCompleted += new EventHandler<GetCurrentCityCompletedEventArgs>(GetCurrentCityCallback);
                 this.client.GetCurrentCityAsync(this.gm.UserId);
             }
