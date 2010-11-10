@@ -33,8 +33,10 @@ namespace WP7
         /// <summary>
         /// Initializes a new instance of the GameOver class.</summary>
         public GameOver()
-        {            
+        {
+            
             InitializeComponent();
+            gm.EmitOrder = false;
             incorrectOrderOfArrest.Visibility = Visibility.Collapsed;
             didNotEmitOrderOfArrest.Visibility = Visibility.Collapsed;
             afterDeadLine.Visibility = Visibility.Collapsed;                            

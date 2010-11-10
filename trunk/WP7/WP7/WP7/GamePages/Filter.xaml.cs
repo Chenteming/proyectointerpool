@@ -177,6 +177,7 @@
             this.music = new List<string>();
             this.tv = new List<string>();
             this.birthday = new List<string>();
+            
 			InsertEmptyNoneValues(birthday);
 			InsertEmptyNoneValues(gender);
 			InsertEmptyNoneValues(homeTown);
