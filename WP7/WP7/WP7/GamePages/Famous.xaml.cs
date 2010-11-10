@@ -136,5 +136,10 @@
 			MessageImage.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;
             YesFailButton.Visibility = (flag == true) ? Visibility.Visible : Visibility.Collapsed;            
         }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/GamePages/Game.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }
