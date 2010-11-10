@@ -249,6 +249,15 @@ namespace WP7
         /// <summary>
         /// Description of the class 
         /// </summary>
+        /// <param name="list">Parameter description for list goes here</param>
+        public void ResetCurrentFamous()
+        {
+            this.currentFamous = -1;
+        }
+
+        /// <summary>
+        /// Description of the class 
+        /// </summary>
         /// <returns> Return results are described through the returns tag.</returns>
         public List<string> GetCities()
         {
