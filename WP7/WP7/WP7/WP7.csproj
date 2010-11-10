@@ -205,34 +205,25 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
-    <None Include="Service References\ServiceReference\InterpoolWP7.wsdl" />
-    <None Include="Service References\ServiceReference\InterpoolWP7.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ServiceReference\InterpoolWP71.wsdl" />
-    <None Include="Service References\ServiceReference\InterpoolWP71.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP711.wsdl" />
     <None Include="Service References\ServiceReference\InterpoolWP712.wsdl" />
-    <None Include="Service References\ServiceReference\InterpoolWP72.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP73.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP74.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP75.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\InterpoolWP76.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ServiceReference\InterpoolWP77.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\InterpoolWP771.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7710.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7711.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7712.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7713.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\InterpoolWP7714.xsd">
@@ -259,6 +250,12 @@
     <None Include="Service References\ServiceReference\InterpoolWP7720.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7721.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP7722.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference\InterpoolWP773.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -269,6 +266,15 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\InterpoolWP776.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP777.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP778.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\InterpoolWP779.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\WP7.ServiceReference.DataCity1.datasource">
@@ -487,8 +493,8 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\ServiceReference\InterpoolWP71.disco" />
-    <None Include="Service References\ServiceReference\InterpoolWP7.disco" />
     <None Include="Service References\ServiceReference\InterpoolWP712.disco" />
+    <None Include="Service References\ServiceReference\InterpoolWP711.disco" />
     <Content Include="ServiceReferences.ClientConfig">
       <SubType>Designer</SubType>
     </Content>
