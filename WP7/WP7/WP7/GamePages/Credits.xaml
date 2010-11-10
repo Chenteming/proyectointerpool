@@ -25,7 +25,7 @@
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" >
 			<Canvas x:Name="images" Height="464" UseLayoutRounding="False" VerticalAlignment="Top" Margin="8,8,8,0">
-				<Image x:Name="wp7" Height="431" Canvas.Left="157" Source="../images_Images/Fondo copia.png" Width="377" Opacity="0.25"/>
+				<Image x:Name="wp7" Height="431" Canvas.Left="157" Source="../GameImages/wp7.png" Width="377" Opacity="0.25"/>
 			</Canvas>
 			<Border BorderBrush="Black" BorderThickness="1" Margin="8" Opacity="0.545">
 				<Border.Background>
