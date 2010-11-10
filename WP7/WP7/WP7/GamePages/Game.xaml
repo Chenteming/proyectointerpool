@@ -307,7 +307,9 @@
     			<ColumnDefinition Width="0.24*"/>
     			<ColumnDefinition Width="0.76*"/>
     		</Grid.ColumnDefinitions>
+
             <Image x:Name="imageCity" Margin="253,0,0,0"  Stretch="Fill" Grid.Column="2" Width="300" Height="250" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
             <Image x:Name="ImageBackground1" Source="/WP7;component/GameImages/mainScreen1.png" Stretch="Fill" Grid.Column="1" Grid.ColumnSpan="2"/>
             <Button x:Name="Door" Content="Button" Margin="-7,37,61,82" Style="{StaticResource ButtonDoor}" Click="Door_Click" Grid.ColumnSpan="2"/>
             <Button x:Name="Earth" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="18,180,0,205" Style="{StaticResource ButtonEarth}" Width="81" Click="Earth_Click"/>

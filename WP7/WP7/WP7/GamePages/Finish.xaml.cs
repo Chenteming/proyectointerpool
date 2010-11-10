@@ -29,6 +29,7 @@ namespace WP7
         public Finish()
         {
             InitializeComponent();
+            gm.EmitOrder = false;
             NameSuspectText.Text = this.gm.Info.SuspectName;
             ScoreText.Text = this.gm.Info.Score.ToString();
             TotalText.Text = this.gm.Info.ScoreWin.ToString();
