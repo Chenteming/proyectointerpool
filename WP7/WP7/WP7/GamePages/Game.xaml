@@ -307,12 +307,11 @@
     			<ColumnDefinition Width="0.24*"/>
     			<ColumnDefinition Width="0.76*"/>
     		</Grid.ColumnDefinitions>
-            <Image x:Name="ImageBackground" Source="..\GameImages\OfficeScreen.jpg" Stretch="Fill" Margin="0,0,0,8" Grid.Column="1" Grid.ColumnSpan="2"/>
-            <Image x:Name="imageCity" Margin="109,30,-3,109" Stretch="Fill" Grid.Column="2"/>
+            <Image x:Name="imageCity" Margin="253,0,0,0"  Stretch="Fill" Grid.Column="2" Width="300" Height="250" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Image x:Name="ImageBackground1" Source="/WP7;component/GameImages/mainScreen1.png" Stretch="Fill" Grid.Column="1" Grid.ColumnSpan="2"/>
             <Button x:Name="Door" Content="Button" Margin="-7,37,61,82" Style="{StaticResource ButtonDoor}" Click="Door_Click" Grid.ColumnSpan="2"/>
             <Button x:Name="Earth" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="18,180,0,205" Style="{StaticResource ButtonEarth}" Width="81" Click="Earth_Click"/>
-            <Button x:Name="Files" Content="Button" Grid.Column="2" Margin="83,99,0,132" Style="{StaticResource ButtonFiles}" Click="Files_Click" HorizontalAlignment="Left" Width="157"/>
+            <Button x:Name="Files" Content="Button" Grid.Column="2" Margin="83,98,0,133" Style="{StaticResource ButtonFiles}" Click="Files_Click" HorizontalAlignment="Left" Width="157"/>
             <Button x:Name="Laptop" Content="Button" Grid.Column="2" HorizontalAlignment="Right" Height="228" Margin="0,0,29,0" Style="{StaticResource ButtonPc}" VerticalAlignment="Bottom" Width="246" Click="Laptop_Click"/>
             <Button x:Name="Phone" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Height="66" Margin="-33,0,0,20" Style="{StaticResource ButtonPhone}" VerticalAlignment="Bottom" Width="102" Click="Phone_Click"/>
             <Button x:Name="Newspaper" Content="Button" Grid.Column="2" Height="105" Margin="85,0,0,0" Style="{StaticResource ButtonNewspaper}" VerticalAlignment="Bottom" Click="Newspaper_Click" HorizontalAlignment="Left" Width="177"/>
