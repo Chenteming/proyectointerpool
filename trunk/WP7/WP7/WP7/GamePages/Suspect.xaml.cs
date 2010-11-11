@@ -56,7 +56,7 @@
             this.dfbuList = e.Result.ListFacebookUser.ToList();
             if (this.dfbuList.Count == 0)
 
-                Name_Suspect.Text = "There are no suspects";
+                Name_Suspect.Text = "No suspects";
             else
             {
                 ShowSuspect(0);
