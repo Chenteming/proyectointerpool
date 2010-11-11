@@ -101,6 +101,17 @@
 				</EasingDoubleKeyFrame>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
+		<Style x:Key="EmitStyle1" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<Image Source="/WP7;component/interpool_Images/pantalla_3_Images/rectangle.png" Stretch="Fill"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 	</phone:PhoneApplicationPage.Resources>
 	
 
@@ -124,28 +135,28 @@
         <Grid x:Name="ContentGrid" Grid.Row="1" Margin="8,0,-8,0">
         	<Image Source="/WP7;component/interpool_Images/pantalla_5_Images/Fondo.png" Stretch="Fill"/>
         	<Image Source="/WP7;component/interpool_Images/pantalla_5_Images/Capa 1.png" Stretch="Fill" Opacity="0.15"/>
-        	<Image Margin="98,52,102,38" Source="/WP7;component/interpool_Images/pantalla_5_Images/Capa 2.png" Stretch="Fill" Opacity="0.595"/>
+        	<Image Margin="98,52,102,38" Source="/WP7;component/interpool_Images/pantalla_5_Images/Capa 2.png" Stretch="Fill" Opacity="0.65"/>
         	<Image Margin="132,153,0,185" Source="/WP7;component/interpool_Images/pantalla_5_Images/Capa 3.png" Stretch="Fill" HorizontalAlignment="Left" Width="200"/>
         	<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="124,0,0,139" Stroke="Black" VerticalAlignment="Bottom" Width="200"/>
-        	<TextBlock x:Name="Name_Suspect" HorizontalAlignment="Left" Height="38" Margin="125,0,0,139" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="200" Foreground="#FF1D7281" FontWeight="Bold" TextAlignment="Center" FontSize="22" />
-        	<TextBox x:Name="birthday" Height="71" Margin="322,48,0,0" VerticalAlignment="Top" Foreground="Red" Background="{x:Null}" SelectionForeground="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="160" FontSize="20" TextWrapping="Wrap" FontWeight="Bold" />
-        	<TextBox Margin="325,113,259,0" TextWrapping="Wrap" Foreground="Red" Height="72" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" Name="hometown" FontSize="20" FontWeight="Bold" />
-        	<TextBox x:Name="gender" Margin="328,173,259,0" TextWrapping="Wrap" Foreground="Red" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" Height="72" VerticalAlignment="Top" FontWeight="Bold" />
-        	<TextBox x:Name="music" Margin="325,233,259,175" TextWrapping="Wrap" Foreground="Red" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="20" FontWeight="Bold" />
-        	<TextBox x:Name="cinema" Height="73" Margin="328,0,259,113" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="Red" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" FontWeight="Bold" />
-        	<TextBox x:Name="television" Margin="328,0,259,53" TextWrapping="Wrap" Foreground="Red" Height="72" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="20" FontWeight="Bold" />
-        	<TextBlock x:Name="birthdayTB" HorizontalAlignment="Right" Margin="0,65,102,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="149" Foreground="#FF1D7281" FontStyle="Italic" FontWeight="Bold"/>
-        	<TextBlock x:Name="hometownTB" HorizontalAlignment="Right" Margin="0,126,102,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="149" Foreground="#FF1D7281" FontWeight="Bold" FontStyle="Italic"/>
-        	<TextBlock x:Name="genderTB" HorizontalAlignment="Right" Margin="0,186,102,0" TextWrapping="Wrap" Width="149" Height="50" VerticalAlignment="Top" Foreground="#FF1D7281" FontWeight="Bold" FontStyle="Italic"/>
-        	<TextBlock x:Name="musicTB" HorizontalAlignment="Right" Margin="0,0,102,184" TextWrapping="Wrap" Width="149" Height="50" VerticalAlignment="Bottom" Foreground="#FF1D7281" FontWeight="Bold" FontStyle="Italic"/>
-        	<TextBlock x:Name="cinemaTB" HorizontalAlignment="Right" Margin="0,0,102,123" TextWrapping="Wrap" Width="149" Height="50" VerticalAlignment="Bottom" Foreground="#FF1D7281" FontWeight="Bold" FontStyle="Italic"/>
-        	<TextBlock x:Name="televisionTB" HorizontalAlignment="Right" Margin="0,0,102,62" TextWrapping="Wrap" Width="149" Height="50" VerticalAlignment="Bottom" Foreground="#FF1D7281" RenderTransformOrigin="1.859,-2.58" FontWeight="Bold" FontStyle="Italic"/>
+        	<TextBlock x:Name="Name_Suspect" HorizontalAlignment="Left" Height="38" Margin="125,0,0,139" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="200" Foreground="#FF2E388F" FontWeight="Bold" TextAlignment="Center" FontSize="22" />
+        	<TextBlock x:Name="birthday" Height="32" Margin="325,65,0,0" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="160" FontSize="20" TextWrapping="Wrap" FontWeight="Bold" TextAlignment="Center" />
+        	<TextBlock Margin="325,125,0,0" TextWrapping="Wrap" Foreground="Black" Height="32" VerticalAlignment="Top" Name="hometown" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Width="160" TextAlignment="Center" />
+        	<TextBlock x:Name="gender" Margin="325,186,0,0" TextWrapping="Wrap" Foreground="Black" FontSize="20" Height="32" VerticalAlignment="Top" FontWeight="Bold" Width="160" HorizontalAlignment="Left" TextAlignment="Center" />
+        	<TextBlock x:Name="music" Margin="325,245,0,0" TextWrapping="Wrap" Foreground="Black" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="32" TextAlignment="Center" />
+        	<TextBlock x:Name="cinema" Margin="325,306,0,0" TextWrapping="Wrap" Foreground="Black" FontSize="20" FontWeight="Bold" TextAlignment="Center" Width="160" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" />
+        	<TextBlock x:Name="television" Margin="328,366,0,0" TextWrapping="Wrap" Foreground="Black" Height="32" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" Width="160" />
+        	<TextBlock x:Name="birthdayTB" HorizontalAlignment="Right" Margin="0,65,102,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="149" FontStyle="Italic" FontWeight="Bold" Foreground="#FF133087"/>
+        	<TextBlock x:Name="hometownTB" HorizontalAlignment="Right" Margin="0,126,102,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="149" Foreground="#FF133087" FontWeight="Bold" FontStyle="Italic"/>
+        	<TextBlock x:Name="genderTB" HorizontalAlignment="Right" Margin="0,186,102,0" TextWrapping="Wrap" Width="149" Height="50" VerticalAlignment="Top" Foreground="#FF133087" FontWeight="Bold" FontStyle="Italic"/>
+        	<TextBlock x:Name="musicTB" HorizontalAlignment="Right" Margin="0,0,102,184" TextWrapping="Wrap" Width="149" Height="50" VerticalAlignment="Bottom" Foreground="#FF133087" FontWeight="Bold" FontStyle="Italic"/>
+        	<TextBlock x:Name="cinemaTB" HorizontalAlignment="Right" Margin="0,0,102,123" TextWrapping="Wrap" Width="149" Height="50" VerticalAlignment="Bottom" Foreground="#FF133087" FontWeight="Bold" FontStyle="Italic"/>
+        	<TextBlock x:Name="televisionTB" HorizontalAlignment="Right" Margin="0,0,102,62" TextWrapping="Wrap" Width="149" Height="50" VerticalAlignment="Bottom" Foreground="#FF133087" RenderTransformOrigin="1.859,-2.58" FontWeight="Bold" FontStyle="Italic"/>
         	<Button x:Name="rightArrow" Content="" HorizontalAlignment="Right" Margin="0,203,8,204" Style="{StaticResource rightArrow1}" Width="60" Click="RightArrow1_Click"/>
         	<Button x:Name="leftArrow" Content="" HorizontalAlignment="Left" Margin="8,203,0,203" Style="{StaticResource leftArrow1}" Width="60" Click="LeftArrow1_Click"/>
             <Image x:Name="imageSuspect"  Height="142" HorizontalAlignment="Left" Margin="132,153,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"></Image>
-            <Button Content="" Height="73" HorizontalAlignment="Left" Margin="142,368,0,0" Name="Emit" VerticalAlignment="Top" Width="174" BorderBrush="#FF1D7281" Click="Emit_Click" Foreground="#FF1D7281" />
-        	<Image x:Name="MessageImage" Margin="175,76,175,173" Source="/WP7;component/GameImages/MessageImage.png" Stretch="Fill" Grid.Row="3" Width="250" Visibility="Collapsed"/>        
-	        <TextBlock x:Name="messageText" Margin="266,122,266,233" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="18.667" Foreground="#FFC9CA45" Visibility="Collapsed"/>
+            <Button Content="" Height="73" HorizontalAlignment="Left" Margin="142,368,0,0" x:Name="Emit" VerticalAlignment="Top" Width="174" Foreground="White" BorderBrush="Black" Background="#FF2E388F" Click="Emit_Click" />
+        	<Image x:Name="MessageImage" Margin="239,161,239,187" Stretch="Fill" Width="250" d:LayoutOverrides="GridBox" Source="poster2.png" Visibility="Collapsed"/>        
+	        <TextBlock x:Name="messageText" Margin="265,168,267,187" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="18.667" Foreground="White" d:LayoutOverrides="GridBox" Visibility="Collapsed"/>
 	        <Button x:Name="YesFailButton" Content="" Height="30" Margin="351,251,0,199" Grid.Row="3" Click="YesFailButton_Click" Width="30" HorizontalAlignment="Left" d:LayoutOverrides="GridBox" Visibility="Collapsed" />
 	        <TextBlock x:Name="failMessageText" Height="127" Margin="266,99,266,0" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="16" Foreground="#FFC9CA45" VerticalAlignment="Top" d:LayoutOverrides="GridBox" Visibility="Collapsed"/>
 		</Grid>        
