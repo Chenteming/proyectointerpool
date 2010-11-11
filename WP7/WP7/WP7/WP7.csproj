@@ -474,19 +474,22 @@
     <Resource Include="FamousImages\tokio_junichiro_koizumi.jpg" />
     <Resource Include="FamousImages\tokio_koda_kumi.jpg" />
     <Resource Include="FamousImages\tokio_miyavi.jpg" />
+    <Resource Include="GameImages\newspaper.png" />
+    <Resource Include="GameImages\phone.png" />
+    <Resource Include="GameImages\poster2.png" />
     <Resource Include="GameImages\wp7.png" />
     <Resource Include="GameImages\LoginScreen.jpg" />
     <Resource Include="GameImages\GameOver.png" />
     <Resource Include="GameImages\ComicBaloon.png" />
     <Resource Include="GameImages\Detective2.png" />
-    <Resource Include="GameImages\mainScreen1.png" />
     <Resource Include="GameImages\Message.png" />
-    <Resource Include="GameImages\newspaper.png" />
     <Resource Include="GameImages\pc.png" />
-    <Resource Include="GameImages\phone.png" />
     <Resource Include="GameImages\Sneaky.png" />
     <Resource Include="GameImages\Toasty.png" />
     <Resource Include="GameImages\Bubble.png" />
+    <Content Include="GameImages\mainScreen1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="GameLanguages\English.xml">
       <SubType>Designer</SubType>
     </Content>
