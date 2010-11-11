@@ -100,12 +100,20 @@
             DataCity city = e.Result;
             gm.CurrentDateTime = city.CurrentDate;
             gm.Info = city.GameInfo;
-            
+
             if (city.CityNumber == -1)
+            {
                 ShowHideInterpoolFailMessage(true);
+                if (city.GameInfo.state == GameState.LOSE_TO)
+                {
+                    gm.Info = city.GameInfo;
+                    NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
+                    return;
+                }
+            }
             else
             {
-                
+
                 gm.ResetCurrentFamous();
                 if (city.GameInfo.state == GameState.LOSE_TO)
                 {
@@ -114,8 +122,8 @@
                     return;
                 }
                 ////Coords. cities
-                
-                
+
+
 
                 double coordX_cityI = gm.Left;
                 double coordY_cityI = gm.Top;
@@ -124,16 +132,16 @@
                 gm.PictureCityLink = city.NameFileCity;
                 gm.SetCurrentCity(nameCity);
                 int coef = 1;
-				double sc1 = 1.0;
-				double sc2 = 7.4;
-				double sc3 = 7.4;
-				double sc4 = 0.396;
+                double sc1 = 1.0;
+                double sc2 = 7.4;
+                double sc3 = 7.4;
+                double sc4 = 0.396;
                 ////pregunto si coordX_I < coordY_I, si es true, esta bien asi
                 ////sino cambiar el scale del X a -1(para q el plane quede mirando para el lado que va)
                 if (coordX_cityI > coordX_cityE)
                 {
                     coef = -1;
-                    
+
                     ////avion.RenderTransform.SetValue(CompositeTransform.ScaleXProperty, -5.0);
                 }
                 ////Start Frame 1, Position (init_X,init_Y)
@@ -151,7 +159,7 @@
 
                 ////Start Frame 2, Position (init_X2,init_Y2)
                 DoubleKeyFrame keyframeX2 = translateX.KeyFrames[1];
-                double init_frame2 = 3.0, init_X2 = coordX_cityI + coef*40;
+                double init_frame2 = 3.0, init_X2 = coordX_cityI + coef * 40;
                 keyframeX2.SetValue(EasingDoubleKeyFrame.ValueProperty, init_frame2);
                 trX2.SetValue(EasingDoubleKeyFrame.ValueProperty, init_X2);
                 DoubleKeyFrame keyframeY2 = translateY.KeyFrames[1];
@@ -164,7 +172,7 @@
 
                 ////Start Frame 3, Position (init_X3,init_Y3)
                 DoubleKeyFrame keyframeX3 = translateX.KeyFrames[2];
-                double init_frame3 = 6.0, init_X3 = coordX_cityI + coef*240;
+                double init_frame3 = 6.0, init_X3 = coordX_cityI + coef * 240;
                 keyframeX3.SetValue(EasingDoubleKeyFrame.ValueProperty, init_frame3);
                 trX3.SetValue(EasingDoubleKeyFrame.ValueProperty, init_X3);
                 DoubleKeyFrame keyframeY3 = translateY.KeyFrames[2];
