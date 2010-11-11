@@ -243,7 +243,7 @@ namespace InterpoolCloudWebRole.Controller
             }
             catch (FaultException e)
             {
-                throw new FaultException(new FaultReason(e.Message), new FaultCode("ESG6"));
+                //throw new FaultException(new FaultReason(e.Message), new FaultCode("ESG6"));
             }
         }
 
