@@ -76,4 +76,10 @@
         <control name="WinText" Text="GANASTE!!!"/>
 		<control name="BigSuspectButton" Content="Gran Sospechoso"/>
     </class>
+	<class name="GameOver" Title="GameOver">
+        <control name="LoseText" Text="PERDISTE"/>
+		<control name="incorrectOrderOfArrest" Text="Has emitido una orden de arresto incorrecta..."/>
+   		<control name="didNotEmitOrderOfArrest" Text="No has emitido una orden de arresto para el criminal..."/>
+		<control name="afterDeadLine" Text="Se te ha acabado el tiempo..."/>
+    </class>
 </language>
