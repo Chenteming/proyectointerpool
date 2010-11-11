@@ -120,7 +120,7 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-		<Style x:Key="ButtonEarth" TargetType="Button">
+		<!--Style x:Key="ButtonEarth" TargetType="Button">
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="Button">
@@ -129,14 +129,7 @@
 								<VisualStateGroup x:Name="CommonStates">
 									<VisualState x:Name="Normal"/>
 									<VisualState x:Name="MouseOver"/>
-									<VisualState x:Name="Pressed">
-										<Storyboard>
-											<DoubleAnimation Duration="0" To="1.137" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="1.137" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="-0.413" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-										</Storyboard>
-									</VisualState>
+									<VisualState x:Name="Pressed"/>
 									<VisualState x:Name="Disabled"/>
 								</VisualStateGroup>
 							</VisualStateManager.VisualStateGroups>
@@ -160,15 +153,8 @@
 								<VisualStateGroup x:Name="CommonStates">
 									<VisualState x:Name="Normal"/>
 									<VisualState x:Name="MouseOver"/>
-									<VisualState x:Name="Pressed">
-										<Storyboard>
-											<DoubleAnimation Duration="0" To="1.049" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="1.054" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="0.797" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="-6.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-										</Storyboard>
-									</VisualState>
-									<VisualState x:Name="Disabled"/>
+									<VisualState x:Name="Pressed"/>
+								    <VisualState x:Name="Disabled"/>
 								</VisualStateGroup>
 							</VisualStateManager.VisualStateGroups>
 							<Image x:Name="image" Source="/WP7;component/GameImages/archive.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
@@ -181,7 +167,7 @@
 					</ControlTemplate>
 				</Setter.Value>
 			</Setter>
-		</Style>
+		</Style-->
 		<Style x:Key="ButtonPc" TargetType="Button">
 			<Setter Property="Template">
 				<Setter.Value>
@@ -213,7 +199,7 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-		<Style x:Key="ButtonNewspaper" TargetType="Button">
+		<!--Style x:Key="ButtonNewspaper" TargetType="Button">
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="Button">
@@ -222,14 +208,7 @@
 								<VisualStateGroup x:Name="CommonStates">
 									<VisualState x:Name="Normal"/>
 									<VisualState x:Name="MouseOver"/>
-									<VisualState x:Name="Pressed">
-										<Storyboard>
-											<DoubleAnimation Duration="0" To="1.095" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="1.095" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="-0.571" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="-4" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-										</Storyboard>
-									</VisualState>
+									<VisualState x:Name="Pressed"/>
 									<VisualState x:Name="Disabled"/>
 								</VisualStateGroup>
 							</VisualStateManager.VisualStateGroups>
@@ -253,14 +232,7 @@
 								<VisualStateGroup x:Name="CommonStates">
 									<VisualState x:Name="Normal"/>
 									<VisualState x:Name="MouseOver"/>
-									<VisualState x:Name="Pressed">
-										<Storyboard>
-											<DoubleAnimation Duration="0" To="1.197" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="1.197" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="-0.955" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-											<DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-										</Storyboard>
-									</VisualState>
+									<VisualState x:Name="Pressed"/>
 									<VisualState x:Name="Disabled"/>
 								</VisualStateGroup>
 							</VisualStateManager.VisualStateGroups>
@@ -270,6 +242,127 @@
 								</Image.RenderTransform>
 							</Image>
 							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content=""/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style-->
+		<Style x:Key="EarthStyle1" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.133" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="earth" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.133" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="earth" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="earth" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0.533" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="earth" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="earth" Source="/WP7;component/GameImages/earth.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content=""/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="PhoneStyle1" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.179" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="phone" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.179" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="phone" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-1.776" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="phone" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="phone" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="phone" Source="/WP7;component/GameImages/phone.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="NewspaperStyle1" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.126" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="newspaper" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.126" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="newspaper" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="2.548" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="newspaper" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="newspaper" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="newspaper" Source="/WP7;component/GameImages/newspaper.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ArchiveStyle1" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1.05" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="archive" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="1.05" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="archive" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-0.785" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="archive" d:IsOptimized="True"/>
+											<DoubleAnimation Duration="0" To="-6" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="archive" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Image x:Name="archive" Source="/WP7;component/GameImages/archive.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<CompositeTransform/>
+								</Image.RenderTransform>
+							</Image>
 						</Grid>
 					</ControlTemplate>
 				</Setter.Value>
@@ -309,14 +402,13 @@
     		</Grid.ColumnDefinitions>
 
             <Image x:Name="imageCity" Margin="253,0,0,0"  Stretch="Fill" Grid.Column="2" Width="300" Height="250" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-
-            <Image x:Name="ImageBackground1" Source="/WP7;component/GameImages/mainScreen1.png" Stretch="Fill" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Image x:Name="ImageBackground1" Grid.ColumnSpan="2" Grid.Column="1" Source="/GameImages/mainScreen1.png" Stretch="Fill"/>
             <Button x:Name="Door" Content="Button" Margin="-7,37,61,82" Style="{StaticResource ButtonDoor}" Click="Door_Click" Grid.ColumnSpan="2"/>
-            <Button x:Name="Earth" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="18,180,0,205" Style="{StaticResource ButtonEarth}" Width="81" Click="Earth_Click"/>
-            <Button x:Name="Files" Content="Button" Grid.Column="2" Margin="83,98,0,133" Style="{StaticResource ButtonFiles}" Click="Files_Click" HorizontalAlignment="Left" Width="157"/>
+            <Button x:Name="Earth" Content="" HorizontalAlignment="Left" Margin="8,180,0,195" Style="{StaticResource EarthStyle1}" Width="90" Click="Earth_Click" Grid.Column="2"/>
+            <Button x:Name="Files" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="76,98,0,132" Style="{StaticResource ArchiveStyle1}" Width="170" Click="Files_Click"/>
             <Button x:Name="Laptop" Content="Button" Grid.Column="2" HorizontalAlignment="Right" Height="228" Margin="0,0,29,0" Style="{StaticResource ButtonPc}" VerticalAlignment="Bottom" Width="246" Click="Laptop_Click"/>
-            <Button x:Name="Phone" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Height="66" Margin="-33,0,0,20" Style="{StaticResource ButtonPhone}" VerticalAlignment="Bottom" Width="102" Click="Phone_Click"/>
-            <Button x:Name="Newspaper" Content="Button" Grid.Column="2" Height="105" Margin="85,0,0,0" Style="{StaticResource ButtonNewspaper}" VerticalAlignment="Bottom" Click="Newspaper_Click" HorizontalAlignment="Left" Width="177"/>
+            <Button x:Name="Phone" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Height="67" Margin="-33,0,0,19" Style="{StaticResource PhoneStyle1}" VerticalAlignment="Bottom" Width="103" Click="Phone_Click"/>
+            <Button x:Name="Newspaper" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Height="95" Margin="100,0,0,0" Style="{StaticResource NewspaperStyle1}" VerticalAlignment="Bottom" Width="164" Click="Newspaper_Click"/>
             <Image x:Name="Poster" Grid.Column="2" Margin="-99,-4,0,0" Source="/WP7;component/GameImages/cartel.png" Stretch="Fill" Opacity="0.92" Height="64" VerticalAlignment="Top" HorizontalAlignment="Left" Width="262"/>
             <TextBlock x:Name="TextCity" Grid.Column="1" TextWrapping="Wrap" FontSize="13.333" FontWeight="Bold" Height="19" VerticalAlignment="Top" Foreground="#FF261C9D" Margin="81,0,-62,0" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font"/>
             <TextBlock x:Name="TextDate" Grid.Column="2" Margin="-94,19,0,0" TextWrapping="Wrap" FontSize="13.333" FontWeight="Bold" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="254" Foreground="#FF261C9D"/>
