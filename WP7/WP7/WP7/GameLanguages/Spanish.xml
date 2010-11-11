@@ -39,8 +39,8 @@
         <control name="textblock5" Text="Cine:"/>
 		<control name="textblock6" Text="Cumpleaños:"/>
         <control name="filterText" Text="Filtrar"/>
-        <control name="noneValue" Text="**NINGUNO**"></control>
-        <control name="emptyValue" Text="**VACÍO**"></control>
+        <control name="noneValue" Text="(NO FILTRAR)"></control>
+        <control name="emptyValue" Text="(VACÍO)"></control>
     </class>
     <class name="Login" Title="Login">
         <control name="loginMessage" Text="Ingrese su email de Facebook"/>
