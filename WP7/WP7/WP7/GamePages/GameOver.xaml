@@ -24,10 +24,21 @@
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="incorrectOrderOfArrest">
 				<DiscreteObjectKeyFrame KeyTime="0:0:4">
 					<DiscreteObjectKeyFrame.Value>
-						<Visibility>Collapsed</Visibility>
+						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
 			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="LoseStoryboard">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="LoseText">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="LoseText">
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="2"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</phone:PhoneApplicationPage.Resources>
 
@@ -45,16 +56,17 @@
         		<CompositeTransform/>
         	</Image.RenderTransform>
         </Image>
-        <TextBlock x:Name="incorrectOrderOfArrest" VerticalAlignment="Top" TextAlignment="Center" Margin="0,91,48,0" Grid.Row="1" TextWrapping="Wrap" Width="251" FontFamily="Futurama Bold Font" FontSize="29.333" HorizontalAlignment="Right" d:LayoutOverrides="VerticalAlignment, Width" Visibility="Collapsed"><Run Text="¡¡¡PERDISTE!!!"/><LineBreak/><Run FontSize="18.667"/><LineBreak/><Run FontSize="18.667" Text="Has emitido la orden de arresto de forma incorrecta"/></TextBlock>
-        <TextBlock x:Name="didNotEmitOrderOfArrest" TextAlignment="Center" Margin="0,91,48,0" Grid.Row="1" TextWrapping="Wrap" Width="251" FontFamily="Futurama Bold Font" FontSize="29.333" HorizontalAlignment="Right" d:LayoutOverrides="Width" Height="131" VerticalAlignment="Top" Visibility="Collapsed"><Run Text="¡¡¡PERDISTE!!!"/><LineBreak/><Run FontSize="21.333"/><LineBreak/><Run FontSize="21.333" Text="No has emitido una orden de arresto"/></TextBlock>
-        <TextBlock x:Name="afterDeadLine" TextAlignment="Center" Margin="0,51,18,0" Grid.Row="1" TextWrapping="Wrap" Width="251" FontFamily="Futurama Bold Font" FontSize="29.333" HorizontalAlignment="Right" d:LayoutOverrides="Width" Height="127" VerticalAlignment="Top" Visibility="Collapsed"><Run Text="¡¡¡PERDISTE!!!"/><LineBreak/><Run/><LineBreak/><Run FontSize="21.333" Text="Se te acabó el tiempo"/></TextBlock>
-        <TextBlock x:Name="ScoreTB" Margin="288,0,288,65" Grid.Row="1" TextWrapping="Wrap" Text="Score :" Height="43" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="NewLevelTB" Margin="288,0,288,14" Grid.Row="1" TextWrapping="Wrap" Text="NewLevel :" Height="43" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="TimeLeftTB" Margin="288,0,288,165" Grid.Row="1" TextWrapping="Wrap" Text="TimeLeft:" Height="43" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="TotalTB" Margin="288,0,288,112" Grid.Row="1" TextWrapping="Wrap" Height="43" VerticalAlignment="Bottom"><Run Text="Total"/><Run Text=":"/></TextBlock>
-        <TextBlock x:Name="TimeLeftText" Margin="0,0,18,164" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Right" Width="261" Height="43" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="TotalText" Margin="0,0,18,114" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Right" Width="261" Height="43" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="ScoreText" Margin="0,0,18,64" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Right" Width="261" Height="43" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="NewLevelText" Margin="0,0,18,17" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Right" Width="261" Height="43" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="incorrectOrderOfArrest" VerticalAlignment="Top" TextAlignment="Center" Margin="0,126,48,0" Grid.Row="1" TextWrapping="Wrap" Width="251" FontFamily="Futurama Bold Font" FontSize="29.333" HorizontalAlignment="Right" d:LayoutOverrides="VerticalAlignment, Width" Foreground="#FF9D1C69" Height="96" Visibility="Collapsed"/>
+        <TextBlock x:Name="didNotEmitOrderOfArrest" TextAlignment="Center" Margin="0,126,48,0" Grid.Row="1" TextWrapping="Wrap" Width="251" FontFamily="Futurama Bold Font" FontSize="24" HorizontalAlignment="Right" d:LayoutOverrides="Width" Height="96" VerticalAlignment="Top" Foreground="#FF9D1C69" Visibility="Collapsed"/>
+        <TextBlock x:Name="afterDeadLine" TextAlignment="Center" Margin="0,126,48,0" Grid.Row="1" TextWrapping="Wrap" Width="251" FontFamily="Futurama Bold Font" FontSize="29.333" HorizontalAlignment="Right" d:LayoutOverrides="Width" Height="92" VerticalAlignment="Top" Foreground="#FF9D1C69" Visibility="Collapsed"/>
+        <TextBlock x:Name="TotalTB" Margin="0,0,218,114" Grid.Row="1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" Foreground="#FFE2311F" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" HorizontalAlignment="Right" Width="78" Visibility="Collapsed"/>
+        <TextBlock x:Name="TotalText" Margin="0,0,32,118" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Right" Width="171" Height="30" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="#FF9D1C69" Visibility="Collapsed"/>
+        <TextBlock x:Name="NewLevelTB" Margin="0,0,223,71" Grid.Row="1" TextWrapping="Wrap" Height="30" VerticalAlignment="Bottom" Foreground="#FFE2311F" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" HorizontalAlignment="Right" Width="67" Visibility="Collapsed"/>
+        <TextBlock x:Name="NewLevelText" Margin="0,0,0,75" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Right" Width="203" Height="30" VerticalAlignment="Bottom" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" Foreground="#FF9D1C69" Visibility="Collapsed"/>
+        <TextBlock x:Name="LoseText" HorizontalAlignment="Right" Height="44" Margin="0,58,67,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" Foreground="#FF9D1C69" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="32" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" TextAlignment="Center">
+        	<TextBlock.RenderTransform>
+        		<CompositeTransform ScaleX="1.5"/>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
     </Grid>
 </phone:PhoneApplicationPage>

@@ -28,7 +28,7 @@
             if (gm.ShowAnimation == true)
                 ToastyStoryboard.Begin();
             gm.ShowAnimation = false;
-			TextCity.Text = nameCityTB.Text + gm.GetCurrentCity();
+			TextCity.Text = gm.GetCurrentCity();
 			DateTime dt = gm.CurrentDateTime;
 			DateTime dl = gm.DeadLineDateTime;
 			string hour1 = dt.Hour < 10 ? "0" + dt.Hour : String.Empty + dt.Hour;
@@ -43,7 +43,7 @@
 			" " + hour1 + time1;
             TextDeadline.Text =  deadlineTB.Text + GetDayOfWeek(dl, lm.GetCurrentLanguage() == "English") + 
 			" " + hour2 + time2;
-            /// TextLevel.Text = levelTB.Text + gm.Info == null ? "" : gm.Info.newLevel;
+            TextLevel.Text = gm.Info == null ? "" : gm.Info.newLevel;
             string cityURI = "../cities3_Images/" + gm.PictureCityLink;
             imageCity.Source = new BitmapImage(new Uri(cityURI, UriKind.Relative));
         }

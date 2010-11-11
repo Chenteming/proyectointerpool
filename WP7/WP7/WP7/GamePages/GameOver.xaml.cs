@@ -29,6 +29,7 @@ namespace WP7
         /// Store for the property
         /// </summary>
         private GameManager gm = GameManager.GetInstance();
+        private LanguageManager lm = LanguageManager.GetInstance();
 
         /// <summary>
         /// Initializes a new instance of the GameOver class.</summary>
@@ -36,7 +37,10 @@ namespace WP7
         {
             
             InitializeComponent();
+            if (this.lm.GetXDoc() != null)
+                this.lm.TranslatePage(this);            
             gm.EmitOrder = false;
+            LoseText.Visibility = Visibility.Visible;
             incorrectOrderOfArrest.Visibility = Visibility.Collapsed;
             didNotEmitOrderOfArrest.Visibility = Visibility.Collapsed;
             afterDeadLine.Visibility = Visibility.Collapsed;                            
@@ -46,11 +50,12 @@ namespace WP7
 
         public void GameOverStoryboardCompleted(object sender, EventArgs e)
         {
-            ScoreText.Text = this.gm.Info.Score.ToString();
-            TotalText.Text = this.gm.Info.ScoreWin.ToString();
-            TimeLeftText.Text = this.gm.Info.DiffInDays.ToString() + ":" + this.gm.Info.DiffInMinutes.ToString() +
-                ":" + this.gm.Info.DiffInseconds.ToString();
-            NewLevelText.Text = this.gm.Info.newLevel.ToString();
+            LoseStoryboard.Begin();
+            LoseStoryboard.Completed += new EventHandler(LoseStoryboard_Completed);                        
+        }
+
+        void LoseStoryboard_Completed(object sender, EventArgs e)
+        {            
             switch (this.gm.Info.state)
             {
                 case GameState.LOSE_EOAW:
@@ -65,6 +70,12 @@ namespace WP7
                 default:
                     break;
             }            
+            NewLevelTB.Visibility = Visibility.Visible;
+            NewLevelText.Visibility = Visibility.Visible;
+            TotalText.Visibility = Visibility.Visible;
+            TotalTB.Visibility = Visibility.Visible;
+            TotalText.Text = this.gm.Info.ScoreWin.ToString();
+            NewLevelText.Text = this.gm.Info.newLevel.ToString();
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
