@@ -143,6 +143,11 @@
             string[] filterField = gm.GetFilterField();
             filterField[0] = this.dfbuList.ElementAt(index).FirstName;
             filterField[1] = this.dfbuList.ElementAt(index).LastName;
+            filterField[3] = this.dfbuList.ElementAt(index).Hometown;
+            filterField[4] = this.dfbuList.ElementAt(index).Gender;
+            filterField[5] = this.dfbuList.ElementAt(index).Music;
+            filterField[6] = this.dfbuList.ElementAt(index).Cinema;
+            filterField[7] = this.dfbuList.ElementAt(index).Television;            
             gm.PictureLink = this.dfbuList.ElementAt(index).PictureLink;
             ShowHideInterpoolFailMessage(messageText.Text + Name_Suspect.Text, true);            
         }
