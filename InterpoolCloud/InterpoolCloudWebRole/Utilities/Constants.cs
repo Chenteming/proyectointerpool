@@ -106,7 +106,7 @@ namespace InterpoolCloudWebRole.Utilities
         }
         
         //// All this constants are for the cloud application ////
-        
+        /*
         /// <summary>
         /// Store for the property
         /// </summary>
@@ -150,12 +150,12 @@ namespace InterpoolCloudWebRole.Utilities
                 return "http://pis2010.cloudapp.net/Pages/FacebookCallback.aspx/";
             }
         }
-
+        */
         //// End of constants for the cloud application ////
         
 
         //// All these constants are for local test ////
-        /*
+        
         /// <summary>
         /// Gets for the property
         /// </summary>
@@ -199,7 +199,7 @@ namespace InterpoolCloudWebRole.Utilities
                 return "http://127.0.0.1:81/Pages/FacebookCallback.aspx/";
             }
         }
-        */
+       
         //// End of constants for local test ////
 
         /// <summary>

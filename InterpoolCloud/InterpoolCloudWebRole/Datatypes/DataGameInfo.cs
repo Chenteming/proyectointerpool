@@ -14,6 +14,7 @@ namespace InterpoolCloudWebRole.Datatypes
     {
         public string SuspectName {get; set;}
         public int DiffInDays {get; set;}
+        public int DiffInHours {get; set;}
         public int DiffInMinutes { get; set; }
         public int DiffInseconds { get; set; }
         public long ScoreWin {get; set;}
