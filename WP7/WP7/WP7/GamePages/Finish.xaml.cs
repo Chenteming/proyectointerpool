@@ -87,7 +87,9 @@ namespace WP7
             TotalText.Visibility = Visibility.Visible;
             NameSuspectText.Text = this.gm.Info.SuspectName;
             ScoreText.Text = this.gm.Info.Score.ToString();
-            TimeLeftText.Text = this.gm.Info.DiffInDays.ToString() + ":" + this.gm.Info.DiffInMinutes.ToString() +
+            
+            
+            TimeLeftText.Text = this.gm.Info.DiffInDays.ToString() +" "+ this.gm.Info.DiffInHours+ ":" + this.gm.Info.DiffInMinutes.ToString() +
                 ":" + this.gm.Info.DiffInseconds.ToString();
             TotalText.Text = this.gm.Info.ScoreWin.ToString();            
         }
