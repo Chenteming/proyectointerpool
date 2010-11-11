@@ -31,7 +31,7 @@
             this.language = LanguageManager.GetInstance();
             if (this.language.GetXDoc() != null)
                 this.language.TranslatePage(this);            
-            if (gm.EmitOrder)
+            if (gm.OrderArrest != null)
             {
                 ShowCurrentSuspect();
                 HideButtons();
@@ -139,16 +139,7 @@
             client.CloseCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(client_CloseCompleted);
             client.CloseAsync();
             Emit.IsEnabled = false;            
-            gm.EmitOrder = true;
-            string[] filterField = gm.GetFilterField();
-            filterField[0] = this.dfbuList.ElementAt(index).FirstName;
-            filterField[1] = this.dfbuList.ElementAt(index).LastName;
-            filterField[3] = this.dfbuList.ElementAt(index).Hometown;
-            filterField[4] = this.dfbuList.ElementAt(index).Gender;
-            filterField[5] = this.dfbuList.ElementAt(index).Music;
-            filterField[6] = this.dfbuList.ElementAt(index).Cinema;
-            filterField[7] = this.dfbuList.ElementAt(index).Television;            
-            gm.PictureLink = this.dfbuList.ElementAt(index).PictureLink;
+            gm.OrderArrest = this.dfbuList.ElementAt(index);
             ShowHideInterpoolFailMessage(messageText.Text + Name_Suspect.Text, true);            
         }
 
@@ -175,15 +166,14 @@
 
         private void ShowCurrentSuspect()
         {
-            string[] filterField = gm.GetFilterField();
-            Name_Suspect.Text = filterField[0] + " " + filterField[1];
-            birthdayTB.Text = filterField[2];
-            hometownTB.Text = filterField[3];
-            genderTB.Text = filterField[4];
-            musicTB.Text = filterField[5];
-            cinemaTB.Text = filterField[6];
-            televisionTB.Text = filterField[7];
-            LoadPicture(gm.PictureLink);
+            Name_Suspect.Text = this.gm.OrderArrest.FirstName + " " + this.gm.OrderArrest.LastName;
+            birthdayTB.Text = this.gm.OrderArrest.Birthday;
+            hometownTB.Text = this.gm.OrderArrest.Hometown;
+            genderTB.Text = this.gm.OrderArrest.Gender;
+            musicTB.Text = this.gm.OrderArrest.Music;
+            cinemaTB.Text = this.gm.OrderArrest.Cinema;
+            televisionTB.Text = this.gm.OrderArrest.Television;
+            LoadPicture(this.gm.OrderArrest.PictureLink);
         }
 
         private DataFacebookUser SetFiltersFields()

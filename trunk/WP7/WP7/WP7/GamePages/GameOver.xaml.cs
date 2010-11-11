@@ -39,7 +39,7 @@ namespace WP7
             InitializeComponent();
             if (this.lm.GetXDoc() != null)
                 this.lm.TranslatePage(this);            
-            gm.EmitOrder = false;
+            gm.OrderArrest = null;
             LoseText.Visibility = Visibility.Visible;
             incorrectOrderOfArrest.Visibility = Visibility.Collapsed;
             didNotEmitOrderOfArrest.Visibility = Visibility.Collapsed;
