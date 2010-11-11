@@ -111,7 +111,7 @@
             gm.CurrentDateTime = dc.CurrentDate;
             this.gm.SetCurrentCity(dc.NameCity);
             this.gm.PictureCityLink = dc.NameFileCity;
-            this.gm.CurrentLevel = "1";// dc.GameInfo.newLevel;
+            this.gm.CurrentLevel = dc.GameInfo.newLevel;// dc.GameInfo.newLevel;
             if (gm.UserInfo.UserState == UserState.REGISTERED_NO_PLAYING)
             {
                 NavigationService.Navigate(new Uri("/GamePages/StartCompleted.xaml", UriKind.RelativeOrAbsolute));
