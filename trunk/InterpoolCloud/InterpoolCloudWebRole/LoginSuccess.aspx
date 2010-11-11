@@ -7,7 +7,9 @@
     <title></title>
     <script type='text/javascript'>
         function init() {
-            window.close(); 
+            var ventana = window.self;
+            ventana.opener = window.self;
+            ventana.close();
         }
      </script>
 </head>
