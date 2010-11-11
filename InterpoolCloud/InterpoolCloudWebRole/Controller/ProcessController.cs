@@ -443,6 +443,7 @@ namespace InterpoolCloudWebRole.Controller
             NodePath node = this.GetCurrentNode(userIdFacebook);
             NodePath nextNode = this.GetNextNode(userIdFacebook);
             Game game = dm.GetGameByUser(userIdFacebook, this.container);
+            GameState state;
             if (!nextNode.City.CityName.Equals(nameNextCity))
             {
                 datacity.NameCity = node.City.CityName;
@@ -450,6 +451,8 @@ namespace InterpoolCloudWebRole.Controller
                 datacity.CurrentDate = this.RestTime(game, Constants.TravelWrong);
                 datacity.DeadLine = game.DeadLine;
                 datacity.CityNumber = -1;
+                state = game.CurrentTime < game.DeadLine ? GameState.PL : GameState.LOSE_TO;
+                datacity.GameInfo = this.GetGameInfo(game, state);
                 return datacity;
             }
 
@@ -462,7 +465,7 @@ namespace InterpoolCloudWebRole.Controller
             
             datacity.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.TravelGood);
 
-            GameState state = game.CurrentTime < game.DeadLine ? GameState.PL : GameState.LOSE_TO;
+            state = game.CurrentTime < game.DeadLine ? GameState.PL : GameState.LOSE_TO;
             datacity.GameInfo = this.GetGameInfo(game, state);
 
             return datacity;
