@@ -79,8 +79,6 @@
         /// </summary>
         private int btnPosition = 0;
 
-        
-
         /// <summary>
         /// Initializes a new instance of the Filter class.</summary>
 
@@ -128,8 +126,8 @@
 		
 		public string ChangeFilter(string change)
 		{
-			if (change == noneValue.Text)
-				return "";
+			if (change == null)
+                return emptyValue.Text;
 			return change;
 		}
 
