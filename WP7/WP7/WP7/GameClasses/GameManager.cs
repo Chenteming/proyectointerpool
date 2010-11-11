@@ -95,7 +95,7 @@ namespace WP7
             this.ShowAnimation = false;
             this.Data = new DataClue();
             this.Info = new DataGameInfo();
-            this.EmitOrder = false;
+            this.OrderArrest = null;
             this.FromMainPage = false;
             this.BrowserOpened = false;
             this.GetUserInfoTries = 0;
@@ -175,7 +175,7 @@ namespace WP7
 
         /// <summary>
         /// Gets or sets for Method.</summary>
-        public bool EmitOrder { get; set; }
+        public DataFacebookUser OrderArrest { get; set; }
 
         /// <summary>
         /// Gets or sets for Method.</summary>

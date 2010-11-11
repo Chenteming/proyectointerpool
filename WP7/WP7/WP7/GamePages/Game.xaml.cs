@@ -60,7 +60,7 @@
 
 		private void Files_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-            if (!gm.EmitOrder)
+            if (gm.OrderArrest == null)
 			    NavigationService.Navigate(new Uri("/GamePages/Filter.xaml", UriKind.RelativeOrAbsolute));
             else
                 NavigationService.Navigate(new Uri("/GamePages/Suspect.xaml", UriKind.RelativeOrAbsolute));

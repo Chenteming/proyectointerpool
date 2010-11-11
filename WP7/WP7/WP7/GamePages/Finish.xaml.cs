@@ -35,7 +35,7 @@ namespace WP7
             InitializeComponent();
             if (this.lm.GetXDoc() != null)
                 this.lm.TranslatePage(this);            
-            gm.EmitOrder = false;
+            gm.OrderArrest = null;
             WinText.Visibility = Visibility.Visible;
             WinMessageStoryboard.Begin();
             WinMessageStoryboard.Completed += new EventHandler(WinMessageStoryboard_Completed);
