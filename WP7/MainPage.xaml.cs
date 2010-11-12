@@ -11,11 +11,12 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 
-namespace UI_wp7
+namespace WP7
 {
-    public partial class Formulario : PhoneApplicationPage
+    public partial class MainPage : PhoneApplicationPage
     {
-        public Formulario()
+        // Constructor
+        public MainPage()
         {
             InitializeComponent();
         }
