@@ -153,12 +153,12 @@
         	<TextBlock x:Name="televisionTB" HorizontalAlignment="Right" Margin="0,0,102,62" TextWrapping="Wrap" Width="149" Height="50" VerticalAlignment="Bottom" Foreground="#FF133087" RenderTransformOrigin="1.859,-2.58" FontWeight="Bold" FontStyle="Italic"/>
         	<Button x:Name="rightArrow" Content="" HorizontalAlignment="Right" Margin="0,203,8,204" Style="{StaticResource rightArrow1}" Width="60" Click="RightArrow1_Click"/>
         	<Button x:Name="leftArrow" Content="" HorizontalAlignment="Left" Margin="8,203,0,203" Style="{StaticResource leftArrow1}" Width="60" Click="LeftArrow1_Click"/>
-            <Image x:Name="imageSuspect"  Height="142" HorizontalAlignment="Left" Margin="132,153,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"></Image>
+            <Image x:Name="imageSuspect"  Height="142" HorizontalAlignment="Left" Margin="132,153,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
             <Button Content="" Height="73" HorizontalAlignment="Left" Margin="142,368,0,0" x:Name="Emit" VerticalAlignment="Top" Width="174" Foreground="White" BorderBrush="Black" Background="#FF2E388F" Click="Emit_Click" />
-        	<Image x:Name="MessageImage" Margin="239,161,239,187" Stretch="Fill" Width="250" d:LayoutOverrides="GridBox" Source="poster2.png" Visibility="Collapsed"/>        
-	        <TextBlock x:Name="messageText" Margin="265,168,267,187" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="18.667" Foreground="White" d:LayoutOverrides="GridBox" Visibility="Collapsed"/>
+	        <Image x:Name="MessageImage" Margin="239,158,239,187" Source="/WP7;component/GameImages/poster2.png" Stretch="Fill" Opacity="0.935" Visibility="Collapsed"/>        
+	        <TextBlock x:Name="messageText" Margin="265,168,267,187" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="16" Foreground="White" d:LayoutOverrides="GridBox" Visibility="Collapsed"/>
 	        <Button x:Name="YesFailButton" Content="" Height="30" Margin="351,251,0,199" Grid.Row="3" Click="YesFailButton_Click" Width="30" HorizontalAlignment="Left" d:LayoutOverrides="GridBox" Visibility="Collapsed" />
-	        <TextBlock x:Name="failMessageText" Height="127" Margin="266,99,266,0" Grid.Row="3" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="16" Foreground="#FFC9CA45" VerticalAlignment="Top" d:LayoutOverrides="GridBox" Visibility="Collapsed"/>
+	        <TextBlock x:Name="failMessageText" Margin="266,164,266,189" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/WP7;component/Fonts/fr-bold.ttf#Futurama Bold Font" FontSize="16" Foreground="White" Visibility="Collapsed"/>
 		</Grid>        
     </Grid>
 
