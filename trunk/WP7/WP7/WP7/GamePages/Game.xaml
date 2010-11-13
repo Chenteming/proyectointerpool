@@ -13,8 +13,8 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar x:Name="LocalApplicationBar" Opacity="0.5" IsMenuEnabled="True" IsVisible="True">
             <shell:ApplicationBar.Buttons>
-                <shell:ApplicationBarIconButton x:Name="ApplicationBarHelp" Text="Help" Click="help_Click" IconUri="/icons/appbar_help.png"/>
-                <shell:ApplicationBarIconButton x:Name="ApplicationBarOptions" Text="Options" Click="options_Click" IconUri="/icons/appbar_options.png"/>
+                <shell:ApplicationBarIconButton x:Name="ApplicationBarHelp" Text="Ayuda" Click="help_Click" IconUri="/icons/appbar_help.png"/>
+                <shell:ApplicationBarIconButton x:Name="ApplicationBarOptions" Text="Opciones" Click="options_Click" IconUri="/icons/appbar_options.png"/>
             </shell:ApplicationBar.Buttons>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
