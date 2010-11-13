@@ -23,21 +23,15 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" >
-			<Border BorderBrush="Red" BorderThickness="1" Margin="8">
-				<Border.Background>
-					<RadialGradientBrush>
-						<GradientStop Color="Black" Offset="0"/>
-						<GradientStop Color="#FF622323" Offset="0.9"/>
-					</RadialGradientBrush>
-				</Border.Background>
-				<ScrollViewer Margin="7" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="32">
-					<ScrollViewer.Background>
-						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-							<GradientStop Color="Black" Offset="0"/>
-							<GradientStop Color="#FFD82525" Offset="0.704"/>
-						</LinearGradientBrush>
-					</ScrollViewer.Background>
-					<TextBox TextWrapping="Wrap" FontSize="96" Text="Hola mundo probando el scroll viewer para ver como funciona esto" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Height="789" Width="673" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch"/>
+			<Image Margin="0,9,-240,-86" Source="/WP7;component/GameImages/Sneaky.png" Stretch="Fill" HorizontalAlignment="Right" Width="547"/>
+			<Image Margin="-73,18,0,14" Source="/WP7;component/GameImages/Detective2.png" Stretch="Fill" Opacity="0.515" HorizontalAlignment="Left" Width="297" RenderTransformOrigin="0.5,0.5">
+				<Image.RenderTransform>
+					<CompositeTransform ScaleX="-1"/>
+				</Image.RenderTransform>
+			</Image>
+			<Border BorderBrush="#FF3A428B" BorderThickness="1" Margin="0,8" Opacity="0.78" Background="Black">
+				<ScrollViewer Margin="-1,7" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" FontSize="32">
+					<TextBlock x:Name="texto" TextWrapping="Wrap" FontSize="21.333" Text="Ayuda&#xa;&#xa;Bienvenido detective!!!&#xa;Deberás recorrer el mundo interrogando a los famosos locales de cada ciudad, los cuáles te brindarán pistas que te permitirán descubrir al ladrón y/o su paradero.&#xa; Será necesario que viajes a través de cuatro ciudades para poder dar con el ladrón. Recuerda que deberás haber emitido la orden de arresto para poder arrestarlo, de no ser así el ladrón se saldrá con la suya.&#xa;Suerte y apresúrate que el tiempo corre.&#xa;&#xa;*En la oficina:&#xa;Para obtener las pistas de los sospechosos y su destino, podrás interrogar a los famosos valiéndote de tu celular, de tu notebook o leyendo las últimas noticias del periódico local; los cuáles encontrarás sobre la mesa de tu escritorio.&#xa;Revisa el archivero para consultar la lista de sospechosos más buscados. Una vez que hayas determinado quién es el maleante, podrás emitir una orden de arresto en su contra.&#xa;Usa el globo terráqueo cuando quieras viajar por el mundo tras el sospechoso.&#xa;Podrás abandonar la partida dirigiéndote a la puerta de salida.&#xa;&#xa;*Consultando Famosos:&#xa;Estos chicos saben de la movida cosmopolita. Pon atención a lo que dicen, que podrán llevarte a que encuentres lo que estás buscando. Quién dice que no te darán información acerca del sospechoso y de su actual paradero. &#xa;&#xa;*Buscando en el archivero:&#xa;Válete de las pistas recibidas por las celebrityes, para filtrar dentro de los sospechosos más buscados de la Interpool.&#xa;Una vez hayas descubierto quién es el maleante, puedes allí mismo emitir una orden de arresto en su contra. Tendrás que disponer de la misma una vez que des con su paradero.&#xa;&#xa;*Around the world:&#xa;Utiliza tu jet privado cuando tengas que viajar hacia otra ciudad en busca del maleante." Height="1279" Width="432" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" TextAlignment="Center"/>
 				</ScrollViewer>
 			</Border>
 		</Grid>
