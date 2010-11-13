@@ -456,7 +456,7 @@
         </Grid>
        <!-- <Image Source="/WP7;component/GameImages/FilterScreen2.png" Stretch="Fill"/>-->
 	   <Grid x:Name="ContentGrid2" Grid.Row="1" Visibility="Collapsed">
-           <ListBox x:Name="ComboList" FontSize="29.333" Margin="0,-37,0,0" MouseLeftButtonDown="ComboList_MouseLeftButtonDown" Background="#771D7281" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" Style="{StaticResource ListBoxStyle1}"/>
+           <ListBox x:Name="ComboList" FontSize="29.333" Margin="0,-37,0,0" MouseLeftButtonDown="ComboList_MouseLeftButtonDown" Background="#CC3A428B" FontFamily="/WP7;component/Fonts/Fonts.zip#Buxton Sketch" Style="{StaticResource ListBoxStyle1}" BorderBrush="#FF454E9D"/>
        </Grid>
 	   <TextBlock x:Name="noneValue" Height="51" Margin="81,0,0,-84" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="187" Visibility="Collapsed"/>
 	   <TextBlock x:Name="emptyValue" Height="51" Margin="321,0,220,-84" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" Visibility="Collapsed"/>	   
