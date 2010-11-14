@@ -969,7 +969,7 @@ namespace InterpoolCloudWebRole.Controller
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
                         newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueFamousContent, this.container) + " '" + famous.New.First().NewContent + "'.";
-                        c3.ClueContent = this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + newFamous;
+                        c3.ClueContent = this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + "\n\n" + newFamous;
                     }
                     else
                     {
@@ -1006,11 +1006,11 @@ namespace InterpoolCloudWebRole.Controller
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
                         newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueFamousContent, this.container) + " '" + famous.New.First().NewContent + "'.";
-                        c2.ClueContent = dynProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + newFamous;
+                        c2.ClueContent = dynProperty + "\n\n" + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + "\n\n" + newFamous;
                     }
                     else
                     {
-                        c2.ClueContent = dynProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect);
+                        c2.ClueContent = dynProperty + "\n\n" + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect);
                     }
 
                     characteristicsSuspect--;
@@ -1020,7 +1020,7 @@ namespace InterpoolCloudWebRole.Controller
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
                         newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueFamousContent, this.container) + " '" + famous.New.First().NewContent + "'.";
-                        c2.ClueContent = dynProperty + " " + newFamous;
+                        c2.ClueContent = dynProperty + "\n\n" + newFamous;
                     }
                     else
                     {
@@ -1056,11 +1056,11 @@ namespace InterpoolCloudWebRole.Controller
                     if (famous.New.Count() != 0 && famous.New.First().NewContent != null)
                     {
                         newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueFamousContent, this.container) + " '" + famous.New.First().NewContent + "'.";
-                        c1.ClueContent = staticProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + " " + newFamous;
+                        c1.ClueContent = staticProperty + "\n\n" + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect) + "\n\n" + newFamous;
                     }
                     else
                     {
-                        c2.ClueContent = staticProperty + " " + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect);
+                        c2.ClueContent = staticProperty + "\n\n" + this.GetRandomCharacteristicSuspect(g.Suspect, characterSuspect);
                     }
 
                     characteristicsSuspect--;
@@ -1070,7 +1070,7 @@ namespace InterpoolCloudWebRole.Controller
                     if (famous.New.Count() != 0 && famous.New.First() != null)
                     {
                         newFamous = famous.New.First().NewContent == String.Empty ? dm.GetParameter(Parameters.DefaultFamousClueContent, this.container) : dm.GetParameter(Parameters.PreprefixClueFamousContent, this.container) + " '" + famous.New.First().NewContent + "'.";
-                        c1.ClueContent = staticProperty + " " + newFamous;
+                        c1.ClueContent = staticProperty + "\n\n" + newFamous;
                     }
                     else
                     {
