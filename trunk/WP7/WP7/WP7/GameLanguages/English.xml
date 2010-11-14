@@ -54,11 +54,13 @@
     </class>
 	<class name="Start" Title="Start">
         <control name="GoButton" Content="PLAY!"/>
-		<control name="detectiveText" Text="Detective, we need your services again in an important mission. An unidentified thief has stolen a valuable object. Your mission is to identify and find it before he makes contact with his criminal circle. GOOD LUCK!"/>
+		<control name="detectiveText" Text="Detective, we need your services again in an important mission. An unidentified thief has stolen a valuable object. Your mission is to identify and find it before he makes contact with his criminal circle."/>
+    <control name="detectiveText2" Text="GOOD LUCK!"/>
     </class>
 	<class name="StartCompleted" Title="StartCompleted">
         <control name="GoButton" Content="PLAY!"/>
-		<control name="detectiveText" Text="Detective, we need your services again in an important mission. An unidentified thief has stolen a valuable object. Your mission is to identify and find it before he makes contact with his criminal circle. GOOD LUCK!"/>
+		<control name="detectiveText" Text="Detective, we need your services again in an important mission. An unidentified thief has stolen a valuable object. Your mission is to identify and find it before he makes contact with his criminal circle."/>
+    <control name="detectiveText2" Text="GOOD LUCK!"/>
     </class>
 	<class name="Game" Title="Game">
         <control name="TextLevel" Text="Level"/>
