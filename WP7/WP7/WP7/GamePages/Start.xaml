@@ -42,9 +42,10 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			<TextBlock x:Name="detectiveText" Margin="377,27,20,204" TextWrapping="Wrap" FontSize="20" FontFamily="Futurama Bold Font" TextAlignment="Center" Foreground="#FF9D1C69" />			
-			<Image Margin="312,0,72,-309" Source="/GameImages/ComicBaloon.png" Stretch="Fill" Height="275" VerticalAlignment="Bottom"/>
-			<Button x:Name="GoButton" Content="JUGAR!" HorizontalAlignment="Right" Height="93" Margin="0,0,94,53" VerticalAlignment="Bottom" Width="178" Click="GoButton_Click" Visibility="Collapsed"/>
+			<TextBlock x:Name="detectiveText" Margin="377,27,20,204" TextWrapping="Wrap" FontSize="24" FontFamily="Futurama Bold Font" TextAlignment="Center" Foreground="WhiteSmoke" />
+            <TextBlock x:Name="detectiveText2" Margin="377,230,20,174" TextWrapping="Wrap" FontSize="24" FontFamily="Futurama Bold Font" TextAlignment="Center" Foreground="WhiteSmoke" />
+            <Image Margin="312,0,72,-309" Source="/GameImages/ComicBaloon.png" Stretch="Fill" Height="275" VerticalAlignment="Bottom"/>
+			<Button x:Name="GoButton" Content="JUGAR!" HorizontalAlignment="Right" Height="93" Margin="0,0,120,53" VerticalAlignment="Bottom" Width="178" Click="GoButton_Click" Visibility="Collapsed"/>
 		</Grid>		
 		<Image x:Name="image" Margin="-421,70,0,65" Source="/WP7;component/GameImages/Detective.png" Stretch="Fill" Width="300" Height="300" Grid.Row="1" HorizontalAlignment="Left" d:LayoutOverrides="Width" RenderTransformOrigin="0.5,0.5">
 			<Image.RenderTransform>
