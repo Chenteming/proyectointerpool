@@ -487,9 +487,16 @@
     <Resource Include="GameImages\Sneaky.png" />
     <Resource Include="GameImages\Toasty.png" />
     <Resource Include="GameImages\Bubble.png" />
+    <Resource Include="GameImages\archive_open.png" />
+    <Resource Include="GameImages\door_open.png" />
+    <Resource Include="GameImages\earth_1.png" />
+    <Resource Include="GameImages\earth_2.png" />
     <Content Include="GameImages\mainScreen1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="GameImages\newspaper_open.png" />
+    <Resource Include="GameImages\pc_on.png" />
+    <Resource Include="GameImages\phone_on.png" />
     <Content Include="GameLanguages\English.xml">
       <SubType>Designer</SubType>
     </Content>
