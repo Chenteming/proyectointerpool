@@ -268,22 +268,22 @@
 									<VisualState x:Name="MouseOver"/>
 									<VisualState x:Name="Pressed">
 										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="earth" RepeatBehavior="Forever">
+											<ObjectAnimationUsingKeyFrames Duration="0:0:0.9" Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="earth" RepeatBehavior="Forever">
 												<DiscreteObjectKeyFrame KeyTime="0:0:.00">
 													<DiscreteObjectKeyFrame.Value>
 														<Visibility>Visible</Visibility>
 													</DiscreteObjectKeyFrame.Value>
 												</DiscreteObjectKeyFrame>
 											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="earth_1" RepeatBehavior="Forever">
-												<DiscreteObjectKeyFrame KeyTime="0:0:0.5">
+											<ObjectAnimationUsingKeyFrames Duration="0:0:0.9" Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="earth_1" RepeatBehavior="Forever">
+												<DiscreteObjectKeyFrame KeyTime="0:0:0.3">
 													<DiscreteObjectKeyFrame.Value>
 														<Visibility>Visible</Visibility>
 													</DiscreteObjectKeyFrame.Value>
 												</DiscreteObjectKeyFrame>
 											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="earth_2" RepeatBehavior="Forever">
-												<DiscreteObjectKeyFrame KeyTime="0:0:1.0">
+											<ObjectAnimationUsingKeyFrames Duration="0:0:0.9" Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="earth_2" RepeatBehavior="Forever">
+												<DiscreteObjectKeyFrame KeyTime="0:0:0.6">
 													<DiscreteObjectKeyFrame.Value>
 														<Visibility>Visible</Visibility>
 													</DiscreteObjectKeyFrame.Value>
