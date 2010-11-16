@@ -68,7 +68,7 @@ namespace InterpoolCloudWebRole.Data
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="context"> Parameter description for context goes here</param>
-        /// <param name="userIdFaceook"> Parameter description for userIdFaceook goes here</param>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
         /// <returns>
         /// Return results are described through the returns tag.</returns>
         public IQueryable<User> GetUserByIdFacebook(InterpoolContainer context, string userIdFacebook)
@@ -102,16 +102,16 @@ namespace InterpoolCloudWebRole.Data
         {
             int userId = (from u in context.Users
                           select u.UserId).Max();
-            IQueryable<String> res = (from u in context.Users
+            IQueryable<string> res = from u in context.Users
                     where u.UserId == userId
-                    select u.UserIdFacebook);
-            if (res !=null && res.Count()!=0)
+                    select u.UserIdFacebook;
+            if (res != null && res.Count() != 0)
             {
                 return res.First();
             }
             else
             {
-                return String.Empty;
+                return string.Empty;
             }
         }
 
@@ -123,16 +123,16 @@ namespace InterpoolCloudWebRole.Data
         /// Return results are described through the returns tag.</returns>
         public string GetParameter(string name, InterpoolContainer context)
         {
-            IQueryable<String> res = (from p in context.Parameters
+            IQueryable<string> res = from p in context.Parameters
                                       where p.ParameterName == name
-                                      select p.ParameterValue);
+                                      select p.ParameterValue;
             if (res != null && res.Count() != 0)
             {
                 return res.First();
             }
             else
             {
-                return String.Empty;
+                return string.Empty;
             }
         }
 
@@ -231,9 +231,9 @@ namespace InterpoolCloudWebRole.Data
         {
             int userId = (from u in context.Users
                             select u.UserId).Max();
-            IQueryable<String> token = (from u in context.Users
+            IQueryable<string> token = from u in context.Users
                             where u.UserId == userId
-                            select u.UserTokenFacebook);
+                            select u.UserTokenFacebook;
             if (token != null && token.Count() != 0)
             {
                 return new OAuthFacebook() { Token = token.First() };
@@ -242,7 +242,6 @@ namespace InterpoolCloudWebRole.Data
             {
                 throw new Exception();
             }
-
         }
 
         /// <summary>
@@ -376,7 +375,7 @@ namespace InterpoolCloudWebRole.Data
                         where users.UserId == userId
                         select users.SubLevel;
             int currentSubLevel = -1;
-            if (query!= null && query.Count() > 0)
+            if (query != null && query.Count() > 0)
             {
                 currentSubLevel = (int)query.First();
             }
@@ -392,7 +391,7 @@ namespace InterpoolCloudWebRole.Data
         /// Return results are described through the returns tag.</returns>
         public User GetUserByToken(string token, InterpoolContainer context)
         {
-            var query =  from user in context.Users
+            var query = from user in context.Users
                         where user.UserTokenFacebook == token
                         select user;
             if (query.Count() > 0)
@@ -405,6 +404,12 @@ namespace InterpoolCloudWebRole.Data
             }
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
+        /// <param name="context"> Parameter description for context goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         public DataUserInfo GetUserInfoByLoginId(string userLoginId, InterpoolContainer context)
         {
             DataUserInfo userInfo = new DataUserInfo()
@@ -446,6 +451,11 @@ namespace InterpoolCloudWebRole.Data
             return userInfo;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="token"> Parameter description for token goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private bool UserIsLoginRequired(string token)
         {
             IFacebookController facebookController = new FacebookController();
@@ -455,10 +465,11 @@ namespace InterpoolCloudWebRole.Data
                 facebookController.GetUserId(new OAuthFacebook() { Token = token });
                 return false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return true;
             }
+
             throw new NotImplementedException();
         }
     }
