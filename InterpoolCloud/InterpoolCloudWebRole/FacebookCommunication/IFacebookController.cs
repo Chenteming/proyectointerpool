@@ -39,10 +39,12 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         DataFacebookUser GetUserInfoByToken(OAuthFacebook auth);
 
         //// Saves all the friends information in the db.
+
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="auth"> Parameter description for auth goes here</param>
         /// <param name="game"> Parameter description for game goes here</param>
+        /// <param name="limitSuspects"> Parameter description for limitSuspects goes here</param>
         /// <param name="context"> Parameter description for context goes here</param>
         void DownloadFacebookUserData(OAuthFacebook auth, Game game, int limitSuspects, InterpoolContainer context);
     }

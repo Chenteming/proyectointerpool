@@ -15,7 +15,6 @@ namespace InterpoolCloudWebRole.Datatypes
     /// </summary>
     public class DataClue
     {
-        
         /// <summary>
         /// Gets or sets for Method.</summary>
         public GameState States { get; set; }
@@ -32,6 +31,8 @@ namespace InterpoolCloudWebRole.Datatypes
             set;
         }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
         public DataGameInfo GameInfo
         {
             get;

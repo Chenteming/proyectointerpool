@@ -157,6 +157,9 @@ namespace InterpoolCloudWebRole.Utilities
                 return "PREFIXCLUECONTENT";
             }
         }
+
+        /// <summary>
+        /// Gets sets for Method.</summary>
         public static string PreprefixClueFamousContent
         {
             get
@@ -164,25 +167,29 @@ namespace InterpoolCloudWebRole.Utilities
                 return "PREFIXCLUEFAMOUSCONTENT";
             }
         }
-        
+
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string DefaultClueContent
         {
             get
             {
                 return "DEFAULTCLUECONTENT";
             }
-
         }
 
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string DefaultFamousClueContent
         {
             get
             {
                 return "DEFAULTFAMOUSCLUECONTENT";
             }
-
         }
 
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string PrefixCharacteristicSuspectCinema
         {
             get
@@ -191,6 +198,8 @@ namespace InterpoolCloudWebRole.Utilities
             }
         }
 
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string PrefixCharacteristicSuspectMusic
         {
             get
@@ -199,15 +208,18 @@ namespace InterpoolCloudWebRole.Utilities
             }
         }
 
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string PrefixCharacteristicSuspectBirthday
         {
             get
             {
                 return "PREFIX_CHARACTERISTIC_SUSPECT_BIRTHDAY";
             }
-
         }
 
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string PrefixCharacteristicSuspectHomeTown
         {
             get
@@ -215,6 +227,9 @@ namespace InterpoolCloudWebRole.Utilities
                 return "PREFIX_CHARACTERISTIC_SUSPECT_HOMETOWN";
             }
         }
+
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string PrefixCharacteristicSuspectTV
         {
             get
@@ -223,15 +238,18 @@ namespace InterpoolCloudWebRole.Utilities
             }
         }
 
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string PrefixNoCharacteristicSuspectCinema
         {
             get
             {
                 return "PREFIX_NO_CHARACTERISTIC_SUSPECT_CINEMA";
             }
-
         }
 
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string PrefixNoCharacteristicSuspectMusic
         {
             get
@@ -239,6 +257,9 @@ namespace InterpoolCloudWebRole.Utilities
                 return "PREFIX_NO_CHARACTERISTIC_SUSPECT_MUSIC";
             }
         }
+
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string PrefixNoCharacteristicSuspectBirthday
         {
             get
@@ -247,15 +268,18 @@ namespace InterpoolCloudWebRole.Utilities
             }
         }
 
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string PrefixNoCharacteristicSuspectHomeTown
         {
             get
             {
                 return "PREFIX_NO_CHARACTERISTIC_SUSPECT_HOMETOWN";
             }
-
         }
 
+        /// <summary>
+        /// Gets for Method.</summary>
         public static string PrefixNoCharacteristicSuspectTV
         {
             get
@@ -263,6 +287,5 @@ namespace InterpoolCloudWebRole.Utilities
                 return "PREFIX_NO_CHARACTERISTIC_SUSPECT_TV";
             }
         }
-
    }
 }

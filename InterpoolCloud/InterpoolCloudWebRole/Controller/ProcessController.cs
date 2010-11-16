@@ -10,12 +10,12 @@ namespace InterpoolCloudWebRole.Controller
     using System.Data.Objects.DataClasses;
     using System.Linq;
     using System.Reflection;
+    using System.ServiceModel;
     using System.Web;
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
     using InterpoolCloudWebRole.Utilities;
-    using System.ServiceModel;
 
     /// <summary>
     /// Class Description ProcessController
@@ -176,11 +176,12 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     return;
                 }
+
                 User user;
-                IQueryable<User> iUser = this.container.Users.Where(u => u.UserIdFacebook == userIdFacebook);
-                if (iUser != null && iUser.Count() != 0)
+                IQueryable<User> iuser = this.container.Users.Where(u => u.UserIdFacebook == userIdFacebook);
+                if (iuser != null && iuser.Count() != 0)
                 {
-                    user = iUser.First();
+                    user = iuser.First();
                 }
                 else
                 {
@@ -241,9 +242,9 @@ namespace InterpoolCloudWebRole.Controller
                 this.container.AddToGames(newGame);
                 this.container.SaveChanges();
             }
-            catch (FaultException e)
+            catch (FaultException)
             {
-                //throw new FaultException(new FaultReason(e.Message), new FaultCode("ESG6"));
+                ////throw new FaultException(new FaultReason(e.Message), new FaultCode("ESG6"));
             }
         }
 
@@ -348,21 +349,21 @@ namespace InterpoolCloudWebRole.Controller
                     find = false;
                     do
                     {
-
                         nextCity = 1 > maxNumber ? 1 : random.Next(1, maxNumber);
 
-                        IQueryable<City> iCity = dm.GetCities(this.container).Where(c => c.CityNumber == nextCity);
-                        if (iCity != null && iCity.Count() != 0)
+                        IQueryable<City> icity = dm.GetCities(this.container).Where(c => c.CityNumber == nextCity);
+                        if (icity != null && icity.Count() != 0)
                         {
                             //// start to select cities
 
-                            next = iCity.First();
+                            next = icity.First();
                         }
                         else
                         {
                             this.RegisterLog("BuiltTravel: There is no next city", null, "error", "0");
                             throw new GameException("There is no next city", new Exception());
                         }
+
                         if (!selectedCities.Contains(next.CityNumber))
                         {
                             find = true;
@@ -416,7 +417,7 @@ namespace InterpoolCloudWebRole.Controller
             ////InterpoolContainer container = dm.GetContainer();
             dataListFacebookUser.ListFacebookUser = dm.FilterSuspects(userIdFacebook, fbud, this.container);
             dataListFacebookUser.CurrentDate = this.RestTime(dm.GetGameByUser(userIdFacebook, this.container), Constants.FilterSuspect);
-            Game game = dm.GetGameByUser(userIdFacebook, container);
+            Game game = dm.GetGameByUser(userIdFacebook, this.container);
 
             if (!firstTime)
             {
@@ -493,10 +494,10 @@ namespace InterpoolCloudWebRole.Controller
             }
             else
             {
-                IEnumerable<Suspect> iSuspect = game.PossibleSuspect.Where(s => s.SuspectFacebookId == userIdFacebookSuspect);
-                if (iSuspect != null && iSuspect.Count() != 0)
+                IEnumerable<Suspect> isuspect = game.PossibleSuspect.Where(s => s.SuspectFacebookId == userIdFacebookSuspect);
+                if (isuspect != null && isuspect.Count() != 0)
                 {
-                    suspect = iSuspect.First();
+                    suspect = isuspect.First();
                 }
                 else
                 {
@@ -564,16 +565,17 @@ namespace InterpoolCloudWebRole.Controller
         {
             IDataManager dm = new DataManager();
             User user;
-            IQueryable<User> iUser = dm.GetUserByIdFacebook(this.container, userIdFacebook);
-            if (iUser != null && iUser.Count() != 0)
+            IQueryable<User> iuser = dm.GetUserByIdFacebook(this.container, userIdFacebook);
+            if (iuser != null && iuser.Count() != 0)
             {
-                user = iUser.First();
+                user = iuser.First();
             }
             else
             {
                 this.RegisterLog("GetClueByFamous: There is no User with that id", null, "error", "0");
                 throw new FaultException(new FaultReason("There is no User with that id"), new FaultCode("ESG7"));
             }
+
             NodePath node = this.GetCurrentNode(userIdFacebook);
             DataClue clue;
 
@@ -622,7 +624,6 @@ namespace InterpoolCloudWebRole.Controller
                     clue.States = GameState.PL;
                 }
 
-                
                 return clue;
             }
 
@@ -736,6 +737,7 @@ namespace InterpoolCloudWebRole.Controller
                     info = hardCode.GetType().GetProperty(prop);
                     info.SetValue(hardCode, newValue, null);
                 }
+
                 hardCodeSuspects.Add(hardCode);
             }
 
@@ -818,6 +820,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     game.PossibleSuspect.Add(s);
                 }
+
                 ind++;
             }
 
@@ -854,7 +857,6 @@ namespace InterpoolCloudWebRole.Controller
             return true;
         }
 
-        //// TODO: delete if GetUserInfo works fine
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="userLoginId"> Parameter description for userLoginId goes here</param>
@@ -876,6 +878,130 @@ namespace InterpoolCloudWebRole.Controller
         {
             IDataManager dm = new DataManager();
             return dm.GetUserInfoByLoginId(userLoginId, dm.GetContainer());
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="user"> Parameter description for user goes here</param>
+        public void DeleteGame(User user)
+        {
+            DataManager dm = new DataManager();
+            Game game = user.Game;
+            if (game == null)
+            {
+                throw new GameException("No exist game to delete", new Exception());
+            }
+
+            ////user.Game = null;
+            for (int i = Constants.NumberLastCity - 1; i >= 0; i--)
+            {
+                for (int j = Constants.FamousCities - 1; j >= 0; j--)
+                {
+                    game.NodePath.ElementAt(i).Famous.Remove(game.NodePath.ElementAt(i).Famous.ElementAt(j));
+                }
+
+                /*for (int j = Constants.FamousCities - 1; j >= 0; j--)
+                {
+                    Clue clue = game.NodePath.ElementAt(i).Clue.ElementAt(j);
+                    game.NodePath.ElementAt(i).Clue.Remove(game.NodePath.ElementAt(i).Clue.ElementAt(j));
+                    clue.NodePath = null;
+                }*/
+                for (int j = Constants.FamousCities - 1; j >= 0; j--)
+                {
+                    this.container.DeleteObject(game.NodePath.ElementAt(i).Clue.ElementAt(j));
+                }
+
+                for (int j = Constants.PosiblesCities - 1; j >= 0; j--)
+                {
+                    game.NodePath.ElementAt(i).PossibleCities.Remove(game.NodePath.ElementAt(i).PossibleCities.ElementAt(j));
+                }
+
+                this.container.DeleteObject(game.NodePath.ElementAt(i));
+            }
+
+            ////game.NodePath = null;
+            ////this.container.DeleteObject(game.NodePath);
+            OrderOfArrest order = game.OrderOfArrest;
+            game.OrderOfArrest = null;
+            if (order != null)
+            {
+                order.Suspect = null;
+                this.container.DeleteObject(order);
+            }
+
+            Filter filter = game.FilterSuspect;
+            game.FilterSuspect = null;
+            if (filter != null)
+            {
+                this.container.DeleteObject(filter);
+            }
+
+            ////container.DeleteObject(game.Suspect);
+            this.container.DeleteObject(game.Suspect);
+            game.Suspect = null;
+
+            /* foreach (Suspect suspect in game.PossibleSuspect)
+             {
+                 container.DeleteObject(suspect);
+             }*/
+
+            for (int j = Constants.MaxSuspects + Constants.AmountHardCodeSuspects - 2; j >= 0; j--)
+            {
+                ////game.PossibleSuspect.Remove(game.PossibleSuspect.ElementAt(j));
+                this.container.DeleteObject(game.PossibleSuspect.ElementAt(j));
+            }
+
+            game.User = null;
+
+            ////container.SaveChanges();
+            this.container.DeleteObject(game);
+            this.container.SaveChanges();
+            ////  RegisterLog("deleteGame", null, "ok", game.User.UserLoginId);
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        public DataFacebookUser GetFilters(string userIdFacebook)
+        {
+            IDataManager dm = new DataManager();
+
+            string propS;
+            string propFilter;
+            string newValue;
+            PropertyInfo info;
+
+            Game game = dm.GetGameByUser(userIdFacebook, this.container);
+
+            Filter filter = game.FilterSuspect;
+            var properties = typeof(Filter).GetProperties();
+
+            DataFacebookUser fbud = new DataFacebookUser();
+
+            foreach (var property in properties)
+            {
+                string propType = property.PropertyType.Name;
+                propS = property.Name;
+                if ("String".Equals(propType))
+                {
+                    propFilter = propS;
+                    info = filter.GetType().GetProperty(propFilter);
+                    if (info != null)
+                    {
+                        newValue = (string)info.GetValue(filter, null);
+                        propFilter = propS.Replace("Filter", string.Empty);
+                        info = fbud.GetType().GetProperty(propFilter);
+                        if (info != null)
+                        {
+                            info.SetValue(fbud, newValue, null);
+                        }
+                    }
+                }
+            }
+
+            return fbud;
         }
 
         [FaultContract(typeof(FaultException))]
@@ -918,16 +1044,17 @@ namespace InterpoolCloudWebRole.Controller
             for (i = 0; i < Constants.NumberLastCity - 1; i++)
             {
                 /* get the Current NodePath  */
-                IEnumerable<NodePath> iCnp = g.NodePath.Where(cp => cp.NodePathOrder == i);
-                if (iCnp != null && iCnp.Count() != 0)
+                IEnumerable<NodePath> icnp = g.NodePath.Where(cp => cp.NodePathOrder == i);
+                if (icnp != null && icnp.Count() != 0)
                 {
-                    cnp = iCnp.First();
+                    cnp = icnp.First();
                 }
                 else
                 {
                     this.RegisterLog("CreateClue: There is no NodePath with this order", null, "error", "0");
                     throw new FaultException(new FaultReason("There is no NodePath with this order"), new FaultCode("ESG9"));
                 }
+
                 r = new Random();
                 /* get the amount of caracteristic of the suspect by NodePath  */
                 rnd = r.Next(0, 3);
@@ -1033,10 +1160,10 @@ namespace InterpoolCloudWebRole.Controller
 
                 /* get the static cityProperty for the nextCity */
                 CityProperty cps;
-                IEnumerable<CityProperty> iCps = nextCity.CityProperty.Where(qcs => qcs.Dyn == false);
-                if (iCps != null && iCps.Count() != 0)
+                IEnumerable<CityProperty> icps = nextCity.CityProperty.Where(qcs => qcs.Dyn == false);
+                if (icps != null && icps.Count() != 0)
                 {
-                    cps = iCps.First();
+                    cps = icps.First();
                 }
                 else
                 {
@@ -1044,7 +1171,6 @@ namespace InterpoolCloudWebRole.Controller
                     throw new FaultException(new FaultReason("There is no dynamic CityProperty for next City"), new FaultCode("ESG10"));
                 }
                
-
                 /* set de city */
                 c1.City = cnp.City;
                 /* if i have to put characteristics on the clue of the suspect */
@@ -1094,6 +1220,7 @@ namespace InterpoolCloudWebRole.Controller
                 this.RegisterLog("CreateClue: There is no NodePath with this order", null, "error", "0");
                 throw new FaultException(new FaultReason("There is no NodePath with this order"), new FaultCode("ESG10"));
             }
+
             /* build the clues for the last city*/
             Clue lastClue1 = new Clue();
             /* set de city */
@@ -1155,8 +1282,7 @@ namespace InterpoolCloudWebRole.Controller
             {
                 this.RegisterLog("NextCity: There is no nextCity in this node", null, "error", "0");
                 throw new FaultException(new FaultReason("There is no nextCity in this node"), new FaultCode("ESG10"));
-            }
-            
+            }   
         }
 
         /// <summary>
@@ -1247,6 +1373,7 @@ namespace InterpoolCloudWebRole.Controller
                                 this.RegisterLog("Arrest: There is no Level with this number", null, "error", "0");
                                 throw new FaultException(new FaultReason("There is no Level with this number"), new FaultCode("ESG10"));
                             }
+
                             user.SubLevel = 0;
                             user.Level = newLevel;
                             this.RegisterLog("user_advanceLevel", null, "ok", user.UserLoginId);
@@ -1260,8 +1387,8 @@ namespace InterpoolCloudWebRole.Controller
                     }
 
                     clue.States = GameState.WIN;
-                    clue.GameInfo = GetGameInfo(game, clue.States);
-                    DeleteGame(game.User);
+                    clue.GameInfo = this.GetGameInfo(game, clue.States);
+                    this.DeleteGame(game.User);
                     this.container.SaveChanges();
                     return true;
                 }
@@ -1280,128 +1407,9 @@ namespace InterpoolCloudWebRole.Controller
             }
 
             clue.GameInfo = this.GetGameInfo(game, clue.States);
-            DeleteGame(game.User);
+            this.DeleteGame(game.User);
             this.container.SaveChanges();
             return false;
-        }
-
-        
-
-        /// <summary>
-        /// Description for Method.</summary>
-        /// <param name="user"> Parameter description for user goes here</param>
-        public void DeleteGame(User user)
-        {
-            DataManager dm = new DataManager();
-            Game game = user.Game;
-            if (game == null) 
-            {
-                throw new GameException("No exist game to delete", new Exception());
-            }
-
-            ////user.Game = null;
-            for (int i = Constants.NumberLastCity - 1; i >= 0; i--)
-            {
-                for (int j = Constants.FamousCities - 1; j >= 0; j--)
-                {
-                    game.NodePath.ElementAt(i).Famous.Remove(game.NodePath.ElementAt(i).Famous.ElementAt(j));
-                }
-                /*for (int j = Constants.FamousCities - 1; j >= 0; j--)
-                {
-                    Clue clue = game.NodePath.ElementAt(i).Clue.ElementAt(j);
-                    game.NodePath.ElementAt(i).Clue.Remove(game.NodePath.ElementAt(i).Clue.ElementAt(j));
-                    clue.NodePath = null;
-                }*/
-                for (int j = Constants.FamousCities - 1; j >= 0; j--)
-                {
-                    this.container.DeleteObject(game.NodePath.ElementAt(i).Clue.ElementAt(j));
-                }
-                for (int j = Constants.PosiblesCities - 1; j >= 0; j--)
-                {
-                    game.NodePath.ElementAt(i).PossibleCities.Remove(game.NodePath.ElementAt(i).PossibleCities.ElementAt(j));
-                }
-                
-                this.container.DeleteObject(game.NodePath.ElementAt(i));
-            }
-
-            ////game.NodePath = null;
-            ////this.container.DeleteObject(game.NodePath);
-            OrderOfArrest order = game.OrderOfArrest;
-            game.OrderOfArrest = null;
-            if (order != null)
-            {
-                order.Suspect = null;
-                this.container.DeleteObject(order);
-            }
-
-            Filter filter = game.FilterSuspect;
-            game.FilterSuspect = null;
-            if (filter != null)
-            {
-                this.container.DeleteObject(filter);
-            }
-
-            ////container.DeleteObject(game.Suspect);
-            container.DeleteObject(game.Suspect);
-            game.Suspect = null;
-            
-            /* foreach (Suspect suspect in game.PossibleSuspect)
-             {
-                 container.DeleteObject(suspect);
-             }*/
-            
-            for (int j = Constants.MaxSuspects + Constants.AmountHardCodeSuspects - 2; j >= 0; j--)
-            {
-                ////game.PossibleSuspect.Remove(game.PossibleSuspect.ElementAt(j));
-                this.container.DeleteObject(game.PossibleSuspect.ElementAt(j));
-            }
-            game.User = null;
-
-            ////container.SaveChanges();
-            this.container.DeleteObject(game);
-            this.container.SaveChanges();
-          ////  RegisterLog("deleteGame", null, "ok", game.User.UserLoginId);
-        }
-
-        public DataFacebookUser GetFilters(string userIdFacebook)
-        {
-            
-            IDataManager dm = new DataManager();
-
-            string propS;
-            string propFilter;
-            string newValue;
-            PropertyInfo info;
-
-            Game game = dm.GetGameByUser(userIdFacebook, container);
-
-            Filter filter = game.FilterSuspect;
-            var properties = typeof(Filter).GetProperties();
-
-            DataFacebookUser fbud = new DataFacebookUser();
-
-            foreach (var property in properties)
-            {
-                string propType = property.PropertyType.Name;
-                propS = property.Name;
-                if ("String".Equals(propType))
-                {
-                    propFilter = propS;
-                    info = filter.GetType().GetProperty(propFilter);
-                    if (info != null)
-                    {
-                        newValue = (string)info.GetValue(filter, null);
-                        propFilter = propS.Replace("Filter", string.Empty);
-                        info = fbud.GetType().GetProperty(propFilter);
-                        if (info != null)
-                        {
-                            info.SetValue(fbud, newValue, null);
-                        }
-                    }
-                }
-            }
-
-            return fbud;
         }
 
         /// <summary>
@@ -1420,7 +1428,6 @@ namespace InterpoolCloudWebRole.Controller
         /// Description for Method.</summary>
         /// <param name="game"> Parameter description for game goes here</param>
         /// <param name="function"> Parameter description for function goes here</param>
-        /// <returns> </returns>
         private void CalculateTime(Game game, string function)
         {
             double hours = 0;
@@ -1538,7 +1545,8 @@ namespace InterpoolCloudWebRole.Controller
         /// </summary>
         /// <param name="operation"> Parameter description for operation currentcity goes here</param>
         /// <param name="e"> Parameter description for function e goes here</param>
-        /// <param name="type"> Parameter description for type currentcity goes here</param>
+        /// <param name="type"> Parameter description for type type goes here</param>
+        /// <param name="userLogin"> Parameter description for type userLogin goes here</param>
         private void RegisterLog(string operation, Exception e, string type, string userLogin)
         {
             InterpoolContainer container = new InterpoolContainer();
@@ -1552,11 +1560,14 @@ namespace InterpoolCloudWebRole.Controller
             container.SaveChanges();
             container.Dispose();
         }
-        
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="game"> Parameter description for game goes here</param>
         private void GetSuspectsFromDatabase(Game game)
         {
             IFacebookController facebookController = new FacebookController();
-            List<String> friendIds = facebookController.GetFriendsId(game.User.UserIdFacebook);
+            List<string> friendIds = facebookController.GetFriendsId(game.User.UserIdFacebook);
             
             //// Gets the users who are not the user himself, and are in a higher level
             this.container.DetectChanges();
@@ -1571,6 +1582,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     break;
                 }
+
                 Suspect suspect = this.NewSuspectFromUser(user);
                 if (this.HaveEnoughFields(suspect, Constants.DataRequired))
                 {
@@ -1592,7 +1604,6 @@ namespace InterpoolCloudWebRole.Controller
                 game.Suspect = gameSuspect;
             }
         }
-
 
         /// <summary>
         /// Calculate Daed Line
@@ -1628,7 +1639,12 @@ namespace InterpoolCloudWebRole.Controller
             newGame.DeadLine = newGame.DeadLine.AddHours(Math.Round(time));
         }
 
-		private Suspect NewSuspectFromUser(User user)
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="user"> Parameter description for user goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
+        private Suspect NewSuspectFromUser(User user)
         {
             Suspect suspect = new Suspect();
             
@@ -1646,11 +1662,17 @@ namespace InterpoolCloudWebRole.Controller
             return suspect;
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="game"> Parameter description for game goes here</param>
+        /// <param name="state"> Parameter description for state goes here</param>
+        /// <returns>
+        /// Return results are described through the returns tag.</returns>
         private DataGameInfo GetGameInfo(Game game, GameState state)
         {
             DataGameInfo info = new DataGameInfo();
             info.SuspectName = game.Suspect.SuspectFirstName + " " + game.Suspect.SuspectLastName;
-            info.newLevel = game.User.Level.LevelName;
+            info.NewLevel = game.User.Level.LevelName;
 
             if (state == GameState.WIN)
             {
@@ -1663,9 +1685,9 @@ namespace InterpoolCloudWebRole.Controller
                 info.DiffInMinutes = ts.Minutes;
                 info.DiffInseconds = ts.Seconds;
                 int leftTime = (int)(ts.Ticks / TimeSpan.TicksPerMinute);
-                info.ScoreWin =  leftTime;
+                info.ScoreWin = leftTime;
                 info.LinkBigSuspect = "m.facebook.com/profile.php?id=" + game.Suspect.SuspectFacebookId;
-                game.User.UserScore += (Int32)info.ScoreWin;
+                game.User.UserScore += (int)info.ScoreWin;
             }
             else 
             {
@@ -1680,10 +1702,10 @@ namespace InterpoolCloudWebRole.Controller
                 }
             }
             
-            
-            info.state = state;
+            info.State = state;
             return info;
         }
+
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="fbudOfSuspect"> Parameter description for fbudOfSuspect goes here</param>
@@ -1733,6 +1755,10 @@ namespace InterpoolCloudWebRole.Controller
             }
         }
 
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="game"> Parameter description for game goes here</param>
+        /// <param name="fbud"> Parameter description for fbud goes here</param>
         private void SaveFilters(Game game, DataFacebookUser fbud)
         {
             var properties = typeof(DataFacebookUser).GetProperties();
@@ -1766,7 +1792,6 @@ namespace InterpoolCloudWebRole.Controller
             }
 
             this.container.SaveChanges();
-
         }
     }
 }

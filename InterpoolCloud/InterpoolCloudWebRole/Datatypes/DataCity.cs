@@ -61,7 +61,7 @@ namespace InterpoolCloudWebRole.Datatypes
 
         /// <summary>
         /// Gets or sets for Method.</summary>
-        public DataGameInfo  GameInfo
+        public DataGameInfo GameInfo
         {
             get;
             set;

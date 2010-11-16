@@ -213,6 +213,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
                 responseData = null;
                 throw new GameException("error_tokenNotValid", e);
             }
+
             return responseData;
         }
 

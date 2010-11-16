@@ -128,6 +128,7 @@ using InterpoolCloudWebRole.Utilities;
         }
 
         //// TODO: delete if GetUserInfo works fine
+
         /// <summary>
         /// Description for Method.</summary>
         /// <param name="idLogin"> Parameter description for idLogin goes here</param>
@@ -164,13 +165,12 @@ using InterpoolCloudWebRole.Utilities;
 
         /// <summary>
         /// Description for Method.</summary>
-        /// <param name="userIdFacebook"> Parameter description for user goes here</param>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <returns>Return results are described through the returns tag.</returns>
         [FaultContract(typeof(FaultException))]
         public DataFacebookUser GetFilters(string userIdFacebook)
         {
             return this.controller.GetFilters(userIdFacebook);
-        }
-
-        
+        }   
     }
 }

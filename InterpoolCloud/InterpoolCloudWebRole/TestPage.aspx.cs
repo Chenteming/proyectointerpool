@@ -171,6 +171,50 @@ namespace InterpoolCloudWebRole
         /// <summary>
         /// Get Day of week 
         /// </summary>
+        /// <param name="sender">Parameter description for sender goes here</param>
+        /// <param name="e">Parameter description for sender e here</param>
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            this.log.Text = String.Empty;
+            InterpoolContainer container = new InterpoolContainer();
+            IDataManager dm = new DataManager();
+            ProcessController ipc = new ProcessController(container);
+            string currentUser = this.TextBoxEmail.Text;
+            this.log.Text = "Comienzo a procesar Question Famous... ";
+            string userId = dm.GetUserIdFacebookByLoginId(currentUser, ipc.GetContainer());
+            User user = dm.GetUserByIdFacebook(ipc.GetContainer(), userId).First();
+            ipc.DeleteGame(user);
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            Admin.LoadFamousData();
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="sender"> Parameter description for sender goes here</param>
+        /// <param name="e"> Parameter description for e goes here</param>
+        protected void ButtonUserInfo_Click(object sender, EventArgs e)
+        {
+            this.log.Text = String.Empty;
+            this.log.Text = "Comienzo a procesar el obtener info del usuario... ";
+            InterpoolContainer conteiner = new InterpoolContainer();
+            IDataManager dm = new DataManager();
+            string currentUser = this.TextBoxEmail.Text;
+            DataUserInfo userInfo = dm.GetUserInfoByLoginId(currentUser, dm.GetContainer());
+            this.Label5.Text = userInfo.FirstName + " " + userInfo.LastName;
+            this.Label6.Text = userInfo.UserState.ToString();
+            this.log.Text = "Termino de procesar el obtener info del usuario";
+        }
+
+        /// <summary>
+        /// Get Day of week 
+        /// </summary>
         /// <param name="currentDate">Parameter description for currentDate goes here</param>
         /// <returns>
         /// the day of the week</returns>
@@ -201,6 +245,7 @@ namespace InterpoolCloudWebRole
         /// Get Day of week 
         /// </summary>
         /// <param name="currentDate">Parameter description for currentDate goes here</param>
+        /// <param name="english">Parameter description for english goes here</param>
         /// <returns>
         /// the day of the week</returns>
         private string GetDayOfWeek(DateTime currentDate, bool english)
@@ -216,7 +261,7 @@ namespace InterpoolCloudWebRole
                 case DayOfWeek.Sunday:
                     return english ? "Sunday" : "Domingo";
                 case DayOfWeek.Thursday:
-                    return english? "Thursday" : "Jueves";
+                    return english ? "Thursday" : "Jueves";
                 case DayOfWeek.Tuesday:
                     return english ? "Tuesday" : "Martes";
                 case DayOfWeek.Wednesday:
@@ -224,44 +269,6 @@ namespace InterpoolCloudWebRole
                 default:
                     return "no existe día de la semana";
             }
-        }
-
-
-
-        /// <summary>
-        /// Get Day of week 
-        /// </summary>
-        /// <param name="sender">Parameter description for sender goes here</param>
-        /// <param name="e">Parameter description for sender e here</param>
-        protected void Button6_Click(object sender, EventArgs e)
-        {
-            this.log.Text = String.Empty;
-            InterpoolContainer container = new InterpoolContainer();
-            IDataManager dm = new DataManager();
-            ProcessController ipc = new ProcessController(container);
-            string currentUser = this.TextBoxEmail.Text;
-            this.log.Text = "Comienzo a procesar Question Famous... ";
-            string userId = dm.GetUserIdFacebookByLoginId(currentUser, ipc.GetContainer());
-            User user = dm.GetUserByIdFacebook(ipc.GetContainer(), userId).First();
-            ipc.DeleteGame(user);
-        }
-
-        protected void Button7_Click(object sender, EventArgs e)
-        {
-            Admin.LoadFamousData();
-        }
-
-        protected void ButtonUserInfo_Click(object sender, EventArgs e)
-        {
-            this.log.Text = String.Empty;
-            this.log.Text = "Comienzo a procesar el obtener info del usuario... ";
-            InterpoolContainer conteiner = new InterpoolContainer();
-            IDataManager dm = new DataManager();
-            string currentUser = this.TextBoxEmail.Text;
-            DataUserInfo userInfo = dm.GetUserInfoByLoginId(currentUser, dm.GetContainer());
-            Label5.Text = userInfo.FirstName + " " + userInfo.LastName;
-            Label6.Text = userInfo.UserState.ToString();
-            this.log.Text = "Termino de procesar el obtener info del usuario";
         }
     }
 }
