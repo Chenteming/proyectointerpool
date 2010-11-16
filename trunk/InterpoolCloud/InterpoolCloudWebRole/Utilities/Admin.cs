@@ -39,8 +39,9 @@ namespace InterpoolCloudWebRole.Utilities
                 if (news != null)
                 {
                     if (container.News.Where(noticia => noticia.Famous.FamousId == f.FamousId).Count() > 0)
-
+                    {
                         container.News.Where(noticia => noticia.Famous.FamousId == f.FamousId).FirstOrDefault().NewContent = news;
+                    }
                     else
                     {
                         newsF = new New();
@@ -61,9 +62,9 @@ namespace InterpoolCloudWebRole.Utilities
                 if (news != null)
                 {
                     if (container.CityPropertySet.Where(cp => cp.City.CityId == c.CityId && cp.Dyn == true).Count() > 0)
-
+                    {
                         container.CityPropertySet.Where(cp => cp.City.CityId == c.CityId && cp.Dyn == true).FirstOrDefault().CityPropertyContent = news;
-
+                    }
                     else
                     {
                         newsCity = new CityProperty();
@@ -72,8 +73,6 @@ namespace InterpoolCloudWebRole.Utilities
                         newsCity.Dyn = true;
                         container.AddToCityPropertySet(newsCity);
                     }
-
-                    
                 }
             }
 
@@ -119,7 +118,7 @@ namespace InterpoolCloudWebRole.Utilities
             {
                 resultado = QuitarTildes(resultado);
                 country = QuitarTildes(country);
-                resultado = ReemplazarTexto(resultado,Constants.ReplaceNombrePais, country);
+                resultado = ReemplazarTexto(resultado, Constants.ReplaceNombrePais, country);
                 city = QuitarTildes(city);
                 return ReemplazarTexto(resultado, Constants.ReplaceNombreCiudad, city);
             }

@@ -31,7 +31,6 @@ namespace InterpoolCloudWebRole
         protected void Page_Load(object sender, EventArgs e)
         {
         }
-
         
         /// <summary>
         /// News Famous Click
@@ -43,8 +42,5 @@ namespace InterpoolCloudWebRole
             Admin.LoadFamousData();
             this.labelInfo.Text = "News Famous updated";
         }
-
-        
-
     }
 }

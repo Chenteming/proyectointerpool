@@ -1,10 +1,18 @@
-﻿namespace InterpoolCloudWebRole.Datatypes
+﻿//-----------------------------------------------------------------------
+// <copyright file="GameState.cs" company="Interpool">
+//     Copyright Interpool. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+namespace InterpoolCloudWebRole.Datatypes
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
 
+    /// <summary>
+    /// Class statement GameState
+    /// </summary>
     public enum GameState
     {
         /// <summary>

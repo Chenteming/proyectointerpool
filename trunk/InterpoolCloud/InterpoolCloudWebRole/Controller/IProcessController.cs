@@ -8,11 +8,11 @@ namespace InterpoolCloudWebRole.Controller
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.ServiceModel;
     using System.Text;
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.Datatypes;
     using InterpoolCloudWebRole.FacebookCommunication;
-    using System.ServiceModel;
 
     /// <summary>
     /// Interface Description IProcessController
@@ -138,10 +138,9 @@ namespace InterpoolCloudWebRole.Controller
 
         /// <summary>
         /// Description for Method.</summary>
-        /// <param name="user"> Parameter description for user goes here</param>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <returns>Return results are described through the returns tag.</returns>
         [FaultContract(typeof(FaultException))]
         DataFacebookUser GetFilters(string userIdFacebook);
-        
-
     }
 }

@@ -31,6 +31,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// </summary>
         /// <param name="auth"> Parameter description for auth goes here</param>
         /// <param name="game"> Parameter description for game goes here</param>
+        /// <param name="limitSuspects"> Parameter description for limitSuspects goes here</param>
         /// <param name="context"> Parameter description for context goes here</param>
         public void DownloadFacebookUserData(OAuthFacebook auth, Game game, int limitSuspects, InterpoolContainer context)
         {
@@ -151,6 +152,7 @@ namespace InterpoolCloudWebRole.FacebookCommunication
         /// Returns the standard information by a json object
         /// </summary>
         /// <param name="userId">Parameter description for userId goes here</param>
+        /// <param name="auth">Parameter description for auth goes here</param>
         /// <param name="userFriendId">Parameter description for userFriendId goes here</param>
         /// <returns>Return results are described through the returns tag</returns>
         public DataFacebookUser GetFriendInfo(string userId, OAuthFacebook auth, string userFriendId)
@@ -484,23 +486,22 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             List<string> television = new List<string>();
             List<string> movies = new List<string>();
 
-            
-            while (like_category != null) // && !exit)
+            while (like_category != null)
             {
                 switch (like_category)
                 {
                     case "Music":
                     case "Musicians":
-                        //friendData.Music = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        ////friendData.Music = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         music.Add((string)jsonFriendObject.SelectToken("data[" + i + "].name"));
                         break;
                     case "Television":
-                        //friendData.Television = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        ////friendData.Television = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         television.Add((string)jsonFriendObject.SelectToken("data[" + i + "].name"));
                         break;
                     case "Movie":
                     case "Film":
-                        //friendData.Cinema = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
+                        ////friendData.Cinema = (string)jsonFriendObject.SelectToken("data[" + i + "].name");
                         movies.Add((string)jsonFriendObject.SelectToken("data[" + i + "].name"));
                         break;
                 }
@@ -517,14 +518,17 @@ namespace InterpoolCloudWebRole.FacebookCommunication
             {
                 friendData.Music = music_shuffle[0];
             }
+
             if (television_shuffle.Count > 0)
             {
                 friendData.Television = television_shuffle[0];
             }
+
             if (movies_shuffle.Count > 0)
             {
                 friendData.Cinema = movies_shuffle[0];
             }
+
             return friendData;          
         }
             

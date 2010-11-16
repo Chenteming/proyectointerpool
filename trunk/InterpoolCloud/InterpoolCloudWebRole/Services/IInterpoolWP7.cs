@@ -13,8 +13,8 @@ namespace InterpoolCloudWebRole.Services
     using System.Text;
     using InterpoolCloudWebRole.Data;
     using InterpoolCloudWebRole.Datatypes;
-    using InterpoolCloudWebRole.Utilities;
     using InterpoolCloudWebRole.FacebookCommunication;
+    using InterpoolCloudWebRole.Utilities;
 
     /// <summary>
     /// Interface Description IInterpoolWP7
@@ -131,10 +131,9 @@ namespace InterpoolCloudWebRole.Services
 
         /// <summary>
         /// Description for Method.</summary>
-        /// <param name="userIdFacebook"> Parameter description for user goes here</param>
+        /// <param name="userIdFacebook"> Parameter description for userIdFacebook goes here</param>
+        /// <returns>Return results are described through the returns tag.</returns>
         [OperationContract]
-        DataFacebookUser GetFilters(string userIdFacebook);
-
-       
+        DataFacebookUser GetFilters(string userIdFacebook);  
     }
 }

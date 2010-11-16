@@ -10,18 +10,49 @@ namespace InterpoolCloudWebRole.Datatypes
     using System.Linq;
     using System.Web;
 
+    /// <summary>
+    /// Class statement DataGameInfo
+    /// </summary>
     public class DataGameInfo
     {
-        public string SuspectName {get; set;}
-        public int DiffInDays {get; set;}
-        public int DiffInHours {get; set;}
-        public int DiffInMinutes { get; set; }
-        public int DiffInseconds { get; set; }
-        public long ScoreWin {get; set;}
-        public long Score {get; set;}
-        public string LinkBigSuspect {get; set;}
-        public string newLevel { get; set; }
-        public GameState state { get; set; }
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public string SuspectName { get; set; }
 
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public int DiffInDays { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public int DiffInHours { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public int DiffInMinutes { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public int DiffInseconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public long ScoreWin { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public long Score { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public string LinkBigSuspect { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public string NewLevel { get; set; }
+
+        /// <summary>
+        /// Gets or sets for Method.</summary>
+        public GameState State { get; set; }
     }
 }
