@@ -21,13 +21,6 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:3" Value="-560"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-720"/>
 			</DoubleAnimationUsingKeyFrames>
-			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="incorrectOrderOfArrest">
-				<DiscreteObjectKeyFrame KeyTime="0:0:4">
-					<DiscreteObjectKeyFrame.Value>
-						<Visibility>Visible</Visibility>
-					</DiscreteObjectKeyFrame.Value>
-				</DiscreteObjectKeyFrame>
-			</ObjectAnimationUsingKeyFrames>
 		</Storyboard>
 		<Storyboard x:Name="LoseStoryboard">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="LoseText">
