@@ -43,7 +43,7 @@ namespace WP7
 
         void WinMessageStoryboard_Completed(object sender, EventArgs e)
         {
-            if (gm.Info.newLevel != gm.CurrentLevel)
+            if (gm.Info.NewLevel != gm.CurrentLevel)
             {
                 NewLevelTB.Visibility = Visibility.Visible;                
                 NewLevelStoryboard.Begin();
@@ -58,7 +58,7 @@ namespace WP7
         void NewLevelStoryboard_Completed(object sender, EventArgs e)
         {
             NewLevelText.Visibility = Visibility.Visible;
-            NewLevelText.Text = this.gm.Info.newLevel.ToString();
+            NewLevelText.Text = this.gm.Info.NewLevel.ToString();
             BigSuspectButton.Visibility = System.Windows.Visibility.Visible;
             ShowInfoUser();
         }

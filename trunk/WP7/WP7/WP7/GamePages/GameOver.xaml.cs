@@ -56,7 +56,7 @@ namespace WP7
 
         void LoseStoryboard_Completed(object sender, EventArgs e)
         {            
-            switch (this.gm.Info.state)
+            switch (this.gm.Info.State)
             {
                 case GameState.LOSE_EOAW:
                     incorrectOrderOfArrest.Visibility = Visibility.Visible;
@@ -75,7 +75,7 @@ namespace WP7
             TotalText.Visibility = Visibility.Visible;
             TotalTB.Visibility = Visibility.Visible;
             TotalText.Text = this.gm.Info.ScoreWin.ToString();
-            NewLevelText.Text = this.gm.Info.newLevel.ToString();
+            NewLevelText.Text = this.gm.Info.NewLevel.ToString();
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)

@@ -104,7 +104,7 @@
             if (city.CityNumber == -1)
             {
                 ShowHideInterpoolFailMessage(true);
-                if (city.GameInfo.state == GameState.LOSE_TO)
+                if (city.GameInfo.State == GameState.LOSE_TO)
                 {
                     gm.Info = city.GameInfo;
                     NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
@@ -115,7 +115,7 @@
             {
 
                 gm.ResetCurrentFamous();
-                if (city.GameInfo.state == GameState.LOSE_TO)
+                if (city.GameInfo.State == GameState.LOSE_TO)
                 {
                     gm.Info = city.GameInfo;
                     NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));

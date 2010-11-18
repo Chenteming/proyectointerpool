@@ -162,7 +162,7 @@
         {
             this.gm.CurrentDateTime = e.Result.CurrentDate;
             DataGameInfo info = e.Result.GameInfo;
-            if (info.state == GameState.LOSE_TO)
+            if (info.State == GameState.LOSE_TO)
             {
                 this.gm.Info = info;
                 NavigationService.Navigate(new Uri("/GamePages/GameOver.xaml", UriKind.RelativeOrAbsolute));
