@@ -354,6 +354,64 @@ namespace InterpoolCloudWebRole.Utilities
             {
                 return 3;
             }
+        }
+
+        /// <summary>
+        /// Gets the property GenderMaleES
+        /// </summary>
+        public static string GenderMaleES
+        {
+            get
+            {
+                return "hombre";
+            }
+        }
+
+        /// <summary>
+        /// Gets the property GenderMaleEN
+        /// </summary>
+        public static string GenderMaleEN
+        {
+            get
+            {
+                return "male";
+            }
+        }
+
+        /// <summary>
+        /// Gets the property GenderFemaleES
+        /// </summary>
+        public static string GenderFemaleES
+        {
+            get
+            {
+                return "mujer";
+            }
+        }
+
+        /// <summary>
+        /// Gets the property GenderFemaleEN
+        /// </summary>
+        public static string GenderFemaleEN
+        {
+            get
+            {
+                return "famele";
+            }
+            
+        }
+
+        /// <summary>
+        /// Gets the property PropertySuspectGender
+        /// </summary>
+        public static string PropertySuspectGender
+        {
+            get
+            {
+                return "SuspectGender";
+            }
         } 
+
+
     }
 }
