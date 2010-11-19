@@ -652,6 +652,7 @@ namespace InterpoolCloudWebRole.Controller
         /// <param name="privatesProperties"> Parameter description for privatesProperties goes here</param>
         public void CreateHardCodeSuspects(Game game, List<string> privatesProperties)
         {
+
             List<Suspect> hardCodeSuspects = new List<Suspect>();
 
             Suspect bigSuspect = game.Suspect;
@@ -660,7 +661,32 @@ namespace InterpoolCloudWebRole.Controller
             PropertyInfo info;
             
             List<long> idsHardCoded = new List<long>();
-            List<HardCodedSuspect> sameGenders = this.container.HardCodedSuspects.Where(h => h.HardCodedSuspectGender.Equals(bigSuspect.SuspectGender)).ToList();
+
+            //// 
+            string bigSuspectGender = bigSuspect.SuspectGender;
+            string gender;
+            if (bigSuspectGender.Equals(Constants.GenderFemaleEN) || bigSuspectGender.Equals(Constants.GenderFemaleES))
+            {
+                gender = Constants.GenderFemaleEN;
+            }
+            else if (bigSuspectGender.Equals(Constants.GenderMaleEN) || bigSuspectGender.Equals(Constants.GenderMaleES))
+            {
+                gender = Constants.GenderMaleEN;
+            }
+            else
+            {
+                //// default value
+                gender = Constants.GenderMaleEN;
+            }
+
+            IQueryable<HardCodedSuspect> query = this.container.HardCodedSuspects.Where(h => h.HardCodedSuspectGender.Equals(gender));
+            
+            if (query.Count() < 1)
+            {
+                this.RegisterLog("CreateHardCodeSuspects, not exist hardocodedSuspecte with the same gender = "+gender, null, "error", game.User.UserLoginId);
+            }
+
+            List<HardCodedSuspect> sameGenders = query.ToList();
             List<HardCodedSuspect> hardCodedList = new List<HardCodedSuspect>();
 
             Random rand = new Random();
@@ -720,20 +746,25 @@ namespace InterpoolCloudWebRole.Controller
                 hardCode = new Suspect();
                 foreach (string prop in privatesProperties)
                 {
+                    ////
                     propHard = "HardCoded" + prop;
-                    
-                    hard = (HardCodedSuspect)hardCodedList.ElementAt(i);
                     info = hard.GetType().GetProperty(propHard);
                     if (info != null)
                     {
                         newValue = (string)info.GetValue(hard, null);
+                        if (prop.Equals(Constants.PropertySuspectGender))
+                        {
+                            //// case gender
+                            string op = "Gender" + newValue.Substring(0, 1).ToUpper() + newValue.Substring(1) + this.GetLanguageOfGender(bigSuspect.SuspectGender);
+                            newValue = this.GetGenderByConstant(op);
+                        }
                     }
                     else
                     {
                         ////TODO only for null values
                         newValue = string.Empty;
                     }
-
+                    
                     info = hardCode.GetType().GetProperty(prop);
                     info.SetValue(hardCode, newValue, null);
                 }
@@ -1792,6 +1823,44 @@ namespace InterpoolCloudWebRole.Controller
             }
 
             this.container.SaveChanges();
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="game"> Parameter description for game goes here</param>
+        /// <param name="fbud"> Parameter description for fbud goes here</param>
+        private string GetLanguageOfGender(string gender)
+        {
+            if  (Constants.GenderFemaleES.Equals(gender) || Constants.GenderMaleES.Equals(gender))
+            {
+                    return "ES";
+            }
+                return "EN";
+        }
+
+        /// <summary>
+        /// Description for Method.</summary>
+        /// <param name="game"> Parameter description for game goes here</param>
+        /// <param name="fbud"> Parameter description for fbud goes here</param>
+        private string GetGenderByConstant(string constant)
+        {
+            if  ("GenderFemaleEN".Equals(constant))
+            {
+                    return Constants.GenderFemaleEN;
+            }
+            else if ("GenderFemaleES".Equals(constant))
+            {
+                    return Constants.GenderFemaleES;
+            }
+            else if ("GenderMaleEN".Equals(constant))
+            {
+                    return Constants.GenderMaleEN;
+            }
+            else if ("GenderMaleES".Equals(constant))
+            {
+                    return Constants.GenderMaleES;
+            }
+            return Constants.GenderMaleEN;
         }
     }
 }
