@@ -748,6 +748,7 @@ namespace InterpoolCloudWebRole.Controller
                 {
                     ////
                     propHard = "HardCoded" + prop;
+                    hard = (HardCodedSuspect)hardCodedList.ElementAt(i);
                     info = hard.GetType().GetProperty(propHard);
                     if (info != null)
                     {
