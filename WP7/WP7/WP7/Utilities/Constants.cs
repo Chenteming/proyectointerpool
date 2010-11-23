@@ -39,7 +39,7 @@
                 return 8;
             }
         }
-
+        /*
         //// This is for local test
         /// <summary>
         /// Description for the attribute
@@ -51,7 +51,7 @@
                 return "http://127.0.0.1:81/Pages/FacebookRedirect.aspx";
             }
         }
-        /*
+        */
         //// This is for cloud test
         /// <summary>
         /// Description for the attribute
@@ -60,10 +60,10 @@
         {
             get
             {
-                return "http://pis2010.cloudapp.net/TestPage.aspx";
+                return "http://pis2010.cloudapp.net/Pages/FacebookRedirect.aspx";
             }
         }
-        */
+        
         public static string DEFAULT_DOMAIN
         {
             get
